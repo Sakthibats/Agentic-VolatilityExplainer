@@ -1,0 +1,11 @@
+# Secrets — exclude from Claude context (gitignore syntax)
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+credentials.json
+secrets/
+
+# Keep the template accessible
+!.env.example

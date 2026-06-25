@@ -1,0 +1,11 @@
+# Secrets — block from AI indexing and context
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+credentials.json
+secrets/
+
+# Keep the template accessible
+!.env.example

@@ -1,0 +1,23 @@
+# Secrets — never commit
+.env
+.env.local
+.env.*.local
+
+# Keep the template tracked
+!.env.example
+
+# Claude local overrides (may contain personal settings)
+.claude/settings.local.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+
+# Test / lint caches
+.pytest_cache/
+.ruff_cache/
