@@ -1,4 +1,4 @@
-"""Streamlit frontend for the Volatility Explainer."""
+"""Streamlit frontend for the Agentic Volatility Explainer."""
 
 from __future__ import annotations
 
@@ -10,16 +10,17 @@ from ui.components import (
     render_agent_tiles_section,
     render_brand_header,
     render_final_output_box,
+    render_guardrail_error,
     render_right_panel,
     render_search_bar,
     render_ticker_chip,
 )
-from ui.placeholders import parse_search_input, run_analysis
+from ui.placeholders import parse_search_input, run_analysis, validate_financial_query
 from ui.theme import inject_theme
 
 st.set_page_config(
-    page_title="WhyDip",
-    page_icon="📉",
+    page_title="Agentic Volatility Explainer",
+    page_icon="📊",
     layout="wide",
     initial_sidebar_state="collapsed",
 )
@@ -33,12 +34,22 @@ st.session_state.setdefault("submitted_query", "")
 st.session_state.setdefault("visible_tiles", 0)
 st.session_state.setdefault("analysis_result", None)
 st.session_state.setdefault("all_tiles", [])
+st.session_state.setdefault("chart_period", "6M")
+st.session_state.setdefault("guardrail_message", "")
 
 render_search_bar()
 
-phase    = st.session_state["analysis_phase"]
+phase     = st.session_state["analysis_phase"]
 submitted = st.session_state["submitted_query"]
 ticker, question = parse_search_input(submitted) if submitted else (None, "")
+
+# Guardrail check — runs only when a new query is submitted (phase == "running")
+if phase == "running" and submitted:
+    is_valid, err_msg = validate_financial_query(submitted, ticker)
+    if not is_valid:
+        st.session_state["analysis_phase"] = "guardrail"
+        st.session_state["guardrail_message"] = err_msg
+        phase = "guardrail"
 
 left_col, right_col = st.columns([11, 7], gap="large")
 
@@ -46,6 +57,9 @@ left_col, right_col = st.columns([11, 7], gap="large")
 with left_col:
     if phase == "idle":
         render_final_output_box(thinking=False, content=None)
+
+    elif phase == "guardrail":
+        render_guardrail_error(st.session_state["guardrail_message"])
 
     elif phase == "running":
         if ticker:

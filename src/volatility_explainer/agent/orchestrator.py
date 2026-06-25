@@ -17,21 +17,22 @@ from volatility_explainer.mcp.tools.price import fetch_price_data
 
 
 def _build_context(ticker: str, data: dict) -> str:
-    return f"""Analyze the implied volatility for {ticker.upper()}.
+    return f"""Investigate why {ticker.upper()} has been moving. Use the data below to explain \
+the price action and identify the most likely causes.
 
 === PRICE & REALIZED VOLATILITY ===
 {json.dumps(data.get("price", {}), indent=2, default=str)}
 
-=== OPTIONS CHAIN (IV, SKEW, PUT/CALL RATIO) ===
+=== OPTIONS CHAIN (FLOW, SKEW, PUT/CALL RATIO) ===
 {json.dumps(data.get("options", {}), indent=2, default=str)}
 
-=== RECENT NEWS (last 7 days) ===
+=== RECENT NEWS & CATALYSTS (last 7 days) ===
 {json.dumps(data.get("news", {}), indent=2, default=str)}
 
-=== MACRO BACKDROP (VIX) ===
+=== MACRO BACKDROP (VIX, MARKET CONTEXT) ===
 {json.dumps(data.get("macro", {}), indent=2, default=str)}
 
-=== UPCOMING EVENTS ===
+=== UPCOMING EVENTS & TRIGGERS ===
 {json.dumps(data.get("events", {}), indent=2, default=str)}
 """
 
@@ -87,6 +88,17 @@ def run_explainer(ticker: str) -> dict:
                 parsed = json.loads(match.group())
             except json.JSONDecodeError:
                 parsed = {}
+
+    if parsed.get("error"):
+        return {
+            "ticker": ticker,
+            "data": raw,
+            "summary": "",
+            "tiles": [],
+            "hypotheses": [],
+            "status": "guardrail",
+            "error_message": parsed.get("message", ""),
+        }
 
     return {
         "ticker": ticker,

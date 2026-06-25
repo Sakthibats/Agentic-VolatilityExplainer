@@ -35,7 +35,7 @@ class AnalysisResult:
 
 
 # ---------------------------------------------------------------------------
-# Input parsing — handles tickers, company names, and natural language
+# Input parsing — handles tickers, company names, natural language, concepts
 # ---------------------------------------------------------------------------
 
 _STOP_WORDS: frozenset[str] = frozenset({
@@ -44,52 +44,173 @@ _STOP_WORDS: frozenset[str] = frozenset({
     "those", "can", "could", "has", "have", "had", "will", "would", "should",
     "dip", "drop", "fall", "fell", "rise", "rose", "up", "down", "spike",
     "crash", "surge", "move", "moved", "going", "go", "gone", "happened",
-    "happen", "stock", "share", "price", "market", "ticker", "company",
-    "so", "it", "do", "of", "in", "on", "at", "to", "for", "by", "with",
-    "my", "me", "you", "we", "he", "she", "they", "his", "her", "their",
-    "and", "or", "but", "not", "no", "yes", "iv", "vol", "be", "been",
-    "today", "yesterday", "week", "month", "year", "recently", "just", "now",
-    "huge", "big", "bad", "good", "much", "lot", "any", "all", "some",
-    "get", "got", "buy", "sell", "hold", "long", "short", "put", "call",
+    "happening", "happen", "stock", "share", "price", "market", "ticker",
+    "company", "so", "it", "do", "of", "in", "on", "at", "to", "for", "by",
+    "with", "my", "me", "you", "we", "he", "she", "they", "his", "her",
+    "their", "and", "or", "but", "not", "no", "yes", "iv", "vol", "be",
+    "been", "today", "yesterday", "week", "month", "year", "recently",
+    "just", "now", "huge", "big", "bad", "good", "much", "lot", "any",
+    "all", "some", "get", "got", "buy", "sell", "hold", "long", "short",
+    "put", "call", "explain", "tell", "show", "showing", "trading", "trade",
+    "perform", "performing", "doing", "look", "looking", "think", "about",
+    "around", "over", "under", "since", "after", "before", "during",
+    "between", "into", "through", "across", "against", "because", "from",
+    "there", "here", "where", "then", "than", "like", "if", "too",
+    "please", "help", "me", "know", "think", "feel", "way", "time",
+    "day", "last", "next", "recent", "past", "future", "current", "latest",
+})
+
+# Financial concepts mapped to yfinance-friendly fund name search queries.
+# We use specific fund names (not tickers) so yfinance resolves the most
+# liquid representative ETF — no hardcoded ticker mappings here.
+_CONCEPT_HINTS: list[tuple[str, str]] = [
+    (r"\bgold\b",                                "iShares gold trust"),
+    (r"\bsilver\b",                              "iShares silver trust"),
+    (r"\bcopper\b",                              "United States copper"),
+    (r"\boil\b|\bcrude\b|\bpetroleum\b",         "United States Oil Fund"),
+    (r"\bnatural\s+gas\b",                       "United States natural gas"),
+    (r"\bbitcoin\b|\bbtc\b|\bcrypto\b",          "iShares bitcoin trust"),
+    (r"\bethereum\b|\beth\b",                    "iShares ethereum trust"),
+    (r"\bs[&\s]?p\s*500\b|\bsp500\b|\bsnp\b",   "SPDR S&P 500"),
+    (r"\bnasdaq\b|\bqq\b",                       "Invesco QQQ trust"),
+    (r"\bdow\s+jones\b|\bdjia\b|\bdow\b",        "SPDR dow jones"),
+    (r"\btotal\s+market\b|\bstock\s+market\b|\bmarkets?\b", "Vanguard total stock"),
+    (r"\brussell\b|\bsmall[\s-]?cap\b",          "iShares russell 2000"),
+    (r"\bbond\b|\btreasury\b|\bfixed\s+income\b","iShares 20 year treasury"),
+    (r"\bemerging\s+market\b|\bem\s+market\b",   "iShares MSCI emerging markets"),
+    (r"\breal\s+estate\b|\breit\b",              "Vanguard real estate"),
+    (r"\benergy\s+sector\b|\benergy\s+stock\b",  "XLE energy"),
+    (r"\btech\s+sector\b|\btechnology\s+sector\b","XLK technology"),
+    (r"\bfinancial\s+sector\b|\bbank\s+sector\b","XLF financial"),
+    (r"\bhealthcare\s+sector\b|\bpharma\s+sector\b","XLV healthcare"),
+]
+
+_FINANCIAL_KEYWORDS: frozenset[str] = frozenset({
+    "stock", "stocks", "share", "shares", "equity", "equities",
+    "price", "prices", "etf", "fund", "index", "indices",
+    "crypto", "bitcoin", "ethereum", "coin", "token",
+    "gold", "oil", "silver", "copper", "commodity", "commodities",
+    "earnings", "revenue", "profit", "loss", "dividend", "buyback",
+    "analyst", "rating", "upgrade", "downgrade", "target", "forecast",
+    "ipo", "spac", "merger", "acquisition", "deal", "spinoff",
+    "fed", "fomc", "rate", "inflation", "cpi", "gdp", "recession",
+    "vix", "volatility", "options", "calls", "puts",
+    "nasdaq", "nyse", "dow", "russell",
+    "bond", "bonds", "treasury", "yield", "sector",
+    "bull", "bear", "rally", "correction", "crash", "dip", "surge",
+    "invest", "investing", "portfolio", "position", "hedge",
+    "quarter", "guidance", "outlook", "report", "market", "ticker",
+    "short", "squeeze", "momentum", "breakout",
+})
+
+# Price/movement intent words — used to detect financial inquiry even when
+# explicit financial nouns are absent (e.g. "why did apple dip?")
+_FINANCIAL_INTENT_WORDS: frozenset[str] = frozenset({
+    "dip", "drop", "fall", "fell", "rise", "rose", "spike", "crash",
+    "surge", "jump", "tumble", "rally", "plunge", "soar", "tank",
+    "gain", "decline", "climb", "slide", "bounce", "pump", "dump",
+    "happened", "happen", "moved", "move", "performing", "explain",
+    "investigate", "analyze", "volatile", "lower", "higher",
 })
 
 _ticker_cache: dict[str, str | None] = {}
 
 
-def _resolve_ticker(term: str) -> str | None:
-    """Resolve a word to a valid US equity ticker via yfinance search."""
-    key = term.upper()
-    if key in _ticker_cache:
-        return _ticker_cache[key]
+def _resolve_ticker(term: str, search_query: str | None = None) -> str | None:
+    """Resolve a word/phrase to a valid US equity ticker via yfinance search.
+    If search_query is given it overrides the search text (but term is still the cache key).
+    """
+    cache_key = (search_query or term).upper()
+    if cache_key in _ticker_cache:
+        return _ticker_cache[cache_key]
     result = None
     try:
         import yfinance as yf
-        hits = yf.Search(term, max_results=5).quotes
+        query = search_query or term
+        hits = yf.Search(query, max_results=10).quotes
         for h in hits:
             sym = h.get("symbol", "")
+            # Accept only clean 1-5 letter tickers (no dots, hyphens — those are usually foreign or preferred)
             if re.match(r"^[A-Z]{1,5}$", sym):
                 result = sym
                 break
     except Exception:
         pass
-    _ticker_cache[key] = result
+    _ticker_cache[cache_key] = result
     return result
+
+
+def validate_financial_query(raw: str, ticker: str | None) -> tuple[bool, str]:
+    """Return (is_valid, error_message). Valid means the query is about financial price movements.
+
+    Layers:
+    1. Concept hint match (gold, nasdaq, s&p 500, market…) → valid
+    2. Financial noun keywords → valid
+    3. User explicitly wrote an ALL-CAPS ticker symbol → valid
+    4. Price/movement intent word + resolved ticker → valid
+    Otherwise → blocked (guardrail)
+    """
+    text_lower = raw.lower()
+    words = set(re.findall(r"\b\w+\b", text_lower))
+
+    # 1. Concept phrases
+    for pattern, _ in _CONCEPT_HINTS:
+        if re.search(pattern, text_lower):
+            return True, ""
+
+    # 2. Financial nouns present in raw text
+    if words & _FINANCIAL_KEYWORDS:
+        return True, ""
+
+    # 3. Single-word query — almost always a direct ticker lookup (e.g. "rklb", "aapl")
+    if ticker and len(raw.strip().split()) == 1:
+        return True, ""
+
+    # 4. User explicitly wrote an uppercase ticker/symbol (≥2 caps chars)
+    uppercase_tokens = set(re.findall(r"\b[A-Z]{2,5}\b", raw))
+    if ticker and ticker in uppercase_tokens:
+        return True, ""
+
+    # 4. Financial intent word (dip, drop, crash…) alongside a resolved ticker
+    if ticker and (words & _FINANCIAL_INTENT_WORDS):
+        return True, ""
+
+    return False, (
+        "This tool investigates **stock and ETF price movements** only. "
+        "Ask about a company (*why did Apple dip?*), a ticker (*TSLA*), "
+        "or a market/asset (*what happened to gold?*, *why is the market down?*)."
+    )
 
 
 def parse_search_input(raw: str) -> tuple[str | None, str]:
     """Extract a ticker from free-form input.
 
-    Handles plain tickers ("TSLA", "tsla"), company names ("tesla"),
-    and natural language ("why did rklb dip?").
+    Priority order:
+    1. Concept phrases (gold → GLD/IAU, market → VTI, S&P 500 → VOO)
+    2. Uppercase tokens that look like tickers (TSLA, AAPL)
+    3. Other words tried as company name searches (tesla → TSLA)
     """
     text = raw.strip()
     if not text:
         return None, ""
 
-    tokens = re.findall(r"\b[a-zA-Z]{1,6}\b", text)
-    candidates = [t for t in tokens if t.lower() not in _STOP_WORDS]
+    text_lower = text.lower()
 
-    for candidate in candidates:
+    # 1. Concept phrases first — catches "gold price", "market", "s&p 500", etc.
+    for pattern, search_query in _CONCEPT_HINTS:
+        if re.search(pattern, text_lower):
+            ticker = _resolve_ticker(search_query, search_query)
+            if ticker:
+                return ticker, text
+
+    tokens = re.findall(r"\b[a-zA-Z]{1,6}\b", text)
+
+    # 2. Uppercase tokens ≥2 chars — likely ticker symbols; single letters are usually pronouns
+    upper_candidates = [t for t in tokens if re.match(r"^[A-Z]{2,5}$", t) and t not in _STOP_WORDS]
+    # 3. Other candidates — company names etc.
+    other_candidates = [t for t in tokens if t.lower() not in _STOP_WORDS and not re.match(r"^[A-Z]{1,5}$", t)]
+
+    for candidate in upper_candidates + other_candidates:
         ticker = _resolve_ticker(candidate)
         if ticker:
             return ticker, text
@@ -98,16 +219,25 @@ def parse_search_input(raw: str) -> tuple[str | None, str]:
 
 
 # ---------------------------------------------------------------------------
-# Price history — real data with yfinance fallback
+# Price history
 # ---------------------------------------------------------------------------
 
+_PERIOD_MAP: dict[str, str] = {
+    "1D": "1d",
+    "1M": "1mo",
+    "6M": "6mo",
+    "YTD": "ytd",
+    "1Y": "1y",
+}
 
-def fetch_price_history(ticker: str) -> pd.DataFrame:
-    """Return 6-month daily close prices. Uses yfinance (no API key needed)."""
+
+def fetch_price_history(ticker: str, period: str = "6M") -> pd.DataFrame:
+    """Return daily close prices for the given period. Uses yfinance."""
+    yf_period = _PERIOD_MAP.get(period, "6mo")
     try:
         import yfinance as yf
 
-        hist = yf.Ticker(ticker.upper()).history(period="6mo")
+        hist = yf.Ticker(ticker.upper()).history(period=yf_period)
         if hist.empty:
             raise ValueError("Empty history")
         df = hist.reset_index()[["Date", "Close"]].rename(columns={"Date": "date", "Close": "close"})
@@ -129,7 +259,7 @@ def _synthetic_price_history() -> pd.DataFrame:
 
 
 # ---------------------------------------------------------------------------
-# Quick stats — real fundamentals via yfinance
+# Quick stats
 # ---------------------------------------------------------------------------
 
 
@@ -152,8 +282,7 @@ def fetch_quick_stats(ticker: str) -> list[QuickStat]:
             stats.append(QuickStat("Last Price", f"${price:,.2f}", delta))
 
         pe = info.get("trailingPE")
-        if pe:
-            stats.append(QuickStat("P/E Ratio", f"{pe:.1f}x"))
+        stats.append(QuickStat("P/E Ratio", f"{pe:.1f}×" if pe else "N/A"))
 
         mkt_cap = info.get("marketCap")
         if mkt_cap:
@@ -172,10 +301,7 @@ def fetch_quick_stats(ticker: str) -> list[QuickStat]:
 
         avg_vol = info.get("averageVolume")
         if avg_vol:
-            if avg_vol >= 1e6:
-                vol_str = f"{avg_vol/1e6:.1f}M"
-            else:
-                vol_str = f"{avg_vol/1e3:.0f}K"
+            vol_str = f"{avg_vol/1e6:.1f}M" if avg_vol >= 1e6 else f"{avg_vol/1e3:.0f}K"
             stats.append(QuickStat("Avg Volume", vol_str))
 
         beta = info.get("beta")
@@ -192,14 +318,13 @@ def _fallback_stats() -> list[QuickStat]:
 
 
 # ---------------------------------------------------------------------------
-# Full analysis pipeline — real orchestrator
+# Full analysis pipeline
 # ---------------------------------------------------------------------------
 
 
 def run_analysis(ticker: str, query: str) -> AnalysisResult:
     """Run the full agentic pipeline and return structured results."""
     try:
-        # Add src/ to path so orchestrator can be imported from apps/
         import os
 
         src_path = os.path.join(os.path.dirname(__file__), "..", "..", "src")
@@ -221,18 +346,20 @@ def run_analysis(ticker: str, query: str) -> AnalysisResult:
             for t in result.get("tiles", [])
         ]
 
-        # Build a readable markdown summary with ranked hypotheses
         summary_text = result.get("summary", "")
         hypotheses = result.get("hypotheses", [])
         if hypotheses:
-            summary_text += "\n\n**Ranked hypotheses:**\n"
+            summary_text += "\n\n**Most likely causes:**\n"
             for h in hypotheses:
-                conf_icon = {"high": "🟢", "medium": "🟡", "low": "🔴"}.get(
-                    h.get("confidence", "medium"), "🟡"
-                )
+                conf = h.get("confidence", "medium")
+                conf_icon = {"high": "🟢", "medium": "🟡", "low": "🔴"}.get(conf, "🟡")
+                conf_label = {"high": "High confidence", "medium": "Medium confidence", "low": "Low confidence / speculative"}.get(conf, "")
+                caveat = h.get("caveat", "")
+                caveat_text = f"   _Caveat: {caveat}_\n" if caveat and caveat != "N/A" else ""
                 summary_text += (
-                    f"\n{h['rank']}. **{h['hypothesis']}** {conf_icon}  \n"
+                    f"\n{h['rank']}. **{h['hypothesis']}** {conf_icon} _{conf_label}_  \n"
                     f"   _{h.get('evidence', '')}_\n"
+                    f"{caveat_text}"
                 )
 
         if not tiles:
@@ -244,11 +371,10 @@ def run_analysis(ticker: str, query: str) -> AnalysisResult:
             ticker=ticker,
             query=query,
             tiles=tiles,
-            final_output=f"**{ticker} Volatility Analysis**\n\n{summary_text}",
+            final_output=f"**{ticker} — Price Movement Analysis**\n\n{summary_text}",
         )
 
     except Exception as exc:
-        # Graceful fallback so the UI never crashes
         tiles = _stub_tiles(ticker)
         return AnalysisResult(
             ticker=ticker,
@@ -259,28 +385,27 @@ def run_analysis(ticker: str, query: str) -> AnalysisResult:
 
 
 def stream_agent_tiles(ticker: str, query: str) -> Iterator[AgentTile]:
-    """Yield pre-computed tiles (computed inside run_analysis)."""
     result = run_analysis(ticker, query)
     yield from result.tiles
 
 
 # ---------------------------------------------------------------------------
-# Stub fallbacks (shown if API keys missing or network error)
+# Stub fallbacks
 # ---------------------------------------------------------------------------
 
 
 def _stub_tiles(ticker: str) -> list[AgentTile]:
     return [
-        AgentTile("price", "Price & Realized Volatility", f"{ticker} data unavailable — check API keys.", "Alpaca"),
-        AgentTile("options", "Options Skew", "Options data unavailable.", "Options chain"),
-        AgentTile("news", "News Sentiment", "News data unavailable.", "Finnhub"),
-        AgentTile("macro", "Macro Backdrop", "Macro data unavailable.", "FRED"),
-        AgentTile("events", "Upcoming Events", "Events data unavailable.", "Events calendar"),
+        AgentTile("price", "Price Action", f"{ticker} data unavailable — check API keys.", "Alpaca"),
+        AgentTile("options", "Options Activity", "Options data unavailable.", "Options chain"),
+        AgentTile("news", "News & Catalysts", "News data unavailable.", "Finnhub"),
+        AgentTile("macro", "Market Context", "Macro data unavailable.", "FRED"),
+        AgentTile("events", "Events & Triggers", "Events data unavailable.", "Events calendar"),
     ]
 
 
 def _stub_summary(ticker: str) -> str:
     return (
-        f"**{ticker} implied volatility analysis** could not be completed — "
+        f"**{ticker} analysis** could not be completed — "
         "verify that ALPACA, FINNHUB, FRED, and ANTHROPIC API keys are set in your `.env` file."
     )

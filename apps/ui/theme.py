@@ -1,20 +1,20 @@
-"""Design system — Apple-esque minimalist fintech."""
+"""Design system — Apple-inspired fintech aesthetic."""
 
 # Palette
 WHITE       = "#FFFFFF"
-PAGE_BG     = "#F5F7FA"
-BLUE        = "#0071E3"
-BLUE_DARK   = "#0058B2"
-BLUE_LIGHT  = "#EBF3FF"
-BLUE_MUTED  = "#B8D6F8"
-TEXT        = "#1D1D1F"
-TEXT_MUTED  = "#86868B"
-TEXT_LIGHT  = "#ADADB3"
-BORDER      = "rgba(0,0,0,0.08)"
-SUCCESS     = "#1A7F37"
-DANGER      = "#CF222E"
+PAGE_BG     = "#F1F3F7"
+BLUE        = "#2563EB"
+BLUE_DARK   = "#1D4ED8"
+BLUE_LIGHT  = "#EFF6FF"
+BLUE_MUTED  = "#BFDBFE"
+TEXT        = "#0F172A"
+TEXT_MUTED  = "#64748B"
+TEXT_LIGHT  = "#94A3B8"
+BORDER      = "rgba(15,23,42,0.08)"
+SUCCESS     = "#16A34A"
+DANGER      = "#DC2626"
 
-# Keep legacy aliases so existing imports don't break
+# Legacy aliases
 BLUE_PRIMARY = BLUE
 BLUE_ACCENT  = BLUE
 BLUE_HOVER   = BLUE_DARK
@@ -33,12 +33,13 @@ def inject_theme() -> None:
     st.markdown(
         f"""
         <style>
-          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+          @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;1,14..32,400&display=swap');
 
           /* ── Base ── */
           html, body, [class*="css"] {{
-            font-family: -apple-system, 'SF Pro Display', 'Inter', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
             -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
           }}
 
           .stApp {{
@@ -53,129 +54,123 @@ def inject_theme() -> None:
           .block-container {{
             padding-top: 0 !important;
             padding-bottom: 3rem;
-            max-width: 1320px;
+            max-width: 1360px;
           }}
 
-          /* ── App header (replaces gradient nav bar) ── */
+          /* ── App header ── */
           .app-header {{
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 1.25rem 0 1.1rem;
+            padding: 1.2rem 0 1rem;
             border-bottom: 1px solid {BORDER};
-            margin-bottom: 1.75rem;
-            background: {PAGE_BG};
+            margin-bottom: 1.6rem;
           }}
 
           .header-brand {{
             display: flex;
             align-items: center;
-            gap: 0.85rem;
+            gap: 0.9rem;
           }}
 
           .header-logo {{
             width: 40px;
             height: 40px;
             border-radius: 11px;
-            background: {BLUE};
+            background: linear-gradient(145deg, #3B82F6 0%, {BLUE_DARK} 100%);
             color: white;
             font-weight: 800;
-            font-size: 0.88rem;
-            letter-spacing: -0.03em;
+            font-size: 0.68rem;
+            letter-spacing: 0.01em;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 8px rgba(0,113,227,0.35);
+            box-shadow: 0 4px 14px rgba(37,99,235,0.32), inset 0 1px 0 rgba(255,255,255,0.2);
             flex-shrink: 0;
           }}
 
           .header-title {{
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
             color: {TEXT};
-            letter-spacing: -0.025em;
+            letter-spacing: -0.03em;
             display: block;
-            line-height: 1.2;
+            line-height: 1.25;
           }}
 
           .header-sub {{
-            font-size: 0.72rem;
+            font-size: 0.68rem;
             color: {TEXT_MUTED};
             font-weight: 400;
             display: block;
-            margin-top: 0.05rem;
+            margin-top: 0.06rem;
+            letter-spacing: -0.01em;
           }}
 
           .header-tag {{
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             font-weight: 600;
-            letter-spacing: 0.06em;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
             color: {BLUE};
             background: {BLUE_LIGHT};
             border: 1px solid {BLUE_MUTED};
-            padding: 0.22rem 0.65rem;
+            padding: 0.2rem 0.65rem;
             border-radius: 999px;
           }}
 
-          /* ── Search bar ── */
-          .search-card {{
-            background: {WHITE};
-            border: 1px solid {BORDER};
-            border-radius: 16px;
-            padding: 0.5rem 0.5rem 0.5rem 1.1rem;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.04), 0 4px 20px rgba(0,0,0,0.05);
-            margin-bottom: 1.5rem;
-            transition: box-shadow 0.2s ease, border-color 0.2s ease;
+          /* ── Search form card ── */
+          /* st.form renders as [data-testid="stForm"] — the only reliable container
+             we can style around Streamlit native inputs + buttons. */
+          [data-testid="stForm"] {{
+            background: {WHITE} !important;
+            border: 1.5px solid {BORDER} !important;
+            border-radius: 18px !important;
+            padding: 0.25rem 0.35rem 0.25rem 0.9rem !important;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 6px 20px rgba(0,0,0,0.05) !important;
+            margin-bottom: 1.4rem !important;
+            transition: box-shadow 0.2s ease, border-color 0.2s ease !important;
           }}
 
-          .search-card:focus-within {{
-            border-color: {BLUE};
-            box-shadow: 0 0 0 4px rgba(0,113,227,0.1), 0 4px 20px rgba(0,0,0,0.05);
-          }}
-
-          /* ── Panels (white cards) ── */
-          .panel {{
-            background: {WHITE};
-            border: 1px solid {BORDER};
-            border-radius: 20px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.04);
+          [data-testid="stForm"]:focus-within {{
+            border-color: {BLUE} !important;
+            box-shadow: 0 0 0 4px rgba(37,99,235,0.1), 0 6px 20px rgba(0,0,0,0.05) !important;
           }}
 
           /* ── Analysis box ── */
           .analysis-box {{
-            min-height: 220px;
-            border-radius: 14px;
-            border: 1px solid {BORDER};
+            border-radius: 16px;
+            border: 1.5px solid {BORDER};
             background: {WHITE};
             padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 6px 20px rgba(0,0,0,0.04);
+          }}
+
+          .analysis-box.empty-panel {{
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
           }}
 
           .analysis-box.thinking {{
             border-color: {BLUE_MUTED};
-            background: linear-gradient(145deg, {BLUE_LIGHT} 0%, {WHITE} 55%);
+            background: linear-gradient(155deg, {BLUE_LIGHT} 0%, {WHITE} 55%);
+            min-height: 200px;
           }}
 
           .analysis-box.complete {{
-            border-color: rgba(0,113,227,0.2);
-            background: {WHITE};
+            border-color: rgba(37,99,235,0.15);
           }}
 
-          /* Analysis content typography */
           .analysis-content p {{
-            font-size: 0.9rem;
-            line-height: 1.75;
+            font-size: 0.88rem;
+            line-height: 1.85;
             color: {TEXT};
-            margin: 0 0 0.6rem 0;
+            margin: 0 0 0.65rem 0;
           }}
 
-          .analysis-content strong {{
-            color: {TEXT};
-            font-weight: 700;
-          }}
+          .analysis-content strong {{ color: {TEXT}; font-weight: 700; }}
 
           .analysis-content ol, .analysis-content ul {{
             padding-left: 1.25rem;
@@ -183,20 +178,10 @@ def inject_theme() -> None:
           }}
 
           .analysis-content li {{
-            font-size: 0.875rem;
-            line-height: 1.65;
+            font-size: 0.88rem;
+            line-height: 1.75;
             color: {TEXT};
-            margin-bottom: 0.4rem;
-          }}
-
-          .analysis-title {{
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: {TEXT};
-            letter-spacing: -0.01em;
-            margin-bottom: 0.75rem;
-            padding-bottom: 0.6rem;
-            border-bottom: 1px solid {BORDER};
+            margin-bottom: 0.45rem;
           }}
 
           /* ── Shimmer skeleton ── */
@@ -206,11 +191,11 @@ def inject_theme() -> None:
           }}
 
           .shimmer-bar {{
-            height: 9px;
+            height: 8px;
             border-radius: 6px;
             background: linear-gradient(90deg, {BLUE_LIGHT} 25%, {BLUE_MUTED} 50%, {BLUE_LIGHT} 75%);
             background-size: 700px 100%;
-            animation: shimmer 1.5s infinite linear;
+            animation: shimmer 1.6s infinite linear;
             margin-bottom: 0.65rem;
           }}
 
@@ -223,7 +208,7 @@ def inject_theme() -> None:
             font-weight: 600;
             color: {BLUE_DARK};
             letter-spacing: 0.01em;
-            margin-bottom: 1rem;
+            margin-bottom: 1.1rem;
             display: flex;
             align-items: center;
             gap: 0.35rem;
@@ -237,6 +222,80 @@ def inject_theme() -> None:
           .thinking-dots span:nth-child(2) {{ animation-delay: 0.2s; }}
           .thinking-dots span:nth-child(3) {{ animation-delay: 0.4s; }}
 
+          /* ── Guardrail error box ── */
+          .guardrail-box {{
+            background: #FFF7ED;
+            border: 1.5px solid #FED7AA;
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+          }}
+
+          .guardrail-icon {{
+            font-size: 2rem;
+            margin-bottom: 0.25rem;
+            opacity: 0.8;
+          }}
+
+          .guardrail-title {{
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #9A3412;
+            letter-spacing: -0.015em;
+          }}
+
+          .guardrail-body {{
+            font-size: 0.85rem;
+            color: #C2410C;
+            line-height: 1.7;
+            max-width: 380px;
+          }}
+
+          .guardrail-body em {{ font-style: italic; }}
+          .guardrail-body strong {{ font-weight: 700; color: #9A3412; }}
+
+          /* ── Empty state ── */
+          .empty-state {{
+            color: {TEXT_LIGHT};
+            font-size: 0.85rem;
+            text-align: center;
+            line-height: 1.75;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.15rem;
+          }}
+
+          .empty-icon {{
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+            opacity: 0.28;
+          }}
+
+          .empty-title {{
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #CBD5E1;
+            display: block;
+            margin-bottom: 0.2rem;
+            letter-spacing: -0.01em;
+          }}
+
+          .empty-hint {{
+            font-size: 0.78rem;
+            color: #CBD5E1;
+            margin-top: 0.3rem;
+          }}
+
+          .empty-hint em {{ color: #94A3B8; }}
+
           /* ── Ticker chip ── */
           .ticker-chip {{
             display: inline-flex;
@@ -245,49 +304,43 @@ def inject_theme() -> None:
             background: {BLUE_LIGHT};
             color: {BLUE};
             font-weight: 700;
-            font-size: 0.75rem;
-            letter-spacing: 0.04em;
-            padding: 0.24rem 0.72rem;
+            font-size: 0.72rem;
+            letter-spacing: 0.05em;
+            padding: 0.22rem 0.72rem;
             border-radius: 999px;
             border: 1px solid {BLUE_MUTED};
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.75rem;
           }}
 
-          /* ── Section labels ── */
-          .section-label {{
-            font-size: 0.67rem;
+          /* ── Labels ── */
+          .section-label, .panel-label {{
+            font-size: 0.6rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.09em;
-            color: {TEXT_MUTED};
-            margin: 1.1rem 0 0.65rem 0;
+            letter-spacing: 0.1em;
+            color: {TEXT_LIGHT};
+            margin-bottom: 0.5rem;
           }}
 
-          .panel-label {{
-            font-size: 0.67rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.09em;
-            color: {TEXT_MUTED};
-            margin-bottom: 0.65rem;
-          }}
+          .section-label {{ margin: 1rem 0 0.55rem 0; }}
 
           /* ── Agent tiles ── */
           @keyframes slideUp {{
-            from {{ opacity: 0; transform: translateY(12px); }}
+            from {{ opacity: 0; transform: translateY(8px); }}
             to   {{ opacity: 1; transform: translateY(0); }}
           }}
 
           .agent-tile {{
-            border: 1px solid {BORDER};
+            border: 1.5px solid {BORDER};
             border-radius: 14px;
-            padding: 1rem 1.15rem;
+            padding: 0.95rem 1.1rem 0.95rem 1.3rem;
             background: {WHITE};
-            margin-bottom: 0.6rem;
-            animation: slideUp 0.35s ease-out;
-            transition: box-shadow 0.2s ease, transform 0.2s ease;
+            margin-bottom: 0.5rem;
+            animation: slideUp 0.28s ease-out;
+            transition: box-shadow 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
           }}
 
           .agent-tile::before {{
@@ -295,12 +348,13 @@ def inject_theme() -> None:
             position: absolute;
             left: 0; top: 0; bottom: 0;
             width: 3px;
-            background: {BLUE};
+            background: linear-gradient(180deg, {BLUE} 0%, {BLUE_DARK} 100%);
             border-radius: 0 2px 2px 0;
           }}
 
           .agent-tile:hover {{
-            box-shadow: 0 4px 20px rgba(0,113,227,0.1);
+            box-shadow: 0 4px 18px rgba(37,99,235,0.1);
+            border-color: {BLUE_MUTED};
             transform: translateY(-1px);
           }}
 
@@ -308,32 +362,32 @@ def inject_theme() -> None:
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 0.35rem;
+            margin-bottom: 0.28rem;
           }}
 
           .tile-title {{
             font-weight: 600;
             color: {TEXT};
-            font-size: 0.875rem;
-            letter-spacing: -0.01em;
+            font-size: 0.84rem;
+            letter-spacing: -0.015em;
           }}
 
           .tile-badge {{
-            font-size: 0.62rem;
+            font-size: 0.58rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.06em;
             color: {BLUE};
             background: {BLUE_LIGHT};
-            padding: 0.16rem 0.5rem;
+            padding: 0.14rem 0.48rem;
             border-radius: 999px;
             border: 1px solid {BLUE_MUTED};
           }}
 
           .tile-body {{
             color: {TEXT_MUTED};
-            font-size: 0.835rem;
-            line-height: 1.6;
+            font-size: 0.82rem;
+            line-height: 1.65;
             margin: 0;
           }}
 
@@ -341,24 +395,28 @@ def inject_theme() -> None:
           .stat-grid {{
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0.55rem;
+            gap: 0.48rem;
           }}
 
           .stat-card {{
-            background: {PAGE_BG};
-            border: 1px solid {BORDER};
+            background: {WHITE};
+            border: 1.5px solid {BORDER};
             border-radius: 12px;
-            padding: 0.8rem 1rem;
-            transition: border-color 0.2s ease;
+            padding: 0.8rem 0.95rem;
+            transition: border-color 0.18s ease, box-shadow 0.18s ease;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
           }}
 
-          .stat-card:hover {{ border-color: {BLUE_MUTED}; }}
+          .stat-card:hover {{
+            border-color: {BLUE_MUTED};
+            box-shadow: 0 2px 10px rgba(37,99,235,0.07);
+          }}
 
           .stat-label {{
-            font-size: 0.63rem;
+            font-size: 0.58rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.07em;
+            letter-spacing: 0.09em;
             color: {TEXT_LIGHT};
             margin-bottom: 0.2rem;
           }}
@@ -367,75 +425,83 @@ def inject_theme() -> None:
             font-size: 1.05rem;
             font-weight: 700;
             color: {TEXT};
-            letter-spacing: -0.02em;
+            letter-spacing: -0.025em;
           }}
 
-          .stat-delta.pos {{ font-size: 0.72rem; font-weight: 600; color: {SUCCESS}; margin-top:0.1rem; }}
-          .stat-delta.neg {{ font-size: 0.72rem; font-weight: 600; color: {DANGER}; margin-top:0.1rem; }}
-          .stat-delta.neu {{ font-size: 0.72rem; font-weight: 600; color: {TEXT_MUTED}; margin-top:0.1rem; }}
+          .stat-delta.pos {{ font-size: 0.7rem; font-weight: 600; color: {SUCCESS}; margin-top:0.1rem; }}
+          .stat-delta.neg {{ font-size: 0.7rem; font-weight: 600; color: {DANGER}; margin-top:0.1rem; }}
+          .stat-delta.neu {{ font-size: 0.7rem; font-weight: 600; color: {TEXT_MUTED}; margin-top:0.1rem; }}
 
-          /* ── Empty state ── */
-          .empty-state {{
-            color: {TEXT_LIGHT};
-            font-size: 0.875rem;
-            text-align: center;
-            padding: 3rem 1.5rem;
-            line-height: 1.65;
-          }}
-
-          .empty-icon {{ font-size: 2.2rem; display: block; margin-bottom: 0.6rem; opacity: 0.35; }}
-
-          /* ── Streamlit native overrides ── */
+          /* ── Native Streamlit overrides ── */
           [data-testid="stTextInput"] input,
           .stTextInput > div > div > input {{
             border: none !important;
             box-shadow: none !important;
-            background: {WHITE} !important;
-            background-color: {WHITE} !important;
-            font-size: 0.95rem !important;
+            background: transparent !important;
+            background-color: transparent !important;
+            font-size: 0.93rem !important;
+            font-weight: 400 !important;
             color: {TEXT} !important;
-            padding-left: 0.25rem !important;
+            padding-left: 0.2rem !important;
+            letter-spacing: -0.01em !important;
           }}
 
-          [data-testid="stTextInput"] input::placeholder,
-          .stTextInput > div > div > input::placeholder {{
+          [data-testid="stTextInput"] input::placeholder {{
             color: {TEXT_LIGHT} !important;
+            font-weight: 400 !important;
           }}
 
           [data-testid="stTextInput"] > div,
-          [data-testid="stTextInput"] > div > div,
-          .stTextInput > div,
-          .stTextInput > div > div {{
+          [data-testid="stTextInput"] > div > div {{
             border: none !important;
-            background: {WHITE} !important;
-            background-color: {WHITE} !important;
+            background: transparent !important;
             box-shadow: none !important;
           }}
 
-          /* Primary button → Apple blue */
+          /* Primary button */
           .stButton > button[kind="primary"] {{
-            background: {BLUE} !important;
+            background: linear-gradient(145deg, #3B82F6 0%, {BLUE_DARK} 100%) !important;
             border: none !important;
             color: white !important;
-            border-radius: 11px !important;
+            border-radius: 12px !important;
             font-weight: 600 !important;
             font-size: 0.875rem !important;
-            padding: 0.6rem 1.1rem !important;
-            box-shadow: 0 1px 4px rgba(0,113,227,0.3) !important;
-            transition: background 0.2s ease, box-shadow 0.2s ease !important;
+            padding: 0.58rem 1rem !important;
+            box-shadow: 0 2px 8px rgba(37,99,235,0.28), inset 0 1px 0 rgba(255,255,255,0.12) !important;
+            transition: all 0.18s ease !important;
             letter-spacing: -0.01em !important;
           }}
 
           .stButton > button[kind="primary"]:hover {{
-            background: {BLUE_DARK} !important;
-            box-shadow: 0 2px 10px rgba(0,113,227,0.4) !important;
+            background: linear-gradient(145deg, {BLUE} 0%, #1E3A8A 100%) !important;
+            box-shadow: 0 4px 16px rgba(37,99,235,0.38) !important;
+            transform: translateY(-1px);
           }}
 
           .stButton > button[kind="primary"]:active {{
-            background: #004A9A !important;
+            transform: translateY(0) !important;
+            box-shadow: 0 1px 4px rgba(37,99,235,0.25) !important;
           }}
 
-          /* Remove Streamlit container borders we don't want */
+          /* Secondary button (period selector) */
+          .stButton > button[kind="secondary"] {{
+            background: transparent !important;
+            border: 1.5px solid {BORDER} !important;
+            color: {TEXT_MUTED} !important;
+            border-radius: 8px !important;
+            font-weight: 500 !important;
+            font-size: 0.74rem !important;
+            padding: 0.22rem 0.35rem !important;
+            transition: all 0.15s ease !important;
+          }}
+
+          .stButton > button[kind="secondary"]:hover {{
+            background: {BLUE_LIGHT} !important;
+            border-color: {BLUE_MUTED} !important;
+            color: {BLUE} !important;
+          }}
+
+          /* Remove stray borders */
           div[data-testid="stVerticalBlockBorderWrapper"] > div {{
             border: none !important;
             box-shadow: none !important;
@@ -443,21 +509,17 @@ def inject_theme() -> None:
             background: transparent !important;
           }}
 
-          /* Hide default Streamlit element borders on columns */
-          [data-testid="column"] {{
-            background: transparent;
-          }}
+          [data-testid="column"] {{ background: transparent; }}
 
-          /* Vega-lite chart */
-          div[data-testid="stArrowVegaLiteChart"] {{
-            border-radius: 10px;
+          div[data-testid="stPlotlyChart"] {{
+            border-radius: 8px;
             overflow: hidden;
           }}
 
           /* Scrollbar */
-          ::-webkit-scrollbar {{ width: 5px; }}
+          ::-webkit-scrollbar {{ width: 4px; }}
           ::-webkit-scrollbar-track {{ background: transparent; }}
-          ::-webkit-scrollbar-thumb {{ background: rgba(0,0,0,0.12); border-radius: 3px; }}
+          ::-webkit-scrollbar-thumb {{ background: rgba(0,0,0,0.1); border-radius: 3px; }}
           ::-webkit-scrollbar-thumb:hover {{ background: {BLUE_MUTED}; }}
         </style>
         """,
