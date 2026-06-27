@@ -16,11 +16,57 @@ from volatility_explainer.mcp.tools.options import fetch_options_data
 from volatility_explainer.mcp.tools.price import fetch_price_data
 
 
-def _build_context(ticker: str, data: dict) -> str:
-    return f"""Investigate why {ticker.upper()} has been moving. Use the data below to explain \
-the price action and identify the most likely causes.
+def _resolve_ticker_llm(query: str, client: anthropic.Anthropic) -> str | None:
+    """Ask Haiku to map a free-form query to the most relevant US ticker."""
+    import json as _json
+    import re as _re
+    try:
+        msg = client.messages.create(
+            model="claude-haiku-4-5-20251001",
+            max_tokens=30,
+            messages=[{"role": "user", "content": (
+                f'What US stock or ETF ticker best matches: "{query}"\n'
+                'Reply ONLY with JSON: {"ticker": "SYMBOL"} or {"ticker": null}\n'
+                'Company name → primary US ticker. Sector/theme → most liquid ETF.\n'
+                'Examples: sandisk→SNDK, apple→AAPL, chip sector→SOXX, gold→GLD, '
+                'market→SPY, nasdaq→QQQ, oil→USO, bitcoin→IBIT, semiconductor→SOXX'
+            )}],
+        )
+        data = _json.loads(msg.content[0].text.strip())
+        t = str(data.get("ticker") or "").strip().upper()
+        if _re.match(r"^[A-Z]{1,5}$", t):
+            return t
+    except Exception:
+        pass
+    return None
 
-=== PRICE & REALIZED VOLATILITY ===
+
+def _build_context(ticker: str, data: dict, query: str = "") -> str:
+    import math
+
+    question_block = (
+        f"\n=== USER QUESTION ===\n\"{query}\"\n"
+        "Answer this specific question in your summary paragraph 1.\n"
+        if query
+        else ""
+    )
+
+    price_data = data.get("price", {})
+    rv = price_data.get("realized_vol_annualized_pct")
+    vol_note = ""
+    if rv:
+        daily_expected = round(rv / math.sqrt(252), 2)
+        vol_note = (
+            f"\n[Context for volatility comparison: daily_expected_move_pct = ±{daily_expected:.1f}% "
+            f"(based on 20-day realized vol of {rv:.1f}% annualized). "
+            f"A move within this range is NORMAL for {ticker.upper()}. "
+            f"Only moves beyond ±{daily_expected * 2:.1f}% (2 std devs) are genuinely unusual.]\n"
+        )
+
+    return f"""You are investigating {ticker.upper()}.{question_block}
+Use the data below to answer the user's question and explain the price action.
+
+=== PRICE & REALIZED VOLATILITY ==={vol_note}
 {json.dumps(data.get("price", {}), indent=2, default=str)}
 
 === OPTIONS CHAIN (FLOW, SKEW, PUT/CALL RATIO) ===
@@ -37,8 +83,21 @@ the price action and identify the most likely causes.
 """
 
 
-def run_explainer(ticker: str) -> dict:
+def run_explainer(ticker: str, query: str = "") -> dict:
     """Fetch all 5 data sources in parallel, then call Claude for synthesis."""
+    import re as _re
+
+    api_key = get_settings().anthropic_api_key.get_secret_value() or None
+    client = anthropic.Anthropic(api_key=api_key)
+
+    # LLM ticker resolution: kick in when pre-parsed ticker is the generic fallback
+    # or doesn't look like a clean symbol (e.g. raw query text slipped through).
+    effective_query = query or ticker
+    if not _re.match(r"^[A-Z]{1,5}$", ticker.strip()) or ticker.upper() == "MARKET":
+        resolved = _resolve_ticker_llm(effective_query, client)
+        if resolved:
+            ticker = resolved
+
     ticker = ticker.upper()
 
     # Parallel data fetch
@@ -64,13 +123,11 @@ def run_explainer(ticker: str) -> dict:
                 raw[name] = {"error": str(exc)}
 
     # Claude synthesis
-    api_key = get_settings().anthropic_api_key.get_secret_value() or None
-    client = anthropic.Anthropic(api_key=api_key)
     message = client.messages.create(
         model="claude-haiku-4-5-20251001",
         max_tokens=2000,
         system=SYSTEM_PROMPT,
-        messages=[{"role": "user", "content": _build_context(ticker, raw)}],
+        messages=[{"role": "user", "content": _build_context(ticker, raw, query)}],
     )
 
     response_text = message.content[0].text.strip()

@@ -83,6 +83,8 @@ def _md_to_html(text: str) -> str:
     return "\n".join(out)
 
 
+# ── Ticker autocomplete ───────────────────────────────────────────────────────
+
 # ── Components ────────────────────────────────────────────────────────────────
 
 def render_brand_header() -> None:

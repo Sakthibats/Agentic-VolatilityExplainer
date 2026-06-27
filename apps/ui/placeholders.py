@@ -334,7 +334,7 @@ def run_analysis(ticker: str, query: str) -> AnalysisResult:
 
         from volatility_explainer.agent.orchestrator import run_explainer
 
-        result = run_explainer(ticker)
+        result = run_explainer(ticker, query)
 
         tiles = [
             AgentTile(
