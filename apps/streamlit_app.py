@@ -68,7 +68,7 @@ with left_col:
 
         if not st.session_state["all_tiles"]:
             with st.spinner(""):
-                result = run_analysis(ticker or "MARKET", question)
+                result = run_analysis(ticker or "VTI", question)
             st.session_state["all_tiles"] = result.tiles
             st.session_state["analysis_result"] = result
             st.session_state["visible_tiles"] = 0

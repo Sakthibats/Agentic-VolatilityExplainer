@@ -16,31 +16,6 @@ from volatility_explainer.mcp.tools.options import fetch_options_data
 from volatility_explainer.mcp.tools.price import fetch_price_data
 
 
-def _resolve_ticker_llm(query: str, client: anthropic.Anthropic) -> str | None:
-    """Ask Haiku to map a free-form query to the most relevant US ticker."""
-    import json as _json
-    import re as _re
-    try:
-        msg = client.messages.create(
-            model="claude-haiku-4-5-20251001",
-            max_tokens=30,
-            messages=[{"role": "user", "content": (
-                f'What US stock or ETF ticker best matches: "{query}"\n'
-                'Reply ONLY with JSON: {"ticker": "SYMBOL"} or {"ticker": null}\n'
-                'Company name → primary US ticker. Sector/theme → most liquid ETF.\n'
-                'Examples: sandisk→SNDK, apple→AAPL, chip sector→SOXX, gold→GLD, '
-                'market→SPY, nasdaq→QQQ, oil→USO, bitcoin→IBIT, semiconductor→SOXX'
-            )}],
-        )
-        data = _json.loads(msg.content[0].text.strip())
-        t = str(data.get("ticker") or "").strip().upper()
-        if _re.match(r"^[A-Z]{1,5}$", t):
-            return t
-    except Exception:
-        pass
-    return None
-
-
 def _build_context(ticker: str, data: dict, query: str = "") -> str:
     import math
 
@@ -85,20 +60,10 @@ Use the data below to answer the user's question and explain the price action.
 
 def run_explainer(ticker: str, query: str = "") -> dict:
     """Fetch all 5 data sources in parallel, then call Claude for synthesis."""
-    import re as _re
+    ticker = ticker.upper()
 
     api_key = get_settings().anthropic_api_key.get_secret_value() or None
     client = anthropic.Anthropic(api_key=api_key)
-
-    # LLM ticker resolution: kick in when pre-parsed ticker is the generic fallback
-    # or doesn't look like a clean symbol (e.g. raw query text slipped through).
-    effective_query = query or ticker
-    if not _re.match(r"^[A-Z]{1,5}$", ticker.strip()) or ticker.upper() == "MARKET":
-        resolved = _resolve_ticker_llm(effective_query, client)
-        if resolved:
-            ticker = resolved
-
-    ticker = ticker.upper()
 
     # Parallel data fetch
     tasks = {
@@ -125,7 +90,7 @@ def run_explainer(ticker: str, query: str = "") -> dict:
     # Claude synthesis
     message = client.messages.create(
         model="claude-haiku-4-5-20251001",
-        max_tokens=2000,
+        max_tokens=800,
         system=SYSTEM_PROMPT,
         messages=[{"role": "user", "content": _build_context(ticker, raw, query)}],
     )

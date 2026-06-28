@@ -114,6 +114,48 @@ _FINANCIAL_INTENT_WORDS: frozenset[str] = frozenset({
 })
 
 _ticker_cache: dict[str, str | None] = {}
+_llm_ticker_cache: dict[str, str | None] = {}
+
+
+def _resolve_ticker_llm(query: str) -> str | None:
+    """Call Claude Haiku to map a free-form query to the most relevant US ticker.
+    Result is cached per unique query string.
+    """
+    key = query.strip().lower()
+    if key in _llm_ticker_cache:
+        return _llm_ticker_cache[key]
+    result = None
+    try:
+        import json as _json
+        import os
+        import anthropic
+
+        src_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "src"))
+        if src_path not in sys.path:
+            sys.path.insert(0, src_path)
+        from volatility_explainer.config import get_settings
+
+        api_key = get_settings().anthropic_api_key.get_secret_value() or None
+        client = anthropic.Anthropic(api_key=api_key)
+        msg = client.messages.create(
+            model="claude-haiku-4-5-20251001",
+            max_tokens=30,
+            messages=[{"role": "user", "content": (
+                f'What US stock or ETF ticker best matches: "{query}"\n'
+                'Reply ONLY with JSON: {"ticker": "SYMBOL"} or {"ticker": null}\n'
+                'Company name → primary US ticker. Sector/theme → most liquid ETF.\n'
+                'Examples: "sandisk"→SNDK, "apple"→AAPL, "chip sector"→SOXX, '
+                '"gold"→GLD, "market"→SPY, "nasdaq"→QQQ, "crypto"→IBIT'
+            )}],
+        )
+        data = _json.loads(msg.content[0].text.strip())
+        t = str(data.get("ticker") or "").strip().upper()
+        if re.match(r"^[A-Z]{1,5}$", t):
+            result = t
+    except Exception:
+        pass
+    _llm_ticker_cache[key] = result
+    return result
 
 
 def _resolve_ticker(term: str, search_query: str | None = None) -> str | None:
@@ -141,38 +183,28 @@ def _resolve_ticker(term: str, search_query: str | None = None) -> str | None:
 
 
 def validate_financial_query(raw: str, ticker: str | None) -> tuple[bool, str]:
-    """Return (is_valid, error_message). Valid means the query is about financial price movements.
+    """Return (is_valid, error_message).
 
-    Layers:
-    1. Concept hint match (gold, nasdaq, s&p 500, market…) → valid
-    2. Financial noun keywords → valid
-    3. User explicitly wrote an ALL-CAPS ticker symbol → valid
-    4. Price/movement intent word + resolved ticker → valid
-    Otherwise → blocked (guardrail)
+    If a ticker was resolved, we already have a financial instrument — pass immediately
+    and let Claude's system prompt handle any remaining semantic edge cases.
+
+    If no ticker could be resolved, do a lightweight keyword check to avoid wasting
+    API calls on obviously off-topic inputs (weather questions, code requests, etc.).
     """
+    # A resolved ticker is the strongest signal this is a financial query.
+    if ticker:
+        return True, ""
+
     text_lower = raw.lower()
     words = set(re.findall(r"\b\w+\b", text_lower))
 
-    # 1. Concept phrases
+    # Concept phrases (gold, market, nasdaq, s&p 500, …)
     for pattern, _ in _CONCEPT_HINTS:
         if re.search(pattern, text_lower):
             return True, ""
 
-    # 2. Financial nouns present in raw text
-    if words & _FINANCIAL_KEYWORDS:
-        return True, ""
-
-    # 3. Single-word query — almost always a direct ticker lookup (e.g. "rklb", "aapl")
-    if ticker and len(raw.strip().split()) == 1:
-        return True, ""
-
-    # 4. User explicitly wrote an uppercase ticker/symbol (≥2 caps chars)
-    uppercase_tokens = set(re.findall(r"\b[A-Z]{2,5}\b", raw))
-    if ticker and ticker in uppercase_tokens:
-        return True, ""
-
-    # 4. Financial intent word (dip, drop, crash…) alongside a resolved ticker
-    if ticker and (words & _FINANCIAL_INTENT_WORDS):
+    # Financial noun or intent keyword present
+    if words & (_FINANCIAL_KEYWORDS | _FINANCIAL_INTENT_WORDS):
         return True, ""
 
     return False, (
@@ -203,7 +235,8 @@ def parse_search_input(raw: str) -> tuple[str | None, str]:
             if ticker:
                 return ticker, text
 
-    tokens = re.findall(r"\b[a-zA-Z]{1,6}\b", text)
+    # {1,6} was a bug — company names like "sandisk" (7 chars) were silently dropped
+    tokens = re.findall(r"\b[a-zA-Z]{1,20}\b", text)
 
     # 2. Uppercase tokens ≥2 chars — likely ticker symbols; single letters are usually pronouns
     upper_candidates = [t for t in tokens if re.match(r"^[A-Z]{2,5}$", t) and t not in _STOP_WORDS]
@@ -215,6 +248,11 @@ def parse_search_input(raw: str) -> tuple[str | None, str]:
         if ticker:
             return ticker, text
 
+    # 4. Full-query LLM fallback — handles sector/theme queries that elude word-by-word lookup
+    ticker = _resolve_ticker_llm(text)
+    if ticker:
+        return ticker, text
+
     return None, text
 
 
@@ -223,7 +261,7 @@ def parse_search_input(raw: str) -> tuple[str | None, str]:
 # ---------------------------------------------------------------------------
 
 _PERIOD_MAP: dict[str, str] = {
-    "1D": "1d",
+    "1W": "5d",
     "1M": "1mo",
     "6M": "6mo",
     "YTD": "ytd",
@@ -232,15 +270,19 @@ _PERIOD_MAP: dict[str, str] = {
 
 
 def fetch_price_history(ticker: str, period: str = "6M") -> pd.DataFrame:
-    """Return daily close prices for the given period. Uses yfinance."""
+    """Return close prices for the given period. 1W uses hourly bars; others use daily."""
     yf_period = _PERIOD_MAP.get(period, "6mo")
+    yf_interval = "1h" if period == "1W" else "1d"
     try:
         import yfinance as yf
 
-        hist = yf.Ticker(ticker.upper()).history(period=yf_period)
+        hist = yf.Ticker(ticker.upper()).history(period=yf_period, interval=yf_interval)
         if hist.empty:
             raise ValueError("Empty history")
-        df = hist.reset_index()[["Date", "Close"]].rename(columns={"Date": "date", "Close": "close"})
+        hist = hist.reset_index()
+        # hourly data uses "Datetime" index; daily uses "Date"
+        date_col = "Datetime" if "Datetime" in hist.columns else "Date"
+        df = hist[[date_col, "Close"]].rename(columns={date_col: "date", "Close": "close"})
         df["date"] = pd.to_datetime(df["date"]).dt.tz_localize(None)
         return df[["date", "close"]].dropna()
     except Exception:

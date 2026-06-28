@@ -17,7 +17,7 @@ _AGENT_ICONS: dict[str, str] = {
     "events":  "📅",
 }
 
-_PERIODS = ["1D", "1M", "6M", "YTD", "1Y"]
+_PERIODS = ["1W", "1M", "6M", "YTD", "1Y"]
 
 
 # ── Markdown → HTML ──────────────────────────────────────────────────────────
@@ -243,8 +243,7 @@ def render_price_chart(ticker: str) -> None:
     else:
         line_color, fill_color = "#DC2626", "rgba(220,38,38,0.07)"
 
-    # Use higher-resolution interval for 1D
-    tick_fmt = "%I:%M %p" if period == "1D" else ("%b %d" if period == "1M" else "%b" if period in ("YTD", "6M") else "%b '%y")
+    tick_fmt = "%b %d" if period in ("1W", "1M") else "%b" if period in ("YTD", "6M") else "%b '%y"
 
     fig = go.Figure()
     fig.add_trace(go.Scatter(
