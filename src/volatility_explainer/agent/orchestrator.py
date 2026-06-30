@@ -224,7 +224,10 @@ def run_explainer(
         print(f"[agent] {'get_news + options (data+positioning)':<25} {elapsed * 1000:6.0f}ms  (deterministic, parallel)")
 
     if query:
-        user_content = f"Investigate {ticker}. User question: {query}"
+        user_content = (
+            f"Investigate {ticker}. The user's question, which your summary must directly "
+            f"answer: \"{query}\""
+        )
     else:
         user_content = f"Investigate {ticker} — explain the recent price action."
 

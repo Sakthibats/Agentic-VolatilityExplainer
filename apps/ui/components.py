@@ -315,8 +315,8 @@ def render_price_chart(ticker: str) -> None:
     st.plotly_chart(fig, width="stretch", config={"displayModeBar": False})
 
 
-def render_quick_stats(stats: list[QuickStat]) -> None:
-    st.markdown('<p class="section-label" style="margin-top:0.6rem;">Quick stats</p>', unsafe_allow_html=True)
+def render_quick_stats(stats: list[QuickStat], title: str = "Quick stats") -> None:
+    st.markdown(f'<p class="section-label" style="margin-top:0.6rem;">{title}</p>', unsafe_allow_html=True)
     cards: list[str] = []
     for stat in stats:
         if stat.delta:
@@ -347,9 +347,10 @@ def render_right_panel(ticker: str | None) -> None:
             unsafe_allow_html=True,
         )
     else:
-        from ui.placeholders import fetch_quick_stats
+        from ui.placeholders import fetch_options_stats, fetch_quick_stats
         render_price_chart(ticker)
         render_quick_stats(fetch_quick_stats(ticker))
+        render_quick_stats(fetch_options_stats(ticker), title="Options stats")
 
 
 def render_ticker_chip(ticker: str) -> None:
