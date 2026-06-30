@@ -83,7 +83,7 @@ def fetch_options_data(ticker: str) -> dict:
         if all_ivs and atm_iv is not None:
             iv_min = min(all_ivs) * 100
             iv_max = max(all_ivs) * 100
-            iv_rank = round((atm_iv - iv_min) / (iv_max - iv_min) * 100) if iv_max > iv_min else None
+            iv_rank = max(0, min(100, round((atm_iv - iv_min) / (iv_max - iv_min) * 100))) if iv_max > iv_min else None
         else:
             iv_rank = None
 

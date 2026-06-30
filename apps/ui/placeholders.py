@@ -112,7 +112,7 @@ _FINANCIAL_INTENT_WORDS: frozenset[str] = frozenset({
     "surge", "jump", "tumble", "rally", "plunge", "soar", "tank",
     "gain", "decline", "climb", "slide", "bounce", "pump", "dump",
     "happened", "happen", "moved", "move", "performing", "explain",
-    "investigate", "analyze", "volatile", "lower", "higher",
+    "investigate", "analyze", "volatile", "lower", "higher", "up", "down",
 })
 
 _ticker_cache: dict[str, str | None] = {}
@@ -121,7 +121,9 @@ _llm_ticker_cache: dict[str, str | None] = {}
 
 def _resolve_ticker_llm(query: str) -> str | None:
     """Call Claude Haiku to map a free-form query to the most relevant US ticker.
-    Result is cached per unique query string.
+    Result is cached per unique query string. Returns None for anything that isn't
+    clearly a financial/company/sector reference — this is a last-resort fallback,
+    so it must be conservative rather than guessing a plausible-looking ticker.
     """
     key = query.strip().lower()
     if key in _llm_ticker_cache:
@@ -143,11 +145,15 @@ def _resolve_ticker_llm(query: str) -> str | None:
             model="claude-haiku-4-5-20251001",
             max_tokens=30,
             messages=[{"role": "user", "content": (
-                f'What US stock or ETF ticker best matches: "{query}"\n'
-                'Reply ONLY with JSON: {"ticker": "SYMBOL"} or {"ticker": null}\n'
+                f'Does this text clearly refer to a specific US-listed stock, company, sector, '
+                f'or asset (not a generic word, unrelated topic, or full sentence about something '
+                f'else)? Text: "{query}"\n'
+                'Reply ONLY with JSON: {"ticker": "SYMBOL"} if clearly yes, or {"ticker": null} '
+                'if there is any doubt, ambiguity, or the text isn\'t about a financial instrument.\n'
                 'Company name → primary US ticker. Sector/theme → most liquid ETF.\n'
                 'Examples: "sandisk"→SNDK, "apple"→AAPL, "chip sector"→SOXX, '
-                '"gold"→GLD, "market"→SPY, "nasdaq"→QQQ, "crypto"→IBIT'
+                '"gold"→GLD, "market"→SPY, "nasdaq"→QQQ, "crypto"→IBIT, '
+                '"bake a cake"→null, "how do I learn python"→null, "weather today"→null'
             )}],
         )
         data = _json.loads(msg.content[0].text.strip())
@@ -160,11 +166,16 @@ def _resolve_ticker_llm(query: str) -> str | None:
     return result
 
 
-def _resolve_ticker(term: str, search_query: str | None = None) -> str | None:
+def _resolve_ticker(term: str, search_query: str | None = None, *, require_name_match: bool = False) -> str | None:
     """Resolve a word/phrase to a valid US equity ticker via yfinance search.
     If search_query is given it overrides the search text (but term is still the cache key).
+
+    require_name_match: when True (used for loose company-name guesses from arbitrary
+    words), only accept a hit whose company name actually starts with the search term —
+    this rejects accidental substring matches like "cake" -> "Cheesecake Factory" (CAKE),
+    which would otherwise let an unrelated sentence slip past the topic guardrail.
     """
-    cache_key = (search_query or term).upper()
+    cache_key = f"{(search_query or term).upper()}|{require_name_match}"
     if cache_key in _ticker_cache:
         return _ticker_cache[cache_key]
     result = None
@@ -175,26 +186,38 @@ def _resolve_ticker(term: str, search_query: str | None = None) -> str | None:
         for h in hits:
             sym = h.get("symbol", "")
             # Accept only clean 1-5 letter tickers (no dots, hyphens — those are usually foreign or preferred)
-            if re.match(r"^[A-Z]{1,5}$", sym):
-                result = sym
-                break
+            if not re.match(r"^[A-Z]{1,5}$", sym):
+                continue
+            if require_name_match:
+                name = (h.get("shortname") or h.get("longname") or "").strip().lower()
+                if not name.startswith(query.strip().lower()):
+                    continue
+            result = sym
+            break
     except Exception:
         pass
     _ticker_cache[cache_key] = result
     return result
 
 
-def validate_financial_query(raw: str, ticker: str | None) -> tuple[bool, str]:
+def validate_financial_query(raw: str, ticker: str | None, source: str | None = None) -> tuple[bool, str]:
     """Return (is_valid, error_message).
 
-    If a ticker was resolved, we already have a financial instrument — pass immediately
-    and let Claude's system prompt handle any remaining semantic edge cases.
+    A ticker resolved from an explicit symbol or a recognized concept phrase (gold,
+    market, nasdaq, ...) is strong, unambiguous evidence of financial intent — pass
+    immediately. A ticker resolved from a loose company-name guess or the LLM fallback
+    is weaker (those paths can mis-fire on an ordinary word, e.g. "cake" -> CAKE).
 
-    If no ticker could be resolved, do a lightweight keyword check to avoid wasting
-    API calls on obviously off-topic inputs (weather questions, code requests, etc.).
+    For those weaker sources, a short query (≤4 words) is treated as a direct
+    ticker/company-name lookup — the dominant use of this search bar — and trusted.
+    A longer, sentence-like query instead falls through to the keyword/intent check
+    below, so an unrelated sentence can't slip past the guardrail just because one of
+    its words happens to match some ticker's company name (e.g. "I want to bake a
+    cake today" matching CAKE).
     """
-    # A resolved ticker is the strongest signal this is a financial query.
-    if ticker:
+    if ticker and source in ("concept", "ticker_symbol"):
+        return True, ""
+    if ticker and source in ("company_name", "llm") and len(raw.split()) <= 4:
         return True, ""
 
     text_lower = raw.lower()
@@ -216,17 +239,24 @@ def validate_financial_query(raw: str, ticker: str | None) -> tuple[bool, str]:
     )
 
 
-def parse_search_input(raw: str) -> tuple[str | None, str]:
+def parse_search_input(raw: str) -> tuple[str | None, str, str | None]:
     """Extract a ticker from free-form input.
 
     Priority order:
-    1. Concept phrases (gold → GLD/IAU, market → VTI, S&P 500 → VOO)
-    2. Uppercase tokens that look like tickers (TSLA, AAPL)
-    3. Other words tried as company name searches (tesla → TSLA)
+    1. Concept phrases (gold → GLD/IAU, market → VTI, S&P 500 → VOO) — source "concept"
+    2. Uppercase tokens that look like tickers (TSLA, AAPL) — source "ticker_symbol"
+    3. Other words tried as company name searches (tesla → TSLA) — source "company_name"
+    4. Full-query LLM fallback — source "llm"
+
+    Returns (ticker, query_text, source). Sources "concept" and "ticker_symbol" are
+    unambiguous evidence of financial intent; "company_name" and "llm" are weaker
+    guesses that the guardrail should still sanity-check against query keywords
+    (see validate_financial_query) since a loose word match can mis-fire (e.g. the
+    word "cake" resolving to the ticker CAKE).
     """
     text = raw.strip()
     if not text:
-        return None, ""
+        return None, "", None
 
     text_lower = text.lower()
 
@@ -235,27 +265,33 @@ def parse_search_input(raw: str) -> tuple[str | None, str]:
         if re.search(pattern, text_lower):
             ticker = _resolve_ticker(search_query, search_query)
             if ticker:
-                return ticker, text
+                return ticker, text, "concept"
 
     # {1,6} was a bug — company names like "sandisk" (7 chars) were silently dropped
     tokens = re.findall(r"\b[a-zA-Z]{1,20}\b", text)
 
     # 2. Uppercase tokens ≥2 chars — likely ticker symbols; single letters are usually pronouns
     upper_candidates = [t for t in tokens if re.match(r"^[A-Z]{2,5}$", t) and t not in _STOP_WORDS]
-    # 3. Other candidates — company names etc.
-    other_candidates = [t for t in tokens if t.lower() not in _STOP_WORDS and not re.match(r"^[A-Z]{1,5}$", t)]
-
-    for candidate in upper_candidates + other_candidates:
+    for candidate in upper_candidates:
         ticker = _resolve_ticker(candidate)
         if ticker:
-            return ticker, text
+            return ticker, text, "ticker_symbol"
+
+    # 3. Other candidates — company names etc. Require the matched company's name to
+    # actually start with the candidate word, so an incidental substring match
+    # (e.g. "cake" inside "Cheesecake Factory") doesn't get treated as a real hit.
+    other_candidates = [t for t in tokens if t.lower() not in _STOP_WORDS and not re.match(r"^[A-Z]{1,5}$", t)]
+    for candidate in other_candidates:
+        ticker = _resolve_ticker(candidate, require_name_match=True)
+        if ticker:
+            return ticker, text, "company_name"
 
     # 4. Full-query LLM fallback — handles sector/theme queries that elude word-by-word lookup
     ticker = _resolve_ticker_llm(text)
     if ticker:
-        return ticker, text
+        return ticker, text, "llm"
 
-    return None, text
+    return None, text, None
 
 
 # ---------------------------------------------------------------------------
@@ -399,6 +435,39 @@ def fetch_quick_stats(ticker: str) -> list[QuickStat]:
 
 def _fallback_stats() -> list[QuickStat]:
     return [QuickStat("Data", "Unavailable", None)]
+
+
+# ---------------------------------------------------------------------------
+# Options stats
+# ---------------------------------------------------------------------------
+
+
+def fetch_options_stats(ticker: str) -> list[QuickStat]:
+    """Return headline options metrics: IV rank, implied vol, historical vol, put/call ratio."""
+    try:
+        src_path = os.path.join(os.path.dirname(__file__), "..", "..", "src")
+        src_path = os.path.abspath(src_path)
+        if src_path not in sys.path:
+            sys.path.insert(0, src_path)
+        from volatility_explainer.mcp.tools.options import fetch_options_data
+        from volatility_explainer.mcp.tools.price import fetch_price_data
+
+        opts = fetch_options_data(ticker)
+        price = fetch_price_data(ticker)
+
+        iv_rank = opts.get("iv_rank")
+        iv = opts.get("atm_iv_pct")
+        hv = price.get("realized_vol_annualized_pct")
+        pc_ratio = opts.get("put_call_ratio")
+
+        return [
+            QuickStat("IV Rank", f"{iv_rank}%" if iv_rank is not None else "N/A"),
+            QuickStat("Implied Vol", f"{iv:.1f}%" if iv is not None else "N/A"),
+            QuickStat("Historical Vol", f"{hv:.1f}%" if hv is not None else "N/A"),
+            QuickStat("Put/Call Ratio", f"{pc_ratio:.2f}" if pc_ratio is not None else "N/A"),
+        ]
+    except Exception:
+        return _fallback_stats()
 
 
 # ---------------------------------------------------------------------------

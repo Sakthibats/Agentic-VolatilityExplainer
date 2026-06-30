@@ -42,11 +42,11 @@ render_search_bar()
 
 phase     = st.session_state["analysis_phase"]
 submitted = st.session_state["submitted_query"]
-ticker, question = parse_search_input(submitted) if submitted else (None, "")
+ticker, question, ticker_source = parse_search_input(submitted) if submitted else (None, "", None)
 
 # Guardrail check — runs only when a new query is submitted (phase == "running")
 if phase == "running" and submitted:
-    is_valid, err_msg = validate_financial_query(submitted, ticker)
+    is_valid, err_msg = validate_financial_query(submitted, ticker, ticker_source)
     if not is_valid:
         st.session_state["analysis_phase"] = "guardrail"
         st.session_state["guardrail_message"] = err_msg
