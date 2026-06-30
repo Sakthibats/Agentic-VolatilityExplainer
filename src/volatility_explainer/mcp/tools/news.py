@@ -5,6 +5,8 @@ from volatility_explainer.config import get_settings
 
 def fetch_news(ticker: str, *, lookback_days: int = 7) -> dict:
     """Fetch recent news headlines. Finnhub first, yfinance fallback."""
+    ticker = ticker.upper()
+
     # Try Finnhub
     try:
         from volatility_explainer.clients.finnhub import FinnhubClient
@@ -17,24 +19,24 @@ def fetch_news(ticker: str, *, lookback_days: int = 7) -> dict:
                 from_date=from_date.isoformat(),
                 to_date=to_date.isoformat(),
             )
-            return {"ticker": ticker.upper(), "headlines": headlines[:10], "source": "finnhub"}
-    except Exception:
-        pass
+            return {"ticker": ticker, "headlines": headlines[:10]}
+    except Exception as exc:
+        print(f"[news:{ticker}]   finnhub   FAILED — {exc}")
 
     # Fallback: yfinance news
     try:
         import yfinance as yf
 
-        raw = yf.Ticker(ticker.upper()).news or []
+        raw = yf.Ticker(ticker).news or []
         headlines = [
             {
                 "headline": item.get("content", {}).get("title", ""),
                 "summary": item.get("content", {}).get("summary", ""),
                 "datetime": item.get("content", {}).get("pubDate", ""),
-                "source": item.get("content", {}).get("provider", {}).get("displayName", ""),
             }
             for item in raw[:10]
         ]
-        return {"ticker": ticker.upper(), "headlines": headlines, "source": "yfinance"}
+        return {"ticker": ticker, "headlines": headlines}
     except Exception as exc:
-        return {"ticker": ticker.upper(), "headlines": [], "error": str(exc)}
+        print(f"[news:{ticker}]   yfinance  FAILED — {exc}")
+        return {"ticker": ticker, "headlines": [], "error": str(exc)}

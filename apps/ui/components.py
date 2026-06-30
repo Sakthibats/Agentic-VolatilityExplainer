@@ -120,7 +120,7 @@ def render_search_bar() -> str:
             submitted = st.form_submit_button(
                 "Analyze →",
                 type="primary",
-                use_container_width=True,
+                width="stretch",
             )
 
     if submitted and query.strip():
@@ -139,6 +139,23 @@ def render_guardrail_error(message: str) -> None:
         f'<div class="guardrail-icon">🚫</div>'
         f'<div class="guardrail-title">Out of scope</div>'
         f'<div class="guardrail-body">{message}</div>'
+        f'</div>',
+        unsafe_allow_html=True,
+    )
+
+
+def render_thinking_step(placeholder, label: str) -> None:
+    """Update a st.empty() placeholder with the current investigation step."""
+    placeholder.markdown(
+        f'<div class="analysis-box thinking">'
+        f'<div class="thinking-label">{label}'
+        f'<span class="thinking-dots"><span>·</span><span>·</span><span>·</span></span>'
+        f'</div>'
+        f'<div class="shimmer-bar w80"></div>'
+        f'<div class="shimmer-bar w60"></div>'
+        f'<div class="shimmer-bar w45"></div>'
+        f'<div class="shimmer-bar w80" style="margin-top:0.5rem;"></div>'
+        f'<div class="shimmer-bar w60"></div>'
         f'</div>',
         unsafe_allow_html=True,
     )
@@ -185,11 +202,17 @@ def render_final_output_box(*, thinking: bool, content: str | None = None) -> No
 
 def render_agent_tile(tile: AgentTile) -> None:
     icon = _AGENT_ICONS.get(tile.agent, "🔍")
+    reasoning_html = (
+        f'<p style="font-size:0.72rem;color:#64748B;font-style:italic;'
+        f'margin:0 0 0.45rem 0;line-height:1.5;">→ {tile.reasoning}</p>'
+        if tile.reasoning
+        else ""
+    )
     st.markdown(
         f'<div class="agent-tile">'
+        f'{reasoning_html}'
         f'<div class="tile-header">'
         f'<span class="tile-title">{icon}&nbsp;{tile.title}</span>'
-        f'<span class="tile-badge">{tile.source}</span>'
         f'</div>'
         f'<p class="tile-body">{tile.summary}</p>'
         f'</div>',
@@ -220,7 +243,7 @@ def render_price_chart(ticker: str) -> None:
     for i, p in enumerate(_PERIODS):
         with cols[i]:
             is_active = period == p
-            if st.button(p, key=f"period_{p}", type="primary" if is_active else "secondary", use_container_width=True):
+            if st.button(p, key=f"period_{p}", type="primary" if is_active else "secondary", width="stretch"):
                 st.session_state["chart_period"] = p
                 st.rerun()
 
@@ -289,7 +312,7 @@ def render_price_chart(ticker: str) -> None:
         ),
     )
 
-    st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
+    st.plotly_chart(fig, width="stretch", config={"displayModeBar": False})
 
 
 def render_quick_stats(stats: list[QuickStat]) -> None:
