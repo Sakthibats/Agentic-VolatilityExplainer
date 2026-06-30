@@ -30,53 +30,39 @@ def fetch_events(ticker: str) -> dict:
     today = date.today()
     events: list[dict] = []
 
-    # Earnings via yfinance
+    # Earnings via yfinance — create Ticker once, try both sources on same object
     try:
         import yfinance as yf
 
         yf_ticker = yf.Ticker(ticker.upper())
+        next_earnings: date | None = None
+
         cal = yf_ticker.calendar
         if cal is not None and not cal.empty:
-            # calendar is a DataFrame with columns as dates, index as metrics
-            earnings_dates = []
             for col in cal.columns:
                 try:
                     d = date.fromisoformat(str(col)[:10])
-                    if d >= today:
-                        earnings_dates.append(d)
+                    if d >= today and (next_earnings is None or d < next_earnings):
+                        next_earnings = d
                 except ValueError:
                     pass
-            if earnings_dates:
-                next_earnings = min(earnings_dates)
-                events.append({
-                    "type": "earnings",
-                    "date": next_earnings.isoformat(),
-                    "days_until": (next_earnings - today).days,
-                    "description": f"{ticker.upper()} quarterly earnings",
-                })
-    except Exception:
-        # yfinance may fail for some tickers; continue without earnings
-        pass
 
-    # Also try earnings_dates attribute as fallback
-    if not any(e["type"] == "earnings" for e in events):
-        try:
-            import yfinance as yf
-
-            yf_ticker = yf.Ticker(ticker.upper())
+        if next_earnings is None:
             ed = yf_ticker.earnings_dates
             if ed is not None and not ed.empty:
-                future_dates = [d.date() for d in ed.index if d.date() >= today]
-                if future_dates:
-                    next_earnings = min(future_dates)
-                    events.append({
-                        "type": "earnings",
-                        "date": next_earnings.isoformat(),
-                        "days_until": (next_earnings - today).days,
-                        "description": f"{ticker.upper()} quarterly earnings",
-                    })
-        except Exception:
-            pass
+                future = [d.date() for d in ed.index if d.date() >= today]
+                if future:
+                    next_earnings = min(future)
+
+        if next_earnings is not None:
+            events.append({
+                "type": "earnings",
+                "date": next_earnings.isoformat(),
+                "days_until": (next_earnings - today).days,
+                "description": f"{ticker.upper()} quarterly earnings",
+            })
+    except Exception:
+        pass
 
     # FOMC dates
     for fomc_str in _FOMC_DATES:
