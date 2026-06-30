@@ -13,6 +13,7 @@ from ui.components import (
     render_guardrail_error,
     render_right_panel,
     render_search_bar,
+    render_thinking_step,
     render_ticker_chip,
 )
 from ui.placeholders import parse_search_input, run_analysis, validate_financial_query
@@ -64,15 +65,24 @@ with left_col:
     elif phase == "running":
         if ticker:
             render_ticker_chip(ticker)
-        render_final_output_box(thinking=True)
 
         if not st.session_state["all_tiles"]:
-            with st.spinner(""):
-                result = run_analysis(ticker or "VTI", question)
+            st.markdown('<p class="panel-label">Analysis</p>', unsafe_allow_html=True)
+            thinking_placeholder = st.empty()
+            render_thinking_step(thinking_placeholder, f"Starting investigation for {ticker or 'market'}...")
+
+            result = run_analysis(
+                ticker or "VTI",
+                question,
+                on_step=lambda label: render_thinking_step(thinking_placeholder, label),
+            )
+            thinking_placeholder.empty()
             st.session_state["all_tiles"] = result.tiles
             st.session_state["analysis_result"] = result
             st.session_state["visible_tiles"] = 0
             st.rerun()
+        else:
+            render_final_output_box(thinking=True)
 
         all_tiles = st.session_state["all_tiles"]
         visible   = st.session_state["visible_tiles"]

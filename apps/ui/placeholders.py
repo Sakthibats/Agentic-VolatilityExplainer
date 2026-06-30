@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
+import os
 import re
 import sys
+import time
 from dataclasses import dataclass
 from datetime import date, timedelta
 from typing import Iterator
@@ -16,7 +18,7 @@ class AgentTile:
     agent: str
     title: str
     summary: str
-    source: str
+    reasoning: str = ""
 
 
 @dataclass(frozen=True)
@@ -260,7 +262,22 @@ def parse_search_input(raw: str) -> tuple[str | None, str]:
 # Price history
 # ---------------------------------------------------------------------------
 
-_PERIOD_MAP: dict[str, str] = {
+def _period_to_alpaca(period: str) -> tuple[str, str]:
+    """Return (timeframe, start_iso) for Alpaca get_bars."""
+    today = date.today()
+    if period == "1W":
+        return "1Hour", (today - timedelta(days=7)).isoformat()
+    if period == "1M":
+        return "1Day", (today - timedelta(days=30)).isoformat()
+    if period == "YTD":
+        return "1Day", date(today.year, 1, 1).isoformat()
+    if period == "1Y":
+        return "1Day", (today - timedelta(days=365)).isoformat()
+    # default: 6M
+    return "1Day", (today - timedelta(days=182)).isoformat()
+
+
+_YF_PERIOD_MAP: dict[str, str] = {
     "1W": "5d",
     "1M": "1mo",
     "6M": "6mo",
@@ -270,22 +287,47 @@ _PERIOD_MAP: dict[str, str] = {
 
 
 def fetch_price_history(ticker: str, period: str = "6M") -> pd.DataFrame:
-    """Return close prices for the given period. 1W uses hourly bars; others use daily."""
-    yf_period = _PERIOD_MAP.get(period, "6mo")
-    yf_interval = "1h" if period == "1W" else "1d"
+    """Return close prices for the given period. Alpaca first, yfinance fallback."""
+    ticker = ticker.upper()
+
+    # Try Alpaca get_bars
+    try:
+        src_path = os.path.join(os.path.dirname(__file__), "..", "..", "src")
+        src_path = os.path.abspath(src_path)
+        if src_path not in sys.path:
+            sys.path.insert(0, src_path)
+        from volatility_explainer.clients.alpaca import AlpacaClient
+        from volatility_explainer.config import get_settings
+
+        settings = get_settings()
+        if settings.alpaca_api_key.get_secret_value():
+            timeframe, start = _period_to_alpaca(period)
+            raw = AlpacaClient(settings).get_bars(ticker, timeframe=timeframe, start=start)
+            bars = raw.get("bars", [])
+            if bars:
+                df = pd.DataFrame(bars)
+                df["date"] = pd.to_datetime(df["t"]).dt.tz_localize(None)
+                df["close"] = df["c"].astype(float)
+                return df[["date", "close"]].dropna()
+    except Exception as exc:
+        print(f"[chart:{ticker}]  alpaca    FAILED — {exc}")
+
+    # Fallback: yfinance
     try:
         import yfinance as yf
 
-        hist = yf.Ticker(ticker.upper()).history(period=yf_period, interval=yf_interval)
+        yf_period = _YF_PERIOD_MAP.get(period, "6mo")
+        yf_interval = "1h" if period == "1W" else "1d"
+        hist = yf.Ticker(ticker).history(period=yf_period, interval=yf_interval)
         if hist.empty:
-            raise ValueError("Empty history")
+            raise ValueError("empty response")
         hist = hist.reset_index()
-        # hourly data uses "Datetime" index; daily uses "Date"
         date_col = "Datetime" if "Datetime" in hist.columns else "Date"
         df = hist[[date_col, "Close"]].rename(columns={date_col: "date", "Close": "close"})
         df["date"] = pd.to_datetime(df["date"]).dt.tz_localize(None)
         return df[["date", "close"]].dropna()
-    except Exception:
+    except Exception as exc:
+        print(f"[chart:{ticker}]  yfinance  FAILED — {exc}")
         return _synthetic_price_history()
 
 
@@ -364,8 +406,9 @@ def _fallback_stats() -> list[QuickStat]:
 # ---------------------------------------------------------------------------
 
 
-def run_analysis(ticker: str, query: str) -> AnalysisResult:
+def run_analysis(ticker: str, query: str, on_step=None) -> AnalysisResult:
     """Run the full agentic pipeline and return structured results."""
+    t0 = time.perf_counter()
     try:
         import os
 
@@ -376,14 +419,14 @@ def run_analysis(ticker: str, query: str) -> AnalysisResult:
 
         from volatility_explainer.agent.orchestrator import run_explainer
 
-        result = run_explainer(ticker, query)
+        result = run_explainer(ticker, query, on_step=on_step)
 
         tiles = [
             AgentTile(
                 agent=t["agent"],
                 title=t["title"],
                 summary=t["summary"],
-                source=t["source"],
+                reasoning=t.get("reasoning", ""),
             )
             for t in result.get("tiles", [])
         ]
@@ -409,6 +452,7 @@ def run_analysis(ticker: str, query: str) -> AnalysisResult:
         if not summary_text:
             summary_text = _stub_summary(ticker)
 
+        print(f"[run:{ticker}] total {(time.perf_counter()-t0)*1000:.0f}ms")
         return AnalysisResult(
             ticker=ticker,
             query=query,
@@ -417,6 +461,7 @@ def run_analysis(ticker: str, query: str) -> AnalysisResult:
         )
 
     except Exception as exc:
+        print(f"[run:{ticker}] total {(time.perf_counter()-t0)*1000:.0f}ms FAILED — {exc}")
         tiles = _stub_tiles(ticker)
         return AnalysisResult(
             ticker=ticker,
@@ -438,11 +483,11 @@ def stream_agent_tiles(ticker: str, query: str) -> Iterator[AgentTile]:
 
 def _stub_tiles(ticker: str) -> list[AgentTile]:
     return [
-        AgentTile("price", "Price Action", f"{ticker} data unavailable — check API keys.", "Alpaca"),
-        AgentTile("options", "Options Activity", "Options data unavailable.", "Options chain"),
-        AgentTile("news", "News & Catalysts", "News data unavailable.", "Finnhub"),
-        AgentTile("macro", "Market Context", "Macro data unavailable.", "FRED"),
-        AgentTile("events", "Events & Triggers", "Events data unavailable.", "Events calendar"),
+        AgentTile("price", "Price Action", f"{ticker} data unavailable — check API keys."),
+        AgentTile("options", "Options Activity", "Options data unavailable."),
+        AgentTile("news", "News & Catalysts", "News data unavailable."),
+        AgentTile("macro", "Market Context", "Macro data unavailable."),
+        AgentTile("events", "Events & Triggers", "Events data unavailable."),
     ]
 
 
