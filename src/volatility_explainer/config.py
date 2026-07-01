@@ -16,6 +16,7 @@ class Settings(BaseSettings):
     alpaca_api_key: SecretStr = SecretStr("")
     alpaca_api_secret: SecretStr = SecretStr("")
     anthropic_api_key: SecretStr = SecretStr("")
+    massive_api_key: SecretStr = SecretStr("")
 
 
 @lru_cache
