@@ -13,6 +13,7 @@ dependencies = [
     "numpy>=1.26",
     "anthropic>=0.40",
     "yfinance>=0.2",
+    "plotly>=5.0",
 ]
 
 [project.optional-dependencies]
