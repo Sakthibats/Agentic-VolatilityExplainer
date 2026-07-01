@@ -14,18 +14,6 @@ BORDER      = "rgba(15,23,42,0.08)"
 SUCCESS     = "#16A34A"
 DANGER      = "#DC2626"
 
-# Legacy aliases
-BLUE_PRIMARY = BLUE
-BLUE_ACCENT  = BLUE
-BLUE_HOVER   = BLUE_DARK
-BLUE_SUBTLE  = BLUE_MUTED
-SLATE        = TEXT
-SLATE_MUTED  = TEXT_MUTED
-SLATE_LIGHT  = TEXT_LIGHT
-SURFACE      = PAGE_BG
-SURFACE_BLUE = BLUE_LIGHT
-BORDER_BLUE  = BLUE_MUTED
-
 
 def inject_theme() -> None:
     import streamlit as st

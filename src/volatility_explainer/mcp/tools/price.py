@@ -1,44 +1,9 @@
-from datetime import date, timedelta
-
 from volatility_explainer.config import get_settings
 
 
 def fetch_price_data(ticker: str) -> dict:
-    """Fetch latest price and recent performance. Massive first, Finnhub second, yfinance fallback."""
+    """Fetch latest price and recent performance. Finnhub first, yfinance fallback."""
     ticker = ticker.upper()
-
-    # # Try Massive (Polygon-compatible) — daily aggs for price, prev close, and realized vol
-    # try:
-    #     from volatility_explainer.clients.massive import MassiveClient
-
-    #     settings = get_settings()
-    #     if settings.massive_api_key.get_secret_value():
-    #         client = MassiveClient(settings)
-    #         to_date = date.today().isoformat()
-    #         from_date = (date.today() - timedelta(days=45)).isoformat()
-    #         aggs = client.get_aggs(ticker, from_date=from_date, to_date=to_date)
-    #         closes = [float(r["c"]) for r in (aggs.get("results") or []) if "c" in r]
-
-    #         if len(closes) >= 2:
-    #             price = closes[-1]
-    #             prev_close = closes[-2]
-    #             chg_pct = round((price - prev_close) / prev_close * 100, 2)
-
-    #             rv = None
-    #             if len(closes) >= 5:
-    #                 import numpy as np
-    #                 returns = np.diff(closes) / closes[:-1]
-    #                 rv = round(float(np.std(returns) * (252 ** 0.5) * 100), 1)
-
-    #             return {
-    #                 "ticker": ticker,
-    #                 "price": round(price, 2),
-    #                 "prev_close": round(prev_close, 2),
-    #                 "change_pct": chg_pct,
-    #                 "realized_vol_annualized_pct": rv,
-    #             }
-    # except Exception as exc:
-    #     print(f"[price:{ticker}]  massive   FAILED — {exc}")
 
     # Try Finnhub — quote for price/change, candles for realized vol (candles require paid plan)
     try:

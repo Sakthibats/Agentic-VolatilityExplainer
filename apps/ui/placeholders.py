@@ -8,7 +8,6 @@ import sys
 import time
 from dataclasses import dataclass
 from datetime import date, timedelta
-from typing import Iterator
 
 import pandas as pd
 
@@ -569,11 +568,6 @@ def run_analysis(ticker: str, query: str, on_step=None) -> AnalysisResult:
             tiles=tiles,
             final_output=_stub_summary(ticker) + f"\n\n_Note: live data unavailable ({exc})_",
         )
-
-
-def stream_agent_tiles(ticker: str, query: str) -> Iterator[AgentTile]:
-    result = run_analysis(ticker, query)
-    yield from result.tiles
 
 
 # ---------------------------------------------------------------------------
