@@ -336,6 +336,7 @@ def render_quick_stats(stats: list[QuickStat], title: str = "Quick stats") -> No
 
 def render_right_panel(ticker: str | None) -> None:
     if not ticker:
+        st.markdown('<p class="panel-label">Price</p>', unsafe_allow_html=True)
         st.markdown(
             '<div class="analysis-box empty-panel" style="min-height:300px;">'
             '<div class="empty-state">'
