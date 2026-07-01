@@ -471,6 +471,37 @@ def fetch_options_stats(ticker: str) -> list[QuickStat]:
 
 
 # ---------------------------------------------------------------------------
+# Analyst targets
+# ---------------------------------------------------------------------------
+
+
+def fetch_analyst_stats(ticker: str) -> list[QuickStat]:
+    """Return analyst 1-year price targets from yfinance."""
+    try:
+        import yfinance as yf
+
+        info = yf.Ticker(ticker.upper()).info
+
+        target_low = info.get("targetLowPrice")
+        target_high = info.get("targetHighPrice")
+        target_mean = info.get("targetMeanPrice")
+        num_analysts = info.get("numberOfAnalystOpinions")
+
+        stats: list[QuickStat] = []
+        if target_low and target_high:
+            stats.append(QuickStat("1Y Low Target", f"${target_low:.2f}"))
+            stats.append(QuickStat("1Y High Target", f"${target_high:.2f}"))
+        if target_mean:
+            stats.append(QuickStat("Mean Target", f"${target_mean:.2f}"))
+        if num_analysts:
+            stats.append(QuickStat("# Analysts", str(num_analysts)))
+
+        return stats or _fallback_stats()
+    except Exception:
+        return _fallback_stats()
+
+
+# ---------------------------------------------------------------------------
 # Full analysis pipeline
 # ---------------------------------------------------------------------------
 
