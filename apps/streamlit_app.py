@@ -103,9 +103,20 @@ with left_col:
             render_final_output_box(thinking=False, content=result.final_output)
             render_agent_tiles_section(result.tiles, len(result.tiles))
 
+    elif phase == "stopped":
+        if ticker:
+            render_ticker_chip(ticker)
+        result = st.session_state["analysis_result"]
+        st.info("Analysis stopped.")
+        if result:
+            render_final_output_box(thinking=False, content=result.final_output)
+            render_agent_tiles_section(result.tiles, st.session_state["visible_tiles"])
+        elif st.session_state["all_tiles"]:
+            render_agent_tiles_section(st.session_state["all_tiles"], st.session_state["visible_tiles"])
+
 # ── Right panel ───────────────────────────────────────────────────────────────
 with right_col:
     display_ticker = ticker
-    if phase == "complete" and st.session_state["analysis_result"]:
+    if phase in ("complete", "stopped") and st.session_state["analysis_result"]:
         display_ticker = st.session_state["analysis_result"].ticker
     render_right_panel(display_ticker)

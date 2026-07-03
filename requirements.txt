@@ -1,3 +1,6 @@
+# Mirrors [project.dependencies] in pyproject.toml — kept only for the
+# devcontainer bootstrap (.devcontainer/devcontainer.json), which installs
+# via pip before `pip install -e .` is available. Update both when deps change.
 anthropic>=0.40
 httpx>=0.27
 mcp>=1.0

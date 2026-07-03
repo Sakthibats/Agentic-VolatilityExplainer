@@ -50,26 +50,24 @@ apps/streamlit_app.py  ──►  agent/orchestrator.py  ──►  Claude (tool
                            domain/volatility.py  (pure business logic, e.g. IV rank)
 ```
 
-The same tool functions back two surfaces: the in-process agent loop (`agent/orchestrator.py`) for the demo UI/API, and a standalone [MCP](https://modelcontextprotocol.io/) server (`mcp/server.py`) exposing the identical tools for any MCP-compatible client (Claude Desktop, etc.).
+The same tool functions back two surfaces: the in-process agent loop (`agent/orchestrator.py`) for the Streamlit demo, and a standalone [MCP](https://modelcontextprotocol.io/) server (`mcp/server.py`) exposing the identical tools for any MCP-compatible client (Claude Desktop, etc.) — see [MCP server](#mcp-server) below.
 
 ## Project layout
 
 ```
 src/volatility_explainer/
-├── config.py           # pydantic-settings, validated secrets
-├── clients/             # external API adapters (Alpaca, Finnhub, FRED)
-├── domain/              # pure business logic
-├── agent/                # orchestrator + system prompt
-├── mcp/                  # MCP server + tool implementations
-└── api/                   # FastAPI routes
+├── config.py            # pydantic-settings, validated secrets
+├── clients/              # external API adapters (Alpaca, Finnhub, FRED)
+├── domain/                # pure business logic
+├── agent/                  # orchestrator + system prompt
+└── mcp/                     # MCP server + tool implementations
 
 apps/
 ├── streamlit_app.py     # demo UI — animated investigation, evidence tiles, hypotheses
-└── ui/                   # search parsing, guardrails, theming, rendering
+└── ui/                    # search parsing, guardrails, theming, rendering
 
 tests/
-├── unit/                 # domain logic
-└── integration/          # mocked HTTP clients
+└── mcp/tools/             # tool-level unit tests (mocked data sources)
 ```
 
 ## Stack
@@ -78,11 +76,10 @@ tests/
 |---|---|
 | Agent | Anthropic Claude (Haiku 4.5), tool-use loop, max 7 turns |
 | Tool protocol | [MCP](https://modelcontextprotocol.io/) — tools are dual-exposed in-process and as a server |
-| API | FastAPI |
 | UI | Streamlit |
 | Data | Alpaca (price), Finnhub (news), FRED (macro) — all with `yfinance` fallback |
 | Config | Pydantic Settings, validated `.env` secrets |
-| Testing | pytest + respx (mocked HTTP) |
+| Testing | pytest (mocked HTTP clients) |
 
 ## Quick start
 
@@ -95,16 +92,13 @@ streamlit run apps/streamlit_app.py
 
 `yfinance` requires no API key, so the app runs end-to-end with **zero keys configured** — Alpaca/Finnhub/FRED are optional upgrades for better data quality and rate limits. `ANTHROPIC_API_KEY` is required for the agent's reasoning step.
 
-## Run services separately
+Lint before committing: `ruff check .`
+
+## MCP server
+
+The same tools also run as a standalone [MCP](https://modelcontextprotocol.io/) server for any MCP-compatible client (Claude Desktop, etc.):
 
 ```bash
-# Demo UI
-streamlit run apps/streamlit_app.py
-
-# Production API
-uvicorn volatility_explainer.api.routes:app --reload
-
-# MCP tool server (for use with Claude Desktop or other MCP clients)
 python -m volatility_explainer.mcp.server
 ```
 
