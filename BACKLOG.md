@@ -7,7 +7,7 @@ Nothing here is fixed yet — this is a prioritized list for follow-up.
 
 ## Security
 
-### 🔴 HIGH — Stored XSS via unescaped LLM output rendered with `unsafe_allow_html=True`
+### ✅ FIXED — Stored XSS via unescaped LLM output rendered with `unsafe_allow_html=True`
 
 `apps/ui/components.py`: `_md_to_html()` (used by `render_final_output_box`) and
 `render_agent_tile()` embed the LLM's `summary`, `tile.summary`, `tile.reasoning`, and
@@ -32,12 +32,16 @@ The `citations` feature (added this session) already does this correctly —
 to be applied to `tile.summary`, `tile.reasoning`, `tile.title`, and the main analysis
 `content` string in `render_final_output_box`.
 
-**Fix shape:** `html.escape()` any LLM-authored text before interpolating into an HTML
-string, or switch those specific fields to `st.markdown(..., unsafe_allow_html=False)` /
-`st.write()` where raw HTML formatting isn't actually needed.
+**Fixed:** `html.escape()` is now applied to all LLM-authored text before it's interpolated
+into HTML — `_md_to_html()` escapes each line before its own markdown-marker parsing runs
+(so `**bold**`/`_italic_`/lists still work, since escaping doesn't touch `* _ # -` digits),
+and `render_agent_tile()` / `render_guardrail_error()` escape `tile.title`, `tile.summary`,
+`tile.reasoning`, and the guardrail `message` directly. Verified: a payload like
+`<img src=x onerror=alert(1)>` now renders as inert `&lt;img...&gt;` text while
+`**really**` still becomes `<strong>`.
 
 **Files:** `apps/ui/components.py` (`_md_to_html`, `render_agent_tile`,
-`render_final_output_box`, `render_guardrail_error`)
+`render_guardrail_error`)
 
 ---
 
