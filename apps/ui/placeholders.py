@@ -454,7 +454,7 @@ def fetch_options_stats(ticker: str) -> list[QuickStat]:
         opts = fetch_options_data(ticker)
         price = fetch_price_data(ticker)
 
-        iv_rank = opts.get("iv_rank")
+        iv_rank = opts.get("iv_chain_percentile")
         iv = opts.get("atm_iv_pct")
         hv = price.get("realized_vol_annualized_pct")
         pc_ratio = opts.get("put_call_ratio")
