@@ -2,22 +2,88 @@
 
 from __future__ import annotations
 
+import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from dataclasses import dataclass
+from datetime import date
+from threading import Lock
+
+from volatility_explainer.mcp.tools._retry import with_retry
+
+_CACHE_TTL_SECONDS = 30
+_cache: dict[str, tuple[float, object]] = {}
+_cache_lock = Lock()
+
+
+def _cache_get(key: str):
+    with _cache_lock:
+        entry = _cache.get(key)
+        if entry and (time.time() - entry[0]) < _CACHE_TTL_SECONDS:
+            return entry[1]
+        return None
+
+
+def _cache_set(key: str, value: object) -> None:
+    with _cache_lock:
+        _cache[key] = (time.time(), value)
+
+
+@dataclass
+class _TickerContext:
+    ticker: str
+    yf_ticker: object
+    expirations: tuple[str, ...]
+    spot: float
+
+
+def _get_ticker_context(ticker: str) -> _TickerContext:
+    """Fetch Ticker/expirations/spot once (retried, short-TTL cached) for a ticker."""
+    ticker = ticker.upper()
+    cached = _cache_get(f"ctx:{ticker}")
+    if cached is not None:
+        return cached
+
+    import yfinance as yf
+
+    yf_ticker = yf.Ticker(ticker)
+    expirations = with_retry(lambda: yf_ticker.options)
+    if not expirations:
+        raise ValueError("No options data available.")
+
+    info = with_retry(lambda: yf_ticker.fast_info)
+    spot = getattr(info, "last_price", None) or getattr(info, "previous_close", None)
+    if not spot or spot <= 0:
+        raise ValueError("No spot price available.")
+
+    ctx = _TickerContext(
+        ticker=ticker, yf_ticker=yf_ticker, expirations=tuple(expirations), spot=float(spot)
+    )
+    _cache_set(f"ctx:{ticker}", ctx)
+    return ctx
+
+
+def _get_option_chain(yf_ticker, ticker: str, exp: str):
+    """Fetch a single expiry's option chain (retried, short-TTL cached)."""
+    cached = _cache_get(f"chain:{ticker}:{exp}")
+    if cached is not None:
+        return cached
+    chain = with_retry(lambda: yf_ticker.option_chain(exp))
+    _cache_set(f"chain:{ticker}:{exp}", chain)
+    return chain
+
 
 def fetch_options_data(ticker: str) -> dict:
-    """Fetch options chain metrics: ATM IV, IV rank, skew, put/call ratio."""
+    """Fetch options chain metrics: ATM IV, intra-chain IV percentile, skew, put/call ratio."""
     try:
-        import yfinance as yf
+        from datetime import timedelta
 
-        yf_ticker = yf.Ticker(ticker.upper())
-        expirations = yf_ticker.options
-        if not expirations:
-            return _empty(ticker)
+        ctx = _get_ticker_context(ticker)
+        expirations = ctx.expirations
+        spot = ctx.spot
+        today = date.today()
 
         # Prefer an expiry inside the 2-4 week investigation horizon; fall back to
         # the nearest one at least 7 days out if nothing falls in that window.
-        from datetime import date, timedelta
-
-        today = date.today()
         target_exp = None
         for exp in expirations:
             days_out = (date.fromisoformat(exp) - today).days
@@ -33,15 +99,9 @@ def fetch_options_data(ticker: str) -> dict:
         if not target_exp:
             target_exp = expirations[0]
 
-        chain = yf_ticker.option_chain(target_exp)
+        chain = _get_option_chain(ctx.yf_ticker, ctx.ticker, target_exp)
         calls = chain.calls
         puts = chain.puts
-
-        # Current price for ATM reference
-        info = yf_ticker.fast_info
-        spot = getattr(info, "last_price", None) or getattr(info, "previous_close", None)
-        if spot is None or spot <= 0:
-            return _empty(ticker)
 
         # ATM IV: call and put closest to spot
         calls_sorted = calls.copy()
@@ -54,7 +114,11 @@ def fetch_options_data(ticker: str) -> dict:
 
         atm_call_iv = float(atm_call["impliedVolatility"].iloc[0]) if len(atm_call) else None
         atm_put_iv = float(atm_put["impliedVolatility"].iloc[0]) if len(atm_put) else None
-        atm_iv = round((atm_call_iv or 0 + atm_put_iv or 0) / 2 * 100, 1) if atm_call_iv and atm_put_iv else None
+        atm_iv = (
+            round((atm_call_iv + atm_put_iv) / 2 * 100, 1)
+            if atm_call_iv and atm_put_iv
+            else None
+        )
 
         # IV skew: OTM put IV (strike ~5% below spot) vs OTM call IV (~5% above)
         skew_put_strike = spot * 0.95
@@ -78,23 +142,29 @@ def fetch_options_data(ticker: str) -> dict:
         total_call_oi = int(calls["openInterest"].fillna(0).sum())
         pc_ratio = round(total_put_oi / total_call_oi, 2) if total_call_oi > 0 else None
 
-        # Rough IV rank across all call strikes for this expiry
+        # NOTE: this is a percentile of IV across strikes within THIS expiry's
+        # chain, not a historical IV rank (yfinance has no historical options
+        # data). True IV rank would require a separate data source.
         all_ivs = calls["impliedVolatility"].dropna().tolist() + puts["impliedVolatility"].dropna().tolist()
         if all_ivs and atm_iv is not None:
             iv_min = min(all_ivs) * 100
             iv_max = max(all_ivs) * 100
-            iv_rank = max(0, min(100, round((atm_iv - iv_min) / (iv_max - iv_min) * 100))) if iv_max > iv_min else None
+            iv_chain_percentile = (
+                max(0, min(100, round((atm_iv - iv_min) / (iv_max - iv_min) * 100)))
+                if iv_max > iv_min
+                else None
+            )
         else:
-            iv_rank = None
+            iv_chain_percentile = None
 
         days_to_exp = (date.fromisoformat(target_exp) - today).days
 
         return {
-            "ticker": ticker.upper(),
+            "ticker": ctx.ticker,
             "expiry": target_exp,
             "days_to_expiry": days_to_exp,
             "atm_iv_pct": atm_iv,
-            "iv_rank": iv_rank,
+            "iv_chain_percentile": iv_chain_percentile,
             "skew_points": skew_points,
             "put_call_ratio": pc_ratio,
             "total_put_oi": total_put_oi,
@@ -123,6 +193,35 @@ def _max_pain(calls, puts) -> float | None:
     return float(best_strike) if best_strike is not None else None
 
 
+def _fetch_expiry_chain(ctx: _TickerContext, exp: str, today: date) -> dict | None:
+    """Fetch and summarize a single expiry's chain for the term-structure loop."""
+    try:
+        chain = _get_option_chain(ctx.yf_ticker, ctx.ticker, exp)
+    except Exception:
+        return None
+    calls, puts = chain.calls, chain.puts
+    days_out = (date.fromisoformat(exp) - today).days
+
+    calls_d = calls.copy()
+    calls_d["dist"] = (calls_d["strike"] - ctx.spot).abs()
+    puts_d = puts.copy()
+    puts_d["dist"] = (puts_d["strike"] - ctx.spot).abs()
+    atm_call = calls_d.nsmallest(1, "dist")["impliedVolatility"]
+    atm_put = puts_d.nsmallest(1, "dist")["impliedVolatility"]
+    atm_iv = (
+        round((float(atm_call.iloc[0]) + float(atm_put.iloc[0])) / 2 * 100, 1)
+        if len(atm_call) and len(atm_put)
+        else None
+    )
+    return {
+        "expiry": exp,
+        "days_to_expiry": days_out,
+        "atm_iv_pct": atm_iv,
+        "calls": calls,
+        "puts": puts,
+    }
+
+
 def fetch_options_positioning(ticker: str) -> dict:
     """General options-positioning check for the 2-4 week horizon.
 
@@ -134,63 +233,49 @@ def fetch_options_positioning(ticker: str) -> dict:
     """
     ticker = ticker.upper()
     try:
-        import yfinance as yf
-        from datetime import date
-
-        yf_ticker = yf.Ticker(ticker)
-        expirations = yf_ticker.options
-        if not expirations:
-            return {"ticker": ticker, "error": "No options data available."}
-
+        ctx = _get_ticker_context(ticker)
         today = date.today()
 
         # 2-4 week horizon (12-30 days gives a little slack around weekly/monthly
         # expiry cadences); cap to 3 expiries to keep yfinance calls bounded.
-        horizon = [exp for exp in expirations if 12 <= (date.fromisoformat(exp) - today).days <= 30]
+        horizon = [exp for exp in ctx.expirations if 12 <= (date.fromisoformat(exp) - today).days <= 30]
         if not horizon:
             horizon = sorted(
-                expirations,
+                ctx.expirations,
                 key=lambda e: abs((date.fromisoformat(e) - today).days - 21),
             )[:1]
         horizon = horizon[:3]
 
-        info = yf_ticker.fast_info
-        spot = getattr(info, "last_price", None) or getattr(info, "previous_close", None)
-        if not spot:
-            return {"ticker": ticker, "error": "No spot price available."}
-        spot = float(spot)
+        # Fetch each expiry's chain in parallel — these are independent HTTP
+        # calls, previously fetched sequentially.
+        results: dict[str, dict] = {}
+        with ThreadPoolExecutor(max_workers=len(horizon)) as pool:
+            futures = {pool.submit(_fetch_expiry_chain, ctx, exp, today): exp for exp in horizon}
+            for fut in as_completed(futures):
+                exp = futures[fut]
+                r = fut.result()
+                if r is not None:
+                    results[exp] = r
 
+        # Preserve original ordering/tie-break semantics (first expiry in
+        # `horizon` order wins ties) regardless of parallel completion order.
         term_structure: list[dict] = []
         nearest = None  # (expiry, days_to_expiry, calls_df, puts_df)
-
         for exp in horizon:
-            try:
-                chain = yf_ticker.option_chain(exp)
-            except Exception:
+            r = results.get(exp)
+            if r is None:
                 continue
-            calls, puts = chain.calls, chain.puts
-            days_out = (date.fromisoformat(exp) - today).days
-
-            calls_d = calls.copy()
-            calls_d["dist"] = (calls_d["strike"] - spot).abs()
-            puts_d = puts.copy()
-            puts_d["dist"] = (puts_d["strike"] - spot).abs()
-            atm_call = calls_d.nsmallest(1, "dist")["impliedVolatility"]
-            atm_put = puts_d.nsmallest(1, "dist")["impliedVolatility"]
-            atm_iv = (
-                round((float(atm_call.iloc[0]) + float(atm_put.iloc[0])) / 2 * 100, 1)
-                if len(atm_call) and len(atm_put)
-                else None
+            term_structure.append(
+                {"expiry": r["expiry"], "days_to_expiry": r["days_to_expiry"], "atm_iv_pct": r["atm_iv_pct"]}
             )
-            term_structure.append({"expiry": exp, "days_to_expiry": days_out, "atm_iv_pct": atm_iv})
-
-            if nearest is None or days_out < nearest[1]:
-                nearest = (exp, days_out, calls, puts)
+            if nearest is None or r["days_to_expiry"] < nearest[1]:
+                nearest = (r["expiry"], r["days_to_expiry"], r["calls"], r["puts"])
 
         if nearest is None:
             return {"ticker": ticker, "error": "No option chains available in the 2-4 week horizon."}
 
         exp, days_out, calls, puts = nearest
+        spot = ctx.spot
 
         max_pain_strike = _max_pain(calls, puts)
 
@@ -281,7 +366,7 @@ def _empty(ticker: str) -> dict:
         "expiry": None,
         "days_to_expiry": None,
         "atm_iv_pct": None,
-        "iv_rank": None,
+        "iv_chain_percentile": None,
         "skew_points": None,
         "put_call_ratio": None,
         "total_put_oi": None,

@@ -509,6 +509,12 @@ def inject_theme() -> None:
           ::-webkit-scrollbar-track {{ background: transparent; }}
           ::-webkit-scrollbar-thumb {{ background: rgba(0,0,0,0.1); border-radius: 3px; }}
           ::-webkit-scrollbar-thumb:hover {{ background: {BLUE_MUTED}; }}
+
+          /* Hide Streamlit branding */
+          #MainMenu {{ visibility: hidden; }}
+          footer {{ visibility: hidden; }}
+          header {{ visibility: hidden; }}
+          div[data-testid="stStatusWidget"] {{ visibility: hidden; }}
         </style>
         """,
         unsafe_allow_html=True,
