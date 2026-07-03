@@ -379,6 +379,34 @@ def inject_theme() -> None:
             margin: 0;
           }}
 
+          .citations-row {{
+            display: flex;
+            gap: 0.35rem;
+            margin-top: 0.55rem;
+          }}
+
+          .citation-pill {{
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.15rem;
+            height: 1.15rem;
+            border-radius: 999px;
+            background: {BLUE_LIGHT};
+            border: 1px solid {BLUE_MUTED};
+            color: {BLUE};
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.15s ease, transform 0.15s ease;
+          }}
+
+          .citation-pill:hover {{
+            background: {BLUE};
+            color: {WHITE};
+            transform: translateY(-1px);
+          }}
+
           /* ── Stat grid ── */
           .stat-grid {{
             display: grid;

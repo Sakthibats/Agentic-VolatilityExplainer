@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import html
 import re
 
 import streamlit as st
@@ -15,6 +16,8 @@ _AGENT_ICONS: dict[str, str] = {
     "news":    "📰",
     "macro":   "🌐",
     "events":  "📅",
+    "analyst": "🎯",
+    "sector":  "🏭",
 }
 
 _PERIODS = ["1W", "1M", "6M", "YTD", "1Y"]
@@ -52,7 +55,10 @@ def _md_to_html(text: str) -> str:
             if not in_list:
                 out.append('<ol class="analysis-list" style="margin:0.5rem 0 0.75rem 1.4rem;padding:0;">')
                 in_list = "ol"
-            out.append(f'<li style="margin-bottom:0.5rem;font-size:0.88rem;line-height:1.7;color:#0F172A;">{fmt(m.group(2))}</li>')
+            # Explicit value= — the evidence/caveat lines below each hypothesis title aren't
+            # list items themselves, so they close this <ol> right after one <li>. Without
+            # value=, a lone <li> always displays "1." regardless of the source number.
+            out.append(f'<li value="{m.group(1)}" style="margin-bottom:0.5rem;font-size:0.88rem;line-height:1.7;color:#0F172A;">{fmt(m.group(2))}</li>')
             continue
 
         m2 = re.match(r"^[-•]\s+(.+)$", stripped)
@@ -232,6 +238,14 @@ def render_agent_tile(tile: AgentTile) -> None:
         if tile.reasoning
         else ""
     )
+    citations_html = ""
+    if tile.citations:
+        pills = "".join(
+            f'<a class="citation-pill" href="{html.escape(c.url)}" target="_blank" '
+            f'rel="noopener noreferrer" title="{html.escape(c.source)}">{c.number}</a>'
+            for c in tile.citations
+        )
+        citations_html = f'<div class="citations-row">{pills}</div>'
     st.markdown(
         f'<div class="agent-tile">'
         f'{reasoning_html}'
@@ -239,6 +253,7 @@ def render_agent_tile(tile: AgentTile) -> None:
         f'<span class="tile-title">{icon}&nbsp;{tile.title}</span>'
         f'</div>'
         f'<p class="tile-body">{tile.summary}</p>'
+        f'{citations_html}'
         f'</div>',
         unsafe_allow_html=True,
     )
