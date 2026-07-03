@@ -39,10 +39,41 @@ def inject_theme() -> None:
             height: 0;
           }}
 
-          .block-container {{
+          /* Sticky footer: chain flex:1 down through Streamlit's real nesting
+             (stAppViewContainer > stMain > stMainBlockContainer > stVerticalBlock), then
+             margin-top:auto on the outer vertical block's last child (the footer, since
+             render_footer() is always called last) pushes it to the bottom of the
+             viewport instead of floating right under short content. Confirmed via the
+             actual rendered DOM (Streamlit 1.58) rather than assumed. */
+          [data-testid="stAppViewContainer"] {{
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+          }}
+
+          [data-testid="stMain"] {{
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+          }}
+
+          .block-container, [data-testid="stMainBlockContainer"] {{
             padding-top: 0 !important;
             padding-bottom: 3rem;
             max-width: 1360px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+          }}
+
+          [data-testid="stMainBlockContainer"] > [data-testid="stVerticalBlock"] {{
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+          }}
+
+          [data-testid="stMainBlockContainer"] > [data-testid="stVerticalBlock"] > div:last-child {{
+            margin-top: auto;
           }}
 
           /* ── App header ── */
@@ -105,6 +136,60 @@ def inject_theme() -> None:
             border: 1px solid {BLUE_MUTED};
             padding: 0.2rem 0.65rem;
             border-radius: 999px;
+          }}
+
+          /* ── App footer ── */
+          .app-footer {{
+            margin-top: 2.4rem;
+            padding: 1.4rem 0 2rem;
+            border-top: 1px solid {BORDER};
+          }}
+
+          .footer-disclaimer {{
+            font-size: 0.72rem;
+            line-height: 1.65;
+            color: {TEXT_LIGHT};
+            max-width: 860px;
+            margin: 0 0 0.9rem 0;
+          }}
+
+          .footer-disclaimer strong {{
+            color: {TEXT_MUTED};
+          }}
+
+          .footer-bottom {{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+          }}
+
+          .footer-meta {{
+            font-size: 0.68rem;
+            color: {TEXT_LIGHT};
+          }}
+
+          .footer-feedback-pill {{
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: {BLUE} !important;
+            background: {BLUE_LIGHT};
+            border: 1px solid {BLUE_MUTED};
+            padding: 0.32rem 0.8rem;
+            border-radius: 999px;
+            text-decoration: none !important;
+            transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+          }}
+
+          .footer-feedback-pill:hover {{
+            background: {BLUE};
+            color: {WHITE};
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(37,99,235,0.25);
           }}
 
           /* ── Search form card ── */
@@ -377,6 +462,34 @@ def inject_theme() -> None:
             font-size: 0.82rem;
             line-height: 1.65;
             margin: 0;
+          }}
+
+          .citations-row {{
+            display: flex;
+            gap: 0.35rem;
+            margin-top: 0.55rem;
+          }}
+
+          .citation-pill {{
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.15rem;
+            height: 1.15rem;
+            border-radius: 999px;
+            background: {BLUE_LIGHT};
+            border: 1px solid {BLUE_MUTED};
+            color: {BLUE};
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.15s ease, transform 0.15s ease;
+          }}
+
+          .citation-pill:hover {{
+            background: {BLUE};
+            color: {WHITE};
+            transform: translateY(-1px);
           }}
 
           /* ── Stat grid ── */
