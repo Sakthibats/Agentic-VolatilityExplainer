@@ -1,37 +1,37 @@
 # Agentic Volatility Explainer
 
-**Ask "why did this stock move?" and get a grounded, evidence-backed answer in plain English — not a generic recap.**
+**Every stock move gets a headline. Almost none of them get an investigation.**
 
-Type a ticker, a company name, or a plain question ("why is TSLA down today", "is gold overbought") and an LLM-driven agent investigates: it pulls real price/volatility data, decides — based on whether the move is actually unusual — whether it's worth checking news, options positioning, broader market context, or upcoming catalysts, then synthesizes ranked hypotheses with confidence levels, all backed by real numbers and never fabricated ones.
+Ask "why is TSLA down today" or "is gold overbought" and instead of a canned recap, an LLM-driven agent actually investigates — pulling real price and volatility data first, deciding *for itself* whether the move is even statistically unusual, then fanning out to news, options positioning, macro context, or upcoming catalysts only when the evidence warrants it. It comes back with ranked hypotheses, confidence levels, and a hard rule: every number is real, or it says so.
 
 ```
 "why did AAPL drop today?"
         ↓
   ┌─────────────────────────────────────────────────────────┐
-  │  1. Pull price + realized vol — always, no LLM call      │
-  │  2. Move > 2× normal range?  → fan out news + options     │
-  │     in parallel (deterministic, zero LLM round trips)     │
-  │  3. Claude (tool-use loop) decides if anything ELSE is    │
-  │     needed: macro context? earnings/FOMC proximity?       │
-  │  4. Synthesize → ranked hypotheses, confidence, caveats   │
+  │  1. Pull price + realized vol — always, no LLM call     │
+  │  2. Move > 2× normal range?  → fan out news + options   │
+  │     in parallel (deterministic, zero LLM round trips)   │
+  │  3. Claude (tool-use loop) decides if anything ELSE is  │
+  │     needed: macro context? earnings/FOMC proximity?     │
+  │  4. Synthesize → ranked hypotheses, confidence, caveats │
   └─────────────────────────────────────────────────────────┘
         ↓
   "AAPL fell 4.1% — more than 2x its normal daily swing.
    Bloomberg reported a supply-chain delay this morning..."
 ```
 
-## Why this project is interesting
+## Not a prompt-wrapped chatbot
 
-This isn't a prompt-wrapped chatbot. It's an agent designed around a deliberate cost/latency/accuracy tradeoff:
+This is an agent built around a deliberate cost/latency/accuracy tradeoff — it only thinks (and spends tokens) when the situation actually calls for it:
 
-- **Hybrid deterministic + agentic pipeline.** Price data, and (when the move is statistically significant) news and options data, are fetched *before* the LLM is ever called — in parallel, via a thread pool — and spliced into the conversation as if the model had called them itself. The model only spends a reasoning turn on calls that are genuinely conditional (macro context, earnings/FOMC proximity). This cuts latency and token spend on every run while keeping the agent's tool-use loop intact for the cases that actually need judgment. See [`orchestrator.py`](src/volatility_explainer/agent/orchestrator.py).
-- **Statistical significance gate, not vibes.** A move only triggers the expensive news/options fan-out if it exceeds ~2× the stock's own realized volatility (`change_pct` vs. `realized_vol_annualized_pct / sqrt(252)`) — so a normal 1% drift on a high-beta name doesn't get the same treatment as a genuine outlier move.
-- **Prompt-engineered for trust, not just fluency.** The system prompt enforces a strict evidence discipline: every number in the output must trace back to a real tool result, missing data must say "Data unavailable" rather than be invented, and the model is explicitly told never to call a tool that's already been answered (with a cache fallback in code in case it does anyway). Output is forced into a single JSON contract for the UI, with a guardrail that hard-refuses non-market questions.
-- **Written for a beginner, audited for jargon.** The prompt explicitly bans terms like "ATM IV", "skew", or "max pain" appearing unexplained — every claim has to be translated into plain English with the number attached, e.g. *"options traders are betting the stock settles near $98"* instead of *"max pain is $98."*
-- **Resilient data layer.** Every market-data source (price, news, macro) tries a primary client (Alpaca / Finnhub / FRED) and falls back to `yfinance` on failure or missing API key — the app degrades gracefully instead of breaking when a key is unset.
-- **Real options analytics, not a single number.** Beyond ATM implied volatility and IV rank, the options-positioning tool computes max pain, call/put open-interest "walls" (support/resistance), IV term structure trend across the 2–4 week horizon, and unusual volume-vs-open-interest activity to flag fresh positioning vs. stale interest.
-- **Smart query parsing.** The search bar resolves tickers, company names ("tesla" → TSLA), and concept phrases ("gold", "the market", "S&P 500") through a layered resolver, with a guardrail tuned to avoid false positives (e.g. "I want to bake a cake today" shouldn't resolve to the ticker `CAKE`).
-- **Latency-instrumented by design.** Every run logs per-tool and per-LLM-turn timing (`[agent] get_news 320ms`, `[llm] turn 2 (synthesis) 850ms`) so the deterministic/agentic split is empirically justified, not just assumed.
+- **Hybrid deterministic + agentic pipeline.** Price data — and, only if the move is significant, news and options data — is fetched *before* the LLM is ever called, in parallel via a thread pool, then spliced into the conversation as if the model had called it itself. Claude only spends a reasoning turn on calls that are genuinely conditional (macro context, earnings/FOMC proximity). Same accuracy, a fraction of the latency and token spend. See [`orchestrator.py`](src/volatility_explainer/agent/orchestrator.py).
+- **Statistical significance gate, not vibes.** The expensive news/options fan-out only fires if a move exceeds ~2× the stock's own realized volatility — a normal 1% drift on a high-beta name doesn't get the same treatment as a genuine outlier.
+- **Engineered for trust, not fluency.** Every number in the output must trace back to a real tool result; missing data says "Data unavailable" instead of being invented; the model is told never to re-call an already-answered tool (with a code-level cache fallback in case it does anyway); output is forced into a single JSON contract, with a guardrail that hard-refuses non-market questions.
+- **No jargon allowed.** The prompt bans unexplained terms like "ATM IV," "skew," or "max pain" — every claim gets translated into plain English with the number attached, e.g. *"options traders are betting the stock settles near $98"* instead of *"max pain is $98."*
+- **Degrades gracefully, never breaks.** Every data source (price, news, macro) tries a primary client (Alpaca / Finnhub / FRED) and silently falls back to `yfinance` on failure or missing key.
+- **Real options analytics, not a single number.** Max pain, call/put open-interest "walls," IV term structure trend, and unusual volume-vs-open-interest activity — on top of ATM IV and IV rank.
+- **Smart query parsing.** Resolves tickers, company names ("tesla" → TSLA), and concepts ("gold," "the market") through a layered resolver tuned against false positives (e.g. "bake a cake" won't resolve to the ticker `CAKE`).
+- **Latency-instrumented by design.** Every run logs per-tool and per-turn timing, so the deterministic/agentic split is an empirical claim, not an assumption.
 
 ## Architecture
 
