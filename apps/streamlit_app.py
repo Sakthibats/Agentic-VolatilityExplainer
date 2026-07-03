@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import time
+import uuid
 
 import streamlit as st
 
@@ -10,6 +11,7 @@ from ui.components import (
     render_agent_tiles_section,
     render_brand_header,
     render_final_output_box,
+    render_footer,
     render_guardrail_error,
     render_right_panel,
     render_search_bar,
@@ -30,6 +32,10 @@ inject_theme()
 render_brand_header()
 
 # ── Session defaults ──────────────────────────────────────────────────────────
+# Session-scoped anonymous ID for usage analytics — resets on a hard refresh/new
+# tab (Streamlit has no built-in way to set a persistent browser cookie), so this
+# ties together repeat queries within one sitting, not across visits.
+st.session_state.setdefault("anonymous_id", str(uuid.uuid4()))
 st.session_state.setdefault("analysis_phase", "idle")
 st.session_state.setdefault("submitted_query", "")
 st.session_state.setdefault("visible_tiles", 0)
@@ -75,6 +81,7 @@ with left_col:
                 ticker or "VTI",
                 question,
                 on_step=lambda label: render_thinking_step(thinking_placeholder, label),
+                anonymous_id=st.session_state["anonymous_id"],
             )
             thinking_placeholder.empty()
             st.session_state["all_tiles"] = result.tiles
@@ -120,3 +127,5 @@ with right_col:
     if phase in ("complete", "stopped") and st.session_state["analysis_result"]:
         display_ticker = st.session_state["analysis_result"].ticker
     render_right_panel(display_ticker)
+
+render_footer()
