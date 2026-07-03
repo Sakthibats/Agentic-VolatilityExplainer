@@ -13,11 +13,19 @@ import pandas as pd
 
 
 @dataclass(frozen=True)
+class Citation:
+    number: int
+    source: str
+    url: str
+
+
+@dataclass(frozen=True)
 class AgentTile:
     agent: str
     title: str
     summary: str
     reasoning: str = ""
+    citations: tuple[Citation, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -505,7 +513,7 @@ def fetch_analyst_stats(ticker: str) -> list[QuickStat]:
 # ---------------------------------------------------------------------------
 
 
-def run_analysis(ticker: str, query: str, on_step=None) -> AnalysisResult:
+def run_analysis(ticker: str, query: str, on_step=None, anonymous_id: str | None = None) -> AnalysisResult:
     """Run the full agentic pipeline and return structured results."""
     t0 = time.perf_counter()
     try:
@@ -526,6 +534,10 @@ def run_analysis(ticker: str, query: str, on_step=None) -> AnalysisResult:
                 title=t["title"],
                 summary=t["summary"],
                 reasoning=t.get("reasoning", ""),
+                citations=tuple(
+                    Citation(number=c["number"], source=c.get("source", "Source"), url=c["url"])
+                    for c in t.get("citations", [])
+                ),
             )
             for t in result.get("tiles", [])
         ]
@@ -551,7 +563,14 @@ def run_analysis(ticker: str, query: str, on_step=None) -> AnalysisResult:
         if not summary_text:
             summary_text = _stub_summary(ticker)
 
-        print(f"[run:{ticker}] total {(time.perf_counter()-t0)*1000:.0f}ms")
+        elapsed_ms = (time.perf_counter() - t0) * 1000
+        print(f"[run:{ticker}] total {elapsed_ms:.0f}ms")
+        if anonymous_id:
+            from volatility_explainer.analytics.supabase_logger import log_query_background
+
+            log_query_background(
+                anonymous_id=anonymous_id, ticker=ticker, query=query, result=result, elapsed_ms=elapsed_ms,
+            )
         return AnalysisResult(
             ticker=ticker,
             query=query,
@@ -560,7 +579,18 @@ def run_analysis(ticker: str, query: str, on_step=None) -> AnalysisResult:
         )
 
     except Exception as exc:
-        print(f"[run:{ticker}] total {(time.perf_counter()-t0)*1000:.0f}ms FAILED — {exc}")
+        elapsed_ms = (time.perf_counter() - t0) * 1000
+        print(f"[run:{ticker}] total {elapsed_ms:.0f}ms FAILED — {exc}")
+        if anonymous_id:
+            from volatility_explainer.analytics.supabase_logger import log_query_background
+
+            log_query_background(
+                anonymous_id=anonymous_id,
+                ticker=ticker,
+                query=query,
+                result={"status": "error", "data": {}, "tiles": [], "hypotheses": []},
+                elapsed_ms=elapsed_ms,
+            )
         tiles = _stub_tiles(ticker)
         return AnalysisResult(
             ticker=ticker,
