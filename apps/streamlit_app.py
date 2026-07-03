@@ -11,6 +11,7 @@ from ui.components import (
     render_agent_tiles_section,
     render_brand_header,
     render_final_output_box,
+    render_footer,
     render_guardrail_error,
     render_right_panel,
     render_search_bar,
@@ -126,3 +127,5 @@ with right_col:
     if phase in ("complete", "stopped") and st.session_state["analysis_result"]:
         display_ticker = st.session_state["analysis_result"].ticker
     render_right_panel(display_ticker)
+
+render_footer()
