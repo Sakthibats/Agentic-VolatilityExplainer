@@ -103,7 +103,27 @@ def render_brand_header() -> None:
     )
 
 
+def _start_analysis() -> None:
+    query = st.session_state.get("search_input", "").strip()
+    if query:
+        st.session_state["submitted_query"] = query
+        st.session_state["analysis_phase"] = "running"
+        st.session_state["visible_tiles"] = 0
+        st.session_state["analysis_result"] = None
+        st.session_state["all_tiles"] = []
+
+
+def _stop_analysis() -> None:
+    st.session_state["analysis_phase"] = "stopped"
+
+
 def render_search_bar() -> str:
+    # Callbacks (on_click) run *before* the script reruns, so session_state
+    # already reflects the click by the time the button label below is
+    # computed — a plain `if submitted:` check after the fact would only
+    # update the label on the following rerun (i.e. the next click).
+    is_running = st.session_state.get("analysis_phase") == "running"
+
     # st.form gives us a real DOM container we can style as a card via CSS.
     # A custom <div> wrapper around st.columns() doesn't work — Streamlit
     # renders its own column containers outside any preceding markdown div.
@@ -115,20 +135,24 @@ def render_search_bar() -> str:
                 placeholder="Try: TSLA · why did Tesla dip? · what happened to gold? · market down?",
                 label_visibility="collapsed",
                 key="search_input",
+                disabled=is_running,
             )
         with col_btn:
-            submitted = st.form_submit_button(
-                "Analyze →",
-                type="primary",
-                width="stretch",
-            )
+            if is_running:
+                st.form_submit_button(
+                    "Stop",
+                    type="primary",
+                    width="stretch",
+                    on_click=_stop_analysis,
+                )
+            else:
+                st.form_submit_button(
+                    "Analyze →",
+                    type="primary",
+                    width="stretch",
+                    on_click=_start_analysis,
+                )
 
-    if submitted and query.strip():
-        st.session_state["submitted_query"] = query.strip()
-        st.session_state["analysis_phase"] = "running"
-        st.session_state["visible_tiles"] = 0
-        st.session_state["analysis_result"] = None
-        st.session_state["all_tiles"] = []
     return query
 
 
