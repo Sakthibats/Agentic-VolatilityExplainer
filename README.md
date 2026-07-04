@@ -1,4 +1,4 @@
-# Agentic Volatility Explainer
+# Agentic Market Explainer
 
 **Every stock move gets a headline. Almost none of them get an investigation.**
 
