@@ -56,7 +56,7 @@ if phase == "running" and submitted:
     if not is_valid:
         st.session_state["analysis_phase"] = "guardrail"
         st.session_state["guardrail_message"] = err_msg
-        phase = "guardrail"
+        st.rerun()
 
 left_col, right_col = st.columns([11, 7], gap="large")
 
