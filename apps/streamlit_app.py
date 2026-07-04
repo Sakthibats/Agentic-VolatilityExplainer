@@ -1,4 +1,4 @@
-"""Streamlit frontend for the Agentic Volatility Explainer."""
+"""Streamlit frontend for Agentic Market Explainer."""
 
 from __future__ import annotations
 
@@ -22,7 +22,7 @@ from ui.placeholders import parse_search_input, run_analysis, validate_financial
 from ui.theme import inject_theme
 
 st.set_page_config(
-    page_title="Agentic Volatility Explainer",
+    page_title="Agentic Market Explainer",
     page_icon="📊",
     layout="wide",
     initial_sidebar_state="collapsed",
