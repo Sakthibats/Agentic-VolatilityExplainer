@@ -427,10 +427,9 @@ def render_right_panel(ticker: str | None) -> None:
             unsafe_allow_html=True,
         )
     else:
-        from ui.placeholders import fetch_analyst_stats, fetch_options_stats, fetch_quick_stats
+        from ui.placeholders import fetch_analyst_stats, fetch_quick_stats
         render_price_chart(ticker)
         render_quick_stats(fetch_quick_stats(ticker))
-        render_quick_stats(fetch_options_stats(ticker), title="Options stats")
         render_quick_stats(fetch_analyst_stats(ticker), title="Analyst targets")
 
 
