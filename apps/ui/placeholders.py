@@ -445,39 +445,6 @@ def _fallback_stats() -> list[QuickStat]:
 
 
 # ---------------------------------------------------------------------------
-# Options stats
-# ---------------------------------------------------------------------------
-
-
-def fetch_options_stats(ticker: str) -> list[QuickStat]:
-    """Return headline options metrics: IV rank, implied vol, historical vol, put/call ratio."""
-    try:
-        src_path = os.path.join(os.path.dirname(__file__), "..", "..", "src")
-        src_path = os.path.abspath(src_path)
-        if src_path not in sys.path:
-            sys.path.insert(0, src_path)
-        from volatility_explainer.mcp.tools.options import fetch_options_data
-        from volatility_explainer.mcp.tools.price import fetch_price_data
-
-        opts = fetch_options_data(ticker)
-        price = fetch_price_data(ticker)
-
-        iv_rank = opts.get("iv_chain_percentile")
-        iv = opts.get("atm_iv_pct")
-        hv = price.get("realized_vol_annualized_pct")
-        pc_ratio = opts.get("put_call_ratio")
-
-        return [
-            QuickStat("IV Rank", f"{iv_rank}%" if iv_rank is not None else "N/A"),
-            QuickStat("Implied Vol", f"{iv:.1f}%" if iv is not None else "N/A"),
-            QuickStat("Historical Vol", f"{hv:.1f}%" if hv is not None else "N/A"),
-            QuickStat("Put/Call Ratio", f"{pc_ratio:.2f}" if pc_ratio is not None else "N/A"),
-        ]
-    except Exception:
-        return _fallback_stats()
-
-
-# ---------------------------------------------------------------------------
 # Analyst targets
 # ---------------------------------------------------------------------------
 

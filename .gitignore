@@ -21,3 +21,6 @@ venv/
 # Test / lint caches
 .pytest_cache/
 .ruff_cache/
+
+# Local fallback log for failed Supabase analytics writes
+/data/failed_query_log.jsonl
