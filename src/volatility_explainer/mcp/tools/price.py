@@ -50,6 +50,14 @@ def _compute_realized_vol(hist) -> float | None:
     return round(float(returns.std() * (252 ** 0.5) * 100), 1)
 
 
+_HORIZON_PHRASE: dict[str, str] = {
+    "1d": "today",
+    "1w": "this week",
+    "2w": "the past 2 weeks",
+    "1mo": "the past month",
+    "1y": "the past year",
+}
+
 _SEVERITY = {"typical": 0, "elevated": 1, "unusual": 2}
 
 # Absolute-magnitude floor per horizon: (elevated_pct, unusual_pct). A chronically volatile
@@ -76,9 +84,33 @@ def _level_from_abs(change_pct: float, thresholds: tuple[float, float]) -> str:
     return "typical" if magnitude < elevated_pct else "elevated" if magnitude < unusual_pct else "unusual"
 
 
+def _flag_text(
+    label: str, change_pct: float, expected_move: float, ratio: float,
+    relative_level: str, absolute_level: str, level: str,
+) -> str:
+    """One deterministic plain-English sentence per non-typical horizon — written here, in
+    code, so the LLM never has to compute or notice significance itself. When relative_level
+    and absolute_level disagree (e.g. a move that's normal for this specific stock's own
+    volatility but large in plain terms), both framings are spelled out explicitly rather than
+    leaving that nuance for the model to catch on its own.
+    """
+    phrase = _HORIZON_PHRASE[label]
+    if relative_level == absolute_level:
+        return (
+            f"{phrase}: {change_pct}% — {level} for this stock "
+            f"(about {ratio}x its normal move for that span, expected ~{expected_move:.2f}%)"
+        )
+    return (
+        f"{phrase}: {change_pct}% — {relative_level} relative to this stock's own typical "
+        f"volatility (expected ~{expected_move:.2f}%, {ratio}x), but {absolute_level} in plain "
+        f"magnitude terms regardless of whose stock it is (overall: {level})"
+    )
+
+
 def _assess_moves(changes: dict, rv: float | None) -> dict:
-    """Label each horizon's move so neither the LLM nor a user's alarmed wording ("crashed",
-    "tanked") has to eyeball significance — the numbers decide it, on two axes:
+    """Determine significance deterministically, in code, on two axes — never left for the
+    LLM to eyeball from raw numbers or take on faith from a user's alarmed wording ("crashed",
+    "tanked"):
 
     - relative_level: |change| vs. this stock's OWN normal move for that horizon
       (ratio_to_normal = |change| / expected move, which scales with sqrt(time) off the
@@ -87,12 +119,15 @@ def _assess_moves(changes: dict, rv: float | None) -> dict:
       — so a chronically volatile stock can't get an 18% drop rubber-stamped "typical" purely
       because that's normal for IT specifically.
 
-    level (the one to act on) is the MORE severe of the two — typical only if both agree
-    it's typical; elevated or unusual if either axis says so.
+    Returns a thin summary instead of a full per-horizon breakdown: "overall" (the most severe
+    level across all horizons) plus "flags" — one plain-English sentence per horizon that is
+    NOT typical (a horizon absent from "flags" is typical on both axes, unremarkable). This
+    keeps the common case (a calm day, most horizons typical) a tiny payload, and every
+    sentence already states the verdict rather than raw fields the LLM would have to interpret.
     """
     if not rv:
         return {}
-    assessment = {}
+    per_horizon: dict[str, tuple] = {}
     for label, days in _HORIZON_TRADING_DAYS.items():
         change_pct = changes.get(label)
         if change_pct is None:
@@ -104,15 +139,18 @@ def _assess_moves(changes: dict, rv: float | None) -> dict:
         relative_level = _level_from_ratio(ratio)
         absolute_level = _level_from_abs(change_pct, _ABS_THRESHOLDS_PCT[label])
         level = max([relative_level, absolute_level], key=_SEVERITY.get)
-        assessment[label] = {
-            "change_pct": change_pct,
-            "expected_move_pct": round(expected_move, 2),
-            "ratio_to_normal": ratio,
-            "relative_level": relative_level,
-            "absolute_level": absolute_level,
-            "level": level,
-        }
-    return assessment
+        per_horizon[label] = (level, relative_level, absolute_level, change_pct, expected_move, ratio)
+
+    if not per_horizon:
+        return {}
+
+    overall = max((v[0] for v in per_horizon.values()), key=_SEVERITY.get)
+    flags = [
+        _flag_text(label, change_pct, expected_move, ratio, relative_level, absolute_level, level)
+        for label, (level, relative_level, absolute_level, change_pct, expected_move, ratio) in per_horizon.items()
+        if level != "typical"
+    ]
+    return {"overall": overall, "flags": flags}
 
 
 def fetch_price_data(ticker: str) -> dict:

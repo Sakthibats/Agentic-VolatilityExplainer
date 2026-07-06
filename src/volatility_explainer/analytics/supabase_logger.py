@@ -90,13 +90,19 @@ def log_query_background(
     price_data = (result.get("data") or {}).get("get_price_data") or {}
     citations = [c for tile in result.get("tiles", []) for c in tile.get("citations", [])]
 
+    cache_hits = set(result.get("cache_hits") or [])
+    tools_called = sorted(
+        f"{name}:redis" if name in cache_hits else f"{name}:live"
+        for name in (result.get("data") or {}).keys()
+    )
+
     payload = {
         "anonymous_id": anonymous_id,
         "ticker": ticker,
         "query": query or None,
         "status": result.get("status", "complete"),
         "move_assessment": price_data.get("move_assessment") or None,
-        "tools_called": sorted((result.get("data") or {}).keys()) or None,
+        "tools_called": tools_called or None,
         "hypotheses": result.get("hypotheses") or None,
         "citations": citations or None,
         "elapsed_ms": round(elapsed_ms),

@@ -5,6 +5,7 @@ from __future__ import annotations
 import os
 import re
 import sys
+import threading
 import time
 from dataclasses import dataclass
 from datetime import date, timedelta
@@ -492,35 +493,77 @@ def run_analysis(ticker: str, query: str, on_step=None, anonymous_id: str | None
             sys.path.insert(0, src_path)
 
         from volatility_explainer.agent.orchestrator import run_explainer
+        from volatility_explainer.clients.redis_cache import (
+            get_cached_final_answer,
+            set_cached_final_answer,
+        )
 
-        result = run_explainer(ticker, query, on_step=on_step)
+        # The no-query path ("explain the recent price action") is generic by
+        # construction — not tied to any user-specific question — so a cache hit here
+        # can skip tool fetch + LLM synthesis entirely. A query-specific ask always
+        # runs fresh; only this default path is ever read from or written to this cache.
+        result = None
+        if not query:
+            redis_t0 = time.perf_counter()
+            result = get_cached_final_answer(ticker)
+            redis_elapsed = (time.perf_counter() - redis_t0) * 1000
+            print(f"[redis]  final_answer lookup   {redis_elapsed:6.0f}ms  ({'hit' if result else 'miss'})")
+
+        if result is None:
+            # No upfront bulk tool-data lookup here — run_explainer checks Redis for each
+            # tool individually, right before it would otherwise call that tool live, so a
+            # tool the investigation never needs is never looked up at all.
+            result = run_explainer(ticker, query, on_step=on_step)
+
+            if not query and result.get("status") == "complete":
+                # Write-back only populates the cache for a *future* no-query request —
+                # nothing in this response depends on it — so it runs on a daemon thread
+                # rather than blocking the result the user is waiting on.
+                def _write_back(ticker=ticker, result=result) -> None:
+                    t0 = time.perf_counter()
+                    set_cached_final_answer(ticker, result)
+                    print(f"[redis]  write-back (async)    {(time.perf_counter() - t0) * 1000:6.0f}ms")
+
+                threading.Thread(target=_write_back, daemon=True).start()
+
+        # Tool-call arguments from the model aren't schema-validated server-side, so an
+        # occasional malformed entry (e.g. a string where a tile/hypothesis object was
+        # expected) can slip through — skip those defensively rather than crashing the run.
+        raw_tiles = result.get("tiles", [])
+        good_tiles = [t for t in raw_tiles if isinstance(t, dict) and t.get("summary")]
+        if len(good_tiles) < len(raw_tiles):
+            print(f"[run:{ticker}] skipped {len(raw_tiles) - len(good_tiles)} malformed tile(s) from model output")
 
         tiles = [
             AgentTile(
-                agent=t["agent"],
-                title=t["title"],
-                summary=t["summary"],
+                agent=t.get("agent", ""),
+                title=t.get("title", ""),
+                summary=t.get("summary", ""),
                 reasoning=t.get("reasoning", ""),
                 citations=tuple(
-                    Citation(number=c["number"], source=c.get("source", "Source"), url=c["url"])
-                    for c in t.get("citations", [])
+                    Citation(number=c.get("number", i + 1), source=c.get("source", "Source"), url=c["url"])
+                    for i, c in enumerate(t.get("citations", []))
+                    if isinstance(c, dict) and c.get("url")
                 ),
             )
-            for t in result.get("tiles", [])
+            for t in good_tiles
         ]
 
         summary_text = result.get("summary", "")
-        hypotheses = result.get("hypotheses", [])
+        raw_hypotheses = result.get("hypotheses", [])
+        hypotheses = [h for h in raw_hypotheses if isinstance(h, dict) and h.get("hypothesis")]
+        if len(hypotheses) < len(raw_hypotheses):
+            print(f"[run:{ticker}] skipped {len(raw_hypotheses) - len(hypotheses)} malformed hypothesis/hypotheses from model output")
         if hypotheses:
             summary_text += "\n\n**Most likely causes:**\n"
-            for h in hypotheses:
+            for idx, h in enumerate(hypotheses):
                 conf = h.get("confidence", "medium")
                 conf_icon = {"high": "🟢", "medium": "🟡", "low": "🔴"}.get(conf, "🟡")
                 conf_label = {"high": "High confidence", "medium": "Medium confidence", "low": "Low confidence / speculative"}.get(conf, "")
                 caveat = h.get("caveat", "")
                 caveat_text = f"   _Caveat: {caveat}_\n" if caveat and caveat != "N/A" else ""
                 summary_text += (
-                    f"\n{h['rank']}. **{h['hypothesis']}** {conf_icon} _{conf_label}_  \n"
+                    f"\n{h.get('rank', idx + 1)}. **{h['hypothesis']}** {conf_icon} _{conf_label}_  \n"
                     f"   _{h.get('evidence', '')}_\n"
                     f"{caveat_text}"
                 )
