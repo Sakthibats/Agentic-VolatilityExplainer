@@ -2,6 +2,19 @@ from datetime import date, timedelta
 
 from volatility_explainer.config import get_settings
 
+# Only the first 3 headlines with a url ever surface as citations (see
+# _attach_news_citations in the orchestrator), and the synthesis step only needs enough
+# text to name a catalyst — so keep this payload small rather than fetching everything.
+_MAX_HEADLINES = 5
+_MAX_SUMMARY_CHARS = 200
+
+
+def _truncate(summary: str) -> str:
+    summary = summary or ""
+    if len(summary) <= _MAX_SUMMARY_CHARS:
+        return summary
+    return summary[:_MAX_SUMMARY_CHARS].rsplit(" ", 1)[0] + "..."
+
 
 def fetch_news(ticker: str, *, lookback_days: int = 7) -> dict:
     """Fetch recent news headlines. Finnhub first, yfinance fallback."""
@@ -22,12 +35,12 @@ def fetch_news(ticker: str, *, lookback_days: int = 7) -> dict:
             headlines = [
                 {
                     "headline": item.get("headline", ""),
-                    "summary": item.get("summary", ""),
+                    "summary": _truncate(item.get("summary", "")),
                     "datetime": item.get("datetime", ""),
                     "source": item.get("source", ""),
                     "url": item.get("url", ""),
                 }
-                for item in raw[:10]
+                for item in raw[:_MAX_HEADLINES]
             ]
             return {"ticker": ticker, "headlines": headlines}
     except Exception as exc:
@@ -41,7 +54,7 @@ def fetch_news(ticker: str, *, lookback_days: int = 7) -> dict:
         headlines = [
             {
                 "headline": item.get("content", {}).get("title", ""),
-                "summary": item.get("content", {}).get("summary", ""),
+                "summary": _truncate(item.get("content", {}).get("summary", "")),
                 "datetime": item.get("content", {}).get("pubDate", ""),
                 "source": item.get("content", {}).get("provider", {}).get("displayName", ""),
                 "url": (
@@ -49,7 +62,7 @@ def fetch_news(ticker: str, *, lookback_days: int = 7) -> dict:
                     or item.get("content", {}).get("clickThroughUrl", {}).get("url", "")
                 ),
             }
-            for item in raw[:10]
+            for item in raw[:_MAX_HEADLINES]
         ]
         return {"ticker": ticker, "headlines": headlines}
     except Exception as exc:

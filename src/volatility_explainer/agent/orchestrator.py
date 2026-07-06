@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import json
-import re
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Any, Callable
@@ -11,6 +10,7 @@ from typing import Any, Callable
 import anthropic
 
 from volatility_explainer.agent.prompts import SYSTEM_PROMPT
+from volatility_explainer.clients.redis_cache import get_cached_tool_data, set_cached_tool_data
 from volatility_explainer.config import get_settings
 from volatility_explainer.mcp.tools.analyst import fetch_analyst_sentiment
 from volatility_explainer.mcp.tools.events import fetch_events
@@ -24,7 +24,9 @@ _TOOL_DEFINITIONS: list[dict] = [
     {
         "name": "get_price_data",
         "description": (
-            "Fetch current price, daily % change, and 20-day realized volatility for a ticker. "
+            "Fetch current price, daily % change, and 20-day realized volatility for a ticker, "
+            "plus move_assessment — a deterministic significance verdict (overall level plus "
+            "one plain-English flag per non-typical horizon). "
             "ALREADY CALLED FOR YOU — check the conversation above for its result before calling this."
         ),
         "input_schema": {
@@ -38,10 +40,13 @@ _TOOL_DEFINITIONS: list[dict] = [
     {
         "name": "get_news",
         "description": (
-            "Fetch recent news headlines for a ticker (last 7 days). "
-            "If the price move was significant this was ALREADY CALLED FOR YOU — check the "
-            "conversation above before calling this. Only call it yourself if there's no result "
-            "for it yet and you need a catalyst."
+            "Fetch recent news headlines for a ticker (last 7 days). Not pre-fetched — decide "
+            "whether to call it based on price_data (already given) and the question. Almost "
+            "always worth calling when the horizon relevant to the question has a flag in "
+            "move_assessment (especially an 'unusual' one) and the question is (or implies) "
+            "'why did this move' — that's the catalyst check. Skip it for questions that "
+            "aren't about causation (e.g. pure valuation/analyst-opinion questions) or for an "
+            "unflagged, plainly typical move."
         ),
         "input_schema": {
             "type": "object",
@@ -56,10 +61,10 @@ _TOOL_DEFINITIONS: list[dict] = [
         "description": (
             "Quick snapshot of how the options market is pricing the next 2-4 weeks for this "
             "stock (implied volatility, put/call ratio, skew) — a general hint of market mood, "
-            "not a deep dive. "
-            "If the price move was significant this was ALREADY CALLED FOR YOU — check the "
-            "conversation above before calling this. Only call it yourself if there's no result "
-            "for it yet and you need to gauge market sentiment."
+            "not a deep dive. Not pre-fetched — worth calling alongside get_news as a brief "
+            "secondary signal for a significant move, or whenever the question touches on what "
+            "the market expects next. Skip it if the question doesn't relate to market "
+            "positioning/expectations."
         ),
         "input_schema": {
             "type": "object",
@@ -77,13 +82,13 @@ _TOOL_DEFINITIONS: list[dict] = [
             "betting the stock settles near), call/put open-interest walls (support/resistance "
             "levels), IV term structure across the horizon, and unusual volume vs. open "
             "interest (signals fresh positioning being put on today, not stale interest). "
-            "This is NOT pre-fetched automatically — call it yourself when the question "
-            "specifically needs this depth: \"where are options traders positioned\", "
-            "\"what's the max pain level\", \"is there unusual options activity\", or when "
-            "get_options_data (the quick snapshot, which IS pre-fetched for a significant "
-            "move) shows something — like an unusually high put/call ratio or IV — that "
-            "warrants investigating further. Skip this for routine questions; it is a "
-            "deliberate, deeper investigation step, not a default check."
+            "This is NOT called in the first tool-selection pass — only call it, in a later "
+            "turn, when the question specifically needs this depth (\"where are options "
+            "traders positioned\", \"what's the max pain level\", \"is there unusual options "
+            "activity\") or when get_options_data's quick snapshot showed something — like an "
+            "unusually high put/call ratio or IV — that warrants investigating further. Skip "
+            "this for routine questions; it is a deliberate, deeper second-layer step, not a "
+            "default check."
         ),
         "input_schema": {
             "type": "object",
@@ -164,7 +169,109 @@ _TOOL_DEFINITIONS: list[dict] = [
             "required": ["ticker"],
         },
     },
+    {
+        "name": "flag_out_of_scope",
+        "description": (
+            "Call this INSTEAD of any data tool, and before calling anything else, if the "
+            "request is not about a stock/ETF/market price movement. This is the only way "
+            "to end the investigation as out-of-scope — do not write an error as plain text."
+        ),
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string",
+                    "description": "Plain sentence telling the user this tool only investigates stock and ETF price movements.",
+                },
+            },
+            "required": ["message"],
+        },
+    },
+    {
+        "name": "submit_analysis",
+        "description": (
+            "Call this to deliver your final write-up once the investigation is complete — "
+            "this is the ONLY way to finish; never write the final answer as plain text. "
+            "Call it exactly once, after you've gathered all the evidence you need."
+        ),
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "summary": {
+                    "type": "string",
+                    "description": (
+                        "30-50 words, 1-2 sentences max: FIRST sentence must directly answer "
+                        "the user's actual question using a real number from the data, from "
+                        "the horizon they actually asked about (today/week/2 weeks/month/YTD/"
+                        "year) — not a generic price-move restatement, and not silently "
+                        "substituted with a different horizon's number. Keep it tight — the "
+                        "supporting detail (catalyst, options lean, etc.) belongs in the tiles "
+                        "and hypotheses below, not repeated here."
+                    ),
+                },
+                "tiles": {
+                    "type": "array",
+                    "description": (
+                        "One tile per tool result that MEANINGFULLY informed the answer — not "
+                        "one per tool merely called. Skip a tile for any tool whose result "
+                        "turned out uninformative or redundant with another tile (e.g. macro "
+                        "showed nothing unusual and sector already covers the same ground). "
+                        "get_price_data almost always earns a tile; news/options usually do too "
+                        "when you called them. Curate like an analyst presenting findings, not a "
+                        "log of every data source touched."
+                    ),
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "agent": {
+                                "type": "string",
+                                "enum": ["price", "news", "options", "macro", "events", "analyst", "sector"],
+                            },
+                            "title": {"type": "string", "description": "e.g. Price Action"},
+                            "summary": {
+                                "type": "string",
+                                "description": "1-2 short, plain sentences with a real number — easy for a beginner to read",
+                            },
+                            "reasoning": {
+                                "type": "string",
+                                "description": "1 short sentence: why this data mattered",
+                            },
+                        },
+                        "required": ["agent", "title", "summary", "reasoning"],
+                    },
+                },
+                "hypotheses": {
+                    "type": "array",
+                    "description": (
+                        "At least TWO plausible drivers, ranked by confidence (rank 1 = most "
+                        "likely). Even when one cause clearly dominates, include a genuinely "
+                        "distinct second (or third) explanation — e.g. a broader sector/macro "
+                        "contributor, a secondary catalyst, or 'no unusual driver found, within "
+                        "normal noise' — rather than manufacturing a redundant near-duplicate of "
+                        "the top hypothesis."
+                    ),
+                    "minItems": 2,
+                    "maxItems": 3,
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "rank": {"type": "integer"},
+                            "hypothesis": {"type": "string", "description": "short phrase, max 10 words"},
+                            "evidence": {"type": "string", "description": "one plain fact or number, or Limited"},
+                            "confidence": {"type": "string", "enum": ["high", "medium", "low"]},
+                            "caveat": {"type": "string", "description": "one clause or N/A"},
+                        },
+                        "required": ["rank", "hypothesis", "evidence", "confidence", "caveat"],
+                    },
+                },
+            },
+            "required": ["summary", "tiles", "hypotheses"],
+        },
+        "cache_control": {"type": "ephemeral"},
+    },
 ]
+
+_TERMINAL_TOOLS = {"submit_analysis", "flag_out_of_scope"}
 
 _TOOL_DISPATCH: dict[str, Any] = {
     "get_price_data":          lambda inp: fetch_price_data(inp["ticker"]),
@@ -180,28 +287,30 @@ _TOOL_DISPATCH: dict[str, Any] = {
 _MAX_TURNS = 7
 
 
-def _execute_tool(name: str, inputs: dict) -> dict:
+def _fetch_with_cache(name: str, ticker: str, fetch_fn: Callable[[], dict]) -> tuple[dict, bool]:
+    """Check Redis for this one tool's cached result before calling its live fetch_fn.
+
+    Lookup happens tool-by-tool, right when a tool is about to be used — not as one big
+    upfront batch — so a tool the investigation never needs is never checked at all.
+    Returns (result, was_cache_hit). A miss fetches fresh and writes the result back
+    immediately so the next request for this ticker can hit.
+    """
+    cached = get_cached_tool_data(ticker, [name])
+    if name in cached:
+        return cached[name], True
+    result = fetch_fn()
+    set_cached_tool_data(ticker, {name: result})
+    return result, False
+
+
+def _execute_tool(name: str, inputs: dict, ticker: str) -> tuple[dict, bool]:
     fn = _TOOL_DISPATCH.get(name)
     if fn is None:
-        return {"error": f"Unknown tool: {name}"}
+        return {"error": f"Unknown tool: {name}"}, False
     try:
-        return fn(inputs)
+        return _fetch_with_cache(name, ticker, lambda: fn(inputs))
     except Exception as exc:
-        return {"error": str(exc)}
-
-
-def _parse_json(text: str) -> dict:
-    try:
-        return json.loads(text)
-    except json.JSONDecodeError:
-        pass
-    match = re.search(r"\{.*\}", text, re.DOTALL)
-    if match:
-        try:
-            return json.loads(match.group())
-        except json.JSONDecodeError:
-            pass
-    return {}
+        return {"error": str(exc)}, False
 
 
 _STEP_LABELS: dict[str, str] = {
@@ -236,26 +345,24 @@ def _attach_news_citations(tiles: list[dict], tool_data: dict) -> list[dict]:
     return tiles
 
 
-def _is_significant_move(price_data: dict) -> bool:
-    """True if ANY horizon (today, 1w, 2w, 1mo, 1y) is labeled "unusual" (beyond ~2x the
-    stock's normal move for that span) in move_assessment. This is the ONLY gate for the
-    extra news/options pre-fetch — it is driven purely by the computed numbers, never by how
-    alarming the user's wording is, so a question like "why did it crash?" about a move that's
-    actually typical does not trigger a bigger tool-use flow than the data justifies.
-    """
-    assessment = price_data.get("move_assessment") or {}
-    return any(horizon.get("level") == "unusual" for horizon in assessment.values())
-
-
 def run_explainer(
     ticker: str,
     query: str = "",
     on_step: Callable[[str], None] | None = None,
 ) -> dict:
-    """Run the investigation: a deterministic price/news/options-snapshot pre-fetch (no LLM
-    round trip), then a Claude-driven loop that genuinely chooses among optional tools
-    (options positioning, analyst sentiment, sector comparison, macro, events), then
-    synthesis.
+    """Run the investigation: a deterministic price pre-fetch (no LLM round trip — this one
+    is non-negotiable, it also feeds the sideline chart), then a Claude-driven loop where the
+    first turn is the real tool-selection layer — informed by move_assessment (already in the
+    price data) and the user's actual question, it picks whichever of news / options / macro /
+    events / analyst / sector genuinely help, calling all of them together in that one turn
+    where possible. A second round of tool calls only happens if the first round's results
+    turn up something that specifically warrants deeper digging; most investigations resolve
+    in that first round and go straight to synthesis.
+
+    Every tool fetch — price or LLM-chosen — checks Redis for that one tool right before
+    calling it (see _fetch_with_cache): a hit skips the live call, a miss fetches fresh and
+    writes straight back to the cache. There is no upfront bulk cache lookup — a tool the
+    investigation never ends up needing is never checked, let alone fetched, at all.
     """
     ticker = ticker.upper()
     run_t0 = time.perf_counter()
@@ -264,6 +371,7 @@ def run_explainer(
     client = anthropic.Anthropic(api_key=api_key)
 
     tool_data: dict[str, dict] = {}
+    cache_hit_names: set[str] = set()
     llm_time = 0.0
     tool_time = 0.0
 
@@ -271,28 +379,15 @@ def run_explainer(
     if on_step:
         on_step(_STEP_LABELS["get_price_data"])
     t0 = time.perf_counter()
-    price_data = fetch_price_data(ticker)
+    price_data, hit = _fetch_with_cache("get_price_data", ticker, lambda: fetch_price_data(ticker))
     elapsed = time.perf_counter() - t0
     tool_time += elapsed
     tool_data["get_price_data"] = price_data
-    print(f"[agent] {'get_price_data':<25} {elapsed * 1000:6.0f}ms  (deterministic)")
-
-    if _is_significant_move(price_data):
-        if on_step:
-            on_step(_STEP_LABELS["get_news"])
-            on_step(_STEP_LABELS["get_options_data"])
-        t0 = time.perf_counter()
-        with ThreadPoolExecutor(max_workers=2) as pool:
-            futures = {
-                pool.submit(fetch_news, ticker): "get_news",
-                pool.submit(fetch_options_data, ticker): "get_options_data",
-            }
-            for fut in as_completed(futures):
-                name = futures[fut]
-                tool_data[name] = fut.result()
-        elapsed = time.perf_counter() - t0
-        tool_time += elapsed
-        print(f"[agent] {'get_news + get_options_data':<25} {elapsed * 1000:6.0f}ms  (deterministic, parallel)")
+    if hit:
+        cache_hit_names.add("get_price_data")
+        print(f"[agent] {'get_price_data':<25} {elapsed * 1000:6.0f}ms  (cached, redis)")
+    else:
+        print(f"[agent] {'get_price_data':<25} {elapsed * 1000:6.0f}ms  (deterministic)")
 
     if query:
         user_content = (
@@ -319,44 +414,62 @@ def run_explainer(
         messages.append({"role": "assistant", "content": assistant_blocks})
         messages.append({"role": "user", "content": result_blocks})
 
-    response: anthropic.types.Message | None = None
+    # system is a single static block across every turn of this run (and identical across
+    # runs) — mark it cacheable so only the growing tool-result tail gets re-processed each
+    # turn. _TOOL_DEFINITIONS carries its own cache_control on its last entry (see above).
+    system_blocks = [{"type": "text", "text": SYSTEM_PROMPT, "cache_control": {"type": "ephemeral"}}]
+
+    final_kind: str | None = None  # "analysis" | "guardrail" | None (ran out of turns)
+    final_input: dict = {}
 
     for turn in range(_MAX_TURNS):
         llm_t0 = time.perf_counter()
         response = client.messages.create(
             model="claude-haiku-4-5-20251001",
             max_tokens=2000,
-            system=SYSTEM_PROMPT,
+            system=system_blocks,
             tools=_TOOL_DEFINITIONS,
             messages=messages,
         )
         llm_elapsed = time.perf_counter() - llm_t0
         llm_time += llm_elapsed
-        is_final = response.stop_reason != "tool_use"
-        print(f"[llm]   turn {turn + 1} {'(synthesis)' if is_final else '(tool selection)':<17} {llm_elapsed * 1000:6.0f}ms")
+
+        tool_blocks = [b for b in response.content if b.type == "tool_use"]
+        terminal_block = next((b for b in tool_blocks if b.name in _TERMINAL_TOOLS), None)
+        print(f"[llm]   turn {turn + 1} {'(final)' if terminal_block else '(tool selection)':<17} {llm_elapsed * 1000:6.0f}ms")
 
         messages.append({"role": "assistant", "content": response.content})
 
-        if is_final:
+        if terminal_block:
+            if on_step and terminal_block.name == "submit_analysis":
+                on_step("Synthesizing findings...")
+            final_kind = "guardrail" if terminal_block.name == "flag_out_of_scope" else "analysis"
+            final_input = terminal_block.input
             break
 
-        tool_blocks = [b for b in response.content if b.type == "tool_use"]
+        if not tool_blocks:
+            # Model replied with plain text instead of calling a tool (ignoring the
+            # instruction to always finish via submit_analysis/flag_out_of_scope). Nothing
+            # to send back — an empty tool_result user turn is rejected by the API — so
+            # stop here rather than loop again; falls through to the "incomplete" status.
+            break
+
         if on_step:
             for block in tool_blocks:
                 on_step(_STEP_LABELS.get(block.name, f"Running {block.name}..."))
 
-        def _run_block(block: Any) -> tuple[Any, dict, float]:
+        def _run_block(block: Any) -> tuple[Any, dict, bool, float]:
             t0 = time.perf_counter()
-            result = _execute_tool(block.name, block.input)
-            return block, result, time.perf_counter() - t0
+            result, hit = _execute_tool(block.name, block.input, ticker)
+            return block, result, hit, time.perf_counter() - t0
 
         tool_result_blocks: list[dict] = []
-        results_by_id: dict[str, tuple[dict, float]] = {}
+        results_by_id: dict[str, dict] = {}
         turn_tool_max = 0.0
 
         # The model occasionally re-requests a tool it already called this run (despite
-        # the system prompt instruction not to) — serve those from cache instead of
-        # paying for a redundant fetch.
+        # the system prompt instruction not to) — serve those from the in-memory result
+        # instead of paying for a redundant fetch or even a redundant Redis round trip.
         fresh_blocks = []
         for block in tool_blocks:
             if block.name in tool_data:
@@ -365,14 +478,22 @@ def run_explainer(
             else:
                 fresh_blocks.append(block)
 
+        batch_t0 = time.perf_counter()
         with ThreadPoolExecutor(max_workers=len(fresh_blocks) or 1) as pool:
             futures = {pool.submit(_run_block, b): b for b in fresh_blocks}
             for fut in as_completed(futures):
-                block, result, elapsed = fut.result()
+                block, result, hit, elapsed = fut.result()
                 turn_tool_max = max(turn_tool_max, elapsed)  # tools run in parallel within a turn
-                print(f"[agent] {block.name:<25} {elapsed * 1000:6.0f}ms")
+                if hit:
+                    cache_hit_names.add(block.name)
+                print(f"[agent] {block.name:<25} {elapsed * 1000:6.0f}ms  {'(cached, redis)' if hit else ''}")
                 tool_data[block.name] = result
                 results_by_id[block.id] = result
+        batch_elapsed = time.perf_counter() - batch_t0
+        if len(fresh_blocks) > 1:
+            # Wall time of the whole batch vs. the slowest individual call — if these are
+            # close, the fetches genuinely overlapped rather than running one after another.
+            print(f"[agent] {'+'.join(b.name for b in fresh_blocks):<25} {batch_elapsed * 1000:6.0f}ms  (batch wall time, n={len(fresh_blocks)})")
         tool_time += turn_tool_max
 
         for block in tool_blocks:
@@ -384,23 +505,13 @@ def run_explainer(
 
         messages.append({"role": "user", "content": tool_result_blocks})
 
-    if on_step:
-        on_step("Synthesizing findings...")
-
-    # Extract final synthesis text from last assistant message
-    final_text = ""
-    if response:
-        for block in response.content:
-            if hasattr(block, "text"):
-                final_text = block.text.strip()
-                break
-
-    parsed = _parse_json(final_text)
-
     total_elapsed = time.perf_counter() - run_t0
     print(f"[orchestrator] {ticker:<6} total {total_elapsed * 1000:6.0f}ms  (llm {llm_time * 1000:.0f}ms, tools {tool_time * 1000:.0f}ms)")
 
-    if parsed.get("error"):
+    # Tools whose data came from Redis this run rather than a live fetch.
+    cache_hits = sorted(cache_hit_names)
+
+    if final_kind == "guardrail":
         return {
             "ticker": ticker,
             "data": tool_data,
@@ -408,14 +519,16 @@ def run_explainer(
             "tiles": [],
             "hypotheses": [],
             "status": "guardrail",
-            "error_message": parsed.get("message", ""),
+            "error_message": final_input.get("message", ""),
+            "cache_hits": cache_hits,
         }
 
     return {
         "ticker": ticker,
         "data": tool_data,
-        "summary": parsed.get("summary", ""),
-        "tiles": _attach_news_citations(parsed.get("tiles", []), tool_data),
-        "hypotheses": parsed.get("hypotheses", []),
-        "status": "complete",
+        "summary": final_input.get("summary", ""),
+        "tiles": _attach_news_citations(final_input.get("tiles", []), tool_data),
+        "hypotheses": final_input.get("hypotheses", []),
+        "status": "complete" if final_kind == "analysis" else "incomplete",
+        "cache_hits": cache_hits,
     }

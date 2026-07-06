@@ -8,6 +8,7 @@ numpy>=1.26
 pandas>=2.0
 plotly>=5.0
 pydantic-settings>=2.0
+redis>=5.0
 streamlit>=1.28
 supabase>=2.0
 yfinance>=0.2
