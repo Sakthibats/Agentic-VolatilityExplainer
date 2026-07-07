@@ -111,7 +111,7 @@ def set_cached_tool_data(ticker: str, tool_data: dict) -> None:
     try:
         pipe = client.pipeline(transaction=False)
         for name, result in tool_data.items():
-            ttl = TOOL_TTL_SECONDS.get(name, get_settings().redis_cache_ttl_seconds)
+            ttl = TOOL_TTL_SECONDS.get(name, 900)
             pipe.setex(_tool_key(ticker, name), ttl, json.dumps(result, default=str))
         pipe.execute()
     except Exception:

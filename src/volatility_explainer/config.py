@@ -19,7 +19,6 @@ class Settings(BaseSettings):
     supabase_url: SecretStr = SecretStr("")
     supabase_key: SecretStr = SecretStr("")
     redis_url: SecretStr = SecretStr("")
-    redis_cache_ttl_seconds: int = 900
 
 
 @lru_cache

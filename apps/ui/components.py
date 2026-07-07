@@ -8,7 +8,6 @@ import re
 import streamlit as st
 
 from ui.placeholders import AgentTile, QuickStat
-from ui.theme import BLUE, BLUE_DARK, BLUE_LIGHT, BLUE_MUTED, DANGER
 
 _AGENT_ICONS: dict[str, str] = {
     "price":   "📊",

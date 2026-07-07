@@ -445,17 +445,6 @@ def inject_theme() -> None:
             letter-spacing: -0.015em;
           }}
 
-          .tile-badge {{
-            font-size: 0.58rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            color: {BLUE};
-            background: {BLUE_LIGHT};
-            padding: 0.14rem 0.48rem;
-            border-radius: 999px;
-            border: 1px solid {BLUE_MUTED};
-          }}
 
           .tile-body {{
             color: {TEXT_MUTED};
