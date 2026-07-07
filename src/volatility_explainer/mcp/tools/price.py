@@ -108,22 +108,17 @@ def _flag_text(
 
 
 def _assess_moves(changes: dict, rv: float | None) -> dict:
-    """Determine significance deterministically, in code, on two axes — never left for the
-    LLM to eyeball from raw numbers or take on faith from a user's alarmed wording ("crashed",
-    "tanked"):
+    """Determine significance deterministically, in code, on two axes — never left for the LLM
+    to eyeball from raw numbers or trust a user's alarmed wording ("crashed", "tanked"):
 
-    - relative_level: |change| vs. this stock's OWN normal move for that horizon
-      (ratio_to_normal = |change| / expected move, which scales with sqrt(time) off the
-      annualized realized vol).
+    - relative_level: |change| vs. this stock's OWN normal move for that horizon (ratio =
+      |change| / expected move, where expected move scales with sqrt(time) off annualized rv).
     - absolute_level: |change| vs. a fixed, stock-agnostic magnitude floor (_ABS_THRESHOLDS_PCT)
-      — so a chronically volatile stock can't get an 18% drop rubber-stamped "typical" purely
+      — so a chronically volatile stock can't get an 18% drop rubber-stamped "typical" just
       because that's normal for IT specifically.
 
-    Returns a thin summary instead of a full per-horizon breakdown: "overall" (the most severe
-    level across all horizons) plus "flags" — one plain-English sentence per horizon that is
-    NOT typical (a horizon absent from "flags" is typical on both axes, unremarkable). This
-    keeps the common case (a calm day, most horizons typical) a tiny payload, and every
-    sentence already states the verdict rather than raw fields the LLM would have to interpret.
+    Returns "overall" (the most severe level across all horizons) plus "flags" — one sentence
+    per horizon that isn't typical on both axes. A horizon absent from "flags" is unremarkable.
     """
     if not rv:
         return {}

@@ -10,10 +10,6 @@ from typing import Any, Callable
 
 import anthropic
 
-# Set VOLX_LOG_LLM_PAYLOAD=1 to dump the full system/tools/messages sent to the model each
-# turn — verbose, off by default. The compact size/usage line below is always printed.
-_LOG_LLM_PAYLOAD = os.environ.get("VOLX_LOG_LLM_PAYLOAD") == "1"
-
 from volatility_explainer.agent.prompts import SYSTEM_PROMPT
 from volatility_explainer.clients.redis_cache import get_cached_tool_data, set_cached_tool_data
 from volatility_explainer.config import get_settings
@@ -24,6 +20,10 @@ from volatility_explainer.mcp.tools.news import fetch_news
 from volatility_explainer.mcp.tools.options import fetch_options_data, fetch_options_positioning
 from volatility_explainer.mcp.tools.price import fetch_price_data
 from volatility_explainer.mcp.tools.sector import fetch_sector_comparison
+
+# Set VOLX_LOG_LLM_PAYLOAD=1 to dump the full system/tools/messages sent to the model each
+# turn — verbose, off by default. The compact size/usage line below is always printed.
+_LOG_LLM_PAYLOAD = os.environ.get("VOLX_LOG_LLM_PAYLOAD") == "1"
 
 _TOOL_DEFINITIONS: list[dict] = [
     {
@@ -357,19 +357,15 @@ def run_explainer(
     query: str = "",
     on_step: Callable[[str], None] | None = None,
 ) -> dict:
-    """Run the investigation: a deterministic price pre-fetch (no LLM round trip — this one
-    is non-negotiable, it also feeds the sideline chart), then a Claude-driven loop where the
-    first turn is the real tool-selection layer — informed by move_assessment (already in the
-    price data) and the user's actual question, it picks whichever of news / options / macro /
-    events / analyst / sector genuinely help, calling all of them together in that one turn
-    where possible. A second round of tool calls only happens if the first round's results
-    turn up something that specifically warrants deeper digging; most investigations resolve
-    in that first round and go straight to synthesis.
+    """Run the investigation: a deterministic price pre-fetch (non-negotiable — it also feeds
+    the sideline chart), then a Claude-driven loop whose first turn is the real tool-selection
+    layer — informed by move_assessment and the user's question, it picks whichever of
+    news/options/macro/events/analyst/sector genuinely help and calls them together in one
+    turn. A second round only happens if the first round's results specifically warrant
+    deeper digging; most investigations resolve in the first round.
 
-    Every tool fetch — price or LLM-chosen — checks Redis for that one tool right before
-    calling it (see _fetch_with_cache): a hit skips the live call, a miss fetches fresh and
-    writes straight back to the cache. There is no upfront bulk cache lookup — a tool the
-    investigation never ends up needing is never checked, let alone fetched, at all.
+    Every tool fetch checks Redis right before calling it (see _fetch_with_cache) — there is
+    no upfront bulk cache lookup, so a tool the investigation never needs is never checked.
     """
     ticker = ticker.upper()
     run_t0 = time.perf_counter()
