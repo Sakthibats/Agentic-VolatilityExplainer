@@ -52,6 +52,25 @@ apps/streamlit_app.py  ──►  agent/orchestrator.py  ──►  Claude (tool
 
 The same tool functions back two surfaces: the in-process agent loop (`agent/orchestrator.py`) for the Streamlit demo, and a standalone [MCP](https://modelcontextprotocol.io/) server (`mcp/server.py`) exposing the identical tools for any MCP-compatible client (Claude Desktop, etc.) — see [MCP server](#mcp-server) below.
 
+## Redis caching
+
+Optional — controlled by `REDIS_URL` in `.env`. If unset or unreachable, every cache call is a silent no-op and the app runs uncached. See `clients/redis_cache.py`.
+
+Each tool's raw result is cached individually under `<TICKER>_<tool_name>` (e.g. `AAPL_get_news`), with a TTL tuned to how fast that data actually goes stale — not one flat TTL for everything. `get_macro` is market-wide (VIX/S&P are the same for every ticker), so it's cached under a single shared key instead of being duplicated per ticker.
+
+| Tool | TTL | Why |
+|---|---|---|
+| `get_price_data` | 15 min | Price / realized vol moves all day |
+| `get_macro` | 15 min | VIX / S&P moves all day; cached once, shared across all tickers |
+| `get_options_data` | 30 min | IV / put-call / skew snapshot drifts through the day |
+| `get_sector_comparison` | 30 min | Tracks price-cadence moves vs. sector ETF |
+| `get_options_positioning` | 1 hour | Max pain / OI walls settle slower than price |
+| `get_analyst_sentiment` | 12 hours | Ratings / price targets rarely move intraday |
+| `get_news` | 4 hours | Headlines don't repeat within a trading day |
+| `get_events` | 24 hours | Earnings / FOMC dates are static day-to-day |
+
+A separate cache holds the fully synthesized answer (summary/tiles/hypotheses), keyed by ticker, TTL 15 min — only used for the no-query "explain the recent price action" default, since that's the only path generic enough for a cache hit to skip the LLM call entirely.
+
 ## Project layout
 
 ```
