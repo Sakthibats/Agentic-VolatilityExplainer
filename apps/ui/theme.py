@@ -532,24 +532,103 @@ def inject_theme() -> None:
           .stat-delta.neu {{ font-size: 0.7rem; font-weight: 600; color: {TEXT_MUTED}; margin-top:0.1rem; }}
 
           /* ── About page ── */
+          /* A real hero panel (gradient background, full container width) rather than bare
+             text — bare text left a big dead gap on the right at wide viewports, since
+             prose naturally caps out around 720-900px for readability while the container
+             runs to 1360px. The pillar grid below fills that width on purpose instead of
+             leaving it empty. */
           .about-hero {{
-            padding: 0.4rem 0 1.6rem;
+            background: linear-gradient(160deg, {BLUE_LIGHT} 0%, {WHITE} 60%);
+            border: 1.5px solid {BLUE_MUTED};
+            border-radius: 22px;
+            padding: 2.1rem 2.3rem 2.3rem;
+            margin: 0.4rem 0 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 12px 32px rgba(37,99,235,0.07);
+          }}
+
+          .about-hero-eyebrow {{
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: {BLUE};
+            margin: 0 0 0.6rem 0;
           }}
 
           .about-hero-title {{
-            font-size: 1.5rem;
+            font-size: 2.15rem;
             font-weight: 800;
             color: {TEXT};
-            letter-spacing: -0.03em;
-            margin: 0 0 0.4rem 0;
+            letter-spacing: -0.04em;
+            line-height: 1.15;
+            margin: 0 0 0.85rem 0;
           }}
 
           .about-hero-sub {{
-            font-size: 0.9rem;
+            font-size: 1.02rem;
+            color: {TEXT_MUTED};
+            line-height: 1.7;
+            max-width: 820px;
+            margin: 0;
+          }}
+
+          .about-pillar-grid {{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.9rem;
+            margin-top: 1.7rem;
+          }}
+
+          .about-pillar-card {{
+            position: relative;
+            overflow: hidden;
+            background: {WHITE};
+            border: 1.5px solid {BORDER};
+            border-radius: 16px;
+            padding: 1.2rem 1.3rem 1.3rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+            transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+          }}
+
+          .about-pillar-card::before {{
+            content: '';
+            position: absolute;
+            left: 0; right: 0; top: 0;
+            height: 3px;
+            background: linear-gradient(90deg, {BLUE} 0%, {BLUE_DARK} 100%);
+          }}
+
+          .about-pillar-card:hover {{
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(37,99,235,0.12);
+            border-color: {BLUE_MUTED};
+          }}
+
+          .about-pillar-icon {{
+            font-size: 1.5rem;
+            display: block;
+            margin-bottom: 0.55rem;
+          }}
+
+          .about-pillar-title {{
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: {TEXT};
+            letter-spacing: -0.015em;
+            margin-bottom: 0.35rem;
+          }}
+
+          .about-pillar-body {{
+            font-size: 0.8rem;
             color: {TEXT_MUTED};
             line-height: 1.6;
-            max-width: 720px;
             margin: 0;
+          }}
+
+          @media (max-width: 900px) {{
+            .about-pillar-grid {{
+              grid-template-columns: 1fr;
+            }}
           }}
 
           .about-section-title {{
