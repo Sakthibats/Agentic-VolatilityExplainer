@@ -3,11 +3,16 @@
 from __future__ import annotations
 
 import json
+import os
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Any, Callable
 
 import anthropic
+
+# Set VOLX_LOG_LLM_PAYLOAD=1 to dump the full system/tools/messages sent to the model each
+# turn — verbose, off by default. The compact size/usage line below is always printed.
+_LOG_LLM_PAYLOAD = os.environ.get("VOLX_LOG_LLM_PAYLOAD") == "1"
 
 from volatility_explainer.agent.prompts import SYSTEM_PROMPT
 from volatility_explainer.clients.redis_cache import get_cached_tool_data, set_cached_tool_data
@@ -200,7 +205,7 @@ _TOOL_DEFINITIONS: list[dict] = [
                 "summary": {
                     "type": "string",
                     "description": (
-                        "30-50 words, 1-2 sentences max: FIRST sentence must directly answer "
+                        "50-80 words, 2-3 sentences max: FIRST sentence must directly answer "
                         "the user's actual question using a real number from the data, from "
                         "the horizon they actually asked about (today/week/2 weeks/month/YTD/"
                         "year) — not a generic price-move restatement, and not silently "
@@ -218,8 +223,10 @@ _TOOL_DEFINITIONS: list[dict] = [
                         "showed nothing unusual and sector already covers the same ground). "
                         "get_price_data almost always earns a tile; news/options usually do too "
                         "when you called them. Curate like an analyst presenting findings, not a "
-                        "log of every data source touched."
+                        "log of every data source touched. Hard cap of 4 — if you have more "
+                        "candidates, drop the least informative ones rather than including all."
                     ),
+                    "maxItems": 4,
                     "items": {
                         "type": "object",
                         "properties": {
@@ -230,11 +237,11 @@ _TOOL_DEFINITIONS: list[dict] = [
                             "title": {"type": "string", "description": "e.g. Price Action"},
                             "summary": {
                                 "type": "string",
-                                "description": "1-2 short, plain sentences with a real number — easy for a beginner to read",
+                                "description": "1-2 plain sentences (<=35 words) with a real number — easy for a beginner to read",
                             },
                             "reasoning": {
                                 "type": "string",
-                                "description": "1 short sentence: why this data mattered",
+                                "description": "ONE short sentence (<=18 words): why this data mattered",
                             },
                         },
                         "required": ["agent", "title", "summary", "reasoning"],
@@ -423,16 +430,42 @@ def run_explainer(
     final_input: dict = {}
 
     for turn in range(_MAX_TURNS):
+        messages_json = json.dumps(messages, default=str)
+        print(
+            f"[llm]   turn {turn + 1} payload          messages={len(messages)}  "
+            f"~{len(SYSTEM_PROMPT) + len(messages_json):,} chars (system+history, excl. tool defs)"
+        )
+        if _LOG_LLM_PAYLOAD:
+            print(f"[llm]   turn {turn + 1} system:\n{SYSTEM_PROMPT}")
+            print(f"[llm]   turn {turn + 1} messages:\n{json.dumps(messages, indent=2, default=str)}")
+
         llm_t0 = time.perf_counter()
         response = client.messages.create(
             model="claude-haiku-4-5-20251001",
             max_tokens=2000,
             system=system_blocks,
             tools=_TOOL_DEFINITIONS,
+            tool_choice={"type": "any"},
             messages=messages,
         )
         llm_elapsed = time.perf_counter() - llm_t0
         llm_time += llm_elapsed
+
+        usage = response.usage
+        print(
+            f"[llm]   turn {turn + 1} usage            in={usage.input_tokens} "
+            f"(cache_read={usage.cache_read_input_tokens or 0}, "
+            f"cache_write={usage.cache_creation_input_tokens or 0})  out={usage.output_tokens}"
+        )
+        # Breakdown of where output tokens actually went — a "text" block here is a preamble
+        # the model wrote before its tool call, pure overhead we could suppress with a forced
+        # tool_choice; "tool_use" size approximates the JSON payload itself (tiles/hypotheses).
+        for block in response.content:
+            if block.type == "text":
+                print(f"[llm]   turn {turn + 1} content block     text       {len(block.text):5d} chars (preamble — unwanted)")
+            elif block.type == "tool_use":
+                size = len(json.dumps(block.input, default=str))
+                print(f"[llm]   turn {turn + 1} content block     tool_use   {size:5d} chars  ({block.name})")
 
         tool_blocks = [b for b in response.content if b.type == "tool_use"]
         terminal_block = next((b for b in tool_blocks if b.name in _TERMINAL_TOOLS), None)
