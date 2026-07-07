@@ -2,7 +2,6 @@ import statistics
 from unittest.mock import MagicMock, patch
 
 import pandas as pd
-import pytest
 
 from volatility_explainer.mcp.tools.price import (
     _assess_moves,

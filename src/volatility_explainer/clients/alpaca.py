@@ -19,13 +19,6 @@ class AlpacaClient:
             "APCA-API-SECRET-KEY": self._api_secret,
         }
 
-    def get_latest_trade(self, symbol: str) -> dict:
-        url = f"{ALPACA_DATA_URL}/v2/stocks/{symbol.upper()}/trades/latest"
-        with self._client or httpx.Client(timeout=30.0) as client:
-            response = client.get(url, headers=self._headers())
-            response.raise_for_status()
-            return response.json()
-
     def get_bars(
         self,
         symbol: str,

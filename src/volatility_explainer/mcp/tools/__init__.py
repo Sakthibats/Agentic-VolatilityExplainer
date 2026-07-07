@@ -1,1 +1,1 @@
-"""MCP tool implementations — thin wrappers over clients and domain logic."""
+"""Data-fetching tools used by the agent orchestrator — thin wrappers over market-data clients."""
