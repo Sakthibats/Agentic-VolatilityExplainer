@@ -1,5 +1,8 @@
 # Agentic Market Explainer
 
+App is LIVE at: https://agentic-volatility-explainer.streamlit.app/
+<img width="1468" height="773" alt="image" src="https://github.com/user-attachments/assets/74599fd6-539f-464c-8f5f-e4ed63ba0444" />
+
 **Every stock move gets a headline. Almost none of them get an investigation.**
 
 Ask "why is TSLA down today" or "is gold overbought" and instead of a canned recap — or a chatbot pattern-matching off stale training data — an agent actually investigates: it pulls real price and volatility numbers first, decides *for itself* whether the move is even statistically unusual, then fans out to news, options positioning, macro context, or upcoming catalysts only when the evidence warrants it. It comes back with ranked hypotheses, confidence levels, and one hard rule: every number is real, or it says so.
