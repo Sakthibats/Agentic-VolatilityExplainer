@@ -7,7 +7,16 @@ import re
 
 import streamlit as st
 
-from ui.about_content import FAQS, LIMITATIONS, MCP_TOOLS, PIPELINE_STEPS, ROADMAP
+from ui.about_content import (
+    FAQS,
+    HERO_EYEBROW,
+    HERO_LEAD,
+    HERO_PILLARS,
+    LIMITATIONS,
+    MCP_TOOLS,
+    PIPELINE_STEPS,
+    ROADMAP,
+)
 from ui.placeholders import AgentTile, QuickStat
 
 _AGENT_ICONS: dict[str, str] = {
@@ -487,12 +496,20 @@ def render_about_page() -> None:
     """Static About page: how the app works, the MCP tool surface, FAQs, limitations,
     and what's next. Content lives in ui/about_content.py — edit that file (by hand, or
     an LLM-drafted pass you verify) rather than this render function."""
+    pillar_cards = "".join(
+        f'<div class="about-pillar-card">'
+        f'<span class="about-pillar-icon">{p.icon}</span>'
+        f'<div class="about-pillar-title">{p.title}</div>'
+        f'<p class="about-pillar-body">{p.body}</p>'
+        f'</div>'
+        for p in HERO_PILLARS
+    )
     st.markdown(
         '<div class="about-hero">'
+        f'<p class="about-hero-eyebrow">{HERO_EYEBROW}</p>'
         '<p class="about-hero-title">How Agentic Market Explainer works</p>'
-        '<p class="about-hero-sub">A hybrid deterministic + agentic pipeline: real price and '
-        'volatility data is pulled first, in code — Claude only reasons (and spends tokens) '
-        'when the situation genuinely calls for it.</p>'
+        f'<p class="about-hero-sub">{HERO_LEAD}</p>'
+        f'<div class="about-pillar-grid">{pillar_cards}</div>'
         '</div>',
         unsafe_allow_html=True,
     )

@@ -40,6 +40,47 @@ class RoadmapItem:
     body: str
 
 
+@dataclass(frozen=True)
+class Pillar:
+    icon: str
+    title: str
+    body: str
+
+
+HERO_EYEBROW = "Under the hood"
+
+HERO_LEAD = (
+    "Every price move gets a headline. Almost none of them get an actual investigation — "
+    "usually it's a generic recap, or a chatbot guessing from memory instead of looking "
+    "anything up. Agentic Market Explainer closes that gap: it behaves like a quick, "
+    "tireless analyst who pulls the real numbers before saying anything, so \"why did this "
+    "move\" gets an answer traceable to real data instead of a plausible-sounding guess."
+)
+
+HERO_PILLARS: list[Pillar] = [
+    Pillar(
+        icon="⚙️",
+        title="Deterministic first",
+        body="Live price, volatility, and a statistical significance check run in plain code, "
+             "before any reasoning happens — no tokens spent on a routine, unremarkable move.",
+    ),
+    Pillar(
+        icon="🧠",
+        title="Agentic when it counts",
+        body="Only once a move actually looks unusual does the reasoning layer switch on, "
+             "deciding for itself which evidence — news, options, macro, earnings — is worth "
+             "pulling next.",
+    ),
+    Pillar(
+        icon="🧩",
+        title="Built on MCP",
+        body="Every data source is a discrete, swappable MCP (Model Context Protocol) tool — "
+             "an open, ever-extendable standard, so new capabilities plug in without "
+             "redesigning the reasoning loop.",
+    ),
+]
+
+
 PIPELINE_STEPS: list[PipelineStep] = [
     PipelineStep(
         icon="📊",
