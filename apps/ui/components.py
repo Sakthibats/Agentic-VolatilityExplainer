@@ -7,6 +7,7 @@ import re
 
 import streamlit as st
 
+from ui.about_content import FAQS, LIMITATIONS, MCP_TOOLS, PIPELINE_STEPS, ROADMAP
 from ui.placeholders import AgentTile, QuickStat
 
 _AGENT_ICONS: dict[str, str] = {
@@ -125,20 +126,63 @@ def render_footer() -> None:
     )
 
 
+def _go_home() -> None:
+    st.session_state["view"] = "main"
+
+
+def _go_about() -> None:
+    st.session_state["view"] = "about"
+
+
 def render_brand_header() -> None:
-    st.markdown(
-        '<div class="app-header">'
-        '<div class="header-brand">'
-        '<div class="header-logo">AME</div>'
-        '<div>'
-        '<span class="header-title">Agentic Market Explainer</span>'
-        '<span class="header-sub">AI investigates why any stock or market moved — multi-agent analysis</span>'
-        '</div>'
-        '</div>'
-        '<span class="header-tag">Beta</span>'
-        '</div>',
-        unsafe_allow_html=True,
-    )
+    """Brand block, Beta tag, and the Home/About nav — one row, same header bar.
+
+    Deliberately st.button, not a real `<a href="?view=...">` — an anchor tag navigates
+    the browser (full document reload, session re-init flash) even for a same-page query
+    string change. A widget click only triggers Streamlit's normal script-rerun-over-the-
+    existing-WebSocket path, which never reloads the page. The buttons are reset with
+    `all: unset` in theme.py and re-skinned as a pill nav so they don't look like buttons."""
+    view = st.session_state.get("view", "main")
+    with st.container(key="app_header_row"):
+        col_brand, col_tag, col_nav = st.columns(
+            [8, 1, 1.5], gap="small", vertical_alignment="center"
+        )
+        with col_brand:
+            st.markdown(
+                '<div class="header-brand">'
+                '<div class="header-logo">AME</div>'
+                '<div>'
+                '<span class="header-title">Agentic Market Explainer</span>'
+                '<span class="header-sub">AI investigates why any stock or market moved — multi-agent analysis</span>'
+                '</div>'
+                '</div>',
+                unsafe_allow_html=True,
+            )
+        with col_tag:
+            st.markdown(
+                '<div class="header-tag-wrap"><span class="header-tag">Beta</span></div>',
+                unsafe_allow_html=True,
+            )
+        with col_nav:
+            # Nested container gives the pair a shared pill "track" background (the
+            # segmented-control look) — two bare st.button widgets side by side have no
+            # single element to hang that background/border on.
+            with st.container(key="nav_group"):
+                col_home, col_about = st.columns([1, 1], gap="small")
+                with col_home:
+                    st.button(
+                        "Home",
+                        key="nav_home",
+                        type="primary" if view == "main" else "secondary",
+                        on_click=_go_home,
+                    )
+                with col_about:
+                    st.button(
+                        "About",
+                        key="nav_about",
+                        type="primary" if view == "about" else "secondary",
+                        on_click=_go_about,
+                    )
 
 
 def _start_analysis() -> None:
@@ -437,3 +481,67 @@ def render_ticker_chip(ticker: str) -> None:
         f'<div class="ticker-chip">▲&nbsp;{ticker}</div>',
         unsafe_allow_html=True,
     )
+
+
+def render_about_page() -> None:
+    """Static About page: how the app works, the MCP tool surface, FAQs, limitations,
+    and what's next. Content lives in ui/about_content.py — edit that file (by hand, or
+    an LLM-drafted pass you verify) rather than this render function."""
+    st.markdown(
+        '<div class="about-hero">'
+        '<p class="about-hero-title">How Agentic Market Explainer works</p>'
+        '<p class="about-hero-sub">A hybrid deterministic + agentic pipeline: real price and '
+        'volatility data is pulled first, in code — Claude only reasons (and spends tokens) '
+        'when the situation genuinely calls for it.</p>'
+        '</div>',
+        unsafe_allow_html=True,
+    )
+
+    st.markdown('<p class="about-section-title">Pipeline</p>', unsafe_allow_html=True)
+    for step in PIPELINE_STEPS:
+        st.markdown(
+            f'<div class="about-step">'
+            f'<div class="about-step-icon">{step.icon}</div>'
+            f'<div>'
+            f'<div class="about-step-title">{step.title}</div>'
+            f'<p class="about-step-body">{step.body}</p>'
+            f'</div>'
+            f'</div>',
+            unsafe_allow_html=True,
+        )
+
+    st.markdown('<p class="about-section-title">MCP tools</p>', unsafe_allow_html=True)
+    cards = "".join(
+        f'<div class="about-tool-card">'
+        f'<div class="about-tool-head">'
+        f'<span>{tool.icon}</span>'
+        f'<span class="about-tool-name">{tool.name}</span>'
+        f'<span class="about-tool-module">{tool.module}</span>'
+        f'</div>'
+        f'<p class="about-tool-desc">{tool.description}</p>'
+        f'</div>'
+        for tool in MCP_TOOLS
+    )
+    st.markdown(f'<div class="about-tool-grid">{cards}</div>', unsafe_allow_html=True)
+
+    st.markdown('<p class="about-section-title">FAQs</p>', unsafe_allow_html=True)
+    for faq in FAQS:
+        with st.expander(faq.question):
+            st.markdown(f'<p class="about-step-body">{faq.answer}</p>', unsafe_allow_html=True)
+
+    st.markdown('<p class="about-section-title">Limitations</p>', unsafe_allow_html=True)
+    items = "".join(f"<li>{item}</li>" for item in LIMITATIONS)
+    st.markdown(f'<ul class="about-limitations">{items}</ul>', unsafe_allow_html=True)
+
+    st.markdown('<p class="about-section-title">On the roadmap</p>', unsafe_allow_html=True)
+    for item in ROADMAP:
+        st.markdown(
+            f'<div class="roadmap-card">'
+            f'<span class="roadmap-badge {item.status}">{item.status.replace("-", " ")}</span>'
+            f'<div>'
+            f'<div class="roadmap-title">{item.title}</div>'
+            f'<p class="roadmap-body">{item.body}</p>'
+            f'</div>'
+            f'</div>',
+            unsafe_allow_html=True,
+        )

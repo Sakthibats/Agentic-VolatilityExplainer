@@ -77,19 +77,28 @@ def inject_theme() -> None:
           }}
 
           /* ── App header ── */
-          .app-header {{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1.2rem 0 1rem;
+          /* st.container(key="app_header_row") wraps the brand block, Beta tag, and the
+             Home/About nav in one row — this carries the border/padding that used to live
+             on a plain .app-header div, so the nav visually belongs to the header bar. */
+          .st-key-app_header_row {{
+            padding: 0.7rem 0 0.9rem;
             border-bottom: 1px solid {BORDER};
             margin-bottom: 1.6rem;
+          }}
+
+          .st-key-app_header_row [data-testid="stHorizontalBlock"] {{
+            align-items: center !important;
           }}
 
           .header-brand {{
             display: flex;
             align-items: center;
             gap: 0.9rem;
+          }}
+
+          .header-tag-wrap {{
+            display: flex;
+            justify-content: flex-end;
           }}
 
           .header-logo {{
@@ -522,6 +531,218 @@ def inject_theme() -> None:
           .stat-delta.neg {{ font-size: 0.7rem; font-weight: 600; color: {DANGER}; margin-top:0.1rem; }}
           .stat-delta.neu {{ font-size: 0.7rem; font-weight: 600; color: {TEXT_MUTED}; margin-top:0.1rem; }}
 
+          /* ── About page ── */
+          .about-hero {{
+            padding: 0.4rem 0 1.6rem;
+          }}
+
+          .about-hero-title {{
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: {TEXT};
+            letter-spacing: -0.03em;
+            margin: 0 0 0.4rem 0;
+          }}
+
+          .about-hero-sub {{
+            font-size: 0.9rem;
+            color: {TEXT_MUTED};
+            line-height: 1.6;
+            max-width: 720px;
+            margin: 0;
+          }}
+
+          .about-section-title {{
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: {BLUE};
+            margin: 2rem 0 0.9rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+          }}
+
+          .about-section-title::before {{
+            content: '';
+            width: 0.4rem;
+            height: 0.4rem;
+            border-radius: 999px;
+            background: {BLUE};
+          }}
+
+          .about-step {{
+            display: flex;
+            gap: 0.85rem;
+            padding: 0.85rem 0;
+            border-bottom: 1px solid {BORDER};
+          }}
+
+          .about-step:last-child {{
+            border-bottom: none;
+          }}
+
+          .about-step-icon {{
+            font-size: 1rem;
+            flex-shrink: 0;
+            line-height: 1.5;
+            opacity: 0.85;
+          }}
+
+          .about-step-title {{
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: {TEXT};
+            letter-spacing: -0.01em;
+            margin-bottom: 0.2rem;
+          }}
+
+          .about-step-body {{
+            font-size: 0.8rem;
+            color: {TEXT_MUTED};
+            line-height: 1.65;
+            margin: 0;
+          }}
+
+          .about-tool-grid {{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.6rem;
+          }}
+
+          .about-tool-card {{
+            border: 1.5px solid {BORDER};
+            border-radius: 14px;
+            background: {WHITE};
+            padding: 0.85rem 1rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+            transition: border-color 0.18s ease, box-shadow 0.18s ease;
+          }}
+
+          .about-tool-card:hover {{
+            border-color: {BLUE_MUTED};
+            box-shadow: 0 3px 14px rgba(37,99,235,0.08);
+          }}
+
+          .about-tool-head {{
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.3rem;
+          }}
+
+          .about-tool-name {{
+            font-family: 'SFMono-Regular', ui-monospace, Menlo, monospace;
+            font-size: 0.76rem;
+            font-weight: 700;
+            color: {TEXT};
+          }}
+
+          .about-tool-module {{
+            font-size: 0.62rem;
+            color: {TEXT_LIGHT};
+            background: {PAGE_BG};
+            border-radius: 999px;
+            padding: 0.1rem 0.5rem;
+            margin-left: auto;
+          }}
+
+          .about-tool-desc {{
+            font-size: 0.78rem;
+            color: {TEXT_MUTED};
+            line-height: 1.6;
+            margin: 0;
+          }}
+
+          .about-limitations {{
+            border: 1.5px solid {BORDER};
+            border-radius: 14px;
+            background: {WHITE};
+            padding: 1.1rem 1.3rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+          }}
+
+          .about-limitations li {{
+            font-size: 0.82rem;
+            color: {TEXT_MUTED};
+            line-height: 1.75;
+            margin-bottom: 0.4rem;
+          }}
+
+          .about-limitations li:last-child {{ margin-bottom: 0; }}
+
+          .roadmap-card {{
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            border: 1.5px solid {BORDER};
+            border-radius: 14px;
+            background: {WHITE};
+            padding: 0.85rem 1.1rem;
+            margin-bottom: 0.55rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+          }}
+
+          .roadmap-badge {{
+            flex-shrink: 0;
+            font-size: 0.58rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 0.25rem 0.55rem;
+            border-radius: 999px;
+            margin-top: 0.1rem;
+            white-space: nowrap;
+          }}
+
+          .roadmap-badge.planned {{
+            background: {PAGE_BG};
+            color: {TEXT_MUTED};
+            border: 1px solid {BORDER};
+          }}
+
+          .roadmap-badge.in-progress {{
+            background: {BLUE_LIGHT};
+            color: {BLUE};
+            border: 1px solid {BLUE_MUTED};
+          }}
+
+          .roadmap-badge.shipped {{
+            background: #F0FDF4;
+            color: {SUCCESS};
+            border: 1px solid #BBF7D0;
+          }}
+
+          .roadmap-title {{
+            font-weight: 700;
+            font-size: 0.84rem;
+            color: {TEXT};
+            letter-spacing: -0.01em;
+            margin-bottom: 0.2rem;
+          }}
+
+          .roadmap-body {{
+            font-size: 0.8rem;
+            color: {TEXT_MUTED};
+            line-height: 1.6;
+            margin: 0;
+          }}
+
+          [data-testid="stExpander"] {{
+            border: 1.5px solid {BORDER} !important;
+            border-radius: 14px !important;
+            background: {WHITE} !important;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03) !important;
+            margin-bottom: 0.5rem !important;
+          }}
+
+          [data-testid="stExpander"] summary {{
+            font-size: 0.85rem !important;
+            font-weight: 600 !important;
+            color: {TEXT} !important;
+          }}
+
           /* ── Native Streamlit overrides ── */
           [data-testid="stTextInput"] input,
           .stTextInput > div > div > input {{
@@ -589,6 +810,141 @@ def inject_theme() -> None:
             background: {BLUE_LIGHT} !important;
             border-color: {BLUE_MUTED} !important;
             color: {BLUE} !important;
+          }}
+
+          /* ── Header nav (Home / About) ── */
+          /* Rounded "segmented control" pill nav, built from st.button so a click is a
+             normal Streamlit rerun (no browser navigation/page reload) rather than an
+             <a href> — but Streamlit's own button skin has to be fully wiped first.
+             `all: unset` resets every property (background image, border, box-shadow,
+             outline, appearance) in one shot instead of chasing each one — a previous pass
+             that overrode individual properties still lost fights over ones it forgot
+             (box-shadow, outline) to Streamlit's own :hover/:focus rules. Repeating the
+             reset in each pseudo-state block (not just the base rule) matters because
+             those are separate rules the browser evaluates independently. */
+          .st-key-nav_group {{
+            display: inline-flex !important;
+            margin-left: auto;
+            background: {PAGE_BG};
+            border: 1px solid {BORDER};
+            border-radius: 999px;
+            padding: 0.2rem;
+          }}
+
+          .st-key-nav_group [data-testid="stHorizontalBlock"] {{
+            gap: 0.15rem !important;
+          }}
+
+          .st-key-nav_home, .st-key-nav_about {{
+            width: auto !important;
+          }}
+
+          .st-key-nav_home .stButton, .st-key-nav_about .stButton {{
+            display: flex !important;
+            justify-content: center !important;
+          }}
+
+          .st-key-nav_home button[kind],
+          .st-key-nav_about button[kind] {{
+            all: unset !important;
+            box-sizing: border-box !important;
+            cursor: pointer !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+            font-size: 0.8rem !important;
+            font-weight: 600 !important;
+            color: {TEXT_MUTED} !important;
+            padding: 0.3rem 0.85rem !important;
+            border: 1.5px solid transparent !important;
+            border-radius: 999px !important;
+            white-space: nowrap !important;
+          }}
+
+          .st-key-nav_home button[kind]:hover,
+          .st-key-nav_about button[kind]:hover {{
+            all: unset !important;
+            box-sizing: border-box !important;
+            cursor: pointer !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+            font-size: 0.8rem !important;
+            font-weight: 600 !important;
+            padding: 0.3rem 0.85rem !important;
+            border: 1.5px solid transparent !important;
+            border-radius: 999px !important;
+            white-space: nowrap !important;
+            color: {BLUE_DARK} !important;
+            background: rgba(37,99,235,0.08) !important;
+          }}
+
+          .st-key-nav_home button[kind]:focus,
+          .st-key-nav_about button[kind]:focus,
+          .st-key-nav_home button[kind]:focus-visible,
+          .st-key-nav_about button[kind]:focus-visible,
+          .st-key-nav_home button[kind]:active,
+          .st-key-nav_about button[kind]:active {{
+            all: unset !important;
+            box-sizing: border-box !important;
+            cursor: pointer !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+            font-size: 0.8rem !important;
+            font-weight: 600 !important;
+            padding: 0.3rem 0.85rem !important;
+            border: 1.5px solid transparent !important;
+            border-radius: 999px !important;
+            white-space: nowrap !important;
+            color: {TEXT_MUTED} !important;
+          }}
+
+          .st-key-nav_home button[kind="primary"],
+          .st-key-nav_about button[kind="primary"] {{
+            all: unset !important;
+            box-sizing: border-box !important;
+            cursor: pointer !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+            font-size: 0.8rem !important;
+            font-weight: 600 !important;
+            padding: 0.3rem 0.85rem !important;
+            border: 1.5px solid {BLUE_MUTED} !important;
+            border-radius: 999px !important;
+            white-space: nowrap !important;
+            color: {BLUE} !important;
+            background: {WHITE} !important;
+          }}
+
+          .st-key-nav_home button[kind="primary"]:hover,
+          .st-key-nav_about button[kind="primary"]:hover,
+          .st-key-nav_home button[kind="primary"]:focus,
+          .st-key-nav_about button[kind="primary"]:focus,
+          .st-key-nav_home button[kind="primary"]:focus-visible,
+          .st-key-nav_about button[kind="primary"]:focus-visible,
+          .st-key-nav_home button[kind="primary"]:active,
+          .st-key-nav_about button[kind="primary"]:active {{
+            all: unset !important;
+            box-sizing: border-box !important;
+            cursor: pointer !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+            font-size: 0.8rem !important;
+            font-weight: 600 !important;
+            padding: 0.3rem 0.85rem !important;
+            border: 1.5px solid {BLUE_MUTED} !important;
+            border-radius: 999px !important;
+            white-space: nowrap !important;
+            color: {BLUE} !important;
+            background: {WHITE} !important;
           }}
 
           /* Remove stray borders */
