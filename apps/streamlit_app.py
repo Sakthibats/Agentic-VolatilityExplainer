@@ -8,6 +8,7 @@ import uuid
 import streamlit as st
 
 from ui.components import (
+    render_about_page,
     render_agent_tiles_section,
     render_brand_header,
     render_final_output_box,
@@ -43,6 +44,12 @@ st.session_state.setdefault("analysis_result", None)
 st.session_state.setdefault("all_tiles", [])
 st.session_state.setdefault("chart_period", "6M")
 st.session_state.setdefault("guardrail_message", "")
+st.session_state.setdefault("view", "main")
+
+if st.session_state["view"] == "about":
+    render_about_page()
+    render_footer()
+    st.stop()
 
 render_search_bar()
 
