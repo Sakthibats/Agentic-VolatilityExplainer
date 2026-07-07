@@ -10,8 +10,12 @@ __pycache__
 .env.local
 .env.*.local
 tests
-BACKLOG.md
-PRIVACY.md
 .devcontainer
 .claude
 .claudeignore
+data
+*.md
+!README.md
+.dockerignore
+Dockerfile
+docker-compose.yml
