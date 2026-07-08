@@ -3,7 +3,12 @@ services:
     build: .
     ports:
       - "8501:8501"
-    env_file:
-      - .env
+    environment:
+      - FRED_API_KEY=${FRED_API_KEY:-}
+      - FINNHUB_API_KEY=${FINNHUB_API_KEY:-}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+      - SUPABASE_URL=${SUPABASE_URL:-}
+      - SUPABASE_KEY=${SUPABASE_KEY:-}
+      - REDIS_URL=${REDIS_URL:-}
     volumes:
       - ./data:/app/data

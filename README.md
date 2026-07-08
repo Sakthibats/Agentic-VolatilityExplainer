@@ -36,7 +36,7 @@ This is a hybrid pipeline built around a deliberate cost/latency/accuracy tradeo
 - **Engineered for trust, not fluency.** The model can only end its turn by calling one of two terminal tools — `submit_analysis` or `flag_out_of_scope` — never by writing free-text. That guarantees schema-valid output and removes any need to regex-extract JSON from prose. Every number in that output must trace back to a real tool result; missing data says "Data unavailable" instead of getting invented; a tool already answered earlier in the conversation is read from history, never re-called.
 - **A framing guardrail against alarmist wording.** If a user calls a move a "crash" or "collapse" but the real number is unremarkable, the agent doesn't adopt that framing or go hunting for a dramatic catalyst that isn't there — it corrects the premise with the actual number first.
 - **No unexplained jargon, ever.** The system prompt bans "ATM IV," "skew," "OI," and "max pain" as standalone terms — every claim gets translated into plain English with the number attached: *"options traders are betting the stock settles near $98"* instead of *"max pain is $98."*
-- **Degrades gracefully, never breaks.** Price, news, and macro each try a primary client (Alpaca / Finnhub / FRED) and silently fall back to `yfinance` on failure or a missing key — the app runs end-to-end with zero API keys configured.
+- **Degrades gracefully, never breaks.** Price, news, and macro each try a primary client (Finnhub / FRED) and silently fall back to `yfinance` on failure or a missing key — the app runs end-to-end with zero API keys configured.
 
 ## The math behind "is this move actually unusual"
 
@@ -75,7 +75,7 @@ It's easy to conflate these; they solve unrelated problems:
 
 | Layer | What it caches | Where | Why |
 |---|---|---|---|
-| **Per-tool Redis cache** | Each tool's *raw* result (price, news, options, ...), individually keyed | `clients/redis_cache.py` | Avoid re-hitting Alpaca/Finnhub/yfinance for data that hasn't gone stale yet. Still runs a fresh LLM synthesis against the user's actual question — a cache hit here never skips reasoning. |
+| **Per-tool Redis cache** | Each tool's *raw* result (price, news, options, ...), individually keyed | `clients/redis_cache.py` | Avoid re-hitting Finnhub/yfinance for data that hasn't gone stale yet. Still runs a fresh LLM synthesis against the user's actual question — a cache hit here never skips reasoning. |
 | **Final-answer Redis cache** | The fully synthesized summary/tiles/hypotheses, keyed by ticker only | `clients/redis_cache.py` | Only used for the no-query "explain the recent price action" default — the one path generic enough that a hit can skip the LLM call *entirely*. |
 | **Anthropic prompt caching** | The system prompt and the (large, static) tool-definition schema | `agent/orchestrator.py`, via `cache_control: {"type": "ephemeral"}` | Both are identical on every turn of a multi-turn investigation, and identical across *every* run of the app — marking them cacheable means only the growing tool-result tail gets freshly processed each turn, instead of re-billing and re-latency-ing the full system prompt + ~8 tool schemas every single turn. |
 
@@ -123,7 +123,7 @@ apps/streamlit_app.py  ──►  agent/orchestrator.py  ──►  tool-use loo
                                     │
                                     ▼
                            mcp/tools/  (MCP-shaped: name, schema, dispatch — in-process today)
-                           ├── price.py     → clients/alpaca.py   (yfinance fallback)
+                           ├── price.py     → clients/finnhub.py  (yfinance always, for history)
                            ├── options.py   → yfinance options chains
                            ├── news.py      → clients/finnhub.py  (yfinance fallback)
                            ├── events.py    → yfinance earnings + hardcoded FOMC calendar
@@ -140,7 +140,7 @@ apps/streamlit_app.py  ──►  agent/orchestrator.py  ──►  tool-use loo
 ```
 src/volatility_explainer/
 ├── config.py            # pydantic-settings, validated secrets
-├── clients/              # external API adapters (Alpaca, Finnhub, FRED, Redis)
+├── clients/              # external API adapters (Finnhub, FRED, Redis)
 ├── analytics/             # Supabase usage logging (fire-and-forget, background thread)
 ├── agent/                  # orchestrator (tool-use loop) + system prompt
 └── mcp/tools/               # 8 MCP-shaped data tools — dual-purpose: in-process today, server-ready
@@ -162,7 +162,7 @@ tests/
 | Agent | Anthropic Claude (Haiku 4.5), tool-use loop, max 7 turns, prompt caching on system + tool defs |
 | Tool protocol | [MCP](https://modelcontextprotocol.io/) tool-definition conventions (`mcp` SDK installed; standalone server on the roadmap) |
 | UI | Streamlit + Plotly |
-| Data | Alpaca (price), Finnhub (news), FRED (macro) — all with `yfinance` fallback |
+| Data | Finnhub (price quote, news), FRED (macro) — all with `yfinance` fallback |
 | Cache | Redis — per-tool TTL cache + final-answer cache, both optional/no-op without `REDIS_URL` |
 | Analytics | Supabase — anonymized, fire-and-forget usage logging with a local JSONL fallback |
 | Config | Pydantic Settings, validated `.env` secrets |
@@ -178,7 +178,7 @@ pytest
 streamlit run apps/streamlit_app.py
 ```
 
-`yfinance` requires no API key, so the app runs end-to-end with **zero keys configured** — Alpaca/Finnhub/FRED are optional upgrades for better data quality and rate limits, and Supabase/Redis are optional infrastructure that no-op cleanly without credentials. `ANTHROPIC_API_KEY` is the only one required for the agent's reasoning step.
+`yfinance` requires no API key, so the app runs end-to-end with **zero keys configured** — Finnhub/FRED are optional upgrades for better data quality and rate limits, and Supabase/Redis are optional infrastructure that no-op cleanly without credentials. `ANTHROPIC_API_KEY` is the only one required for the agent's reasoning step.
 
 Lint before committing: `ruff check .`
 

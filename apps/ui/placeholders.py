@@ -312,21 +312,6 @@ def parse_search_input(raw: str) -> tuple[str | None, str, str | None]:
 # Price history
 # ---------------------------------------------------------------------------
 
-def _period_to_alpaca(period: str) -> tuple[str, str]:
-    """Return (timeframe, start_iso) for Alpaca get_bars."""
-    today = date.today()
-    if period == "1W":
-        return "1Hour", (today - timedelta(days=7)).isoformat()
-    if period == "1M":
-        return "1Day", (today - timedelta(days=30)).isoformat()
-    if period == "YTD":
-        return "1Day", date(today.year, 1, 1).isoformat()
-    if period == "1Y":
-        return "1Day", (today - timedelta(days=365)).isoformat()
-    # default: 6M
-    return "1Day", (today - timedelta(days=182)).isoformat()
-
-
 _YF_PERIOD_MAP: dict[str, str] = {
     "1W": "5d",
     "1M": "1mo",
@@ -337,32 +322,9 @@ _YF_PERIOD_MAP: dict[str, str] = {
 
 
 def fetch_price_history(ticker: str, period: str = "6M") -> pd.DataFrame:
-    """Return close prices for the given period. Alpaca first, yfinance fallback."""
+    """Return close prices for the given period, via yfinance."""
     ticker = ticker.upper()
 
-    # Try Alpaca get_bars
-    try:
-        src_path = os.path.join(os.path.dirname(__file__), "..", "..", "src")
-        src_path = os.path.abspath(src_path)
-        if src_path not in sys.path:
-            sys.path.insert(0, src_path)
-        from volatility_explainer.clients.alpaca import AlpacaClient
-        from volatility_explainer.config import get_settings
-
-        settings = get_settings()
-        if settings.alpaca_api_key.get_secret_value():
-            timeframe, start = _period_to_alpaca(period)
-            raw = AlpacaClient(settings).get_bars(ticker, timeframe=timeframe, start=start)
-            bars = raw.get("bars", [])
-            if bars:
-                df = pd.DataFrame(bars)
-                df["date"] = pd.to_datetime(df["t"]).dt.tz_localize(None)
-                df["close"] = df["c"].astype(float)
-                return df[["date", "close"]].dropna()
-    except Exception as exc:
-        print(f"[chart:{ticker}]  alpaca    FAILED — {exc}")
-
-    # Fallback: yfinance
     try:
         import yfinance as yf
 
@@ -634,5 +596,5 @@ def _stub_tiles(ticker: str) -> list[AgentTile]:
 def _stub_summary(ticker: str) -> str:
     return (
         f"**{ticker} analysis** could not be completed — "
-        "verify that ALPACA, FINNHUB, FRED, and ANTHROPIC API keys are set in your `.env` file."
+        "verify that FINNHUB, FRED, and ANTHROPIC API keys are set in your `.env` file."
     )

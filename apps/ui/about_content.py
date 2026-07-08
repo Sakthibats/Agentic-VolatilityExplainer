@@ -278,12 +278,6 @@ FAQS: list[FaqItem] = [
                "US coverage), so non-US tickers may resolve with sparse or missing data, or "
                "not resolve at all. Treat results outside US markets as unreliable for now.",
     ),
-    FaqItem(
-        question="Can I use these tools outside this app?",
-        answer="Yes. The same tool functions are also exposed as a standalone MCP "
-               "(Model Context Protocol) server, so any MCP-compatible client (e.g. Claude "
-               "Desktop) can call them directly.",
-    ),
 ]
 
 

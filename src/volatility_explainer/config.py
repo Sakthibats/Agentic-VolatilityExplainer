@@ -13,8 +13,6 @@ class Settings(BaseSettings):
 
     fred_api_key: SecretStr = SecretStr("")
     finnhub_api_key: SecretStr = SecretStr("")
-    alpaca_api_key: SecretStr = SecretStr("")
-    alpaca_api_secret: SecretStr = SecretStr("")
     anthropic_api_key: SecretStr = SecretStr("")
     supabase_url: SecretStr = SecretStr("")
     supabase_key: SecretStr = SecretStr("")
