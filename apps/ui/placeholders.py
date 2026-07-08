@@ -285,6 +285,12 @@ def parse_search_input(raw: str) -> tuple[str | None, str, str | None]:
         if ticker:
             return ticker, text, "ticker_symbol"
 
+    # An explicit all-caps token (e.g. "MU", "TSLA") is already unambiguous ticker
+    # shorthand — trust it directly rather than discarding it when the yfinance
+    # lookup above returns nothing (e.g. rate-limited or offline).
+    if upper_candidates:
+        return upper_candidates[0], text, "ticker_symbol"
+
     # 3. Other candidates — company names etc. Require the matched company's name to
     # actually start with the candidate word, so an incidental substring match
     # (e.g. "cake" inside "Cheesecake Factory") doesn't get treated as a real hit.

@@ -4,6 +4,8 @@ history() + the existing horizon-change helper for the comparison itself."""
 
 from __future__ import annotations
 
+from concurrent.futures import ThreadPoolExecutor
+
 from volatility_explainer.mcp.tools.price import _compute_horizon_changes
 
 _SECTOR_ETF_MAP: dict[str, str] = {
@@ -43,8 +45,12 @@ def fetch_sector_comparison(ticker: str) -> dict:
                 if sector else "No sector classification available for this ticker.",
             }
 
-        stock_hist = yf_ticker.history(period="2y")
-        etf_hist = yf.Ticker(etf_symbol).history(period="2y")
+        # Two independent HTTP calls — fetch in parallel rather than back-to-back.
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            stock_fut = pool.submit(yf_ticker.history, period="2y")
+            etf_fut = pool.submit(yf.Ticker(etf_symbol).history, period="2y")
+            stock_hist = stock_fut.result()
+            etf_hist = etf_fut.result()
 
         stock_changes = _compute_horizon_changes(stock_hist) if not stock_hist.empty else {}
         etf_changes = _compute_horizon_changes(etf_hist) if not etf_hist.empty else {}

@@ -151,12 +151,28 @@ def _assess_moves(changes: dict, rv: float | None) -> dict:
 def fetch_price_data(ticker: str) -> dict:
     """Fetch latest price, recent performance, and multi-horizon % changes for a ticker.
 
-    Finnhub gives the live quote (current price / prev close) when a paid key is
-    configured; yfinance always supplies the historical series used to compute
-    realized vol and the 1d/1w/2w/1mo/YTD/1y change_pct breakdown, since Finnhub
-    candles require a paid plan.
+    Finnhub's quote endpoint is a single fast, reliable REST call and is tried first
+    for the live price/prev_close when a paid key is configured. yfinance's unofficial,
+    scrape-based API is slower and flakier, but it's the only source for the historical
+    series used to compute realized vol and the 1d/1w/2w/1mo/YTD/1y change_pct
+    breakdown (Finnhub candles require a paid plan), so it's always fetched regardless
+    — and doubles as the price/prev_close fallback when Finnhub is unavailable or fails.
     """
     ticker = ticker.upper()
+
+    quote = None
+    try:
+        from volatility_explainer.clients.finnhub import FinnhubClient
+
+        settings = get_settings()
+        if settings.finnhub_api_key.get_secret_value():
+            client = FinnhubClient(settings)
+            data = client.get_quote(ticker)
+            price = data.get("c")
+            if price:
+                quote = {"price": price, "prev_close": data.get("pc")}
+    except Exception as exc:
+        print(f"[price:{ticker}]  finnhub   FAILED — {exc}")
 
     import yfinance as yf
 
@@ -170,31 +186,19 @@ def fetch_price_data(ticker: str) -> dict:
     rv = _compute_realized_vol(hist) if hist is not None and not hist.empty else None
     move_assessment = _assess_moves(changes, rv)
 
-    # Try Finnhub first for the live quote — Finnhub candles require a paid plan, so
-    # realized vol / horizon changes always come from the yfinance history above.
-    try:
-        from volatility_explainer.clients.finnhub import FinnhubClient
-
-        settings = get_settings()
-        if settings.finnhub_api_key.get_secret_value():
-            client = FinnhubClient(settings)
-            quote = client.get_quote(ticker)
-            price = quote.get("c")
-            prev_close = quote.get("pc")
-            chg_pct = round((price - prev_close) / prev_close * 100, 2) if price and prev_close else None
-
-            if price:
-                return {
-                    "ticker": ticker,
-                    "price": round(price, 2),
-                    "prev_close": round(prev_close, 2) if prev_close else None,
-                    "change_pct": chg_pct if chg_pct is not None else changes.get("1d"),
-                    "realized_vol_annualized_pct": rv,
-                    "changes_pct": changes,
-                    "move_assessment": move_assessment,
-                }
-    except Exception as exc:
-        print(f"[price:{ticker}]  finnhub   FAILED — {exc}")
+    if quote is not None:
+        price = quote["price"]
+        prev_close = quote["prev_close"]
+        chg_pct = round((price - prev_close) / prev_close * 100, 2) if price and prev_close else None
+        return {
+            "ticker": ticker,
+            "price": round(price, 2),
+            "prev_close": round(prev_close, 2) if prev_close else None,
+            "change_pct": chg_pct if chg_pct is not None else changes.get("1d"),
+            "realized_vol_annualized_pct": rv,
+            "changes_pct": changes,
+            "move_assessment": move_assessment,
+        }
 
     # Fallback: derive price/prev_close from the same yfinance history already fetched
     try:

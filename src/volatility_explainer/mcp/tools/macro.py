@@ -1,3 +1,5 @@
+from concurrent.futures import ThreadPoolExecutor
+
 from volatility_explainer.config import get_settings
 
 VIX_SERIES_ID = "VIXCLS"
@@ -19,12 +21,17 @@ def fetch_macro() -> dict:
     try:
         import yfinance as yf
 
-        vix_hist = yf.Ticker("^VIX").history(period="5d")
+        # Two independent HTTP calls — fetch in parallel rather than back-to-back.
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            vix_fut = pool.submit(lambda: yf.Ticker("^VIX").history(period="5d"))
+            sp500_fut = pool.submit(lambda: yf.Ticker("^GSPC").history(period="5d"))
+            vix_hist = vix_fut.result()
+            sp500_hist = sp500_fut.result()
+
         vix_current = round(float(vix_hist["Close"].iloc[-1]), 2) if not vix_hist.empty else None
         vix_prev = round(float(vix_hist["Close"].iloc[-2]), 2) if len(vix_hist) >= 2 else None
         vix_chg = round(vix_current - vix_prev, 2) if vix_current and vix_prev else None
 
-        sp500_hist = yf.Ticker("^GSPC").history(period="5d")
         sp500_chg = None
         if len(sp500_hist) >= 2:
             sp500_chg = round(
