@@ -90,7 +90,7 @@ PIPELINE_STEPS: list[PipelineStep] = [
         icon="📊",
         title="1. Pull price & volatility, always, no LLM call",
         body="Every query starts the same way: latest price, multi-horizon % change, and "
-             "realized volatility are fetched deterministically in code, before Claude is "
+             "realized volatility are fetched deterministically in code, before the LLM is "
              "ever invoked.",
     ),
     PipelineStep(
@@ -109,10 +109,12 @@ PIPELINE_STEPS: list[PipelineStep] = [
     ),
     PipelineStep(
         icon="🧠",
-        title="4. Claude decides what else is needed",
-        body="A tool-use loop (max 7 turns) reasons about whether anything conditional is "
-             "still missing, macro context, sector comparison, earnings/FOMC proximity, "
-             "and calls only the tools that are genuinely relevant.",
+        title="4. The LLM decides what else is needed",
+        body="Reasoning is handled by Claude Haiku, chosen for its balance of speed, cost, "
+             "and quality in this kind of tool-use loop. A tool-use loop (max 7 turns) "
+             "reasons about whether anything conditional is still missing, macro context, "
+             "sector comparison, earnings/FOMC proximity, and calls only the tools that are "
+             "genuinely relevant.",
     ),
     PipelineStep(
         icon="✅",
@@ -244,10 +246,10 @@ FAQS: list[FaqItem] = [
                "not the model's parametric memory. If a source fails or comes back empty, "
                "the model is told to write \"Data unavailable\" rather than fill the gap "
                "with something plausible. Second, the deterministic pre-fetch: price and "
-               "volatility are computed in plain Python before Claude is ever invoked, and "
+               "volatility are computed in plain Python before the LLM is ever invoked, and "
                "spliced into the conversation as synthetic tool_use / tool_result turns, "
                "so the model never sees a blank canvas where it has to recall a number "
-               "from training. Claude only decides what else to pull (news, options, "
+               "from training. The LLM only decides what else to pull (news, options, "
                "macro, sector, earnings) via a real tool-use loop capped at 7 turns, so "
                "every subsequent fact it cites came from an actual function call it made "
                "in this session. None of that makes the model infallible. Like any LLM, "
@@ -267,7 +269,8 @@ FAQS: list[FaqItem] = [
                "to an actual tool result. That's the real difference between a specialized, "
                "grounded tool and a generic model reciting from memory, and it's why we "
                "believe this gives you a materially better answer to \"why did this move\" "
-               "than asking ChatGPT or Claude directly. It doesn't eliminate hallucination "
+               "than asking a general-purpose chatbot directly. It doesn't eliminate "
+               "hallucination "
                "risk entirely, but the model is reasoning over real data instead of "
                "recalling from memory.",
     ),
