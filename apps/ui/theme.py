@@ -201,6 +201,30 @@ def inject_theme() -> None:
             box-shadow: 0 4px 14px rgba(37,99,235,0.25);
           }}
 
+          .footer-actions {{
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+          }}
+
+          .footer-github {{
+            display: inline-flex;
+            align-items: center;
+            color: {TEXT_LIGHT};
+            transition: color 0.15s ease, transform 0.15s ease;
+          }}
+
+          .footer-github:hover {{
+            color: {TEXT_MUTED};
+            transform: translateY(-1px);
+          }}
+
+          .footer-github svg {{
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+          }}
+
           /* ── Search form card ── */
           /* st.form renders as [data-testid="stForm"] — the only reliable container
              we can style around Streamlit native inputs + buttons. */
