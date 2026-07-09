@@ -9,6 +9,9 @@
 # Claude local overrides (may contain personal settings)
 .claude/settings.local.json
 
+# Dev container config (local/Codespaces only, not used by CI)
+.devcontainer/
+
 # Python
 __pycache__/
 *.py[cod]
