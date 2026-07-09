@@ -7,8 +7,6 @@ on:
 
 env:
   IMAGE_NAME: sakthibas98/agentic-market-explainer
-  CLOUD_RUN_SERVICE: agentic-market-explainer
-  CLOUD_RUN_REGION: asia-southeast1
 
 jobs:
   test:
