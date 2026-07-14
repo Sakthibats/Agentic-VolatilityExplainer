@@ -386,14 +386,17 @@ def render_price_chart(ticker: str) -> None:
         unsafe_allow_html=True,
     )
 
-    # Period selector
-    cols = st.columns(len(_PERIODS))
-    for i, p in enumerate(_PERIODS):
-        with cols[i]:
-            is_active = period == p
-            if st.button(p, key=f"period_{p}", type="primary" if is_active else "secondary", width="stretch"):
-                st.session_state["chart_period"] = p
-                st.rerun()
+    # Period selector — keyed container so CSS can render the five buttons as one
+    # compact segmented row that sizes to content and never wraps ("YT / D") on
+    # narrow viewports, instead of five full-width columns.
+    with st.container(key="chart_periods"):
+        cols = st.columns(len(_PERIODS))
+        for i, p in enumerate(_PERIODS):
+            with cols[i]:
+                is_active = period == p
+                if st.button(p, key=f"period_{p}", type="primary" if is_active else "secondary", width="stretch"):
+                    st.session_state["chart_period"] = p
+                    st.rerun()
 
     from ui.placeholders import fetch_price_history
     df = fetch_price_history(ticker, period)

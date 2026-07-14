@@ -24,6 +24,13 @@ def inject_theme() -> None:
           @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;1,14..32,400&display=swap');
 
           /* ── Base ── */
+          /* Opt out of Chrome/Android "Auto Dark Mode", which force-inverts light pages
+             (white cards → murky gray, the guardrail cream → dark brown). This app ships
+             a deliberate light design; `only light` tells the browser not to darken it. */
+          :root {{
+            color-scheme: only light;
+          }}
+
           html, body, [class*="css"] {{
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
             -webkit-font-smoothing: antialiased;
@@ -60,6 +67,11 @@ def inject_theme() -> None:
           .block-container, [data-testid="stMainBlockContainer"] {{
             padding-top: 0 !important;
             padding-bottom: 3rem;
+            /* Fluid gutters: ~5vw of breathing room that never collapses below 1rem
+               on phones nor balloons past 4rem on desktop — replaces Streamlit's
+               fixed desktop padding that eats a third of a phone screen. */
+            padding-left: clamp(1rem, 5vw, 4rem) !important;
+            padding-right: clamp(1rem, 5vw, 4rem) !important;
             max-width: 1360px;
             flex: 1;
             display: flex;
@@ -88,12 +100,52 @@ def inject_theme() -> None:
 
           .st-key-app_header_row [data-testid="stHorizontalBlock"] {{
             align-items: center !important;
+            flex-wrap: nowrap !important;
+          }}
+
+          /* On narrow viewports Streamlit's percentage-width columns shrink below their
+             content and the Beta tag / nav pills overlap. Let the brand column flex and
+             truncate while the tag + nav columns size to their content. */
+          .st-key-app_header_row [data-testid="stColumn"] {{
+            flex: 0 0 auto !important;
+            width: auto !important;
+            min-width: unset !important;
+          }}
+
+          .st-key-app_header_row [data-testid="stColumn"]:first-child {{
+            flex: 1 1 auto !important;
+            min-width: 0 !important;
+          }}
+
+          /* Streamlit's vertical_alignment="center" clips column content: the column
+             gets overflow:hidden and its markdown wrappers a fixed 24px height, which
+             crops the 40px logo. Let the header column grow to its content instead. */
+          .st-key-app_header_row [data-testid="stColumn"] {{
+            overflow: visible !important;
+            height: auto !important;
+          }}
+
+          .st-key-app_header_row [data-testid="stMarkdown"],
+          .st-key-app_header_row [data-testid="stMarkdown"] > div,
+          .st-key-app_header_row [data-testid="stElementContainer"] {{
+            height: auto !important;
           }}
 
           .header-brand {{
             display: flex;
             align-items: center;
             gap: 0.9rem;
+            min-width: 0;
+          }}
+
+          .header-brand > div:last-child {{
+            min-width: 0;
+          }}
+
+          .header-title, .header-sub {{
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
           }}
 
           .header-tag-wrap {{
@@ -241,6 +293,28 @@ def inject_theme() -> None:
           [data-testid="stForm"]:focus-within {{
             border-color: {BLUE} !important;
             box-shadow: 0 0 0 4px rgba(37,99,235,0.1), 0 6px 20px rgba(0,0,0,0.05) !important;
+          }}
+
+          /* Keep the input + Analyze button on one line at any width: the input column
+             flexes, the button column sizes to its (nowrap) label instead of shrinking
+             until the text breaks mid-word ("Analy / ze →"). */
+          [data-testid="stForm"] [data-testid="stHorizontalBlock"] {{
+            flex-wrap: nowrap !important;
+          }}
+
+          [data-testid="stForm"] [data-testid="stColumn"]:first-child {{
+            flex: 1 1 auto !important;
+            min-width: 0 !important;
+          }}
+
+          [data-testid="stForm"] [data-testid="stColumn"]:last-child {{
+            flex: 0 0 auto !important;
+            width: auto !important;
+            min-width: unset !important;
+          }}
+
+          [data-testid="stForm"] button {{
+            white-space: nowrap !important;
           }}
 
           /* ── Analysis box ── */
@@ -517,7 +591,10 @@ def inject_theme() -> None:
           /* ── Stat grid ── */
           .stat-grid {{
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            /* auto-fit: two-up in the side panel, reflows to 3–4-up when the panel
+               stacks full-width on tablets, single column on very narrow phones —
+               no per-breakpoint overrides needed. */
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 0.48rem;
           }}
 
@@ -580,7 +657,7 @@ def inject_theme() -> None:
           }}
 
           .about-hero-title {{
-            font-size: 2.15rem;
+            font-size: clamp(1.45rem, 1rem + 2.2vw, 2.15rem);
             font-weight: 800;
             color: {TEXT};
             letter-spacing: -0.04em;
@@ -598,7 +675,7 @@ def inject_theme() -> None:
 
           .about-pillar-grid {{
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 0.9rem;
             margin-top: 1.7rem;
           }}
@@ -647,12 +724,6 @@ def inject_theme() -> None:
             color: {TEXT_MUTED};
             line-height: 1.6;
             margin: 0;
-          }}
-
-          @media (max-width: 900px) {{
-            .about-pillar-grid {{
-              grid-template-columns: 1fr;
-            }}
           }}
 
           .about-section-title {{
@@ -710,7 +781,7 @@ def inject_theme() -> None:
 
           .about-tool-grid {{
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 0.6rem;
           }}
 
@@ -873,7 +944,13 @@ def inject_theme() -> None:
           }}
 
           /* Primary button */
-          .stButton > button[kind="primary"] {{
+          .stButton > button,
+          [data-testid="stFormSubmitButton"] > button {{
+            white-space: nowrap !important;
+          }}
+
+          .stButton > button[kind="primary"],
+          [data-testid="stFormSubmitButton"] > button[kind="primaryFormSubmit"] {{
             background: linear-gradient(145deg, #3B82F6 0%, {BLUE_DARK} 100%) !important;
             border: none !important;
             color: white !important;
@@ -886,13 +963,15 @@ def inject_theme() -> None:
             letter-spacing: -0.01em !important;
           }}
 
-          .stButton > button[kind="primary"]:hover {{
+          .stButton > button[kind="primary"]:hover,
+          [data-testid="stFormSubmitButton"] > button[kind="primaryFormSubmit"]:hover {{
             background: linear-gradient(145deg, {BLUE} 0%, #1E3A8A 100%) !important;
             box-shadow: 0 4px 16px rgba(37,99,235,0.38) !important;
             transform: translateY(-1px);
           }}
 
-          .stButton > button[kind="primary"]:active {{
+          .stButton > button[kind="primary"]:active,
+          [data-testid="stFormSubmitButton"] > button[kind="primaryFormSubmit"]:active {{
             transform: translateY(0) !important;
             box-shadow: 0 1px 4px rgba(37,99,235,0.25) !important;
           }}
@@ -932,10 +1011,23 @@ def inject_theme() -> None:
             border: 1px solid {BORDER};
             border-radius: 999px;
             padding: 0.2rem;
+            width: auto !important;
           }}
 
           .st-key-nav_group [data-testid="stHorizontalBlock"] {{
             gap: 0.15rem !important;
+            flex-wrap: nowrap !important;
+          }}
+
+          /* Both pills size to their label — and explicitly exempt the first nav column
+             from the header rule above that lets the *brand* column flex-grow, otherwise
+             "Home" stretches and overlaps "About" when the header gets tight. */
+          .st-key-nav_group [data-testid="stColumn"],
+          .st-key-nav_group [data-testid="stColumn"]:first-child {{
+            flex: 0 0 auto !important;
+            width: auto !important;
+            min-width: unset !important;
+            overflow: visible;
           }}
 
           .st-key-nav_home, .st-key-nav_about {{
@@ -963,6 +1055,7 @@ def inject_theme() -> None:
             border: 1.5px solid transparent !important;
             border-radius: 999px !important;
             white-space: nowrap !important;
+            transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
           }}
 
           .st-key-nav_home button[kind]:hover,
@@ -980,6 +1073,7 @@ def inject_theme() -> None:
             border: 1.5px solid transparent !important;
             border-radius: 999px !important;
             white-space: nowrap !important;
+            transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
             color: {BLUE_DARK} !important;
             background: rgba(37,99,235,0.08) !important;
           }}
@@ -1003,6 +1097,7 @@ def inject_theme() -> None:
             border: 1.5px solid transparent !important;
             border-radius: 999px !important;
             white-space: nowrap !important;
+            transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
             color: {TEXT_MUTED} !important;
           }}
 
@@ -1021,8 +1116,10 @@ def inject_theme() -> None:
             border: 1.5px solid {BLUE_MUTED} !important;
             border-radius: 999px !important;
             white-space: nowrap !important;
+            transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
             color: {BLUE} !important;
             background: {WHITE} !important;
+            box-shadow: 0 1px 4px rgba(37,99,235,0.18) !important;
           }}
 
           .st-key-nav_home button[kind="primary"]:hover,
@@ -1046,8 +1143,107 @@ def inject_theme() -> None:
             border: 1.5px solid {BLUE_MUTED} !important;
             border-radius: 999px !important;
             white-space: nowrap !important;
+            transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
             color: {BLUE} !important;
             background: {WHITE} !important;
+            box-shadow: 0 1px 4px rgba(37,99,235,0.18) !important;
+          }}
+
+          /* ── Chart period selector ── */
+          /* Render the 1W/1M/6M/YTD/1Y buttons as one compact segmented row that
+             sizes to content — five equal-width columns squeeze on narrow screens
+             until labels wrap vertically ("YT / D"). */
+          .st-key-chart_periods [data-testid="stHorizontalBlock"] {{
+            flex-wrap: nowrap !important;
+            gap: 0.3rem !important;
+          }}
+
+          .st-key-chart_periods [data-testid="stColumn"] {{
+            flex: 0 0 auto !important;
+            width: auto !important;
+            min-width: unset !important;
+          }}
+
+          .st-key-chart_periods button {{
+            padding: 0.24rem 0.7rem !important;
+          }}
+
+          /* ── Responsive breakpoints ── */
+          /* Tablet and below: stack the analysis/chart panels. Streamlit only stacks
+             columns under 640px, which leaves tablets (641–992px) with two columns too
+             narrow to breathe. Direct-child chain targets only the top-level pair, not
+             the nested columns (period selector) inside the right panel. */
+          @media (max-width: 992px) {{
+            .st-key-main_cols > div > [data-testid="stVerticalBlock"] > [data-testid="stHorizontalBlock"] {{
+              flex-wrap: wrap !important;
+              gap: 1.4rem !important;
+            }}
+
+            .st-key-main_cols > div > [data-testid="stVerticalBlock"] > [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] {{
+              flex: 1 1 100% !important;
+              width: 100% !important;
+              min-width: 100% !important;
+            }}
+          }}
+
+          /* Phones: tighten card padding, drop secondary header text, shrink empty
+             states — progressive disclosure instead of shrinking everything. */
+          @media (max-width: 640px) {{
+            .header-sub {{
+              display: none;
+            }}
+
+            .st-key-app_header_row {{
+              padding: 0.55rem 0 0.7rem;
+              margin-bottom: 1.1rem;
+            }}
+
+            .analysis-box {{
+              padding: 1.1rem;
+            }}
+
+            .analysis-box.empty-panel {{
+              min-height: 200px;
+            }}
+
+            .guardrail-box {{
+              padding: 1.5rem 1rem;
+              min-height: 180px;
+            }}
+
+            .about-hero {{
+              padding: 1.4rem 1.2rem 1.6rem;
+              border-radius: 18px;
+            }}
+
+            .footer-bottom {{
+              flex-direction: column;
+              align-items: flex-start;
+            }}
+          }}
+
+          /* Touch devices: comfortable tap targets (≥44px per Apple HIG / WCAG 2.5.8)
+             for the primary actions; slightly roomier nav pills. */
+          @media (pointer: coarse) {{
+            [data-testid="stFormSubmitButton"] > button,
+            .st-key-chart_periods button {{
+              min-height: 44px !important;
+            }}
+
+            .st-key-nav_home button[kind],
+            .st-key-nav_about button[kind] {{
+              padding: 0.45rem 1rem !important;
+            }}
+          }}
+
+          /* Users who ask the OS for less motion get none — the shimmer/blink/hover
+             animations are decorative, not informative. */
+          @media (prefers-reduced-motion: reduce) {{
+            *, *::before, *::after {{
+              animation-duration: 0.01ms !important;
+              animation-iteration-count: 1 !important;
+              transition-duration: 0.01ms !important;
+            }}
           }}
 
           /* Remove stray borders */

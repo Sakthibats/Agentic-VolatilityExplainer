@@ -65,7 +65,11 @@ if phase == "running" and submitted:
         st.session_state["guardrail_message"] = err_msg
         st.rerun()
 
-left_col, right_col = st.columns([11, 7], gap="large")
+# Keyed container gives CSS a stable hook (.st-key-main_cols) to stack these two
+# panels below the tablet breakpoint — Streamlit's own stacking only kicks in at
+# 640px, which leaves tablets with two uncomfortably narrow columns.
+with st.container(key="main_cols"):
+    left_col, right_col = st.columns([11, 7], gap="large")
 
 # ── Left panel ────────────────────────────────────────────────────────────────
 with left_col:
