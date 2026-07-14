@@ -219,6 +219,10 @@ def _start_analysis() -> None:
         st.session_state["visible_tiles"] = 0
         st.session_state["analysis_result"] = None
         st.session_state["all_tiles"] = []
+        # Force the scope gate to re-evaluate this new query before anything runs.
+        st.session_state["query_checked"] = False
+        st.session_state["resolved_ticker"] = None
+        st.session_state["question"] = ""
 
 
 def _stop_analysis() -> None:

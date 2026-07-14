@@ -134,3 +134,60 @@ def test_unrelated_long_sentence_without_ticker_is_rejected():
     is_valid, message = p.validate_financial_query("how do I learn to bake a cake", None, None)
     assert is_valid is False
     assert "stock and ETF price movements" in message
+
+
+# ---------------------------------------------------------------------------
+# evaluate_query — the scope gate that runs before any network lookup
+# ---------------------------------------------------------------------------
+
+
+def test_out_of_scope_sentence_is_rejected_with_zero_network_calls():
+    # Regression: "I want to buy a car" used to resolve "car" -> Carnival (CCL)
+    # via yfinance BEFORE the guardrail fired, then chart/stats were fetched
+    # for that leaked ticker. The gate must reject without any lookup.
+    with patch("yfinance.Search") as mock_search, \
+         patch.object(p, "_resolve_ticker_llm") as mock_llm:
+        decision = p.evaluate_query("I want to buy a car")
+
+    assert decision.in_scope is False
+    assert decision.ticker is None
+    assert "stock and ETF price movements" in decision.message
+    mock_search.assert_not_called()
+    mock_llm.assert_not_called()
+
+
+def test_short_company_name_lookup_still_resolves_and_passes():
+    with patch("yfinance.Search", return_value=_mock_search(
+        [{"symbol": "TSLA", "shortname": "Tesla, Inc."}]
+    )):
+        decision = p.evaluate_query("tesla")
+
+    assert decision.in_scope is True
+    assert decision.ticker == "TSLA"
+    assert decision.source == "company_name"
+
+
+def test_short_unrelated_query_that_resolves_nothing_is_rejected_without_ticker():
+    with patch.object(p, "_resolve_ticker", return_value=None), \
+         patch.object(p, "_resolve_ticker_llm", return_value=None):
+        decision = p.evaluate_query("bake a cake")
+
+    assert decision.in_scope is False
+    assert decision.ticker is None
+
+
+def test_financial_sentence_passes_gate_and_reaches_resolution():
+    with patch("yfinance.Search", return_value=_mock_search([{"symbol": "TSLA"}])):
+        decision = p.evaluate_query("why did TSLA drop today")
+
+    assert decision.in_scope is True
+    assert decision.ticker == "TSLA"
+
+
+def test_empty_query_is_out_of_scope_without_lookup():
+    with patch("yfinance.Search") as mock_search:
+        decision = p.evaluate_query("   ")
+
+    assert decision.in_scope is False
+    assert decision.ticker is None
+    mock_search.assert_not_called()

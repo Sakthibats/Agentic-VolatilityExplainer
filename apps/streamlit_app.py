@@ -19,7 +19,7 @@ from ui.components import (
     render_thinking_step,
     render_ticker_chip,
 )
-from ui.placeholders import parse_search_input, run_analysis, validate_financial_query
+from ui.placeholders import evaluate_query, run_analysis
 from ui.theme import inject_theme
 
 st.set_page_config(
@@ -45,6 +45,9 @@ st.session_state.setdefault("all_tiles", [])
 st.session_state.setdefault("chart_period", "6M")
 st.session_state.setdefault("guardrail_message", "")
 st.session_state.setdefault("view", "main")
+st.session_state.setdefault("query_checked", False)
+st.session_state.setdefault("resolved_ticker", None)
+st.session_state.setdefault("question", "")
 
 if st.session_state["view"] == "about":
     render_about_page()
@@ -55,15 +58,26 @@ render_search_bar()
 
 phase     = st.session_state["analysis_phase"]
 submitted = st.session_state["submitted_query"]
-ticker, question, ticker_source = parse_search_input(submitted) if submitted else (None, "", None)
 
-# Guardrail check — runs only when a new query is submitted (phase == "running")
-if phase == "running" and submitted:
-    is_valid, err_msg = validate_financial_query(submitted, ticker, ticker_source)
-    if not is_valid:
+# Scope gate — runs exactly once per submitted query, BEFORE any ticker
+# resolution, data fetch, or agent call. An out-of-scope query ends here with
+# no ticker in session state, so neither the chart panel nor the pipeline can
+# spend an API call on it.
+if phase == "running" and submitted and not st.session_state["query_checked"]:
+    decision = evaluate_query(submitted)
+    st.session_state["query_checked"] = True
+    if decision.in_scope:
+        st.session_state["resolved_ticker"] = decision.ticker
+        st.session_state["question"] = decision.question
+    else:
         st.session_state["analysis_phase"] = "guardrail"
-        st.session_state["guardrail_message"] = err_msg
-        st.rerun()
+        st.session_state["guardrail_message"] = decision.message
+        st.session_state["resolved_ticker"] = None
+        st.session_state["question"] = ""
+    st.rerun()
+
+ticker   = st.session_state["resolved_ticker"]
+question = st.session_state["question"]
 
 # Keyed container gives CSS a stable hook (.st-key-main_cols) to stack these two
 # panels below the tablet breakpoint — Streamlit's own stacking only kicks in at

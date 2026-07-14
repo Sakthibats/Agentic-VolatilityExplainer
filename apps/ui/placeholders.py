@@ -43,6 +43,21 @@ class AnalysisResult:
     final_output: str
 
 
+@dataclass(frozen=True)
+class QueryDecision:
+    """Outcome of the scope gate for one submitted query.
+
+    When in_scope is False, ticker is always None and message holds the
+    guardrail text — nothing downstream (ticker resolution, charts, agents)
+    should run for that query.
+    """
+    in_scope: bool
+    ticker: str | None
+    question: str
+    source: str | None
+    message: str = ""
+
+
 # ---------------------------------------------------------------------------
 # Input parsing — handles tickers, company names, natural language, concepts
 # ---------------------------------------------------------------------------
@@ -121,6 +136,12 @@ _FINANCIAL_INTENT_WORDS: frozenset[str] = frozenset({
     "happened", "happen", "moved", "move", "performing", "explain",
     "investigate", "analyze", "volatile", "lower", "higher", "up", "down",
 })
+
+_OUT_OF_SCOPE_MESSAGE = (
+    "This tool investigates **stock and ETF price movements** only. "
+    "Ask about a company (*why did Apple dip?*), a ticker (*TSLA*), "
+    "or a market/asset (*what happened to gold?*, *why is the market down?*)."
+)
 
 _ticker_cache: dict[str, str | None] = {}
 _llm_ticker_cache: dict[str, str | None] = {}
@@ -239,11 +260,7 @@ def validate_financial_query(raw: str, ticker: str | None, source: str | None = 
     if words & (_FINANCIAL_KEYWORDS | _FINANCIAL_INTENT_WORDS):
         return True, ""
 
-    return False, (
-        "This tool investigates **stock and ETF price movements** only. "
-        "Ask about a company (*why did Apple dip?*), a ticker (*TSLA*), "
-        "or a market/asset (*what happened to gold?*, *why is the market down?*)."
-    )
+    return False, _OUT_OF_SCOPE_MESSAGE
 
 
 def parse_search_input(raw: str) -> tuple[str | None, str, str | None]:
@@ -305,6 +322,48 @@ def parse_search_input(raw: str) -> tuple[str | None, str, str | None]:
         return ticker, text, "llm"
 
     return None, text, None
+
+
+def _has_cheap_financial_signal(text: str) -> bool:
+    """Purely local (no network, no LLM) check for evidence of financial intent:
+    a concept phrase, a financial noun/intent word, or an explicit uppercase
+    ticker-like token. Used to reject unrelated sentences before spending any
+    yfinance search or LLM call on them.
+    """
+    text_lower = text.lower()
+    if any(re.search(pattern, text_lower) for pattern, _ in _CONCEPT_HINTS):
+        return True
+    words = set(re.findall(r"\b\w+\b", text_lower))
+    if words & (_FINANCIAL_KEYWORDS | _FINANCIAL_INTENT_WORDS):
+        return True
+    tokens = re.findall(r"\b[a-zA-Z]{1,20}\b", text)
+    return any(re.match(r"^[A-Z]{2,5}$", t) and t not in _STOP_WORDS for t in tokens)
+
+
+def evaluate_query(raw: str) -> QueryDecision:
+    """Single entry point for a submitted query: decide scope FIRST, then resolve.
+
+    Order matters for cost: a long sentence with no local financial signal is
+    rejected here without touching yfinance or the LLM ticker fallback — the
+    only queries that reach network-based resolution are ones that either show
+    financial intent locally or are short enough (≤4 words) to plausibly be a
+    direct ticker/company-name lookup (e.g. "sandisk").
+
+    Out-of-scope decisions always carry ticker=None so callers can't
+    accidentally chart or analyze a ticker that leaked out of a rejected query.
+    """
+    text = raw.strip()
+    if not text:
+        return QueryDecision(False, None, "", None, _OUT_OF_SCOPE_MESSAGE)
+
+    if len(text.split()) > 4 and not _has_cheap_financial_signal(text):
+        return QueryDecision(False, None, text, None, _OUT_OF_SCOPE_MESSAGE)
+
+    ticker, question, source = parse_search_input(text)
+    is_valid, message = validate_financial_query(text, ticker, source)
+    if not is_valid:
+        return QueryDecision(False, None, question, None, message)
+    return QueryDecision(True, ticker, question, source)
 
 
 # ---------------------------------------------------------------------------
