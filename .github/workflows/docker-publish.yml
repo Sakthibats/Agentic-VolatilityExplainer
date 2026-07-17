@@ -37,8 +37,6 @@ jobs:
     needs: test
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    outputs:
-      image_tag: ${{ steps.meta.outputs.image_tag }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -52,10 +50,6 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Set image tag
-        id: meta
-        run: echo "image_tag=${{ env.IMAGE_NAME }}:${{ github.run_number }}" >> "$GITHUB_OUTPUT"
-
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
@@ -63,7 +57,7 @@ jobs:
           push: true
           tags: |
             ${{ env.IMAGE_NAME }}:latest
-            ${{ steps.meta.outputs.image_tag }}
+            ${{ env.IMAGE_NAME }}:${{ github.run_number }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -85,7 +79,7 @@ jobs:
       - name: Deploy to Cloud Run
         run: |
           gcloud run deploy "${{ env.CLOUD_RUN_SERVICE }}" \
-            --image="${{ needs.build-and-push.outputs.image_tag }}" \
+            --image="${{ env.IMAGE_NAME }}:${{ github.run_number }}" \
             --region="${{ env.GCP_REGION }}" \
             --project="${{ env.GCP_PROJECT_ID }}" \
             --quiet
