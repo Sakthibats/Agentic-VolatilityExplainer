@@ -24,6 +24,8 @@ import logging
 import threading
 from typing import Any
 
+from redis.exceptions import RedisError
+
 from volatility_explainer.config import get_settings
 
 _logger = logging.getLogger(__name__)
@@ -87,15 +89,15 @@ def get_cached_tool_data(ticker: str, tool_names: list[str]) -> dict:
         return {}
     try:
         raw_values = client.mget([_tool_key(ticker, name) for name in tool_names])
-    except Exception:
+    except (RedisError, OSError):
         _logger.exception("[redis_cache] batch read failed for %s", ticker)
         return {}
     out: dict = {}
-    for name, raw in zip(tool_names, raw_values):
+    for name, raw in zip(tool_names, raw_values, strict=False):
         if raw is not None:
             try:
                 out[name] = json.loads(raw)
-            except Exception:
+            except (TypeError, ValueError):
                 _logger.exception("[redis_cache] decode failed for %s/%s", ticker, name)
     return out
 
@@ -114,7 +116,7 @@ def set_cached_tool_data(ticker: str, tool_data: dict) -> None:
             ttl = TOOL_TTL_SECONDS.get(name, 900)
             pipe.setex(_tool_key(ticker, name), ttl, json.dumps(result, default=str))
         pipe.execute()
-    except Exception:
+    except (RedisError, OSError, TypeError, ValueError):
         _logger.exception("[redis_cache] batch write failed for %s", ticker)
 
 
@@ -130,7 +132,7 @@ def get_cached_final_answer(ticker: str) -> dict | None:
         if raw is None:
             return None
         return json.loads(raw)
-    except Exception:
+    except (RedisError, OSError, TypeError, ValueError):
         _logger.exception("[redis_cache] final_answer read failed for %s", ticker)
         return None
 
@@ -142,5 +144,5 @@ def set_cached_final_answer(ticker: str, result: dict) -> None:
         return
     try:
         client.setex(_final_answer_key(ticker), _FINAL_ANSWER_TTL_SECONDS, json.dumps(result, default=str))
-    except Exception:
+    except (RedisError, OSError, TypeError, ValueError):
         _logger.exception("[redis_cache] final_answer write failed for %s", ticker)

@@ -1,8 +1,18 @@
+from functools import lru_cache
+
 import httpx
 
 from volatility_explainer.config import Settings
 
 FINNHUB_API_URL = "https://finnhub.io/api/v1"
+
+
+@lru_cache(maxsize=4)
+def _shared_client(timeout: float) -> httpx.Client:
+    """One persistent client per timeout — connection pooling/keep-alive across calls
+    instead of a fresh TCP+TLS handshake per request. Never closed; lives for the process.
+    """
+    return httpx.Client(timeout=timeout)
 
 
 class FinnhubClient:
@@ -16,10 +26,10 @@ class FinnhubClient:
         """Current quote: current price (c), previous close (pc), open (o), high (h), low (l)."""
         url = f"{FINNHUB_API_URL}/quote"
         params = {"symbol": symbol.upper(), "token": self._api_key}
-        with self._client or httpx.Client(timeout=15.0) as client:
-            response = client.get(url, params=params)
-            response.raise_for_status()
-            return response.json()
+        client = self._client or _shared_client(15.0)
+        response = client.get(url, params=params)
+        response.raise_for_status()
+        return response.json()
 
     def get_company_news(self, symbol: str, *, from_date: str, to_date: str) -> list[dict]:
         url = f"{FINNHUB_API_URL}/company-news"
@@ -29,7 +39,7 @@ class FinnhubClient:
             "to": to_date,
             "token": self._api_key,
         }
-        with self._client or httpx.Client(timeout=30.0) as client:
-            response = client.get(url, params=params)
-            response.raise_for_status()
-            return response.json()
+        client = self._client or _shared_client(30.0)
+        response = client.get(url, params=params)
+        response.raise_for_status()
+        return response.json()

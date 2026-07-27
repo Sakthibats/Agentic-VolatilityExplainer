@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+/* ── Design tokens ─────────────────────────────────────────────────────────
+   Light  = the brand identity: white + blue only (#1565C0 family), no coral/orange.
+   Dark   = trading-terminal: deep navy surfaces, brighter blue, mono numerals.
+   Chart line colors validated (dataviz six-checks) against each mode's surface. */
+
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  --primary: #1565c0;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #0f172a;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #e3f2fd;
+  --accent-foreground: #0d47a1;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #e6ebf2;
+  --input: #e6ebf2;
+  --ring: #1976d2;
+  --radius: 0.8rem;
+  --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 16px rgba(21, 101, 192, 0.05);
+
+  --pos: #15803d;
+  --neg: #dc2626;
+  --chart-line: #1565c0;
+  --chart-fill: rgba(21, 101, 192, 0.08);
+  --chart-grid: #eef2f7;
+}
+
+.dark {
+  --background: #0b1220;
+  --foreground: #e6edf3;
+  --card: #0f1729;
+  --card-foreground: #e6edf3;
+  --popover: #0f1729;
+  --popover-foreground: #e6edf3;
+  --primary: #4b9fea;
+  --primary-foreground: #0b1220;
+  --secondary: #111c2e;
+  --secondary-foreground: #e6edf3;
+  --muted: #111c2e;
+  --muted-foreground: #8da2b8;
+  --accent: #13233a;
+  --accent-foreground: #9ec9f5;
+  --destructive: #f87171;
+  --destructive-foreground: #0b1220;
+  --border: #1e293b;
+  --input: #1e293b;
+  --ring: #4b9fea;
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 16px rgba(0, 0, 0, 0.25);
+
+  --pos: #34d399;
+  --neg: #f87171;
+  --chart-line: #4b9fea;
+  --chart-fill: rgba(75, 159, 234, 0.1);
+  --chart-grid: #16223a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-pos: var(--pos);
+  --color-neg: var(--neg);
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  border-color: var(--border);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Numerals in data contexts: tabular figures; mono in dark for the terminal feel */
+.numeric {
+  font-variant-numeric: tabular-nums;
+}
+.dark .numeric {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+/* Soft elevation for cards/tiles */
+.elevated {
+  box-shadow: var(--shadow-card);
+}
+
+/* Entrance animation for streamed-in content */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.rise-in {
+  animation: rise-in 0.35s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise-in {
+    animation: none;
+  }
+}
+
+/* Buttons/links: immediate touch feedback instead of hover-only affordance */
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+button:active:not(:disabled) {
+  transform: scale(0.98);
+}

@@ -89,7 +89,7 @@ def fetch_quick_stats(ticker: str) -> list[QuickStat]:
             stats.append(QuickStat("Last Price", f"${price:,.2f}", delta))
 
         pe = info.get("trailingPE")
-        stats.append(QuickStat("P/E Ratio", f"{pe:.1f}×" if pe else "N/A"))
+        stats.append(QuickStat("P/E Ratio", f"{pe:.1f}×" if pe else "N/A"))  # noqa: RUF001
 
         mkt_cap = info.get("marketCap")
         if mkt_cap:
@@ -104,7 +104,7 @@ def fetch_quick_stats(ticker: str) -> list[QuickStat]:
         lo = info.get("fiftyTwoWeekLow")
         hi = info.get("fiftyTwoWeekHigh")
         if lo and hi:
-            stats.append(QuickStat("52W Range", f"${lo:.0f} – ${hi:.0f}"))
+            stats.append(QuickStat("52W Range", f"${lo:.0f} – ${hi:.0f}"))  # noqa: RUF001
 
         avg_vol = info.get("averageVolume")
         if avg_vol:

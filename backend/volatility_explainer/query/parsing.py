@@ -10,6 +10,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
+
 @dataclass(frozen=True)
 class QueryDecision:
     """Outcome of the scope gate for one submitted query.
@@ -46,8 +47,8 @@ _STOP_WORDS: frozenset[str] = frozenset({
     "perform", "performing", "doing", "look", "looking", "think", "about",
     "around", "over", "under", "since", "after", "before", "during",
     "between", "into", "through", "across", "against", "because", "from",
-    "there", "here", "where", "then", "than", "like", "if", "too",
-    "please", "help", "me", "know", "think", "feel", "way", "time",
+    "there", "here", "then", "than", "like", "if", "too",
+    "please", "help", "know", "feel", "way", "time",
     "day", "last", "next", "recent", "past", "future", "current", "latest",
 })
 

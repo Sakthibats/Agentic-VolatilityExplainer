@@ -7,9 +7,10 @@ presentation stripped out: this returns structured AnalysisResult data; renderin
 
 from __future__ import annotations
 
+import asyncio
 import threading
 import time
-from typing import Callable
+from collections.abc import Callable
 
 from volatility_explainer.agent.orchestrator import run_explainer
 from volatility_explainer.analytics.supabase_logger import log_query_background
@@ -64,7 +65,7 @@ def _shape_hypotheses(raw: list, ticker: str) -> list[Hypothesis]:
     return shaped
 
 
-def analyze(
+async def analyze(
     raw_query: str,
     session_id: str,
     on_step: Callable[[str], None] | None = None,
@@ -72,9 +73,10 @@ def analyze(
     """Run one investigation end to end: scope gate → cache → orchestrator → shaping.
 
     Never raises: failures come back as status "error" so API callers always get a
-    well-formed AnalysisResult.
+    well-formed AnalysisResult. Sync/network-bound helpers (scope gate, Redis) run on
+    worker threads; the orchestrator itself is awaited natively.
     """
-    decision = evaluate_query(raw_query)
+    decision = await asyncio.to_thread(evaluate_query, raw_query)
     if not decision.in_scope or not decision.ticker:
         return AnalysisResult(
             ticker=None, query=raw_query, status="guardrail",
@@ -90,12 +92,12 @@ def analyze(
         result = None
         if not question:
             redis_t0 = time.perf_counter()
-            result = get_cached_final_answer(ticker)
+            result = await asyncio.to_thread(get_cached_final_answer, ticker)
             redis_elapsed = (time.perf_counter() - redis_t0) * 1000
             print(f"[redis]  final_answer lookup   {redis_elapsed:6.0f}ms  ({'hit' if result else 'miss'})")
 
         if result is None:
-            result = run_explainer(ticker, question, on_step=on_step)
+            result = await run_explainer(ticker, question, on_step=on_step)
 
             if not question and result.get("status") == "complete":
                 # Write-back only serves a *future* request — run it off-thread rather

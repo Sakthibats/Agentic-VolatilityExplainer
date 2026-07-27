@@ -2,14 +2,14 @@
 
 from __future__ import annotations
 
+import asyncio
 import json
 import os
 import time
-from concurrent.futures import ThreadPoolExecutor, as_completed
-from typing import Any, Callable
+from collections.abc import Callable
+from typing import Any
 
 import anthropic
-
 from volatility_explainer.agent.prompts import SYSTEM_PROMPT
 from volatility_explainer.clients.redis_cache import get_cached_tool_data, set_cached_tool_data
 from volatility_explainer.config import get_settings
@@ -352,7 +352,7 @@ def _attach_news_citations(tiles: list[dict], tool_data: dict) -> list[dict]:
     return tiles
 
 
-def run_explainer(
+async def run_explainer(
     ticker: str,
     query: str = "",
     on_step: Callable[[str], None] | None = None,
@@ -364,6 +364,11 @@ def run_explainer(
     turn. A second round only happens if the first round's results specifically warrant
     deeper digging; most investigations resolve in the first round.
 
+    Async architecture: LLM turns (the long poles) are awaited natively; tool fetches stay
+    sync — every tool can fall back to yfinance, which is sync-only — and run quarantined
+    on worker threads, fanned out per turn with asyncio.gather. The event loop is never
+    blocked, so many investigations can run concurrently in one process.
+
     Every tool fetch checks Redis right before calling it (see _fetch_with_cache) — there is
     no upfront bulk cache lookup, so a tool the investigation never needs is never checked.
     """
@@ -371,7 +376,7 @@ def run_explainer(
     run_t0 = time.perf_counter()
 
     api_key = get_settings().anthropic_api_key.get_secret_value() or None
-    client = anthropic.Anthropic(api_key=api_key)
+    client = anthropic.AsyncAnthropic(api_key=api_key)
 
     tool_data: dict[str, dict] = {}
     cache_hit_names: set[str] = set()
@@ -382,7 +387,9 @@ def run_explainer(
     if on_step:
         on_step(_STEP_LABELS["get_price_data"])
     t0 = time.perf_counter()
-    price_data, hit = _fetch_with_cache("get_price_data", ticker, lambda: fetch_price_data(ticker))
+    price_data, hit = await asyncio.to_thread(
+        _fetch_with_cache, "get_price_data", ticker, lambda: fetch_price_data(ticker)
+    )
     elapsed = time.perf_counter() - t0
     tool_time += elapsed
     tool_data["get_price_data"] = price_data
@@ -436,7 +443,7 @@ def run_explainer(
             print(f"[llm]   turn {turn + 1} messages:\n{json.dumps(messages, indent=2, default=str)}")
 
         llm_t0 = time.perf_counter()
-        response = client.messages.create(
+        response = await client.messages.create(
             model="claude-haiku-4-5-20251001",
             max_tokens=2000,
             system=system_blocks,
@@ -508,16 +515,18 @@ def run_explainer(
                 fresh_blocks.append(block)
 
         batch_t0 = time.perf_counter()
-        with ThreadPoolExecutor(max_workers=len(fresh_blocks) or 1) as pool:
-            futures = {pool.submit(_run_block, b): b for b in fresh_blocks}
-            for fut in as_completed(futures):
-                block, result, hit, elapsed = fut.result()
-                turn_tool_max = max(turn_tool_max, elapsed)  # tools run in parallel within a turn
-                if hit:
-                    cache_hit_names.add(block.name)
-                print(f"[agent] {block.name:<25} {elapsed * 1000:6.0f}ms  {'(cached, redis)' if hit else ''}")
-                tool_data[block.name] = result
-                results_by_id[block.id] = result
+        # Each sync tool runs on its own worker thread; gather overlaps them so the
+        # turn costs max(tool times), not sum, and the event loop stays free.
+        batch_results = await asyncio.gather(
+            *(asyncio.to_thread(_run_block, b) for b in fresh_blocks)
+        )
+        for block, result, hit, elapsed in batch_results:
+            turn_tool_max = max(turn_tool_max, elapsed)  # tools run in parallel within a turn
+            if hit:
+                cache_hit_names.add(block.name)
+            print(f"[agent] {block.name:<25} {elapsed * 1000:6.0f}ms  {'(cached, redis)' if hit else ''}")
+            tool_data[block.name] = result
+            results_by_id[block.id] = result
         batch_elapsed = time.perf_counter() - batch_t0
         if len(fresh_blocks) > 1:
             # Wall time of the whole batch vs. the slowest individual call — if these are

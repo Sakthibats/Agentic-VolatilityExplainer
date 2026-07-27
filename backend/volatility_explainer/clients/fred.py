@@ -1,5 +1,6 @@
 import httpx
 
+from volatility_explainer.clients.finnhub import _shared_client
 from volatility_explainer.config import Settings
 
 FRED_API_URL = "https://api.stlouisfed.org/fred"
@@ -21,7 +22,7 @@ class FredClient:
             "sort_order": "desc",
             "limit": limit,
         }
-        with self._client or httpx.Client(timeout=30.0) as client:
-            response = client.get(url, params=params)
-            response.raise_for_status()
-            return response.json()
+        client = self._client or _shared_client(30.0)
+        response = client.get(url, params=params)
+        response.raise_for_status()
+        return response.json()

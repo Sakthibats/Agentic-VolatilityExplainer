@@ -1,7 +1,6 @@
 from unittest.mock import MagicMock, patch
 
 import pytest
-
 from volatility_explainer.query import parsing as p
 
 
@@ -35,7 +34,7 @@ def test_concept_phrase_resolves_to_mapped_etf():
 
 def test_uppercase_token_resolves_as_ticker_symbol():
     with patch("yfinance.Search", return_value=_mock_search([{"symbol": "TSLA"}])):
-        ticker, query, source = p.parse_search_input("why did TSLA drop")
+        ticker, _query, source = p.parse_search_input("why did TSLA drop")
 
     assert ticker == "TSLA"
     assert source == "ticker_symbol"
@@ -43,7 +42,7 @@ def test_uppercase_token_resolves_as_ticker_symbol():
 
 def test_company_name_resolves_when_name_starts_with_query():
     with patch("yfinance.Search", return_value=_mock_search([{"symbol": "TSLA", "shortname": "Tesla, Inc."}])):
-        ticker, query, source = p.parse_search_input("tesla")
+        ticker, _query, source = p.parse_search_input("tesla")
 
     assert ticker == "TSLA"
     assert source == "company_name"
@@ -55,7 +54,7 @@ def test_company_name_rejects_incidental_substring_match():
     with patch("yfinance.Search", return_value=_mock_search(
         [{"symbol": "CAKE", "shortname": "Cheesecake Factory Incorporated"}]
     )), patch.object(p, "_resolve_ticker_llm", return_value=None):
-        ticker, query, source = p.parse_search_input("cake")
+        ticker, _query, source = p.parse_search_input("cake")
 
     assert ticker is None
     assert source is None
@@ -64,7 +63,7 @@ def test_company_name_rejects_incidental_substring_match():
 def test_falls_back_to_llm_when_no_earlier_stage_resolves():
     with patch.object(p, "_resolve_ticker", return_value=None), \
          patch.object(p, "_resolve_ticker_llm", return_value="AAPL"):
-        ticker, query, source = p.parse_search_input("how is my favorite gadget maker doing")
+        ticker, _query, source = p.parse_search_input("how is my favorite gadget maker doing")
 
     assert ticker == "AAPL"
     assert source == "llm"

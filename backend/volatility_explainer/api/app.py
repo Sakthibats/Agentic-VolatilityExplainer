@@ -7,11 +7,9 @@ flow through a queue, and an async generator drains that queue into SSE events.
 
 from __future__ import annotations
 
-import queue
-import threading
+import asyncio
 import uuid
 
-import anyio
 from fastapi import FastAPI, Header
 from fastapi.middleware.cors import CORSMiddleware
 from sse_starlette.sse import EventSourceResponse
@@ -53,36 +51,42 @@ def _session_id(header_value: str | None) -> str:
 
 
 async def _analyze_event_stream(raw_query: str, session_id: str):
-    """Run service.analyze on a thread; yield SSE events as progress arrives."""
-    events: queue.Queue = queue.Queue()
+    """Yield SSE events while the investigation runs as an independent task.
 
-    def worker() -> None:
+    The task is deliberately NOT tied to this generator's lifetime: if the client
+    disconnects mid-run, sse-starlette cancels the generator but the investigation
+    finishes anyway — the work is already paid for, and completing it means the
+    result lands in the final-answer/tool caches for the next request.
+    """
+    events: asyncio.Queue = asyncio.Queue()
+
+    async def runner() -> None:
         try:
-            result = service.analyze(
+            result = await service.analyze(
                 raw_query, session_id,
-                on_step=lambda label: events.put(("step", Step(label=label))),
+                on_step=lambda label: events.put_nowait(("step", Step(label=label))),
             )
             if result.status == "guardrail":
-                events.put(("guardrail", Guardrail(message=result.error_message)))
+                events.put_nowait(("guardrail", Guardrail(message=result.error_message)))
             elif result.status == "error":
-                events.put(("error", ApiError(message=result.error_message)))
+                events.put_nowait(("error", ApiError(message=result.error_message)))
             else:
-                events.put(("result", result))
+                events.put_nowait(("result", result))
         except Exception as exc:  # service.analyze shouldn't raise, but never hang the stream
-            events.put(("error", ApiError(message=str(exc))))
+            events.put_nowait(("error", ApiError(message=str(exc))))
         finally:
-            events.put(_QUEUE_DONE)
+            events.put_nowait(_QUEUE_DONE)
 
-    thread = threading.Thread(target=worker, daemon=True)
-    thread.start()
+    task = asyncio.create_task(runner())
+    task.add_done_callback(lambda t: t.exception())  # retrieve, never re-raise
 
     started = False
     while True:
-        item = await anyio.to_thread.run_sync(events.get)
+        item = await events.get()
         if item is _QUEUE_DONE:
             break
         name, payload = item
-        # The ticker isn't known until the scope gate has run inside the worker, so
+        # The ticker isn't known until the scope gate has run inside the runner, so
         # investigation_started is emitted lazily before the first real event.
         if not started and name in ("step", "result"):
             started = True
@@ -92,7 +96,7 @@ async def _analyze_event_stream(raw_query: str, session_id: str):
 
 
 @app.post("/v1/analyze")
-def analyze(
+async def analyze(
     body: AnalyzeRequest,
     stream: bool = True,
     x_session_id: str | None = Header(default=None),
@@ -100,7 +104,7 @@ def analyze(
     session_id = _session_id(x_session_id)
     if stream:
         return EventSourceResponse(_analyze_event_stream(body.query, session_id))
-    return service.analyze(body.query, session_id)
+    return await service.analyze(body.query, session_id)
 
 
 @app.get("/v1/tickers/{ticker}/history", response_model=PriceHistory)

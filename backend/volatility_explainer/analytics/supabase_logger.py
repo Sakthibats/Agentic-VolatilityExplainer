@@ -18,7 +18,7 @@ import logging
 import queue
 import threading
 import time
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -37,7 +37,7 @@ _logger = logging.getLogger(__name__)
 _client: Any = None
 _client_init_failed_at: float | None = None
 
-_queue: "queue.Queue[dict]" = queue.Queue(maxsize=_QUEUE_MAXSIZE)
+_queue: queue.Queue[dict] = queue.Queue(maxsize=_QUEUE_MAXSIZE)
 _worker_started = False
 _worker_lock = threading.Lock()
 _fallback_lock = threading.Lock()
@@ -112,7 +112,7 @@ def _append_fallback(payload: dict) -> None:
     """
     try:
         _FALLBACK_LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
-        record = {"logged_at": datetime.now(timezone.utc).isoformat(), "payload": payload}
+        record = {"logged_at": datetime.now(UTC).isoformat(), "payload": payload}
         with _fallback_lock, _FALLBACK_LOG_PATH.open("a") as f:
             f.write(json.dumps(record) + "\n")
     except Exception:
@@ -219,7 +219,7 @@ def log_query_background(
     cache_hits = set(result.get("cache_hits") or [])
     tools_called = sorted(
         f"{name}:redis" if name in cache_hits else f"{name}:live"
-        for name in (result.get("data") or {}).keys()
+        for name in (result.get("data") or {})
     )
 
     payload = {

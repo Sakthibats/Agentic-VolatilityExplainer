@@ -12,9 +12,7 @@ from types import SimpleNamespace
 from unittest.mock import MagicMock
 
 import pytest
-
 from volatility_explainer.agent import orchestrator
-
 
 # ── Fakes ────────────────────────────────────────────────────────────────────
 
@@ -72,8 +70,12 @@ def env(monkeypatch):
     """Patch every external seam; returns a namespace the tests script per-case."""
     responses: list[SimpleNamespace] = []
     client = MagicMock()
-    client.messages.create.side_effect = lambda **kwargs: responses.pop(0)
-    monkeypatch.setattr(orchestrator.anthropic, "Anthropic", lambda api_key=None: client)
+
+    async def _fake_create(**kwargs):
+        return responses.pop(0)
+
+    client.messages.create = MagicMock(side_effect=_fake_create)
+    monkeypatch.setattr(orchestrator.anthropic, "AsyncAnthropic", lambda api_key=None: client)
 
     monkeypatch.setattr(
         orchestrator, "get_settings",
@@ -98,13 +100,13 @@ def env(monkeypatch):
 # ── Tests ────────────────────────────────────────────────────────────────────
 
 
-def test_happy_path_tool_round_then_submit(env):
+async def test_happy_path_tool_round_then_submit(env):
     env.responses.extend([
         fake_response([tool_use("get_news", {"ticker": "AAPL"})]),
         fake_response([tool_use("submit_analysis", SUBMIT_INPUT)]),
     ])
 
-    result = orchestrator.run_explainer("aapl", "why did AAPL drop today?")
+    result = await orchestrator.run_explainer("aapl", "why did AAPL drop today?")
 
     assert result["status"] == "complete"
     assert result["ticker"] == "AAPL"  # upper-cased
@@ -115,13 +117,13 @@ def test_happy_path_tool_round_then_submit(env):
     assert env.client.messages.create.call_count == 2
 
 
-def test_news_citations_attached_from_real_headlines(env):
+async def test_news_citations_attached_from_real_headlines(env):
     env.responses.extend([
         fake_response([tool_use("get_news", {"ticker": "AAPL"})]),
         fake_response([tool_use("submit_analysis", SUBMIT_INPUT)]),
     ])
 
-    result = orchestrator.run_explainer("AAPL")
+    result = await orchestrator.run_explainer("AAPL")
 
     news_tile = next(t for t in result["tiles"] if t["agent"] == "news")
     # Only headlines with a url become citations, numbered from 1.
@@ -131,12 +133,12 @@ def test_news_citations_attached_from_real_headlines(env):
     ]
 
 
-def test_out_of_scope_guardrail(env):
+async def test_out_of_scope_guardrail(env):
     env.responses.append(
         fake_response([tool_use("flag_out_of_scope", {"message": "Stocks and ETFs only."})])
     )
 
-    result = orchestrator.run_explainer("AAPL", "write me a poem")
+    result = await orchestrator.run_explainer("AAPL", "write me a poem")
 
     assert result["status"] == "guardrail"
     assert result["error_message"] == "Stocks and ETFs only."
@@ -145,36 +147,36 @@ def test_out_of_scope_guardrail(env):
     assert env.client.messages.create.call_count == 1
 
 
-def test_turn_limit_exhaustion_returns_incomplete(env):
+async def test_turn_limit_exhaustion_returns_incomplete(env):
     # Model never calls a terminal tool; duplicates are served from memory so the
     # loop keeps going until _MAX_TURNS, then returns status=incomplete.
     env.responses.extend(
         [fake_response([tool_use("get_news", {"ticker": "AAPL"})])] * orchestrator._MAX_TURNS
     )
 
-    result = orchestrator.run_explainer("AAPL")
+    result = await orchestrator.run_explainer("AAPL")
 
     assert result["status"] == "incomplete"
     assert result["summary"] == ""
     assert env.client.messages.create.call_count == orchestrator._MAX_TURNS
 
 
-def test_plain_text_response_stops_loop_as_incomplete(env):
+async def test_plain_text_response_stops_loop_as_incomplete(env):
     env.responses.append(fake_response([FakeBlock("text", text="Here is my answer as prose")]))
 
-    result = orchestrator.run_explainer("AAPL")
+    result = await orchestrator.run_explainer("AAPL")
 
     assert result["status"] == "incomplete"
     assert env.client.messages.create.call_count == 1  # stops, doesn't loop to max turns
 
 
-def test_unknown_tool_returns_error_result_and_loop_continues(env):
+async def test_unknown_tool_returns_error_result_and_loop_continues(env):
     env.responses.extend([
         fake_response([tool_use("get_nonexistent", {"ticker": "AAPL"})]),
         fake_response([tool_use("submit_analysis", SUBMIT_INPUT)]),
     ])
 
-    result = orchestrator.run_explainer("AAPL")
+    result = await orchestrator.run_explainer("AAPL")
 
     assert result["status"] == "complete"
     # The error was fed back to the model as that tool's result.
@@ -188,7 +190,7 @@ def test_unknown_tool_returns_error_result_and_loop_continues(env):
     assert {"error": "Unknown tool: get_nonexistent"} in tool_results
 
 
-def test_tool_exception_becomes_error_result(env, monkeypatch):
+async def test_tool_exception_becomes_error_result(env, monkeypatch):
     monkeypatch.setitem(
         orchestrator._TOOL_DISPATCH, "get_news",
         lambda inp: (_ for _ in ()).throw(RuntimeError("finnhub down")),
@@ -198,26 +200,26 @@ def test_tool_exception_becomes_error_result(env, monkeypatch):
         fake_response([tool_use("submit_analysis", SUBMIT_INPUT)]),
     ])
 
-    result = orchestrator.run_explainer("AAPL")
+    result = await orchestrator.run_explainer("AAPL")
 
     assert result["status"] == "complete"
     assert result["data"]["get_news"] == {"error": "finnhub down"}
 
 
-def test_cache_hit_short_circuits_fetch_and_is_reported(env):
+async def test_cache_hit_short_circuits_fetch_and_is_reported(env):
     env.cache_store["get_price_data"] = PRICE_RESULT
     env.responses.append(fake_response([tool_use("submit_analysis", SUBMIT_INPUT)]))
 
-    result = orchestrator.run_explainer("AAPL")
+    result = await orchestrator.run_explainer("AAPL")
 
     assert result["status"] == "complete"
     assert result["cache_hits"] == ["get_price_data"]
 
 
-def test_prefetched_price_is_spliced_into_first_llm_call(env):
+async def test_prefetched_price_is_spliced_into_first_llm_call(env):
     env.responses.append(fake_response([tool_use("submit_analysis", SUBMIT_INPUT)]))
 
-    orchestrator.run_explainer("AAPL", "why the move?")
+    await orchestrator.run_explainer("AAPL", "why the move?")
 
     first_call = env.client.messages.create.call_args_list[0].kwargs
     messages = first_call["messages"]
@@ -228,14 +230,14 @@ def test_prefetched_price_is_spliced_into_first_llm_call(env):
     assert json.loads(messages[2]["content"][0]["content"]) == PRICE_RESULT
 
 
-def test_on_step_callback_receives_progress_labels(env):
+async def test_on_step_callback_receives_progress_labels(env):
     steps: list[str] = []
     env.responses.extend([
         fake_response([tool_use("get_news", {"ticker": "AAPL"})]),
         fake_response([tool_use("submit_analysis", SUBMIT_INPUT)]),
     ])
 
-    orchestrator.run_explainer("AAPL", on_step=steps.append)
+    await orchestrator.run_explainer("AAPL", on_step=steps.append)
 
     assert steps == [
         "Pulling price data...",

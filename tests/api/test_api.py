@@ -12,7 +12,6 @@ from unittest.mock import patch
 
 import pandas as pd
 from fastapi.testclient import TestClient
-
 from volatility_explainer.api import service
 from volatility_explainer.api.app import app
 
@@ -42,9 +41,14 @@ OUT_OF_SCOPE = SimpleNamespace(in_scope=False, ticker=None, question="bake a cak
 
 
 def _patched(decision=IN_SCOPE, orch=None):
+    orch_fn = orch or (lambda t, q, on_step=None: ORCH_RESULT)
+
+    async def async_orch(t, q, on_step=None):
+        return orch_fn(t, q, on_step=on_step)
+
     return (
         patch.object(service, "evaluate_query", return_value=decision),
-        patch.object(service, "run_explainer", side_effect=orch or (lambda t, q, on_step=None: ORCH_RESULT)),
+        patch.object(service, "run_explainer", side_effect=async_orch),
         patch.object(service, "log_query_background", lambda **kw: None),
         patch.object(service, "get_cached_final_answer", lambda t: None),
     )
@@ -163,3 +167,28 @@ def test_ticker_stats_endpoint():
     body = r.json()
     assert body["quick"] == [{"label": "Last Price", "value": "$211.50", "delta": "+1.2%"}]
     assert body["analyst"] == []
+
+
+async def test_client_disconnect_lets_investigation_finish():
+    """Closing the SSE generator early (client disconnect) must NOT cancel the
+    underlying investigation — it finishes so its result reaches the caches."""
+    import asyncio
+
+    from volatility_explainer.api import app as app_module
+    from volatility_explainer.api.schemas import AnalysisResult
+
+    finished = asyncio.Event()
+
+    async def slow_analyze(q, sid, on_step=None):
+        if on_step:
+            on_step("Pulling price data...")
+        await asyncio.sleep(0.05)
+        finished.set()
+        return AnalysisResult(ticker="AAPL", query=q, status="complete")
+
+    with patch.object(app_module.service, "analyze", side_effect=slow_analyze):
+        gen = app_module._analyze_event_stream("why did AAPL drop?", "sid-1")
+        first = await gen.__anext__()
+        assert first["event"] == "investigation_started"
+        await gen.aclose()  # simulate the client disconnecting mid-stream
+        await asyncio.wait_for(finished.wait(), timeout=2)  # investigation still completes
