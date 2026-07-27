@@ -52,7 +52,7 @@ Three layers, three jobs: a per-tool Redis cache avoids re-hitting APIs for data
 ## Project layout
 
 ```
-src/volatility_explainer/
+backend/volatility_explainer/
 ├── config.py            # pydantic-settings, validated secrets
 ├── clients/              # external API adapters (Finnhub, FRED, Redis)
 ├── analytics/             # Supabase usage logging (fire-and-forget, background thread)
