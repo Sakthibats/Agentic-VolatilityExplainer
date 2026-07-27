@@ -2,11 +2,11 @@
 
 Monorepo, mid-migration from a Streamlit monolith to a decoupled stack. Target architecture:
 
-- `backend/volatility_explainer/` — the product: agent orchestrator, MCP-shaped tools, API clients. Will grow `api/` (FastAPI, SSE) and an empty-for-now `billing/` boundary.
+- `backend/volatility_explainer/` — the product: `api/` (FastAPI, SSE — schemas.py is the contract), `query/` (scope guardrail + ticker resolution), `marketdata/`, agent orchestrator, MCP-shaped tools, API clients. Will grow an empty-for-now `billing/` boundary in Phase 4.
 - `frontend/` — Next.js + Tailwind + shadcn/ui (Phase 3; does not exist yet). Deploys to Vercel; backend keeps the Docker pipeline at api.market-explainer.com.
-- `apps/` — legacy Streamlit UI. Being deleted in Phase 1; don't invest in it.
+- The legacy Streamlit UI (`apps/`) is deleted; its About copy is parked in `docs/about_content.py` for the Phase 3 frontend.
 
-Migration phases (0 restructure+tests → 1 FastAPI+SSE, delete apps/ → 2 async refactor → 3 Next.js frontend → 4 metering/rate limiting). Telegram/Slack adapters and payment collection are explicitly out of scope for now — but keep the usage-ledger and billing module boundaries clean so freemium can be added later without rearchitecting.
+Migration phases (0 restructure+tests ✅ → 1 FastAPI+SSE, delete apps/ ✅ → 2 async refactor → 3 Next.js frontend → 4 metering/rate limiting). Telegram/Slack adapters and payment collection are explicitly out of scope for now — but keep the usage-ledger and billing module boundaries clean so freemium can be added later without rearchitecting.
 
 ## Rules
 
@@ -22,5 +22,6 @@ Migration phases (0 restructure+tests → 1 FastAPI+SSE, delete apps/ → 2 asyn
 ```bash
 pip install -e ".[dev]"        # after pulling structural changes
 pytest -q                      # all tests, no network needed
-ruff check backend apps tests  # lint (CI runs both on every push)
+ruff check backend tests       # lint (CI runs both on every push)
+uvicorn volatility_explainer.api.app:app --reload --port 8080   # run the API locally
 ```

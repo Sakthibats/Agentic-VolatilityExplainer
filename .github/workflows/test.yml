@@ -24,4 +24,4 @@ jobs:
         run: pytest -q
 
       - name: Lint
-        run: ruff check backend apps tests
+        run: ruff check backend tests

@@ -2,7 +2,7 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from apps.ui import placeholders as p
+from volatility_explainer.query import parsing as p
 
 
 @pytest.fixture(autouse=True)
