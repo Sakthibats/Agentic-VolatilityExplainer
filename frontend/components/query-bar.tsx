@@ -1,25 +1,27 @@
 "use client";
 
 import { ArrowRight, Search, Square } from "lucide-react";
-import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 
+/* Controlled input: the page owns the query text so the example chips and the
+   search field always show the same thing. */
 export function QueryBar({
+  value,
+  onChange,
   onSubmit,
   onStop,
   busy,
 }: {
+  value: string;
+  onChange: (value: string) => void;
   onSubmit: (query: string) => void;
   onStop: () => void;
   busy: boolean;
 }) {
-  const [value, setValue] = useState("");
-
   const submit = (q: string) => {
     const trimmed = q.trim();
     if (!trimmed || busy) return;
-    setValue(trimmed);
     onSubmit(trimmed);
   };
 
@@ -35,7 +37,7 @@ export function QueryBar({
         <Search className="absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
         <input
           value={value}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={(e) => onChange(e.target.value)}
           placeholder="Try: TSLA · why did Tesla dip? · what happened to gold? · market down?"
           className="h-12 w-full rounded-full border bg-card pl-10 pr-3 text-base shadow-sm outline-none ring-ring/40 transition-shadow placeholder:text-muted-foreground/70 focus:ring-2 sm:text-sm"
           disabled={busy}

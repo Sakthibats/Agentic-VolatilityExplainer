@@ -33,6 +33,7 @@ const EXAMPLES = [
 
 export default function Home() {
   const [phase, setPhase] = useState<Phase>("idle");
+  const [query, setQuery] = useState("");
   const [steps, setSteps] = useState<TimelineStep[]>([]);
   const [result, setResult] = useState<AnalysisResult | null>(null);
   const [message, setMessage] = useState("");
@@ -41,7 +42,8 @@ export default function Home() {
   const [runCount, setRunCount] = useState(0);
   const abortRef = useRef<AbortController | null>(null);
 
-  const investigate = useCallback((query: string) => {
+  const investigate = useCallback((raw: string) => {
+    setQuery(raw); // keep the search field in sync when a chip triggers the run
     abortRef.current?.abort();
     const controller = new AbortController();
     abortRef.current = controller;
@@ -54,7 +56,7 @@ export default function Home() {
     setMessage("");
 
     analyzeStream(
-      query,
+      raw,
       {
         onStarted: (t) => {
           if (t) {
@@ -101,7 +103,13 @@ export default function Home() {
 
   return (
     <div className="space-y-6">
-      <QueryBar onSubmit={investigate} onStop={stop} busy={phase === "running"} />
+      <QueryBar
+        value={query}
+        onChange={setQuery}
+        onSubmit={investigate}
+        onStop={stop}
+        busy={phase === "running"}
+      />
 
       {phase === "guardrail" && (
         <div className="flex items-start gap-3 rounded-lg border bg-accent p-4 text-sm text-accent-foreground">

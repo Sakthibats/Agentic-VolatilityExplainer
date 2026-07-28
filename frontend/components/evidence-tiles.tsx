@@ -27,7 +27,7 @@ const AGENT_ICONS: Record<string, typeof LineChart> = {
 
 /* Muted purple-grey — the findings are the supporting evidence layer beneath the
    summary and causes, so their accent stays deliberately quieter. */
-const FINDINGS_EDGE = "#a09ab8";
+const FINDINGS_EDGE = "var(--evidence-edge)";
 
 export function EvidenceTiles({ tiles }: { tiles: Tile[] }) {
   if (tiles.length === 0) return null;

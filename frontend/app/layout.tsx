@@ -34,7 +34,7 @@ export default function RootLayout({
           <header className="sticky top-0 z-10 border-b border-black/5 bg-background/75 backdrop-blur-md dark:border-white/5">
             <div className="mx-auto flex h-16 max-w-5xl items-center gap-3 px-4">
               <Link href="/" className="flex items-center gap-3">
-                <span className="gradient-tile flex size-9 items-center justify-center rounded-xl text-[11px] font-bold tracking-wide text-white">
+                <span className="gradient-tile flex size-9 items-center justify-center rounded-xl text-[11px] font-bold tracking-wide text-[#f5f8fc]">
                   AME
                 </span>
                 <span className="hidden flex-col sm:flex">

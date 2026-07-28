@@ -31,6 +31,13 @@
 
   --pos: #15803d;
   --neg: #dc2626;
+  /* Traffic-light confidence + evidence accents. Semantic status colors, a
+     deliberate exemption from the blue-only brand rule. Each value clears 3:1
+     against its surface (WCAG 1.4.11) so the 4px edges stay legible. */
+  --conf-high: #15803d;
+  --conf-medium: #ca8a04;
+  --conf-low: #c2410c;
+  --evidence-edge: #8b83a3;
   --chart-line: #1565c0;
   --chart-fill: rgba(21, 101, 192, 0.08);
   --chart-grid: #eef2f7;
@@ -39,31 +46,40 @@
 .dark {
   --background: #0b1220;
   --foreground: #e6edf3;
-  --card: #0f1729;
+  --card: #1a2440;
   --card-foreground: #e6edf3;
-  --popover: #0f1729;
+  --popover: #1a2440;
   --popover-foreground: #e6edf3;
   --primary: #4b9fea;
   --primary-foreground: #0b1220;
-  --secondary: #111c2e;
+  --secondary: #16203a;
   --secondary-foreground: #e6edf3;
-  --muted: #111c2e;
+  --muted: #16203a;
   --muted-foreground: #8da2b8;
-  --accent: #13233a;
+  --accent: #1c2b47;
   --accent-foreground: #9ec9f5;
   --destructive: #f87171;
   --destructive-foreground: #0b1220;
-  --border: #1e293b;
-  --input: #1e293b;
+  --border: #2f3b59;
+  --input: #2f3b59;
   --ring: #4b9fea;
-  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 16px rgba(0, 0, 0, 0.25);
-  --shadow-lift: 0 2px 4px rgba(0, 0, 0, 0.5), 0 14px 32px rgba(0, 0, 0, 0.35);
+  /* Dark elevation needs BOTH a lighter fill and a hairline — drop shadows
+     alone don't read without light to occlude. The 1px ring rides in the
+     shadow token so `border-0` utilities can't strip it. */
+  --shadow-card: 0 0 0 1px #2f3b59, 0 2px 4px rgba(0, 0, 0, 0.35), 0 8px 24px rgba(0, 0, 0, 0.28);
+  --shadow-lift: 0 0 0 1px #3b4a6d, 0 4px 8px rgba(0, 0, 0, 0.4), 0 16px 36px rgba(0, 0, 0, 0.35);
 
-  --pos: #34d399;
-  --neg: #f87171;
+  /* Desaturated ~13% vs the light-mode equivalents; full-chroma greens/reds
+     vibrate against navy. */
+  --pos: #4ec49a;
+  --neg: #ef8888;
+  --conf-high: #4ec49a;
+  --conf-medium: #dfb64a;
+  --conf-low: #f0875c;
+  --evidence-edge: #9691b3;
   --chart-line: #4b9fea;
   --chart-fill: rgba(75, 159, 234, 0.1);
-  --chart-grid: #16223a;
+  --chart-grid: #1e2942;
 }
 
 @theme inline {
@@ -88,6 +104,10 @@
   --color-ring: var(--ring);
   --color-pos: var(--pos);
   --color-neg: var(--neg);
+  --color-conf-high: var(--conf-high);
+  --color-conf-medium: var(--conf-medium);
+  --color-conf-low: var(--conf-low);
+  --color-evidence: var(--evidence-edge);
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
