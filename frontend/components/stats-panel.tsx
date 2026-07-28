@@ -8,9 +8,9 @@ import { cn } from "@/lib/utils";
 function StatTile({ stat }: { stat: Stat }) {
   const negative = stat.delta?.trim().startsWith("-");
   return (
-    <div className="elevated rounded-xl border-0 bg-card px-3.5 py-2.5">
-      <p className="text-[11px] text-muted-foreground">{stat.label}</p>
-      <p className="numeric text-sm font-semibold">
+    <div className="elevated lift rounded-xl border-0 bg-card px-3.5 py-3">
+      <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">{stat.label}</p>
+      <p className="numeric text-base font-semibold">
         {stat.value}
         {stat.delta && (
           <span className={cn("numeric ml-2 text-xs font-medium", negative ? "text-neg" : "text-pos")}>
@@ -27,7 +27,7 @@ export function StatsPanel({ title, stats }: { title: string; stats: Stat[] }) {
   if (real.length === 0) return null;
   return (
     <section aria-label={title} className="space-y-2">
-      <h3 className="text-sm font-semibold text-muted-foreground">{title}</h3>
+      <h3 className="micro-label">{title}</h3>
       <div className="grid grid-cols-2 gap-2">
         {real.map((s) => (
           <StatTile key={s.label} stat={s} />

@@ -25,6 +25,10 @@ const AGENT_ICONS: Record<string, typeof LineChart> = {
   sector: BarChart3,
 };
 
+/* Muted purple-grey — the findings are the supporting evidence layer beneath the
+   summary and causes, so their accent stays deliberately quieter. */
+const FINDINGS_EDGE = "#a09ab8";
+
 export function EvidenceTiles({ tiles }: { tiles: Tile[] }) {
   if (tiles.length === 0) return null;
   return (
@@ -32,7 +36,11 @@ export function EvidenceTiles({ tiles }: { tiles: Tile[] }) {
       {tiles.map((tile) => {
         const Icon = AGENT_ICONS[tile.agent] ?? LineChart;
         return (
-          <Card key={`${tile.agent}-${tile.title}`} className="elevated rise-in gap-2 border-0 py-4">
+          <Card
+            key={`${tile.agent}-${tile.title}`}
+            className="elevated lift rise-in gap-2 border-0 py-4"
+            style={{ borderLeft: `4px solid ${FINDINGS_EDGE}` }}
+          >
             <CardHeader className="px-4">
               <CardTitle className="flex items-center gap-2 text-sm">
                 <Icon className="size-4 text-primary" aria-hidden />

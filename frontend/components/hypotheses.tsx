@@ -13,6 +13,15 @@ const CONFIDENCE_STYLES: Record<Hypothesis["confidence"], string> = {
   low: "bg-muted text-muted-foreground border-border",
 };
 
+/* Traffic-light edges (status colors, exempt from the blue-only brand rule):
+   green = high, yellow = medium, reddish-orange = low. The labeled badge always
+   accompanies the color. */
+const CONFIDENCE_EDGE: Record<Hypothesis["confidence"], string> = {
+  high: "#16a34a",
+  medium: "#eab308",
+  low: "#ea580c",
+};
+
 export function Hypotheses({ hypotheses }: { hypotheses: Hypothesis[] }) {
   if (hypotheses.length === 0) return null;
   return (
@@ -20,7 +29,7 @@ export function Hypotheses({ hypotheses }: { hypotheses: Hypothesis[] }) {
       {[...hypotheses]
         .sort((a, b) => a.rank - b.rank)
         .map((h) => (
-          <Card key={h.rank} className="elevated rise-in border-0 py-3.5">
+          <Card key={h.rank} className="elevated rise-in border-0 py-3.5" style={{ borderLeft: `4px solid ${CONFIDENCE_EDGE[h.confidence]}` }}>
             <CardContent className="flex items-start gap-3 px-4">
               <span className="numeric mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-accent text-xs font-semibold text-accent-foreground">
                 {h.rank}

@@ -102,6 +102,7 @@ def test_analyze_sse_event_sequence():
     events = _parse_sse(r.text)
     names = [n for n, _ in events]
     assert names[0] == "investigation_started"
+    assert events[0][1]["ticker"] == "AAPL"  # resolved ticker, emitted pre-tools
     assert names.count("step") == 2
     assert names[-1] == "result"
     result = events[-1][1]
@@ -179,7 +180,9 @@ async def test_client_disconnect_lets_investigation_finish():
 
     finished = asyncio.Event()
 
-    async def slow_analyze(q, sid, on_step=None):
+    async def slow_analyze(q, sid, on_step=None, on_started=None):
+        if on_started:
+            on_started("AAPL")
         if on_step:
             on_step("Pulling price data...")
         await asyncio.sleep(0.05)

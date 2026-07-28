@@ -69,6 +69,7 @@ async def analyze(
     raw_query: str,
     session_id: str,
     on_step: Callable[[str], None] | None = None,
+    on_started: Callable[[str], None] | None = None,
 ) -> AnalysisResult:
     """Run one investigation end to end: scope gate → cache → orchestrator → shaping.
 
@@ -84,6 +85,10 @@ async def analyze(
         )
 
     ticker, question = decision.ticker, decision.question
+    if on_started:
+        # Fired the moment the scope gate resolves a ticker — before any tool or
+        # LLM work — so streaming clients can start loading chart/stats early.
+        on_started(ticker)
     t0 = time.perf_counter()
     try:
         # The no-query path ("explain the recent price action") is generic by

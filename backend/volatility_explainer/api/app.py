@@ -1,8 +1,7 @@
 """FastAPI app — the /v1 REST + SSE surface every frontend talks to.
 
-The orchestrator is still synchronous (async refactor is Phase 2), so the SSE
-endpoint bridges it: the investigation runs on a worker thread, progress labels
-flow through a queue, and an async generator drains that queue into SSE events.
+The investigation runs as an independent asyncio task; SSE events flow through a
+queue so a client disconnect never cancels the underlying run (finish-and-cache).
 """
 
 from __future__ import annotations
@@ -65,6 +64,10 @@ async def _analyze_event_stream(raw_query: str, session_id: str):
             result = await service.analyze(
                 raw_query, session_id,
                 on_step=lambda label: events.put_nowait(("step", Step(label=label))),
+                on_started=lambda ticker: events.put_nowait((
+                    "investigation_started",
+                    InvestigationStarted(ticker=ticker, query=raw_query, session_id=session_id),
+                )),
             )
             if result.status == "guardrail":
                 events.put_nowait(("guardrail", Guardrail(message=result.error_message)))
@@ -80,18 +83,11 @@ async def _analyze_event_stream(raw_query: str, session_id: str):
     task = asyncio.create_task(runner())
     task.add_done_callback(lambda t: t.exception())  # retrieve, never re-raise
 
-    started = False
     while True:
         item = await events.get()
         if item is _QUEUE_DONE:
             break
         name, payload = item
-        # The ticker isn't known until the scope gate has run inside the runner, so
-        # investigation_started is emitted lazily before the first real event.
-        if not started and name in ("step", "result"):
-            started = True
-            first = InvestigationStarted(ticker="", query=raw_query, session_id=session_id)
-            yield {"event": "investigation_started", "data": first.model_dump_json()}
         yield {"event": name, "data": payload.model_dump_json()}
 
 
