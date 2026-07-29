@@ -101,8 +101,22 @@ export default function Home() {
     setStats(null);
   }, []);
 
+  const liveStatus =
+    phase === "running"
+      ? `Investigating${ticker ? ` ${ticker}` : ""}…`
+      : phase === "done"
+        ? `Investigation complete. ${result?.hypotheses.length ?? 0} likely causes found.`
+        : phase === "guardrail"
+          ? "Query out of scope."
+          : phase === "error"
+            ? "Investigation failed."
+            : "";
+
   return (
     <div className="space-y-6">
+      <p className="sr-only" role="status" aria-live="polite">
+        {liveStatus}
+      </p>
       <QueryBar
         value={query}
         onChange={setQuery}
@@ -183,22 +197,21 @@ export default function Home() {
       )}
 
       {phase === "idle" && (
-        <div className="grid gap-6 lg:grid-cols-[1fr_400px]">
-          <section className="space-y-2">
+        <div className="grid items-stretch gap-6 lg:grid-cols-[1fr_400px]">
+          <section className="flex flex-col space-y-2">
             <h2 className="micro-label">Analysis</h2>
-            <div className="elevated flex min-h-[380px] flex-col items-center justify-center gap-3 rounded-2xl border-0 bg-card p-8 text-center">
-              <div className="flex size-14 items-center justify-center rounded-full bg-accent">
-                <SearchIcon className="size-6 text-primary/60" aria-hidden />
+            <div className="elevated flex min-h-[210px] flex-1 flex-col items-center justify-center gap-2.5 rounded-2xl border-0 bg-card p-6 text-center">
+              <div className="flex size-11 items-center justify-center rounded-full bg-accent">
+                <SearchIcon className="size-5 text-primary/70" aria-hidden />
               </div>
               <p className="text-sm font-medium text-muted-foreground">
                 Start an investigation
               </p>
-              <p className="max-w-sm text-sm text-muted-foreground/80">
-                Enter a ticker, company name, or ask a question — the agent pulls real
-                price and volatility data first, then investigates what the evidence
-                warrants.
+              <p className="max-w-sm text-sm text-muted-foreground">
+                The agent pulls real price and volatility data first, then investigates
+                what the evidence warrants.
               </p>
-              <div className="mt-2 flex flex-wrap justify-center gap-2">
+              <div className="mt-1 grid w-full max-w-md grid-cols-1 gap-2 sm:grid-cols-2">
                 {EXAMPLES.map((ex) => (
                   <button
                     key={ex}
@@ -212,15 +225,15 @@ export default function Home() {
               </div>
             </div>
           </section>
-          <section className="space-y-2">
+          <section className="flex flex-col space-y-2">
             <h2 className="micro-label">Price</h2>
-            <div className="elevated flex min-h-[380px] flex-col items-center justify-center gap-3 rounded-2xl border-0 bg-card p-8 text-center">
-              <div className="flex size-14 items-center justify-center rounded-full bg-accent">
-                <LineChartIcon className="size-6 text-primary/60" aria-hidden />
+            <div className="elevated flex min-h-[210px] flex-1 flex-col items-center justify-center gap-2.5 rounded-2xl border-0 bg-card p-6 text-center">
+              <div className="flex size-11 items-center justify-center rounded-full bg-accent">
+                <LineChartIcon className="size-5 text-primary/70" aria-hidden />
               </div>
               <p className="text-sm font-medium text-muted-foreground">Price chart</p>
-              <p className="max-w-[220px] text-sm text-muted-foreground/80">
-                Chart and stats will appear once you analyze a ticker.
+              <p className="max-w-[220px] text-sm text-muted-foreground">
+                Chart and stats appear once you analyze a ticker.
               </p>
             </div>
           </section>

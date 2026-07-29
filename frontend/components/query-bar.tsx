@@ -38,7 +38,7 @@ export function QueryBar({
         <input
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          placeholder="Try: TSLA · why did Tesla dip? · what happened to gold? · market down?"
+          placeholder="Ticker, company, or a question"
           className="h-12 w-full rounded-full border bg-card pl-10 pr-3 text-base shadow-sm outline-none ring-ring/40 transition-shadow placeholder:text-muted-foreground/70 focus:ring-2 sm:text-sm"
           disabled={busy}
           aria-label="Market question"

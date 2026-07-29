@@ -17,7 +17,7 @@
   --secondary: #f1f5f9;
   --secondary-foreground: #0f172a;
   --muted: #f1f5f9;
-  --muted-foreground: #64748b;
+  --muted-foreground: #55637a;
   --accent: #e3f2fd;
   --accent-foreground: #0d47a1;
   --destructive: #dc2626;
@@ -155,6 +155,14 @@ body {
   }
 }
 
+/* Keyboard focus for hand-rolled interactives (shadcn Button ships its own
+   ring; these plain elements had none). :where() keeps specificity at 0. */
+:where(a, button, summary, [role="button"]):focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
 /* Buttons/links: immediate touch feedback instead of hover-only affordance */
 button,
 a {
@@ -285,6 +293,44 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   .gradient-tile {
     animation: none;
+  }
+}
+
+/* Footer action pills — a soft blue gradient sweeps in on hover. Both stops are
+   derived from --primary/--card via color-mix, so light and dark adapt with no
+   separate rules; at rest the plain --card end of the gradient is showing. */
+.pill-action {
+  background-image: linear-gradient(
+    110deg,
+    color-mix(in oklab, var(--primary) 30%, var(--card)) 0%,
+    color-mix(in oklab, var(--primary) 12%, var(--card)) 42%,
+    var(--card) 78%
+  );
+  background-size: 230% 100%;
+  background-position: 100% 0;
+  transition:
+    background-position 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+.pill-action:hover {
+  background-position: 0 0;
+  border-color: color-mix(in oklab, var(--primary) 45%, transparent);
+  color: var(--accent-foreground);
+  box-shadow: var(--shadow-card);
+  transform: translateY(-1px);
+}
+.pill-action:active {
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .pill-action {
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  .pill-action:hover {
+    transform: none;
   }
 }
 
