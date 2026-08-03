@@ -3,6 +3,9 @@ import { Geist } from "next/font/google";
 import Link from "next/link";
 import { ThemeProvider } from "next-themes";
 
+import { FeedbackLink, FeedbackProvider } from "@/components/feedback";
+import { NavTabs } from "@/components/nav-tabs";
+import { SupportButton } from "@/components/support-button";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 import "./globals.css";
@@ -31,6 +34,7 @@ export default function RootLayout({
     >
       <body className="flex min-h-screen flex-col">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+          <FeedbackProvider>
           <header className="sticky top-0 z-10 border-b border-black/5 bg-background/75 backdrop-blur-md dark:border-white/5">
             <div className="mx-auto flex h-16 max-w-5xl items-center gap-3 px-4">
               <Link href="/" className="flex items-center gap-3">
@@ -52,20 +56,8 @@ export default function RootLayout({
               <span className="rounded-full border border-primary/25 bg-accent px-2 py-0.5 text-[10px] font-semibold tracking-widest text-primary">
                 BETA
               </span>
-              <nav className="ml-auto flex items-center gap-1 rounded-full border bg-card p-1 shadow-sm">
-                <Link
-                  href="/"
-                  className="rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors hover:bg-accent"
-                >
-                  Home
-                </Link>
-                <Link
-                  href="/about"
-                  className="rounded-full px-3.5 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
-                >
-                  About
-                </Link>
-              </nav>
+              <NavTabs />
+              <SupportButton />
               <ThemeToggle />
             </div>
           </header>
@@ -104,31 +96,11 @@ export default function RootLayout({
                   Agentic Market Explainer · Data via Finnhub, yfinance &amp; FRED ·
                   Analysis by Claude
                 </span>
-                {/* Grid (not flex) so both pills are always exactly equal width,
-                    at any viewport: stacked full-width on phones, side by side above. */}
-                <span className="grid w-full grid-cols-1 gap-2 sm:w-auto sm:grid-cols-2">
-                  <a
-                    href="https://buymeacoffee.com/sakthibats"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="pill-action flex min-h-10 items-center justify-center gap-1.5 rounded-full border px-4 py-2 text-center font-medium text-muted-foreground"
-                  >
-                    <span aria-hidden>☕</span> Buy me a coffee
-                  </a>
-                  <a
-                    href={`mailto:hello@market-explainer.com?subject=${encodeURIComponent(
-                      "Agentic Market Explainer — Feedback",
-                    )}&body=${encodeURIComponent(
-                      "Hi MarketExplainer Team,\n\nType (bug / feedback / suggestion / other): \n\nWhat happened or what would you like to see?: \n\nThanks!",
-                    )}`}
-                    className="pill-action flex min-h-10 items-center justify-center gap-1.5 rounded-full border px-4 py-2 text-center font-medium text-muted-foreground"
-                  >
-                    <span aria-hidden>🐛</span> Found a bug? Got an idea?
-                  </a>
-                </span>
+                <FeedbackLink />
               </div>
             </div>
           </footer>
+          </FeedbackProvider>
         </ThemeProvider>
       </body>
     </html>

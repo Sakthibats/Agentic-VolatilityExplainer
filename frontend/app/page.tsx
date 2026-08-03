@@ -9,6 +9,7 @@ import {
 import { useCallback, useRef, useState } from "react";
 
 import { EvidenceTiles } from "@/components/evidence-tiles";
+import { useFeedbackContext } from "@/components/feedback";
 import { Md } from "@/components/md";
 import { Hypotheses } from "@/components/hypotheses";
 import { PriceChart } from "@/components/price-chart";
@@ -41,6 +42,7 @@ export default function Home() {
   const [stats, setStats] = useState<TickerStats | null>(null);
   const [runCount, setRunCount] = useState(0);
   const abortRef = useRef<AbortController | null>(null);
+  const { setContext: setFeedbackContext } = useFeedbackContext();
 
   const investigate = useCallback((raw: string) => {
     setQuery(raw); // keep the search field in sync when a chip triggers the run
@@ -58,7 +60,8 @@ export default function Home() {
     analyzeStream(
       raw,
       {
-        onStarted: (t) => {
+        onStarted: (t, sessionId) => {
+          setFeedbackContext({ ticker: t || null, sessionId });
           if (t) {
             setTicker(t);
             fetchStats(t).then(setStats).catch(() => {});
@@ -90,7 +93,7 @@ export default function Home() {
       setMessage(String(err));
       setPhase("error");
     });
-  }, []);
+  }, [setFeedbackContext]);
 
   const stop = useCallback(() => {
     abortRef.current?.abort();
@@ -99,7 +102,8 @@ export default function Home() {
     setResult(null);
     setTicker(null);
     setStats(null);
-  }, []);
+    setFeedbackContext({});
+  }, [setFeedbackContext]);
 
   const liveStatus =
     phase === "running"

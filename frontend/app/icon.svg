@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <!-- Same blue family as the .gradient-tile logo mark in globals.css -->
+    <linearGradient id="tile" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4b9fea" />
+      <stop offset="0.45" stop-color="#1565c0" />
+      <stop offset="1" stop-color="#0d47a1" />
+    </linearGradient>
+    <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.28" />
+      <stop offset="0.55" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <rect width="64" height="64" rx="15" fill="url(#tile)" />
+  <rect width="64" height="64" rx="15" fill="url(#sheen)" />
+
+  <!-- Volatility path: the move being investigated -->
+  <path
+    d="M12 45 L25 29 L35 37 L50 17"
+    fill="none"
+    stroke="#ffffff"
+    stroke-width="5.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <!-- Agent probe: the point the analysis lands on -->
+  <circle cx="50" cy="17" r="8.5" fill="#ffffff" fill-opacity="0.22" />
+  <circle cx="50" cy="17" r="5" fill="#ffffff" />
+</svg>
