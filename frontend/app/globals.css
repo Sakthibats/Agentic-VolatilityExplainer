@@ -1,0 +1,308 @@
+@import "tailwindcss";
+
+/* Tailwind v4's `dark:` variant defaults to prefers-color-scheme, but the theme
+   is class-driven (next-themes, attribute="class"). Without this, every `dark:`
+   utility follows the OS setting instead of the in-app toggle. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ── Design tokens ─────────────────────────────────────────────────────────
+   Light  = the brand identity: white + blue only (#1565C0 family), no coral/orange.
+   Dark   = trading-terminal: deep navy surfaces, brighter blue.
+   Chart line colors validated (dataviz six-checks) against each mode's surface. */
+
+:root {
+  --background: #f4f6fb;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  --primary: #1565c0;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #0f172a;
+  --muted: #f1f5f9;
+  --muted-foreground: #55637a;
+  --accent: #e3f2fd;
+  --accent-foreground: #0d47a1;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #e6ebf2;
+  --input: #e6ebf2;
+  --ring: #1976d2;
+  --radius: 1rem;
+  --shadow-card: 0 1px 1px rgba(15, 23, 42, 0.03), 0 8px 24px rgba(21, 101, 192, 0.07);
+  --shadow-lift: 0 2px 4px rgba(15, 23, 42, 0.05), 0 14px 32px rgba(21, 101, 192, 0.11);
+
+  --pos: #15803d;
+  --neg: #dc2626;
+  /* Traffic-light confidence + evidence accents. Semantic status colors, a
+     deliberate exemption from the blue-only brand rule. Each value clears 3:1
+     against its surface (WCAG 1.4.11) so the 4px edges stay legible. */
+  --conf-high: #15803d;
+  --conf-medium: #ca8a04;
+  --conf-low: #c2410c;
+  --evidence-edge: #8b83a3;
+  --chart-line: #1565c0;
+  --chart-fill: rgba(21, 101, 192, 0.08);
+  --chart-grid: #eef2f7;
+}
+
+.dark {
+  --background: #0b1220;
+  --foreground: #e6edf3;
+  --card: #1a2440;
+  --card-foreground: #e6edf3;
+  --popover: #1a2440;
+  --popover-foreground: #e6edf3;
+  --primary: #4b9fea;
+  --primary-foreground: #0b1220;
+  --secondary: #16203a;
+  --secondary-foreground: #e6edf3;
+  --muted: #16203a;
+  --muted-foreground: #8da2b8;
+  --accent: #1c2b47;
+  --accent-foreground: #9ec9f5;
+  --destructive: #f87171;
+  --destructive-foreground: #0b1220;
+  --border: #2f3b59;
+  --input: #2f3b59;
+  --ring: #4b9fea;
+  /* Dark elevation needs BOTH a lighter fill and a hairline — drop shadows
+     alone don't read without light to occlude. The 1px ring rides in the
+     shadow token so `border-0` utilities can't strip it. */
+  --shadow-card: 0 0 0 1px #2f3b59, 0 2px 4px rgba(0, 0, 0, 0.35), 0 8px 24px rgba(0, 0, 0, 0.28);
+  --shadow-lift: 0 0 0 1px #3b4a6d, 0 4px 8px rgba(0, 0, 0, 0.4), 0 16px 36px rgba(0, 0, 0, 0.35);
+
+  /* Desaturated ~13% vs the light-mode equivalents; full-chroma greens/reds
+     vibrate against navy. */
+  --pos: #4ec49a;
+  --neg: #ef8888;
+  --conf-high: #4ec49a;
+  --conf-medium: #dfb64a;
+  --conf-low: #f0875c;
+  --evidence-edge: #9691b3;
+  --chart-line: #4b9fea;
+  --chart-fill: rgba(75, 159, 234, 0.1);
+  --chart-grid: #1e2942;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-pos: var(--pos);
+  --color-neg: var(--neg);
+  --color-conf-high: var(--conf-high);
+  --color-conf-medium: var(--conf-medium);
+  --color-conf-low: var(--conf-low);
+  --color-evidence: var(--evidence-edge);
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --font-sans: var(--font-geist-sans);
+}
+
+* {
+  border-color: var(--border);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* Numerals in data contexts: tabular figures (sans throughout — no mono) */
+.numeric {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Soft elevation for cards/tiles */
+.elevated {
+  box-shadow: var(--shadow-card);
+}
+
+/* Entrance animation for streamed-in content */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.rise-in {
+  animation: rise-in 0.35s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise-in {
+    animation: none;
+  }
+}
+
+/* Keyboard focus for hand-rolled interactives (shadcn Button ships its own
+   ring; these plain elements had none). :where() keeps specificity at 0. */
+:where(a, button, summary, [role="button"]):focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Buttons/links: immediate touch feedback instead of hover-only affordance */
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* Editorial spaced-uppercase section labels */
+.micro-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+/* Hover lift for interactive cards (+ theme crossfade) */
+.elevated {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+@media (hover: hover) {
+  .lift:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lift);
+  }
+}
+
+/* Staggered entrance for result sections */
+.stagger > * {
+  animation: rise-in 0.4s ease-out both;
+}
+.stagger > *:nth-child(2) { animation-delay: 70ms; }
+.stagger > *:nth-child(3) { animation-delay: 140ms; }
+.stagger > *:nth-child(4) { animation-delay: 210ms; }
+.stagger > *:nth-child(5) { animation-delay: 280ms; }
+
+/* Chart line draw-in */
+@keyframes draw-line {
+  from { stroke-dashoffset: var(--line-len, 1500); }
+  to { stroke-dashoffset: 0; }
+}
+.draw-line {
+  stroke-dasharray: var(--line-len, 1500);
+  animation: draw-line 0.9s ease-out both;
+}
+@keyframes fade-up {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.fade-late {
+  animation: fade-up 0.5s ease-out 0.55s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stagger > *, .draw-line, .fade-late {
+    animation: none;
+  }
+  .elevated {
+    transition: none;
+  }
+}
+
+/* Smooth expand/collapse for <details> (Chrome 129+; graceful no-op elsewhere) */
+html {
+  interpolate-size: allow-keywords;
+}
+details::details-content {
+  block-size: 0;
+  overflow: hidden;
+  transition:
+    block-size 0.3s ease,
+    content-visibility 0.3s ease allow-discrete;
+}
+details[open]::details-content {
+  block-size: auto;
+}
+
+/* Theme switches crossfade instead of snapping */
+body,
+header,
+footer {
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+
+/* Animated blue gradient text — used for the "Market Explainer" wordmark */
+@keyframes gradient-slide {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.gradient-wordmark {
+  background-image: linear-gradient(
+    90deg,
+    var(--primary),
+    #4b9fea,
+    #0d47a1,
+    var(--primary)
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-slide 5s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .gradient-wordmark {
+    animation: none;
+  }
+}
+
+/* Animated gradient tile — the AME logo mark */
+.gradient-tile {
+  background-image: linear-gradient(135deg, #1565c0, #4b9fea, #0d47a1, #1565c0);
+  background-size: 250% 250%;
+  animation: gradient-slide 5s ease-in-out infinite;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 1px 2px rgba(15, 23, 42, 0.2);
+}
+@media (prefers-reduced-motion: reduce) {
+  .gradient-tile {
+    animation: none;
+  }
+}
+
+/* Top-lit gradient primary button */
+.btn-primary-gradient {
+  background-image: linear-gradient(to bottom, color-mix(in oklab, var(--primary) 88%, white), var(--primary));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 1px 2px rgba(15, 23, 42, 0.2);
+}

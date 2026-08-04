@@ -1,7 +1,6 @@
 from unittest.mock import MagicMock, patch
 
 import pandas as pd
-
 from volatility_explainer.mcp.tools import macro
 
 

@@ -2,7 +2,6 @@ import statistics
 from unittest.mock import MagicMock, patch
 
 import pandas as pd
-
 from volatility_explainer.mcp.tools.price import (
     _assess_moves,
     _compute_horizon_changes,
@@ -37,7 +36,7 @@ def test_horizon_changes_computed_from_correct_lookback_offsets():
 
     result = _compute_horizon_changes(_make_hist(closes))
 
-    for label, (back, start_price) in starts.items():
+    for label, (_back, start_price) in starts.items():
         expected = round((110.0 - start_price) / start_price * 100, 2)
         assert result[label] == expected
 

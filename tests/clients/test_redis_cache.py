@@ -2,7 +2,7 @@ import json
 from unittest.mock import MagicMock, patch
 
 import pytest
-
+from redis.exceptions import RedisError
 from volatility_explainer.clients import redis_cache
 
 
@@ -91,7 +91,7 @@ def test_get_cached_tool_data_skips_undecodable_entry_without_raising():
 
 def test_get_cached_tool_data_returns_empty_on_mget_exception():
     client = MagicMock()
-    client.mget.side_effect = RuntimeError("boom")
+    client.mget.side_effect = RedisError("boom")
 
     with patch.object(redis_cache, "_get_client", return_value=client):
         result = redis_cache.get_cached_tool_data("AAPL", ["get_price_data"])
@@ -128,7 +128,7 @@ def test_set_cached_tool_data_noop_when_no_client_and_no_tool_data():
 
 def test_set_cached_tool_data_swallows_pipeline_exception():
     client = MagicMock()
-    client.pipeline.side_effect = RuntimeError("boom")
+    client.pipeline.side_effect = RedisError("boom")
 
     with patch.object(redis_cache, "_get_client", return_value=client):
         redis_cache.set_cached_tool_data("AAPL", {"get_price_data": {}})  # must not raise

@@ -3,7 +3,6 @@ from unittest.mock import MagicMock, patch
 
 import pandas as pd
 import pytest
-
 from volatility_explainer.mcp.tools import options
 from volatility_explainer.mcp.tools._retry import with_retry
 
@@ -120,13 +119,15 @@ def test_term_structure_ordering_stable_under_parallel_completion():
     yf_ticker.fast_info = MagicMock(last_price=100.0, previous_close=100.0)
     yf_ticker.option_chain.side_effect = slow_option_chain
 
-    with patch("yfinance.Ticker", return_value=yf_ticker):
-        with patch("volatility_explainer.mcp.tools.options.date") as mock_date:
-            import datetime as _dt
+    with (
+        patch("yfinance.Ticker", return_value=yf_ticker),
+        patch("volatility_explainer.mcp.tools.options.date") as mock_date,
+    ):
+        import datetime as _dt
 
-            mock_date.today.return_value = _dt.date(2099, 1, 1)
-            mock_date.fromisoformat.side_effect = lambda s: _dt.date.fromisoformat(s)
-            result = options.fetch_options_positioning("TEST")
+        mock_date.today.return_value = _dt.date(2099, 1, 1)
+        mock_date.fromisoformat.side_effect = lambda s: _dt.date.fromisoformat(s)
+        result = options.fetch_options_positioning("TEST")
 
     returned_expiries = [t["expiry"] for t in result["term_structure"]]
     assert returned_expiries == exps
