@@ -11,6 +11,13 @@ __pycache__
 .env.*.local
 tests
 .devcontainer
+
+# Frontend deploys to Cloudflare Pages, never into this image. Excluding it
+# keeps ~860MB of node_modules/.next out of the build context.
+frontend
+node_modules
+docs
+scripts
 .claude
 .claudeignore
 data

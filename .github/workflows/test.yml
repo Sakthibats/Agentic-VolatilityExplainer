@@ -1,7 +1,11 @@
 name: Tests
 
 on:
+  # main is covered by docker-publish.yml, which runs this same suite as the
+  # gate before build-and-push. Excluding it here avoids installing the deps
+  # and running the tests twice on the same commit.
   push:
+    branches-ignore: [main]
   pull_request:
 
 jobs:

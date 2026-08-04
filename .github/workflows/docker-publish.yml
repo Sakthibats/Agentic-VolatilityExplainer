@@ -3,6 +3,15 @@ name: Build and push Docker image
 on:
   push:
     branches: [main]
+    # Frontend-only commits ship via frontend-deploy.yml; no need to rebuild
+    # and redeploy the backend image for them.
+    paths:
+      - "backend/**"
+      - "tests/**"
+      - "Dockerfile"
+      - ".dockerignore"
+      - "pyproject.toml"
+      - ".github/workflows/docker-publish.yml"
   workflow_dispatch:
 
 env:

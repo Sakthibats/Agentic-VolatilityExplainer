@@ -6,8 +6,14 @@ ENV PIP_NO_CACHE_DIR=1 \
 WORKDIR /app
 
 COPY pyproject.toml README.md ./
+
+# Dependencies install in their own layer, keyed only on pyproject.toml, so a
+# backend code change doesn't trigger a full pandas/numpy/anthropic rebuild.
+RUN python -c "import tomllib; print('\n'.join(tomllib.load(open('pyproject.toml','rb'))['project']['dependencies']))" > /tmp/reqs.txt \
+    && pip install --no-cache-dir --prefix=/install -r /tmp/reqs.txt
+
 COPY backend ./backend
-RUN pip install --no-cache-dir --prefix=/install .
+RUN pip install --no-cache-dir --prefix=/install --no-deps .
 
 FROM python:3.11-slim AS runtime
 
