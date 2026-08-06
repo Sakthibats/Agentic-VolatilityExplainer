@@ -6,24 +6,14 @@ import {
   Search as SearchIcon,
   ShieldAlert,
 } from "lucide-react";
-import { useCallback, useRef, useState } from "react";
-
 import { EvidenceTiles } from "@/components/evidence-tiles";
-import { useFeedbackContext } from "@/components/feedback";
 import { Md } from "@/components/md";
 import { Hypotheses } from "@/components/hypotheses";
+import { useInvestigation } from "@/components/investigation-provider";
 import { PriceChart } from "@/components/price-chart";
 import { QueryBar } from "@/components/query-bar";
 import { StatsPanel } from "@/components/stats-panel";
-import { InvestigationLog, type TimelineStep } from "@/components/timeline";
-import {
-  analyzeStream,
-  fetchStats,
-  type AnalysisResult,
-  type TickerStats,
-} from "@/lib/api";
-
-type Phase = "idle" | "running" | "done" | "guardrail" | "error";
+import { InvestigationLog } from "@/components/timeline";
 
 const EXAMPLES = [
   "why did TSLA drop today?",
@@ -33,77 +23,21 @@ const EXAMPLES = [
 ];
 
 export default function Home() {
-  const [phase, setPhase] = useState<Phase>("idle");
-  const [query, setQuery] = useState("");
-  const [steps, setSteps] = useState<TimelineStep[]>([]);
-  const [result, setResult] = useState<AnalysisResult | null>(null);
-  const [message, setMessage] = useState("");
-  const [ticker, setTicker] = useState<string | null>(null);
-  const [stats, setStats] = useState<TickerStats | null>(null);
-  const [runCount, setRunCount] = useState(0);
-  const abortRef = useRef<AbortController | null>(null);
-  const { setContext: setFeedbackContext } = useFeedbackContext();
-
-  const investigate = useCallback((raw: string) => {
-    setQuery(raw); // keep the search field in sync when a chip triggers the run
-    abortRef.current?.abort();
-    const controller = new AbortController();
-    abortRef.current = controller;
-
-    setPhase("running");
-    setSteps([]);
-    setResult(null);
-    setStats(null);
-    setTicker(null);
-    setMessage("");
-
-    analyzeStream(
-      raw,
-      {
-        onStarted: (t, sessionId) => {
-          setFeedbackContext({ ticker: t || null, sessionId });
-          if (t) {
-            setTicker(t);
-            fetchStats(t).then(setStats).catch(() => {});
-          }
-        },
-        onStep: (label) =>
-          setSteps((prev) => [
-            ...prev.map((s) => ({ ...s, done: true })),
-            { label, done: false },
-          ]),
-        onResult: (r) => {
-          setSteps((prev) => prev.map((s) => ({ ...s, done: true })));
-          setResult(r);
-          setPhase("done");
-          setRunCount((n) => n + 1);
-        },
-        onGuardrail: (msg) => {
-          setMessage(msg.replace(/\*\*/g, "").replace(/\*/g, ""));
-          setPhase("guardrail");
-        },
-        onError: (msg) => {
-          setMessage(msg);
-          setPhase("error");
-        },
-      },
-      controller.signal,
-    ).catch((err) => {
-      if (controller.signal.aborted) return;
-      setMessage(String(err));
-      setPhase("error");
-    });
-  }, [setFeedbackContext]);
-
-  const stop = useCallback(() => {
-    abortRef.current?.abort();
-    setPhase("idle");
-    setSteps([]);
-    setResult(null);
-    setTicker(null);
-    setStats(null);
-    setFeedbackContext({});
-  }, [setFeedbackContext]);
+  // State lives in the root layout so navigating to /about and back doesn't
+  // discard the investigation — see components/investigation-provider.tsx.
+  const {
+    phase,
+    query,
+    setQuery,
+    steps,
+    result,
+    message,
+    ticker,
+    stats,
+    runCount,
+    investigate,
+    stop,
+  } = useInvestigation();
 
   const liveStatus =
     phase === "running"

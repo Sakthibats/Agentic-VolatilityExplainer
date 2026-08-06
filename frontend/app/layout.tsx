@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ThemeProvider } from "next-themes";
 
 import { FeedbackLink, FeedbackProvider } from "@/components/feedback";
+import { InvestigationProvider } from "@/components/investigation-provider";
 import { NavTabs } from "@/components/nav-tabs";
 import { SupportButton } from "@/components/support-button";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -35,6 +36,7 @@ export default function RootLayout({
       <body className="flex min-h-screen flex-col">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           <FeedbackProvider>
+          <InvestigationProvider>
           <header className="sticky top-0 z-10 border-b border-black/5 bg-background/75 backdrop-blur-md dark:border-white/5">
             <div className="mx-auto flex h-16 max-w-5xl items-center gap-3 px-4">
               <Link href="/" className="flex items-center gap-3">
@@ -100,6 +102,7 @@ export default function RootLayout({
               </div>
             </div>
           </footer>
+          </InvestigationProvider>
           </FeedbackProvider>
         </ThemeProvider>
       </body>
