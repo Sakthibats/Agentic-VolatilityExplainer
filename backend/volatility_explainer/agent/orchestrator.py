@@ -21,8 +21,9 @@ from volatility_explainer.mcp.tools.options import fetch_options_data, fetch_opt
 from volatility_explainer.mcp.tools.price import fetch_price_data
 from volatility_explainer.mcp.tools.sector import fetch_sector_comparison
 
-# Set VOLX_LOG_LLM_PAYLOAD=1 to dump the full system/tools/messages sent to the model each
-# turn — verbose, off by default. The compact size/usage line below is always printed.
+# Set VOLX_LOG_LLM_PAYLOAD=1 for per-turn LLM diagnostics: payload sizes, the content-block
+# breakdown, and a full dump of the system/tools/messages sent to the model. Off by default;
+# timing, token usage, and cache hits are always printed.
 _LOG_LLM_PAYLOAD = os.environ.get("VOLX_LOG_LLM_PAYLOAD") == "1"
 
 _TOOL_DEFINITIONS: list[dict] = [
@@ -433,12 +434,12 @@ async def run_explainer(
     final_input: dict = {}
 
     for turn in range(_MAX_TURNS):
-        messages_json = json.dumps(messages, default=str)
-        print(
-            f"[llm]   turn {turn + 1} payload          messages={len(messages)}  "
-            f"~{len(SYSTEM_PROMPT) + len(messages_json):,} chars (system+history, excl. tool defs)"
-        )
         if _LOG_LLM_PAYLOAD:
+            messages_json = json.dumps(messages, default=str)
+            print(
+                f"[llm]   turn {turn + 1} payload          messages={len(messages)}  "
+                f"~{len(SYSTEM_PROMPT) + len(messages_json):,} chars (system+history, excl. tool defs)"
+            )
             print(f"[llm]   turn {turn + 1} system:\n{SYSTEM_PROMPT}")
             print(f"[llm]   turn {turn + 1} messages:\n{json.dumps(messages, indent=2, default=str)}")
 
@@ -463,12 +464,13 @@ async def run_explainer(
         # Breakdown of where output tokens actually went — a "text" block here is a preamble
         # the model wrote before its tool call, pure overhead we could suppress with a forced
         # tool_choice; "tool_use" size approximates the JSON payload itself (tiles/hypotheses).
-        for block in response.content:
-            if block.type == "text":
-                print(f"[llm]   turn {turn + 1} content block     text       {len(block.text):5d} chars (preamble — unwanted)")
-            elif block.type == "tool_use":
-                size = len(json.dumps(block.input, default=str))
-                print(f"[llm]   turn {turn + 1} content block     tool_use   {size:5d} chars  ({block.name})")
+        if _LOG_LLM_PAYLOAD:
+            for block in response.content:
+                if block.type == "text":
+                    print(f"[llm]   turn {turn + 1} content block     text       {len(block.text):5d} chars (preamble — unwanted)")
+                elif block.type == "tool_use":
+                    size = len(json.dumps(block.input, default=str))
+                    print(f"[llm]   turn {turn + 1} content block     tool_use   {size:5d} chars  ({block.name})")
 
         tool_blocks = [b for b in response.content if b.type == "tool_use"]
         terminal_block = next((b for b in tool_blocks if b.name in _TERMINAL_TOOLS), None)
@@ -527,10 +529,10 @@ async def run_explainer(
             print(f"[agent] {block.name:<25} {elapsed * 1000:6.0f}ms  {'(cached, redis)' if hit else ''}")
             tool_data[block.name] = result
             results_by_id[block.id] = result
-        batch_elapsed = time.perf_counter() - batch_t0
-        if len(fresh_blocks) > 1:
+        if _LOG_LLM_PAYLOAD and len(fresh_blocks) > 1:
             # Wall time of the whole batch vs. the slowest individual call — if these are
             # close, the fetches genuinely overlapped rather than running one after another.
+            batch_elapsed = time.perf_counter() - batch_t0
             print(f"[agent] {'+'.join(b.name for b in fresh_blocks):<25} {batch_elapsed * 1000:6.0f}ms  (batch wall time, n={len(fresh_blocks)})")
         tool_time += turn_tool_max
 

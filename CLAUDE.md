@@ -4,7 +4,7 @@ Monorepo, mid-migration from a Streamlit monolith to a decoupled stack. Target a
 
 - `backend/volatility_explainer/` — the product: `api/` (FastAPI, SSE — schemas.py is the contract), `query/` (scope guardrail + ticker resolution), `marketdata/`, agent orchestrator, MCP-shaped tools, API clients. Will grow an empty-for-now `billing/` boundary in Phase 4.
 - `frontend/` — Next.js 16 (App Router) + Tailwind v4 + shadcn/ui. Design tokens live in `app/globals.css` (light = white+blue brand, dark = trading terminal; both from the same variables). `lib/api.ts` mirrors the backend schemas — keep in sync. Deploys to Vercel; backend keeps the Docker pipeline at api.market-explainer.com.
-- The legacy Streamlit UI (`apps/`) is deleted; its About copy is parked in `docs/about_content.py` for the Phase 3 frontend.
+- The legacy Streamlit UI (`apps/`) is deleted; its About copy now lives in `frontend/app/about/page.tsx`.
 
 Migration phases (0 restructure+tests ✅ → 1 FastAPI+SSE ✅ → 2 async refactor ✅ → 3 Next.js frontend ✅ (Vercel deploy pending) → 4 metering/rate limiting). Telegram/Slack adapters and payment collection are explicitly out of scope for now — but keep the usage-ledger and billing module boundaries clean so freemium can be added later without rearchitecting.
 

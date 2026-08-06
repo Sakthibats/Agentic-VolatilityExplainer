@@ -1,6 +1,12 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "permissions": {
+    "allow": [
+      "Bash(git status *)",
+      "Bash(git check-ignore *)",
+      "Bash(npx --no-install eslint .)",
+      "Bash(npx --no-install tsc --noEmit)"
+    ],
     "deny": [
       "Read(./.env)",
       "Read(./.env.local)",

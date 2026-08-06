@@ -1,8 +1,7 @@
 # Agentic Market Explainer
 
-> **Rebuilding:** the Streamlit UI has been retired; the backend now serves a REST/SSE API
-> and a Next.js frontend is in progress. market-explainer.com serves the API until the new
-> frontend launches.
+FastAPI backend (REST + SSE) at api.market-explainer.com, Next.js frontend on Vercel.
+
 <img width="1468" height="773" alt="image" src="https://github.com/user-attachments/assets/74599fd6-539f-464c-8f5f-e4ed63ba0444" />
 
 Ask "why is TSLA down today" and get an actual investigation, not a chatbot guess pulled from stale training data. The agent pulls real price and volatility numbers first, decides for itself whether the move is statistically unusual, then fans out to news, options, macro, or upcoming catalysts only when the evidence warrants it — returning ranked hypotheses with confidence levels, and every number traceable to a real source.
@@ -26,7 +25,7 @@ Ask "why is TSLA down today" and get an actual investigation, not a chatbot gues
 - **Structured output only.** The model can only end its turn via a terminal tool call (`submit_analysis` or `flag_out_of_scope`), never free text. Every number must trace back to a real tool result, or it's marked "Data unavailable."
 - **Degrades gracefully.** Price, news, and macro each fall back to `yfinance` if a paid source is missing or fails — the app runs end-to-end with zero API keys configured.
 
-The significance math, options analytics, ticker resolution, and FAQs are covered in more depth in the [About content](docs/about_content.py).
+The significance math, options analytics, ticker resolution, and FAQs are covered in more depth on the [About page](frontend/app/about/page.tsx).
 
 ## Architecture
 
@@ -79,7 +78,7 @@ backend/volatility_explainer/
 ├── agent/                     # orchestrator (tool-use loop) + system prompt
 └── mcp/tools/                  # 8 MCP-shaped data tools — dual-purpose: in-process today, server-ready
 
-frontend/                # Next.js + Tailwind + shadcn/ui (in progress)
+frontend/                # Next.js (App Router) + Tailwind v4 + shadcn/ui — deploys to Vercel
 
 tests/
 ├── api/                   # route + SSE-stream tests (orchestrator mocked)
@@ -103,7 +102,7 @@ docker-compose.yml     # local run with .env-driven config
 | Agent | Anthropic Claude (Haiku 4.5), tool-use loop, max 7 turns, prompt caching |
 | Tool protocol | [MCP](https://modelcontextprotocol.io/) tool-definition conventions (standalone server on the roadmap) |
 | API | FastAPI — REST + SSE streaming, versioned `/v1` |
-| UI | Next.js + Tailwind + shadcn/ui (in progress) |
+| UI | Next.js (App Router) + Tailwind v4 + shadcn/ui, dual light/dark theme |
 | Data | Finnhub (price, news), FRED (macro) — `yfinance` fallback throughout |
 | Cache | Redis — per-tool + final-answer, optional |
 | Analytics | Supabase — anonymized usage logging, optional |
@@ -132,7 +131,7 @@ curl -X POST 'localhost:8080/v1/analyze?stream=false' -H 'content-type: applicat
 
 `yfinance` needs no API key, so the app runs end-to-end with zero keys configured. `ANTHROPIC_API_KEY` is the only one required for the agent's reasoning step; Finnhub/FRED improve data quality, Supabase/Redis are optional infra.
 
-Lint before committing: `ruff check .`
+Lint before committing: `ruff check backend tests`
 
 ## Roadmap
 
