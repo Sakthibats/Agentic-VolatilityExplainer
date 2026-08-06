@@ -1,5 +1,6 @@
 # Agentic Market Explainer
 LIVE at https://market-explainer.com/
+
 <img width="1222" height="763" alt="image" src="https://github.com/user-attachments/assets/8d5fbb86-2ba6-4419-ad0b-90cb79a46b13" />
 
 Ask "why is TSLA down today" and get an actual investigation, not a chatbot guess pulled from stale training data. The agent pulls real price and volatility numbers first, decides for itself whether the move is statistically unusual, then fans out to news, options, macro, or upcoming catalysts only when the evidence warrants it — returning ranked hypotheses with confidence levels, and every number traceable to a real source.
