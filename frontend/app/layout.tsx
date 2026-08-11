@@ -3,6 +3,7 @@ import { Geist } from "next/font/google";
 import Link from "next/link";
 import { ThemeProvider } from "next-themes";
 
+import { Analytics } from "@/components/analytics";
 import { FeedbackLink, FeedbackProvider } from "@/components/feedback";
 import { InvestigationProvider } from "@/components/investigation-provider";
 import { NavTabs } from "@/components/nav-tabs";
@@ -105,6 +106,7 @@ export default function RootLayout({
           </InvestigationProvider>
           </FeedbackProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
