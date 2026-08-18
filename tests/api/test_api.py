@@ -41,10 +41,10 @@ OUT_OF_SCOPE = SimpleNamespace(in_scope=False, ticker=None, question="bake a cak
 
 
 def _patched(decision=IN_SCOPE, orch=None):
-    orch_fn = orch or (lambda t, q, on_step=None: ORCH_RESULT)
+    orch_fn = orch or (lambda t, q, on_step=None, on_summary=None: ORCH_RESULT)
 
-    async def async_orch(t, q, on_step=None):
-        return orch_fn(t, q, on_step=on_step)
+    async def async_orch(t, q, on_step=None, on_summary=None):
+        return orch_fn(t, q, on_step=on_step, on_summary=on_summary)
 
     return (
         patch.object(service, "evaluate_query", return_value=decision),
@@ -87,7 +87,7 @@ def test_analyze_non_streaming_returns_shaped_result():
 
 
 def test_analyze_sse_event_sequence():
-    def orch_with_steps(ticker, query, on_step=None):
+    def orch_with_steps(ticker, query, on_step=None, on_summary=None):
         if on_step:
             on_step("Pulling price data...")
             on_step("Scanning recent news headlines...")
@@ -107,6 +107,31 @@ def test_analyze_sse_event_sequence():
     assert names[-1] == "result"
     result = events[-1][1]
     assert result["status"] == "complete" and result["ticker"] == "AAPL"
+
+
+def test_analyze_sse_streams_summary_events_before_the_result():
+    """The write-up is the longest step in a run; `summary` events carry it to the client
+    as it is generated rather than after it lands."""
+    def orch_with_summary(ticker, query, on_step=None, on_summary=None):
+        if on_step:
+            on_step("Synthesizing findings...")
+        if on_summary:
+            on_summary("AAPL fell")
+            on_summary("AAPL fell 4.1%")
+        return ORCH_RESULT
+
+    p1, p2, p3, p4 = _patched(orch=orch_with_summary)
+    with p1, p2, p3, p4:
+        r = client.post("/v1/analyze", json={"query": "why did AAPL drop?"})
+
+    events = _parse_sse(r.text)
+    names = [n for n, _ in events]
+    summaries = [payload["text"] for name, payload in events if name == "summary"]
+
+    assert summaries == ["AAPL fell", "AAPL fell 4.1%"]
+    # Cumulative, and always ahead of the terminal result.
+    assert names.index("summary") < names.index("result")
+    assert events[-1][1]["summary"].startswith("AAPL fell 4.1%")
 
 
 def test_analyze_sse_guardrail_event():
@@ -129,7 +154,7 @@ def test_analyze_non_streaming_guardrail():
 
 
 def test_analyze_orchestrator_failure_becomes_error_event():
-    def boom(ticker, query, on_step=None):
+    def boom(ticker, query, on_step=None, on_summary=None):
         raise RuntimeError("anthropic down")
 
     p1, p2, p3, p4 = _patched(orch=boom)
@@ -180,7 +205,7 @@ async def test_client_disconnect_lets_investigation_finish():
 
     finished = asyncio.Event()
 
-    async def slow_analyze(q, sid, on_step=None, on_started=None):
+    async def slow_analyze(q, sid, on_step=None, on_started=None, on_summary=None):
         if on_started:
             on_started("AAPL")
         if on_step:

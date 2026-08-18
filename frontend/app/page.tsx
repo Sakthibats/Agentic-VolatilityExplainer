@@ -30,6 +30,7 @@ export default function Home() {
     query,
     setQuery,
     steps,
+    partialSummary,
     result,
     message,
     ticker,
@@ -90,21 +91,35 @@ export default function Home() {
                 <InvestigationLog steps={steps} finished={phase === "done"} />
               </div>
             </div>
+            {/* One card for both states, so the streaming text is replaced in place by
+                the final summary rather than the card unmounting and remounting. */}
+            {(result?.summary || partialSummary) && (
+              <section className="rise-in space-y-2">
+                <h2 className="micro-label">Overall Summary</h2>
+                <div className="elevated rounded-xl border-0 bg-card p-5 sm:p-6" style={{ borderLeft: "4px solid var(--primary)" }}>
+                  <h3 className="mb-2 text-sm font-semibold tracking-tight">
+                    {ticker ? `${ticker} — Price Movement Analysis` : "Price Movement Analysis"}
+                  </h3>
+                  <p className="text-[15px] leading-7 sm:text-base">
+                    {result?.summary ? (
+                      <Md text={result.summary} />
+                    ) : (
+                      <>
+                        {/* Plain text while streaming — mid-sentence markdown has
+                            unbalanced ** and would render as literal asterisks. */}
+                        {partialSummary}
+                        <span
+                          className="ml-0.5 inline-block h-4 w-px animate-pulse bg-primary align-middle"
+                          aria-hidden
+                        />
+                      </>
+                    )}
+                  </p>
+                </div>
+              </section>
+            )}
             {result && (
               <>
-                {result.summary && (
-                  <section className="rise-in space-y-2">
-                    <h2 className="micro-label">Overall Summary</h2>
-                    <div className="elevated rounded-xl border-0 bg-card p-5 sm:p-6" style={{ borderLeft: "4px solid var(--primary)" }}>
-                      <h3 className="mb-2 text-sm font-semibold tracking-tight">
-                        {ticker ? `${ticker} — Price Movement Analysis` : "Price Movement Analysis"}
-                      </h3>
-                      <p className="text-[15px] leading-7 sm:text-base">
-                        <Md text={result.summary} />
-                      </p>
-                    </div>
-                  </section>
-                )}
                 {result.status === "incomplete" && (
                   <p className="text-xs text-muted-foreground">
                     The investigation hit its turn limit before a full write-up —

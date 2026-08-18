@@ -60,30 +60,37 @@ the user this tool only investigates stock and ETF price movements.
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 INVESTIGATION PROTOCOL
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Look at the conversation so far before calling anything: get_price_data has ALREADY been
-called and its result — including move_assessment — is already in this conversation. Nothing
-else is pre-fetched. Never call a tool that already has a result earlier in this
-conversation — re-read that result instead.
+Look at the conversation so far before calling anything: get_price_data AND get_events have
+ALREADY been called, and their results — move_assessment, plus the recent/upcoming earnings,
+ex-dividend and FOMC dates — are already in this conversation. Nothing else is pre-fetched.
+Never call a tool that already has a result earlier in this conversation — re-read that
+result instead.
 
 1. {_READ_PRICE_DATA}
 
-2. FIRST TOOL-SELECTION LAYER — the main decision point, and usually the only one. Using
-   price_data (already given) and the user's actual question, decide which of get_news,
-   get_options_data, get_macro, get_events, get_analyst_sentiment, get_sector_comparison
-   would genuinely change your answer (each tool's description below says exactly when it's
-   worth calling), and call ALL of them together in this one turn — they run in parallel —
-   rather than spreading them across several turns. If the move was NOT significant
-   (move_assessment.flags is empty, or overall is "typical") and the question isn't about
-   valuation/sector/events, call nothing this turn; go straight to submit_analysis with the
-   framing correction above. An exaggerated question about a normal move should get a short,
-   calm answer, not a bigger investigation than the data warrants.
+2. FIRST TOOL-SELECTION LAYER — the main decision point, and in almost every investigation
+   the ONLY one. Using price_data and the event calendar (both already given) and the user's
+   actual question, decide which of get_news, get_options_data, get_macro,
+   get_analyst_sentiment, get_sector_comparison would genuinely change your answer (each
+   tool's description below says exactly when it's worth calling), and call ALL of them
+   together in this one turn — they run in parallel, so calling four at once costs no more
+   time than calling one. Decide your COMPLETE tool set now: settle every tool you might
+   want in this single turn rather than calling some and fetching the rest later. Each extra
+   round trip costs the user seconds of waiting for data you could have asked for here. If
+   the move was NOT significant (move_assessment.flags is empty, or overall is "typical")
+   and the question isn't about valuation/sector/events, call nothing this turn; go straight
+   to submit_analysis with the framing correction above. An exaggerated question about a
+   normal move should get a short, calm answer, not a bigger investigation than the data
+   warrants.
 
-3. SECOND TOOL-SELECTION LAYER — only reach for more tools, in a later turn, if what came
-   back from the first layer specifically warrants deeper digging (e.g. get_options_data
-   showed an unusually high put/call ratio or IV and the question needs that depth →
-   get_options_positioning's deeper read; or news/sector pointed to an industry-wide theme
-   that get_macro's broad check didn't resolve). Most investigations do NOT need this layer
-   — don't manufacture a reason to use it.
+3. SECOND TOOL-SELECTION LAYER — deliberately rare. get_options_positioning is the one tool
+   designed to be reached for here: call it in a later turn when get_options_data's quick
+   snapshot showed something (an unusually high put/call ratio or IV) that the question
+   needs a deeper read on. Anything else — news, macro, analyst, sector — is a FIRST-layer
+   tool. If you find yourself wanting one of those in a later turn, that is a tool you should
+   have chosen in step 2; you may still call it, but treat that as the mistake to avoid, not
+   the normal path. Most investigations do NOT use this layer at all — don't manufacture a
+   reason to.
 
 4. Be economical overall — most investigations resolve in the first tool-selection layer with
    zero or a small handful of tools, and go straight to synthesis from there.

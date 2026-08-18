@@ -18,6 +18,8 @@ interface Investigation {
   query: string;
   setQuery: (q: string) => void;
   steps: TimelineStep[];
+  /** The write-up as it streams in, before `result` lands. Empty once it has. */
+  partialSummary: string;
   result: AnalysisResult | null;
   message: string;
   ticker: string | null;
@@ -37,6 +39,7 @@ export function InvestigationProvider({ children }: { children: React.ReactNode 
   const [phase, setPhase] = useState<Phase>("idle");
   const [query, setQuery] = useState("");
   const [steps, setSteps] = useState<TimelineStep[]>([]);
+  const [partialSummary, setPartialSummary] = useState("");
   const [result, setResult] = useState<AnalysisResult | null>(null);
   const [message, setMessage] = useState("");
   const [ticker, setTicker] = useState<string | null>(null);
@@ -54,6 +57,7 @@ export function InvestigationProvider({ children }: { children: React.ReactNode 
 
       setPhase("running");
       setSteps([]);
+      setPartialSummary("");
       setResult(null);
       setStats(null);
       setTicker(null);
@@ -74,8 +78,12 @@ export function InvestigationProvider({ children }: { children: React.ReactNode 
               ...prev.map((s) => ({ ...s, done: true })),
               { label, done: false },
             ]),
+          // Cumulative text — replace the buffer rather than appending, so a dropped
+          // or reordered event can't corrupt it.
+          onSummary: (text) => setPartialSummary(text),
           onResult: (r) => {
             setSteps((prev) => prev.map((s) => ({ ...s, done: true })));
+            setPartialSummary(""); // the result's summary is authoritative from here
             setResult(r);
             setPhase("done");
             setRunCount((n) => n + 1);
@@ -103,6 +111,7 @@ export function InvestigationProvider({ children }: { children: React.ReactNode 
     abortRef.current?.abort();
     setPhase("idle");
     setSteps([]);
+    setPartialSummary("");
     setResult(null);
     setTicker(null);
     setStats(null);
@@ -115,6 +124,7 @@ export function InvestigationProvider({ children }: { children: React.ReactNode 
       query,
       setQuery,
       steps,
+      partialSummary,
       result,
       message,
       ticker,
@@ -123,7 +133,7 @@ export function InvestigationProvider({ children }: { children: React.ReactNode 
       investigate,
       stop,
     }),
-    [phase, query, steps, result, message, ticker, stats, runCount, investigate, stop],
+    [phase, query, steps, partialSummary, result, message, ticker, stats, runCount, investigate, stop],
   );
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;

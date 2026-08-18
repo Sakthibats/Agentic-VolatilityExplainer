@@ -5,6 +5,7 @@ POST /v1/analyze emits, in order:
 
     investigation_started  → InvestigationStarted
     step (0..n times)      → Step
+    summary (0..n times)   → SummaryProgress               (interleaved with the last step)
     result | guardrail     → AnalysisResult | Guardrail   (exactly one, terminal)
     error                  → ApiError                      (terminal, on failure)
 
@@ -67,6 +68,18 @@ class InvestigationStarted(BaseModel):
 
 class Step(BaseModel):
     label: str
+
+
+class SummaryProgress(BaseModel):
+    """The analysis summary as generated so far, emitted while the model writes it.
+
+    `text` is CUMULATIVE, not a delta — each event carries the whole summary up to that
+    point, so a client replaces its buffer rather than appending. That makes a dropped or
+    out-of-order event harmless. Always superseded by the `summary` on the final
+    AnalysisResult, which is the authoritative text.
+    """
+
+    text: str
 
 
 class Guardrail(BaseModel):

@@ -70,6 +70,7 @@ async def analyze(
     session_id: str,
     on_step: Callable[[str], None] | None = None,
     on_started: Callable[[str], None] | None = None,
+    on_summary: Callable[[str], None] | None = None,
 ) -> AnalysisResult:
     """Run one investigation end to end: scope gate → cache → orchestrator → shaping.
 
@@ -102,7 +103,9 @@ async def analyze(
             print(f"[redis]  final_answer lookup   {redis_elapsed:6.0f}ms  ({'hit' if result else 'miss'})")
 
         if result is None:
-            result = await run_explainer(ticker, question, on_step=on_step)
+            result = await run_explainer(
+                ticker, question, on_step=on_step, on_summary=on_summary
+            )
 
             if not question and result.get("status") == "complete":
                 # Write-back only serves a *future* request — run it off-thread rather

@@ -63,6 +63,9 @@ export interface TickerStats {
 export interface AnalyzeCallbacks {
   onStarted?: (ticker: string, sessionId: string) => void;
   onStep?: (label: string) => void;
+  /** The summary as written so far. CUMULATIVE, not a delta — replace, don't append.
+   *  Always superseded by the `summary` on the final result. */
+  onSummary?: (text: string) => void;
   onResult?: (result: AnalysisResult) => void;
   onGuardrail?: (message: string) => void;
   onError?: (message: string) => void;
@@ -107,6 +110,7 @@ export async function analyzeStream(
     const payload = JSON.parse(data);
     if (name === "investigation_started") cb.onStarted?.(payload.ticker, payload.session_id);
     else if (name === "step") cb.onStep?.(payload.label);
+    else if (name === "summary") cb.onSummary?.(payload.text);
     else if (name === "result") cb.onResult?.(payload as AnalysisResult);
     else if (name === "guardrail") cb.onGuardrail?.(payload.message);
     else if (name === "error") cb.onError?.(payload.message);

@@ -25,6 +25,7 @@ from volatility_explainer.api.schemas import (
     PricePoint,
     Stat,
     Step,
+    SummaryProgress,
     TickerStats,
 )
 from volatility_explainer.marketdata import (
@@ -64,6 +65,9 @@ async def _analyze_event_stream(raw_query: str, session_id: str):
             result = await service.analyze(
                 raw_query, session_id,
                 on_step=lambda label: events.put_nowait(("step", Step(label=label))),
+                on_summary=lambda text: events.put_nowait(
+                    ("summary", SummaryProgress(text=text))
+                ),
                 on_started=lambda ticker: events.put_nowait((
                     "investigation_started",
                     InvestigationStarted(ticker=ticker, query=raw_query, session_id=session_id),

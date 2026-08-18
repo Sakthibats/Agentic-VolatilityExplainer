@@ -299,6 +299,12 @@ _TOOL_DEFINITIONS: list[dict] = [
             "required": ["summary", "tiles", "hypotheses"],
         },
         "cache_control": {"type": "ephemeral"},
+        # Stream this tool's input in fine-grained chunks rather than a few large ones, so
+        # `summary` can be surfaced to the reader as it is written instead of after the
+        # whole ~1000-token payload lands. `summary` is the FIRST property in the schema
+        # above and must stay there — the model emits properties in schema order, so any
+        # field placed ahead of it delays the first visible character. Not a beta feature.
+        "eager_input_streaming": True,
     },
 ]
 
@@ -422,6 +428,15 @@ def _with_price_context(name: str, result: dict, tool_data: dict) -> dict:
     return apply_reference_price(result, (tool_data.get("get_price_data") or {}).get("price"))
 
 
+# Labels for the LLM turns themselves. These are emitted BEFORE the call they describe,
+# which is the whole point: a step stays on screen until the NEXT one arrives, so a label
+# emitted after its work reports time that has already elapsed — and silently charges its
+# own duration to whichever label came before it. The final synthesis turn is the single
+# longest step in a run (~10s), and it used to be attributed to whatever tool the model
+# happened to name last, making that tool look broken.
+_STEP_DECIDING = "Deciding what to investigate..."
+_STEP_SYNTHESIZING = "Synthesizing findings..."
+
 _STEP_LABELS: dict[str, str] = {
     "get_price_data":          "Pulling price data...",
     "get_news":                "Scanning recent news headlines...",
@@ -432,6 +447,56 @@ _STEP_LABELS: dict[str, str] = {
     "get_macro":               "Checking broader market context...",
     "get_events":              "Checking earnings dates and upcoming catalysts...",
 }
+
+
+def _partial_json_string(buffer: str, field: str) -> str | None:
+    """Pull a top-level string field out of a JSON object that is still being streamed.
+
+    The model streams submit_analysis's input as raw JSON fragments, so mid-flight the
+    buffer is unparseable (`{"summary": "AAPL fell 4.1% beca`). This reads the value of
+    `field` out of that partial text so the summary can be rendered as it is written,
+    rather than after the whole payload lands. Returns None until the field's opening
+    quote has arrived.
+
+    Escapes are decoded via json.loads on the isolated value, and a trailing half-written
+    escape (`\\u00` with the rest still in flight) is trimmed until it parses — so the
+    caller never sees a mangled character.
+    """
+    key = f'"{field}"'
+    start = buffer.find(key)
+    if start == -1:
+        return None
+    colon = buffer.find(":", start + len(key))
+    if colon == -1:
+        return None
+
+    i = colon + 1
+    while i < len(buffer) and buffer[i].isspace():
+        i += 1
+    if i >= len(buffer) or buffer[i] != '"':
+        return None  # value hasn't started (or isn't a string)
+
+    chars: list[str] = []
+    escaped = False
+    for char in buffer[i + 1 :]:
+        if escaped:
+            chars.append(char)
+            escaped = False
+        elif char == "\\":
+            chars.append(char)
+            escaped = True
+        elif char == '"':
+            break  # closing quote — the value is complete
+        else:
+            chars.append(char)
+
+    raw = "".join(chars)
+    while raw:
+        try:
+            return json.loads(f'"{raw}"')
+        except ValueError:
+            raw = raw[:-1]  # trailing escape still arriving — drop it and retry
+    return ""
 
 
 def _attach_news_citations(tiles: list[dict], tool_data: dict) -> list[dict]:
@@ -458,6 +523,7 @@ async def run_explainer(
     ticker: str,
     query: str = "",
     on_step: Callable[[str], None] | None = None,
+    on_summary: Callable[[str], None] | None = None,
 ) -> dict:
     """Run the investigation: a deterministic parallel pre-fetch of _PREFETCH_TOOLS (price —
     non-negotiable, it also feeds the sideline chart — plus events), then a Claude-driven
@@ -474,6 +540,11 @@ async def run_explainer(
 
     Every tool fetch checks Redis right before calling it (see _fetch_with_cache) — there is
     no upfront bulk cache lookup, so a tool the investigation never needs is never checked.
+
+    Every LLM turn is streamed. The final one is the longest single step in a run (~10s to
+    generate the write-up), so on_summary receives submit_analysis's `summary` field as it
+    is written — the reader sees prose appearing instead of a spinner. on_summary is called
+    with the cumulative text each time, not a delta, so a dropped call cannot corrupt it.
     """
     ticker = ticker.upper()
     run_t0 = time.perf_counter()
@@ -537,6 +608,11 @@ async def run_explainer(
     final_input: dict = {}
 
     for turn in range(_MAX_TURNS):
+        if on_step:
+            # Turn 1 picks tools; every later turn is usually the write-up. When a later
+            # turn instead asks for more data, its tool labels simply supersede this one.
+            on_step(_STEP_DECIDING if turn == 0 else _STEP_SYNTHESIZING)
+
         if _LOG_LLM_PAYLOAD:
             messages_json = json.dumps(messages, default=str)
             print(
@@ -547,14 +623,40 @@ async def run_explainer(
             print(f"[llm]   turn {turn + 1} messages:\n{json.dumps(messages, indent=2, default=str)}")
 
         llm_t0 = time.perf_counter()
-        response = await client.messages.create(
+        # Streamed so the write-up can be surfaced as it is generated (see on_summary in
+        # the docstring). get_final_message() still hands back the same Message object the
+        # non-streaming call returned, so everything below is unchanged.
+        streamed_summary = ""
+        streaming_tool: str | None = None
+        input_json = ""
+
+        async with client.messages.stream(
             model="claude-haiku-4-5-20251001",
             max_tokens=2000,
             system=system_blocks,
             tools=_TOOL_DEFINITIONS,
             tool_choice={"type": "any"},
             messages=messages,
-        )
+        ) as stream:
+            async for event in stream:
+                if event.type == "content_block_start":
+                    block = event.content_block
+                    streaming_tool = block.name if block.type == "tool_use" else None
+                    input_json = ""
+                elif (
+                    on_summary is not None
+                    and streaming_tool == "submit_analysis"
+                    and event.type == "content_block_delta"
+                    and event.delta.type == "input_json_delta"
+                ):
+                    input_json += event.delta.partial_json
+                    partial = _partial_json_string(input_json, "summary")
+                    if partial and partial != streamed_summary:
+                        streamed_summary = partial
+                        on_summary(partial)
+
+            response = await stream.get_final_message()
+
         llm_elapsed = time.perf_counter() - llm_t0
         llm_time += llm_elapsed
 
@@ -582,8 +684,8 @@ async def run_explainer(
         messages.append({"role": "assistant", "content": response.content})
 
         if terminal_block:
-            if on_step and terminal_block.name == "submit_analysis":
-                on_step("Synthesizing findings...")
+            # No step emitted here on purpose — _STEP_SYNTHESIZING already went out before
+            # this turn's call, so it covered the generation the user actually waited on.
             final_kind = "guardrail" if terminal_block.name == "flag_out_of_scope" else "analysis"
             final_input = terminal_block.input
             break
