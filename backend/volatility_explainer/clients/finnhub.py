@@ -43,3 +43,21 @@ class FinnhubClient:
         response = client.get(url, params=params)
         response.raise_for_status()
         return response.json()
+
+    def get_earnings_calendar(self, symbol: str, *, from_date: str, to_date: str) -> list[dict]:
+        """Earnings within a date window — past entries carry epsActual/revenueActual, future
+        ones only the estimates. Each entry also has `hour` (bmo/amc/dmh) and `quarter`.
+
+        Symbols with no earnings (ETFs, funds) return an empty list, not an error.
+        """
+        url = f"{FINNHUB_API_URL}/calendar/earnings"
+        params = {
+            "symbol": symbol.upper(),
+            "from": from_date,
+            "to": to_date,
+            "token": self._api_key,
+        }
+        client = self._client or _shared_client(10.0)
+        response = client.get(url, params=params)
+        response.raise_for_status()
+        return response.json().get("earningsCalendar") or []

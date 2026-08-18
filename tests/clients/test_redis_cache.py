@@ -142,12 +142,26 @@ def test_set_cached_tool_data_swallows_pipeline_exception():
 def test_final_answer_roundtrip_uses_ticker_key_and_ttl():
     client = MagicMock()
 
-    with patch.object(redis_cache, "_get_client", return_value=client):
+    # Pin the clock: the TTL is additionally capped at midnight, so an unpinned run
+    # within 15 minutes of it would see a shorter value and fail spuriously.
+    with patch.object(redis_cache, "_get_client", return_value=client), \
+         patch.object(redis_cache, "_seconds_until_midnight", return_value=80_000):
         redis_cache.set_cached_final_answer("AAPL", {"summary": "hi"})
 
     client.setex.assert_called_once_with(
         "final_answer:AAPL", redis_cache._FINAL_ANSWER_TTL_SECONDS, json.dumps({"summary": "hi"})
     )
+
+
+def test_final_answer_ttl_is_capped_at_midnight():
+    """A synthesized answer quotes get_events' day counts, which expire with the date."""
+    client = MagicMock()
+
+    with patch.object(redis_cache, "_get_client", return_value=client), \
+         patch.object(redis_cache, "_seconds_until_midnight", return_value=120):
+        redis_cache.set_cached_final_answer("AAPL", {"summary": "hi"})
+
+    assert client.setex.call_args.args[1] == 120
 
 
 def test_final_answer_get_returns_none_on_miss():
@@ -169,3 +183,123 @@ def test_final_answer_get_decodes_hit():
 
     with patch.object(redis_cache, "_get_client", return_value=client):
         assert redis_cache.get_cached_final_answer("AAPL") == {"summary": "hi"}
+
+
+# ---------------------------------------------------------------------------
+# effective_ttl — day-scoped tools expire at midnight
+# ---------------------------------------------------------------------------
+
+
+@pytest.fixture(autouse=True)
+def reset_memo():
+    redis_cache.clear_memoized_tool_data()
+    yield
+    redis_cache.clear_memoized_tool_data()
+
+
+def test_effective_ttl_is_the_configured_value_for_a_normal_tool():
+    assert redis_cache.effective_ttl("get_price_data") == redis_cache.TOOL_TTL_SECONDS["get_price_data"]
+
+
+def test_effective_ttl_defaults_for_an_unknown_tool():
+    assert redis_cache.effective_ttl("get_nonexistent") == 900
+
+
+@pytest.mark.parametrize("tool", sorted(redis_cache._DAY_SCOPED_TOOLS))
+def test_day_scoped_tools_expire_at_midnight_when_that_comes_first(tool):
+    """get_events and get_analyst_sentiment embed day counts ("earnings in 8 days"). Those
+    are only true on the day they were computed, so the entry must not outlive the date."""
+    with patch.object(redis_cache, "_seconds_until_midnight", return_value=3600):
+        assert redis_cache.effective_ttl(tool) == 3600
+
+
+def test_day_scoped_tool_keeps_its_shorter_configured_ttl():
+    """Midnight is a ceiling, never an extension."""
+    with patch.object(redis_cache, "_seconds_until_midnight", return_value=80_000):
+        assert redis_cache.effective_ttl("get_analyst_sentiment") == (
+            redis_cache.TOOL_TTL_SECONDS["get_analyst_sentiment"]
+        )
+
+
+def test_ttl_never_collapses_below_the_floor_just_before_midnight():
+    with patch.object(redis_cache, "_seconds_until_midnight", return_value=3):
+        assert redis_cache.effective_ttl("get_events") == redis_cache._MIN_TTL_SECONDS
+
+
+def test_seconds_until_midnight_is_within_a_day():
+    assert 0 < redis_cache._seconds_until_midnight() <= 86_400
+
+
+def test_set_cached_tool_data_writes_the_day_scoped_ttl():
+    client = MagicMock()
+    pipe = MagicMock()
+    client.pipeline.return_value = pipe
+
+    with patch.object(redis_cache, "_get_client", return_value=client), \
+         patch.object(redis_cache, "_seconds_until_midnight", return_value=1800):
+        redis_cache.set_cached_tool_data("AAPL", {"get_events": {"events": []}})
+
+    assert pipe.setex.call_args.args[1] == 1800  # not the configured 24h
+
+
+# ---------------------------------------------------------------------------
+# In-process memo — the tier that makes a Redis-less deploy sane
+# ---------------------------------------------------------------------------
+
+
+def test_memo_round_trips_a_result():
+    redis_cache.set_memoized_tool_data("AAPL", "get_events", {"events": [1]})
+
+    assert redis_cache.get_memoized_tool_data("AAPL", "get_events") == {"events": [1]}
+
+
+def test_memo_miss_returns_none():
+    assert redis_cache.get_memoized_tool_data("AAPL", "get_events") is None
+
+
+def test_memo_is_scoped_per_ticker_and_per_tool():
+    redis_cache.set_memoized_tool_data("AAPL", "get_events", {"a": 1})
+
+    assert redis_cache.get_memoized_tool_data("NVDA", "get_events") is None
+    assert redis_cache.get_memoized_tool_data("AAPL", "get_news") is None
+
+
+def test_memo_shares_the_market_wide_key_for_macro():
+    """get_macro is identical for every ticker — it must not be memoized per ticker."""
+    redis_cache.set_memoized_tool_data("AAPL", "get_macro", {"vix": 20})
+
+    assert redis_cache.get_memoized_tool_data("NVDA", "get_macro") == {"vix": 20}
+
+
+def test_memo_entry_expires_after_its_ttl():
+    with patch("volatility_explainer.clients.redis_cache.time.monotonic", return_value=1000.0):
+        redis_cache.set_memoized_tool_data("AAPL", "get_price_data", {"price": 100})
+
+    ttl = redis_cache.TOOL_TTL_SECONDS["get_price_data"]
+    with patch("volatility_explainer.clients.redis_cache.time.monotonic", return_value=1000.0 + ttl - 1):
+        assert redis_cache.get_memoized_tool_data("AAPL", "get_price_data") == {"price": 100}
+    with patch("volatility_explainer.clients.redis_cache.time.monotonic", return_value=1000.0 + ttl + 1):
+        assert redis_cache.get_memoized_tool_data("AAPL", "get_price_data") is None
+
+
+def test_memo_is_bounded_and_evicts():
+    for i in range(redis_cache._MEMO_MAX_ENTRIES + 20):
+        redis_cache.set_memoized_tool_data(f"TICK{i}", "get_price_data", {"i": i})
+
+    assert len(redis_cache._memo) <= redis_cache._MEMO_MAX_ENTRIES
+
+
+def test_clear_memo_empties_it():
+    redis_cache.set_memoized_tool_data("AAPL", "get_events", {"a": 1})
+
+    redis_cache.clear_memoized_tool_data()
+
+    assert redis_cache.get_memoized_tool_data("AAPL", "get_events") is None
+
+
+def test_memo_needs_no_redis():
+    """The whole point: this tier works when REDIS_URL is unset."""
+    with patch.object(redis_cache, "_get_client", return_value=None):
+        redis_cache.set_memoized_tool_data("AAPL", "get_events", {"a": 1})
+
+        assert redis_cache.get_memoized_tool_data("AAPL", "get_events") == {"a": 1}

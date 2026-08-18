@@ -104,13 +104,17 @@ TILE RULES (see the submit_analysis schema for which tools earn a tile and the 4
   near $98 over the next few weeks"). When both get_options_data and get_options_positioning
   results are present, merge them into that one tile — never list out IV, skew, OI walls,
   term structure, etc. as separate facts.
-- The analyst tile (when get_analyst_sentiment was called) is one plain sentence: the
-  consensus lean in plain words (translate recommendation_key: "strong_buy"/"buy" →
-  "bullish", "hold" → "neutral", "underperform"/"sell" → "bearish") and the average price
-  target with the % upside/downside from the current price, e.g. "Wall Street is mostly
-  bullish on AAPL, with an average price target of $210 — about 8% above where it trades
-  today." If there's no coverage, say so plainly ("No analyst coverage available for this
-  ticker") rather than omitting the tile silently.
+- The analyst tile (when get_analyst_sentiment was called) is one plain sentence. If
+  recent_actions is non-empty, LEAD with the most recent one — it is dated and specific,
+  and it is the only part of this tool that can explain a move: "Jefferies downgraded AAPL
+  to Underperform on Aug 10 and cut its target to $264." Otherwise give the standing view:
+  consensus.verdict already reads in plain words ("leaning bullish") — use it as-is rather
+  than translating a rating code yourself — plus the price target and its % upside from the
+  current price, e.g. "Wall Street is leaning bullish on AAPL, with an average price target
+  of $210 — about 8% above where it trades today." Mention consensus.trend only when it is
+  "improving" or "deteriorating"; skip it when "stable". If analyst_coverage is "none", say
+  so plainly ("No analyst coverage available for this ticker") rather than omitting the
+  tile silently.
 - The sector tile (when get_sector_comparison was called) is one plain sentence comparing
   the stock's move to its sector ETF's move for the horizon that matters to the question,
   e.g. "Tech stocks broadly fell 1.8% today (via XLK) — AAPL's 4.1% drop is more than

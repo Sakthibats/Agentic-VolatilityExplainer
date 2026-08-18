@@ -11,9 +11,14 @@ from typing import Any
 
 import anthropic
 from volatility_explainer.agent.prompts import SYSTEM_PROMPT
-from volatility_explainer.clients.redis_cache import get_cached_tool_data, set_cached_tool_data
+from volatility_explainer.clients.redis_cache import (
+    get_cached_tool_data,
+    get_memoized_tool_data,
+    set_cached_tool_data,
+    set_memoized_tool_data,
+)
 from volatility_explainer.config import get_settings
-from volatility_explainer.mcp.tools.analyst import fetch_analyst_sentiment
+from volatility_explainer.mcp.tools.analyst import apply_reference_price, fetch_analyst_sentiment
 from volatility_explainer.mcp.tools.events import fetch_events
 from volatility_explainer.mcp.tools.macro import fetch_macro
 from volatility_explainer.mcp.tools.news import fetch_news
@@ -107,15 +112,21 @@ _TOOL_DEFINITIONS: list[dict] = [
     {
         "name": "get_analyst_sentiment",
         "description": (
-            "Wall Street analyst consensus for this stock: rating (buy/hold/sell), average "
-            "price target, target range, and how many analysts cover it. Never pre-fetched — "
-            "only call this when the question is actually about valuation or sentiment, e.g. "
-            "\"is this overbought\", \"is this overvalued\", \"what does the Street think\", "
-            "\"should I be worried\", or when a large move raises the question of whether "
-            "professional opinion has shifted. Not useful for explaining WHY a move happened "
-            "today — it reflects analysts' medium-term view, not a live reaction. ETFs and "
-            "some tickers have no analyst coverage; that is a valid, expected result, not a "
-            "failure."
+            "The Wall Street analyst view, in two parts. recent_actions: DATED rating "
+            "changes from the last 30 days — which firm upgraded or downgraded the stock, "
+            "and whether they raised or cut their price target. consensus and price_target: "
+            "where the Street stands now — rating, a plain-English verdict, whether that "
+            "consensus has been improving or deteriorating over recent months, and the mean/"
+            "median/high/low targets with how dispersed they are. Never pre-fetched. "
+            "Call it when the question is about valuation or sentiment (\"is this "
+            "overvalued\", \"what does the Street think\", \"should I be worried\"), AND "
+            "also as a catalyst check on a flagged move: a downgrade with a price-target cut "
+            "a few days ago is a genuine, datable cause of a drop, so a non-empty "
+            "recent_actions is real evidence for a \"why did it move\" answer. The standing "
+            "consensus on its own is NOT — that is a medium-term view, not a live reaction, "
+            "so do not offer it as the cause of a single day's move. "
+            "analyst_coverage of 'none' means the ticker genuinely has no analysts (an ETF "
+            "or fund) — a valid, expected result, not a failure."
         ),
         "input_schema": {
             "type": "object",
@@ -163,9 +174,21 @@ _TOOL_DEFINITIONS: list[dict] = [
     {
         "name": "get_events",
         "description": (
-            "Fetch upcoming scheduled events: earnings date and next FOMC meeting. "
-            "Call this when you suspect pre-event positioning is driving options activity, "
-            "or when earnings proximity might explain a volatility spike."
+            "ALREADY CALLED FOR YOU — check the conversation above for its result before "
+            "calling this. "
+            "Fetches this ticker's event calendar in BOTH directions: recent_events (already "
+            "happened — earnings it just reported, with the actual-vs-expected EPS beat/miss, "
+            "and any ex-dividend date it just passed) and events (still ahead — next earnings "
+            "date and next FOMC meeting). "
+            "Use the backward-looking half whenever the question is \"why did this move\" and "
+            "a horizon is flagged in move_assessment: a quarter reported in the last few days "
+            "is one of the most common explanations there is, and an ex-dividend date makes a "
+            "price drop MECHANICAL rather than a catalyst — do not invent a news explanation "
+            "for a move that lands on one. Use the forward-looking half when pre-event "
+            "positioning might be driving options activity, or when earnings proximity might "
+            "explain a volatility spike. "
+            "earnings_status of 'none' means this ticker genuinely has no earnings (an ETF or "
+            "fund) — a valid answer, not a failure."
         ),
         "input_schema": {
             "type": "object",
@@ -294,20 +317,48 @@ _TOOL_DISPATCH: dict[str, Any] = {
 
 _MAX_TURNS = 7
 
+# Ceiling on any single tool fetch. Measured tool times are 90-700ms; the retry helper in
+# mcp/tools/_retry.py can add roughly another second. 15s is far above anything healthy,
+# which is the point — it exists to break a hang, not to trim the p99.
+_TOOL_TIMEOUT_SECONDS = 15.0
+
+# Fetched deterministically, in parallel, before the first LLM turn. A tool earns a place
+# here only if it is needed on essentially every investigation AND informs the FIRST
+# tool-selection decision — otherwise it belongs in the model's hands.
+#   get_price_data — move_assessment is the input to every subsequent choice.
+#   get_events     — whether the stock just reported, or is about to, is what decides
+#                    whether the catalyst check is news or earnings; the model cannot make
+#                    that call on turn one without it. It also carries the ex-dividend date,
+#                    which stops a mechanical drop being explained as a news event — no use
+#                    if the model never thinks to ask for it.
+# Their fetches overlap, so the batch costs max(), not sum(): measured at ~0ms marginal
+# wall time over the price fetch alone, and it saves a whole LLM round trip.
+_PREFETCH_TOOLS: tuple[str, ...] = ("get_price_data", "get_events")
+
 
 def _fetch_with_cache(name: str, ticker: str, fetch_fn: Callable[[], dict]) -> tuple[dict, bool]:
-    """Check Redis for this one tool's cached result before calling its live fetch_fn.
+    """Check the caches for this one tool's result before calling its live fetch_fn.
 
-    Lookup happens tool-by-tool, right when a tool is about to be used — not as one big
-    upfront batch — so a tool the investigation never needs is never checked at all.
-    Returns (result, was_cache_hit). A miss fetches fresh and writes the result back
+    Two tiers, both under the same per-tool TTL: an in-process memo first (no network at
+    all, and the only tier that exists when Redis is not configured), then Redis. Lookup
+    happens tool-by-tool, right when a tool is about to be used — not as one big upfront
+    batch — so a tool the investigation never needs is never checked at all.
+
+    Returns (result, was_cache_hit). A miss fetches fresh and populates both tiers
     immediately so the next request for this ticker can hit.
     """
+    memoized = get_memoized_tool_data(ticker, name)
+    if memoized is not None:
+        return memoized, True
+
     cached = get_cached_tool_data(ticker, [name])
     if name in cached:
+        set_memoized_tool_data(ticker, name, cached[name])
         return cached[name], True
+
     result = fetch_fn()
     set_cached_tool_data(ticker, {name: result})
+    set_memoized_tool_data(ticker, name, result)
     return result, False
 
 
@@ -321,6 +372,56 @@ def _execute_tool(name: str, inputs: dict, ticker: str) -> tuple[dict, bool]:
         return {"error": str(exc)}, False
 
 
+def _run_tool_timed(name: str, inputs: dict, ticker: str) -> tuple[str, dict, bool, float]:
+    """_execute_tool with its own wall-clock timing, for the per-tool diagnostics."""
+    t0 = time.perf_counter()
+    result, hit = _execute_tool(name, inputs, ticker)
+    return name, result, hit, time.perf_counter() - t0
+
+
+async def _run_tool_guarded(name: str, inputs: dict, ticker: str) -> tuple[str, dict, bool, float]:
+    """_run_tool_timed on a worker thread, under a deadline.
+
+    Tools fan out with asyncio.gather, which waits for ALL of them — so without a ceiling
+    one unresponsive upstream holds the whole turn, and the SSE stream behind it, open
+    indefinitely. Every tool here normally answers in well under a second; the timeout is a
+    hang-breaker, not a latency target. On expiry the model is handed an error for that one
+    tool and the investigation continues on whatever else returned.
+
+    The worker thread is not actually cancelled — that is a property of to_thread, not an
+    oversight. It runs to completion in the background, and if it does eventually succeed
+    its cache write still lands, so the next request for this ticker benefits from it.
+    """
+    t0 = time.perf_counter()
+    try:
+        return await asyncio.wait_for(
+            asyncio.to_thread(_run_tool_timed, name, inputs, ticker),
+            timeout=_TOOL_TIMEOUT_SECONDS,
+        )
+    except TimeoutError:
+        elapsed = time.perf_counter() - t0
+        print(f"[agent] {name:<25} TIMED OUT after {_TOOL_TIMEOUT_SECONDS:.0f}s — continuing without it")
+        return (
+            name,
+            {"error": f"{name} timed out after {_TOOL_TIMEOUT_SECONDS:.0f}s"},
+            False,
+            elapsed,
+        )
+
+
+def _with_price_context(name: str, result: dict, tool_data: dict) -> dict:
+    """Re-anchor a tool's price-relative numbers to the ONE price this run is built on.
+
+    get_analyst_sentiment computes upside against yfinance's `current`, while the summary
+    quotes get_price_data's price (Finnhub when configured). Intraday those diverge, and a
+    write-up that names two different prices for one stock is simply wrong. Applied to
+    cache hits too — see analyst.apply_reference_price for why that matters.
+    """
+    if name != "get_analyst_sentiment":
+        return result
+    return apply_reference_price(result, (tool_data.get("get_price_data") or {}).get("price"))
+
+
 _STEP_LABELS: dict[str, str] = {
     "get_price_data":          "Pulling price data...",
     "get_news":                "Scanning recent news headlines...",
@@ -329,7 +430,7 @@ _STEP_LABELS: dict[str, str] = {
     "get_analyst_sentiment":   "Checking analyst ratings and price targets...",
     "get_sector_comparison":   "Comparing against sector peers...",
     "get_macro":               "Checking broader market context...",
-    "get_events":              "Looking up upcoming catalysts...",
+    "get_events":              "Checking earnings dates and upcoming catalysts...",
 }
 
 
@@ -358,12 +459,13 @@ async def run_explainer(
     query: str = "",
     on_step: Callable[[str], None] | None = None,
 ) -> dict:
-    """Run the investigation: a deterministic price pre-fetch (non-negotiable — it also feeds
-    the sideline chart), then a Claude-driven loop whose first turn is the real tool-selection
-    layer — informed by move_assessment and the user's question, it picks whichever of
-    news/options/macro/events/analyst/sector genuinely help and calls them together in one
-    turn. A second round only happens if the first round's results specifically warrant
-    deeper digging; most investigations resolve in the first round.
+    """Run the investigation: a deterministic parallel pre-fetch of _PREFETCH_TOOLS (price —
+    non-negotiable, it also feeds the sideline chart — plus events), then a Claude-driven
+    loop whose first turn is the real tool-selection layer. Informed by move_assessment, the
+    event calendar and the user's question, it picks whichever of
+    news/options/macro/analyst/sector genuinely help and calls them together in one turn. A
+    second round only happens if the first round's results specifically warrant deeper
+    digging; most investigations resolve in the first round.
 
     Async architecture: LLM turns (the long poles) are awaited natively; tool fetches stay
     sync — every tool can fall back to yfinance, which is sync-only — and run quarantined
@@ -386,19 +488,20 @@ async def run_explainer(
 
     # ── Deterministic pre-fetch — skip the LLM round trip for tools we always need ──
     if on_step:
-        on_step(_STEP_LABELS["get_price_data"])
-    t0 = time.perf_counter()
-    price_data, hit = await asyncio.to_thread(
-        _fetch_with_cache, "get_price_data", ticker, lambda: fetch_price_data(ticker)
+        for name in _PREFETCH_TOOLS:
+            on_step(_STEP_LABELS[name])
+
+    batch_t0 = time.perf_counter()
+    # One worker thread each, overlapped — the batch costs the slowest, not the sum.
+    prefetched = await asyncio.gather(
+        *(_run_tool_guarded(name, {"ticker": ticker}, ticker) for name in _PREFETCH_TOOLS)
     )
-    elapsed = time.perf_counter() - t0
-    tool_time += elapsed
-    tool_data["get_price_data"] = price_data
-    if hit:
-        cache_hit_names.add("get_price_data")
-        print(f"[agent] {'get_price_data':<25} {elapsed * 1000:6.0f}ms  (cached, redis)")
-    else:
-        print(f"[agent] {'get_price_data':<25} {elapsed * 1000:6.0f}ms  (deterministic)")
+    tool_time += time.perf_counter() - batch_t0  # wall time of the batch, not the sum
+    for name, result, hit, elapsed in prefetched:
+        tool_data[name] = _with_price_context(name, result, tool_data)
+        if hit:
+            cache_hit_names.add(name)
+        print(f"[agent] {name:<25} {elapsed * 1000:6.0f}ms  {'(cached, redis)' if hit else '(deterministic)'}")
 
     if query:
         user_content = (
@@ -496,11 +599,6 @@ async def run_explainer(
             for block in tool_blocks:
                 on_step(_STEP_LABELS.get(block.name, f"Running {block.name}..."))
 
-        def _run_block(block: Any) -> tuple[Any, dict, bool, float]:
-            t0 = time.perf_counter()
-            result, hit = _execute_tool(block.name, block.input, ticker)
-            return block, result, hit, time.perf_counter() - t0
-
         tool_result_blocks: list[dict] = []
         results_by_id: dict[str, dict] = {}
         turn_tool_max = 0.0
@@ -520,13 +618,14 @@ async def run_explainer(
         # Each sync tool runs on its own worker thread; gather overlaps them so the
         # turn costs max(tool times), not sum, and the event loop stays free.
         batch_results = await asyncio.gather(
-            *(asyncio.to_thread(_run_block, b) for b in fresh_blocks)
+            *(_run_tool_guarded(b.name, b.input, ticker) for b in fresh_blocks)
         )
-        for block, result, hit, elapsed in batch_results:
+        for block, (_, result, hit, elapsed) in zip(fresh_blocks, batch_results, strict=True):
             turn_tool_max = max(turn_tool_max, elapsed)  # tools run in parallel within a turn
             if hit:
                 cache_hit_names.add(block.name)
             print(f"[agent] {block.name:<25} {elapsed * 1000:6.0f}ms  {'(cached, redis)' if hit else ''}")
+            result = _with_price_context(block.name, result, tool_data)
             tool_data[block.name] = result
             results_by_id[block.id] = result
         if _LOG_LLM_PAYLOAD and len(fresh_blocks) > 1:

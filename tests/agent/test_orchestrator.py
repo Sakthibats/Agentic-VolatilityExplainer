@@ -13,6 +13,7 @@ from unittest.mock import MagicMock
 
 import pytest
 from volatility_explainer.agent import orchestrator
+from volatility_explainer.clients.redis_cache import clear_memoized_tool_data
 
 # ── Fakes ────────────────────────────────────────────────────────────────────
 
@@ -55,7 +56,24 @@ SUBMIT_INPUT = {
     ],
 }
 
-PRICE_RESULT = {"ticker": "AAPL", "pct_change": -4.1, "move_assessment": {"overall": "unusual"}}
+PRICE_RESULT = {
+    "ticker": "AAPL", "price": 100.0, "pct_change": -4.1,
+    "move_assessment": {"overall": "unusual"},
+}
+EVENTS_RESULT = {
+    "ticker": "AAPL",
+    "earnings_status": "reported",
+    "events": [],
+    "recent_events": [{"type": "earnings", "days_ago": 2, "description": "AAPL reported Q3"}],
+}
+ANALYST_RESULT = {
+    "ticker": "AAPL",
+    "analyst_coverage": "covered",
+    # current_price/upside deliberately anchored to a DIFFERENT price than PRICE_RESULT's,
+    # the way yfinance's `current` drifts from Finnhub's quote intraday.
+    "price_target": {"mean": 120.0, "median": 130.0, "current_price": 80.0,
+                     "upside_vs_mean_pct": 50.0, "upside_vs_median_pct": 62.5},
+}
 NEWS_RESULT = {
     "headlines": [
         {"source": "Bloomberg", "url": "https://bloom.example/1", "headline": "Delay"},
@@ -68,6 +86,11 @@ NEWS_RESULT = {
 @pytest.fixture
 def env(monkeypatch):
     """Patch every external seam; returns a namespace the tests script per-case."""
+    # The in-process memo in front of Redis is module-level state. Left alone it carries
+    # results between tests and masks the fetches a test means to observe — the same way
+    # it would carry them between requests in a live process.
+    clear_memoized_tool_data()
+
     responses: list[SimpleNamespace] = []
     client = MagicMock()
 
@@ -91,8 +114,15 @@ def env(monkeypatch):
     monkeypatch.setattr(orchestrator, "set_cached_tool_data", lambda ticker, data: None)
 
     monkeypatch.setattr(orchestrator, "fetch_price_data", lambda ticker: PRICE_RESULT)
+    # Every pre-fetched tool must be stubbed here, or the suite silently starts hitting
+    # the network on each run.
     monkeypatch.setitem(orchestrator._TOOL_DISPATCH, "get_price_data", lambda inp: PRICE_RESULT)
+    monkeypatch.setitem(orchestrator._TOOL_DISPATCH, "get_events", lambda inp: dict(EVENTS_RESULT))
     monkeypatch.setitem(orchestrator._TOOL_DISPATCH, "get_news", lambda inp: NEWS_RESULT)
+    monkeypatch.setitem(
+        orchestrator._TOOL_DISPATCH, "get_analyst_sentiment",
+        lambda inp: {**ANALYST_RESULT, "price_target": dict(ANALYST_RESULT["price_target"])},
+    )
 
     return SimpleNamespace(responses=responses, client=client, cache_store=cache_store)
 
@@ -216,7 +246,7 @@ async def test_cache_hit_short_circuits_fetch_and_is_reported(env):
     assert result["cache_hits"] == ["get_price_data"]
 
 
-async def test_prefetched_price_is_spliced_into_first_llm_call(env):
+async def test_prefetched_tools_are_spliced_into_first_llm_call(env):
     env.responses.append(fake_response([tool_use("submit_analysis", SUBMIT_INPUT)]))
 
     await orchestrator.run_explainer("AAPL", "why the move?")
@@ -226,8 +256,156 @@ async def test_prefetched_price_is_spliced_into_first_llm_call(env):
     # user question, assistant tool_use splice, user tool_result splice
     assert messages[0]["role"] == "user" and "why the move?" in messages[0]["content"]
     assert messages[1]["role"] == "assistant"
-    assert messages[1]["content"][0]["name"] == "get_price_data"
-    assert json.loads(messages[2]["content"][0]["content"]) == PRICE_RESULT
+    assert [b["name"] for b in messages[1]["content"]] == list(orchestrator._PREFETCH_TOOLS)
+
+    spliced = {
+        block["tool_use_id"]: json.loads(block["content"]) for block in messages[2]["content"]
+    }
+    assert spliced["toolu_prefetch_get_price_data"] == PRICE_RESULT
+    assert spliced["toolu_prefetch_get_events"] == EVENTS_RESULT
+
+
+async def test_events_are_prefetched_without_an_extra_llm_turn(env):
+    """The whole point of promoting get_events: the model has the event calendar on turn
+    one, so it never has to spend a round trip asking for it."""
+    env.responses.append(fake_response([tool_use("submit_analysis", SUBMIT_INPUT)]))
+
+    result = await orchestrator.run_explainer("AAPL")
+
+    assert result["data"]["get_events"] == EVENTS_RESULT
+    assert env.client.messages.create.call_count == 1
+
+
+async def test_both_prefetched_tools_report_cache_hits(env):
+    env.cache_store["get_price_data"] = PRICE_RESULT
+    env.cache_store["get_events"] = EVENTS_RESULT
+    env.responses.append(fake_response([tool_use("submit_analysis", SUBMIT_INPUT)]))
+
+    result = await orchestrator.run_explainer("AAPL")
+
+    assert result["cache_hits"] == ["get_events", "get_price_data"]
+
+
+async def test_analyst_upside_is_reanchored_to_the_runs_price(env):
+    """The tool computes upside against yfinance's own `current`; the summary quotes
+    get_price_data's price. One run must never contain two prices for one stock."""
+    env.responses.extend([
+        fake_response([tool_use("get_analyst_sentiment", {"ticker": "AAPL"})]),
+        fake_response([tool_use("submit_analysis", SUBMIT_INPUT)]),
+    ])
+
+    result = await orchestrator.run_explainer("AAPL")
+
+    target = result["data"]["get_analyst_sentiment"]["price_target"]
+    assert target["current_price"] == PRICE_RESULT["price"]  # not the stubbed 80.0
+    assert target["upside_vs_mean_pct"] == 20.0  # 120 vs 100, not vs 80
+    assert target["upside_vs_median_pct"] == 30.0
+
+
+async def test_reanchoring_also_applies_to_a_cached_analyst_result(env):
+    """Analyst data is cached 12h but price 15min — an upside baked in at fetch time goes
+    stale long before the entry expires."""
+    env.cache_store["get_analyst_sentiment"] = {
+        **ANALYST_RESULT, "price_target": dict(ANALYST_RESULT["price_target"])
+    }
+    env.responses.extend([
+        fake_response([tool_use("get_analyst_sentiment", {"ticker": "AAPL"})]),
+        fake_response([tool_use("submit_analysis", SUBMIT_INPUT)]),
+    ])
+
+    result = await orchestrator.run_explainer("AAPL")
+
+    target = result["data"]["get_analyst_sentiment"]["price_target"]
+    assert target["current_price"] == 100.0
+    assert target["upside_vs_mean_pct"] == 20.0
+
+
+async def test_second_run_is_served_from_the_in_process_memo(env, monkeypatch):
+    """Redis is optional, so without this tier every request re-fetched every tool from
+    the upstream API."""
+    calls: list[str] = []
+    monkeypatch.setitem(
+        orchestrator._TOOL_DISPATCH, "get_price_data",
+        lambda inp: (calls.append("price"), PRICE_RESULT)[1],
+    )
+    env.responses.extend([
+        fake_response([tool_use("submit_analysis", SUBMIT_INPUT)]),
+        fake_response([tool_use("submit_analysis", SUBMIT_INPUT)]),
+    ])
+
+    await orchestrator.run_explainer("AAPL")
+    assert calls == ["price"]
+
+    result = await orchestrator.run_explainer("AAPL")
+
+    assert calls == ["price"]  # no second upstream fetch
+    assert "get_price_data" in result["cache_hits"]
+
+
+async def test_memo_is_scoped_per_ticker(env, monkeypatch):
+    calls: list[str] = []
+    monkeypatch.setitem(
+        orchestrator._TOOL_DISPATCH, "get_price_data",
+        lambda inp: (calls.append(inp["ticker"]), PRICE_RESULT)[1],
+    )
+    env.responses.extend([
+        fake_response([tool_use("submit_analysis", SUBMIT_INPUT)]),
+        fake_response([tool_use("submit_analysis", SUBMIT_INPUT)]),
+    ])
+
+    await orchestrator.run_explainer("AAPL")
+    await orchestrator.run_explainer("NVDA")
+
+    assert calls == ["AAPL", "NVDA"]
+
+
+async def test_a_hanging_tool_times_out_without_stalling_the_turn(env, monkeypatch):
+    """gather waits for every tool, so one unresponsive upstream would otherwise hold the
+    turn — and the SSE stream behind it — open indefinitely."""
+    import time as real_time
+
+    monkeypatch.setattr(orchestrator, "_TOOL_TIMEOUT_SECONDS", 0.05)
+    monkeypatch.setitem(
+        orchestrator._TOOL_DISPATCH, "get_news", lambda inp: real_time.sleep(0.5) or NEWS_RESULT
+    )
+    env.responses.extend([
+        fake_response([tool_use("get_news", {"ticker": "AAPL"})]),
+        fake_response([tool_use("submit_analysis", SUBMIT_INPUT)]),
+    ])
+
+    started = real_time.perf_counter()
+    result = await orchestrator.run_explainer("AAPL")
+    elapsed = real_time.perf_counter() - started
+
+    assert elapsed < 0.4  # returned on the deadline, not after the 0.5s sleep
+    assert "timed out" in result["data"]["get_news"]["error"]
+    assert result["status"] == "complete"  # the investigation still finished
+
+
+async def test_a_timed_out_tool_is_still_reported_to_the_model(env, monkeypatch):
+    import time as real_time
+
+    monkeypatch.setattr(orchestrator, "_TOOL_TIMEOUT_SECONDS", 0.05)
+    monkeypatch.setitem(
+        orchestrator._TOOL_DISPATCH, "get_news", lambda inp: real_time.sleep(0.5) or NEWS_RESULT
+    )
+    env.responses.extend([
+        fake_response([tool_use("get_news", {"ticker": "AAPL"})]),
+        fake_response([tool_use("submit_analysis", SUBMIT_INPUT)]),
+    ])
+
+    await orchestrator.run_explainer("AAPL")
+
+    # messages is mutated in place across turns, so scan for the tool_result turn rather
+    # than indexing a position that has since moved.
+    messages = env.client.messages.create.call_args_list[1].kwargs["messages"]
+    tool_results = [
+        json.loads(block["content"])
+        for message in messages
+        for block in message["content"]
+        if isinstance(block, dict) and block.get("type") == "tool_result"
+    ]
+    assert any("timed out" in result.get("error", "") for result in tool_results)
 
 
 async def test_on_step_callback_receives_progress_labels(env):
@@ -241,6 +419,7 @@ async def test_on_step_callback_receives_progress_labels(env):
 
     assert steps == [
         "Pulling price data...",
+        "Checking earnings dates and upcoming catalysts...",
         "Scanning recent news headlines...",
         "Synthesizing findings...",
     ]

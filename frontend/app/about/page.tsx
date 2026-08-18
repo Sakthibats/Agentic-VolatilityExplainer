@@ -85,13 +85,13 @@ const TOOLS = [
     icon: "📅",
     name: "get_events",
     module: "events.py",
-    body: "Upcoming earnings date (yfinance) and next FOMC meeting date (hardcoded calendar), for proximity context.",
+    body: "Earnings in both directions — the quarter just reported (with the actual-vs-expected beat or miss) and the next one scheduled (Finnhub, yfinance fallback) — plus recent ex-dividend dates and the next FOMC meeting.",
   },
   {
     icon: "🎯",
     name: "get_analyst_sentiment",
     module: "analyst.py",
-    body: "Wall Street consensus rating and price targets, and how many analysts cover the name.",
+    body: "Recent analyst upgrades and downgrades with their price-target changes, plus where the Street stands now: consensus rating, whether it's been improving or deteriorating, and how far apart the price targets are.",
   },
   {
     icon: "🏭",
