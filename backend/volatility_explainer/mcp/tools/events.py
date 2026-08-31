@@ -1,18 +1,22 @@
-"""Recent and upcoming market events — earnings via Finnhub (yfinance fallback),
-ex-dividend via yfinance, FOMC from a maintained local calendar.
+"""Recent and upcoming market events — earnings, ex-dividend, and FOMC dates.
 
-Two independent HTTP sources, fetched in parallel so the tool costs max(), not sum():
+Three independent sources, fetched in parallel so the tool costs max(), not sum():
 
-- Finnhub /calendar/earnings — the primary earnings source. Covers a window that starts
-  in the PAST, because "it reported two days ago" answers "why did it move" far more
-  often than "it reports next month" does. Past entries carry epsActual, so the
-  beat/miss verdict is computed here, in code, before the model ever sees it.
+- yfinance Ticker.earnings_dates — REPORTED quarters: announcement timestamp, EPS
+  estimate and actual. The beat/miss verdict is computed from these here, in code,
+  before the model ever sees them, because "it reported two days ago and missed"
+  answers "why did it move" far more often than "it reports next month" does.
+- Finnhub /calendar/earnings — the UPCOMING report. Preferred forward-looking because
+  it carries the session timing (bmo/amc) and the fiscal quarter label. It is now
+  forward-only: the free tier answers 200 with an empty list for any past window, so
+  epsActual never arrives from here any more — hence earnings_dates above.
 - yfinance Ticker.calendar — the ex-dividend date (a mechanical gap-down that is not a
-  news catalyst and must not be mistaken for one), and the earnings fallback when
-  Finnhub is unconfigured or fails.
+  news catalyst and must not be mistaken for one), and a last-resort earnings date when
+  both sources above come up empty.
 
 Each source is wrapped separately: one failing degrades that field alone and is logged,
-never silently swallowing the other's result too.
+never silently swallowing the others' results too. A source that did not answer is held
+distinct from one that answered "nothing" — see `earnings_status`.
 """
 
 from __future__ import annotations
@@ -56,6 +60,11 @@ _EARNINGS_LOOKAHEAD_DAYS = 90
 
 # EPS surprises inside this band are rounding, not a beat or a miss.
 _IN_LINE_PCT = 1.0
+
+# Yahoo timestamps the announcement; Finnhub dates the calendar entry. They routinely
+# disagree by a day for the same report (AAPL Q4 2026: Finnhub 10-28, Yahoo 10-29), so
+# dates this close are merged as one report rather than reported as two.
+_SAME_REPORT_TOLERANCE_DAYS = 3
 
 _HOUR_PHRASE = {"bmo": "before the open", "amc": "after the close", "dmh": "during the session"}
 
@@ -142,6 +151,88 @@ def _fetch_earnings_finnhub(ticker: str, today: date) -> list[dict] | None:
         from_date=(today - timedelta(days=_EARNINGS_LOOKBACK_DAYS)).isoformat(),
         to_date=(today + timedelta(days=_EARNINGS_LOOKAHEAD_DAYS)).isoformat(),
     )
+
+
+def _fetch_yf_earnings_dates(ticker: str):
+    """yfinance Ticker.earnings_dates — a DataFrame indexed by announcement timestamp
+    (tz-aware, exchange local) with 'EPS Estimate', 'Reported EPS' and 'Surprise(%)'.
+
+    The only remaining source of a reported quarter's ACTUAL EPS. Requires lxml, which
+    yfinance uses to parse this surface. Returns None when the ticker has no earnings
+    surface at all — yfinance logs "no earnings dates found" and hands back None for
+    ETFs rather than raising.
+    """
+    import yfinance as yf
+
+    frame = yf.Ticker(ticker).earnings_dates
+    if frame is None or frame.empty:
+        return None
+    return frame
+
+
+def _hour_code(timestamp) -> str | None:
+    """Map an announcement time to Finnhub's bmo/amc/dmh vocabulary, so both sources
+    describe timing the same way. Midnight means Yahoo has no time, only a date."""
+    hour, minute = timestamp.hour, timestamp.minute
+    if hour == 0 and minute == 0:
+        return None
+    if (hour, minute) < (9, 30):
+        return "bmo"
+    if hour >= 16:
+        return "amc"
+    return "dmh"
+
+
+def _earnings_from_yf_earnings_dates(ticker: str, frame, today: date) -> list[dict]:
+    """Normalize the earnings_dates frame into event dicts, limited to the same window
+    the Finnhub query uses. Rows with a 'Reported EPS' are past reports; rows without
+    are scheduled ones."""
+    if frame is None:
+        return []
+
+    import pandas as pd
+
+    events: list[dict] = []
+    for timestamp, row in frame.iterrows():
+        when = timestamp.date()
+        delta = (when - today).days
+        if delta < -_EARNINGS_LOOKBACK_DAYS or delta > _EARNINGS_LOOKAHEAD_DAYS:
+            continue
+
+        actual = row.get("Reported EPS")
+        estimate = row.get("EPS Estimate")
+        entry = {
+            "epsActual": None if pd.isna(actual) else float(actual),
+            "epsEstimate": None if pd.isna(estimate) else float(estimate),
+            "hour": _hour_code(timestamp),
+        }
+        event = _earnings_event(ticker, {**entry, "date": when.isoformat()}, today, "yfinance")
+        if event is not None:
+            events.append(event)
+    return events
+
+
+def _same_report(a: dict, b: dict) -> bool:
+    gap = date.fromisoformat(a["date"]) - date.fromisoformat(b["date"])
+    return abs(gap.days) <= _SAME_REPORT_TOLERANCE_DAYS
+
+
+def _merge_reports(primary: list[dict], secondary: list[dict]) -> list[dict]:
+    """Combine two earnings-event lists, treating near-identical dates as one report.
+
+    `primary` wins a collision, with one exception: an entry carrying eps_actual always
+    beats one without it. That is what lets Finnhub own the upcoming report (it has the
+    session timing and quarter label) while yfinance owns the reported one (it is the
+    only source left with the actual).
+    """
+    merged = list(primary)
+    for candidate in secondary:
+        match = next((e for e in merged if _same_report(e, candidate)), None)
+        if match is None:
+            merged.append(candidate)
+        elif match.get("eps_actual") is None and candidate.get("eps_actual") is not None:
+            merged[merged.index(match)] = candidate
+    return merged
 
 
 def _fetch_yf_calendar(ticker: str) -> dict:
@@ -233,10 +324,11 @@ def fetch_events(ticker: str) -> dict:
     ticker = ticker.upper()
     today = _today()
 
-    # Two independent HTTP sources — overlap them so the tool costs the slower one, not both.
-    with ThreadPoolExecutor(max_workers=2) as pool:
+    # Three independent sources — overlap them so the tool costs the slowest one, not all.
+    with ThreadPoolExecutor(max_workers=3) as pool:
         finnhub_fut = pool.submit(_fetch_earnings_finnhub, ticker, today)
-        yf_fut = pool.submit(_fetch_yf_calendar, ticker)
+        yf_reported_fut = pool.submit(_fetch_yf_earnings_dates, ticker)
+        yf_calendar_fut = pool.submit(_fetch_yf_calendar, ticker)
 
         try:
             finnhub_raw = finnhub_fut.result()
@@ -245,29 +337,47 @@ def fetch_events(ticker: str) -> dict:
             finnhub_raw = None
 
         try:
-            yf_calendar = yf_fut.result()
+            yf_earnings = yf_reported_fut.result()
+        except Exception:
+            _logger.warning("[events:%s] yfinance earnings_dates failed", ticker, exc_info=True)
+            yf_earnings = None
+
+        try:
+            yf_calendar = yf_calendar_fut.result()
         except Exception:
             # Expected for ETFs/funds (Yahoo has no fundamentals for them); logged at
-            # debug so a genuinely broken Yahoo doesn't drown in ETF noise.
+            # debug so a genuinely broken Yahoo doesn't drown in ETF noise. None rather
+            # than {}, so "Yahoo never answered" stays distinct from "Yahoo said empty".
             _logger.debug("[events:%s] yfinance calendar unavailable", ticker, exc_info=True)
-            yf_calendar = {}
+            yf_calendar = None
 
-    earnings_events: list[dict] = []
-    earnings_source: str | None = None
+    finnhub_events = [
+        event
+        for event in (
+            _earnings_event(ticker, entry, today, "finnhub") for entry in finnhub_raw or []
+        )
+        if event is not None
+    ]
+    # Finnhub leads — it carries the session timing and quarter label — but yfinance wins
+    # any collision where it holds the actual EPS, which Finnhub no longer serves at all.
+    earnings_events = _merge_reports(
+        finnhub_events, _earnings_from_yf_earnings_dates(ticker, yf_earnings, today)
+    )
 
-    if finnhub_raw is not None:
-        normalized = (_earnings_event(ticker, entry, today, "finnhub") for entry in finnhub_raw)
-        earnings_events = [e for e in normalized if e is not None]
-        earnings_source = "finnhub"
-    else:
-        fallback = _earnings_from_yf_calendar(ticker, yf_calendar, today)
+    if not earnings_events:
+        # Only now is the coarse calendar date worth having. Reached when Finnhub answered
+        # an empty window as well as when it never answered: an empty Finnhub result is not
+        # on its own evidence that the ticker has no earnings.
+        fallback = _earnings_from_yf_calendar(ticker, yf_calendar or {}, today)
         if fallback is not None:
             earnings_events = [fallback]
-            earnings_source = "yfinance"
 
-    if earnings_source is None:
-        # Neither source produced anything AND Finnhub never answered — we genuinely
-        # don't know, which is different from knowing there are no earnings.
+    sources = sorted({event["source"] for event in earnings_events})
+    earnings_source = "+".join(sources) if sources else None
+
+    if finnhub_raw is None and yf_earnings is None and yf_calendar is None:
+        # Nothing answered — we genuinely don't know, which is different from knowing
+        # there are no earnings.
         earnings_status = "unavailable"
     elif not earnings_events:
         earnings_status = "none"
@@ -276,7 +386,7 @@ def fetch_events(ticker: str) -> dict:
     else:
         earnings_status = "scheduled"
 
-    ex_dividend = _ex_dividend_event(ticker, yf_calendar, today)
+    ex_dividend = _ex_dividend_event(ticker, yf_calendar or {}, today)
     fomc = _next_fomc(today)
 
     candidates = [*earnings_events, ex_dividend, fomc]

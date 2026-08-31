@@ -45,7 +45,7 @@ backend/volatility_explainer/     # Python package (installed via hatchling, see
 │   ├── news.py                   # Finnhub company news → yfinance fallback
 │   ├── options.py                # yfinance chains: IV, put/call, skew, max pain, OI walls
 │   ├── macro.py                  # FRED VIX → yfinance ^VIX/^GSPC fallback
-│   ├── events.py                 # yfinance earnings date + hardcoded FOMC calendar
+│   ├── events.py                 # yfinance reported EPS + Finnhub upcoming + FOMC calendar
 │   ├── analyst.py                # yfinance analyst consensus / price targets
 │   ├── sector.py                 # sector-ETF relative comparison
 │   └── _retry.py                 # small retry helper for flaky yfinance calls

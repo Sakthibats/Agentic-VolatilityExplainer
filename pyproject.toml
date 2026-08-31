@@ -17,6 +17,11 @@ dependencies = [
     # releases (Ticker.calendar went DataFrame -> dict in 0.2 and silently broke
     # fetch_events). Widen only alongside a green `pytest -m live` contract run.
     "yfinance>=1.4,<1.5",
+    # Required by yfinance to parse Ticker.earnings_dates, the only remaining source of a
+    # reported quarter's actual EPS. yfinance declares it optional and raises
+    # "Import lxml failed" at call time without it, so pin it explicitly rather than
+    # letting the beat/miss verdict vanish on a fresh install.
+    "lxml>=5.0",
     "supabase>=2.0",
     "redis>=5.0",
 ]
