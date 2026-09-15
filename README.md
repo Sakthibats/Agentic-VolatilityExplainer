@@ -17,10 +17,11 @@ returning ranked hypotheses with confidence levels and every number traceable to
   2. Price, realized vol + event calendar   always fetched, deterministic
   3. Significance verdict computed in code  typical / elevated / unusual, per horizon
   4. Claude picks which tools to call       news? options? analyst? sector? macro?
-  5. Structured finish                      summary, evidence tiles, ranked hypotheses
+  5. Structured finish                      evidence tiles → ranked hypotheses → explanation
         ↓
-  "AAPL fell 4.1% — over 2x its normal daily swing.
-   Bloomberg reported a supply-chain delay this morning..."
+  "AAPL is at $187.20, down 4.1% today. That is unusually large    ← code, right after step 2
+   for this stock — about 3.3x its typical daily move."
+  "A reported supply-chain delay is the most likely cause..."     ← Claude, written last
 ```
 
 ## What's worth a look
@@ -34,7 +35,7 @@ returning ranked hypotheses with confidence levels and every number traceable to
   investigation runs independently of the connection, so an abandoned run still finishes and
   warms the cache.
 - **Runs on free data.** Every source falls back to yfinance; Redis and Supabase are optional.
-- **Behaviour pinned by tests.** 207 offline tests, including a scripted fake Anthropic client that
+- **Behaviour pinned by tests.** 238 offline tests, including a scripted fake Anthropic client that
   drives the whole loop, plus weekly live contract tests that catch upstream API shape changes.
 
 ## Quickstart

@@ -6,7 +6,7 @@ live in volatility_explainer.tools and are wired to these names by the orchestra
 _TOOL_DISPATCH — keep both name sets (and clients/redis_cache.py's TTL table) in sync.
 
 Order matters: submit_analysis stays LAST, since its cache_control marks the prompt-cache
-breakpoint for the whole tool list, and `summary` stays its first property (see
+breakpoint for the whole tool list, and `explanation` stays its LAST property (see
 eager_input_streaming at the bottom).
 """
 
@@ -210,18 +210,6 @@ TOOL_DEFINITIONS: list[dict] = [
         "input_schema": {
             "type": "object",
             "properties": {
-                "summary": {
-                    "type": "string",
-                    "description": (
-                        "50-80 words, 2-3 sentences max: FIRST sentence must directly answer "
-                        "the user's actual question using a real number from the data, from "
-                        "the horizon they actually asked about (today/week/2 weeks/month/YTD/"
-                        "year) — not a generic price-move restatement, and not silently "
-                        "substituted with a different horizon's number. Keep it tight — the "
-                        "supporting detail (catalyst, options lean, etc.) belongs in the tiles "
-                        "and hypotheses below, not repeated here."
-                    ),
-                },
                 "tiles": {
                     "type": "array",
                     "description": (
@@ -279,15 +267,41 @@ TOOL_DEFINITIONS: list[dict] = [
                         "required": ["rank", "hypothesis", "evidence", "confidence", "caveat"],
                     },
                 },
+                "explanation": {
+                    "type": "string",
+                    "description": (
+                        "40-70 words, 2-3 short sentences. Written LAST, as the conclusion of the "
+                        "tiles and ranked hypotheses above: it must agree with your rank-1 "
+                        "hypothesis and its confidence. The reader has already read the factual "
+                        "overview quoted in the first user message, so never repeat its numbers "
+                        "(price, today's %, the usual daily range, the horizons it mentions). "
+                        "Shape: (1) Answer the user's question with the most likely cause and how "
+                        "sure the evidence lets you be, in plain words ('most likely', 'possibly', "
+                        "'no clear cause found'). If the overview calls the move normal for this "
+                        "stock, say it needs no special explanation unless you found a dated "
+                        "catalyst. If they asked about a horizon the overview doesn't mention, "
+                        "give that horizon's real number. (2) The single strongest piece of "
+                        "evidence, with its date. If it came from a news headline, cite it as [n] "
+                        "using that headline's `ref` from get_news — never write a link, and never "
+                        "a number get_news didn't give. (3) Only if you called get_macro or "
+                        "get_sector_comparison: whether the market or sector moved the same way, "
+                        "which is what makes the cause stock-specific or not."
+                    ),
+                },
             },
-            "required": ["summary", "tiles", "hypotheses"],
+            "required": ["tiles", "hypotheses", "explanation"],
         },
         "cache_control": {"type": "ephemeral"},
         # Stream this tool's input in fine-grained chunks rather than a few large ones, so
-        # `summary` can be surfaced to the reader as it is written instead of after the
-        # whole ~1000-token payload lands. `summary` is the FIRST property in the schema
-        # above and must stay there — the model emits properties in schema order, so any
-        # field placed ahead of it delays the first visible character. Not a beta feature.
+        # `explanation` can be surfaced to the reader as it is written. It is the LAST
+        # property in the schema above and must stay there — the model emits properties in
+        # schema order, and the why-paragraph is only worth reading once the model has
+        # already committed to its tiles and ranked hypotheses. (It used to come first,
+        # which rendered sooner but meant the model concluded before it had reasoned.) The
+        # reader isn't left waiting meanwhile: the deterministic overview from
+        # tools/price.describe_move is on screen from the end of the pre-fetch. Named so no
+        # nested property shares it — the partial-JSON reader matches the first occurrence.
+        # Not a beta feature.
         "eager_input_streaming": True,
     },
 ]

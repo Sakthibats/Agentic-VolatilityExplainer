@@ -74,8 +74,16 @@ _ABS_THRESHOLDS_PCT: dict[str, tuple[float, float]] = {
 }
 
 
+# Bands on |change| / expected move, where the expected move is one standard deviation for
+# that span. A move past 1x happens about one day in three, past 1.5x about one day in
+# seven, past 2.5x about one day in eighty — so "typical" has to reach well beyond 1x, or an
+# ordinary day gets called "larger than usual".
+_RELATIVE_BANDS = (1.5, 2.5)
+
+
 def _level_from_ratio(ratio: float) -> str:
-    return "typical" if ratio <= 1 else "elevated" if ratio <= 2 else "unusual"
+    elevated, unusual = _RELATIVE_BANDS
+    return "typical" if ratio < elevated else "elevated" if ratio < unusual else "unusual"
 
 
 def _level_from_abs(change_pct: float, thresholds: tuple[float, float]) -> str:
@@ -107,18 +115,10 @@ def _flag_text(
     )
 
 
-def _assess_moves(changes: dict, rv: float | None) -> dict:
-    """Determine significance deterministically, in code, on two axes — never left for the LLM
-    to eyeball from raw numbers or trust a user's alarmed wording ("crashed", "tanked"):
-
-    - relative_level: |change| vs. this stock's OWN normal move for that horizon (ratio =
-      |change| / expected move, where expected move scales with sqrt(time) off annualized rv).
-    - absolute_level: |change| vs. a fixed, stock-agnostic magnitude floor (_ABS_THRESHOLDS_PCT)
-      — so a chronically volatile stock can't get an 18% drop rubber-stamped "typical" just
-      because that's normal for IT specifically.
-
-    Returns "overall" (the most severe level across all horizons) plus "flags" — one sentence
-    per horizon that isn't typical on both axes. A horizon absent from "flags" is unremarkable.
+def _horizon_levels(changes: dict, rv: float | None) -> dict[str, tuple]:
+    """Per-horizon significance: label -> (level, relative_level, absolute_level, change_pct,
+    expected_move, ratio). Shared by _assess_moves (what the model reads) and describe_move
+    (what the reader reads first), so the two can never disagree about a verdict.
     """
     if not rv:
         return {}
@@ -135,7 +135,23 @@ def _assess_moves(changes: dict, rv: float | None) -> dict:
         absolute_level = _level_from_abs(change_pct, _ABS_THRESHOLDS_PCT[label])
         level = max([relative_level, absolute_level], key=_SEVERITY.get)
         per_horizon[label] = (level, relative_level, absolute_level, change_pct, expected_move, ratio)
+    return per_horizon
 
+
+def _assess_moves(changes: dict, rv: float | None) -> dict:
+    """Determine significance deterministically, in code, on two axes — never left for the LLM
+    to eyeball from raw numbers or trust a user's alarmed wording ("crashed", "tanked"):
+
+    - relative_level: |change| vs. this stock's OWN normal move for that horizon (ratio =
+      |change| / expected move, where expected move scales with sqrt(time) off annualized rv).
+    - absolute_level: |change| vs. a fixed, stock-agnostic magnitude floor (_ABS_THRESHOLDS_PCT)
+      — so a chronically volatile stock can't get an 18% drop rubber-stamped "typical" just
+      because that's normal for IT specifically.
+
+    Returns "overall" (the most severe level across all horizons) plus "flags" — one sentence
+    per horizon that isn't typical on both axes. A horizon absent from "flags" is unremarkable.
+    """
+    per_horizon = _horizon_levels(changes, rv)
     if not per_horizon:
         return {}
 
@@ -146,6 +162,91 @@ def _assess_moves(changes: dict, rv: float | None) -> dict:
         if level != "typical"
     ]
     return {"overall": overall, "flags": flags}
+
+
+_LEVEL_WORDS = {"elevated": "larger than usual", "unusual": "unusually large"}
+# The stock-agnostic floor, worded as a comparison with other stocks rather than this one.
+_PLAIN_WORDS = {"elevated": "large", "unusual": "very large"}
+
+
+def _verdict(ticker: str, relative_level: str, absolute_level: str) -> str:
+    """The size verdict a reader sees for one horizon, e.g. "normal for DDOG, but large by
+    most stocks' standards".
+
+    Judged against this stock's own normal range first. The stock-agnostic floor is added
+    only when it is more severe than that, and is always named as a comparison with other
+    stocks — so the two framings read as two facts rather than a contradiction.
+    """
+    name = ticker or "this stock"
+    verdict = (
+        f"normal for {name}" if relative_level == "typical"
+        else f"{_LEVEL_WORDS[relative_level]} for {name}"
+    )
+    if _SEVERITY[absolute_level] > _SEVERITY[relative_level]:
+        joiner = "but" if relative_level == "typical" else "and"
+        verdict += f", {joiner} {_PLAIN_WORDS[absolute_level]} by most stocks' standards"
+    return verdict
+
+
+def _signed_move(change_pct: float) -> str:
+    if change_pct == 0:
+        return "flat"
+    return f"{'up' if change_pct > 0 else 'down'} {abs(change_pct):.1f}%"
+
+
+def describe_move(price_data: dict) -> str:
+    """The factual "what happened" paragraph a reader sees before any LLM output.
+
+    Built only from get_price_data's result, so it is ready the moment the deterministic
+    pre-fetch lands — seconds before the model has decided anything — and it can only state
+    numbers and verdicts that code computed. The model's explanation of WHY is written later
+    and shown beneath it. Works on a cached result dict just as well as a fresh one.
+
+    Returns "" when there is no usable price, so the caller simply shows nothing.
+    """
+    ticker = price_data.get("ticker") or ""
+    price = price_data.get("price")
+    if price_data.get("error") or not price:
+        return ""
+
+    changes = price_data.get("changes_pct") or {}
+    today = price_data.get("change_pct")
+    lead = f"{ticker} is at ${price:,.2f}"
+    sentences = [f"{lead}, {_signed_move(today)} today." if today is not None else f"{lead}."]
+
+    per_horizon = _horizon_levels(changes, price_data.get("realized_vol_annualized_pct"))
+    if not per_horizon:
+        return " ".join(sentences)  # too little history to judge significance — say only what's known
+
+    day = per_horizon.get("1d")
+    if day is not None and today is not None:
+        _, relative_level, absolute_level, _, expected_move, _ = day
+        # A range a reader can picture ("up to about 3.7% a day") rather than a multiple of
+        # one ("1.08x its typical daily move"). The expected move is one standard deviation,
+        # which about two days in three stay within.
+        sentences.append(
+            f"It usually moves up to about {expected_move:.1f}% a day, so today's move is "
+            f"{_verdict(ticker, relative_level, absolute_level)}."
+        )
+
+    def span(label: str) -> str:  # "this week" reads alone; "the past month" needs "over"
+        phrase = _HORIZON_PHRASE[label]
+        return phrase if phrase.startswith("this") else f"over {phrase}"
+
+    # A longer horizon earns a mention when it is out of the ordinary for THIS stock, or very
+    # large by any standard. One that is normal for the stock and merely "large" against the
+    # stock-agnostic floor (a volatile name up 8% in a week) stays in the model's flags only.
+    longer = [
+        f"{_signed_move(change_pct)} {span(label)} ({_verdict(ticker, relative_level, absolute_level)})"
+        for label, (_, relative_level, absolute_level, change_pct, _, _) in per_horizon.items()
+        if label != "1d" and (relative_level != "typical" or absolute_level == "unusual")
+    ]
+    if longer:
+        sentences.append(f"Zooming out, it is {' and '.join(longer[:2])}.")
+    elif all(v[0] == "typical" for v in per_horizon.values()):
+        sentences.append("Every timeframe from today to the past year is within its normal range.")
+
+    return " ".join(sentences)
 
 
 def fetch_price_data(ticker: str) -> dict:

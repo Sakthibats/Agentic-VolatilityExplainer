@@ -20,7 +20,12 @@ client = TestClient(app)
 ORCH_RESULT = {
     "ticker": "AAPL",
     "data": {},
+    "overview": "AAPL is at $100.00, down 4.1% today.",
     "summary": "AAPL fell 4.1% — over 2x its normal daily swing.",
+    "citations": [
+        {"number": 1, "source": "Bloomberg", "url": "https://bloom.example/1"},
+        "malformed-citation-should-be-skipped",
+    ],
     "tiles": [
         {"agent": "price", "title": "Price Action", "summary": "Down 4.1%.", "reasoning": "Core move."},
         "malformed-tile-should-be-skipped",
@@ -41,10 +46,10 @@ OUT_OF_SCOPE = SimpleNamespace(in_scope=False, ticker=None, question="bake a cak
 
 
 def _patched(decision=IN_SCOPE, orch=None):
-    orch_fn = orch or (lambda t, q, on_step=None, on_summary=None: ORCH_RESULT)
+    orch_fn = orch or (lambda t, q, **callbacks: ORCH_RESULT)
 
-    async def async_orch(t, q, on_step=None, on_summary=None):
-        return orch_fn(t, q, on_step=on_step, on_summary=on_summary)
+    async def async_orch(t, q, **callbacks):
+        return orch_fn(t, q, **callbacks)
 
     return (
         patch.object(service, "evaluate_query", return_value=decision),
@@ -84,10 +89,13 @@ def test_analyze_non_streaming_returns_shaped_result():
     # Malformed model output filtered out by the service shaping layer.
     assert len(body["tiles"]) == 1
     assert len(body["hypotheses"]) == 1
+    assert body["citations"] == [
+        {"number": 1, "source": "Bloomberg", "url": "https://bloom.example/1"},
+    ]
 
 
 def test_analyze_sse_event_sequence():
-    def orch_with_steps(ticker, query, on_step=None, on_summary=None):
+    def orch_with_steps(ticker, query, on_step=None, **callbacks):
         if on_step:
             on_step("Pulling price data...")
             on_step("Scanning recent news headlines...")
@@ -112,7 +120,9 @@ def test_analyze_sse_event_sequence():
 def test_analyze_sse_streams_summary_events_before_the_result():
     """The write-up is the longest step in a run; `summary` events carry it to the client
     as it is generated rather than after it lands."""
-    def orch_with_summary(ticker, query, on_step=None, on_summary=None):
+    def orch_with_summary(ticker, query, on_step=None, on_summary=None, on_overview=None):
+        if on_overview:
+            on_overview(ORCH_RESULT["overview"])
         if on_step:
             on_step("Synthesizing findings...")
         if on_summary:
@@ -132,6 +142,25 @@ def test_analyze_sse_streams_summary_events_before_the_result():
     # Cumulative, and always ahead of the terminal result.
     assert names.index("summary") < names.index("result")
     assert events[-1][1]["summary"].startswith("AAPL fell 4.1%")
+
+
+def test_analyze_sse_sends_the_overview_before_the_explanation():
+    """What happened (computed in code) reaches the reader before why (written by the model)."""
+    def orch(ticker, query, on_summary=None, on_overview=None, **callbacks):
+        on_overview(ORCH_RESULT["overview"])
+        on_summary("A supply-chain delay")
+        return ORCH_RESULT
+
+    p1, p2, p3, p4 = _patched(orch=orch)
+    with p1, p2, p3, p4:
+        r = client.post("/v1/analyze", json={"query": "why did AAPL drop?"})
+
+    events = _parse_sse(r.text)
+    names = [n for n, _ in events]
+    assert names.count("overview") == 1
+    assert names.index("overview") < names.index("summary") < names.index("result")
+    assert events[names.index("overview")][1]["text"] == ORCH_RESULT["overview"]
+    assert events[-1][1]["overview"] == ORCH_RESULT["overview"]
 
 
 def test_analyze_sse_guardrail_event():
@@ -154,7 +183,7 @@ def test_analyze_non_streaming_guardrail():
 
 
 def test_analyze_orchestrator_failure_becomes_error_event():
-    def boom(ticker, query, on_step=None, on_summary=None):
+    def boom(ticker, query, **callbacks):
         raise RuntimeError("anthropic down")
 
     p1, p2, p3, p4 = _patched(orch=boom)
@@ -205,7 +234,7 @@ async def test_client_disconnect_lets_investigation_finish():
 
     finished = asyncio.Event()
 
-    async def slow_analyze(q, sid, on_step=None, on_started=None, on_summary=None):
+    async def slow_analyze(q, sid, on_step=None, on_started=None, **callbacks):
         if on_started:
             on_started("AAPL")
         if on_step:

@@ -38,13 +38,17 @@ def _shape_tiles(raw_tiles: list, ticker: str) -> list[Tile]:
             title=t.get("title", ""),
             summary=t.get("summary", ""),
             reasoning=t.get("reasoning", ""),
-            citations=[
-                Citation(number=c.get("number", i + 1), source=c.get("source", "Source"), url=c["url"])
-                for i, c in enumerate(t.get("citations", []))
-                if isinstance(c, dict) and c.get("url")
-            ],
+            citations=_shape_citations(t.get("citations", [])),
         )
         for t in good
+    ]
+
+
+def _shape_citations(raw: list) -> list[Citation]:
+    return [
+        Citation(number=c.get("number", i + 1), source=c.get("source", "Source"), url=c["url"])
+        for i, c in enumerate(raw if isinstance(raw, list) else [])
+        if isinstance(c, dict) and c.get("url")
     ]
 
 
@@ -71,6 +75,7 @@ async def analyze(
     on_step: Callable[[str], None] | None = None,
     on_started: Callable[[str], None] | None = None,
     on_summary: Callable[[str], None] | None = None,
+    on_overview: Callable[[str], None] | None = None,
 ) -> AnalysisResult:
     """Run one investigation end to end: scope gate → cache → orchestrator → shaping.
 
@@ -104,7 +109,8 @@ async def analyze(
 
         if result is None:
             result = await run_explainer(
-                ticker, question, on_step=on_step, on_summary=on_summary
+                ticker, question,
+                on_step=on_step, on_summary=on_summary, on_overview=on_overview,
             )
 
             if not question and result.get("status") == "complete":
@@ -129,7 +135,9 @@ async def analyze(
             ticker=ticker,
             query=question,
             status=status if status in ("complete", "incomplete", "guardrail") else "incomplete",
+            overview=result.get("overview", ""),  # absent from answers cached before it existed
             summary=result.get("summary", ""),
+            citations=_shape_citations(result.get("citations", [])),
             tiles=_shape_tiles(result.get("tiles", []), ticker),
             hypotheses=_shape_hypotheses(result.get("hypotheses", []), ticker),
             cache_hits=result.get("cache_hits", []),

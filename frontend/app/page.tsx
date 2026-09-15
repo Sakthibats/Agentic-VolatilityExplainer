@@ -7,13 +7,14 @@ import {
   ShieldAlert,
 } from "lucide-react";
 import { EvidenceTiles } from "@/components/evidence-tiles";
-import { Md } from "@/components/md";
+import { isWebUrl, Md } from "@/components/md";
 import { Hypotheses } from "@/components/hypotheses";
 import { useInvestigation } from "@/components/investigation-provider";
 import { PriceChart } from "@/components/price-chart";
 import { QueryBar } from "@/components/query-bar";
 import { StatsPanel } from "@/components/stats-panel";
 import { InvestigationLog } from "@/components/timeline";
+import { useTypewriter } from "@/lib/use-typewriter";
 
 const EXAMPLES = [
   "why did TSLA drop today?",
@@ -30,6 +31,7 @@ export default function Home() {
     query,
     setQuery,
     steps,
+    overview,
     partialSummary,
     result,
     message,
@@ -39,6 +41,17 @@ export default function Home() {
     investigate,
     stop,
   } = useInvestigation();
+
+  // Both paragraphs are revealed at a steady pace (see lib/use-typewriter.ts) rather than
+  // popping in as the blocks the server happens to send. The streamed text hands over to the
+  // result's authoritative text mid-reveal without restarting, and the "why" waits until the
+  // "what happened" paragraph has been fully written.
+  const overviewText = result ? result.overview : overview;
+  const explanationText = result ? result.summary : partialSummary;
+  const shownOverview = useTypewriter(overviewText);
+  const overviewTyping = shownOverview.length < overviewText.length;
+  const shownExplanation = useTypewriter(explanationText, { paused: overviewTyping });
+  const explanationTyping = shownExplanation.length < explanationText.length;
 
   const liveStatus =
     phase === "running"
@@ -92,29 +105,58 @@ export default function Home() {
               </div>
             </div>
             {/* One card for both states, so the streaming text is replaced in place by
-                the final summary rather than the card unmounting and remounting. */}
-            {(result?.summary || partialSummary) && (
+                the final summary rather than the card unmounting and remounting. The
+                "what happened" paragraph lands first, straight from the price data; the
+                "why" paragraph streams in beneath it once the model has ranked its
+                hypotheses. */}
+            {(overviewText || explanationText) && (
               <section className="rise-in space-y-2">
                 <h2 className="micro-label">Overall Summary</h2>
                 <div className="elevated rounded-xl border-0 bg-card p-5 sm:p-6" style={{ borderLeft: "4px solid var(--primary)" }}>
                   <h3 className="mb-2 text-sm font-semibold tracking-tight">
                     {ticker ? `${ticker} — Price Movement Analysis` : "Price Movement Analysis"}
                   </h3>
-                  <p className="text-[15px] leading-7 sm:text-base">
-                    {result?.summary ? (
-                      <Md text={result.summary} />
-                    ) : (
-                      <>
-                        {/* Plain text while streaming — mid-sentence markdown has
-                            unbalanced ** and would render as literal asterisks. */}
-                        {partialSummary}
-                        <span
-                          className="ml-0.5 inline-block h-4 w-px animate-pulse bg-primary align-middle"
-                          aria-hidden
-                        />
-                      </>
+                  <div className="space-y-3 text-[15px] leading-7 sm:text-base">
+                    {overviewText && (
+                      <p>
+                        {shownOverview}
+                        {overviewTyping && <Caret />}
+                      </p>
                     )}
-                  </p>
+                    {!overviewTyping &&
+                      (result?.summary && !explanationTyping ? (
+                        <p>
+                          <Md text={result.summary} citations={result.citations} />
+                        </p>
+                      ) : (
+                        (explanationText || phase === "running") && (
+                          <p>
+                            {/* Plain text until fully revealed — a half-written ** would
+                                render as literal asterisks. The caret alone, before any
+                                text, marks the model still working out the "why". */}
+                            {shownExplanation.replace(/\*/g, "")}
+                            <Caret />
+                          </p>
+                        )
+                      ))}
+                    {result && result.citations.length > 0 && !explanationTyping && (
+                      <p className="flex flex-wrap gap-x-3 gap-y-1 text-xs">
+                        {result.citations
+                          .filter((c) => isWebUrl(c.url))
+                          .map((c) => (
+                            <a
+                              key={c.number}
+                              href={c.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-primary underline-offset-2 hover:underline"
+                            >
+                              [{c.number}] {c.source}
+                            </a>
+                          ))}
+                      </p>
+                    )}
+                  </div>
                 </div>
               </section>
             )}
@@ -199,5 +241,14 @@ export default function Home() {
         </p>
       )}
     </div>
+  );
+}
+
+function Caret() {
+  return (
+    <span
+      className="ml-0.5 inline-block h-4 w-px animate-pulse bg-primary align-middle"
+      aria-hidden
+    />
   );
 }

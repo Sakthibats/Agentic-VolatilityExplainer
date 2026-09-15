@@ -11,9 +11,10 @@
 A web app that answers *"why did TSLA move?"* with an actual investigation instead of a chatbot
 guess. The backend computes price and realized-volatility significance **in plain code**, then a
 bounded Claude tool-use loop decides which evidence to pull (news, options, analyst actions,
-sector, macro, earnings/events). It must finish by calling a structured `submit_analysis` tool: a
-summary, ≤4 evidence tiles, and 2–3 ranked hypotheses with confidence and caveats. Progress and
-the summary stream to the browser over SSE.
+sector, macro, earnings/events). It must finish by calling a structured `submit_analysis` tool: ≤4
+evidence tiles, 2–3 ranked hypotheses with confidence and caveats, and an explanation written
+last. Progress, a code-built "what happened" overview, and the model's "why" stream to the browser
+over SSE.
 
 Live at https://market-explainer.com · repo `Sakthibats/Agentic-VolatilityExplainer` · solo project.
 
@@ -41,8 +42,8 @@ multi-ticker comparison, anything resembling trading advice or signals.
 | Migration | Streamlit monolith → FastAPI + Next.js. Phases 0–3 ✅. **Phase 4 (metering / rate limiting) is next and not started** |
 | Backend | FastAPI, fully async, `/v1` REST + SSE, Docker → Google Cloud Run |
 | Frontend | Next.js 16 static export → Cloudflare Pages |
-| Quality gates | 207 offline pytest tests + 19 `live` upstream contract tests (weekly). ruff, eslint (blocking), tsc all clean |
-| Biggest gaps | No offline **eval harness** for answer quality · no rate limiting and CORS `*` · `print`-based logging · no cost-per-run tracking · chart silently falls back to synthetic prices |
+| Quality gates | 238 offline pytest tests + 19 `live` upstream contract tests (weekly). ruff, eslint (blocking), tsc all clean. Heuristic quality flags on every explanation (`[quality]` log line) |
+| Biggest gaps | No offline **eval harness** that scores the model's answers (only heuristic checks + pinned bad write-ups) · no rate limiting and CORS `*` · `print`-based logging · no cost-per-run tracking · chart silently falls back to synthetic prices |
 
 ## 4. Architecture in one screen
 
@@ -58,7 +59,8 @@ api/service.py    scope gate → final-answer cache (no-question path only) → 
   ├─ query/parsing.py         guardrail + 4-stage ticker resolution (LLM only as last resort)
   └─ agent/orchestrator.py
        1. prefetch get_price_data + get_events in parallel — deterministic, no LLM
-       2. splice them in as a synthetic tool_use / tool_result turn
+            → describe_move builds the "what happened" overview; sent at once
+       2. splice them in as a synthetic tool_use / tool_result turn (overview quoted too)
        3. loop ≤7 turns · Haiku 4.5 · tool_choice=any · streamed
             model picks tools → asyncio.gather(to_thread(tool)), 15 s timeout each
        4. the turn may end ONLY via submit_analysis | flag_out_of_scope
@@ -71,8 +73,9 @@ marketdata/snapshots.py           chart history + sidebar stats
 analytics/supabase_logger.py      optional usage log (bounded queue, JSONL fallback)
 ```
 
-SSE order: `investigation_started` → `step`* → `summary`* (cumulative text, not deltas) → exactly
-one terminal `result` | `guardrail` | `error`. The contract is
+SSE order: `investigation_started` → `step`* → `overview`? (code-built "what happened") →
+`summary`* (the model's "why"; cumulative text, not deltas) → exactly one terminal `result` |
+`guardrail` | `error`. The contract is
 `backend/volatility_explainer/api/schemas.py`, mirrored by hand in `frontend/lib/api.ts`.
 
 ## 5. Invariants — don't break these without an explicit decision
@@ -84,15 +87,21 @@ one terminal `result` | `guardrail` | `error`. The contract is
   significance.
 - **Structured endings only.** The loop ends via `submit_analysis` or `flag_out_of_scope`. If the
   model writes prose instead, the run returns `status: "incomplete"` — prose is never parsed.
-- **Citations never come from the model.** They are attached from `get_news` results.
+- **Links never come from the model.** Headlines are numbered server-side; the model may only cite
+  `[n]`, and the server resolves each number to the real URL (`AnalysisResult.citations`) or
+  removes it. Tile citations come straight from `get_news`.
+- **Quality checks measure, never rewrite.** `agent/quality.py` flags the explanation; it must not
+  alter or block the answer, and a failing check must not fail the run.
 - **Degrade gracefully.** Every data source keeps a yfinance fallback. Redis, Supabase, Finnhub and
   FRED are all optional. `service.analyze()` never raises.
 - **Async backend, sync tools.** LLM calls are awaited (`AsyncAnthropic`). Tools stay sync (yfinance
   is sync-only) and run via `asyncio.to_thread`. Never call a tool directly on the event loop.
 - **Finish-and-cache.** A client disconnect must not cancel the investigation — pinned by
   `tests/api/test_api.py::test_client_disconnect_lets_investigation_finish`.
-- **Streaming order.** `summary` stays the first property of `submit_analysis` (tested), and
-  `submit_analysis` stays last in `TOOL_DEFINITIONS` (it carries the prompt-cache breakpoint).
+- **Write-up order.** `explanation` stays the LAST property of `submit_analysis`, after tiles and
+  hypotheses, so the "why" is written from them (tested). The "what happened" overview comes from
+  code (`tools/price.describe_move`), never the model. `submit_analysis` stays last in
+  `TOOL_DEFINITIONS` (it carries the prompt-cache breakpoint).
 - **Theme.** Light = white + blue (`#1565C0` family), never coral/orange. Dark = trading terminal.
   Both come from tokens in `frontend/app/globals.css`; no hardcoded colours in components.
 - **Tests before refactors.** `tests/agent/test_orchestrator.py` drives the loop with a scripted fake
@@ -102,10 +111,14 @@ one terminal `result` | `guardrail` | `error`. The contract is
 
 Each entry: the decision, why, what it costs, and when to reconsider.
 
-1. **Significance is computed in code** — relative to the stock's own √time-scaled realized vol,
-   plus an absolute magnitude floor. *Why:* auditable and repeatable; the model can neither
-   rubber-stamp an 18% drop as "typical" nor inflate a 1% move because the user said "crash".
-   *Cost:* hand-tuned thresholds, never backtested. *Revisit:* once an eval set exists.
+1. **Significance is computed in code** — relative to the stock's own √time-scaled realized vol
+   (typical < 1.5x one standard deviation ≤ elevated < 2.5x ≤ unusual), plus an absolute magnitude
+   floor. *Why:* auditable and repeatable; the model can neither rubber-stamp an 18% drop as
+   "typical" nor inflate a 1% move because the user said "crash". The bands were widened from
+   1x/2x in 2026-09: a 1x move happens about one day in three, so DDOG up 4% on a ~3.7% usual day
+   was being called "larger than usual". *Cost:* hand-tuned thresholds, never backtested; wider
+   bands also mean fewer flagged moves, so news is fetched less often. *Revisit:* once an eval set
+   exists.
 2. **Terminal tools instead of JSON-in-text.** *Why:* schema-shaped output, no regex extraction, an
    explicit out-of-scope path. *Cost:* a large tool schema in every request; a prose reply ends the
    run as `incomplete` with no retry. *Revisit:* if the incomplete rate turns out to matter (it
@@ -149,14 +162,31 @@ Each entry: the decision, why, what it costs, and when to reconsider.
 14. **A static FOMC calendar** in `tools/events.py` (currently through 2027-12-08). *Why:* no free,
     reliable API. *Cost:* a manual yearly refresh — `test_fomc_calendar_has_runway` fails 90 days
     before the list runs out, on purpose.
+15. **Two-paragraph write-up: overview from code first, explanation from the model last.** *Why:*
+    with `summary` as the first schema property, the model committed to a "why" before generating
+    its tiles and ranked hypotheses — it felt fast but concluded before it reasoned. Now a
+    deterministic overview lands right after the pre-fetch, and the explanation is generated after
+    the hypotheses. *Cost:* the first model-written word arrives a few seconds later (tiles and
+    hypotheses are generated first); the overview's wording is templated. *Revisit:* if tiles and
+    hypotheses should stream progressively too.
+16. **A fixed explanation shape, checked by heuristics rather than enforced.** The explanation must
+    give cause + confidence, one dated piece of evidence cited as `[n]`, then market/sector context
+    if it was checked; prompt rules ban repeating the overview, consensus as a cause, unmeasured
+    forces and facts from memory. `agent/quality.py` flags violations in plain code. *Why:* a
+    production DDOG write-up broke all of these at once, and prompt rules alone can't be verified
+    without measurement. *Cost:* regex heuristics have false negatives (tuned for precision); the
+    flags only reach Cloud Run logs and local `VOLX_SAVE_RUNS` files, not the Supabase usage log.
+    *Revisit:* replace or back the heuristics with a scored eval set (open question 1).
 
 ## 7. Open questions — good places to ideate
 
 Framed against the portfolio goal. Each is a live tradeoff, not a settled plan.
 
-1. **Evals.** How is answer quality measured? E.g. a golden set of historical moves with known
-   catalysts, scored for catalyst recall, numbers matching tool data, and hypothesis calibration.
-   The highest-signal missing piece for an agentic showcase.
+1. **Evals.** How is answer quality measured? A start exists: heuristic flags on every explanation,
+   bad write-ups pinned in `tests/agent/test_quality.py`, and `scripts/quality_report.py` over runs
+   saved with `VOLX_SAVE_RUNS`. Still missing: a golden set of historical moves with known
+   catalysts, replayed through the model and scored for catalyst recall, numbers matching tool data,
+   and hypothesis calibration. The highest-signal missing piece for an agentic showcase.
 2. **Observability and cost.** Structured per-run traces (turns, tools chosen, tokens, cache hits, $)
    instead of `print`. Show cost per investigation on the About page?
 3. **Abuse and spend control (Phase 4).** Redis token bucket per session/IP, a daily global LLM
@@ -176,9 +206,11 @@ Backend paths are relative to `backend/volatility_explainer/`.
 | Task | Touch |
 |---|---|
 | Add a data tool | `tools/<name>.py` (sync, returns a dict, yfinance fallback) → `agent/tool_schemas.py` (schema, when-to-call text, add to the tile `agent` enum) → `agent/orchestrator.py` `_TOOL_DISPATCH` + `_STEP_LABELS` → `clients/redis_cache.py` `TOOL_TTL_SECONDS` → `frontend/components/evidence-tiles.tsx` `AGENT_ICONS` → `tests/tools/` (plus a live contract test) |
-| What the model is told | Per-tool guidance: `agent/tool_schemas.py`. Global reading, output and framing rules: `agent/prompts.py` |
+| What the model is told | Per-tool guidance and the explanation's shape: `agent/tool_schemas.py`. Global reading, output, framing and data rules: `agent/prompts.py` |
+| Write-up quality checks | `agent/quality.py` + `tests/agent/test_quality.py` (add each new bad write-up as a regression case). Report over saved runs: `scripts/quality_report.py` |
+| Citations | Numbering + resolution: `agent/orchestrator.py` (`_with_news_refs`, `_resolve_citations`) → `frontend/components/md.tsx` |
 | Agent loop behaviour | `agent/orchestrator.py` + extend `tests/agent/test_orchestrator.py` |
-| Significance thresholds | `tools/price.py` (`_assess_moves`) + `tests/tools/test_price.py` |
+| Significance thresholds | `tools/price.py` (`_RELATIVE_BANDS`, `_ABS_THRESHOLDS_PCT`) + `tests/tools/test_price.py` — also changes the overview wording and the size check in `agent/quality.py` |
 | Scope guardrail / ticker resolution | `query/parsing.py` + `tests/query/test_parsing.py` |
 | API shape / SSE events | `api/schemas.py` → `api/app.py`, `api/service.py` → `frontend/lib/api.ts` → `frontend/components/investigation-provider.tsx` |
 | Investigation UI | `frontend/app/page.tsx` and `frontend/components/` (state lives in `investigation-provider.tsx`) |
@@ -216,7 +248,9 @@ fails).
 - Tests patch seams at module level (`orchestrator.get_settings`, `orchestrator._TOOL_DISPATCH`, …).
   If you move an import, move the patch target with it.
 - The in-process tool memo is module-global; tests call `clear_memoized_tool_data()`.
-- Tool results pass through `_with_price_context`, so analyst upside uses the same price the
-  summary quotes.
+- Tool results pass through `_with_run_context` (fresh and cached alike): analyst upside is
+  re-anchored to the run's price, and news headlines get their citation `ref` numbers.
+- The streamed explanation can briefly show a `[n]` the server later removes; the final result's
+  `summary` is authoritative.
 - Some docstrings say "rescued from the retired Streamlit app" — history only; `apps/` is gone.
 - Never read `.env`; `.claude/settings.json` denies it.

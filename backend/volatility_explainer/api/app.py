@@ -21,6 +21,7 @@ from volatility_explainer.api.schemas import (
     Guardrail,
     Health,
     InvestigationStarted,
+    Overview,
     PriceHistory,
     PricePoint,
     Stat,
@@ -65,6 +66,7 @@ async def _analyze_event_stream(raw_query: str, session_id: str):
             result = await service.analyze(
                 raw_query, session_id,
                 on_step=lambda label: events.put_nowait(("step", Step(label=label))),
+                on_overview=lambda text: events.put_nowait(("overview", Overview(text=text))),
                 on_summary=lambda text: events.put_nowait(
                     ("summary", SummaryProgress(text=text))
                 ),

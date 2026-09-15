@@ -7,6 +7,8 @@ from volatility_explainer.tools.price import (
     _compute_horizon_changes,
     _compute_realized_vol,
     _flag_text,
+    _level_from_ratio,
+    describe_move,
     fetch_price_data,
 )
 
@@ -148,6 +150,16 @@ def test_horizon_absent_from_changes_is_skipped_not_crashed():
     assert result == {}
 
 
+def test_relative_bands_leave_an_ordinary_day_typical():
+    # A 1x move (one standard deviation) happens about one day in three — not "larger than
+    # usual". The case that prompted this: DDOG up 4.0% on a ~3.7% expected day, 1.08x.
+    assert _level_from_ratio(1.08) == "typical"
+    assert _level_from_ratio(1.49) == "typical"
+    assert _level_from_ratio(1.5) == "elevated"
+    assert _level_from_ratio(2.49) == "elevated"
+    assert _level_from_ratio(2.5) == "unusual"
+
+
 # ---------------------------------------------------------------------------
 # _flag_text — exact sentence formatting
 # ---------------------------------------------------------------------------
@@ -163,6 +175,78 @@ def test_flag_text_disagreeing_levels_states_both_framings():
     assert "typical relative to this stock's own typical volatility" in text
     assert "elevated in plain magnitude terms" in text
     assert "(overall: elevated)" in text
+
+
+# ---------------------------------------------------------------------------
+# describe_move — the "what happened" paragraph the reader sees before any LLM output
+# ---------------------------------------------------------------------------
+
+
+def _price(change_pct=-4.1, changes=None, rv=20.0, **overrides) -> dict:
+    return {
+        "ticker": "AAPL", "price": 100.0, "change_pct": change_pct,
+        "realized_vol_annualized_pct": rv, "changes_pct": changes or {}, **overrides,
+    }
+
+
+def test_describe_move_is_empty_without_a_usable_price():
+    assert describe_move({"ticker": "AAPL", "error": "no price history available"}) == ""
+    assert describe_move(_price(price=None)) == ""
+
+
+def test_describe_move_states_only_the_move_when_significance_cannot_be_judged():
+    assert describe_move(_price(changes={"1d": -4.1}, rv=None)) == "AAPL is at $100.00, down 4.1% today."
+
+
+def test_describe_move_unusual_day_gives_the_usual_range_not_a_multiple():
+    # rv=20% -> expected 1d move ~1.26%; -4.1% is ~3.25x that.
+    assert describe_move(_price(changes={"1d": -4.1})) == (
+        "AAPL is at $100.00, down 4.1% today. "
+        "It usually moves up to about 1.3% a day, so today's move is unusually large for AAPL."
+    )
+
+
+def test_describe_move_calm_everywhere_says_so():
+    text = describe_move(_price(change_pct=0.5, changes={"1d": 0.5, "1w": 1.0, "1mo": -2.0}))
+    assert "up 0.5% today" in text
+    assert "so today's move is normal for AAPL." in text
+    assert "Every timeframe from today to the past year is within its normal range." in text
+
+
+def test_describe_move_volatile_stock_big_day_names_both_comparisons():
+    # rv=150% -> expected 1d move ~9.4%, so -8% is ordinary for THIS stock — but it still
+    # clears the stock-agnostic "unusual" floor (7%) for a single day.
+    text = describe_move(_price(change_pct=-8.0, changes={"1d": -8.0}, rv=150.0))
+    assert "so today's move is normal for AAPL, but very large by most stocks' standards." in text
+
+
+def test_describe_move_ordinary_day_for_a_volatile_stock_is_not_called_larger_than_usual():
+    """The DDOG write-up that prompted the re-banding: up 4.0% against a ~3.7% usual day
+    (1.08x) read "larger than usual", and an 8% week that is normal for DDOG was flagged too."""
+    ddog = {
+        "ticker": "DDOG", "price": 230.05, "change_pct": 4.0, "realized_vol_annualized_pct": 58.7,
+        "changes_pct": {"1d": 4.0, "1w": 8.0, "1y": 65.3},
+    }
+    text = describe_move(ddog)
+    assert text.startswith("DDOG is at $230.05, up 4.0% today. ")
+    assert (
+        "It usually moves up to about 3.7% a day, so today's move is normal for DDOG, "
+        "but large by most stocks' standards." in text
+    )
+    assert "larger than usual" not in text and "x its" not in text
+    assert "this week" not in text  # normal for DDOG, only "large" against the floor
+    assert (
+        "up 65.3% over the past year (normal for DDOG, but very large by most stocks' standards)"
+        in text
+    )
+
+
+def test_describe_move_calm_day_still_surfaces_a_flagged_longer_horizon():
+    # rv=20% -> expected 1mo move ~5.8%; -15% is ~2.6x that.
+    text = describe_move(_price(change_pct=0.3, changes={"1d": 0.3, "1mo": -15.0}))
+    assert "so today's move is normal for AAPL." in text
+    assert "Zooming out, it is down 15.0% over the past month (unusually large for AAPL)." in text
+    assert "Every timeframe" not in text
 
 
 # ---------------------------------------------------------------------------

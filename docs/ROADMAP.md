@@ -14,7 +14,9 @@ reasoning behind these choices are in [AGENTS.md](../AGENTS.md); known debt is i
 | 3 | Next.js frontend (dual theme), deployed to Cloudflare Pages; backend on Cloud Run | ✅ |
 | 4 | Metering and rate limiting | **Next — not started** |
 
-Since Phase 3: streaming summary events, deterministic events prefetch, analyst and sector tools,
+Since Phase 3: a two-paragraph write-up (code-built overview, then the model's explanation) revealed
+as typed text; wider significance bands; server-resolved `[n]` citations and heuristic quality
+flags on the explanation; streaming summary events, deterministic events prefetch, analyst and sector tools,
 weekly live contract tests, and a 2026-09 cleanup (`mcp/tools/` → `tools/`, tool schemas split out
 of the orchestrator, model ID moved into config, frontend lint made blocking).
 
@@ -37,7 +39,8 @@ building payments now.
 
 Ordered roughly by value to the portfolio goal. None are committed.
 
-1. **Offline eval harness** — golden set of historical moves with known catalysts; score catalyst
+1. **Offline eval harness** *(started: heuristic quality flags, pinned bad write-ups,
+   `scripts/quality_report.py`)* — golden set of historical moves with known catalysts; score catalyst
    recall, number fidelity and hypothesis calibration; use it to compare prompts and models.
 2. **Structured observability** — per-run traces (turns, tools, tokens, cache hits, cost) in place of
    `print` logging.

@@ -87,8 +87,9 @@ class FakeStream:
         return self._response
 
 
+# Key order mirrors the schema the model follows: the tiles' own nested `summary` keys stream
+# first, so the partial-JSON reader is exercised against them before `explanation` arrives.
 SUBMIT_INPUT = {
-    "summary": "AAPL fell 4.1% — over 2x its normal daily swing.",
     "tiles": [
         {"agent": "price", "title": "Price Action", "summary": "Down 4.1%.", "reasoning": "Core move."},
         {"agent": "news", "title": "News", "summary": "Supply-chain delay reported.", "reasoning": "Catalyst."},
@@ -99,6 +100,7 @@ SUBMIT_INPUT = {
         {"rank": 2, "hypothesis": "Broad tech selloff", "evidence": "Limited",
          "confidence": "low", "caveat": "SPX flat"},
     ],
+    "explanation": "A reported supply-chain delay is the most likely cause, and the evidence is strong.",
 }
 
 PRICE_RESULT = {
@@ -186,10 +188,12 @@ async def test_happy_path_tool_round_then_submit(env):
 
     assert result["status"] == "complete"
     assert result["ticker"] == "AAPL"  # upper-cased
-    assert result["summary"] == SUBMIT_INPUT["summary"]
+    assert result["summary"] == SUBMIT_INPUT["explanation"]
     assert result["hypotheses"] == SUBMIT_INPUT["hypotheses"]
     assert result["data"]["get_price_data"] == PRICE_RESULT  # deterministic pre-fetch
-    assert result["data"]["get_news"] == NEWS_RESULT
+    assert [h["headline"] for h in result["data"]["get_news"]["headlines"]] == [
+        h["headline"] for h in NEWS_RESULT["headlines"]
+    ]
     assert env.client.messages.stream.call_count == 2
 
 
@@ -207,6 +211,79 @@ async def test_news_citations_attached_from_real_headlines(env):
         {"number": 1, "source": "Bloomberg", "url": "https://bloom.example/1"},
         {"number": 2, "source": "Reuters", "url": "https://reut.example/2"},
     ]
+
+
+async def test_model_is_shown_numbered_headlines_it_can_cite(env):
+    env.responses.extend([
+        fake_response([tool_use("get_news", {"ticker": "AAPL"})]),
+        fake_response([tool_use("submit_analysis", SUBMIT_INPUT)]),
+    ])
+
+    await orchestrator.run_explainer("AAPL")
+
+    messages = env.client.messages.stream.call_args_list[1].kwargs["messages"]
+    news = next(
+        json.loads(block["content"])
+        for message in messages
+        if message["role"] == "user" and isinstance(message["content"], list)
+        for block in message["content"]
+        if isinstance(block, dict) and block.get("tool_use_id", "").endswith("get_news")
+    )
+    # Only linked headlines get a number, and the stubbed (or memoized) original is untouched.
+    assert [h.get("ref") for h in news["headlines"]] == [1, 2, None]
+    assert all("ref" not in h for h in NEWS_RESULT["headlines"])
+
+
+async def test_explanation_citations_resolve_to_real_headlines_and_bad_ones_are_dropped(env):
+    submit = {**SUBMIT_INPUT, "explanation": "A delay was reported [2], and a rival said so too [7]."}
+    env.responses.extend([
+        fake_response([tool_use("get_news", {"ticker": "AAPL"})]),
+        fake_response([tool_use("submit_analysis", submit)]),
+    ])
+
+    result = await orchestrator.run_explainer("AAPL")
+
+    # The model wrote only numbers; the links come from this run's headlines.
+    assert result["summary"] == "A delay was reported [2], and a rival said so too."
+    assert result["citations"] == [
+        {"number": 2, "source": "Reuters", "url": "https://reut.example/2"},
+    ]
+    assert "invalid_citation" in result["quality_flags"]
+
+
+async def test_citation_markers_with_no_news_fetched_are_all_removed(env):
+    submit = {**SUBMIT_INPUT, "explanation": "Something was reported [1]."}
+    env.responses.append(fake_response([tool_use("submit_analysis", submit)]))
+
+    result = await orchestrator.run_explainer("AAPL")
+
+    assert result["summary"] == "Something was reported."
+    assert result["citations"] == []
+
+
+async def test_quality_flags_measure_the_explanation_without_rewriting_it(env):
+    long = " ".join(["word"] * 100) + "."
+    env.responses.append(
+        fake_response([tool_use("submit_analysis", {**SUBMIT_INPUT, "explanation": long})])
+    )
+
+    result = await orchestrator.run_explainer("AAPL")
+
+    assert "too_long" in result["quality_flags"]
+    assert result["summary"] == long
+
+
+async def test_finished_runs_are_saved_when_volx_save_runs_is_set(env, monkeypatch, tmp_path):
+    path = tmp_path / "runs.jsonl"
+    monkeypatch.setattr(orchestrator, "_SAVE_RUNS_PATH", str(path))
+    env.responses.append(fake_response([tool_use("submit_analysis", SUBMIT_INPUT)]))
+
+    await orchestrator.run_explainer("AAPL", "why did AAPL drop?")
+
+    [record] = [json.loads(line) for line in path.read_text().splitlines()]
+    assert record["query"] == "why did AAPL drop?"
+    assert record["raw_explanation"] == SUBMIT_INPUT["explanation"]
+    assert record["quality_flags"] == []
 
 
 async def test_out_of_scope_guardrail(env):
@@ -487,8 +564,8 @@ async def test_summary_streams_progressively_while_it_is_written(env):
     result = await orchestrator.run_explainer("AAPL", on_summary=partials.append)
 
     assert len(partials) > 1, "summary arrived in one chunk — not actually streaming"
-    assert partials[-1] == SUBMIT_INPUT["summary"]
-    assert result["summary"] == SUBMIT_INPUT["summary"]
+    assert partials[-1] == SUBMIT_INPUT["explanation"]
+    assert result["summary"] == SUBMIT_INPUT["explanation"]
 
 
 async def test_streamed_summary_is_cumulative_and_monotonic(env):
@@ -524,15 +601,87 @@ async def test_run_works_without_an_on_summary_callback(env):
     result = await orchestrator.run_explainer("AAPL")
 
     assert result["status"] == "complete"
-    assert result["summary"] == SUBMIT_INPUT["summary"]
+    assert result["summary"] == SUBMIT_INPUT["explanation"]
 
 
-async def test_summary_is_the_first_property_streamed(env):
-    """The model emits properties in schema order, so `summary` must stay first in
-    submit_analysis's schema — otherwise nothing renders until tiles/hypotheses land."""
-    properties = tool_schemas.TOOL_DEFINITIONS[-1]["input_schema"]["properties"]
+def test_explanation_is_written_after_tiles_and_hypotheses():
+    """The model emits properties in schema order. The why-paragraph must come LAST, so it
+    is generated from the evidence and ranked hypotheses rather than ahead of them — a
+    summary-first schema had the model concluding before it had reasoned."""
+    properties = list(tool_schemas.TOOL_DEFINITIONS[-1]["input_schema"]["properties"])
 
-    assert next(iter(properties)) == "summary"
+    assert properties[-1] == orchestrator._STREAMED_FIELD
+    assert properties.index("hypotheses") < properties.index(orchestrator._STREAMED_FIELD)
+    assert properties.index("tiles") < properties.index(orchestrator._STREAMED_FIELD)
+
+
+def test_no_nested_submit_analysis_property_shares_the_streamed_field_name():
+    """The partial-JSON reader takes the first occurrence of the key. With the field last,
+    any nested key of the same name (as tiles' `summary` is) would stream instead of it."""
+    def keys(schema: dict) -> set[str]:
+        found = set(schema.get("properties", {}))
+        for child in schema.get("properties", {}).values():
+            found |= keys(child)
+        if "items" in schema:
+            found |= keys(schema["items"])
+        return found
+
+    schema = tool_schemas.TOOL_DEFINITIONS[-1]["input_schema"]
+    nested = set().union(*(keys(p) for p in schema["properties"].values()))
+
+    assert orchestrator._STREAMED_FIELD not in nested
+
+
+# ── The deterministic overview ───────────────────────────────────────────────
+
+
+async def test_overview_is_emitted_once_before_any_llm_call(env):
+    """The "what happened" paragraph comes from code, so it must reach the reader while the
+    model is still picking tools — not after the write-up."""
+    timeline: list[str] = []
+
+    def recording_stream(**kwargs):
+        timeline.append("<llm call>")
+        return FakeStream(env.responses.pop(0))
+
+    env.client.messages.stream = MagicMock(side_effect=recording_stream)
+    env.responses.extend([
+        fake_response([tool_use("get_news", {"ticker": "AAPL"})]),
+        fake_response([tool_use("submit_analysis", SUBMIT_INPUT)]),
+    ])
+
+    result = await orchestrator.run_explainer(
+        "AAPL", on_overview=lambda text: timeline.append(f"overview: {text}")
+    )
+
+    overviews = [t for t in timeline if t.startswith("overview: ")]
+    assert overviews == [f"overview: {orchestrator.describe_move(PRICE_RESULT)}"]
+    assert timeline.index(overviews[0]) < timeline.index("<llm call>")
+    assert result["overview"] == orchestrator.describe_move(PRICE_RESULT)
+    assert result["summary"] == SUBMIT_INPUT["explanation"]
+
+
+async def test_model_is_shown_the_overview_the_reader_already_has(env):
+    env.responses.append(fake_response([tool_use("submit_analysis", SUBMIT_INPUT)]))
+
+    await orchestrator.run_explainer("AAPL", "why did AAPL drop?")
+
+    first_user_turn = env.client.messages.stream.call_args_list[0].kwargs["messages"][0]["content"]
+    assert orchestrator.describe_move(PRICE_RESULT) in first_user_turn
+
+
+async def test_no_overview_when_price_data_failed(env, monkeypatch):
+    """Nothing factual to say — send nothing rather than a paragraph of blanks."""
+    monkeypatch.setitem(orchestrator._TOOL_DISPATCH, "get_price_data", lambda inp: {"error": "down"})
+    overviews: list[str] = []
+    env.responses.append(fake_response([tool_use("submit_analysis", SUBMIT_INPUT)]))
+
+    result = await orchestrator.run_explainer("AAPL", on_overview=overviews.append)
+
+    assert overviews == []
+    assert result["overview"] == ""
+    first_user_turn = env.client.messages.stream.call_args_list[0].kwargs["messages"][0]["content"]
+    assert "overview" not in first_user_turn
 
 
 def test_submit_analysis_opts_into_fine_grained_streaming():
@@ -597,6 +746,11 @@ def test_partial_json_returns_none_before_the_value_starts():
     assert _extract('{"summary": ') is None
 
 
+def test_partial_json_finds_a_field_that_follows_earlier_properties():
+    buffer = '{"tiles": [{"summary": "Down 4.1%."}], "hypotheses": [], "explanation": "A supply'
+    assert orchestrator._partial_json_string(buffer, "explanation") == "A supply"
+
+
 def test_partial_json_reads_a_value_still_being_written():
     assert _extract('{"summary": "AAPL fell 4.1% beca') == "AAPL fell 4.1% beca"
 
@@ -626,9 +780,9 @@ def test_partial_json_handles_an_escaped_quote_not_ending_the_value():
     assert _extract('{"summary": "a \\" b') == 'a " b'
 
 
-def test_partial_json_ignores_the_field_inside_a_nested_object():
-    """Tiles carry their own `summary` key — the first match is the top-level one, which
-    is why `summary` must stay first in the schema."""
+def test_partial_json_matches_the_first_occurrence_of_the_field():
+    """Documents the limitation the streamed field's unique name exists to avoid — see
+    test_no_nested_submit_analysis_property_shares_the_streamed_field_name."""
     buffer = '{"summary": "top level", "tiles": [{"summary": "tile text"'
     assert _extract(buffer) == "top level"
 

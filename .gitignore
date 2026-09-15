@@ -27,3 +27,6 @@ venv/
 
 # Local fallback log for failed Supabase analytics writes
 /data/failed_query_log.jsonl
+
+# Local run captures for scripts/quality_report.py (VOLX_SAVE_RUNS)
+/runs*.jsonl

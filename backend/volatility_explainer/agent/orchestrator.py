@@ -5,12 +5,14 @@ from __future__ import annotations
 import asyncio
 import json
 import os
+import re
 import time
 from collections.abc import Callable
 from typing import Any
 
 import anthropic
 from volatility_explainer.agent.prompts import SYSTEM_PROMPT
+from volatility_explainer.agent.quality import check_explanation
 from volatility_explainer.agent.tool_schemas import TERMINAL_TOOLS, TOOL_DEFINITIONS
 from volatility_explainer.clients.redis_cache import (
     get_cached_tool_data,
@@ -24,13 +26,18 @@ from volatility_explainer.tools.events import fetch_events
 from volatility_explainer.tools.macro import fetch_macro
 from volatility_explainer.tools.news import fetch_news
 from volatility_explainer.tools.options import fetch_options_data, fetch_options_positioning
-from volatility_explainer.tools.price import fetch_price_data
+from volatility_explainer.tools.price import describe_move, fetch_price_data
 from volatility_explainer.tools.sector import fetch_sector_comparison
 
 # Set VOLX_LOG_LLM_PAYLOAD=1 for per-turn LLM diagnostics: payload sizes, the content-block
 # breakdown, and a full dump of the system/tools/messages sent to the model. Off by default;
 # timing, token usage, and cache hits are always printed.
 _LOG_LLM_PAYLOAD = os.environ.get("VOLX_LOG_LLM_PAYLOAD") == "1"
+
+# Set VOLX_SAVE_RUNS=path/to/runs.jsonl to append every finished run — its text, tool data
+# and quality flags — to that file, for scripts/quality_report.py and new regression cases
+# in tests/agent/test_quality.py. Off by default; meant for local runs, not production.
+_SAVE_RUNS_PATH = os.environ.get("VOLX_SAVE_RUNS") or None
 
 _TOOL_DISPATCH: dict[str, Any] = {
     "get_price_data":          lambda inp: fetch_price_data(inp["ticker"]),
@@ -62,6 +69,10 @@ _TOOL_TIMEOUT_SECONDS = 15.0
 # Their fetches overlap, so the batch costs max(), not sum(): measured at ~0ms marginal
 # wall time over the price fetch alone, and it saves a whole LLM round trip.
 _PREFETCH_TOOLS: tuple[str, ...] = ("get_price_data", "get_events")
+
+# submit_analysis's why-paragraph — the one field streamed to the reader as it is written.
+# Surfaced as the result's `summary`; see tool_schemas.py for why it is the LAST property.
+_STREAMED_FIELD = "explanation"
 
 
 def _fetch_with_cache(name: str, ticker: str, fetch_fn: Callable[[], dict]) -> tuple[dict, bool]:
@@ -150,6 +161,30 @@ def _with_price_context(name: str, result: dict, tool_data: dict) -> dict:
     return apply_reference_price(result, (tool_data.get("get_price_data") or {}).get("price"))
 
 
+def _with_news_refs(name: str, result: dict) -> dict:
+    """Number get_news's linked headlines 1..n as `ref`, so the model can cite one as [n]
+    and the server can map that number back to the real link (see _resolve_citations).
+
+    Returns a copy — `result` may be the very object held in the in-process memo. Applied to
+    cache hits too, and idempotent.
+    """
+    if name != "get_news" or not result.get("headlines"):
+        return result
+    numbered, ref = [], 0
+    for original in result["headlines"]:
+        headline = {k: v for k, v in original.items() if k != "ref"}
+        if headline.get("url"):
+            ref += 1
+            headline["ref"] = ref
+        numbered.append(headline)
+    return {**result, "headlines": numbered}
+
+
+def _with_run_context(name: str, result: dict, tool_data: dict) -> dict:
+    """Every per-run adjustment a tool result gets before the model — or the reader — sees it."""
+    return _with_news_refs(name, _with_price_context(name, result, tool_data))
+
+
 # Labels for the LLM turns themselves. These are emitted BEFORE the call they describe,
 # which is the whole point: a step stays on screen until the NEXT one arrives, so a label
 # emitted after its work reports time that has already elapsed — and silently charges its
@@ -175,8 +210,8 @@ def _partial_json_string(buffer: str, field: str) -> str | None:
     """Pull a top-level string field out of a JSON object that is still being streamed.
 
     The model streams submit_analysis's input as raw JSON fragments, so mid-flight the
-    buffer is unparseable (`{"summary": "AAPL fell 4.1% beca`). This reads the value of
-    `field` out of that partial text so the summary can be rendered as it is written,
+    buffer is unparseable (`{..., "explanation": "AAPL fell because a supp`). This reads the
+    value of `field` out of that partial text so it can be rendered as it is written,
     rather than after the whole payload lands. Returns None until the field's opening
     quote has arrived.
 
@@ -224,21 +259,63 @@ def _partial_json_string(buffer: str, field: str) -> str | None:
 def _attach_news_citations(tiles: list[dict], tool_data: dict) -> list[dict]:
     """Attach numbered {number, source, url} citations to the news tile, sourced directly
     from get_news's headlines — not from the LLM — so links are always real, never
-    hallucinated. Up to the first 3 headlines that actually have a url.
+    hallucinated. Up to the first 3 linked headlines, numbered by their `ref`, so a [2] in
+    the explanation and [2] on the tile are the same article.
     """
     headlines = (tool_data.get("get_news") or {}).get("headlines") or []
-    linked = [h for h in headlines if h.get("url")][:3]
+    linked = [h for h in headlines if h.get("ref")][:3]
     citations = [
-        {"number": i + 1, "source": h.get("source") or "Source", "url": h["url"]}
-        for i, h in enumerate(linked)
+        {"number": h["ref"], "source": h.get("source") or "Source", "url": h["url"]}
+        for h in linked
     ]
     if not citations:
         return tiles
     for tile in tiles:
-        if tile.get("agent") == "news":
+        if isinstance(tile, dict) and tile.get("agent") == "news":
             tile["citations"] = citations
             break
     return tiles
+
+
+_CITATION_MARKER = re.compile(r"\s*\[(\d+)\]")
+
+
+def _resolve_citations(explanation: str, tool_data: dict) -> tuple[str, list[dict], int]:
+    """Turn the explanation's [n] markers into real citations.
+
+    The model writes only a number. Each is looked up among this run's numbered get_news
+    headlines (see _with_news_refs): a match keeps its marker and yields a citation carrying
+    the headline's real link; a number that matches nothing is removed from the text rather
+    than shown. Returns (text, citations in number order, count of markers removed).
+    """
+    refs = {
+        h["ref"]: h
+        for h in (tool_data.get("get_news") or {}).get("headlines") or []
+        if isinstance(h, dict) and h.get("ref")
+    }
+    cited: dict[int, dict] = {}
+    removed = 0
+
+    def resolve(match: re.Match[str]) -> str:
+        nonlocal removed
+        number = int(match.group(1))
+        headline = refs.get(number)
+        if headline is None:
+            removed += 1
+            return ""
+        cited[number] = {
+            "number": number, "source": headline.get("source") or "Source", "url": headline["url"],
+        }
+        return match.group(0)
+
+    text = _CITATION_MARKER.sub(resolve, explanation)
+    return text, [cited[n] for n in sorted(cited)], removed
+
+
+def _save_run(record: dict) -> None:
+    """Append one finished run to the VOLX_SAVE_RUNS file, as a JSON line."""
+    with open(_SAVE_RUNS_PATH, "a", encoding="utf-8") as f:
+        f.write(json.dumps(record, default=str) + "\n")
 
 
 async def run_explainer(
@@ -246,6 +323,7 @@ async def run_explainer(
     query: str = "",
     on_step: Callable[[str], None] | None = None,
     on_summary: Callable[[str], None] | None = None,
+    on_overview: Callable[[str], None] | None = None,
 ) -> dict:
     """Run the investigation: a deterministic parallel pre-fetch of _PREFETCH_TOOLS (price —
     non-negotiable, it also feeds the sideline chart — plus events), then a Claude-driven
@@ -263,10 +341,13 @@ async def run_explainer(
     Every tool fetch checks Redis right before calling it (see _fetch_with_cache) — there is
     no upfront bulk cache lookup, so a tool the investigation never needs is never checked.
 
-    Every LLM turn is streamed. The final one is the longest single step in a run (~10s to
-    generate the write-up), so on_summary receives submit_analysis's `summary` field as it
-    is written — the reader sees prose appearing instead of a spinner. on_summary is called
-    with the cumulative text each time, not a delta, so a dropped call cannot corrupt it.
+    The write-up reaches the reader in two paragraphs, in the order they can honestly be
+    known. on_overview fires once, right after the pre-fetch, with the deterministic "what
+    happened" paragraph (tools/price.describe_move) — no LLM involved. on_summary then
+    receives submit_analysis's `explanation` (the "why") as it is written, which the schema
+    places after tiles and hypotheses so it is generated from them rather than ahead of
+    them. on_summary is called with the cumulative text each time, not a delta, so a dropped
+    call cannot corrupt it.
     """
     ticker = ticker.upper()
     run_t0 = time.perf_counter()
@@ -292,18 +373,30 @@ async def run_explainer(
     )
     tool_time += time.perf_counter() - batch_t0  # wall time of the batch, not the sum
     for name, result, hit, elapsed in prefetched:
-        tool_data[name] = _with_price_context(name, result, tool_data)
+        tool_data[name] = _with_run_context(name, result, tool_data)
         if hit:
             cache_hit_names.add(name)
         print(f"[agent] {name:<25} {elapsed * 1000:6.0f}ms  {'(cached, redis)' if hit else '(deterministic)'}")
 
+    # The "what happened" paragraph, straight from code — on screen while the model is still
+    # choosing tools, so the why-paragraph can take the time to be written last.
+    overview = describe_move(tool_data.get("get_price_data") or {})
+    if overview and on_overview:
+        on_overview(overview)
+
     if query:
         user_content = (
-            f"Investigate {ticker}. The user's question, which your summary must directly "
+            f"Investigate {ticker}. The user's question, which your explanation must directly "
             f"answer: \"{query}\""
         )
     else:
         user_content = f"Investigate {ticker} — explain the recent price action."
+    if overview:
+        # The model must know exactly what the reader has already seen, or it restates it.
+        user_content += (
+            f"\n\nThe reader has already been shown this factual overview, computed from the "
+            f"price data: \"{overview}\" Your explanation appears directly beneath it."
+        )
 
     messages: list[dict] = [{"role": "user", "content": user_content}]
 
@@ -346,10 +439,10 @@ async def run_explainer(
             print(f"[llm]   turn {turn + 1} messages:\n{json.dumps(messages, indent=2, default=str)}")
 
         llm_t0 = time.perf_counter()
-        # Streamed so the write-up can be surfaced as it is generated (see on_summary in
+        # Streamed so the explanation can be surfaced as it is generated (see on_summary in
         # the docstring). get_final_message() still hands back the same Message object the
         # non-streaming call returned, so everything below is unchanged.
-        streamed_summary = ""
+        streamed_text = ""
         streaming_tool: str | None = None
         input_json = ""
 
@@ -373,9 +466,9 @@ async def run_explainer(
                     and event.delta.type == "input_json_delta"
                 ):
                     input_json += event.delta.partial_json
-                    partial = _partial_json_string(input_json, "summary")
-                    if partial and partial != streamed_summary:
-                        streamed_summary = partial
+                    partial = _partial_json_string(input_json, _STREAMED_FIELD)
+                    if partial and partial != streamed_text:
+                        streamed_text = partial
                         on_summary(partial)
 
             response = await stream.get_final_message()
@@ -450,7 +543,7 @@ async def run_explainer(
             if hit:
                 cache_hit_names.add(block.name)
             print(f"[agent] {block.name:<25} {elapsed * 1000:6.0f}ms  {'(cached, redis)' if hit else ''}")
-            result = _with_price_context(block.name, result, tool_data)
+            result = _with_run_context(block.name, result, tool_data)
             tool_data[block.name] = result
             results_by_id[block.id] = result
         if _LOG_LLM_PAYLOAD and len(fresh_blocks) > 1:
@@ -479,6 +572,7 @@ async def run_explainer(
         return {
             "ticker": ticker,
             "data": tool_data,
+            "overview": "",
             "summary": "",
             "tiles": [],
             "hypotheses": [],
@@ -487,12 +581,42 @@ async def run_explainer(
             "cache_hits": cache_hits,
         }
 
-    return {
+    explanation = final_input.get(_STREAMED_FIELD) or ""
+    if not isinstance(explanation, str):
+        explanation = ""
+    summary, citations, removed = _resolve_citations(explanation, tool_data)
+    tiles = _attach_news_citations(final_input.get("tiles", []), tool_data)
+
+    # Measured, never enforced: the flags describe the write-up, they don't change it.
+    quality_flags: list[str] = []
+    if summary:
+        try:
+            quality_flags = check_explanation(
+                summary, ticker=ticker, query=query, overview=overview,
+                tool_data=tool_data, tiles=tiles, removed_citations=removed,
+            )
+            print(f"[quality] {ticker:<6} {', '.join(quality_flags) or 'clean'}")
+        except Exception as exc:  # a heuristic must never cost the reader their answer
+            print(f"[quality] {ticker:<6} check FAILED — {exc}")
+
+    result = {
         "ticker": ticker,
         "data": tool_data,
-        "summary": final_input.get("summary", ""),
-        "tiles": _attach_news_citations(final_input.get("tiles", []), tool_data),
+        "overview": overview,
+        "summary": summary,
+        "citations": citations,
+        "tiles": tiles,
         "hypotheses": final_input.get("hypotheses", []),
         "status": "complete" if final_kind == "analysis" else "incomplete",
         "cache_hits": cache_hits,
+        "quality_flags": quality_flags,
     }
+    if _SAVE_RUNS_PATH:
+        record = {
+            "saved_at": time.strftime("%Y-%m-%dT%H:%M:%S"),
+            "query": query,
+            "raw_explanation": explanation,
+            **result,
+        }
+        await asyncio.to_thread(_save_run, record)
+    return result

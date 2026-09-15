@@ -5,6 +5,7 @@ POST /v1/analyze emits, in order:
 
     investigation_started  → InvestigationStarted
     step (0..n times)      → Step
+    overview (0..1 times)  → Overview                      (right after the price pre-fetch)
     summary (0..n times)   → SummaryProgress               (interleaved with the last step)
     result | guardrail     → AnalysisResult | Guardrail   (exactly one, terminal)
     error                  → ApiError                      (terminal, on failure)
@@ -50,7 +51,14 @@ class AnalysisResult(BaseModel):
     ticker: str | None
     query: str
     status: Literal["complete", "incomplete", "guardrail", "error"]
+    # Two paragraphs of one write-up. `overview` is "what happened", computed in code from
+    # the price data; `summary` is the model's "why", written after its hypotheses.
+    overview: str = ""
     summary: str = ""
+    # Sources the summary cites: each `[n]` marker in `summary` is the Citation with that
+    # number. Resolved server-side from the run's news headlines — the model supplies only
+    # the number, never the link.
+    citations: list[Citation] = []
     tiles: list[Tile] = []
     hypotheses: list[Hypothesis] = []
     cache_hits: list[str] = []
@@ -70,8 +78,17 @@ class Step(BaseModel):
     label: str
 
 
+class Overview(BaseModel):
+    """The deterministic "what happened" paragraph — price, today's move, and which horizons
+    are significant — sent as soon as the price data is in, well before any LLM output.
+    Repeated on the final AnalysisResult as `overview`.
+    """
+
+    text: str
+
+
 class SummaryProgress(BaseModel):
-    """The analysis summary as generated so far, emitted while the model writes it.
+    """The model's "why" paragraph as generated so far, emitted while the model writes it.
 
     `text` is CUMULATIVE, not a delta — each event carries the whole summary up to that
     point, so a client replaces its buffer rather than appending. That makes a dropped or
