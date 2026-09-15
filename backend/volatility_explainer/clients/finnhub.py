@@ -81,7 +81,7 @@ class FinnhubClient:
         Forward-looking only in practice: the free tier answers 200 with an empty list for
         any window that has already passed, so `epsActual` never arrives here. Reported
         quarters (and therefore the beat/miss verdict) come from yfinance instead — see
-        `mcp/tools/events.py::_reported_earnings_from_yf`.
+        `tools/events.py::_reported_earnings_from_yf`.
 
         Symbols with no earnings (ETFs, funds) return an empty list, not an error.
         """

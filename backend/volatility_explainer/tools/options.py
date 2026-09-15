@@ -8,7 +8,7 @@ from dataclasses import dataclass
 from datetime import date
 from threading import Lock
 
-from volatility_explainer.mcp.tools._retry import with_retry
+from volatility_explainer.tools._retry import with_retry
 
 _CACHE_TTL_SECONDS = 30
 _cache: dict[str, tuple[float, object]] = {}

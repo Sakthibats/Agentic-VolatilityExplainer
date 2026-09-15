@@ -1,7 +1,7 @@
 [project]
 name = "volatility-explainer"
 version = "0.1.0"
-description = "Agentic tool that explains stock implied volatility"
+description = "Agentic market explainer: investigates why a stock or ETF moved, with deterministic vol math and a Claude tool-use loop"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [

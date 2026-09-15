@@ -44,8 +44,11 @@ function smoothPath(pts: { x: number; y: number }[]): string {
 
 export function PriceChart({ ticker }: { ticker: string }) {
   const [period, setPeriod] = useState<Period>("6M");
-  const [points, setPoints] = useState<PricePoint[] | null>(null);
-  const [error, setError] = useState(false);
+  const [loaded, setLoaded] = useState<{
+    key: string;
+    points: PricePoint[] | null;
+    error: boolean;
+  } | null>(null);
   const [hover, setHover] = useState<number | null>(null);
   const svgRef = useRef<SVGSVGElement>(null);
   const boxRef = useRef<HTMLDivElement>(null);
@@ -63,17 +66,22 @@ export function PriceChart({ ticker }: { ticker: string }) {
     return () => ro.disconnect();
   }, []);
 
+  // Results are keyed by ticker+period, so switching either reads as "loading" on the
+  // very next render — no synchronous state reset inside the effect.
+  const key = `${ticker}:${period}`;
+  const current = loaded?.key === key ? loaded : null;
+  const points = current?.points ?? null;
+  const error = current?.error ?? false;
+
   useEffect(() => {
     let cancelled = false;
-    setPoints(null);
-    setError(false);
     fetchHistory(ticker, period)
-      .then((h) => !cancelled && setPoints(h.points))
-      .catch(() => !cancelled && setError(true));
+      .then((h) => !cancelled && setLoaded({ key, points: h.points, error: false }))
+      .catch(() => !cancelled && setLoaded({ key, points: null, error: true }));
     return () => {
       cancelled = true;
     };
-  }, [ticker, period]);
+  }, [ticker, period, key]);
 
   const geom = useMemo(() => {
     if (!points || points.length < 2 || W < 80) return null;
@@ -126,7 +134,7 @@ export function PriceChart({ ticker }: { ticker: string }) {
       const i = Math.round(frac * (points.length - 1));
       setHover(i >= 0 && i < points.length ? i : null);
     },
-    [points],
+    [points, W],
   );
 
   const up =

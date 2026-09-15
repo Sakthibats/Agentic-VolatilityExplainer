@@ -3,8 +3,8 @@ from unittest.mock import MagicMock, patch
 
 import pandas as pd
 import pytest
-from volatility_explainer.mcp.tools import options
-from volatility_explainer.mcp.tools._retry import with_retry
+from volatility_explainer.tools import options
+from volatility_explainer.tools._retry import with_retry
 
 
 def _make_chain(call_strikes_ivs, put_strikes_ivs, call_vol=None, put_vol=None):
@@ -121,7 +121,7 @@ def test_term_structure_ordering_stable_under_parallel_completion():
 
     with (
         patch("yfinance.Ticker", return_value=yf_ticker),
-        patch("volatility_explainer.mcp.tools.options.date") as mock_date,
+        patch("volatility_explainer.tools.options.date") as mock_date,
     ):
         import datetime as _dt
 

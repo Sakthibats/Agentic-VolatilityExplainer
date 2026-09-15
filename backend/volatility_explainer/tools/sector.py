@@ -6,7 +6,7 @@ from __future__ import annotations
 
 from concurrent.futures import ThreadPoolExecutor
 
-from volatility_explainer.mcp.tools.price import _compute_horizon_changes
+from volatility_explainer.tools.price import _compute_horizon_changes
 
 _SECTOR_ETF_MAP: dict[str, str] = {
     "Technology": "XLK",

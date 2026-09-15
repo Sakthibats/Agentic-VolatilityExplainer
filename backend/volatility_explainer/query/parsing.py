@@ -132,10 +132,11 @@ def _resolve_ticker_llm(query: str) -> str | None:
 
         from volatility_explainer.config import get_settings
 
-        api_key = get_settings().anthropic_api_key.get_secret_value() or None
+        settings = get_settings()
+        api_key = settings.anthropic_api_key.get_secret_value() or None
         client = anthropic.Anthropic(api_key=api_key)
         msg = client.messages.create(
-            model="claude-haiku-4-5-20251001",
+            model=settings.anthropic_model,
             max_tokens=30,
             messages=[{"role": "user", "content": (
                 f'Does this text clearly refer to a specific US-listed stock, company, sector, '

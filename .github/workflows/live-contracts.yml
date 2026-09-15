@@ -18,10 +18,9 @@ on:
   # the PR that introduced it rather than up to a week later.
   pull_request:
     paths:
-      - "backend/volatility_explainer/mcp/tools/**"
+      - "backend/volatility_explainer/tools/**"
       - "backend/volatility_explainer/clients/**"
-      - "tests/mcp/tools/test_live_contracts.py"
-      - "requirements.txt"
+      - "tests/tools/test_live_contracts.py"
       - "pyproject.toml"
       - ".github/workflows/live-contracts.yml"
 

@@ -1,10 +1,10 @@
 """System prompt for the market investigator agent — drives the whole tool-use loop. The
 model ends the loop by calling one of two terminal tools (submit_analysis or
-flag_out_of_scope, defined in orchestrator.py) instead of writing free-text JSON — this
+flag_out_of_scope, defined in tool_schemas.py) instead of writing free-text JSON — this
 guarantees schema-valid output and removes the need to regex-extract JSON from prose.
 
 Per-tool "when to call this" criteria live in each tool's `description` in
-orchestrator.py's _TOOL_DEFINITIONS (the model reads those at tool-selection time), so they
+tool_schemas.py's TOOL_DEFINITIONS (the model reads those at tool-selection time), so they
 are intentionally NOT repeated here — this prompt only carries guidance that has no other
 home: how to read price data, output formatting, and framing/data guardrails.
 """

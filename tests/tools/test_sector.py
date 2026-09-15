@@ -1,7 +1,7 @@
 from unittest.mock import MagicMock, patch
 
 import pandas as pd
-from volatility_explainer.mcp.tools import sector
+from volatility_explainer.tools import sector
 
 
 def _make_hist(closes: list[float]) -> pd.DataFrame:

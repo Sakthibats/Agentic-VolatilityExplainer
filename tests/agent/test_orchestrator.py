@@ -13,7 +13,7 @@ from types import SimpleNamespace
 from unittest.mock import MagicMock
 
 import pytest
-from volatility_explainer.agent import orchestrator
+from volatility_explainer.agent import orchestrator, tool_schemas
 from volatility_explainer.clients.redis_cache import clear_memoized_tool_data
 
 # ── Fakes ────────────────────────────────────────────────────────────────────
@@ -145,7 +145,10 @@ def env(monkeypatch):
 
     monkeypatch.setattr(
         orchestrator, "get_settings",
-        lambda: SimpleNamespace(anthropic_api_key=SimpleNamespace(get_secret_value=lambda: "test-key")),
+        lambda: SimpleNamespace(
+            anthropic_api_key=SimpleNamespace(get_secret_value=lambda: "test-key"),
+            anthropic_model="claude-test-model",
+        ),
     )
 
     # Cache: no-op by default; tests override cache_store to simulate hits.
@@ -527,13 +530,13 @@ async def test_run_works_without_an_on_summary_callback(env):
 async def test_summary_is_the_first_property_streamed(env):
     """The model emits properties in schema order, so `summary` must stay first in
     submit_analysis's schema — otherwise nothing renders until tiles/hypotheses land."""
-    properties = orchestrator._TOOL_DEFINITIONS[-1]["input_schema"]["properties"]
+    properties = tool_schemas.TOOL_DEFINITIONS[-1]["input_schema"]["properties"]
 
     assert next(iter(properties)) == "summary"
 
 
 def test_submit_analysis_opts_into_fine_grained_streaming():
-    assert orchestrator._TOOL_DEFINITIONS[-1]["eager_input_streaming"] is True
+    assert tool_schemas.TOOL_DEFINITIONS[-1]["eager_input_streaming"] is True
 
 
 async def test_every_llm_turn_is_covered_by_a_label_emitted_before_it(env):

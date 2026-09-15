@@ -36,7 +36,7 @@ information. Avoid including anything sensitive in your query.
 ## Where it's stored
 
 In the operator's own Supabase (Postgres) project, in a `query_log` table
-(see [`src/volatility_explainer/analytics/supabase_logger.py`](src/volatility_explainer/analytics/supabase_logger.py)
+(see [`backend/volatility_explainer/analytics/supabase_logger.py`](backend/volatility_explainer/analytics/supabase_logger.py)
 for the exact fields written). Not shared with any third party beyond Supabase itself as
 the hosting provider.
 

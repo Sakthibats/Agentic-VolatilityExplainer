@@ -3,7 +3,7 @@ from unittest.mock import patch
 
 import pandas as pd
 import pytest
-from volatility_explainer.mcp.tools import analyst
+from volatility_explainer.tools import analyst
 
 
 def _recommendations(**periods) -> pd.DataFrame:

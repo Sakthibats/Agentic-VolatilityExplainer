@@ -30,7 +30,7 @@ from volatility_explainer.config import get_settings
 _logger = logging.getLogger(__name__)
 
 # FOMC meeting dates, from the Fed's published calendar. When this list runs low,
-# tests/mcp/tools/test_events.py::test_fomc_calendar_has_runway fails on purpose —
+# tests/tools/test_events.py::test_fomc_calendar_has_runway fails on purpose —
 # refresh from https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm rather
 # than letting the tool silently stop reporting FOMC meetings.
 _FOMC_DATES = [
@@ -50,6 +50,14 @@ _FOMC_DATES = [
     "2026-09-16",
     "2026-10-28",
     "2026-12-09",
+    "2027-01-27",
+    "2027-03-17",
+    "2027-04-28",
+    "2027-06-09",
+    "2027-07-28",
+    "2027-09-15",
+    "2027-10-27",
+    "2027-12-08",
 ]
 
 # How far back to look for an already-reported quarter, and how far forward for the next

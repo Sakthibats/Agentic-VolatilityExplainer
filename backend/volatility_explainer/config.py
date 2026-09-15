@@ -14,6 +14,8 @@ class Settings(BaseSettings):
     fred_api_key: SecretStr = SecretStr("")
     finnhub_api_key: SecretStr = SecretStr("")
     anthropic_api_key: SecretStr = SecretStr("")
+    # One model for both the agent loop and the ticker-resolution fallback in query/parsing.
+    anthropic_model: str = "claude-haiku-4-5-20251001"
     supabase_url: SecretStr = SecretStr("")
     supabase_key: SecretStr = SecretStr("")
     redis_url: SecretStr = SecretStr("")

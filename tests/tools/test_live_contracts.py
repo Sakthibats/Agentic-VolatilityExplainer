@@ -123,7 +123,7 @@ def test_yf_upgrades_downgrades_shape(yf_ticker):
 
 
 def test_yf_info_has_sector(yf_ticker):
-    """Key read by mcp/tools/sector.py to pick the comparison ETF."""
+    """Key read by tools/sector.py to pick the comparison ETF."""
     assert yf_ticker.info.get("sector") == "Technology"
 
 
@@ -304,7 +304,7 @@ def test_fetch_events_returns_a_scored_earnings_report(yf_ticker):
     the test depending on where in the earnings cycle the Monday cron happens to land,
     which would otherwise leave it asserting nothing for half of each quarter.
     """
-    from volatility_explainer.mcp.tools import events
+    from volatility_explainer.tools import events
 
     frame = yf_ticker.earnings_dates
     reported = frame[frame["Reported EPS"].notna()]
@@ -328,7 +328,7 @@ def test_fetch_events_returns_a_scored_earnings_report(yf_ticker):
 
 
 def test_fetch_events_reports_no_earnings_for_an_etf():
-    from volatility_explainer.mcp.tools.events import fetch_events
+    from volatility_explainer.tools.events import fetch_events
 
     result = fetch_events(_ETF)
 
@@ -338,7 +338,7 @@ def test_fetch_events_reports_no_earnings_for_an_etf():
 
 
 def test_fetch_analyst_sentiment_returns_a_real_consensus():
-    from volatility_explainer.mcp.tools.analyst import fetch_analyst_sentiment
+    from volatility_explainer.tools.analyst import fetch_analyst_sentiment
 
     result = fetch_analyst_sentiment(_TICKER)
 
@@ -350,7 +350,7 @@ def test_fetch_analyst_sentiment_returns_a_real_consensus():
 
 
 def test_fetch_analyst_sentiment_reports_no_coverage_for_an_etf():
-    from volatility_explainer.mcp.tools.analyst import fetch_analyst_sentiment
+    from volatility_explainer.tools.analyst import fetch_analyst_sentiment
 
     result = fetch_analyst_sentiment(_ETF)
 

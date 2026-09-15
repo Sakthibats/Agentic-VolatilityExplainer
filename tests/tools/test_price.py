@@ -2,7 +2,7 @@ import statistics
 from unittest.mock import MagicMock, patch
 
 import pandas as pd
-from volatility_explainer.mcp.tools.price import (
+from volatility_explainer.tools.price import (
     _assess_moves,
     _compute_horizon_changes,
     _compute_realized_vol,
@@ -178,7 +178,7 @@ def test_uses_finnhub_quote_when_key_configured():
     finnhub_client = MagicMock()
     finnhub_client.get_quote.return_value = {"c": 105.0, "pc": 100.0}
 
-    with patch("volatility_explainer.mcp.tools.price.get_settings", return_value=_fake_settings("KEY")), \
+    with patch("volatility_explainer.tools.price.get_settings", return_value=_fake_settings("KEY")), \
          patch("volatility_explainer.clients.finnhub.FinnhubClient", return_value=finnhub_client), \
          patch("yfinance.Ticker", return_value=MagicMock(history=MagicMock(return_value=_calm_hist()))):
         result = fetch_price_data("test")
@@ -193,7 +193,7 @@ def test_uses_finnhub_quote_when_key_configured():
 def test_falls_back_to_yfinance_when_no_finnhub_key():
     closes = [100.0 + (i % 3) * 0.5 for i in range(28)] + [100.0, 105.0]
 
-    with patch("volatility_explainer.mcp.tools.price.get_settings", return_value=_fake_settings("")), \
+    with patch("volatility_explainer.tools.price.get_settings", return_value=_fake_settings("")), \
          patch("yfinance.Ticker", return_value=MagicMock(history=MagicMock(return_value=_make_hist(closes)))):
         result = fetch_price_data("TEST")
 
@@ -205,7 +205,7 @@ def test_falls_back_to_yfinance_when_no_finnhub_key():
 def test_finnhub_exception_falls_back_to_yfinance():
     closes = [100.0 + (i % 3) * 0.5 for i in range(28)] + [100.0, 105.0]
 
-    with patch("volatility_explainer.mcp.tools.price.get_settings", return_value=_fake_settings("KEY")), \
+    with patch("volatility_explainer.tools.price.get_settings", return_value=_fake_settings("KEY")), \
          patch("volatility_explainer.clients.finnhub.FinnhubClient", side_effect=RuntimeError("boom")), \
          patch("yfinance.Ticker", return_value=MagicMock(history=MagicMock(return_value=_make_hist(closes)))):
         result = fetch_price_data("TEST")
@@ -215,7 +215,7 @@ def test_finnhub_exception_falls_back_to_yfinance():
 
 
 def test_yfinance_history_failure_with_no_finnhub_returns_error_not_exception():
-    with patch("volatility_explainer.mcp.tools.price.get_settings", return_value=_fake_settings("")), \
+    with patch("volatility_explainer.tools.price.get_settings", return_value=_fake_settings("")), \
          patch("yfinance.Ticker", return_value=MagicMock(history=MagicMock(side_effect=RuntimeError("boom")))):
         result = fetch_price_data("TEST")
 

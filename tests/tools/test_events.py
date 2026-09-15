@@ -3,7 +3,7 @@ from unittest.mock import patch
 
 import pandas as pd
 import pytest
-from volatility_explainer.mcp.tools import events
+from volatility_explainer.tools import events
 
 
 def _reported_frame(rows):
