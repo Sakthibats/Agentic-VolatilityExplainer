@@ -91,7 +91,9 @@ export function InvestigationProvider({ children }: { children: React.ReactNode 
             // The result's overview and summary are authoritative from here.
             setOverview("");
             setPartialSummary("");
-            setResult(r);
+            // A backend deployed before `citations` existed omits it — the frontend and
+            // backend deploy independently, and this one usually lands first.
+            setResult({ ...r, citations: r.citations ?? [] });
             setPhase("done");
             setRunCount((n) => n + 1);
           },

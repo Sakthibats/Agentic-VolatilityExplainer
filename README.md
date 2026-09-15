@@ -35,7 +35,7 @@ returning ranked hypotheses with confidence levels and every number traceable to
   investigation runs independently of the connection, so an abandoned run still finishes and
   warms the cache.
 - **Runs on free data.** Every source falls back to yfinance; Redis and Supabase are optional.
-- **Behaviour pinned by tests.** 238 offline tests, including a scripted fake Anthropic client that
+- **Behaviour pinned by tests.** 241 offline tests, including a scripted fake Anthropic client that
   drives the whole loop, plus weekly live contract tests that catch upstream API shape changes.
 
 ## Quickstart

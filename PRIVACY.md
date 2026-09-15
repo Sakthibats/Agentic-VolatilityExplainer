@@ -16,6 +16,8 @@ each investigation you run is logged for usage analytics:
   optional tools the AI chose to call, the resulting hypotheses, and any news citations
   used.
 - **How long the request took** (`elapsed_ms`).
+- **Automatic quality checks on the AI's explanation** (`quality_flags`) — short labels such as
+  `too_long` describing the generated text, not you. The explanation text itself isn't stored.
 
 If Supabase isn't configured, none of the above is collected — logging is a no-op by
 design, not a fallback that silently degrades.
