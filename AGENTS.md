@@ -42,7 +42,7 @@ multi-ticker comparison, anything resembling trading advice or signals.
 | Migration | Streamlit monolith → FastAPI + Next.js. Phases 0–3 ✅. **Phase 4 (metering / rate limiting) is next and not started** |
 | Backend | FastAPI, fully async, `/v1` REST + SSE, Docker → Google Cloud Run |
 | Frontend | Next.js 16 static export → Cloudflare Pages |
-| Quality gates | 238 offline pytest tests + 19 `live` upstream contract tests (weekly). ruff, eslint (blocking), tsc all clean. Heuristic quality flags on every explanation (`[quality]` log line) |
+| Quality gates | 241 offline pytest tests + 19 `live` upstream contract tests (weekly). ruff, eslint (blocking), tsc all clean. Heuristic quality flags on every explanation (`[quality]` log line) |
 | Biggest gaps | No offline **eval harness** that scores the model's answers (only heuristic checks + pinned bad write-ups) · no rate limiting and CORS `*` · `print`-based logging · no cost-per-run tracking · chart silently falls back to synthetic prices |
 
 ## 4. Architecture in one screen
@@ -175,7 +175,8 @@ Each entry: the decision, why, what it costs, and when to reconsider.
     forces and facts from memory. `agent/quality.py` flags violations in plain code. *Why:* a
     production DDOG write-up broke all of these at once, and prompt rules alone can't be verified
     without measurement. *Cost:* regex heuristics have false negatives (tuned for precision); the
-    flags only reach Cloud Run logs and local `VOLX_SAVE_RUNS` files, not the Supabase usage log.
+    flags reach Cloud Run logs and the Supabase `query_log.quality_flags` column (labels only, not
+    the text), so reading offending write-ups still needs a local `VOLX_SAVE_RUNS` capture.
     *Revisit:* replace or back the heuristics with a scored eval set (open question 1).
 
 ## 7. Open questions — good places to ideate

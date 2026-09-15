@@ -231,6 +231,10 @@ def log_query_background(
         "tools_called": tools_called or None,
         "hypotheses": result.get("hypotheses") or None,
         "citations": citations or None,
+        # Needs the column from docs/sql/query_log_quality_flags.sql — an unknown column makes
+        # Supabase reject the whole row. Unlike the fields above, [] must NOT collapse to None:
+        # [] means checked and clean, None means there was no explanation to check.
+        "quality_flags": result.get("quality_flags") if result.get("summary") else None,
         "elapsed_ms": round(elapsed_ms),
     }
 

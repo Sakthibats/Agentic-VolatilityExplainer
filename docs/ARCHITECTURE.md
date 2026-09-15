@@ -235,8 +235,9 @@ Settings load through pydantic-settings from `.env` at the repo root, regardless
 Currently stdout `print` lines, prefixed by source: `[agent]` per-tool timings and cache hits,
 `[llm]` per-turn token usage (including cache read/write) and latency, `[redis]` final-answer
 lookups, `[orchestrator]` / `[run:TICKER]` totals, and `[quality] TICKER flag, flag…` (or `clean`)
-for every explanation — searchable in Cloud Run's log explorer, which is how flag rates are counted
-in production today (the Supabase usage log has no column for them). Some modules (clients, analyst, events, analytics)
+for every explanation — searchable in Cloud Run's log explorer. The same flags are stored per run in
+the Supabase usage log's `quality_flags` column; the migration and reporting queries are in
+[`docs/sql/query_log_quality_flags.sql`](sql/query_log_quality_flags.sql). Some modules (clients, analyst, events, analytics)
 use `logging` instead. Moving to structured logs or traces is an open item — see
 [AGENTS.md § Open questions](../AGENTS.md#7-open-questions--good-places-to-ideate).
 
