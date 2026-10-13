@@ -20,3 +20,10 @@ Set `NEXT_PUBLIC_API_URL` to point at the backend (defaults to `http://localhost
   override it. Client-side route changes are counted by GA4 Enhanced Measurement
   ("page changes based on browser history events") — keep that setting on in the GA admin
   panel, since the SPA fires no extra `page_view` calls.
+- `lib/use-typewriter.ts` reveals the write-up at a steady pace, since the server sends it in
+  uneven bursts (and a cached answer all at once). `components/md.tsx` renders `**bold**` and
+  turns `[n]` markers into links — only from the server's `citations` list, never from the
+  model's text, and only for http(s) URLs.
+- The frontend and backend deploy separately, and this one usually goes live first, so tolerate
+  fields the previous backend doesn't send yet (see the `citations` default in
+  `components/investigation-provider.tsx`).

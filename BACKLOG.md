@@ -47,9 +47,16 @@ No trail when a fallback path fails ("why did FRED never return data?"):
 These are deliberate fallback boundaries and shouldn't raise, but a one-line log costs nothing.
 
 ### 🟡 MEDIUM — mixed `print` and `logging`
-About 25 `print` calls (orchestrator, service, a few tools) carry the operational timings, while
+About 27 `print` calls (orchestrator — including the `[quality]` line — service, a few tools)
+carry the operational timings, while
 clients, analyst, events and analytics use `logging`. Hard to filter or ship to a log backend.
 Standardise on `logging` (or structured traces) — see ROADMAP.
+
+### 🟡 LOW — the Supabase `query_log` schema isn't versioned
+The table was created by hand and its definition isn't in the repo — only later changes are, as
+hand-run SQL in `docs/sql/`. A fresh Supabase project can't be rebuilt from the repo, and nothing
+checks that the logger's payload matches the table; a mismatch silently loses every row on Cloud
+Run. Worth a full `create table` in `docs/sql/` and, eventually, Supabase CLI migrations.
 
 ### 🟢 LOW — dependencies pinned with unbounded `>=`
 `pyproject.toml` has no upper bounds except `yfinance` and `ruff`. A fresh install could pull an

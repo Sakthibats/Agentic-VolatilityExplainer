@@ -16,7 +16,7 @@ reasoning behind these choices are in [AGENTS.md](../AGENTS.md); known debt is i
 
 Since Phase 3: a two-paragraph write-up (code-built overview, then the model's explanation) revealed
 as typed text; wider significance bands; server-resolved `[n]` citations and heuristic quality
-flags on the explanation; streaming summary events, deterministic events prefetch, analyst and sector tools,
+flags on the explanation (logged to Supabase as `query_log.quality_flags`); streaming summary events, deterministic events prefetch, analyst and sector tools,
 weekly live contract tests, and a 2026-09 cleanup (`mcp/tools/` → `tools/`, tool schemas split out
 of the orchestrator, model ID moved into config, frontend lint made blocking).
 
