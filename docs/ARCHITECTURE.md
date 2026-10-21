@@ -18,7 +18,8 @@ backend/volatility_explainer/     Python package (hatchling; see pyproject.toml)
 ├── agent/
 │   ├── orchestrator.py           ★ the tool-use loop: prefetch, dispatch, streaming, citations
 │   ├── tool_schemas.py           tool JSON schemas + the when-to-call guidance the model reads
-│   └── prompts.py                system prompt: reading price data, output and framing rules
+│   ├── prompts.py                system prompt: reading price data, output, framing and data rules
+│   └── quality.py                heuristic checks on the explanation — flags, never rewrites
 ├── tools/                        8 sync data tools — MCP-shaped, in-process
 │   ├── price.py                  Finnhub quote + yfinance history; computes move_assessment
 │   ├── news.py                   Finnhub company news → yfinance fallback
@@ -30,26 +31,32 @@ backend/volatility_explainer/     Python package (hatchling; see pyproject.toml)
 │   └── _retry.py                 small retry helper for flaky yfinance calls
 ├── marketdata/snapshots.py       chart history + sidebar stats (feeds /v1/tickers/*)
 ├── clients/                      finnhub.py · fred.py · redis_cache.py (memo + Redis)
-└── analytics/supabase_logger.py  optional usage log: bounded queue, background worker, JSONL fallback
+└── analytics/supabase_logger.py  optional usage log (see Usage log): bounded queue, background worker
 
 frontend/                         Next.js 16 App Router, static export (output: "export")
 ├── lib/api.ts                    ★ hand mirror of api/schemas.py + the SSE-over-fetch parser
+├── lib/use-typewriter.ts         paced reveal of the streamed write-up
 ├── app/globals.css               design tokens: light "Cobalt" / dark trading terminal
 ├── app/layout.tsx                header, providers (theme, feedback, investigation), GA4
 ├── app/page.tsx                  the investigation UI
 ├── app/about/page.tsx            long-form methodology copy
 └── components/                   investigation-provider (state), query-bar, timeline, evidence-tiles,
-                                  hypotheses, price-chart, stats-panel, feedback, support-button, ui/
+                                  hypotheses, price-chart, stats-panel, md (bold + [n] citation
+                                  links), feedback, support-button, ui/
 
 tests/                            mirrors the backend layout; no network by default
 ├── agent/test_orchestrator.py    scripted fake Anthropic client pins the whole loop
+├── agent/test_quality.py         write-up quality checks + real bad explanations pinned verbatim
 ├── api/test_api.py               routes, SSE ordering, client-disconnect behaviour
 ├── query/test_parsing.py         guardrail + resolver, incl. "no network call" assertions
 ├── tools/                        per-tool unit tests + test_live_contracts.py (pytest -m live)
-└── clients/test_redis_cache.py
+├── clients/test_redis_cache.py
+└── analytics/test_supabase_logger.py   the queued usage-log payload (quality_flags semantics)
 
+docs/sql/                         hand-run Supabase schema changes + reporting queries
 docs/theme-schemes.ts             archived alternate colour schemes (future theme picker)
 scripts/benchmark_api.py          sequential latency vs. concurrent wall-time benchmark
+scripts/quality_report.py         quality-flag rates across runs saved with VOLX_SAVE_RUNS
 ```
 
 ---
@@ -105,11 +112,12 @@ the whole flow.
      Cheap heuristics flag known failure modes in the explanation: too long, restating the
      overview's figures, size words stronger than the code's verdict, analyst consensus offered
      as a cause, unmeasured forces (momentum, institutional conviction…), a causal claim with no
-     citation, and invalid citation numbers. Flags are logged and returned on the orchestrator
-     result — measured, never used to rewrite the text, and not part of the API contract.
+     citation, and invalid citation numbers. Flags are printed as a `[quality]` log line, stored in
+     the usage log's `quality_flags` column, and saved with each run under `VOLX_SAVE_RUNS` —
+     measured, never used to rewrite the text, and not part of the API contract.
 10. **Shaping and logging.** `service.py` coerces the model output into schema objects (skipping
-    malformed entries) and logs usage in the background. It never raises — failures come back as
-    `status: "error"`.
+    malformed entries) and logs usage in the background (see [Usage log](#usage-log-supabase)). It
+    never raises — failures come back as `status: "error"`.
 
 ---
 
@@ -132,6 +140,12 @@ summary     (0..n)      → SummaryProgress         cumulative "why" text from t
 result | guardrail      → AnalysisResult | Guardrail   exactly one, terminal
 error                   → ApiError                terminal, on failure
 ```
+
+`AnalysisResult` — the `result` payload, and the whole body with `?stream=false` — carries `status`,
+`overview` (from code), `summary` (the model's explanation, which may contain `[n]` markers),
+`citations` (the sources those markers point to: `number`, `source`, `url`), `tiles` (each with its
+own citations), `hypotheses`, `cache_hits` and `error_message`. Clients should treat a missing
+field added later (such as `citations`) as empty: the frontend and backend deploy independently.
 
 **Disconnect semantics:** the investigation is an independent `asyncio.Task` feeding a queue. If the
 client disconnects, only the SSE generator is cancelled; the run finishes and lands in the caches
@@ -178,6 +192,10 @@ no-op without `REDIS_URL`.
   event, the explanation in bursts, a cached answer all at once; a steady reveal that speeds up
   when behind makes all three read as streamed text. The "why" waits for the "what happened"
   paragraph, and reduced-motion users get the text immediately.
+- **Citations render only from the server's list** (`components/md.tsx`). A `[n]` in the explanation
+  becomes a superscript link only when `result.citations` has that number with an http(s) URL, and a
+  sources line follows the paragraph. `InvestigationProvider` defaults a missing `citations` to `[]`,
+  so this frontend can go live before the backend that sends it.
 - **Theme:** `next-themes` with a class strategy, light by default. All colours are CSS variables in
   `app/globals.css`.
 - **Analytics:** GA4 via `components/analytics.tsx`, production builds only.
@@ -227,6 +245,25 @@ Settings load through pydantic-settings from `.env` at the repo root, regardless
 | `VOLX_SAVE_RUNS=runs.jsonl` | no | Appends every finished run (raw and resolved explanation, tool data, quality flags) to that file, for `scripts/quality_report.py`. Local use |
 | `NEXT_PUBLIC_API_URL` (frontend) | build time | Defaults to `http://localhost:8080` |
 | `NEXT_PUBLIC_GA_ID` (frontend) | no | Falls back to the checked-in GA4 ID |
+
+---
+
+## Usage log (Supabase)
+
+Optional — a no-op without `SUPABASE_URL` / `SUPABASE_KEY`. `analytics/supabase_logger.py` writes one
+`query_log` row per investigation through a bounded queue and a single background worker: session
+ID, ticker, question, status, `move_assessment`, tools called (live or cached), hypotheses, news-tile
+citations, `quality_flags` (`{}` = checked and clean, `NULL` = nothing to check) and elapsed time.
+The reader-facing version of this list is [PRIVACY.md](../PRIVACY.md).
+
+- **The table's original schema isn't in the repo.** Changes made since are, as SQL in
+  [`docs/sql/`](sql/), run by hand in the Supabase SQL editor.
+- **Schema first, then code.** Supabase rejects a row carrying a column it doesn't have. The logger
+  retries, then appends the row to `data/failed_query_log.jsonl` — which doesn't survive a Cloud Run
+  instance restart. So run a new column's SQL *before* deploying code that sends it, and to remove
+  one, revert the code first.
+- **Cached answers log their flags again.** A final-answer cache hit carries the original run's
+  `quality_flags`, so flag counts slightly over-weight popular tickers.
 
 ---
 

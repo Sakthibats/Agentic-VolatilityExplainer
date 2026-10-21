@@ -64,13 +64,14 @@ api/service.py    scope gate → final-answer cache (no-question path only) → 
        3. loop ≤7 turns · Haiku 4.5 · tool_choice=any · streamed
             model picks tools → asyncio.gather(to_thread(tool)), 15 s timeout each
        4. the turn may end ONLY via submit_analysis | flag_out_of_scope
-       5. news citations attached server-side from real headlines
+       5. the model cites headlines as [n]; the server resolves each to a real link or drops it
+       6. agent/quality.py flags the explanation — logged per run, never rewrites it
        ├─ agent/tool_schemas.py   what the model sees: schemas + when-to-call guidance
        ├─ agent/prompts.py        how to read the data, output and framing rules
        └─ tools/*.py              sync fetchers, each with a yfinance fallback
             └─ clients/           finnhub · fred · redis_cache (in-process memo + Redis)
 marketdata/snapshots.py           chart history + sidebar stats
-analytics/supabase_logger.py      optional usage log (bounded queue, JSONL fallback)
+analytics/supabase_logger.py      optional usage log incl. quality_flags (schema changes: docs/sql/)
 ```
 
 SSE order: `investigation_started` → `step`* → `overview`? (code-built "what happened") →
@@ -217,6 +218,7 @@ Backend paths are relative to `backend/volatility_explainer/`.
 | Investigation UI | `frontend/app/page.tsx` and `frontend/components/` (state lives in `investigation-provider.tsx`) |
 | Colours / theme | `frontend/app/globals.css` only. Archived alternates: `docs/theme-schemes.ts` |
 | Cache TTLs | `clients/redis_cache.py` |
+| Usage-log fields (Supabase) | `analytics/supabase_logger.py` + a SQL file in `docs/sql/` (run in Supabase **before** deploying) + `PRIVACY.md` + `tests/analytics/` |
 | Settings / env vars | `config.py` + `.env.example` + the env table in `docs/ARCHITECTURE.md` |
 | CI / deploy | `.github/workflows/`, `Dockerfile`, `frontend/next.config.ts` |
 
@@ -228,6 +230,8 @@ pytest -q                        # offline suite (live tests excluded by default
 pytest -m live                   # real upstream APIs — response-shape checks only
 ruff check backend tests
 uvicorn volatility_explainer.api.app:app --reload --port 8080
+VOLX_SAVE_RUNS=runs.jsonl uvicorn volatility_explainer.api.app:app --port 8080   # also save each run
+python scripts/quality_report.py runs.jsonl   # quality-flag rates; --show <flag> prints offenders
 
 cd frontend && npm install
 npm run dev                      # :3000; NEXT_PUBLIC_API_URL defaults to http://localhost:8080
@@ -254,4 +258,10 @@ fails).
 - The streamed explanation can briefly show a `[n]` the server later removes; the final result's
   `summary` is authoritative.
 - Some docstrings say "rescued from the retired Streamlit app" — history only; `apps/` is gone.
+- **Supabase schema before code.** The `query_log` table isn't defined in the repo; columns added
+  since live as hand-run SQL in `docs/sql/`. Supabase rejects a row with an unknown column (and the
+  fallback file is lost on a Cloud Run restart), so run the SQL *before* deploying code that logs a
+  new field, and revert code before dropping one.
+- **Frontend and backend deploy independently** from the same push, and the frontend usually lands
+  first. Frontend code must tolerate the previous backend's response — e.g. default a new field.
 - Never read `.env`; `.claude/settings.json` denies it.
