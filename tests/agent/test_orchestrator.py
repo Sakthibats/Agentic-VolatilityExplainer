@@ -197,6 +197,25 @@ async def test_happy_path_tool_round_then_submit(env):
     assert env.client.messages.stream.call_count == 2
 
 
+async def test_result_carries_token_usage_and_the_models_tool_picks(env):
+    # The eval harness prices runs and scores tool choice from this, so it must sum every
+    # turn and list only the model's own picks — the pre-fetch is not a choice it made.
+    env.responses.extend([
+        fake_response([tool_use("get_news", {"ticker": "AAPL"}),
+                       tool_use("get_analyst_sentiment", {"ticker": "AAPL"})]),
+        fake_response([tool_use("submit_analysis", SUBMIT_INPUT)]),
+    ])
+
+    usage = (await orchestrator.run_explainer("AAPL"))["usage"]
+
+    assert usage["turns"] == 2
+    assert usage["input_tokens"] == 200
+    assert usage["output_tokens"] == 100
+    assert usage["model"] == "claude-test-model"
+    assert usage["tool_rounds"] == [["get_news", "get_analyst_sentiment"]]
+    assert usage["total_ms"] >= usage["llm_ms"]
+
+
 async def test_news_citations_attached_from_real_headlines(env):
     env.responses.extend([
         fake_response([tool_use("get_news", {"ticker": "AAPL"})]),

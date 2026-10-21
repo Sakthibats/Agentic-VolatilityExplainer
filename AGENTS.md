@@ -42,8 +42,8 @@ multi-ticker comparison, anything resembling trading advice or signals.
 | Migration | Streamlit monolith → FastAPI + Next.js. Phases 0–3 ✅. **Phase 4 (metering / rate limiting) is next and not started** |
 | Backend | FastAPI, fully async, `/v1` REST + SSE, Docker → Google Cloud Run |
 | Frontend | Next.js 16 static export → Cloudflare Pages |
-| Quality gates | 253 offline pytest tests + 19 `live` upstream contract tests (weekly). ruff, eslint (blocking), tsc all clean. Heuristic quality flags on every explanation (`[quality]` log line) |
-| Biggest gaps | No offline **eval harness** that scores the model's answers (only heuristic checks + pinned bad write-ups) · no rate limiting and CORS `*` · `print`-based logging · no cost-per-run tracking · chart silently falls back to synthetic prices |
+| Quality gates | 260 offline pytest tests + 19 `live` upstream contract tests (weekly). ruff, eslint (blocking), tsc all clean. Heuristic quality flags on every explanation (`[quality]` log line) |
+| Biggest gaps | No offline **eval harness** that scores the model's answers yet: fixtures are recorded daily (`evals/`), but cases, runner and scorers don't exist · no rate limiting and CORS `*` · `print`-based logging · token usage is returned per run (`result["usage"]`) but not logged or priced · chart silently falls back to synthetic prices |
 
 ## 4. Architecture in one screen
 
@@ -189,9 +189,11 @@ Framed against the portfolio goal. Each is a live tradeoff, not a settled plan.
 
 1. **Evals.** How is answer quality measured? A start exists: heuristic flags on every explanation,
    bad write-ups pinned in `tests/agent/test_quality.py`, and `scripts/quality_report.py` over runs
-   saved with `VOLX_SAVE_RUNS`. Still missing: a golden set of historical moves with known
-   catalysts, replayed through the model and scored for catalyst recall, numbers matching tool data,
-   and hypothesis calibration. The highest-signal missing piece for an agentic showcase.
+   saved with `VOLX_SAVE_RUNS`. Since 2026-10, `evals/capture.py` records all 8 tools' raw output
+   for each day's notable moves (see `evals/README.md`). Still missing: labelled cases built from
+   those fixtures, a runner that replays them through the model, and scorers for catalyst recall,
+   numbers matching tool data, abstention and calibration. The highest-signal missing piece for an
+   agentic showcase.
 2. **Observability and cost.** Structured per-run traces (turns, tools chosen, tokens, cache hits, $)
    instead of `print`. Show cost per investigation on the About page?
 3. **Abuse and spend control (Phase 4).** Redis token bucket per session/IP, a daily global LLM
@@ -212,6 +214,7 @@ Backend paths are relative to `backend/volatility_explainer/`.
 |---|---|
 | Add a data tool | `tools/<name>.py` (sync, returns a dict, yfinance fallback) → `agent/tool_schemas.py` (schema, when-to-call text, add to the tile `agent` enum) → `agent/orchestrator.py` `_TOOL_DISPATCH` + `_STEP_LABELS` → `clients/redis_cache.py` `TOOL_TTL_SECONDS` → `frontend/components/evidence-tiles.tsx` `AGENT_ICONS` → `tests/tools/` (plus a live contract test) |
 | What the model is told | Per-tool guidance and the explanation's shape: `agent/tool_schemas.py`. Global reading, output, framing and data rules: `agent/prompts.py` |
+| Eval fixtures (daily capture) | `evals/capture.py` (selection rules, pacing) + `tests/evals/test_capture.py`; schedule in `.github/workflows/eval-capture.yml` |
 | Write-up quality checks | `agent/quality.py` + `tests/agent/test_quality.py` (add each new bad write-up as a regression case). Report over saved runs: `scripts/quality_report.py` |
 | Citations | Numbering + resolution: `agent/orchestrator.py` (`_with_news_refs`, `_resolve_citations`) → `frontend/components/md.tsx` |
 | Agent loop behaviour | `agent/orchestrator.py` + extend `tests/agent/test_orchestrator.py` |
@@ -235,6 +238,7 @@ ruff check backend tests
 uvicorn volatility_explainer.api.app:app --reload --port 8080
 VOLX_SAVE_RUNS=runs.jsonl uvicorn volatility_explainer.api.app:app --port 8080   # also save each run
 python scripts/quality_report.py runs.jsonl   # quality-flag rates; --show <flag> prints offenders
+python -m evals.capture --dry-run             # today's eval-fixture selection (no LLM calls)
 
 cd frontend && npm install
 npm run dev                      # :3000; NEXT_PUBLIC_API_URL defaults to http://localhost:8080
@@ -245,7 +249,8 @@ npm run build                    # static export → frontend/out/
 CI: `test.yml` (non-main pushes and PRs) · `docker-publish.yml` (main, backend paths: tests → Docker
 Hub → Cloud Run) · `frontend-deploy.yml` (frontend paths: lint → build → Cloudflare Pages on main) ·
 `live-contracts.yml` (weekly, plus PRs touching tools/clients; opens an issue when the scheduled run
-fails).
+fails) · `eval-capture.yml` (weekdays 21:30 UTC, main only: records eval fixtures and commits them
+under `evals/fixtures/`).
 
 ## 10. Gotchas
 
