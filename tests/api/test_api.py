@@ -94,6 +94,19 @@ def test_analyze_non_streaming_returns_shaped_result():
     ]
 
 
+def test_bare_ticker_is_served_from_the_final_answer_cache():
+    # Regression: the gate used to return the raw text as the question, so even "AAPL"
+    # skipped the cache — 0 of 319 production runs were ever served from it.
+    bare = SimpleNamespace(**{**IN_SCOPE.__dict__, "question": ""})
+    p1, p2, p3, _ = _patched(decision=bare)
+    with p1, p2 as orch, p3, patch.object(service, "get_cached_final_answer", lambda t: ORCH_RESULT):
+        r = client.post("/v1/analyze?stream=false", json={"query": "AAPL"})
+    body = r.json()
+    assert body["status"] == "complete"
+    assert body["query"] == "AAPL"
+    orch.assert_not_called()
+
+
 def test_analyze_sse_event_sequence():
     def orch_with_steps(ticker, query, on_step=None, **callbacks):
         if on_step:

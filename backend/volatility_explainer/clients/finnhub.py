@@ -44,12 +44,14 @@ class FinnhubClient:
         """
         client = self._client or _shared_client(timeout)
         url = f"{FINNHUB_API_URL}/{path}"
-        request_params = {**params, "token": self._api_key}
+        # The key goes in a header, never the query string: httpx puts the full URL in every
+        # HTTPStatusError message, and callers print those messages to the logs.
+        headers = {"X-Finnhub-Token": self._api_key}
 
         for attempt in range(_RETRY_ATTEMPTS):
             last_attempt = attempt == _RETRY_ATTEMPTS - 1
             try:
-                response = client.get(url, params=request_params)
+                response = client.get(url, params=params, headers=headers)
             except (httpx.TimeoutException, httpx.TransportError):
                 if last_attempt:
                     raise

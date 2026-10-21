@@ -360,6 +360,11 @@ async def run_explainer(
     cache_hit_names: set[str] = set()
     llm_time = 0.0
     tool_time = 0.0
+    # Returned with the result, not just printed: the eval harness scores cost and tool
+    # choice from it. tool_rounds holds the model's own picks per turn (pre-fetch excluded).
+    usage_totals = {"turns": 0, "input_tokens": 0, "cache_read_tokens": 0,
+                    "cache_write_tokens": 0, "output_tokens": 0}
+    tool_rounds: list[list[str]] = []
 
     # ── Deterministic pre-fetch — skip the LLM round trip for tools we always need ──
     if on_step:
@@ -482,6 +487,11 @@ async def run_explainer(
             f"(cache_read={usage.cache_read_input_tokens or 0}, "
             f"cache_write={usage.cache_creation_input_tokens or 0})  out={usage.output_tokens}"
         )
+        usage_totals["turns"] += 1
+        usage_totals["input_tokens"] += usage.input_tokens or 0
+        usage_totals["cache_read_tokens"] += usage.cache_read_input_tokens or 0
+        usage_totals["cache_write_tokens"] += usage.cache_creation_input_tokens or 0
+        usage_totals["output_tokens"] += usage.output_tokens or 0
         # Breakdown of where output tokens actually went — a "text" block here is a preamble
         # the model wrote before its tool call, pure overhead we could suppress with a forced
         # tool_choice; "tool_use" size approximates the JSON payload itself (tiles/hypotheses).
@@ -513,6 +523,7 @@ async def run_explainer(
             # stop here rather than loop again; falls through to the "incomplete" status.
             break
 
+        tool_rounds.append([b.name for b in tool_blocks])
         if on_step:
             for block in tool_blocks:
                 on_step(_STEP_LABELS.get(block.name, f"Running {block.name}..."))
@@ -567,6 +578,14 @@ async def run_explainer(
 
     # Tools whose data came from Redis this run rather than a live fetch.
     cache_hits = sorted(cache_hit_names)
+    run_usage = {
+        **usage_totals,
+        "model": settings.anthropic_model,
+        "tool_rounds": tool_rounds,
+        "llm_ms": round(llm_time * 1000),
+        "tool_ms": round(tool_time * 1000),
+        "total_ms": round(total_elapsed * 1000),
+    }
 
     if final_kind == "guardrail":
         return {
@@ -579,6 +598,7 @@ async def run_explainer(
             "status": "guardrail",
             "error_message": final_input.get("message", ""),
             "cache_hits": cache_hits,
+            "usage": run_usage,
         }
 
     explanation = final_input.get(_STREAMED_FIELD) or ""
@@ -610,6 +630,7 @@ async def run_explainer(
         "status": "complete" if final_kind == "analysis" else "incomplete",
         "cache_hits": cache_hits,
         "quality_flags": quality_flags,
+        "usage": run_usage,
     }
     if _SAVE_RUNS_PATH:
         record = {

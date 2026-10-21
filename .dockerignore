@@ -18,6 +18,8 @@ frontend
 node_modules
 docs
 scripts
+# Eval fixtures grow daily and are never needed at runtime.
+evals
 .claude
 .claudeignore
 data

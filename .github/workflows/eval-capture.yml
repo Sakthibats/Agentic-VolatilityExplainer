@@ -1,0 +1,66 @@
+name: Eval fixture capture
+
+# Records every data tool's raw output for the day's notable moves as replayable eval
+# fixtures (evals/capture.py). No LLM calls, so it costs nothing. It commits only under
+# evals/fixtures/, which no deploy workflow watches, and pushes made with GITHUB_TOKEN never
+# trigger other workflows anyway. Scheduled runs only fire from the default branch.
+
+on:
+  schedule:
+    # 21:30 UTC is 17:30 EDT / 16:30 EST: after the 16:00 ET close all year round.
+    - cron: "30 21 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      tickers:
+        description: "Comma-separated tickers (optional; skips the daily selection)"
+        required: false
+
+concurrency:
+  group: eval-capture
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -e .
+
+      - name: Capture fixtures
+        env:
+          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          # Via env, not interpolated into the script, so the input can't inject shell.
+          TICKERS: ${{ inputs.tickers }}
+        run: python -m evals.capture ${TICKERS:+--tickers "$TICKERS"}
+
+      - name: Commit new fixtures
+        run: |
+          git add evals/fixtures
+          if git diff --cached --quiet; then
+            echo "No new fixtures."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Record eval fixtures for $(date -u +%F)"
+          # A human push can land mid-run; rebase onto it rather than fail the day's capture.
+          for attempt in 1 2 3; do
+            if git pull --rebase && git push; then
+              exit 0
+            fi
+            sleep 5
+          done
+          exit 1
