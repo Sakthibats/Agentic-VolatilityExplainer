@@ -18,6 +18,9 @@ class QueryDecision:
     When in_scope is False, ticker is always None and message holds the
     guardrail text — nothing downstream (ticker resolution, charts, agents)
     should run for that query.
+
+    question is "" when the query only names the ticker ("TSLA", "why did tesla
+    move today"); see _specific_question.
     """
     in_scope: bool
     ticker: str | None
@@ -244,18 +247,27 @@ def parse_search_input(raw: str) -> tuple[str | None, str, str | None]:
     (see validate_financial_query) since a loose word match can mis-fire (e.g. the
     word "cake" resolving to the ticker CAKE).
     """
+    ticker, text, source, _matched = _parse_search_input(raw)
+    return ticker, text, source
+
+
+def _parse_search_input(raw: str) -> tuple[str | None, str, str | None, str | None]:
+    """parse_search_input, plus the text that resolved the ticker (the concept phrase,
+    ticker token or company word) so evaluate_query can tell what else was asked.
+    None when nothing resolved or the LLM fallback did (it matches the whole query).
+    """
     text = raw.strip()
     if not text:
-        return None, "", None
+        return None, "", None, None
 
     text_lower = text.lower()
 
     # 1. Concept phrases first — catches "gold price", "market", "s&p 500", etc.
     for pattern, search_query in _CONCEPT_HINTS:
-        if re.search(pattern, text_lower):
+        if match := re.search(pattern, text_lower):
             ticker = _resolve_ticker(search_query, search_query)
             if ticker:
-                return ticker, text, "concept"
+                return ticker, text, "concept", match.group(0)
 
     # {1,6} was a bug — company names like "sandisk" (7 chars) were silently dropped
     tokens = re.findall(r"\b[a-zA-Z]{1,20}\b", text)
@@ -265,13 +277,13 @@ def parse_search_input(raw: str) -> tuple[str | None, str, str | None]:
     for candidate in upper_candidates:
         ticker = _resolve_ticker(candidate)
         if ticker:
-            return ticker, text, "ticker_symbol"
+            return ticker, text, "ticker_symbol", candidate
 
     # An explicit all-caps token (e.g. "MU", "TSLA") is already unambiguous ticker
     # shorthand — trust it directly rather than discarding it when the yfinance
     # lookup above returns nothing (e.g. rate-limited or offline).
     if upper_candidates:
-        return upper_candidates[0], text, "ticker_symbol"
+        return upper_candidates[0], text, "ticker_symbol", upper_candidates[0]
 
     # 3. Other candidates — company names etc. Require the matched company's name to
     # actually start with the candidate word, so an incidental substring match
@@ -280,14 +292,14 @@ def parse_search_input(raw: str) -> tuple[str | None, str, str | None]:
     for candidate in other_candidates:
         ticker = _resolve_ticker(candidate, require_name_match=True)
         if ticker:
-            return ticker, text, "company_name"
+            return ticker, text, "company_name", candidate
 
     # 4. Full-query LLM fallback — handles sector/theme queries that elude word-by-word lookup
     ticker = _resolve_ticker_llm(text)
     if ticker:
-        return ticker, text, "llm"
+        return ticker, text, "llm", None
 
-    return None, text, None
+    return None, text, None, None
 
 
 def _has_cheap_financial_signal(text: str) -> bool:
@@ -304,6 +316,38 @@ def _has_cheap_financial_signal(text: str) -> bool:
         return True
     tokens = re.findall(r"\b[a-zA-Z]{1,20}\b", text)
     return any(re.match(r"^[A-Z]{2,5}$", t) and t not in _STOP_WORDS for t in tokens)
+
+
+# Words that add nothing beyond "explain this ticker's recent move". Narrower than
+# _STOP_WORDS on purpose: buy/sell, puts/calls, iv, week/month and numbers all
+# make a question specific. Direction words (drop, rally, crash) count as generic:
+# the code-built overview states the real direction and size either way.
+_GENERIC_ASK_WORDS: frozenset[str] = frozenset({
+    "why", "what", "whats", "s", "how", "did", "does", "do", "is", "are", "was",
+    "the", "a", "an", "with", "to", "of", "on", "in", "for", "at", "about", "me",
+    "stock", "stocks", "share", "shares", "price", "ticker", "company",
+    "move", "moved", "moving", "moves", "movement", "happened", "happening",
+    "happen", "going", "go", "up", "down", "drop", "dropped", "dropping", "fall",
+    "fell", "falling", "rise", "rose", "rising", "jump", "jumped", "spike",
+    "spiked", "surge", "surged", "crash", "crashed", "dip", "dipped", "rally",
+    "rallied", "today", "now", "recently", "lately", "just", "explain", "tell", "so",
+})
+
+
+def _specific_question(text: str, ticker: str | None, matched: str | None) -> str:
+    """The question to send the model, or "" when the query only names a ticker.
+
+    "" sends the run down the generic "explain the recent price action" path, the only
+    one whose answer is cached (api/service.py). Without this, a bare "TSLA" counted
+    as a question and the final-answer cache never served a request. When unsure,
+    for example when the LLM fallback resolved the ticker, it keeps the full text.
+    """
+    if not ticker or not matched:
+        return text
+    rest = re.sub(re.escape(matched), " ", text, count=1, flags=re.IGNORECASE).lower()
+    subject = set(re.findall(r"[a-z0-9]+", ticker.lower()))
+    words = [w for w in re.findall(r"[a-z0-9]+", rest) if w not in subject]
+    return "" if all(w in _GENERIC_ASK_WORDS for w in words) else text
 
 
 def evaluate_query(raw: str) -> QueryDecision:
@@ -325,8 +369,8 @@ def evaluate_query(raw: str) -> QueryDecision:
     if len(text.split()) > 4 and not _has_cheap_financial_signal(text):
         return QueryDecision(False, None, text, None, _OUT_OF_SCOPE_MESSAGE)
 
-    ticker, question, source = parse_search_input(text)
+    ticker, question, source, matched = _parse_search_input(text)
     is_valid, message = validate_financial_query(text, ticker, source)
     if not is_valid:
         return QueryDecision(False, None, question, None, message)
-    return QueryDecision(True, ticker, question, source)
+    return QueryDecision(True, ticker, _specific_question(question, ticker, matched), source)

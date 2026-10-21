@@ -42,7 +42,7 @@ multi-ticker comparison, anything resembling trading advice or signals.
 | Migration | Streamlit monolith → FastAPI + Next.js. Phases 0–3 ✅. **Phase 4 (metering / rate limiting) is next and not started** |
 | Backend | FastAPI, fully async, `/v1` REST + SSE, Docker → Google Cloud Run |
 | Frontend | Next.js 16 static export → Cloudflare Pages |
-| Quality gates | 241 offline pytest tests + 19 `live` upstream contract tests (weekly). ruff, eslint (blocking), tsc all clean. Heuristic quality flags on every explanation (`[quality]` log line) |
+| Quality gates | 253 offline pytest tests + 19 `live` upstream contract tests (weekly). ruff, eslint (blocking), tsc all clean. Heuristic quality flags on every explanation (`[quality]` log line) |
 | Biggest gaps | No offline **eval harness** that scores the model's answers (only heuristic checks + pinned bad write-ups) · no rate limiting and CORS `*` · `print`-based logging · no cost-per-run tracking · chart silently falls back to synthetic prices |
 
 ## 4. Architecture in one screen
@@ -149,8 +149,11 @@ Each entry: the decision, why, what it costs, and when to reconsider.
    cold starts; the in-process memo is per instance.
 10. **Layered caching** — per-process memo → Redis with per-tool TTLs (day-scoped tools also expire at
     midnight) → final-answer cache only when no question was asked → Anthropic prompt caching.
+    "No question" means the query only names the ticker ("TSLA", "why did tesla move today"):
+    `query/parsing._specific_question` strips the subject and generic ask-words. Until 2026-10 the
+    raw text always counted as a question, so the final-answer cache never served a request.
     *Why:* cost and latency, while question-specific answers stay fresh. *Cost:* data up to one TTL
-    stale.
+    stale; a generic query gets the generic answer, not one framed around the user's wording.
 11. **yfinance everywhere as fallback**, pinned `>=1.4,<1.5`, with weekly live contract tests. *Why:*
     runs with no paid data keys. *Cost:* scraping-based and fragile — a silent return-type change
     once left `get_events` returning only a hardcoded FOMC date while the suite stayed green.

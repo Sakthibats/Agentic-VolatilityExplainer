@@ -126,14 +126,14 @@ async def analyze(
         elapsed_ms = (time.perf_counter() - t0) * 1000
         print(f"[run:{ticker}] total {elapsed_ms:.0f}ms")
         log_query_background(
-            anonymous_id=session_id, ticker=ticker, query=question,
+            anonymous_id=session_id, ticker=ticker, query=raw_query.strip(),
             result=result, elapsed_ms=elapsed_ms,
         )
 
         status = result.get("status", "incomplete")
         return AnalysisResult(
             ticker=ticker,
-            query=question,
+            query=raw_query.strip(),
             status=status if status in ("complete", "incomplete", "guardrail") else "incomplete",
             overview=result.get("overview", ""),  # absent from answers cached before it existed
             summary=result.get("summary", ""),
@@ -148,11 +148,11 @@ async def analyze(
         elapsed_ms = (time.perf_counter() - t0) * 1000
         print(f"[run:{ticker}] total {elapsed_ms:.0f}ms FAILED — {exc}")
         log_query_background(
-            anonymous_id=session_id, ticker=ticker, query=question,
+            anonymous_id=session_id, ticker=ticker, query=raw_query.strip(),
             result={"status": "error", "data": {}, "tiles": [], "hypotheses": []},
             elapsed_ms=elapsed_ms,
         )
         return AnalysisResult(
-            ticker=ticker, query=question, status="error",
+            ticker=ticker, query=raw_query.strip(), status="error",
             error_message=f"Live data unavailable ({exc})",
         )

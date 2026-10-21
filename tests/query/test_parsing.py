@@ -183,6 +183,47 @@ def test_financial_sentence_passes_gate_and_reaches_resolution():
     assert decision.ticker == "TSLA"
 
 
+@pytest.mark.parametrize("query", [
+    "TSLA",
+    "TSLA stock",
+    "why did TSLA move",
+    "what's going on with TSLA today?",
+    "why did tesla drop",       # company name
+    "what happened to gold today",  # concept phrase
+])
+def test_a_query_that_only_names_the_ticker_has_no_question(query):
+    # "" routes the run to the generic, cacheable path in api/service.py.
+    with patch.object(p, "_resolve_ticker", return_value="TSLA"):
+        decision = p.evaluate_query(query)
+
+    assert decision.in_scope is True
+    assert decision.question == ""
+
+
+@pytest.mark.parametrize("query", [
+    "TSLA earnings",
+    "why is TSLA down 10%",
+    "TSLA options flow this week",
+    "is the tesla drop about the recall",
+])
+def test_a_query_that_asks_something_specific_keeps_its_question(query):
+    with patch.object(p, "_resolve_ticker", return_value="TSLA"):
+        decision = p.evaluate_query(query)
+
+    assert decision.in_scope is True
+    assert decision.question == query
+
+
+def test_an_llm_resolved_query_keeps_its_question():
+    # The LLM fallback matches the whole query, so there is no subject to strip out.
+    with patch.object(p, "_resolve_ticker", return_value=None), \
+         patch.object(p, "_resolve_ticker_llm", return_value="SMH"):
+        decision = p.evaluate_query("chip stocks")
+
+    assert decision.ticker == "SMH"
+    assert decision.question == "chip stocks"
+
+
 def test_empty_query_is_out_of_scope_without_lookup():
     with patch("yfinance.Search") as mock_search:
         decision = p.evaluate_query("   ")
