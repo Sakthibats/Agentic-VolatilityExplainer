@@ -1,0 +1,343 @@
+{
+ "schema": 1,
+ "ticker": "PFE",
+ "trading_day": "2026-10-21",
+ "captured_at": "2026-10-22T00:08:06+00:00",
+ "selected_as": "move",
+ "change_pct": -0.86,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 2.28% \u2014 elevated relative to this stock's own typical volatility (expected ~1.19%, 1.92x), but typical in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "this week: 6.13% \u2014 elevated for this stock (about 2.3x its normal move for that span, expected ~2.66%)",
+   "the past 2 weeks: 9.49% \u2014 unusual relative to this stock's own typical volatility (expected ~3.76%, 2.52x), but elevated in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past month: 8.54% \u2014 elevated relative to this stock's own typical volatility (expected ~5.46%, 1.57x), but typical in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past year: 31.46% \u2014 elevated for this stock (about 1.66x its normal move for that span, expected ~18.90%)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "PFE",
+   "price": 29.85,
+   "prev_close": 30.11,
+   "change_pct": -0.86,
+   "realized_vol_annualized_pct": 18.9,
+   "changes_pct": {
+    "1d": 2.28,
+    "1w": 6.13,
+    "2w": 9.49,
+    "1mo": 8.54,
+    "1y": 31.46,
+    "ytd": 25.75
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 2.28% \u2014 elevated relative to this stock's own typical volatility (expected ~1.19%, 1.92x), but typical in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "this week: 6.13% \u2014 elevated for this stock (about 2.3x its normal move for that span, expected ~2.66%)",
+     "the past 2 weeks: 9.49% \u2014 unusual relative to this stock's own typical volatility (expected ~3.76%, 2.52x), but elevated in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past month: 8.54% \u2014 elevated relative to this stock's own typical volatility (expected ~5.46%, 1.57x), but typical in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past year: 31.46% \u2014 elevated for this stock (about 1.66x its normal move for that span, expected ~18.90%)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "PFE",
+   "headlines": [
+    {
+     "headline": "Are You Overpaying For Regeneron Stock Versus Its Rivals?",
+     "summary": "For questions about this article or underlying research, email help@trefis.com.",
+     "datetime": 1792617521,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=52eab578ffc19c9e3ca9e4df5c44da8f98dac47174e2bd92e488e7e4291514cc"
+    },
+    {
+     "headline": "Is One Older Drug The Biggest Risk To Bristol Myers Squibb Stock?",
+     "summary": "For questions about this article or underlying research, email help@trefis.com.",
+     "datetime": 1792614371,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=60fab21e4459df56884c06727fb45337dcfb39de578b8bb76a818cb0b9a2c61f"
+    },
+    {
+     "headline": "What Changed In Amgen's Story?",
+     "summary": "For questions about this article or underlying research, email help@trefis.com.",
+     "datetime": 1792602406,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=41f5226f34db5af377548800478d88791c42319afe872a8b5c18c7788b798c1b"
+    },
+    {
+     "headline": "Can BMY Navigate Generic Challenges Across Its Key Drug Portfolio?",
+     "summary": "Bristol Myers faces mounting generic competition across its legacy portfolio, while Eliquis delivers strong growth and Revlimid shows resilience amid pricing and market pressures.",
+     "datetime": 1792587600,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=9776b97d5259c468789e3151b8bb83caac10ccd11f8472847286924cb34501e0"
+    },
+    {
+     "headline": "Moderna's Respiratory Portfolio Expands: Can It Reduce COVID Reliance?",
+     "summary": "MRNA expands beyond COVID-19 with new RSV, flu and combination vaccines, but fierce competition could challenge its efforts to diversify revenue.",
+     "datetime": 1792585500,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=03483b35f6cf49583b9ddf3394ac484c78167c22c28d16679ca79306f39c9208"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "PFE",
+   "expiry": "2026-11-06",
+   "days_to_expiry": 15,
+   "atm_iv_pct": 34.7,
+   "iv_chain_percentile": 2,
+   "skew_points": 3.1,
+   "put_call_ratio": 0.64,
+   "total_put_oi": 11090,
+   "total_call_oi": 17330
+  },
+  "get_options_positioning": {
+   "ticker": "PFE",
+   "spot": 29.85,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-06",
+   "primary_days_to_expiry": 15,
+   "max_pain_strike": 29.0,
+   "resistance_walls": [
+    {
+     "strike": 31.0,
+     "open_interest": 2346
+    },
+    {
+     "strike": 30.0,
+     "open_interest": 2156
+    },
+    {
+     "strike": 30.5,
+     "open_interest": 1964
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 30.0,
+     "open_interest": 3920
+    },
+    {
+     "strike": 29.0,
+     "open_interest": 1072
+    },
+    {
+     "strike": 33.5,
+     "open_interest": 702
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-06",
+     "days_to_expiry": 15,
+     "atm_iv_pct": 34.7
+    },
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 22,
+     "atm_iv_pct": 30.5
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 29,
+     "atm_iv_pct": 29.2
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 32.5,
+     "volume": 804,
+     "open_interest": 400,
+     "vol_oi_ratio": 2.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 34.0,
+     "volume": 802,
+     "open_interest": 400,
+     "vol_oi_ratio": 2.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 26.5,
+     "volume": 337,
+     "open_interest": 212,
+     "vol_oi_ratio": 1.6,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 31.0,
+     "volume": 2864,
+     "open_interest": 2346,
+     "vol_oi_ratio": 1.2,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 29.5,
+     "volume": 626,
+     "open_interest": 1404,
+     "vol_oi_ratio": 0.4,
+     "moneyness": "ITM"
+    }
+   ],
+   "otm_call_oi": 8970,
+   "otm_put_oi": 4836,
+   "positioning_lean_score": 0.3,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "PFE",
+   "as_of": "2026-10-22",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-09",
+     "days_ago": 13,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 28.0,
+     "price_target_to": 30.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Neutral rating on PFE and raised its price target from $28.0 to $30.0"
+    },
+    {
+     "date": "2026-10-08",
+     "days_ago": 14,
+     "firm": "Cantor Fitzgerald",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 27.0,
+     "price_target_to": 28.0,
+     "is_rating_change": false,
+     "description": "Cantor Fitzgerald maintained its Neutral rating on PFE and raised its price target from $27.0 to $28.0"
+    },
+    {
+     "date": "2026-10-06",
+     "days_ago": 16,
+     "firm": "Scotiabank",
+     "action": "maintained",
+     "from_grade": "Sector Outperform",
+     "to_grade": "Sector Outperform",
+     "price_target_from": 30.0,
+     "price_target_to": 33.0,
+     "is_rating_change": false,
+     "description": "Scotiabank maintained its Sector Outperform rating on PFE and raised its price target from $30.0 to $33.0"
+    }
+   ],
+   "consensus": {
+    "rating": "hold",
+    "score": 2.75,
+    "verdict": "neutral",
+    "analysts": 28,
+    "counts": {
+     "strongBuy": 1,
+     "buy": 8,
+     "hold": 17,
+     "sell": 1,
+     "strongSell": 1
+    },
+    "trend": "deteriorating",
+    "trend_detail": "consensus softened over 3 months (score 2.68 to 2.75; bearish ratings 2 to 2)"
+   },
+   "price_target": {
+    "mean": 29.26,
+    "median": 28.5,
+    "high": 36.0,
+    "low": 25.0,
+    "current_price": 29.85,
+    "dispersion_pct": 37.6,
+    "upside_vs_mean_pct": -2.0,
+    "upside_vs_median_pct": -4.5
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "PFE",
+   "sector": "Healthcare",
+   "sector_etf": "XLV",
+   "comparison": {
+    "1mo": {
+     "stock_change_pct": 8.54,
+     "sector_etf_change_pct": 6.4,
+     "relative_to_sector_pct": 2.14
+    },
+    "1w": {
+     "stock_change_pct": 6.13,
+     "sector_etf_change_pct": 5.99,
+     "relative_to_sector_pct": 0.14
+    },
+    "2w": {
+     "stock_change_pct": 9.49,
+     "sector_etf_change_pct": 7.62,
+     "relative_to_sector_pct": 1.87
+    },
+    "1d": {
+     "stock_change_pct": 2.28,
+     "sector_etf_change_pct": 2.37,
+     "relative_to_sector_pct": -0.09
+    },
+    "1y": {
+     "stock_change_pct": 31.46,
+     "sector_etf_change_pct": 27.61,
+     "relative_to_sector_pct": 3.85
+    },
+    "ytd": {
+     "stock_change_pct": 25.75,
+     "sector_etf_change_pct": 17.07,
+     "relative_to_sector_pct": 8.68
+    }
+   }
+  },
+  "get_macro": {
+   "vix_current": 16.68,
+   "vix_prev_close": 17.31,
+   "vix_change": -0.63,
+   "sp500_change_pct": 0.58,
+   "source": "yfinance"
+  },
+  "get_events": {
+   "ticker": "PFE",
+   "as_of": "2026-10-22",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 6,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-11-03",
+     "description": "PFE Q3 2026 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 12,
+     "eps_estimate": 0.7376
+    },
+    {
+     "type": "ex_dividend",
+     "date": "2026-11-06",
+     "source": "yfinance",
+     "description": "PFE goes ex-dividend \u2014 expect a mechanical price drop of roughly the dividend",
+     "days_until": 15
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}

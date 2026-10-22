@@ -1,0 +1,353 @@
+{
+ "schema": 1,
+ "ticker": "TSLA",
+ "trading_day": "2026-10-21",
+ "captured_at": "2026-10-22T00:07:39+00:00",
+ "selected_as": "control",
+ "change_pct": 3.41,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "TSLA",
+   "price": 386.47,
+   "prev_close": 373.71,
+   "change_pct": 3.41,
+   "realized_vol_annualized_pct": 32.9,
+   "changes_pct": {
+    "1d": 1.54,
+    "1w": -0.41,
+    "2w": -1.83,
+    "1mo": -0.42,
+    "1y": -14.93,
+    "ytd": -14.69
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   }
+  },
+  "get_news": {
+   "ticker": "TSLA",
+   "headlines": [
+    {
+     "headline": "Dow Jones Futures: Meta, Tesla Are Earnings Movers After SpaceX, Super Micro Lead Bullish Nasdaq Move",
+     "summary": "The Nasdaq moved above its 50-day line, led by SpaceX and SuperMicro. Tesla and Meta headlined big earnings late.",
+     "datetime": 1792619340,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=d796648a70cd93bb9d69077effdc1e44d2da419c8828b50e49ed45b9488a40d2"
+    },
+    {
+     "headline": "Tesla Earnings Mixed, FSD Revenue Strong; Elon Musk On Call (Live Coverage)",
+     "summary": "Tesla earnings beat views after hours. Investor focus is on Elon Musk, SpaceX merger buzz, robotaxis and more. Tesla is near a buy point.",
+     "datetime": 1792619298,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=e182ae874ab110da2a949194881a6a166b8c3e694146854dd8cd301bab57035e"
+    },
+    {
+     "headline": "Tesla  revenue flat as Elon Musk eyes possible SpaceX deal",
+     "summary": "Tesla's revenue flattened out in the third quarter, but the company launched robotaxi service and humanoid production while still managing to spend far less than expected.",
+     "datetime": 1792619192,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=88088a50ff7c243e414d808deae185c972745d8850561134604f196b2c7db45f"
+    },
+    {
+     "headline": "SpaceX Tesla Merger: Elon Musk Just Called it a Good Idea",
+     "summary": "A SpaceX-Tesla merger is officially under discussion. Whether it makes sense for shareholders will come down to the price and the terms.",
+     "datetime": 1792617781,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=ec40147f404b117acc3fa20049a0720c233693fdefd2f3be141a697e2ff6ba7b"
+    },
+    {
+     "headline": "SpaceX and Tesla Will Combine, Steve\u00a0Westly Predicts",
+     "summary": "Steve\u00a0Westly, founder and managing partner of The\u00a0Westly\u00a0Group and a former Tesla board member, expects SpaceX and Tesla to combine. He speaks on \"Bloomberg The Close.\"",
+     "datetime": 1792617340,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=45e9290f7b1afc73ed2657e2d8be6b733e835a7b5f39a1dd341c92434d8c71b6"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "TSLA",
+   "expiry": "2026-11-06",
+   "days_to_expiry": 15,
+   "atm_iv_pct": 49.0,
+   "iv_chain_percentile": 0,
+   "skew_points": 0.1,
+   "put_call_ratio": 0.76,
+   "total_put_oi": 22669,
+   "total_call_oi": 29795
+  },
+  "get_options_positioning": {
+   "ticker": "TSLA",
+   "spot": 386.47,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-06",
+   "primary_days_to_expiry": 15,
+   "max_pain_strike": 370.0,
+   "resistance_walls": [
+    {
+     "strike": 380.0,
+     "open_interest": 2033
+    },
+    {
+     "strike": 400.0,
+     "open_interest": 1831
+    },
+    {
+     "strike": 450.0,
+     "open_interest": 1392
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 330.0,
+     "open_interest": 1448
+    },
+    {
+     "strike": 350.0,
+     "open_interest": 1364
+    },
+    {
+     "strike": 295.0,
+     "open_interest": 1171
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-06",
+     "days_to_expiry": 15,
+     "atm_iv_pct": 49.0
+    },
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 22,
+     "atm_iv_pct": 46.1
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 29,
+     "atm_iv_pct": 43.7
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 555.0,
+     "volume": 103,
+     "open_interest": 9,
+     "vol_oi_ratio": 11.4,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 385.0,
+     "volume": 643,
+     "open_interest": 257,
+     "vol_oi_ratio": 2.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 390.0,
+     "volume": 248,
+     "open_interest": 223,
+     "vol_oi_ratio": 1.1,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 400.0,
+     "volume": 1901,
+     "open_interest": 1831,
+     "vol_oi_ratio": 1.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 390.0,
+     "volume": 680,
+     "open_interest": 880,
+     "vol_oi_ratio": 0.8,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 20271,
+   "otm_put_oi": 20437,
+   "positioning_lean_score": -0.0,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "TSLA",
+   "as_of": "2026-10-22",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-20",
+     "days_ago": 2,
+     "firm": "Cantor Fitzgerald",
+     "action": "reiterated",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 485.0,
+     "price_target_to": 485.0,
+     "is_rating_change": false,
+     "description": "Cantor Fitzgerald reiterated its Overweight rating on TSLA with a $485.0 price target"
+    },
+    {
+     "date": "2026-10-15",
+     "days_ago": 7,
+     "firm": "GLJ Research",
+     "action": "reiterated",
+     "from_grade": "Sell",
+     "to_grade": "Sell",
+     "price_target_from": 24.86,
+     "price_target_to": 24.86,
+     "is_rating_change": false,
+     "description": "GLJ Research reiterated its Sell rating on TSLA with a $24.86 price target"
+    },
+    {
+     "date": "2026-10-12",
+     "days_ago": 10,
+     "firm": "Jefferies",
+     "action": "maintained",
+     "from_grade": "Hold",
+     "to_grade": "Hold",
+     "price_target_from": 350.0,
+     "price_target_to": 400.0,
+     "is_rating_change": false,
+     "description": "Jefferies maintained its Hold rating on TSLA and raised its price target from $350.0 to $400.0"
+    },
+    {
+     "date": "2026-10-08",
+     "days_ago": 14,
+     "firm": "Tigress Financial",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 550.0,
+     "price_target_to": 550.0,
+     "is_rating_change": false,
+     "description": "Tigress Financial maintained its Buy rating on TSLA with a $550.0 price target"
+    },
+    {
+     "date": "2026-10-07",
+     "days_ago": 15,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 385.0,
+     "price_target_to": 391.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Neutral rating on TSLA and raised its price target from $385.0 to $391.0"
+    }
+   ],
+   "consensus": {
+    "rating": "hold",
+    "score": 2.61,
+    "verdict": "neutral",
+    "analysts": 44,
+    "counts": {
+     "strongBuy": 4,
+     "buy": 15,
+     "hold": 21,
+     "sell": 2,
+     "strongSell": 2
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.56 to 2.61)"
+   },
+   "price_target": {
+    "mean": 397.83,
+    "median": 412.5,
+    "high": 600.0,
+    "low": 128.11,
+    "current_price": 386.47,
+    "dispersion_pct": 118.6,
+    "upside_vs_mean_pct": 2.9,
+    "upside_vs_median_pct": 6.7
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "TSLA",
+   "sector": "Consumer Cyclical",
+   "sector_etf": "XLY",
+   "comparison": {
+    "1mo": {
+     "stock_change_pct": -0.42,
+     "sector_etf_change_pct": 2.91,
+     "relative_to_sector_pct": -3.33
+    },
+    "1w": {
+     "stock_change_pct": -0.41,
+     "sector_etf_change_pct": 2.79,
+     "relative_to_sector_pct": -3.2
+    },
+    "2w": {
+     "stock_change_pct": -1.83,
+     "sector_etf_change_pct": 3.38,
+     "relative_to_sector_pct": -5.21
+    },
+    "1d": {
+     "stock_change_pct": 1.54,
+     "sector_etf_change_pct": 0.91,
+     "relative_to_sector_pct": 0.63
+    },
+    "1y": {
+     "stock_change_pct": -14.93,
+     "sector_etf_change_pct": -0.65,
+     "relative_to_sector_pct": -14.28
+    },
+    "ytd": {
+     "stock_change_pct": -14.69,
+     "sector_etf_change_pct": -1.8,
+     "relative_to_sector_pct": -12.89
+    }
+   }
+  },
+  "get_macro": {
+   "vix_current": 16.68,
+   "vix_prev_close": 17.31,
+   "vix_change": -0.63,
+   "sp500_change_pct": 0.58,
+   "source": "yfinance"
+  },
+  "get_events": {
+   "ticker": "TSLA",
+   "as_of": "2026-10-22",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 6,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-21",
+     "description": "TSLA reported Q3 2026 earnings after the close \u2014 EPS 0.48 vs 0.4358 expected (beat, +10.1%)",
+     "source": "finnhub",
+     "days_ago": 1,
+     "eps_actual": 0.48,
+     "eps_estimate": 0.4358,
+     "surprise": "beat",
+     "surprise_pct": 10.1,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

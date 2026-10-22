@@ -1,0 +1,336 @@
+{
+ "schema": 1,
+ "ticker": "T",
+ "trading_day": "2026-10-21",
+ "captured_at": "2026-10-22T00:08:39+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -6.45,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "T",
+   "price": 21.91,
+   "prev_close": 23.42,
+   "change_pct": -6.45,
+   "realized_vol_annualized_pct": 39.4,
+   "changes_pct": {
+    "1d": 0.95,
+    "1w": 2.49,
+    "2w": -3.05,
+    "1mo": -6.94,
+    "1y": -6.84,
+    "ytd": -0.09
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   }
+  },
+  "get_news": {
+   "ticker": "T",
+   "headlines": [
+    {
+     "headline": "Stock Market Today, Oct. 21: AT&T Beats Earnings on Strong Fiber Growth, Raises 2026 Profit Outlook",
+     "summary": "Today, Oct. 21, 2026, the telecom giant posted record internet additions and advanced connectivity gains, signaling momentum in its capital-intensive fiber strategy.",
+     "datetime": 1792617124,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=8e20621e6ed98af1952476ee96a98a54419493b938558f92149e156776a76b7a"
+    },
+    {
+     "headline": "AT&T (T) stock trades down, here is why",
+     "summary": "Shares of telecommunications conglomerate AT&T (NYSE:T) fell 6.6% in the pre-market session after the company reported third quarter results, with earnings per share below expectations while sales...",
+     "datetime": 1792614159,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=3ea075f1b0ec0e0e20d5a9b619bf5404ef8997f0e73c076b133018ab16ea326c"
+    },
+    {
+     "headline": "Sector Update: Consumer Stocks Decline Late Afternoon",
+     "summary": "Consumer stocks were lower late Wednesday afternoon, with the State Street Consumer Staples Select S",
+     "datetime": 1792611891,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=935da615b58e5f5a565a328f0058e60d8f8afdb90ebbef346d80818394a57d37"
+    },
+    {
+     "headline": "AST SpaceMobile Hit a 52-Week Low Days After SpaceX Spent $8 Billion on Spectrum. That's Not a Coincidence.",
+     "summary": "SpaceX's spectrum deal might generate headwinds for AST's biggest partners.",
+     "datetime": 1792610700,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=e311e824436a9e0cbfd52ed5d5f439cbdffa28ab431e0df16b096b68f72cccc2"
+    },
+    {
+     "headline": "SpaceX To Acquire Assets From David Grain\u2019s Investment Firm For $8 Billion",
+     "summary": "David Grain is at the center of an $8 billion telecommunications deal that could reshape the U.S. wireless industry. His investment firm, Grain Management, has agreed to sell its nationwide...",
+     "datetime": 1792607745,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=5595f89c0a9d0c0025aaf9f97e36e9d9482dcb28a57d54a018c81552ee1ceb48"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "T",
+   "expiry": "2026-11-06",
+   "days_to_expiry": 15,
+   "atm_iv_pct": 34.6,
+   "iv_chain_percentile": 4,
+   "skew_points": -1.7,
+   "put_call_ratio": 0.57,
+   "total_put_oi": 3068,
+   "total_call_oi": 5398
+  },
+  "get_options_positioning": {
+   "ticker": "T",
+   "spot": 21.91,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-06",
+   "primary_days_to_expiry": 15,
+   "max_pain_strike": 23.5,
+   "resistance_walls": [
+    {
+     "strike": 25.5,
+     "open_interest": 1281
+    },
+    {
+     "strike": 24.0,
+     "open_interest": 870
+    },
+    {
+     "strike": 23.5,
+     "open_interest": 585
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 24.0,
+     "open_interest": 1019
+    },
+    {
+     "strike": 22.0,
+     "open_interest": 334
+    },
+    {
+     "strike": 21.5,
+     "open_interest": 292
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-06",
+     "days_to_expiry": 15,
+     "atm_iv_pct": 34.6
+    },
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 22,
+     "atm_iv_pct": 37.3
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 29,
+     "atm_iv_pct": 29.1
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 24.0,
+     "volume": 3175,
+     "open_interest": 870,
+     "vol_oi_ratio": 3.6,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 20.0,
+     "volume": 125,
+     "open_interest": 36,
+     "vol_oi_ratio": 3.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 22.0,
+     "volume": 769,
+     "open_interest": 378,
+     "vol_oi_ratio": 2.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 22.0,
+     "volume": 389,
+     "open_interest": 334,
+     "vol_oi_ratio": 1.2,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 22.5,
+     "volume": 219,
+     "open_interest": 247,
+     "vol_oi_ratio": 0.9,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 5236,
+   "otm_put_oi": 602,
+   "positioning_lean_score": 0.79,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "T",
+   "as_of": "2026-10-22",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-09",
+     "days_ago": 13,
+     "firm": "Scotiabank",
+     "action": "maintained",
+     "from_grade": "Sector Perform",
+     "to_grade": "Sector Perform",
+     "price_target_from": 27.5,
+     "price_target_to": 26.5,
+     "is_rating_change": false,
+     "description": "Scotiabank maintained its Sector Perform rating on T and cut its price target from $27.5 to $26.5"
+    },
+    {
+     "date": "2026-10-02",
+     "days_ago": 20,
+     "firm": "Scotiabank",
+     "action": "maintained",
+     "from_grade": "Sector Perform",
+     "to_grade": "Sector Perform",
+     "price_target_from": 29.25,
+     "price_target_to": 27.5,
+     "is_rating_change": false,
+     "description": "Scotiabank maintained its Sector Perform rating on T and cut its price target from $29.25 to $27.5"
+    },
+    {
+     "date": "2026-09-28",
+     "days_ago": 24,
+     "firm": "Morgan Stanley",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 27.0,
+     "price_target_to": 28.0,
+     "is_rating_change": false,
+     "description": "Morgan Stanley maintained its Overweight rating on T and raised its price target from $27.0 to $28.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.29,
+    "verdict": "leaning bullish",
+    "analysts": 24,
+    "counts": {
+     "strongBuy": 4,
+     "buy": 10,
+     "hold": 9,
+     "sell": 1,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.28 to 2.29)"
+   },
+   "price_target": {
+    "mean": 28.59,
+    "median": 29.0,
+    "high": 34.0,
+    "low": 20.0,
+    "current_price": 21.91,
+    "dispersion_pct": 49.0,
+    "upside_vs_mean_pct": 30.5,
+    "upside_vs_median_pct": 32.4
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "T",
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "comparison": {
+    "1mo": {
+     "stock_change_pct": -6.94,
+     "sector_etf_change_pct": -3.97,
+     "relative_to_sector_pct": -2.97
+    },
+    "1w": {
+     "stock_change_pct": 2.49,
+     "sector_etf_change_pct": -1.86,
+     "relative_to_sector_pct": 4.35
+    },
+    "2w": {
+     "stock_change_pct": -3.05,
+     "sector_etf_change_pct": -1.31,
+     "relative_to_sector_pct": -1.74
+    },
+    "1d": {
+     "stock_change_pct": 0.95,
+     "sector_etf_change_pct": 0.09,
+     "relative_to_sector_pct": 0.86
+    },
+    "1y": {
+     "stock_change_pct": -6.84,
+     "sector_etf_change_pct": -2.95,
+     "relative_to_sector_pct": -3.89
+    },
+    "ytd": {
+     "stock_change_pct": -0.09,
+     "sector_etf_change_pct": -4.88,
+     "relative_to_sector_pct": 4.79
+    }
+   }
+  },
+  "get_macro": {
+   "vix_current": 16.68,
+   "vix_prev_close": 17.31,
+   "vix_change": -0.63,
+   "sp500_change_pct": 0.58,
+   "source": "yfinance"
+  },
+  "get_events": {
+   "ticker": "T",
+   "as_of": "2026-10-22",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 6,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-21",
+     "description": "T reported Q3 2026 earnings before the open \u2014 EPS 0.65 vs 0.6106 expected (beat, +6.5%)",
+     "source": "finnhub",
+     "days_ago": 1,
+     "eps_actual": 0.65,
+     "eps_estimate": 0.6106,
+     "surprise": "beat",
+     "surprise_pct": 6.5,
+     "hour": "bmo"
+    },
+    {
+     "type": "ex_dividend",
+     "date": "2026-10-09",
+     "source": "yfinance",
+     "description": "T went ex-dividend \u2014 the price drops by roughly the dividend on this date mechanically, with no news behind it",
+     "days_ago": 13
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

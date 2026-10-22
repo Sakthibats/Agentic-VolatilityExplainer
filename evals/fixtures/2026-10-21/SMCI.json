@@ -1,0 +1,346 @@
+{
+ "schema": 1,
+ "ticker": "SMCI",
+ "trading_day": "2026-10-21",
+ "captured_at": "2026-10-22T00:08:26+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 9.55,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "this week: -16.89% \u2014 elevated relative to this stock's own typical volatility (expected ~8.44%, 2.0x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past 2 weeks: -25.29% \u2014 elevated relative to this stock's own typical volatility (expected ~11.93%, 2.12x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past month: -21.19% \u2014 typical relative to this stock's own typical volatility (expected ~17.29%, 1.23x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past year: -37.77% \u2014 typical relative to this stock's own typical volatility (expected ~59.90%, 0.63x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "SMCI",
+   "price": 35.57,
+   "prev_close": 32.47,
+   "change_pct": 9.55,
+   "realized_vol_annualized_pct": 59.9,
+   "changes_pct": {
+    "1d": 1.15,
+    "1w": -16.89,
+    "2w": -25.29,
+    "1mo": -21.19,
+    "1y": -37.77,
+    "ytd": 4.88
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "this week: -16.89% \u2014 elevated relative to this stock's own typical volatility (expected ~8.44%, 2.0x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past 2 weeks: -25.29% \u2014 elevated relative to this stock's own typical volatility (expected ~11.93%, 2.12x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past month: -21.19% \u2014 typical relative to this stock's own typical volatility (expected ~17.29%, 1.23x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past year: -37.77% \u2014 typical relative to this stock's own typical volatility (expected ~59.90%, 0.63x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "SMCI",
+   "headlines": [
+    {
+     "headline": "Dow Jones Futures: Meta, Tesla Are Earnings Movers After SpaceX, Super Micro Lead Bullish Nasdaq Move",
+     "summary": "The Nasdaq moved above its 50-day line, led by SpaceX and SuperMicro. Tesla and Meta headlined big earnings late.",
+     "datetime": 1792619603,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=d796648a70cd93bb9d69077effdc1e44d2da419c8828b50e49ed45b9488a40d2"
+    },
+    {
+     "headline": "Update: US Equity Indexes Rise as Blockbuster SpaceX Results, Super Micro Computer's Fiscal Q1 Update Boosts AI Trade",
+     "summary": "(Updates with index/price moves and company news from the first paragraph.) US equity indexes ros",
+     "datetime": 1792618740,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=aee198ac3ce1cbf9486793c8cc2ff664b5b323b247aee8788844e88044ce4aff"
+    },
+    {
+     "headline": "Stock Market Today, Oct. 21: Super Micro Computer Raises Full-Year Revenue Guidance on Strong AI Demand",
+     "summary": "The server maker raised its outlook to between $18.5 billion and $19.5 billion and signaled margin expansion.",
+     "datetime": 1792617696,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=e350a13e4233d10c3256fac9555932e493d2112ee870c5fd03b6912408ca5d74"
+    },
+    {
+     "headline": "Analysts revamp Super Micro stock price targets after 10% surge on revenue boost",
+     "summary": "Super Micro raised its revenue and margin forecasts, while Wall Street analysts see implications for Dell and HPE.",
+     "datetime": 1792615331,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=6b7d508e8a8debf73050e38018fb2a2c69e6c37877c2f8fa746b832a5f984ab2"
+    },
+    {
+     "headline": "Stock Market Today: Dow Pops; Nasdaq Charges Higher As SpaceX Soars On Earnings, Tesla Talks",
+     "summary": "The Nasdaq rallies Wednesday as SpaceX stock surges on earnings. Meta Platforms and Tesla post earnings late.",
+     "datetime": 1792615278,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=aec8495c2e3c296a8d0ed64027764e3326cca21730a58e6ce7a0425044b98801"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "SMCI",
+   "expiry": "2026-11-06",
+   "days_to_expiry": 15,
+   "atm_iv_pct": 95.7,
+   "iv_chain_percentile": 19,
+   "skew_points": -2.5,
+   "put_call_ratio": 0.43,
+   "total_put_oi": 11612,
+   "total_call_oi": 26896
+  },
+  "get_options_positioning": {
+   "ticker": "SMCI",
+   "spot": 35.57,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-06",
+   "primary_days_to_expiry": 15,
+   "max_pain_strike": 35.0,
+   "resistance_walls": [
+    {
+     "strike": 35.0,
+     "open_interest": 3381
+    },
+    {
+     "strike": 44.0,
+     "open_interest": 2977
+    },
+    {
+     "strike": 50.0,
+     "open_interest": 2227
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 35.0,
+     "open_interest": 1091
+    },
+    {
+     "strike": 29.0,
+     "open_interest": 1015
+    },
+    {
+     "strike": 30.0,
+     "open_interest": 1001
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-06",
+     "days_to_expiry": 15,
+     "atm_iv_pct": 95.7
+    },
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 22,
+     "atm_iv_pct": 89.6
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 29,
+     "atm_iv_pct": 85.0
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 41.0,
+     "volume": 19059,
+     "open_interest": 315,
+     "vol_oi_ratio": 60.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 40.0,
+     "volume": 17721,
+     "open_interest": 1682,
+     "vol_oi_ratio": 10.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 42.0,
+     "volume": 8116,
+     "open_interest": 1259,
+     "vol_oi_ratio": 6.4,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 35.0,
+     "volume": 1274,
+     "open_interest": 1091,
+     "vol_oi_ratio": 1.2,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 42.0,
+     "volume": 102,
+     "open_interest": 227,
+     "vol_oi_ratio": 0.4,
+     "moneyness": "ITM"
+    }
+   ],
+   "otm_call_oi": 20122,
+   "otm_put_oi": 8053,
+   "positioning_lean_score": 0.43,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "SMCI",
+   "as_of": "2026-10-22",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-21",
+     "days_ago": 1,
+     "firm": "Rosenblatt",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 51.0,
+     "price_target_to": 57.0,
+     "is_rating_change": false,
+     "description": "Rosenblatt maintained its Buy rating on SMCI and raised its price target from $51.0 to $57.0"
+    },
+    {
+     "date": "2026-10-16",
+     "days_ago": 6,
+     "firm": "Rosenblatt",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 51.0,
+     "price_target_to": 51.0,
+     "is_rating_change": false,
+     "description": "Rosenblatt maintained its Buy rating on SMCI with a $51.0 price target"
+    },
+    {
+     "date": "2026-10-08",
+     "days_ago": 14,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 39.0,
+     "price_target_to": 45.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Neutral rating on SMCI and raised its price target from $39.0 to $45.0"
+    },
+    {
+     "date": "2026-10-06",
+     "days_ago": 16,
+     "firm": "Mizuho",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 35.0,
+     "price_target_to": 43.0,
+     "is_rating_change": false,
+     "description": "Mizuho maintained its Neutral rating on SMCI and raised its price target from $35.0 to $43.0"
+    }
+   ],
+   "consensus": {
+    "rating": "hold",
+    "score": 2.89,
+    "verdict": "neutral",
+    "analysts": 18,
+    "counts": {
+     "strongBuy": 2,
+     "buy": 2,
+     "hold": 11,
+     "sell": 2,
+     "strongSell": 1
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.84 to 2.89)"
+   },
+   "price_target": {
+    "mean": 43.27,
+    "median": 45.0,
+    "high": 60.0,
+    "low": 15.0,
+    "current_price": 35.57,
+    "dispersion_pct": 104.0,
+    "upside_vs_mean_pct": 21.6,
+    "upside_vs_median_pct": 26.5
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "SMCI",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1mo": {
+     "stock_change_pct": -21.19,
+     "sector_etf_change_pct": -4.83,
+     "relative_to_sector_pct": -16.36
+    },
+    "1w": {
+     "stock_change_pct": -16.89,
+     "sector_etf_change_pct": -5.52,
+     "relative_to_sector_pct": -11.37
+    },
+    "2w": {
+     "stock_change_pct": -25.29,
+     "sector_etf_change_pct": -8.2,
+     "relative_to_sector_pct": -17.09
+    },
+    "1d": {
+     "stock_change_pct": 1.15,
+     "sector_etf_change_pct": -0.28,
+     "relative_to_sector_pct": 1.43
+    },
+    "1y": {
+     "stock_change_pct": -37.77,
+     "sector_etf_change_pct": 30.8,
+     "relative_to_sector_pct": -68.57
+    },
+    "ytd": {
+     "stock_change_pct": 4.88,
+     "sector_etf_change_pct": 28.97,
+     "relative_to_sector_pct": -24.09
+    }
+   }
+  },
+  "get_macro": {
+   "vix_current": 16.68,
+   "vix_prev_close": 17.31,
+   "vix_change": -0.63,
+   "sp500_change_pct": 0.58,
+   "source": "yfinance"
+  },
+  "get_events": {
+   "ticker": "SMCI",
+   "as_of": "2026-10-22",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 6,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-11-03",
+     "description": "SMCI Q1 2027 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 12,
+     "eps_estimate": 1.0553
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}

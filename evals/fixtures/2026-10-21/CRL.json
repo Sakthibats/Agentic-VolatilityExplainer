@@ -1,0 +1,331 @@
+{
+ "schema": 1,
+ "ticker": "CRL",
+ "trading_day": "2026-10-21",
+ "captured_at": "2026-10-22T00:08:32+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 9.33,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 5.14% \u2014 elevated for this stock (about 1.88x its normal move for that span, expected ~2.73%)",
+   "the past month: 13.06% \u2014 typical relative to this stock's own typical volatility (expected ~12.53%, 1.04x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past year: 76.7% \u2014 elevated relative to this stock's own typical volatility (expected ~43.40%, 1.77x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "CRL",
+   "price": 344.87,
+   "prev_close": 315.45,
+   "change_pct": 9.33,
+   "realized_vol_annualized_pct": 43.4,
+   "changes_pct": {
+    "1d": 5.14,
+    "1w": 5.49,
+    "2w": 3.44,
+    "1mo": 13.06,
+    "1y": 76.7,
+    "ytd": 55.84
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 5.14% \u2014 elevated for this stock (about 1.88x its normal move for that span, expected ~2.73%)",
+     "the past month: 13.06% \u2014 typical relative to this stock's own typical volatility (expected ~12.53%, 1.04x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past year: 76.7% \u2014 elevated relative to this stock's own typical volatility (expected ~43.40%, 1.77x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "CRL",
+   "headlines": [
+    {
+     "headline": "S&P 500 Top Movers: EFX and HAS Lead Today's Gainers, GM and DVA Fall",
+     "summary": "S&P 500 top movers today: Equifax and Hasbro gained over 10%, while General Motors and DaVita fell more than 7% in a mixed session.",
+     "datetime": 1792523164,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=9767c866ea027121f6e583a1c9d55c71caf1930dcf32f3011cf51a1089f09880"
+    },
+    {
+     "headline": "The Healthcare Sector Nears a New High. These Stocks Are Leading the Charge.",
+     "summary": "The S&P 500 Health Care Sector was on track to set a fresh closing high, leading Tuesday's broad market gains.",
+     "datetime": 1792521676,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=5706a549de19317028a89a3d0711c22462e81539f7468dfc667f38a79817cba4"
+    },
+    {
+     "headline": "S&P 500 Top Movers: Gainers and Losers From Today's US Session",
+     "summary": "S&P 500 top movers for today's US session: Equifax led gainers at 11.46%, while General Motors led losers at -7.72%, ranked by percentage change.",
+     "datetime": 1792514161,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=e11728fc8f5fa19627c71da56097d365124708caa38ac808ec39585063e67696"
+    },
+    {
+     "headline": "Clinical Trial Management Services Market Size, Share, Trends, and Forecast, 2026-2033 | Drugmakers' Outsourcing Push Lifts Clinical Trial Management Toward $68 Billion",
+     "summary": "The global clinical trial management services market is projected to grow from $36.2 billion in 2025 to $68.4 billion by 2033, a new Research and Markets report finds, with North America holding...",
+     "datetime": 1792404180,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=f1acfd41fd9b527a19736eca9f01d8234fd7f6f03163c95fadf8b26091f93997"
+    },
+    {
+     "headline": "Drug Development Inputs & Services Stocks Q2 In Review: Charles River Laboratories (NYSE:CRL) Vs Peers",
+     "summary": "Wrapping up Q2 earnings, we look at the numbers and key takeaways for the drug development inputs & services stocks, including Charles River Laboratories (NYSE:CRL) and its peers.",
+     "datetime": 1792163259,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=79f0a13d734af94e39735179cc832b22a1bdfab53f0be68fd4b4623bb8fef809"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "CRL",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 29,
+   "atm_iv_pct": 61.8,
+   "iv_chain_percentile": 19,
+   "skew_points": -2.3,
+   "put_call_ratio": 0.26,
+   "total_put_oi": 962,
+   "total_call_oi": 3691
+  },
+  "get_options_positioning": {
+   "ticker": "CRL",
+   "spot": 344.87,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 29,
+   "max_pain_strike": 280.0,
+   "resistance_walls": [
+    {
+     "strike": 390.0,
+     "open_interest": 1311
+    },
+    {
+     "strike": 350.0,
+     "open_interest": 961
+    },
+    {
+     "strike": 280.0,
+     "open_interest": 502
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 260.0,
+     "open_interest": 162
+    },
+    {
+     "strike": 290.0,
+     "open_interest": 141
+    },
+    {
+     "strike": 320.0,
+     "open_interest": 91
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 29,
+     "atm_iv_pct": 61.8
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 370.0,
+     "volume": 355,
+     "open_interest": 57,
+     "vol_oi_ratio": 6.2,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 390.0,
+     "volume": 1645,
+     "open_interest": 1311,
+     "vol_oi_ratio": 1.3,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 350.0,
+     "volume": 686,
+     "open_interest": 961,
+     "vol_oi_ratio": 0.7,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 2394,
+   "otm_put_oi": 961,
+   "positioning_lean_score": 0.43,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "CRL",
+   "as_of": "2026-10-22",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-13",
+     "days_ago": 9,
+     "firm": "Morgan Stanley",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 300.0,
+     "price_target_to": 340.0,
+     "is_rating_change": false,
+     "description": "Morgan Stanley maintained its Overweight rating on CRL and raised its price target from $300.0 to $340.0"
+    },
+    {
+     "date": "2026-09-28",
+     "days_ago": 24,
+     "firm": "Jefferies",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 305.0,
+     "price_target_to": 340.0,
+     "is_rating_change": false,
+     "description": "Jefferies maintained its Buy rating on CRL and raised its price target from $305.0 to $340.0"
+    },
+    {
+     "date": "2026-09-25",
+     "days_ago": 27,
+     "firm": "Deutsche Bank",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 300.0,
+     "price_target_to": 320.0,
+     "is_rating_change": false,
+     "description": "Deutsche Bank maintained its Buy rating on CRL and raised its price target from $300.0 to $320.0"
+    },
+    {
+     "date": "2026-09-25",
+     "days_ago": 27,
+     "firm": "TD Cowen",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 300.0,
+     "price_target_to": 325.0,
+     "is_rating_change": false,
+     "description": "TD Cowen maintained its Buy rating on CRL and raised its price target from $300.0 to $325.0"
+    },
+    {
+     "date": "2026-09-25",
+     "days_ago": 27,
+     "firm": "Evercore ISI Group",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 320.0,
+     "price_target_to": 330.0,
+     "is_rating_change": false,
+     "description": "Evercore ISI Group maintained its Outperform rating on CRL and raised its price target from $320.0 to $330.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.0,
+    "verdict": "leaning bullish",
+    "analysts": 18,
+    "counts": {
+     "strongBuy": 4,
+     "buy": 11,
+     "hold": 2,
+     "sell": 1,
+     "strongSell": 0
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.12 to 2.0; bearish ratings 1 to 1)"
+   },
+   "price_target": {
+    "mean": 315.53,
+    "median": 330.0,
+    "high": 357.0,
+    "low": 145.0,
+    "current_price": 344.87,
+    "dispersion_pct": 67.2,
+    "upside_vs_mean_pct": -8.5,
+    "upside_vs_median_pct": -4.3
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "CRL",
+   "sector": "Healthcare",
+   "sector_etf": "XLV",
+   "comparison": {
+    "1mo": {
+     "stock_change_pct": 13.06,
+     "sector_etf_change_pct": 6.4,
+     "relative_to_sector_pct": 6.66
+    },
+    "1w": {
+     "stock_change_pct": 5.49,
+     "sector_etf_change_pct": 5.99,
+     "relative_to_sector_pct": -0.5
+    },
+    "2w": {
+     "stock_change_pct": 3.44,
+     "sector_etf_change_pct": 7.62,
+     "relative_to_sector_pct": -4.18
+    },
+    "1d": {
+     "stock_change_pct": 5.14,
+     "sector_etf_change_pct": 2.37,
+     "relative_to_sector_pct": 2.77
+    },
+    "1y": {
+     "stock_change_pct": 76.7,
+     "sector_etf_change_pct": 27.61,
+     "relative_to_sector_pct": 49.09
+    },
+    "ytd": {
+     "stock_change_pct": 55.84,
+     "sector_etf_change_pct": 17.07,
+     "relative_to_sector_pct": 38.77
+    }
+   }
+  },
+  "get_macro": {
+   "vix_current": 16.68,
+   "vix_prev_close": 17.31,
+   "vix_change": -0.63,
+   "sp500_change_pct": 0.58,
+   "source": "yfinance"
+  },
+  "get_events": {
+   "ticker": "CRL",
+   "as_of": "2026-10-22",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 6,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-11-04",
+     "description": "CRL Q3 2026 earnings scheduled (before the open)",
+     "source": "finnhub",
+     "days_until": 13,
+     "eps_estimate": 3.004,
+     "hour": "bmo"
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}

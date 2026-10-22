@@ -1,0 +1,345 @@
+{
+ "schema": 1,
+ "ticker": "UNH",
+ "trading_day": "2026-10-21",
+ "captured_at": "2026-10-22T00:08:12+00:00",
+ "selected_as": "move",
+ "change_pct": -0.54,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 3.04% \u2014 elevated for this stock (about 1.77x its normal move for that span, expected ~1.72%)",
+   "this week: 10.99% \u2014 unusual relative to this stock's own typical volatility (expected ~3.85%, 2.86x), but elevated in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past 2 weeks: 11.41% \u2014 elevated for this stock (about 2.1x its normal move for that span, expected ~5.44%)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "UNH",
+   "price": 417,
+   "prev_close": 419.26,
+   "change_pct": -0.54,
+   "realized_vol_annualized_pct": 27.3,
+   "changes_pct": {
+    "1d": 3.04,
+    "1w": 10.99,
+    "2w": 11.41,
+    "1mo": 11.04,
+    "1y": 20.7,
+    "ytd": 27.1
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 3.04% \u2014 elevated for this stock (about 1.77x its normal move for that span, expected ~1.72%)",
+     "this week: 10.99% \u2014 unusual relative to this stock's own typical volatility (expected ~3.85%, 2.86x), but elevated in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past 2 weeks: 11.41% \u2014 elevated for this stock (about 2.1x its normal move for that span, expected ~5.44%)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "UNH",
+   "headlines": [
+    {
+     "headline": "Sector Update: Healthcare Stocks Softer Late Afternoon",
+     "summary": "Healthcare stocks declined late Wednesday afternoon, with the NYSE Healthcare Index and the State St",
+     "datetime": 1792612154,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=d5137cc2453a014db14532c1d82dfcf34d6f9bbb1eea59f036ec1fdda3faa171"
+    },
+    {
+     "headline": "Microsoft and Alphabet opt out of tokenized stocks in latest blow to ambitious plan from OKK and NYSE parent firm",
+     "summary": "Sixteen companies have opposed plans to trade tokenized versions of their shares on Cuomo-backed platform OKXICE.",
+     "datetime": 1792602501,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=713ef4752a76965c5b1fdf5a33d63d62336e22e1062899b8e5d65030cb6d74a1"
+    },
+    {
+     "headline": "What Elevance Health (ELV) Said on Its Q3 Earnings Call",
+     "summary": "Elevance Health (NYSE:ELV) raised its 2026 earnings outlook after reporting third-quarter adjusted diluted earnings per share of $6.99, exceeding the company\u2019s expectations as Medicaid, Medicare...",
+     "datetime": 1792598681,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=65a51a245e9ae1ebccb5e82f2fa947d23ab7fc3ff8d093ca2f531b01f2e14aed"
+    },
+    {
+     "headline": "UnitedHealth (UNH): Does Optum Truly Diversify Its Earnings Risk?",
+     "summary": "UnitedHealth Group Incorporated (NYSE:UNH) produced $8.0 billion of second-quarter 2026 operating earnings, with Optum contributing $4.0 billion. Medical inflation and Medicare funding pressure reach...",
+     "datetime": 1792593511,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=ecf9a08e2863c15382d94e3306f11286a3a3a14e42f78cc11f94dab03fe6d9e6"
+    },
+    {
+     "headline": "What Could Stop CVS Health Stock Over The Next Six Months?",
+     "summary": "For questions about this article or underlying research, email help@trefis.com.",
+     "datetime": 1792588879,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=f017bffca2dcbea9f77f19a54d90ff3ea5162ba41ef276529b4afd0f426159c1"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "UNH",
+   "expiry": "2026-11-06",
+   "days_to_expiry": 15,
+   "atm_iv_pct": 28.9,
+   "iv_chain_percentile": 1,
+   "skew_points": 1.5,
+   "put_call_ratio": 1.41,
+   "total_put_oi": 7495,
+   "total_call_oi": 5304
+  },
+  "get_options_positioning": {
+   "ticker": "UNH",
+   "spot": 417.0,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-06",
+   "primary_days_to_expiry": 15,
+   "max_pain_strike": 390.0,
+   "resistance_walls": [
+    {
+     "strike": 410.0,
+     "open_interest": 1652
+    },
+    {
+     "strike": 415.0,
+     "open_interest": 380
+    },
+    {
+     "strike": 435.0,
+     "open_interest": 318
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 325.0,
+     "open_interest": 1646
+    },
+    {
+     "strike": 360.0,
+     "open_interest": 1439
+    },
+    {
+     "strike": 330.0,
+     "open_interest": 1361
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-06",
+     "days_to_expiry": 15,
+     "atm_iv_pct": 28.9
+    },
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 22,
+     "atm_iv_pct": 28.5
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 29,
+     "atm_iv_pct": 27.5
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 325.0,
+     "volume": 1611,
+     "open_interest": 1646,
+     "vol_oi_ratio": 1.0,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 1751,
+   "otm_put_oi": 7389,
+   "positioning_lean_score": -0.62,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "UNH",
+   "as_of": "2026-10-22",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-20",
+     "days_ago": 2,
+     "firm": "RBC Capital",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 478.0,
+     "price_target_to": 498.0,
+     "is_rating_change": false,
+     "description": "RBC Capital maintained its Outperform rating on UNH and raised its price target from $478.0 to $498.0"
+    },
+    {
+     "date": "2026-10-16",
+     "days_ago": 6,
+     "firm": "Bernstein",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 512.0,
+     "price_target_to": 500.0,
+     "is_rating_change": false,
+     "description": "Bernstein maintained its Outperform rating on UNH and cut its price target from $512.0 to $500.0"
+    },
+    {
+     "date": "2026-10-16",
+     "days_ago": 6,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 516.0,
+     "price_target_to": 524.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Overweight rating on UNH and raised its price target from $516.0 to $524.0"
+    },
+    {
+     "date": "2026-10-15",
+     "days_ago": 7,
+     "firm": "TD Cowen",
+     "action": "reiterated",
+     "from_grade": "Hold",
+     "to_grade": "Hold",
+     "price_target_from": 402.0,
+     "price_target_to": 402.0,
+     "is_rating_change": false,
+     "description": "TD Cowen reiterated its Hold rating on UNH with a $402.0 price target"
+    },
+    {
+     "date": "2026-10-14",
+     "days_ago": 8,
+     "firm": "Piper Sandler",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 502.0,
+     "price_target_to": 504.0,
+     "is_rating_change": false,
+     "description": "Piper Sandler maintained its Overweight rating on UNH and raised its price target from $502.0 to $504.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.96,
+    "verdict": "leaning bullish",
+    "analysts": 26,
+    "counts": {
+     "strongBuy": 6,
+     "buy": 15,
+     "hold": 5,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.96 to 1.96)"
+   },
+   "price_target": {
+    "mean": 478.12,
+    "median": 495.0,
+    "high": 529.0,
+    "low": 380.0,
+    "current_price": 417.0,
+    "dispersion_pct": 31.2,
+    "upside_vs_mean_pct": 14.7,
+    "upside_vs_median_pct": 18.7
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "UNH",
+   "sector": "Healthcare",
+   "sector_etf": "XLV",
+   "comparison": {
+    "1mo": {
+     "stock_change_pct": 11.04,
+     "sector_etf_change_pct": 6.4,
+     "relative_to_sector_pct": 4.64
+    },
+    "1w": {
+     "stock_change_pct": 10.99,
+     "sector_etf_change_pct": 5.99,
+     "relative_to_sector_pct": 5.0
+    },
+    "2w": {
+     "stock_change_pct": 11.41,
+     "sector_etf_change_pct": 7.62,
+     "relative_to_sector_pct": 3.79
+    },
+    "1d": {
+     "stock_change_pct": 3.04,
+     "sector_etf_change_pct": 2.37,
+     "relative_to_sector_pct": 0.67
+    },
+    "1y": {
+     "stock_change_pct": 20.7,
+     "sector_etf_change_pct": 27.61,
+     "relative_to_sector_pct": -6.91
+    },
+    "ytd": {
+     "stock_change_pct": 27.1,
+     "sector_etf_change_pct": 17.07,
+     "relative_to_sector_pct": 10.03
+    }
+   }
+  },
+  "get_macro": {
+   "vix_current": 16.68,
+   "vix_prev_close": 17.31,
+   "vix_change": -0.63,
+   "sp500_change_pct": 0.58,
+   "source": "yfinance"
+  },
+  "get_events": {
+   "ticker": "UNH",
+   "as_of": "2026-10-22",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 6,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-12",
+     "description": "UNH quarterly earnings scheduled (before the open)",
+     "source": "yfinance",
+     "days_until": 82,
+     "eps_estimate": 2.26,
+     "hour": "bmo"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-13",
+     "description": "UNH reported Q3 2026 earnings before the open \u2014 EPS 4.69 vs 4.1809 expected (beat, +12.2%)",
+     "source": "finnhub",
+     "days_ago": 9,
+     "eps_actual": 4.69,
+     "eps_estimate": 4.1809,
+     "surprise": "beat",
+     "surprise_pct": 12.2,
+     "hour": "bmo"
+    },
+    {
+     "type": "ex_dividend",
+     "date": "2026-09-14",
+     "source": "yfinance",
+     "description": "UNH went ex-dividend \u2014 the price drops by roughly the dividend on this date mechanically, with no news behind it",
+     "days_ago": 38
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub+yfinance"
+  }
+ }
+}

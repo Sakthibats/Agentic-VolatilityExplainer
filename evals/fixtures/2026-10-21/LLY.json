@@ -1,0 +1,326 @@
+{
+ "schema": 1,
+ "ticker": "LLY",
+ "trading_day": "2026-10-21",
+ "captured_at": "2026-10-22T00:07:59+00:00",
+ "selected_as": "move",
+ "change_pct": -1.01,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 3.49% \u2014 elevated for this stock (about 1.88x its normal move for that span, expected ~1.85%)",
+   "this week: 10.04% \u2014 elevated for this stock (about 2.42x its normal move for that span, expected ~4.14%)",
+   "the past 2 weeks: 10.9% \u2014 elevated for this stock (about 1.86x its normal move for that span, expected ~5.86%)",
+   "the past year: 60.9% \u2014 elevated relative to this stock's own typical volatility (expected ~29.40%, 2.07x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "LLY",
+   "price": 1270.75,
+   "prev_close": 1283.66,
+   "change_pct": -1.01,
+   "realized_vol_annualized_pct": 29.4,
+   "changes_pct": {
+    "1d": 3.49,
+    "1w": 10.04,
+    "2w": 10.9,
+    "1mo": 10.2,
+    "1y": 60.9,
+    "ytd": 19.39
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 3.49% \u2014 elevated for this stock (about 1.88x its normal move for that span, expected ~1.85%)",
+     "this week: 10.04% \u2014 elevated for this stock (about 2.42x its normal move for that span, expected ~4.14%)",
+     "the past 2 weeks: 10.9% \u2014 elevated for this stock (about 1.86x its normal move for that span, expected ~5.86%)",
+     "the past year: 60.9% \u2014 elevated relative to this stock's own typical volatility (expected ~29.40%, 2.07x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "LLY",
+   "headlines": [
+    {
+     "headline": "Is One Older Drug The Biggest Risk To Bristol Myers Squibb Stock?",
+     "summary": "For questions about this article or underlying research, email help@trefis.com.",
+     "datetime": 1792614371,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=60fab21e4459df56884c06727fb45337dcfb39de578b8bb76a818cb0b9a2c61f"
+    },
+    {
+     "headline": "Eli Lilly (LLY) Grew Revenue 48% While Prices Fell, Can Volume Keep Winning?",
+     "summary": "Eli Lilly (NYSE:LLY) reports third-quarter results in about a week, and the split between volume and price matters more than the headline total. In the second quarter, revenue rose 48% to $23.0...",
+     "datetime": 1792603897,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=c067df46b5716077439350f72e8968a612c49af08a30fd72c8681e7a5dc244df"
+    },
+    {
+     "headline": "Why This Pharma Pro Likes Johnson & Johnson, Eli Lilly, and Merck Stock",
+     "summary": "Despite rising interest rates and the uncertainty of midterm elections, Asad Haider of Goldman Sachs sees promise in Big Pharma and biotech.",
+     "datetime": 1792601460,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=f5abb9789bc133fffb098f2944a7386165767acd4b1709ab9cb02f60e4ad6638"
+    },
+    {
+     "headline": "Arcus kidney cancer data impresses analysts; TriGemX inks a SPAC deal",
+     "summary": "New follow-up results suggest Arcus\u2019 drug might be superior to a marketed Merck medicine. Elsewhere, Eli Lilly and AstraZeneca forged new partnerships.",
+     "datetime": 1792592580,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=1f7144019bee408869f496718ede654639ee230ab2f01b6c738cb2715b296aae"
+    },
+    {
+     "headline": "Not Lilly. Not Johnson & Johnson. This Stock Will Be the Biggest Healthcare Winner of 2026",
+     "summary": "The market has rewarded this biotech for its breakthroughs.",
+     "datetime": 1792592400,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=7c39446ebb9278bb2d99569bee16687e10aca18b31406bd86220786f8f187137"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "LLY",
+   "expiry": "2026-11-06",
+   "days_to_expiry": 15,
+   "atm_iv_pct": 50.0,
+   "iv_chain_percentile": 2,
+   "skew_points": -1.6,
+   "put_call_ratio": 1.88,
+   "total_put_oi": 7436,
+   "total_call_oi": 3960
+  },
+  "get_options_positioning": {
+   "ticker": "LLY",
+   "spot": 1270.75,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-06",
+   "primary_days_to_expiry": 15,
+   "max_pain_strike": 1205.0,
+   "resistance_walls": [
+    {
+     "strike": 1240.0,
+     "open_interest": 332
+    },
+    {
+     "strike": 1145.0,
+     "open_interest": 303
+    },
+    {
+     "strike": 1560.0,
+     "open_interest": 231
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 985.0,
+     "open_interest": 563
+    },
+    {
+     "strike": 680.0,
+     "open_interest": 370
+    },
+    {
+     "strike": 1075.0,
+     "open_interest": 317
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-06",
+     "days_to_expiry": 15,
+     "atm_iv_pct": 50.0
+    },
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 22,
+     "atm_iv_pct": 48.1
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 29,
+     "atm_iv_pct": 43.0
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 760.0,
+     "volume": 132,
+     "open_interest": 255,
+     "vol_oi_ratio": 0.5,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 2087,
+   "otm_put_oi": 7236,
+   "positioning_lean_score": -0.55,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "LLY",
+   "as_of": "2026-10-22",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-21",
+     "days_ago": 1,
+     "firm": "Leerink Partners",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 1309.0,
+     "price_target_to": 1316.0,
+     "is_rating_change": false,
+     "description": "Leerink Partners maintained its Outperform rating on LLY and raised its price target from $1309.0 to $1316.0"
+    },
+    {
+     "date": "2026-10-12",
+     "days_ago": 10,
+     "firm": "RBC Capital",
+     "action": "reiterated",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 1500.0,
+     "price_target_to": 1500.0,
+     "is_rating_change": false,
+     "description": "RBC Capital reiterated its Outperform rating on LLY with a $1500.0 price target"
+    },
+    {
+     "date": "2026-10-08",
+     "days_ago": 14,
+     "firm": "Cantor Fitzgerald",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 1410.0,
+     "price_target_to": 1440.0,
+     "is_rating_change": false,
+     "description": "Cantor Fitzgerald maintained its Overweight rating on LLY and raised its price target from $1410.0 to $1440.0"
+    },
+    {
+     "date": "2026-10-07",
+     "days_ago": 15,
+     "firm": "Morgan Stanley",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 1419.0,
+     "price_target_to": 1430.0,
+     "is_rating_change": false,
+     "description": "Morgan Stanley maintained its Overweight rating on LLY and raised its price target from $1419.0 to $1430.0"
+    },
+    {
+     "date": "2026-09-28",
+     "days_ago": 24,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 1400.0,
+     "price_target_to": 1500.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Overweight rating on LLY and raised its price target from $1400.0 to $1500.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.06,
+    "verdict": "leaning bullish",
+    "analysts": 31,
+    "counts": {
+     "strongBuy": 6,
+     "buy": 20,
+     "hold": 3,
+     "sell": 1,
+     "strongSell": 1
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.14 to 2.06; bearish ratings 2 to 2)"
+   },
+   "price_target": {
+    "mean": 1331.55,
+    "median": 1398.5,
+    "high": 1600.0,
+    "low": 930.0,
+    "current_price": 1270.75,
+    "dispersion_pct": 50.3,
+    "upside_vs_mean_pct": 4.8,
+    "upside_vs_median_pct": 10.1
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "LLY",
+   "sector": "Healthcare",
+   "sector_etf": "XLV",
+   "comparison": {
+    "1mo": {
+     "stock_change_pct": 10.2,
+     "sector_etf_change_pct": 6.4,
+     "relative_to_sector_pct": 3.8
+    },
+    "1w": {
+     "stock_change_pct": 10.04,
+     "sector_etf_change_pct": 5.99,
+     "relative_to_sector_pct": 4.05
+    },
+    "2w": {
+     "stock_change_pct": 10.9,
+     "sector_etf_change_pct": 7.62,
+     "relative_to_sector_pct": 3.28
+    },
+    "1d": {
+     "stock_change_pct": 3.49,
+     "sector_etf_change_pct": 2.37,
+     "relative_to_sector_pct": 1.12
+    },
+    "1y": {
+     "stock_change_pct": 60.9,
+     "sector_etf_change_pct": 27.61,
+     "relative_to_sector_pct": 33.29
+    },
+    "ytd": {
+     "stock_change_pct": 19.39,
+     "sector_etf_change_pct": 17.07,
+     "relative_to_sector_pct": 2.32
+    }
+   }
+  },
+  "get_macro": {
+   "vix_current": 16.68,
+   "vix_prev_close": 17.31,
+   "vix_change": -0.63,
+   "sp500_change_pct": 0.58,
+   "source": "yfinance"
+  },
+  "get_events": {
+   "ticker": "LLY",
+   "as_of": "2026-10-22",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 6,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-10-29",
+     "description": "LLY Q3 2026 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 7,
+     "eps_estimate": 7.4328
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}

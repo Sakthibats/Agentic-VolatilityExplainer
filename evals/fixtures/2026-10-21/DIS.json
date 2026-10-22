@@ -1,0 +1,335 @@
+{
+ "schema": 1,
+ "ticker": "DIS",
+ "trading_day": "2026-10-21",
+ "captured_at": "2026-10-22T00:07:52+00:00",
+ "selected_as": "move",
+ "change_pct": 0.14,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "today: 1.9% \u2014 elevated relative to this stock's own typical volatility (expected ~1.25%, 1.52x), but typical in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past 2 weeks: 7.34% \u2014 elevated relative to this stock's own typical volatility (expected ~3.96%, 1.85x), but typical in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "DIS",
+   "price": 111.83,
+   "prev_close": 111.67,
+   "change_pct": 0.14,
+   "realized_vol_annualized_pct": 19.9,
+   "changes_pct": {
+    "1d": 1.9,
+    "1w": 2.85,
+    "2w": 7.34,
+    "1mo": 7.14,
+    "1y": 2.36,
+    "ytd": 0.6
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "today: 1.9% \u2014 elevated relative to this stock's own typical volatility (expected ~1.25%, 1.52x), but typical in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past 2 weeks: 7.34% \u2014 elevated relative to this stock's own typical volatility (expected ~3.96%, 1.85x), but typical in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "DIS",
+   "headlines": [
+    {
+     "headline": "Stock Market Today, Oct. 21: Netflix Cuts Ad Revenue Guidance, Stock Slides 5%",
+     "summary": "On Oct. 21, 2026, Netflix slashed ad guidance and Q4 revenue outlook, leaving investors questioning whether advertising can reaccelerate growth.",
+     "datetime": 1792616928,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=1458680433352ddda58c48f9a548c6940417e764fc301135101d8a30ecf3ce17"
+    },
+    {
+     "headline": "Skydance Rallies 10% as Shares Rebound After Warrant Selloff; Spotify Eases, Disney Holds Steady",
+     "summary": "Skydance shares are staging a sharp recovery while the rest of the media sector slides, and the reason traces back to a warrant split that may not be done rattling the stock.",
+     "datetime": 1792609198,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=c1c5d567e8be73d1d9ee6814332b893be9ef4c7c4f7f6f7c552e4386e0bf3131"
+    },
+    {
+     "headline": "Netflix Sinks 7% as Soft Q4 Outlook Sparks Wave of Price Target Cuts; Spotify Slips, Disney Holds Steady",
+     "summary": "A Q4 2026 revenue forecast that fell short of Wall Street\u2019s expectations is overshadowing an earnings beat at Netflix (NASDAQ:NFLX), and a string of lowered analyst targets is compounding the damage....",
+     "datetime": 1792588280,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=66c2b2cd063022e2cdd9edfb08a50572077849620d5a5133ce60a6b11b72491a"
+    },
+    {
+     "headline": "Netflix Has Lost Nearly Half Its Value in a Year",
+     "summary": "Netflix just delivered a profit beat that sent its stock to fresh lows, and the reason why reveals a tension at the heart of the streaming giant's next chapter.",
+     "datetime": 1792583149,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=711114b162ee9247bf9ccfaa4e881676a214ff32a5d492d0ddeb4a707b86f1d0"
+    },
+    {
+     "headline": "No Breakout Hit and an Ad Shortfall: What Netflix Needs to Prove Next",
+     "summary": "Netflix beat on profits but Wall Street is calling it a \"show me\" story, pointing to a missing global hit, a stumbling ad rollout, and slowing revenue growth as three tests the streamer must pass...",
+     "datetime": 1792581658,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=4f2afb4a3480d07ea0172d8e1525af0a30fa0495032a58c7987b647225a097e5"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "DIS",
+   "expiry": "2026-11-06",
+   "days_to_expiry": 15,
+   "atm_iv_pct": 31.7,
+   "iv_chain_percentile": 11,
+   "skew_points": 3.1,
+   "put_call_ratio": 0.63,
+   "total_put_oi": 2711,
+   "total_call_oi": 4332
+  },
+  "get_options_positioning": {
+   "ticker": "DIS",
+   "spot": 111.83,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-06",
+   "primary_days_to_expiry": 15,
+   "max_pain_strike": 107.0,
+   "resistance_walls": [
+    {
+     "strike": 106.0,
+     "open_interest": 626
+    },
+    {
+     "strike": 110.0,
+     "open_interest": 401
+    },
+    {
+     "strike": 120.0,
+     "open_interest": 398
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 110.0,
+     "open_interest": 326
+    },
+    {
+     "strike": 104.0,
+     "open_interest": 268
+    },
+    {
+     "strike": 96.0,
+     "open_interest": 240
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-06",
+     "days_to_expiry": 15,
+     "atm_iv_pct": 31.7
+    },
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 22,
+     "atm_iv_pct": 26.1
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 29,
+     "atm_iv_pct": 35.6
+    }
+   ],
+   "term_structure_trend": "Rising \u2014 market pricing in a later catalyst within the horizon",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 109.0,
+     "volume": 105,
+     "open_interest": 82,
+     "vol_oi_ratio": 1.3,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 113.0,
+     "volume": 147,
+     "open_interest": 148,
+     "vol_oi_ratio": 1.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 108.0,
+     "volume": 104,
+     "open_interest": 171,
+     "vol_oi_ratio": 0.6,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 104.0,
+     "volume": 157,
+     "open_interest": 268,
+     "vol_oi_ratio": 0.6,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 2372,
+   "otm_put_oi": 2384,
+   "positioning_lean_score": -0.0,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "DIS",
+   "as_of": "2026-10-22",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-16",
+     "days_ago": 6,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 135.0,
+     "price_target_to": 140.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Buy rating on DIS and raised its price target from $135.0 to $140.0"
+    },
+    {
+     "date": "2026-10-09",
+     "days_ago": 13,
+     "firm": "Needham",
+     "action": "reiterated",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 125.0,
+     "price_target_to": 125.0,
+     "is_rating_change": false,
+     "description": "Needham reiterated its Buy rating on DIS with a $125.0 price target"
+    },
+    {
+     "date": "2026-10-05",
+     "days_ago": 17,
+     "firm": "Raymond James",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 120.0,
+     "price_target_to": 119.0,
+     "is_rating_change": false,
+     "description": "Raymond James maintained its Outperform rating on DIS and cut its price target from $120.0 to $119.0"
+    },
+    {
+     "date": "2026-09-28",
+     "days_ago": 24,
+     "firm": "Guggenheim",
+     "action": "reiterated",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 120.0,
+     "price_target_to": 120.0,
+     "is_rating_change": false,
+     "description": "Guggenheim reiterated its Buy rating on DIS with a $120.0 price target"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.97,
+    "verdict": "leaning bullish",
+    "analysts": 33,
+    "counts": {
+     "strongBuy": 6,
+     "buy": 23,
+     "hold": 3,
+     "sell": 1,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.94 to 1.97)"
+   },
+   "price_target": {
+    "mean": 126.58,
+    "median": 127.5,
+    "high": 144.0,
+    "low": 86.0,
+    "current_price": 111.83,
+    "dispersion_pct": 45.8,
+    "upside_vs_mean_pct": 13.2,
+    "upside_vs_median_pct": 14.0
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "DIS",
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "comparison": {
+    "1mo": {
+     "stock_change_pct": 7.14,
+     "sector_etf_change_pct": -3.97,
+     "relative_to_sector_pct": 11.11
+    },
+    "1w": {
+     "stock_change_pct": 2.85,
+     "sector_etf_change_pct": -1.86,
+     "relative_to_sector_pct": 4.71
+    },
+    "2w": {
+     "stock_change_pct": 7.34,
+     "sector_etf_change_pct": -1.31,
+     "relative_to_sector_pct": 8.65
+    },
+    "1d": {
+     "stock_change_pct": 1.9,
+     "sector_etf_change_pct": 0.09,
+     "relative_to_sector_pct": 1.81
+    },
+    "1y": {
+     "stock_change_pct": 2.36,
+     "sector_etf_change_pct": -2.95,
+     "relative_to_sector_pct": 5.31
+    },
+    "ytd": {
+     "stock_change_pct": 0.6,
+     "sector_etf_change_pct": -4.88,
+     "relative_to_sector_pct": 5.48
+    }
+   }
+  },
+  "get_macro": {
+   "vix_current": 16.68,
+   "vix_prev_close": 17.31,
+   "vix_change": -0.63,
+   "sp500_change_pct": 0.58,
+   "source": "yfinance"
+  },
+  "get_events": {
+   "ticker": "DIS",
+   "as_of": "2026-10-22",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 6,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-11-17",
+     "description": "DIS Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 26,
+     "eps_estimate": 1.9967,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}

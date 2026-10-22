@@ -1,0 +1,325 @@
+{
+ "schema": 1,
+ "ticker": "BA",
+ "trading_day": "2026-10-21",
+ "captured_at": "2026-10-22T00:07:46+00:00",
+ "selected_as": "control",
+ "change_pct": 0.95,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "BA",
+   "price": 192.28,
+   "prev_close": 190.47,
+   "change_pct": 0.95,
+   "realized_vol_annualized_pct": 32.9,
+   "changes_pct": {
+    "1d": -0.5,
+    "1w": 2.13,
+    "2w": 0.34,
+    "1mo": -5.31,
+    "1y": -10.55,
+    "ytd": -16.38
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   }
+  },
+  "get_news": {
+   "ticker": "BA",
+   "headlines": [
+    {
+     "headline": "Boeing wins FAA certification for 737 MAX 10 after nine-year wait",
+     "summary": "Boeing Co (NYSE:BA, XETRA:BCO) has secured Federal Aviation Administration certification for its 737 MAX 10, clearing a major hurdle for the largest aircraft in its narrowbody family as it prepares...",
+     "datetime": 1792608660,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=eb5360565bb0fc196ba1c2ccd2e0ce2d7e11783add9e6f7a4d9b523d91a91709"
+    },
+    {
+     "headline": "What United Airlines (UAL) Said on Its Q3 Earnings Call",
+     "summary": "United Airlines (NASDAQ:UAL) said third-quarter revenue rose 17.4% year over year to a record $17.9 billion, as the carrier raised fares amid higher fuel costs and continued to gain share in its hub...",
+     "datetime": 1792605844,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=ae41cbf4e8b660ea3bb554e5a564507f94a942f04817d358c949a762b7742adb"
+    },
+    {
+     "headline": "BAE Systems to expand advanced manufacturing capabilities in Weld County, Colorado",
+     "summary": "BAE Systems (LON: BA) announced today that it has closed on the purchase of a 130,000 square-foot production facility in Weld County, Colorado. The building, located on approximately 13 acres, will...",
+     "datetime": 1792594800,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=1e553034d69972965f463a3e4b762cd7817ee43ec16d3f307cf39d8bb91c650e"
+    },
+    {
+     "headline": "FAA Grants Final Approval For Long Delayed Boeing 737 MAX 10",
+     "summary": "Key Stats for Boeing StockPrice change for Boeing stock in the last 6 months: -13%$BA Stock Price as of Oct. 20: $19052-Week High: $254$BA Stock Price Target: $267What Happened?Boeing (BA:NYSE) got a...",
+     "datetime": 1792589086,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=54bafd69956bf303419d9db99b9ba1070cb36179f54bb47ef15ead4fb775ae04"
+    },
+    {
+     "headline": "The Problem With GE Aerospace Stock",
+     "summary": "GE Aerospace stock just can\u2019t catch a break. Coming into Wednesday trading, shares were down 2% over the past 12 months, despite strong earnings reports.",
+     "datetime": 1792585740,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=5579eace755d529ff2e9a336a3e5d37ea20838f389db361751a92ccd399fbaaf"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "BA",
+   "expiry": "2026-11-06",
+   "days_to_expiry": 15,
+   "atm_iv_pct": 44.9,
+   "iv_chain_percentile": 2,
+   "skew_points": -0.3,
+   "put_call_ratio": 1.61,
+   "total_put_oi": 9515,
+   "total_call_oi": 5922
+  },
+  "get_options_positioning": {
+   "ticker": "BA",
+   "spot": 192.28,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-06",
+   "primary_days_to_expiry": 15,
+   "max_pain_strike": 185.0,
+   "resistance_walls": [
+    {
+     "strike": 200.0,
+     "open_interest": 1957
+    },
+    {
+     "strike": 205.0,
+     "open_interest": 681
+    },
+    {
+     "strike": 195.0,
+     "open_interest": 537
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 165.0,
+     "open_interest": 7347
+    },
+    {
+     "strike": 170.0,
+     "open_interest": 415
+    },
+    {
+     "strike": 180.0,
+     "open_interest": 358
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-06",
+     "days_to_expiry": 15,
+     "atm_iv_pct": 44.9
+    },
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 22,
+     "atm_iv_pct": 40.9
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 29,
+     "atm_iv_pct": 38.1
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 190.0,
+     "volume": 568,
+     "open_interest": 506,
+     "vol_oi_ratio": 1.1,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 200.0,
+     "volume": 112,
+     "open_interest": 1957,
+     "vol_oi_ratio": 0.1,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 4709,
+   "otm_put_oi": 9083,
+   "positioning_lean_score": -0.32,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "BA",
+   "as_of": "2026-10-22",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-19",
+     "days_ago": 3,
+     "firm": "Morgan Stanley",
+     "action": "maintained",
+     "from_grade": "Equal-Weight",
+     "to_grade": "Equal-Weight",
+     "price_target_from": 250.0,
+     "price_target_to": 225.0,
+     "is_rating_change": false,
+     "description": "Morgan Stanley maintained its Equal-Weight rating on BA and cut its price target from $250.0 to $225.0"
+    },
+    {
+     "date": "2026-10-15",
+     "days_ago": 7,
+     "firm": "RBC Capital",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 265.0,
+     "price_target_to": 235.0,
+     "is_rating_change": false,
+     "description": "RBC Capital maintained its Outperform rating on BA and cut its price target from $265.0 to $235.0"
+    },
+    {
+     "date": "2026-10-12",
+     "days_ago": 10,
+     "firm": "Bernstein",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 298.0,
+     "price_target_to": 278.0,
+     "is_rating_change": false,
+     "description": "Bernstein maintained its Outperform rating on BA and cut its price target from $298.0 to $278.0"
+    },
+    {
+     "date": "2026-10-09",
+     "days_ago": 13,
+     "firm": "TD Cowen",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 250.0,
+     "price_target_to": 240.0,
+     "is_rating_change": false,
+     "description": "TD Cowen maintained its Buy rating on BA and cut its price target from $250.0 to $240.0"
+    },
+    {
+     "date": "2026-10-09",
+     "days_ago": 13,
+     "firm": "Barclays",
+     "action": "initiated coverage",
+     "from_grade": null,
+     "to_grade": "Overweight",
+     "price_target_from": null,
+     "price_target_to": 300.0,
+     "is_rating_change": false,
+     "description": "Barclays initiated coverage of BA at Overweight with a $300.0 price target"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.9,
+    "verdict": "leaning bullish",
+    "analysts": 29,
+    "counts": {
+     "strongBuy": 7,
+     "buy": 18,
+     "hold": 4,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.18 to 1.9; bearish ratings 1 to 0)"
+   },
+   "price_target": {
+    "mean": 267.22,
+    "median": 270.0,
+    "high": 305.0,
+    "low": 206.0,
+    "current_price": 192.28,
+    "dispersion_pct": 37.0,
+    "upside_vs_mean_pct": 39.0,
+    "upside_vs_median_pct": 40.4
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "BA",
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "comparison": {
+    "1mo": {
+     "stock_change_pct": -5.31,
+     "sector_etf_change_pct": -1.87,
+     "relative_to_sector_pct": -3.44
+    },
+    "1w": {
+     "stock_change_pct": 2.13,
+     "sector_etf_change_pct": -1.11,
+     "relative_to_sector_pct": 3.24
+    },
+    "2w": {
+     "stock_change_pct": 0.34,
+     "sector_etf_change_pct": -2.79,
+     "relative_to_sector_pct": 3.13
+    },
+    "1d": {
+     "stock_change_pct": -0.5,
+     "sector_etf_change_pct": 0.07,
+     "relative_to_sector_pct": -0.57
+    },
+    "1y": {
+     "stock_change_pct": -10.55,
+     "sector_etf_change_pct": 11.19,
+     "relative_to_sector_pct": -21.74
+    },
+    "ytd": {
+     "stock_change_pct": -16.38,
+     "sector_etf_change_pct": 6.43,
+     "relative_to_sector_pct": -22.81
+    }
+   }
+  },
+  "get_macro": {
+   "vix_current": 16.68,
+   "vix_prev_close": 17.31,
+   "vix_change": -0.63,
+   "sp500_change_pct": 0.58,
+   "source": "yfinance"
+  },
+  "get_events": {
+   "ticker": "BA",
+   "as_of": "2026-10-22",
+   "events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-27",
+     "description": "BA Q3 2026 earnings scheduled (before the open)",
+     "source": "finnhub",
+     "days_until": 5,
+     "eps_estimate": -0.2063,
+     "hour": "bmo"
+    },
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 6,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}

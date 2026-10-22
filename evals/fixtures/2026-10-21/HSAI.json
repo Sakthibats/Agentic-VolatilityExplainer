@@ -1,0 +1,274 @@
+{
+ "schema": 1,
+ "ticker": "HSAI",
+ "trading_day": "2026-10-21",
+ "captured_at": "2026-10-22T00:08:52+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -5.72,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 8.28% \u2014 elevated relative to this stock's own typical volatility (expected ~3.89%, 2.13x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past 2 weeks: -14.01% \u2014 typical relative to this stock's own typical volatility (expected ~12.31%, 1.14x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past month: -19.46% \u2014 typical relative to this stock's own typical volatility (expected ~17.84%, 1.09x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past year: -37.68% \u2014 typical relative to this stock's own typical volatility (expected ~61.80%, 0.61x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "HSAI",
+   "price": 13.19,
+   "prev_close": 13.99,
+   "change_pct": -5.72,
+   "realized_vol_annualized_pct": 61.8,
+   "changes_pct": {
+    "1d": 8.28,
+    "1w": -3.25,
+    "2w": -14.01,
+    "1mo": -19.46,
+    "1y": -37.68,
+    "ytd": -41.9
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 8.28% \u2014 elevated relative to this stock's own typical volatility (expected ~3.89%, 2.13x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past 2 weeks: -14.01% \u2014 typical relative to this stock's own typical volatility (expected ~12.31%, 1.14x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past month: -19.46% \u2014 typical relative to this stock's own typical volatility (expected ~17.84%, 1.09x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past year: -37.68% \u2014 typical relative to this stock's own typical volatility (expected ~61.80%, 0.61x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "HSAI",
+   "headlines": [
+    {
+     "headline": "Hesai Group to Report Third Quarter 2026 Financial Results on Tuesday, November 10, 2026",
+     "summary": "- Earnings Call Scheduled for 7:00 AM ET on November 10, 2026 -SHANGHAI, China, Oct. 20, 2026 (GLOBE NEWSWIRE) -- Hesai Group (Nasdaq: HSAI; HKEX: 2525) (\u201cHesai\u201d or the \u201cCompany\u201d), a Physical AI...",
+     "datetime": 1792485000,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=82f30247e468c847788833205cb188b9dff61b98bc8db7c188657ba7dc193dee"
+    },
+    {
+     "headline": "12 Consumer Discretionary Stocks Moving In Tuesday's Pre-Market Session",
+     "summary": "Gainers\n\nFort Technology (NASDAQ:FRTT) shares moved upwards by 18.3% to $0.64 during Tuesday&#39;s pre-market session. The company&#39;s market cap stands at $8.0 million. \nEpsium Enterprise...",
+     "datetime": 1792483540,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=8d2a1f02241398b64c3df497a172a13f2b740f1ac0d59fd5b257aebba490075e"
+    },
+    {
+     "headline": "Why 3M Shares Are Trading Higher; Here Are 20 Stocks Moving Premarket",
+     "summary": "3M shares rose 4.4% premarket after expanding its Amazon data-center deal, including a $521.4M stock warrant; other stocks saw sharp moves.",
+     "datetime": 1792471437,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=5ce8e84318fb1ff6825255a5a978fff5a8af3e0b5e1c92057910b752c1093f62"
+    },
+    {
+     "headline": "How Kosmo Launch Will Impact Hesai Group (HSAI) Investors",
+     "summary": "Hesai Group recently introduced Kosmo, a Physical AI focused 3D world data engine that pairs the Kosmo One 8K AI spatial camera with the Kosmo World cloud platform to convert real environments into...",
+     "datetime": 1792459074,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=175c501f2aaf393a639ce22c2cb30d4ac1ba08f4f0f2c9beced548c6a150e56f"
+    },
+    {
+     "headline": "Zacks Industry Outlook Highlights Mobileye Global and Hesai Group",
+     "summary": "Mobileye Global and Hesai Group stand out as auto suppliers embrace advanced driver assistance and lidar, with rising technology demand creating growth opportunities despite industry headwinds",
+     "datetime": 1792066860,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=3b3c37c990113fd62e2b13d6ef824ae2560d0437d87f3da67bb0178b6c1c6909"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "HSAI",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 29,
+   "atm_iv_pct": 76.2,
+   "iv_chain_percentile": 27,
+   "skew_points": -3.7,
+   "put_call_ratio": 0.8,
+   "total_put_oi": 4625,
+   "total_call_oi": 5815
+  },
+  "get_options_positioning": {
+   "ticker": "HSAI",
+   "spot": 13.19,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 29,
+   "max_pain_strike": 15.0,
+   "resistance_walls": [
+    {
+     "strike": 15.0,
+     "open_interest": 1582
+    },
+    {
+     "strike": 17.5,
+     "open_interest": 1049
+    },
+    {
+     "strike": 10.0,
+     "open_interest": 992
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 15.0,
+     "open_interest": 1764
+    },
+    {
+     "strike": 10.0,
+     "open_interest": 1673
+    },
+    {
+     "strike": 12.5,
+     "open_interest": 794
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 29,
+     "atm_iv_pct": 76.2
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 15.0,
+     "volume": 408,
+     "open_interest": 1582,
+     "vol_oi_ratio": 0.3,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 17.5,
+     "volume": 107,
+     "open_interest": 330,
+     "vol_oi_ratio": 0.3,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 12.5,
+     "volume": 141,
+     "open_interest": 794,
+     "vol_oi_ratio": 0.2,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 4247,
+   "otm_put_oi": 2467,
+   "positioning_lean_score": 0.27,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "HSAI",
+   "as_of": "2026-10-22",
+   "analyst_coverage": "covered",
+   "recent_actions": [],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.74,
+    "verdict": "leaning bullish",
+    "analysts": 19,
+    "counts": {
+     "strongBuy": 5,
+     "buy": 14,
+     "hold": 0,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.75 to 1.74)"
+   },
+   "price_target": {
+    "mean": 27.75,
+    "median": 27.3,
+    "high": 36.42,
+    "low": 19.5,
+    "current_price": 13.19,
+    "dispersion_pct": 61.0,
+    "upside_vs_mean_pct": 110.4,
+    "upside_vs_median_pct": 107.0
+   },
+   "notes": [
+    "No analyst rating changes in the last 30 days \u2014 the consensus below is standing opinion, not a recent catalyst."
+   ]
+  },
+  "get_sector_comparison": {
+   "ticker": "HSAI",
+   "sector": "Consumer Cyclical",
+   "sector_etf": "XLY",
+   "comparison": {
+    "1mo": {
+     "stock_change_pct": -19.46,
+     "sector_etf_change_pct": 2.91,
+     "relative_to_sector_pct": -22.37
+    },
+    "1w": {
+     "stock_change_pct": -3.25,
+     "sector_etf_change_pct": 2.79,
+     "relative_to_sector_pct": -6.04
+    },
+    "2w": {
+     "stock_change_pct": -14.01,
+     "sector_etf_change_pct": 3.38,
+     "relative_to_sector_pct": -17.39
+    },
+    "1d": {
+     "stock_change_pct": 8.28,
+     "sector_etf_change_pct": 0.91,
+     "relative_to_sector_pct": 7.37
+    },
+    "1y": {
+     "stock_change_pct": -37.68,
+     "sector_etf_change_pct": -0.65,
+     "relative_to_sector_pct": -37.03
+    },
+    "ytd": {
+     "stock_change_pct": -41.9,
+     "sector_etf_change_pct": -1.8,
+     "relative_to_sector_pct": -40.1
+    }
+   }
+  },
+  "get_macro": {
+   "vix_current": 16.68,
+   "vix_prev_close": 17.31,
+   "vix_change": -0.63,
+   "sp500_change_pct": 0.58,
+   "source": "yfinance"
+  },
+  "get_events": {
+   "ticker": "HSAI",
+   "as_of": "2026-10-22",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 6,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-11-09",
+     "description": "HSAI Q3 2026 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 18,
+     "eps_estimate": 1.2719
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}
