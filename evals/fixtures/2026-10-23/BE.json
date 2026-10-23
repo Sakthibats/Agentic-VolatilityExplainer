@@ -1,0 +1,408 @@
+{
+ "schema": 1,
+ "ticker": "BE",
+ "trading_day": "2026-10-23",
+ "captured_at": "2026-10-23T23:56:57+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -11.24,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: -11.24% \u2014 elevated relative to this stock's own typical volatility (expected ~5.90%, 1.9x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "this week: -12.66% \u2014 typical relative to this stock's own typical volatility (expected ~13.20%, 0.96x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past 2 weeks: -31.09% \u2014 elevated relative to this stock's own typical volatility (expected ~18.67%, 1.67x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past month: -27.51% \u2014 typical relative to this stock's own typical volatility (expected ~27.05%, 1.02x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past year: 104.83% \u2014 typical relative to this stock's own typical volatility (expected ~93.70%, 1.12x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "BE",
+   "price": 193.3,
+   "prev_close": 217.77,
+   "change_pct": -11.24,
+   "realized_vol_annualized_pct": 93.7,
+   "changes_pct": {
+    "1d": -11.24,
+    "1w": -12.66,
+    "2w": -31.09,
+    "1mo": -27.51,
+    "1y": 104.83,
+    "ytd": 95.87
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: -11.24% \u2014 elevated relative to this stock's own typical volatility (expected ~5.90%, 1.9x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "this week: -12.66% \u2014 typical relative to this stock's own typical volatility (expected ~13.20%, 0.96x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past 2 weeks: -31.09% \u2014 elevated relative to this stock's own typical volatility (expected ~18.67%, 1.67x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past month: -27.51% \u2014 typical relative to this stock's own typical volatility (expected ~27.05%, 1.02x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past year: 104.83% \u2014 typical relative to this stock's own typical volatility (expected ~93.70%, 1.12x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "BE",
+   "headlines": [
+    {
+     "headline": "Stock Market Today, Oct. 23: Bloom Energy Falls on Cash Flow Concerns Despite Record Q3 Revenue",
+     "summary": "Today, Oct. 23, 2026, investors punished the fuel-cell maker after flagging negative operating cash flow and heavy expansion spending.",
+     "datetime": 1792789598,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=4e982536da842bb4f9811b01de5e91adc9bde3bd5db404dfcf0cb26d1da8a655"
+    },
+    {
+     "headline": "Stock Market Today: Nasdaq Posts Back-To-Back Losses As Oil Surges; Samsara Breaks Out",
+     "summary": "The Dow Jones index drops 650 points Friday as oil prices rally. Bloom, MaxLinear and WDC are big earnings movers.",
+     "datetime": 1792787933,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=76dc3c996e4c9f07c9737022aee8b965cebebe9bae438e8b28c49d343a1be79c"
+    },
+    {
+     "headline": "GE Vernova Fell Nearly 11% in a Day After Meta\u2019s Earnings. Here\u2019s Where the Stock Could Go by 2030",
+     "summary": "Key Stats for GE Vernova StockCurrent Price: $827. 42Target Price (Mid): ~$3,000Street Target: ~$1,224Potential Total Return: ~262%Annualized IRR: ~36% / year__Now Live: Discover how much upside your...",
+     "datetime": 1792787820,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=f962618b1e5a89cd82b255ecfad61a8f749d5eb037f143ebb4aa24a5e0f758f2"
+    },
+    {
+     "headline": "Stock Market Today: Dow Sheds 600 Points As Oil Jumps; Samsara Breaks Out (Live Coverage)",
+     "summary": "The Dow Jones index drops 600 points Friday as oil prices rally. Bloom, MaxLinear and WDC are big earnings movers.",
+     "datetime": 1792783036,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=d984b60680d973f8d4ba221f6ef6f43f0254ab3f0526336fba52c4fa77ad4b6d"
+    },
+    {
+     "headline": "Today's S&P 500 Top Movers: Crown Castle Leads Gainers, Bloom Energy Leads Losers",
+     "summary": "Crown Castle rose 10.08% and Bloom Energy fell 10.71% among S&P 500 top movers, with Palo Alto Networks, SLB, AT&T and T-Mobile also posting notable moves.",
+     "datetime": 1792782376,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=62fb6c4f4b9177f203d1ec1af8f087343a02195568908b04d69c27d077dc0317"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "BE",
+   "expiry": "2026-11-06",
+   "days_to_expiry": 14,
+   "atm_iv_pct": 80.9,
+   "iv_chain_percentile": 4,
+   "skew_points": 1.6,
+   "put_call_ratio": 1.1,
+   "total_put_oi": 11885,
+   "total_call_oi": 10761
+  },
+  "get_options_positioning": {
+   "ticker": "BE",
+   "spot": 193.3,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-06",
+   "primary_days_to_expiry": 14,
+   "max_pain_strike": 250.0,
+   "resistance_walls": [
+    {
+     "strike": 300.0,
+     "open_interest": 1758
+    },
+    {
+     "strike": 225.0,
+     "open_interest": 1027
+    },
+    {
+     "strike": 390.0,
+     "open_interest": 717
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 235.0,
+     "open_interest": 1798
+    },
+    {
+     "strike": 240.0,
+     "open_interest": 1498
+    },
+    {
+     "strike": 250.0,
+     "open_interest": 773
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-06",
+     "days_to_expiry": 14,
+     "atm_iv_pct": 80.9
+    },
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 21,
+     "atm_iv_pct": 79.6
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 78.7
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 200.0,
+     "volume": 3058,
+     "open_interest": 19,
+     "vol_oi_ratio": 160.9,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 190.0,
+     "volume": 732,
+     "open_interest": 7,
+     "vol_oi_ratio": 104.6,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 195.0,
+     "volume": 438,
+     "open_interest": 8,
+     "vol_oi_ratio": 54.8,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 165.0,
+     "volume": 125,
+     "open_interest": 43,
+     "vol_oi_ratio": 2.9,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 150.0,
+     "volume": 146,
+     "open_interest": 68,
+     "vol_oi_ratio": 2.1,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 10719,
+   "otm_put_oi": 1612,
+   "positioning_lean_score": 0.74,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "BE",
+   "as_of": "2026-10-23",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-23",
+     "days_ago": 0,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 314.0,
+     "price_target_to": 292.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Overweight rating on BE and cut its price target from $314.0 to $292.0"
+    },
+    {
+     "date": "2026-10-23",
+     "days_ago": 0,
+     "firm": "RBC Capital",
+     "action": "reiterated",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 335.0,
+     "price_target_to": 335.0,
+     "is_rating_change": false,
+     "description": "RBC Capital reiterated its Outperform rating on BE with a $335.0 price target"
+    },
+    {
+     "date": "2026-10-23",
+     "days_ago": 0,
+     "firm": "Keybanc",
+     "action": "reiterated",
+     "from_grade": "Sector Weight",
+     "to_grade": "Sector Weight",
+     "price_target_from": null,
+     "price_target_to": null,
+     "is_rating_change": false,
+     "description": "Keybanc reiterated its Sector Weight rating on BE"
+    },
+    {
+     "date": "2026-10-23",
+     "days_ago": 0,
+     "firm": "Morgan Stanley",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 310.0,
+     "price_target_to": 335.0,
+     "is_rating_change": false,
+     "description": "Morgan Stanley maintained its Overweight rating on BE and raised its price target from $310.0 to $335.0"
+    },
+    {
+     "date": "2026-10-23",
+     "days_ago": 0,
+     "firm": "Bernstein",
+     "action": "maintained",
+     "from_grade": "Market Perform",
+     "to_grade": "Market Perform",
+     "price_target_from": 282.0,
+     "price_target_to": 306.0,
+     "is_rating_change": false,
+     "description": "Bernstein maintained its Market Perform rating on BE and raised its price target from $282.0 to $306.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.41,
+    "verdict": "leaning bullish",
+    "analysts": 29,
+    "counts": {
+     "strongBuy": 5,
+     "buy": 10,
+     "hold": 12,
+     "sell": 1,
+     "strongSell": 1
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.41 to 2.41)"
+   },
+   "price_target": {
+    "mean": 284.35,
+    "median": 302.0,
+    "high": 380.0,
+    "low": 97.0,
+    "current_price": 193.3,
+    "dispersion_pct": 99.5,
+    "upside_vs_mean_pct": 47.1,
+    "upside_vs_median_pct": 56.2
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "BE",
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "comparison": {
+    "ytd": {
+     "stock_change_pct": 95.87,
+     "sector_etf_change_pct": 5.03,
+     "relative_to_sector_pct": 90.84
+    },
+    "1mo": {
+     "stock_change_pct": -27.51,
+     "sector_etf_change_pct": -2.49,
+     "relative_to_sector_pct": -25.02
+    },
+    "2w": {
+     "stock_change_pct": -31.09,
+     "sector_etf_change_pct": -2.74,
+     "relative_to_sector_pct": -28.35
+    },
+    "1y": {
+     "stock_change_pct": 104.83,
+     "sector_etf_change_pct": 8.92,
+     "relative_to_sector_pct": 95.91
+    },
+    "1d": {
+     "stock_change_pct": -11.24,
+     "sector_etf_change_pct": -1.27,
+     "relative_to_sector_pct": -9.97
+    },
+    "1w": {
+     "stock_change_pct": -12.66,
+     "sector_etf_change_pct": -1.87,
+     "relative_to_sector_pct": -10.79
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-23",
+    "realtime_end": "2026-10-23",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9603,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-22",
+      "value": "19.03"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-21",
+      "value": "16.68"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-20",
+      "value": "17.31"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-19",
+      "value": "18.44"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-16",
+      "value": "19.99"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "BE",
+   "as_of": "2026-10-23",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 5,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-22",
+     "description": "BE reported Q3 2026 earnings after the close \u2014 EPS 0.94 vs 0.7016 expected (beat, +34.0%)",
+     "source": "finnhub",
+     "days_ago": 1,
+     "eps_actual": 0.94,
+     "eps_estimate": 0.7016,
+     "surprise": "beat",
+     "surprise_pct": 34.0,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

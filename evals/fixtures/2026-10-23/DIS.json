@@ -1,0 +1,356 @@
+{
+ "schema": 1,
+ "ticker": "DIS",
+ "trading_day": "2026-10-23",
+ "captured_at": "2026-10-23T23:56:05+00:00",
+ "selected_as": "control",
+ "change_pct": -0.54,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "DIS",
+   "price": 112.52,
+   "prev_close": 113.13,
+   "change_pct": -0.54,
+   "realized_vol_annualized_pct": 19.3,
+   "changes_pct": {
+    "1d": -0.54,
+    "1w": 1.75,
+    "2w": 4.14,
+    "1mo": 6.59,
+    "1y": 0.95,
+    "ytd": 1.37
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   }
+  },
+  "get_news": {
+   "ticker": "DIS",
+   "headlines": [
+    {
+     "headline": "Netflix Is Now Down 29% This Year: Is NFLX Stock Hopeless or Ready for a Rebound?",
+     "summary": "Netflix just posted a strong earnings beat, bought back a record amount of stock, and expanded margins significantly, yet shares keep sliding while rivals like Roku soar. Something has to give, and...",
+     "datetime": 1792781032,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=a50b6e6c68d45f77a69de680a2a559e6c1e3c39b420a07e7faffd9a6a850b68e"
+    },
+    {
+     "headline": "SpaceX initiation, Apple downgrade among today's top calls on Wall Street",
+     "summary": "SpaceX initiation, Apple downgrade among today's top calls on Wall Street",
+     "datetime": 1792763847,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=e93d39adac500f864dcddfcbf0ab8b2e460896114110468e7c9022761f1367b4"
+    },
+    {
+     "headline": "Can Netflix Stock Hold Margin Gains as Content Spending Keeps Growing?",
+     "summary": "NFLX lifts its operating margin to 34.6% as revenues grow 11.8%, but rising content costs, weaker ad revenue and lower cash flow guidance test its profitability outlook.",
+     "datetime": 1792760400,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=30bb2c8acb88dc837bdc1221c2120d2f2b9a24aee9d8c6516a2e6ecdc69130f2"
+    },
+    {
+     "headline": "Can Netflix Stock Fall 50%?",
+     "summary": "For questions about this article or underlying research, email help@trefis.com.",
+     "datetime": 1792742561,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=f43fb890181016bac2b9d1cb8b4461e6b9ed9d19cefcbb87f3bfaa6eac102618"
+    },
+    {
+     "headline": "What JAKKS Pacific (JAKK) Said on Its Q3 Earnings Call",
+     "summary": "JAKKS Pacific (NASDAQ:JAKK) reported third-quarter net sales of $254 million for the period ended Sept. 30, 2026, up 20% from the prior-year quarter, as growth in North America, Disney-related...",
+     "datetime": 1792710248,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=da69cdaea3bce0b0d73f03035998b62de23a7d53b4287ce5c42f6f8c4ae997c2"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "DIS",
+   "expiry": "2026-11-06",
+   "days_to_expiry": 14,
+   "atm_iv_pct": 26.8,
+   "iv_chain_percentile": 3,
+   "skew_points": 0.5,
+   "put_call_ratio": 0.62,
+   "total_put_oi": 2838,
+   "total_call_oi": 4606
+  },
+  "get_options_positioning": {
+   "ticker": "DIS",
+   "spot": 112.52,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-06",
+   "primary_days_to_expiry": 14,
+   "max_pain_strike": 107.0,
+   "resistance_walls": [
+    {
+     "strike": 106.0,
+     "open_interest": 626
+    },
+    {
+     "strike": 120.0,
+     "open_interest": 523
+    },
+    {
+     "strike": 110.0,
+     "open_interest": 388
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 110.0,
+     "open_interest": 310
+    },
+    {
+     "strike": 104.0,
+     "open_interest": 268
+    },
+    {
+     "strike": 96.0,
+     "open_interest": 240
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-06",
+     "days_to_expiry": 14,
+     "atm_iv_pct": 26.8
+    },
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 21,
+     "atm_iv_pct": 28.4
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 35.9
+    }
+   ],
+   "term_structure_trend": "Rising \u2014 market pricing in a later catalyst within the horizon",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 109.0,
+     "volume": 330,
+     "open_interest": 85,
+     "vol_oi_ratio": 3.9,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 110.0,
+     "volume": 387,
+     "open_interest": 388,
+     "vol_oi_ratio": 1.0,
+     "moneyness": "ITM"
+    }
+   ],
+   "otm_call_oi": 2439,
+   "otm_put_oi": 2710,
+   "positioning_lean_score": -0.05,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "DIS",
+   "as_of": "2026-10-23",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-16",
+     "days_ago": 7,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 135.0,
+     "price_target_to": 140.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Buy rating on DIS and raised its price target from $135.0 to $140.0"
+    },
+    {
+     "date": "2026-10-09",
+     "days_ago": 14,
+     "firm": "Needham",
+     "action": "reiterated",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 125.0,
+     "price_target_to": 125.0,
+     "is_rating_change": false,
+     "description": "Needham reiterated its Buy rating on DIS with a $125.0 price target"
+    },
+    {
+     "date": "2026-10-05",
+     "days_ago": 18,
+     "firm": "Raymond James",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 120.0,
+     "price_target_to": 119.0,
+     "is_rating_change": false,
+     "description": "Raymond James maintained its Outperform rating on DIS and cut its price target from $120.0 to $119.0"
+    },
+    {
+     "date": "2026-09-28",
+     "days_ago": 25,
+     "firm": "Guggenheim",
+     "action": "reiterated",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 120.0,
+     "price_target_to": 120.0,
+     "is_rating_change": false,
+     "description": "Guggenheim reiterated its Buy rating on DIS with a $120.0 price target"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.97,
+    "verdict": "leaning bullish",
+    "analysts": 33,
+    "counts": {
+     "strongBuy": 6,
+     "buy": 23,
+     "hold": 3,
+     "sell": 1,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.94 to 1.97)"
+   },
+   "price_target": {
+    "mean": 126.58,
+    "median": 127.5,
+    "high": 144.0,
+    "low": 86.0,
+    "current_price": 112.52,
+    "dispersion_pct": 45.8,
+    "upside_vs_mean_pct": 12.5,
+    "upside_vs_median_pct": 13.3
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "DIS",
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "comparison": {
+    "ytd": {
+     "stock_change_pct": 1.37,
+     "sector_etf_change_pct": -8.92,
+     "relative_to_sector_pct": 10.29
+    },
+    "1mo": {
+     "stock_change_pct": 6.59,
+     "sector_etf_change_pct": -7.44,
+     "relative_to_sector_pct": 14.03
+    },
+    "2w": {
+     "stock_change_pct": 4.14,
+     "sector_etf_change_pct": -4.41,
+     "relative_to_sector_pct": 8.55
+    },
+    "1y": {
+     "stock_change_pct": 0.95,
+     "sector_etf_change_pct": -7.63,
+     "relative_to_sector_pct": 8.58
+    },
+    "1d": {
+     "stock_change_pct": -0.54,
+     "sector_etf_change_pct": -1.78,
+     "relative_to_sector_pct": 1.24
+    },
+    "1w": {
+     "stock_change_pct": 1.75,
+     "sector_etf_change_pct": -4.36,
+     "relative_to_sector_pct": 6.11
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-23",
+    "realtime_end": "2026-10-23",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9603,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-22",
+      "value": "19.03"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-21",
+      "value": "16.68"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-20",
+      "value": "17.31"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-19",
+      "value": "18.44"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-16",
+      "value": "19.99"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "DIS",
+   "as_of": "2026-10-23",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 5,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-11-17",
+     "description": "DIS Q4 2026 earnings scheduled (before the open)",
+     "source": "finnhub",
+     "days_until": 25,
+     "eps_estimate": 1.6963,
+     "hour": "bmo"
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}

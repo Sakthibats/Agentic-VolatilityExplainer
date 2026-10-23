@@ -1,0 +1,350 @@
+{
+ "schema": 1,
+ "ticker": "FIX",
+ "trading_day": "2026-10-23",
+ "captured_at": "2026-10-23T23:57:11+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -9.26,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: -9.26% \u2014 elevated relative to this stock's own typical volatility (expected ~3.77%, 2.45x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "this week: -19.33% \u2014 elevated relative to this stock's own typical volatility (expected ~8.44%, 2.29x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past 2 weeks: -32.34% \u2014 unusual for this stock (about 2.71x its normal move for that span, expected ~11.93%)",
+   "the past month: -29.36% \u2014 elevated relative to this stock's own typical volatility (expected ~17.29%, 1.7x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past year: 47.11% \u2014 typical relative to this stock's own typical volatility (expected ~59.90%, 0.79x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "FIX",
+   "price": 1160.86,
+   "prev_close": 1279.37,
+   "change_pct": -9.26,
+   "realized_vol_annualized_pct": 59.9,
+   "changes_pct": {
+    "1d": -9.26,
+    "1w": -19.33,
+    "2w": -32.34,
+    "1mo": -29.36,
+    "1y": 47.11,
+    "ytd": 15.83
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: -9.26% \u2014 elevated relative to this stock's own typical volatility (expected ~3.77%, 2.45x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "this week: -19.33% \u2014 elevated relative to this stock's own typical volatility (expected ~8.44%, 2.29x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past 2 weeks: -32.34% \u2014 unusual for this stock (about 2.71x its normal move for that span, expected ~11.93%)",
+     "the past month: -29.36% \u2014 elevated relative to this stock's own typical volatility (expected ~17.29%, 1.7x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past year: 47.11% \u2014 typical relative to this stock's own typical volatility (expected ~59.90%, 0.79x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "FIX",
+   "headlines": [
+    {
+     "headline": "Comfort Systems: 3 Key Takeaways for Long-Term Investors",
+     "summary": "Multiyear customer commitments lock in revenue visibility through 2027, giving management confidence in sustained margin strength.",
+     "datetime": 1792785182,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=7caac4fd11d3e0e36b79c0bb8c4ca58a32eb1dff087bfeec8de5e33a5c038ea2"
+    },
+    {
+     "headline": "Why Comfort Systems Plunged Today",
+     "summary": "Comfort Systems declined even while posting blowout numbers. Why?",
+     "datetime": 1792784370,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=3972a3fed9cc96a1baeb1ca80cf58dac748712896fdfbc49a2afc1a18bfd3e0c"
+    },
+    {
+     "headline": "Comfort Systems (FIX) Q3 2026 Earnings Call Transcript",
+     "summary": "Record revenue and 90% backlog growth fuel data center super cycle.",
+     "datetime": 1792782780,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=8eefe65bb504386b9428f8563d326bd2ffd4a489ca12c6b321cd319c546ce4a6"
+    },
+    {
+     "headline": "Today's S&P 500 Top Movers: Crown Castle Leads Gainers, Bloom Energy Leads Losers",
+     "summary": "Crown Castle rose 10.08% and Bloom Energy fell 10.71% among S&P 500 top movers, with Palo Alto Networks, SLB, AT&T and T-Mobile also posting notable moves.",
+     "datetime": 1792782376,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=62fb6c4f4b9177f203d1ec1af8f087343a02195568908b04d69c27d077dc0317"
+    },
+    {
+     "headline": "What Comfort Systems USA (FIX) Said on Its Q3 Earnings Call",
+     "summary": "Comfort Systems USA (NYSE:FIX) reported sharply higher third-quarter results, supported by strong demand in construction activity, particularly from technology and industrial customers, and continued...",
+     "datetime": 1792778694,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=563ce1d674a8ac9e123fce08a1194e4e94d0e4dc238e0437b790b86d8bc5012b"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "FIX",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 28,
+   "atm_iv_pct": 62.8,
+   "iv_chain_percentile": 8,
+   "skew_points": -0.6,
+   "put_call_ratio": 0.93,
+   "total_put_oi": 2629,
+   "total_call_oi": 2838
+  },
+  "get_options_positioning": {
+   "ticker": "FIX",
+   "spot": 1160.86,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 28,
+   "max_pain_strike": 1450.0,
+   "resistance_walls": [
+    {
+     "strike": 2600.0,
+     "open_interest": 492
+    },
+    {
+     "strike": 1420.0,
+     "open_interest": 272
+    },
+    {
+     "strike": 1520.0,
+     "open_interest": 181
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 1320.0,
+     "open_interest": 355
+    },
+    {
+     "strike": 1400.0,
+     "open_interest": 207
+    },
+    {
+     "strike": 1420.0,
+     "open_interest": 191
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 62.8
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 1240.0,
+     "volume": 167,
+     "open_interest": 3,
+     "vol_oi_ratio": 55.7,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 1060.0,
+     "volume": 328,
+     "open_interest": 23,
+     "vol_oi_ratio": 14.3,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 1100.0,
+     "volume": 178,
+     "open_interest": 39,
+     "vol_oi_ratio": 4.6,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 1520.0,
+     "volume": 166,
+     "open_interest": 181,
+     "vol_oi_ratio": 0.9,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 1320.0,
+     "volume": 327,
+     "open_interest": 355,
+     "vol_oi_ratio": 0.9,
+     "moneyness": "ITM"
+    }
+   ],
+   "otm_call_oi": 2836,
+   "otm_put_oi": 704,
+   "positioning_lean_score": 0.6,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "FIX",
+   "as_of": "2026-10-23",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-15",
+     "days_ago": 8,
+     "firm": "Keybanc",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 2110.0,
+     "price_target_to": 2125.0,
+     "is_rating_change": false,
+     "description": "Keybanc maintained its Overweight rating on FIX and raised its price target from $2110.0 to $2125.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.1,
+    "verdict": "leaning bullish",
+    "analysts": 10,
+    "counts": {
+     "strongBuy": 0,
+     "buy": 9,
+     "hold": 1,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 2 months (score 2.11 to 2.1)"
+   },
+   "price_target": {
+    "mean": 2163.38,
+    "median": 2148.5,
+    "high": 2500.0,
+    "low": 1875.0,
+    "current_price": 1160.86,
+    "dispersion_pct": 28.9,
+    "upside_vs_mean_pct": 86.4,
+    "upside_vs_median_pct": 85.1
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "FIX",
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "comparison": {
+    "ytd": {
+     "stock_change_pct": 15.83,
+     "sector_etf_change_pct": 5.03,
+     "relative_to_sector_pct": 10.8
+    },
+    "1mo": {
+     "stock_change_pct": -29.36,
+     "sector_etf_change_pct": -2.49,
+     "relative_to_sector_pct": -26.87
+    },
+    "2w": {
+     "stock_change_pct": -32.34,
+     "sector_etf_change_pct": -2.74,
+     "relative_to_sector_pct": -29.6
+    },
+    "1y": {
+     "stock_change_pct": 47.11,
+     "sector_etf_change_pct": 8.92,
+     "relative_to_sector_pct": 38.19
+    },
+    "1d": {
+     "stock_change_pct": -9.26,
+     "sector_etf_change_pct": -1.27,
+     "relative_to_sector_pct": -7.99
+    },
+    "1w": {
+     "stock_change_pct": -19.33,
+     "sector_etf_change_pct": -1.87,
+     "relative_to_sector_pct": -17.46
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-23",
+    "realtime_end": "2026-10-23",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9603,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-22",
+      "value": "19.03"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-21",
+      "value": "16.68"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-20",
+      "value": "17.31"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-19",
+      "value": "18.44"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-16",
+      "value": "19.99"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "FIX",
+   "as_of": "2026-10-23",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 5,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-22",
+     "description": "FIX reported Q3 2026 earnings after the close \u2014 EPS 13.91 vs 12.9993 expected (beat, +7.0%)",
+     "source": "finnhub",
+     "days_ago": 1,
+     "eps_actual": 13.91,
+     "eps_estimate": 12.9993,
+     "surprise": "beat",
+     "surprise_pct": 7.0,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

@@ -1,0 +1,345 @@
+{
+ "schema": 1,
+ "ticker": "GMAB",
+ "trading_day": "2026-10-23",
+ "captured_at": "2026-10-23T23:56:38+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 9.47,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 9.48% \u2014 unusual for this stock (about 2.61x its normal move for that span, expected ~3.63%)",
+   "this week: 18.35% \u2014 elevated relative to this stock's own typical volatility (expected ~8.13%, 2.26x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past 2 weeks: 18.13% \u2014 elevated relative to this stock's own typical volatility (expected ~11.49%, 1.58x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past month: 25.72% \u2014 elevated relative to this stock's own typical volatility (expected ~16.66%, 1.54x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past year: 46.36% \u2014 typical relative to this stock's own typical volatility (expected ~57.70%, 0.8x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "GMAB",
+   "price": 43.79,
+   "prev_close": 40,
+   "change_pct": 9.47,
+   "realized_vol_annualized_pct": 57.7,
+   "changes_pct": {
+    "1d": 9.48,
+    "1w": 18.35,
+    "2w": 18.13,
+    "1mo": 25.72,
+    "1y": 46.36,
+    "ytd": 37.62
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 9.48% \u2014 unusual for this stock (about 2.61x its normal move for that span, expected ~3.63%)",
+     "this week: 18.35% \u2014 elevated relative to this stock's own typical volatility (expected ~8.13%, 2.26x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past 2 weeks: 18.13% \u2014 elevated relative to this stock's own typical volatility (expected ~11.49%, 1.58x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past month: 25.72% \u2014 elevated relative to this stock's own typical volatility (expected ~16.66%, 1.54x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past year: 46.36% \u2014 typical relative to this stock's own typical volatility (expected ~57.70%, 0.8x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "GMAB",
+   "headlines": [
+    {
+     "headline": "GENMAB A/S -SP ADR (NASDAQ:GMAB) Eyes Breakout as Technical Strength Builds",
+     "summary": "GMAB earns 9/10 Technical and Setup Quality ratings as ChartMill highlights a breakout setup with clear entry, stop and risk plan.",
+     "datetime": 1792488056,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=6898adbd7265d6c06ddefcbe11f34164a58ede2613c00e0f85c6714427c99592"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "GMAB",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 28,
+   "atm_iv_pct": 68.5,
+   "iv_chain_percentile": 22,
+   "skew_points": 11.9,
+   "put_call_ratio": 1.09,
+   "total_put_oi": 8925,
+   "total_call_oi": 8172
+  },
+  "get_options_positioning": {
+   "ticker": "GMAB",
+   "spot": 43.79,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 28,
+   "max_pain_strike": 35.0,
+   "resistance_walls": [
+    {
+     "strike": 40.0,
+     "open_interest": 2553
+    },
+    {
+     "strike": 35.0,
+     "open_interest": 2358
+    },
+    {
+     "strike": 45.0,
+     "open_interest": 953
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 35.0,
+     "open_interest": 3371
+    },
+    {
+     "strike": 30.0,
+     "open_interest": 3338
+    },
+    {
+     "strike": 25.0,
+     "open_interest": 1636
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 68.5
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 25.0,
+     "volume": 222,
+     "open_interest": 240,
+     "vol_oi_ratio": 0.9,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 20.0,
+     "volume": 150,
+     "open_interest": 213,
+     "vol_oi_ratio": 0.7,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 30.0,
+     "volume": 501,
+     "open_interest": 3338,
+     "vol_oi_ratio": 0.2,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 25.0,
+     "volume": 200,
+     "open_interest": 1636,
+     "vol_oi_ratio": 0.1,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 955,
+   "otm_put_oi": 8925,
+   "positioning_lean_score": -0.81,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "GMAB",
+   "as_of": "2026-10-23",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-07",
+     "days_ago": 16,
+     "firm": "Truist Securities",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 40.0,
+     "price_target_to": 45.0,
+     "is_rating_change": false,
+     "description": "Truist Securities maintained its Buy rating on GMAB and raised its price target from $40.0 to $45.0"
+    },
+    {
+     "date": "2026-10-07",
+     "days_ago": 16,
+     "firm": "Guggenheim",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 54.0,
+     "price_target_to": 58.0,
+     "is_rating_change": false,
+     "description": "Guggenheim maintained its Buy rating on GMAB and raised its price target from $54.0 to $58.0"
+    },
+    {
+     "date": "2026-10-07",
+     "days_ago": 16,
+     "firm": "HC Wainwright & Co.",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 40.0,
+     "price_target_to": 50.0,
+     "is_rating_change": false,
+     "description": "HC Wainwright & Co. maintained its Buy rating on GMAB and raised its price target from $40.0 to $50.0"
+    },
+    {
+     "date": "2026-10-05",
+     "days_ago": 18,
+     "firm": "Guggenheim",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 45.0,
+     "price_target_to": 54.0,
+     "is_rating_change": false,
+     "description": "Guggenheim maintained its Buy rating on GMAB and raised its price target from $45.0 to $54.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.0,
+    "verdict": "leaning bullish",
+    "analysts": 12,
+    "counts": {
+     "strongBuy": 1,
+     "buy": 10,
+     "hold": 1,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.09 to 2.0; bearish ratings 0 to 0)"
+   },
+   "price_target": {
+    "mean": 45.95,
+    "median": 44.0,
+    "high": 60.0,
+    "low": 33.5,
+    "current_price": 43.79,
+    "dispersion_pct": 57.7,
+    "upside_vs_mean_pct": 4.9,
+    "upside_vs_median_pct": 0.5
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "GMAB",
+   "sector": "Healthcare",
+   "sector_etf": "XLV",
+   "comparison": {
+    "ytd": {
+     "stock_change_pct": 37.62,
+     "sector_etf_change_pct": 16.71,
+     "relative_to_sector_pct": 20.91
+    },
+    "1mo": {
+     "stock_change_pct": 25.72,
+     "sector_etf_change_pct": 5.54,
+     "relative_to_sector_pct": 20.18
+    },
+    "2w": {
+     "stock_change_pct": 18.13,
+     "sector_etf_change_pct": 4.96,
+     "relative_to_sector_pct": 13.17
+    },
+    "1y": {
+     "stock_change_pct": 46.36,
+     "sector_etf_change_pct": 24.88,
+     "relative_to_sector_pct": 21.48
+    },
+    "1d": {
+     "stock_change_pct": 9.48,
+     "sector_etf_change_pct": -1.11,
+     "relative_to_sector_pct": 10.59
+    },
+    "1w": {
+     "stock_change_pct": 18.35,
+     "sector_etf_change_pct": 1.45,
+     "relative_to_sector_pct": 16.9
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-23",
+    "realtime_end": "2026-10-23",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9603,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-22",
+      "value": "19.03"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-21",
+      "value": "16.68"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-20",
+      "value": "17.31"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-19",
+      "value": "18.44"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-16",
+      "value": "19.99"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "GMAB",
+   "as_of": "2026-10-23",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 5,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-11-05",
+     "description": "GMAB Q3 2026 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 13,
+     "eps_estimate": 3.86
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}

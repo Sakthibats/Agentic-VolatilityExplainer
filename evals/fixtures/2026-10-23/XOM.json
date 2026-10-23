@@ -1,0 +1,390 @@
+{
+ "schema": 1,
+ "ticker": "XOM",
+ "trading_day": "2026-10-23",
+ "captured_at": "2026-10-23T23:56:31+00:00",
+ "selected_as": "move",
+ "change_pct": 2.79,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 2.79% \u2014 elevated relative to this stock's own typical volatility (expected ~1.15%, 2.42x), but typical in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past 2 weeks: 8.45% \u2014 elevated relative to this stock's own typical volatility (expected ~3.65%, 2.32x), but typical in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past month: 12.99% \u2014 elevated for this stock (about 2.46x its normal move for that span, expected ~5.28%)",
+   "the past year: 64.34% \u2014 unusual for this stock (about 3.52x its normal move for that span, expected ~18.30%)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "XOM",
+   "price": 183.21,
+   "prev_close": 178.23,
+   "change_pct": 2.79,
+   "realized_vol_annualized_pct": 18.3,
+   "changes_pct": {
+    "1d": 2.79,
+    "1w": 2.36,
+    "2w": 8.45,
+    "1mo": 12.99,
+    "1y": 64.34,
+    "ytd": 52.37
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 2.79% \u2014 elevated relative to this stock's own typical volatility (expected ~1.15%, 2.42x), but typical in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past 2 weeks: 8.45% \u2014 elevated relative to this stock's own typical volatility (expected ~3.65%, 2.32x), but typical in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past month: 12.99% \u2014 elevated for this stock (about 2.46x its normal move for that span, expected ~5.28%)",
+     "the past year: 64.34% \u2014 unusual for this stock (about 3.52x its normal move for that span, expected ~18.30%)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "XOM",
+   "headlines": [
+    {
+     "headline": "3 Energy Stocks to Buy and Hold for the Next Decade, Starting With ExxonMobil",
+     "summary": "The energy sector is volatile and changing, which is why you want to stick with industry leaders like Exxon, TotalEnergies, and Enterprise.",
+     "datetime": 1792791300,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=5235278a76063c973cc36ca4e8df3af5aaee22904a4943c9b3d2e8947d5b6b0e"
+    },
+    {
+     "headline": "Forget Chasing 7% Yields: These 5 Dividend Stocks Offer Something Different",
+     "summary": "Treasury yields have turned dividend investing into a minefield, but five mega-caps have quietly raised their payouts through every rate spike, recession, and patent cliff of the past four decades....",
+     "datetime": 1792777535,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=abc8806fb03ae6aac8e2e6124c786823f98383f8d2b8bdb9442e05884f80c76d"
+    },
+    {
+     "headline": "Chevron vs. ExxonMobil: Which Stock Has the Edge at 52-Week Highs?",
+     "summary": "CVX edges XOM in the race for further upside as stronger free cash flow, cost savings and projected 2026 earnings growth set it apart near 52-week highs.",
+     "datetime": 1792762980,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=c02c90981f62e96f0a1932197aa22153e851a3328ac4923b07b2923ad01a2993"
+    },
+    {
+     "headline": "Exxon Mobil Holdings (XOM) Reports Next Week: Wall Street Expects Earnings Growth",
+     "summary": "Exxon (XOM) possesses the right combination of the two key ingredients for a likely earnings beat in its upcoming report. Get prepared with the key expectations.",
+     "datetime": 1792760408,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=cc2b234bf5c69582f0ecb167d9ace04cf2c7adc0748e2b2df4a51ade1dbce5a1"
+    },
+    {
+     "headline": "Can Baker Hughes Keep Its Winning Streak Alive in Q3 Earnings?",
+     "summary": "BKR heads into Q3 2026 with rising revenue estimates and higher oil prices, while Middle East disruptions may pressure profitability.",
+     "datetime": 1792759140,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=174ac86d77bfea030f8e79d81044cb086883801115b9a58fe18c55400f6e5cd2"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "XOM",
+   "expiry": "2026-11-06",
+   "days_to_expiry": 14,
+   "atm_iv_pct": 34.1,
+   "iv_chain_percentile": 1,
+   "skew_points": -0.2,
+   "put_call_ratio": 1.48,
+   "total_put_oi": 7369,
+   "total_call_oi": 4974
+  },
+  "get_options_positioning": {
+   "ticker": "XOM",
+   "spot": 183.21,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-06",
+   "primary_days_to_expiry": 14,
+   "max_pain_strike": 172.5,
+   "resistance_walls": [
+    {
+     "strike": 180.0,
+     "open_interest": 901
+    },
+    {
+     "strike": 172.5,
+     "open_interest": 688
+    },
+    {
+     "strike": 177.5,
+     "open_interest": 656
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 150.0,
+     "open_interest": 1068
+    },
+    {
+     "strike": 170.0,
+     "open_interest": 834
+    },
+    {
+     "strike": 165.0,
+     "open_interest": 802
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-06",
+     "days_to_expiry": 14,
+     "atm_iv_pct": 34.1
+    },
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 21,
+     "atm_iv_pct": 33.1
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 31.8
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 180.0,
+     "volume": 883,
+     "open_interest": 95,
+     "vol_oi_ratio": 9.3,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 195.0,
+     "volume": 228,
+     "open_interest": 79,
+     "vol_oi_ratio": 2.9,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 200.0,
+     "volume": 291,
+     "open_interest": 156,
+     "vol_oi_ratio": 1.9,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 182.5,
+     "volume": 114,
+     "open_interest": 60,
+     "vol_oi_ratio": 1.9,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 182.5,
+     "volume": 309,
+     "open_interest": 175,
+     "vol_oi_ratio": 1.8,
+     "moneyness": "ITM"
+    }
+   ],
+   "otm_call_oi": 1079,
+   "otm_put_oi": 7365,
+   "positioning_lean_score": -0.74,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "XOM",
+   "as_of": "2026-10-23",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-19",
+     "days_ago": 4,
+     "firm": "Barclays",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 177.0,
+     "price_target_to": 200.0,
+     "is_rating_change": false,
+     "description": "Barclays maintained its Overweight rating on XOM and raised its price target from $177.0 to $200.0"
+    },
+    {
+     "date": "2026-10-15",
+     "days_ago": 8,
+     "firm": "Morgan Stanley",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 177.0,
+     "price_target_to": 185.0,
+     "is_rating_change": false,
+     "description": "Morgan Stanley maintained its Overweight rating on XOM and raised its price target from $177.0 to $185.0"
+    },
+    {
+     "date": "2026-10-01",
+     "days_ago": 22,
+     "firm": "Wells Fargo",
+     "action": "downgrade",
+     "from_grade": "Overweight",
+     "to_grade": "Equal-Weight",
+     "price_target_from": null,
+     "price_target_to": 182.0,
+     "is_rating_change": true,
+     "description": "Wells Fargo downgraded XOM from Overweight to Equal-Weight with a $182.0 price target"
+    },
+    {
+     "date": "2026-09-28",
+     "days_ago": 25,
+     "firm": "TD Cowen",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 168.0,
+     "price_target_to": 180.0,
+     "is_rating_change": false,
+     "description": "TD Cowen maintained its Buy rating on XOM and raised its price target from $168.0 to $180.0"
+    }
+   ],
+   "consensus": {
+    "rating": "hold",
+    "score": 2.52,
+    "verdict": "neutral",
+    "analysts": 25,
+    "counts": {
+     "strongBuy": 3,
+     "buy": 6,
+     "hold": 16,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.52 to 2.52)"
+   },
+   "price_target": {
+    "mean": 179.41,
+    "median": 181.5,
+    "high": 206.0,
+    "low": 142.0,
+    "current_price": 183.21,
+    "dispersion_pct": 35.7,
+    "upside_vs_mean_pct": -2.1,
+    "upside_vs_median_pct": -0.9
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "XOM",
+   "sector": "Energy",
+   "sector_etf": "XLE",
+   "comparison": {
+    "ytd": {
+     "stock_change_pct": 52.37,
+     "sector_etf_change_pct": 54.88,
+     "relative_to_sector_pct": -2.51
+    },
+    "1mo": {
+     "stock_change_pct": 12.99,
+     "sector_etf_change_pct": 10.75,
+     "relative_to_sector_pct": 2.24
+    },
+    "2w": {
+     "stock_change_pct": 8.45,
+     "sector_etf_change_pct": 6.53,
+     "relative_to_sector_pct": 1.92
+    },
+    "1y": {
+     "stock_change_pct": 64.34,
+     "sector_etf_change_pct": 62.43,
+     "relative_to_sector_pct": 1.91
+    },
+    "1d": {
+     "stock_change_pct": 2.79,
+     "sector_etf_change_pct": 2.6,
+     "relative_to_sector_pct": 0.19
+    },
+    "1w": {
+     "stock_change_pct": 2.36,
+     "sector_etf_change_pct": 1.6,
+     "relative_to_sector_pct": 0.76
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-23",
+    "realtime_end": "2026-10-23",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9603,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-22",
+      "value": "19.03"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-21",
+      "value": "16.68"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-20",
+      "value": "17.31"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-19",
+      "value": "18.44"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-16",
+      "value": "19.99"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "XOM",
+   "as_of": "2026-10-23",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 5,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-10-30",
+     "description": "XOM Q3 2026 earnings scheduled (before the open)",
+     "source": "finnhub",
+     "days_until": 7,
+     "eps_estimate": 4.1205,
+     "hour": "bmo"
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}

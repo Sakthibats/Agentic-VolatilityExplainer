@@ -1,0 +1,402 @@
+{
+ "schema": 1,
+ "ticker": "CVX",
+ "trading_day": "2026-10-23",
+ "captured_at": "2026-10-23T23:56:18+00:00",
+ "selected_as": "move",
+ "change_pct": 2.88,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 2.88% \u2014 elevated relative to this stock's own typical volatility (expected ~1.28%, 2.25x), but typical in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past 2 weeks: 10.02% \u2014 elevated for this stock (about 2.48x its normal move for that span, expected ~4.04%)",
+   "the past month: 13.4% \u2014 elevated for this stock (about 2.29x its normal move for that span, expected ~5.86%)",
+   "the past year: 55.81% \u2014 unusual relative to this stock's own typical volatility (expected ~20.30%, 2.75x), but elevated in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "CVX",
+   "price": 233.21,
+   "prev_close": 226.68,
+   "change_pct": 2.88,
+   "realized_vol_annualized_pct": 20.3,
+   "changes_pct": {
+    "1d": 2.88,
+    "1w": 3.65,
+    "2w": 10.02,
+    "1mo": 13.4,
+    "1y": 55.81,
+    "ytd": 53.77
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 2.88% \u2014 elevated relative to this stock's own typical volatility (expected ~1.28%, 2.25x), but typical in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past 2 weeks: 10.02% \u2014 elevated for this stock (about 2.48x its normal move for that span, expected ~4.04%)",
+     "the past month: 13.4% \u2014 elevated for this stock (about 2.29x its normal move for that span, expected ~5.86%)",
+     "the past year: 55.81% \u2014 unusual relative to this stock's own typical volatility (expected ~20.30%, 2.75x), but elevated in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "CVX",
+   "headlines": [
+    {
+     "headline": "Stock Market Today: Nasdaq Posts Back-To-Back Losses As Oil Surges; Samsara Breaks Out",
+     "summary": "The Dow Jones index drops 650 points Friday as oil prices rally. Bloom, MaxLinear and WDC are big earnings movers.",
+     "datetime": 1792787933,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=76dc3c996e4c9f07c9737022aee8b965cebebe9bae438e8b28c49d343a1be79c"
+    },
+    {
+     "headline": "Stock Market Today: Dow Sheds 600 Points As Oil Jumps; Samsara Breaks Out (Live Coverage)",
+     "summary": "The Dow Jones index drops 600 points Friday as oil prices rally. Bloom, MaxLinear and WDC are big earnings movers.",
+     "datetime": 1792783036,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=d984b60680d973f8d4ba221f6ef6f43f0254ab3f0526336fba52c4fa77ad4b6d"
+    },
+    {
+     "headline": "Forget Chasing 7% Yields: These 5 Dividend Stocks Offer Something Different",
+     "summary": "Treasury yields have turned dividend investing into a minefield, but five mega-caps have quietly raised their payouts through every rate spike, recession, and patent cliff of the past four decades....",
+     "datetime": 1792777535,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=abc8806fb03ae6aac8e2e6124c786823f98383f8d2b8bdb9442e05884f80c76d"
+    },
+    {
+     "headline": "Stock Market Today: Dow Falls 500 Points On Rising Oil Prices; These AI Players Slide Amid Earnings News (Live Coverage)",
+     "summary": "The Dow Jones index drops 500 points Friday as oil prices rally. Bloom, MaxLinear and WDC are big earnings movers.",
+     "datetime": 1792763261,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=0230fe0089f3584d3d82b00daee2c5a7d10e1dc6c38ab07f6f1fff0f09ef76ab"
+    },
+    {
+     "headline": "Chevron vs. ExxonMobil: Which Stock Has the Edge at 52-Week Highs?",
+     "summary": "CVX edges XOM in the race for further upside as stronger free cash flow, cost savings and projected 2026 earnings growth set it apart near 52-week highs.",
+     "datetime": 1792762980,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=c02c90981f62e96f0a1932197aa22153e851a3328ac4923b07b2923ad01a2993"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "CVX",
+   "expiry": "2026-11-06",
+   "days_to_expiry": 14,
+   "atm_iv_pct": 33.2,
+   "iv_chain_percentile": 0,
+   "skew_points": 0.1,
+   "put_call_ratio": 0.27,
+   "total_put_oi": 1555,
+   "total_call_oi": 5812
+  },
+  "get_options_positioning": {
+   "ticker": "CVX",
+   "spot": 233.21,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-06",
+   "primary_days_to_expiry": 14,
+   "max_pain_strike": 215.0,
+   "resistance_walls": [
+    {
+     "strike": 235.0,
+     "open_interest": 2391
+    },
+    {
+     "strike": 225.0,
+     "open_interest": 1008
+    },
+    {
+     "strike": 215.0,
+     "open_interest": 779
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 210.0,
+     "open_interest": 239
+    },
+    {
+     "strike": 200.0,
+     "open_interest": 236
+    },
+    {
+     "strike": 215.0,
+     "open_interest": 225
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-06",
+     "days_to_expiry": 14,
+     "atm_iv_pct": 33.2
+    },
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 21,
+     "atm_iv_pct": 32.6
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 33.0
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 245.0,
+     "volume": 143,
+     "open_interest": 96,
+     "vol_oi_ratio": 1.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 240.0,
+     "volume": 472,
+     "open_interest": 350,
+     "vol_oi_ratio": 1.3,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 220.0,
+     "volume": 261,
+     "open_interest": 199,
+     "vol_oi_ratio": 1.3,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 215.0,
+     "volume": 151,
+     "open_interest": 225,
+     "vol_oi_ratio": 0.7,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 230.0,
+     "volume": 114,
+     "open_interest": 441,
+     "vol_oi_ratio": 0.3,
+     "moneyness": "ITM"
+    }
+   ],
+   "otm_call_oi": 3033,
+   "otm_put_oi": 1555,
+   "positioning_lean_score": 0.32,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "CVX",
+   "as_of": "2026-10-23",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-15",
+     "days_ago": 8,
+     "firm": "Morgan Stanley",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 218.0,
+     "price_target_to": 226.0,
+     "is_rating_change": false,
+     "description": "Morgan Stanley maintained its Overweight rating on CVX and raised its price target from $218.0 to $226.0"
+    },
+    {
+     "date": "2026-10-12",
+     "days_ago": 11,
+     "firm": "TD Cowen",
+     "action": "maintained",
+     "from_grade": "Hold",
+     "to_grade": "Hold",
+     "price_target_from": 215.0,
+     "price_target_to": 225.0,
+     "is_rating_change": false,
+     "description": "TD Cowen maintained its Hold rating on CVX and raised its price target from $215.0 to $225.0"
+    },
+    {
+     "date": "2026-10-08",
+     "days_ago": 15,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 220.0,
+     "price_target_to": 235.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Buy rating on CVX and raised its price target from $220.0 to $235.0"
+    },
+    {
+     "date": "2026-09-28",
+     "days_ago": 25,
+     "firm": "TD Cowen",
+     "action": "maintained",
+     "from_grade": "Hold",
+     "to_grade": "Hold",
+     "price_target_from": 205.0,
+     "price_target_to": 215.0,
+     "is_rating_change": false,
+     "description": "TD Cowen maintained its Hold rating on CVX and raised its price target from $205.0 to $215.0"
+    },
+    {
+     "date": "2026-09-25",
+     "days_ago": 28,
+     "firm": "HSBC",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 218.0,
+     "price_target_to": 250.0,
+     "is_rating_change": false,
+     "description": "HSBC maintained its Buy rating on CVX and raised its price target from $218.0 to $250.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.0,
+    "verdict": "leaning bullish",
+    "analysts": 25,
+    "counts": {
+     "strongBuy": 6,
+     "buy": 14,
+     "hold": 4,
+     "sell": 1,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.0 to 2.0)"
+   },
+   "price_target": {
+    "mean": 232.5,
+    "median": 235.0,
+    "high": 272.0,
+    "low": 175.0,
+    "current_price": 233.21,
+    "dispersion_pct": 41.7,
+    "upside_vs_mean_pct": -0.3,
+    "upside_vs_median_pct": 0.8
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "CVX",
+   "sector": "Energy",
+   "sector_etf": "XLE",
+   "comparison": {
+    "ytd": {
+     "stock_change_pct": 53.77,
+     "sector_etf_change_pct": 54.88,
+     "relative_to_sector_pct": -1.11
+    },
+    "1mo": {
+     "stock_change_pct": 13.4,
+     "sector_etf_change_pct": 10.75,
+     "relative_to_sector_pct": 2.65
+    },
+    "2w": {
+     "stock_change_pct": 10.02,
+     "sector_etf_change_pct": 6.53,
+     "relative_to_sector_pct": 3.49
+    },
+    "1y": {
+     "stock_change_pct": 55.81,
+     "sector_etf_change_pct": 62.43,
+     "relative_to_sector_pct": -6.62
+    },
+    "1d": {
+     "stock_change_pct": 2.88,
+     "sector_etf_change_pct": 2.6,
+     "relative_to_sector_pct": 0.28
+    },
+    "1w": {
+     "stock_change_pct": 3.65,
+     "sector_etf_change_pct": 1.6,
+     "relative_to_sector_pct": 2.05
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-23",
+    "realtime_end": "2026-10-23",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9603,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-22",
+      "value": "19.03"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-21",
+      "value": "16.68"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-20",
+      "value": "17.31"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-19",
+      "value": "18.44"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-16",
+      "value": "19.99"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "CVX",
+   "as_of": "2026-10-23",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 5,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-10-30",
+     "description": "CVX Q3 2026 earnings scheduled (before the open)",
+     "source": "finnhub",
+     "days_until": 7,
+     "eps_estimate": 4.9317,
+     "hour": "bmo"
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}

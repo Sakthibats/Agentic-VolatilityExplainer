@@ -1,0 +1,363 @@
+{
+ "schema": 1,
+ "ticker": "VG",
+ "trading_day": "2026-10-23",
+ "captured_at": "2026-10-23T23:56:44+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 9.29,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 9.29% \u2014 unusual for this stock (about 2.77x its normal move for that span, expected ~3.35%)",
+   "this week: 10.06% \u2014 typical relative to this stock's own typical volatility (expected ~7.49%, 1.34x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past year: 47.95% \u2014 typical relative to this stock's own typical volatility (expected ~53.20%, 0.9x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "VG",
+   "price": 14,
+   "prev_close": 12.81,
+   "change_pct": 9.29,
+   "realized_vol_annualized_pct": 53.2,
+   "changes_pct": {
+    "1d": 9.29,
+    "1w": 10.06,
+    "2w": 6.38,
+    "1mo": 5.82,
+    "1y": 47.95,
+    "ytd": 99.94
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 9.29% \u2014 unusual for this stock (about 2.77x its normal move for that span, expected ~3.35%)",
+     "this week: 10.06% \u2014 typical relative to this stock's own typical volatility (expected ~7.49%, 1.34x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past year: 47.95% \u2014 typical relative to this stock's own typical volatility (expected ~53.20%, 0.9x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "VG",
+   "headlines": [
+    {
+     "headline": "Is the Options Market Predicting a Spike in Venture Global Stock?",
+     "summary": "Investors need to pay close attention to VG stock based on the movements in the options market lately.",
+     "datetime": 1792752960,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=b350ef8d5fd5bbe8080dc0c5106d2ee447f8960696b7a86ad1789414793f4cec"
+    },
+    {
+     "headline": "Should You Buy Venture Global Stock At This Price?",
+     "summary": "For questions about this article or underlying research, email help@trefis.com.",
+     "datetime": 1792742535,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=3925052fa88f6ea6fa0bf657310c471da55505a3396346e59241961c62884dd3"
+    },
+    {
+     "headline": "Why Is GE Vernova (GEV) Tied To 16 Off Grid Power Units?",
+     "summary": "GE Vernova (NYSE:GEV) entered multi-year frame agreements with Venture Global and Baker Hughes to supply major power equipment. The contracts cover up to 16 large power island units plus transformer...",
+     "datetime": 1792717835,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=5767a9e912e86855b90847081cdd5b970c1604a4f96f07251aa4b61dcf1de717"
+    },
+    {
+     "headline": "'QatarEnergy In Advance Talks With Venture Global For Long-Term Deal To Buy At Least 3M Metric Tons Of LNG Per Year, Sources Say'",
+     "summary": "- Reuters\u00a0",
+     "datetime": 1792684684,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=db9c9472161e306f74e4a13ccd0afb4c48fc2057b4dc0e3ed01c265c94aba17c"
+    },
+    {
+     "headline": "GE Vernova Sinks 11%, Vertiv 14%, Bloom Energy 15% in a Week as AI Power Stocks Slide",
+     "summary": "Key TakeawaysGE Vernova stock fell 11% in the past week (through Tuesday\u2019s close), while Vertiv lost 14% and Bloom Energy 15%, as investors sold AI-infrastructure stocks. Venture Global\u2019s power and...",
+     "datetime": 1792676696,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=2de3c5d8e5f4f5c014570bb5f74c53f66fdf480163c6697899324705b4ba4900"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "VG",
+   "expiry": "2026-11-06",
+   "days_to_expiry": 14,
+   "atm_iv_pct": 57.4,
+   "iv_chain_percentile": 2,
+   "skew_points": 2.1,
+   "put_call_ratio": 0.62,
+   "total_put_oi": 1657,
+   "total_call_oi": 2661
+  },
+  "get_options_positioning": {
+   "ticker": "VG",
+   "spot": 14.0,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-06",
+   "primary_days_to_expiry": 14,
+   "max_pain_strike": 13.0,
+   "resistance_walls": [
+    {
+     "strike": 14.0,
+     "open_interest": 691
+    },
+    {
+     "strike": 14.5,
+     "open_interest": 445
+    },
+    {
+     "strike": 13.0,
+     "open_interest": 415
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 13.0,
+     "open_interest": 400
+    },
+    {
+     "strike": 14.0,
+     "open_interest": 324
+    },
+    {
+     "strike": 12.5,
+     "open_interest": 313
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-06",
+     "days_to_expiry": 14,
+     "atm_iv_pct": 57.4
+    },
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 21,
+     "atm_iv_pct": 74.8
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 71.9
+    }
+   ],
+   "term_structure_trend": "Rising \u2014 market pricing in a later catalyst within the horizon",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 14.0,
+     "volume": 1003,
+     "open_interest": 324,
+     "vol_oi_ratio": 3.1,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 13.5,
+     "volume": 240,
+     "open_interest": 231,
+     "vol_oi_ratio": 1.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 15.0,
+     "volume": 275,
+     "open_interest": 295,
+     "vol_oi_ratio": 0.9,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 14.5,
+     "volume": 157,
+     "open_interest": 445,
+     "vol_oi_ratio": 0.4,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 1108,
+   "otm_put_oi": 1319,
+   "positioning_lean_score": -0.09,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "VG",
+   "as_of": "2026-10-23",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-20",
+     "days_ago": 3,
+     "firm": "Wells Fargo",
+     "action": "upgrade",
+     "from_grade": "Equal-Weight",
+     "to_grade": "Overweight",
+     "price_target_from": 15.0,
+     "price_target_to": 21.0,
+     "is_rating_change": true,
+     "description": "Wells Fargo upgraded VG from Equal-Weight to Overweight and raised its price target from $15.0 to $21.0"
+    },
+    {
+     "date": "2026-10-16",
+     "days_ago": 7,
+     "firm": "Bernstein",
+     "action": "reiterated",
+     "from_grade": "Market Perform",
+     "to_grade": "Market Perform",
+     "price_target_from": 14.0,
+     "price_target_to": 14.0,
+     "is_rating_change": false,
+     "description": "Bernstein reiterated its Market Perform rating on VG with a $14.0 price target"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.17,
+    "verdict": "leaning bullish",
+    "analysts": 18,
+    "counts": {
+     "strongBuy": 4,
+     "buy": 7,
+     "hold": 7,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.16 to 2.17)"
+   },
+   "price_target": {
+    "mean": 17.22,
+    "median": 16.5,
+    "high": 22.0,
+    "low": 14.0,
+    "current_price": 14.0,
+    "dispersion_pct": 46.5,
+    "upside_vs_mean_pct": 23.0,
+    "upside_vs_median_pct": 17.9
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "VG",
+   "sector": "Energy",
+   "sector_etf": "XLE",
+   "comparison": {
+    "ytd": {
+     "stock_change_pct": 99.94,
+     "sector_etf_change_pct": 54.88,
+     "relative_to_sector_pct": 45.06
+    },
+    "1mo": {
+     "stock_change_pct": 5.82,
+     "sector_etf_change_pct": 10.75,
+     "relative_to_sector_pct": -4.93
+    },
+    "2w": {
+     "stock_change_pct": 6.38,
+     "sector_etf_change_pct": 6.53,
+     "relative_to_sector_pct": -0.15
+    },
+    "1y": {
+     "stock_change_pct": 47.95,
+     "sector_etf_change_pct": 62.43,
+     "relative_to_sector_pct": -14.48
+    },
+    "1d": {
+     "stock_change_pct": 9.29,
+     "sector_etf_change_pct": 2.6,
+     "relative_to_sector_pct": 6.69
+    },
+    "1w": {
+     "stock_change_pct": 10.06,
+     "sector_etf_change_pct": 1.6,
+     "relative_to_sector_pct": 8.46
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-23",
+    "realtime_end": "2026-10-23",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9603,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-22",
+      "value": "19.03"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-21",
+      "value": "16.68"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-20",
+      "value": "17.31"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-19",
+      "value": "18.44"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-16",
+      "value": "19.99"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "VG",
+   "as_of": "2026-10-23",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 5,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-11-10",
+     "description": "VG Q3 2026 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 18,
+     "eps_estimate": 0.5332
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "ex_dividend",
+     "date": "2026-09-15",
+     "source": "yfinance",
+     "description": "VG went ex-dividend \u2014 the price drops by roughly the dividend on this date mechanically, with no news behind it",
+     "days_ago": 38
+    }
+   ],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}

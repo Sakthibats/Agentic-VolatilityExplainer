@@ -1,0 +1,392 @@
+{
+ "schema": 1,
+ "ticker": "AMZN",
+ "trading_day": "2026-10-23",
+ "captured_at": "2026-10-23T23:56:11+00:00",
+ "selected_as": "control",
+ "change_pct": -0.95,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "AMZN",
+   "price": 248,
+   "prev_close": 250.38,
+   "change_pct": -0.95,
+   "realized_vol_annualized_pct": 32.8,
+   "changes_pct": {
+    "1d": -0.95,
+    "1w": -0.8,
+    "2w": -5.5,
+    "1mo": -0.55,
+    "1y": 13.79,
+    "ytd": 9.49
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   }
+  },
+  "get_news": {
+   "ticker": "AMZN",
+   "headlines": [
+    {
+     "headline": "Affirm Lost Walmart to Klarna in 2025. Now It Has Sam\u2019s Club. Here\u2019s What Moves the Stock Before November 5",
+     "summary": "Key Stats for Affirm StockCurrent Price: $72. 40Target Price (Mid): ~$149Street Target: ~$99Potential Total Return: ~105%Annualized IRR: ~17% / year__Now Live: Discover how much upside your favorite...",
+     "datetime": 1792790190,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=b9ab6b73419535d2499825ffd64140fda73461d6fc63a6273723c8b93c5c9f1b"
+    },
+    {
+     "headline": "Dow Jones Futures: Microsoft, Google, Amazon Lead Earnings Wave; What To Do In Mixed Market",
+     "summary": "Dow Jones futures: The S&P 500 and Nasdaq are below key levels, but many non-AI stocks are flashing buy signals. Microsoft, Google, Amazon loom.",
+     "datetime": 1792788577,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=4d9ac0f0ede03f93ff45478ef4561b47f6f4dc5c9377770d6f6ddb9145f9c10a"
+    },
+    {
+     "headline": "Big Tech's AI spending has Wall Street worried",
+     "summary": "Neuberger Senior Research Analyst Dan Flax joins Brooke DiPalma on Market Domination to discuss growing investor concerns over massive AI infrastructure spending by tech hyperscalers. Flax explains...",
+     "datetime": 1792786592,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=bd580916fea8916a69426fbe4cae2d825c05b002511a2afe82e1a7c9bd7d81ab"
+    },
+    {
+     "headline": "Will AI Fiber Demand Change Corning (GLW) Narrative",
+     "summary": "Corning recently presented at the OCP Global Summit 2026 in San Jose, highlighting its optical fiber and high density connectivity solutions for AI led data center infrastructure. Long duration...",
+     "datetime": 1792786535,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=1f11ccf007456c6a5ce3b5a7b327f31205036d46e5589bbbe80663c94d8adf0d"
+    },
+    {
+     "headline": "Post-it Notes maker 3M eyes AI gold rush in major Amazon deal",
+     "summary": "The Scotch tape giant just picked up its second major AI cloud customer in three months.",
+     "datetime": 1792784220,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=bda1f3e7e7e0d3eedc776f170bf5c181bc393017908c4d1feab41a24a755ce28"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "AMZN",
+   "expiry": "2026-11-06",
+   "days_to_expiry": 14,
+   "atm_iv_pct": 53.6,
+   "iv_chain_percentile": 3,
+   "skew_points": 0.0,
+   "put_call_ratio": 0.64,
+   "total_put_oi": 25738,
+   "total_call_oi": 40463
+  },
+  "get_options_positioning": {
+   "ticker": "AMZN",
+   "spot": 248.0,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-06",
+   "primary_days_to_expiry": 14,
+   "max_pain_strike": 255.0,
+   "resistance_walls": [
+    {
+     "strike": 270.0,
+     "open_interest": 5490
+    },
+    {
+     "strike": 260.0,
+     "open_interest": 5344
+    },
+    {
+     "strike": 280.0,
+     "open_interest": 4378
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 240.0,
+     "open_interest": 3482
+    },
+    {
+     "strike": 210.0,
+     "open_interest": 3206
+    },
+    {
+     "strike": 250.0,
+     "open_interest": 2991
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-06",
+     "days_to_expiry": 14,
+     "atm_iv_pct": 53.6
+    },
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 21,
+     "atm_iv_pct": 48.5
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 44.4
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 240.0,
+     "volume": 308,
+     "open_interest": 226,
+     "vol_oi_ratio": 1.4,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 255.0,
+     "volume": 575,
+     "open_interest": 909,
+     "vol_oi_ratio": 0.6,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 245.0,
+     "volume": 371,
+     "open_interest": 654,
+     "vol_oi_ratio": 0.6,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 225.0,
+     "volume": 328,
+     "open_interest": 1629,
+     "vol_oi_ratio": 0.2,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 220.0,
+     "volume": 109,
+     "open_interest": 1241,
+     "vol_oi_ratio": 0.1,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 38723,
+   "otm_put_oi": 19413,
+   "positioning_lean_score": 0.33,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "AMZN",
+   "as_of": "2026-10-23",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-19",
+     "days_ago": 4,
+     "firm": "Morgan Stanley",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 335.0,
+     "price_target_to": 350.0,
+     "is_rating_change": false,
+     "description": "Morgan Stanley maintained its Overweight rating on AMZN and raised its price target from $335.0 to $350.0"
+    },
+    {
+     "date": "2026-10-12",
+     "days_ago": 11,
+     "firm": "Wells Fargo",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 338.0,
+     "price_target_to": 329.0,
+     "is_rating_change": false,
+     "description": "Wells Fargo maintained its Overweight rating on AMZN and cut its price target from $338.0 to $329.0"
+    },
+    {
+     "date": "2026-10-12",
+     "days_ago": 11,
+     "firm": "Cantor Fitzgerald",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 320.0,
+     "price_target_to": 310.0,
+     "is_rating_change": false,
+     "description": "Cantor Fitzgerald maintained its Overweight rating on AMZN and cut its price target from $320.0 to $310.0"
+    },
+    {
+     "date": "2026-10-06",
+     "days_ago": 17,
+     "firm": "Tigress Financial",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 315.0,
+     "price_target_to": 385.0,
+     "is_rating_change": false,
+     "description": "Tigress Financial maintained its Buy rating on AMZN and raised its price target from $315.0 to $385.0"
+    },
+    {
+     "date": "2026-10-05",
+     "days_ago": 18,
+     "firm": "TD Cowen",
+     "action": "reiterated",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 350.0,
+     "price_target_to": 350.0,
+     "is_rating_change": false,
+     "description": "TD Cowen reiterated its Buy rating on AMZN with a $350.0 price target"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.77,
+    "verdict": "leaning bullish",
+    "analysts": 60,
+    "counts": {
+     "strongBuy": 16,
+     "buy": 42,
+     "hold": 2,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.8 to 1.77)"
+   },
+   "price_target": {
+    "mean": 331.72,
+    "median": 329.5,
+    "high": 405.0,
+    "low": 230.0,
+    "current_price": 248.0,
+    "dispersion_pct": 52.8,
+    "upside_vs_mean_pct": 33.8,
+    "upside_vs_median_pct": 32.9
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "AMZN",
+   "sector": "Consumer Cyclical",
+   "sector_etf": "XLY",
+   "comparison": {
+    "ytd": {
+     "stock_change_pct": 9.49,
+     "sector_etf_change_pct": -3.84,
+     "relative_to_sector_pct": 13.33
+    },
+    "1mo": {
+     "stock_change_pct": -0.55,
+     "sector_etf_change_pct": 2.52,
+     "relative_to_sector_pct": -3.07
+    },
+    "2w": {
+     "stock_change_pct": -5.5,
+     "sector_etf_change_pct": 0.22,
+     "relative_to_sector_pct": -5.72
+    },
+    "1y": {
+     "stock_change_pct": 13.79,
+     "sector_etf_change_pct": -3.89,
+     "relative_to_sector_pct": 17.68
+    },
+    "1d": {
+     "stock_change_pct": -0.95,
+     "sector_etf_change_pct": -1.66,
+     "relative_to_sector_pct": 0.71
+    },
+    "1w": {
+     "stock_change_pct": -0.8,
+     "sector_etf_change_pct": 0.57,
+     "relative_to_sector_pct": -1.37
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-23",
+    "realtime_end": "2026-10-23",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9603,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-22",
+      "value": "19.03"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-21",
+      "value": "16.68"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-20",
+      "value": "17.31"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-19",
+      "value": "18.44"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-16",
+      "value": "19.99"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "AMZN",
+   "as_of": "2026-10-23",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 5,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-10-29",
+     "description": "AMZN Q3 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 6,
+     "eps_estimate": 2.001,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}

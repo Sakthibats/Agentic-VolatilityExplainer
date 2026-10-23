@@ -1,0 +1,400 @@
+{
+ "schema": 1,
+ "ticker": "JPM",
+ "trading_day": "2026-10-23",
+ "captured_at": "2026-10-23T23:56:25+00:00",
+ "selected_as": "move",
+ "change_pct": -1.47,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "today: -1.47% \u2014 elevated relative to this stock's own typical volatility (expected ~0.92%, 1.6x), but typical in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "JPM",
+   "price": 331.58,
+   "prev_close": 336.54,
+   "change_pct": -1.47,
+   "realized_vol_annualized_pct": 14.6,
+   "changes_pct": {
+    "1d": -1.47,
+    "1w": -2.4,
+    "2w": -0.42,
+    "1mo": -1.57,
+    "1y": 14.91,
+    "ytd": 3.84
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "today: -1.47% \u2014 elevated relative to this stock's own typical volatility (expected ~0.92%, 1.6x), but typical in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "JPM",
+   "headlines": [
+    {
+     "headline": "Weekly Wrap: Bitcoin Under Pressure As Market Volatility Intensifies",
+     "summary": "Bitcoin (CRYPTO: $BTC) and other cryptocurrencies remain under pressure as market volatility worsens and technology...",
+     "datetime": 1792789920,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=d0e0800402e0bff8dd39298605ed45370b313b5b1cfd15f14953c9b8a8093fa4"
+    },
+    {
+     "headline": "Norwegian Cruise Line Holdings (NCLH) Could Be 20% Undervalued As JPMorgan Flags Yield Risk",
+     "summary": "JPMorgan\u2019s downgrade of Norwegian Cruise Line Holdings (NCLH) to Underweight ahead of the Q3 report puts the focus squarely on one issue: the bank is worried about potential pressure on net yield...",
+     "datetime": 1792789875,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=f98b08d72f26fbd58de5673a9277a9aec4e23ff0ef7f8f46b8cad25a877b15d2"
+    },
+    {
+     "headline": "XRP News: Ripple Joined DTCC\u2019s Tokenization Push This Week. Can It Pull XRP Out of Its October Slide?",
+     "summary": "Ripple Prime just joined DTCC's push to tokenize Wall Street securities alongside BlackRock and JPMorgan, yet XRP keeps sliding deeper into October losses. The question is whether Ripple's growing...",
+     "datetime": 1792773225,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=2faca97527639578977855331c94a62baeeb7e832fbc95baf74abf8b98bba311"
+    },
+    {
+     "headline": "Week\u2019s Best: JPMorgan Chase Teams Overseeing $18 Billion Go Indie",
+     "summary": "Here\u2019s our weekly roundup of the most-read articles at Barron\u2019s Advisor.",
+     "datetime": 1792770060,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=f1cf447c71e1ca24ea7351a84f8e23fa21301cb715707acbe631f0ad9f4bf8fe"
+    },
+    {
+     "headline": "American Express Plans to Cut 5% of Global Jobs. The Stock Is Falling on Earnings.",
+     "summary": "American Express stock falls even as the credit-card company says it will cut 5% of its global workforce.",
+     "datetime": 1792767300,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=59f55abd254ac4a81e8767dfa50337e5ba9acbb64274c7ed96a4d2b99fef53f1"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "JPM",
+   "expiry": "2026-11-06",
+   "days_to_expiry": 14,
+   "atm_iv_pct": 24.7,
+   "iv_chain_percentile": 2,
+   "skew_points": 2.4,
+   "put_call_ratio": 1.12,
+   "total_put_oi": 3892,
+   "total_call_oi": 3476
+  },
+  "get_options_positioning": {
+   "ticker": "JPM",
+   "spot": 331.58,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-06",
+   "primary_days_to_expiry": 14,
+   "max_pain_strike": 335.0,
+   "resistance_walls": [
+    {
+     "strike": 355.0,
+     "open_interest": 905
+    },
+    {
+     "strike": 345.0,
+     "open_interest": 823
+    },
+    {
+     "strike": 350.0,
+     "open_interest": 394
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 295.0,
+     "open_interest": 521
+    },
+    {
+     "strike": 305.0,
+     "open_interest": 492
+    },
+    {
+     "strike": 315.0,
+     "open_interest": 465
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-06",
+     "days_to_expiry": 14,
+     "atm_iv_pct": 24.7
+    },
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 21,
+     "atm_iv_pct": 24.9
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 24.0
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 300.0,
+     "volume": 101,
+     "open_interest": 101,
+     "vol_oi_ratio": 1.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 330.0,
+     "volume": 112,
+     "open_interest": 259,
+     "vol_oi_ratio": 0.4,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 345.0,
+     "volume": 106,
+     "open_interest": 823,
+     "vol_oi_ratio": 0.1,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 3187,
+   "otm_put_oi": 3223,
+   "positioning_lean_score": -0.01,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "JPM",
+   "as_of": "2026-10-23",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-15",
+     "days_ago": 8,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 360.0,
+     "price_target_to": 350.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Neutral rating on JPM and cut its price target from $360.0 to $350.0"
+    },
+    {
+     "date": "2026-10-14",
+     "days_ago": 9,
+     "firm": "Truist Securities",
+     "action": "maintained",
+     "from_grade": "Hold",
+     "to_grade": "Hold",
+     "price_target_from": 352.0,
+     "price_target_to": 361.0,
+     "is_rating_change": false,
+     "description": "Truist Securities maintained its Hold rating on JPM and raised its price target from $352.0 to $361.0"
+    },
+    {
+     "date": "2026-10-14",
+     "days_ago": 9,
+     "firm": "Barclays",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 420.0,
+     "price_target_to": 425.0,
+     "is_rating_change": false,
+     "description": "Barclays maintained its Overweight rating on JPM and raised its price target from $420.0 to $425.0"
+    },
+    {
+     "date": "2026-10-14",
+     "days_ago": 9,
+     "firm": "RBC Capital",
+     "action": "reiterated",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 370.0,
+     "price_target_to": 370.0,
+     "is_rating_change": false,
+     "description": "RBC Capital reiterated its Outperform rating on JPM with a $370.0 price target"
+    },
+    {
+     "date": "2026-10-14",
+     "days_ago": 9,
+     "firm": "Morgan Stanley",
+     "action": "maintained",
+     "from_grade": "Equal-Weight",
+     "to_grade": "Equal-Weight",
+     "price_target_from": 370.0,
+     "price_target_to": 377.0,
+     "is_rating_change": false,
+     "description": "Morgan Stanley maintained its Equal-Weight rating on JPM and raised its price target from $370.0 to $377.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.23,
+    "verdict": "leaning bullish",
+    "analysts": 26,
+    "counts": {
+     "strongBuy": 5,
+     "buy": 10,
+     "hold": 11,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.35 to 2.23; bearish ratings 0 to 0)"
+   },
+   "price_target": {
+    "mean": 372.26,
+    "median": 370.0,
+    "high": 425.0,
+    "low": 312.0,
+    "current_price": 331.58,
+    "dispersion_pct": 30.4,
+    "upside_vs_mean_pct": 12.3,
+    "upside_vs_median_pct": 11.6
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "JPM",
+   "sector": "Financial Services",
+   "sector_etf": "XLF",
+   "comparison": {
+    "ytd": {
+     "stock_change_pct": 3.84,
+     "sector_etf_change_pct": 3.01,
+     "relative_to_sector_pct": 0.83
+    },
+    "1mo": {
+     "stock_change_pct": -1.57,
+     "sector_etf_change_pct": 2.51,
+     "relative_to_sector_pct": -4.08
+    },
+    "2w": {
+     "stock_change_pct": -0.42,
+     "sector_etf_change_pct": 2.14,
+     "relative_to_sector_pct": -2.56
+    },
+    "1y": {
+     "stock_change_pct": 14.91,
+     "sector_etf_change_pct": 8.3,
+     "relative_to_sector_pct": 6.61
+    },
+    "1d": {
+     "stock_change_pct": -1.47,
+     "sector_etf_change_pct": -1.32,
+     "relative_to_sector_pct": -0.15
+    },
+    "1w": {
+     "stock_change_pct": -2.4,
+     "sector_etf_change_pct": 0.68,
+     "relative_to_sector_pct": -3.08
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-23",
+    "realtime_end": "2026-10-23",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9603,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-22",
+      "value": "19.03"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-21",
+      "value": "16.68"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-20",
+      "value": "17.31"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-19",
+      "value": "18.44"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-16",
+      "value": "19.99"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "JPM",
+   "as_of": "2026-10-23",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 5,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-14",
+     "description": "JPM Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 83,
+     "eps_estimate": 5.9267,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-13",
+     "description": "JPM reported Q3 2026 earnings before the open \u2014 EPS 5.57 vs 5.958 expected (miss, -6.5%)",
+     "source": "finnhub",
+     "days_ago": 10,
+     "eps_actual": 5.57,
+     "eps_estimate": 5.958,
+     "surprise": "miss",
+     "surprise_pct": -6.5,
+     "hour": "bmo"
+    },
+    {
+     "type": "ex_dividend",
+     "date": "2026-10-06",
+     "source": "yfinance",
+     "description": "JPM went ex-dividend \u2014 the price drops by roughly the dividend on this date mechanically, with no news behind it",
+     "days_ago": 17
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

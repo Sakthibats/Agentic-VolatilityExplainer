@@ -1,0 +1,365 @@
+{
+ "schema": 1,
+ "ticker": "CRDO",
+ "trading_day": "2026-10-23",
+ "captured_at": "2026-10-23T23:57:04+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -9.51,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: -9.51% \u2014 elevated relative to this stock's own typical volatility (expected ~5.45%, 1.75x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "this week: -13.21% \u2014 typical relative to this stock's own typical volatility (expected ~12.18%, 1.08x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past 2 weeks: -31.98% \u2014 elevated relative to this stock's own typical volatility (expected ~17.23%, 1.86x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past month: -24.84% \u2014 typical relative to this stock's own typical volatility (expected ~24.97%, 0.99x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "CRDO",
+   "price": 147.29,
+   "prev_close": 162.77,
+   "change_pct": -9.51,
+   "realized_vol_annualized_pct": 86.5,
+   "changes_pct": {
+    "1d": -9.51,
+    "1w": -13.21,
+    "2w": -31.98,
+    "1mo": -24.84,
+    "1y": 7.35,
+    "ytd": 2.84
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: -9.51% \u2014 elevated relative to this stock's own typical volatility (expected ~5.45%, 1.75x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "this week: -13.21% \u2014 typical relative to this stock's own typical volatility (expected ~12.18%, 1.08x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past 2 weeks: -31.98% \u2014 elevated relative to this stock's own typical volatility (expected ~17.23%, 1.86x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past month: -24.84% \u2014 typical relative to this stock's own typical volatility (expected ~24.97%, 0.99x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "CRDO",
+   "headlines": [
+    {
+     "headline": "Cohu shares are trading lower after the company reported worse-than-expected Q4 adjusted EPS results.",
+     "summary": "",
+     "datetime": 1792680414,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=ed7113233e4e7662b66024bffb44871fc2c22a9784e8551f39aa7d847482994e"
+    },
+    {
+     "headline": "Credo Technology Group Holding Ltd. (CRDO) Faces High Expectations Despite Strong Growth",
+     "summary": "Brown Advisory, an investment management company, released its \u201cMid-Cap Growth Strategy\u201d Q3 2026 investor letter. A copy of the letter can be downloaded here. The strategy outperformed its benchmark...",
+     "datetime": 1792676535,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=330d3e84011bef366acd67d19e67c368fd918e0a4746b459c10d71a51282f444"
+    },
+    {
+     "headline": "Rambus Could Be an Overlooked Winner in the AI Memory Boom",
+     "summary": "Rambus sits 46% below its 52-week high despite posting record product revenue, and a major AI hyperscaler just handed it a design win that most investors have not noticed yet.",
+     "datetime": 1792670402,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=5bac7bf9f2e3f1c0e29b5e6ee7d137f757f1b45579bc55f3b9baff3c8bcb6582"
+    },
+    {
+     "headline": "Credo Jumps 6.3% as AI Rebound Lifts a Stock Still 41% Off Its High",
+     "summary": "Key TakeawaysCredo rose 6. 3% to $182 on October 21, yet the stock still trades 41% below its 52-week high of $309.",
+     "datetime": 1792668639,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=1347930800cef2199ec901b754f580508f69301090357c3343bdcf5f78e75983"
+    },
+    {
+     "headline": "What Has The Market Missed In Credo Technology Stock's Drop?",
+     "summary": "For questions about this article or underlying research, email help@trefis.com.",
+     "datetime": 1792619124,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=4620f567a5d7a2cffa0709599de20d4e9cf2e500f5e38e9630a479f5c21562b1"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "CRDO",
+   "expiry": "2026-11-06",
+   "days_to_expiry": 14,
+   "atm_iv_pct": 86.5,
+   "iv_chain_percentile": 11,
+   "skew_points": 0.4,
+   "put_call_ratio": 1.4,
+   "total_put_oi": 3671,
+   "total_call_oi": 2626
+  },
+  "get_options_positioning": {
+   "ticker": "CRDO",
+   "spot": 147.29,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-06",
+   "primary_days_to_expiry": 14,
+   "max_pain_strike": 190.0,
+   "resistance_walls": [
+    {
+     "strike": 220.0,
+     "open_interest": 392
+    },
+    {
+     "strike": 185.0,
+     "open_interest": 318
+    },
+    {
+     "strike": 200.0,
+     "open_interest": 282
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 175.0,
+     "open_interest": 663
+    },
+    {
+     "strike": 180.0,
+     "open_interest": 451
+    },
+    {
+     "strike": 185.0,
+     "open_interest": 304
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-06",
+     "days_to_expiry": 14,
+     "atm_iv_pct": 86.5
+    },
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 21,
+     "atm_iv_pct": 83.7
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 84.6
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 150.0,
+     "volume": 183,
+     "open_interest": 12,
+     "vol_oi_ratio": 15.2,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 160.0,
+     "volume": 159,
+     "open_interest": 29,
+     "vol_oi_ratio": 5.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 155.0,
+     "volume": 836,
+     "open_interest": 166,
+     "vol_oi_ratio": 5.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 195.0,
+     "volume": 181,
+     "open_interest": 64,
+     "vol_oi_ratio": 2.8,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 140.0,
+     "volume": 110,
+     "open_interest": 76,
+     "vol_oi_ratio": 1.4,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 2619,
+   "otm_put_oi": 334,
+   "positioning_lean_score": 0.77,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "CRDO",
+   "as_of": "2026-10-23",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-15",
+     "days_ago": 8,
+     "firm": "Rosenblatt",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 235.0,
+     "price_target_to": 235.0,
+     "is_rating_change": false,
+     "description": "Rosenblatt maintained its Neutral rating on CRDO with a $235.0 price target"
+    },
+    {
+     "date": "2026-10-05",
+     "days_ago": 18,
+     "firm": "Stifel",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 350.0,
+     "price_target_to": 310.0,
+     "is_rating_change": false,
+     "description": "Stifel maintained its Buy rating on CRDO and cut its price target from $350.0 to $310.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.8,
+    "verdict": "leaning bullish",
+    "analysts": 20,
+    "counts": {
+     "strongBuy": 5,
+     "buy": 14,
+     "hold": 1,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.84 to 1.8)"
+   },
+   "price_target": {
+    "mean": 284.05,
+    "median": 292.0,
+    "high": 315.0,
+    "low": 235.0,
+    "current_price": 147.29,
+    "dispersion_pct": 28.2,
+    "upside_vs_mean_pct": 92.9,
+    "upside_vs_median_pct": 98.2
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "CRDO",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "ytd": {
+     "stock_change_pct": 2.84,
+     "sector_etf_change_pct": 27.44,
+     "relative_to_sector_pct": -24.6
+    },
+    "1mo": {
+     "stock_change_pct": -24.84,
+     "sector_etf_change_pct": -5.9,
+     "relative_to_sector_pct": -18.94
+    },
+    "2w": {
+     "stock_change_pct": -31.98,
+     "sector_etf_change_pct": -7.82,
+     "relative_to_sector_pct": -24.16
+    },
+    "1y": {
+     "stock_change_pct": 7.35,
+     "sector_etf_change_pct": 29.02,
+     "relative_to_sector_pct": -21.67
+    },
+    "1d": {
+     "stock_change_pct": -9.51,
+     "sector_etf_change_pct": 0.49,
+     "relative_to_sector_pct": -10.0
+    },
+    "1w": {
+     "stock_change_pct": -13.21,
+     "sector_etf_change_pct": -0.13,
+     "relative_to_sector_pct": -13.08
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-23",
+    "realtime_end": "2026-10-23",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9603,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-22",
+      "value": "19.03"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-21",
+      "value": "16.68"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-20",
+      "value": "17.31"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-19",
+      "value": "18.44"
+     },
+     {
+      "realtime_start": "2026-10-23",
+      "realtime_end": "2026-10-23",
+      "date": "2026-10-16",
+      "value": "19.99"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "CRDO",
+   "as_of": "2026-10-23",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 5,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-11-30",
+     "description": "CRDO Q2 2027 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 38,
+     "eps_estimate": 1.3123
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}
