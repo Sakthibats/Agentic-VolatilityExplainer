@@ -1,0 +1,368 @@
+{
+ "schema": 1,
+ "ticker": "GS",
+ "trading_day": "2026-10-22",
+ "captured_at": "2026-10-23T00:06:16+00:00",
+ "selected_as": "move",
+ "change_pct": -1.48,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "today: 2.25% \u2014 elevated relative to this stock's own typical volatility (expected ~1.21%, 1.86x), but typical in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "GS",
+   "price": 891.3,
+   "prev_close": 904.72,
+   "change_pct": -1.48,
+   "realized_vol_annualized_pct": 19.2,
+   "changes_pct": {
+    "1d": 2.25,
+    "1w": 2.96,
+    "2w": 1.97,
+    "1mo": -4.72,
+    "1y": 20.86,
+    "ytd": 0.4
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "today: 2.25% \u2014 elevated relative to this stock's own typical volatility (expected ~1.21%, 1.86x), but typical in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "GS",
+   "headlines": [
+    {
+     "headline": "Equifax (EFX) Stock Sees Fair Value Cut As Analysts Trim Mortgage Growth Views",
+     "summary": "The assessed fair value for Equifax has been updated from about US$206.33 to about US$195.10, a reduction of roughly 5.4% that puts a finer point on how analysts are rethinking the stock. This shift...",
+     "datetime": 1792703466,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=49b11e4ed724c2e41ba687c4898c515365e462ba65af33c3db6e9a527fdc4678"
+    },
+    {
+     "headline": "3 Value Stocks with Warning Signs",
+     "summary": "Value investing has produced some of the world\u2019s most famous investing billionaires, including Warren Buffett, David Einhorn, and Seth Klarman, who built their fortunes by purchasing wonderful...",
+     "datetime": 1792702433,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=164f988617ae629c5ec0cfd223c77369d6cea2f9d52b9e35a62f29c6003edd58"
+    },
+    {
+     "headline": "What Would Blowout Q3 Earnings Results Look Like?",
+     "summary": "We discuss what would it take for companies surpass expectations this earnings season given how strong the last earnings season was.",
+     "datetime": 1792700760,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=a7e33b17e785bbb2732829e148d663e9b6de6bc520d7d39bd5b29546fdbb8dd3"
+    },
+    {
+     "headline": "Goldman Sachs has a new warning for the housing market for 2027",
+     "summary": "The data coming out of the housing market this fall tells a consistent story. Goldman Sachs has a forecast for what comes next.",
+     "datetime": 1792699620,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=28893e2084de6fd99da6bd648a19d795b2989d0f8d8c3c5247175e623bc47325"
+    },
+    {
+     "headline": "Hedge Funds Are Ramping Up Stock Shorts to Five-Year Highs. Goldman is Warning of a Squeeze.",
+     "summary": "Short sales have outpaced long purchases across global equities by about five to one this month.",
+     "datetime": 1792698988,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=2ae9f785defe4781da48bab2dfaf4e91f4229db8aec34015158523ad544f6dfd"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "GS",
+   "expiry": "2026-11-06",
+   "days_to_expiry": 14,
+   "atm_iv_pct": 38.6,
+   "iv_chain_percentile": 3,
+   "skew_points": 2.6,
+   "put_call_ratio": 0.89,
+   "total_put_oi": 3211,
+   "total_call_oi": 3609
+  },
+  "get_options_positioning": {
+   "ticker": "GS",
+   "spot": 891.3,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-06",
+   "primary_days_to_expiry": 14,
+   "max_pain_strike": 885.0,
+   "resistance_walls": [
+    {
+     "strike": 970.0,
+     "open_interest": 571
+    },
+    {
+     "strike": 920.0,
+     "open_interest": 564
+    },
+    {
+     "strike": 915.0,
+     "open_interest": 308
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 780.0,
+     "open_interest": 285
+    },
+    {
+     "strike": 850.0,
+     "open_interest": 248
+    },
+    {
+     "strike": 860.0,
+     "open_interest": 226
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-06",
+     "days_to_expiry": 14,
+     "atm_iv_pct": 38.6
+    },
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 21,
+     "atm_iv_pct": 37.1
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 34.7
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [],
+   "otm_call_oi": 3003,
+   "otm_put_oi": 2769,
+   "positioning_lean_score": 0.04,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "GS",
+   "as_of": "2026-10-23",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-19",
+     "days_ago": 4,
+     "firm": "BMO Capital",
+     "action": "maintained",
+     "from_grade": "Market Perform",
+     "to_grade": "Market Perform",
+     "price_target_from": 970.0,
+     "price_target_to": 950.0,
+     "is_rating_change": false,
+     "description": "BMO Capital maintained its Market Perform rating on GS and cut its price target from $970.0 to $950.0"
+    },
+    {
+     "date": "2026-10-16",
+     "days_ago": 7,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 955.0,
+     "price_target_to": 970.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Neutral rating on GS and raised its price target from $955.0 to $970.0"
+    },
+    {
+     "date": "2026-10-14",
+     "days_ago": 9,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 1050.0,
+     "price_target_to": 1000.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Neutral rating on GS and cut its price target from $1050.0 to $1000.0"
+    },
+    {
+     "date": "2026-10-14",
+     "days_ago": 9,
+     "firm": "Keefe, Bruyette & Woods",
+     "action": "maintained",
+     "from_grade": "Market Perform",
+     "to_grade": "Market Perform",
+     "price_target_from": 1130.0,
+     "price_target_to": 1100.0,
+     "is_rating_change": false,
+     "description": "Keefe, Bruyette & Woods maintained its Market Perform rating on GS and cut its price target from $1130.0 to $1100.0"
+    },
+    {
+     "date": "2026-10-14",
+     "days_ago": 9,
+     "firm": "RBC Capital",
+     "action": "maintained",
+     "from_grade": "Sector Perform",
+     "to_grade": "Sector Perform",
+     "price_target_from": 1220.0,
+     "price_target_to": 1010.0,
+     "is_rating_change": false,
+     "description": "RBC Capital maintained its Sector Perform rating on GS and cut its price target from $1220.0 to $1010.0"
+    }
+   ],
+   "consensus": {
+    "rating": "hold",
+    "score": 2.77,
+    "verdict": "neutral",
+    "analysts": 26,
+    "counts": {
+     "strongBuy": 1,
+     "buy": 7,
+     "hold": 16,
+     "sell": 1,
+     "strongSell": 1
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.8 to 2.77)"
+   },
+   "price_target": {
+    "mean": 1038.18,
+    "median": 1010.0,
+    "high": 1250.0,
+    "low": 730.0,
+    "current_price": 891.3,
+    "dispersion_pct": 50.1,
+    "upside_vs_mean_pct": 16.5,
+    "upside_vs_median_pct": 13.3
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "GS",
+   "sector": "Financial Services",
+   "sector_etf": "XLF",
+   "comparison": {
+    "1mo": {
+     "stock_change_pct": -4.72,
+     "sector_etf_change_pct": 2.26,
+     "relative_to_sector_pct": -6.98
+    },
+    "2w": {
+     "stock_change_pct": 1.97,
+     "sector_etf_change_pct": 4.26,
+     "relative_to_sector_pct": -2.29
+    },
+    "1w": {
+     "stock_change_pct": 2.96,
+     "sector_etf_change_pct": 2.79,
+     "relative_to_sector_pct": 0.17
+    },
+    "1y": {
+     "stock_change_pct": 20.86,
+     "sector_etf_change_pct": 7.83,
+     "relative_to_sector_pct": 13.03
+    },
+    "1d": {
+     "stock_change_pct": 2.25,
+     "sector_etf_change_pct": 0.57,
+     "relative_to_sector_pct": 1.68
+    },
+    "ytd": {
+     "stock_change_pct": 0.4,
+     "sector_etf_change_pct": 3.27,
+     "relative_to_sector_pct": -2.87
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-22",
+    "realtime_end": "2026-10-22",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9602,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-21",
+      "value": "16.68"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-20",
+      "value": "17.31"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-19",
+      "value": "18.44"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-16",
+      "value": "19.99"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-15",
+      "value": "16.46"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "GS",
+   "as_of": "2026-10-23",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 5,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-19",
+     "description": "GS quarterly earnings scheduled (before the open)",
+     "source": "yfinance",
+     "days_until": 88,
+     "eps_estimate": 15.65,
+     "hour": "bmo"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-13",
+     "description": "GS reported Q3 2026 earnings before the open \u2014 EPS 17.01 vs 13.4156 expected (beat, +26.8%)",
+     "source": "finnhub",
+     "days_ago": 10,
+     "eps_actual": 17.01,
+     "eps_estimate": 13.4156,
+     "surprise": "beat",
+     "surprise_pct": 26.8,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub+yfinance"
+  }
+ }
+}

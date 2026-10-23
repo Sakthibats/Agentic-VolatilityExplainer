@@ -1,0 +1,307 @@
+{
+ "schema": 1,
+ "ticker": "ALLE",
+ "trading_day": "2026-10-22",
+ "captured_at": "2026-10-23T00:06:49+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 11.02,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "the past 2 weeks: 7.5% \u2014 elevated relative to this stock's own typical volatility (expected ~4.68%, 1.6x), but typical in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "ALLE",
+   "price": 176.52,
+   "prev_close": 159,
+   "change_pct": 11.02,
+   "realized_vol_annualized_pct": 23.5,
+   "changes_pct": {
+    "1d": 1.25,
+    "1w": 4.26,
+    "2w": 7.5,
+    "1mo": 3.28,
+    "1y": -9.63,
+    "ytd": -0.05
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "the past 2 weeks: 7.5% \u2014 elevated relative to this stock's own typical volatility (expected ~4.68%, 1.6x), but typical in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "ALLE",
+   "headlines": [
+    {
+     "headline": "Allegion Soars 11% as Q3 Beat Fuels Raised 2026 Outlook on \u201cSteady Momentum\u201d",
+     "summary": "Key TakeawaysAllegion shares rose 11% today after its third-quarter adjusted EPS of $2. 60 and revenue of $1.",
+     "datetime": 1792700132,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=d82a2e2e0faef2ba474be04856d166b35f6a411f3af1461662a14edb31cc3f91"
+    },
+    {
+     "headline": "S&P 500 Top Movers: Gainers and Losers for Oct. 22, 2026",
+     "summary": "Roper Technologies, Allegion and Lennar led S&P 500 gainers on Oct. 22, 2026, while Moderna, Coherent and Lumentum were among the biggest decliners.",
+     "datetime": 1792695971,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=391c657cf8b8bd35500edd8dd058ed723150150e5d1af02abfbbe21633204915"
+    },
+    {
+     "headline": "Why Allegion (ALLE) stock is up today",
+     "summary": "Shares of security hardware provider Allegion (NYSE:ALLE) jumped 6.9% in the morning session after the company reported third-quarter 2026 financial results featuring high-single digit organic...",
+     "datetime": 1792689473,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=7aca16a463a9f609cdef9b4a27eb71e5c3df06212a7caa9bb0f25c78fa636f6a"
+    },
+    {
+     "headline": "Allegion plc Q3 2026 Earnings Call Summary",
+     "summary": "Moby summary of Allegion plc's Q3 2026 earnings call",
+     "datetime": 1792688675,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=54f2488c550e411f79fb0d7b8c5b3f7e96d54cbf1054c4bcba9bec84a6dcd6df"
+    },
+    {
+     "headline": "Allegion (ALLE) Q3 2026 Earnings Call Transcript",
+     "summary": "Strong Americas growth and margin expansion drive raised guidance despite Western Europe weakness.",
+     "datetime": 1792688626,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=13b05874b1db66be4cf911a7ab12463e6cd8a136d9203b71b311ead27d3b2255"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "ALLE",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 28,
+   "atm_iv_pct": 37.4,
+   "iv_chain_percentile": 15,
+   "skew_points": 11.1,
+   "put_call_ratio": 0.71,
+   "total_put_oi": 410,
+   "total_call_oi": 574
+  },
+  "get_options_positioning": {
+   "ticker": "ALLE",
+   "spot": 176.52,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 28,
+   "max_pain_strike": 155.0,
+   "resistance_walls": [
+    {
+     "strike": 165.0,
+     "open_interest": 376
+    },
+    {
+     "strike": 160.0,
+     "open_interest": 150
+    },
+    {
+     "strike": 180.0,
+     "open_interest": 12
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 145.0,
+     "open_interest": 305
+    },
+    {
+     "strike": 155.0,
+     "open_interest": 52
+    },
+    {
+     "strike": 150.0,
+     "open_interest": 47
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 37.4
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 145.0,
+     "volume": 301,
+     "open_interest": 305,
+     "vol_oi_ratio": 1.0,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 22,
+   "otm_put_oi": 410,
+   "positioning_lean_score": -0.9,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "ALLE",
+   "as_of": "2026-10-23",
+   "analyst_coverage": "covered",
+   "recent_actions": [],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.36,
+    "verdict": "leaning bullish",
+    "analysts": 11,
+    "counts": {
+     "strongBuy": 1,
+     "buy": 5,
+     "hold": 5,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.64 to 2.36; bearish ratings 0 to 0)"
+   },
+   "price_target": {
+    "mean": 178.0,
+    "median": 170.0,
+    "high": 202.0,
+    "low": 160.0,
+    "current_price": 176.52,
+    "dispersion_pct": 23.6,
+    "upside_vs_mean_pct": 0.8,
+    "upside_vs_median_pct": -3.7
+   },
+   "notes": [
+    "No analyst rating changes in the last 30 days \u2014 the consensus below is standing opinion, not a recent catalyst."
+   ]
+  },
+  "get_sector_comparison": {
+   "ticker": "ALLE",
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "comparison": {
+    "1mo": {
+     "stock_change_pct": 3.28,
+     "sector_etf_change_pct": -1.15,
+     "relative_to_sector_pct": 4.43
+    },
+    "2w": {
+     "stock_change_pct": 7.5,
+     "sector_etf_change_pct": 0.28,
+     "relative_to_sector_pct": 7.22
+    },
+    "1w": {
+     "stock_change_pct": 4.26,
+     "sector_etf_change_pct": 0.76,
+     "relative_to_sector_pct": 3.5
+    },
+    "1y": {
+     "stock_change_pct": -9.63,
+     "sector_etf_change_pct": 10.89,
+     "relative_to_sector_pct": -20.52
+    },
+    "1d": {
+     "stock_change_pct": 1.25,
+     "sector_etf_change_pct": 0.91,
+     "relative_to_sector_pct": 0.34
+    },
+    "ytd": {
+     "stock_change_pct": -0.05,
+     "sector_etf_change_pct": 7.39,
+     "relative_to_sector_pct": -7.44
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-22",
+    "realtime_end": "2026-10-22",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9602,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-21",
+      "value": "16.68"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-20",
+      "value": "17.31"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-19",
+      "value": "18.44"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-16",
+      "value": "19.99"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-15",
+      "value": "16.46"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "ALLE",
+   "as_of": "2026-10-23",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 5,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-22",
+     "description": "ALLE reported Q3 2026 earnings before the open \u2014 EPS 2.6 vs 2.5522 expected (beat, +1.9%)",
+     "source": "finnhub",
+     "days_ago": 1,
+     "eps_actual": 2.6,
+     "eps_estimate": 2.5522,
+     "surprise": "beat",
+     "surprise_pct": 1.9,
+     "hour": "bmo"
+    },
+    {
+     "type": "ex_dividend",
+     "date": "2026-09-15",
+     "source": "yfinance",
+     "description": "ALLE went ex-dividend \u2014 the price drops by roughly the dividend on this date mechanically, with no news behind it",
+     "days_ago": 38
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

@@ -1,0 +1,399 @@
+{
+ "schema": 1,
+ "ticker": "MSFT",
+ "trading_day": "2026-10-22",
+ "captured_at": "2026-10-23T00:05:53+00:00",
+ "selected_as": "control",
+ "change_pct": -2.23,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "MSFT",
+   "price": 521.08,
+   "prev_close": 532.95,
+   "change_pct": -2.23,
+   "realized_vol_annualized_pct": 21.7,
+   "changes_pct": {
+    "1d": 0.2,
+    "1w": -0.14,
+    "2w": 0.6,
+    "1mo": 7.02,
+    "1y": 3.98,
+    "ytd": 13.4
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   }
+  },
+  "get_news": {
+   "ticker": "MSFT",
+   "headlines": [
+    {
+     "headline": "Microsoft (MSFT) Falls More Steeply Than Broader Market: What Investors Need to Know",
+     "summary": "Microsoft (MSFT) closed at $521.08 in the latest trading session, marking a -2.23% move from the prior day.",
+     "datetime": 1792701903,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=1f6d7894c5bc3b4b51e2ab1e1b9677a59086620ca989cd4cac9558a1ce2209ea"
+    },
+    {
+     "headline": "Alphabet (GOOGL) vs. MSFT and AMZN: Can AI Investments and Google Cloud Growth Unlock a 26% Upside?",
+     "summary": "Is GOOGL a good stock to buy? We came across a bullish thesis on Alphabet Inc. on Astute Optics \u2013 US\u2019s Substack. In this article, we will summarize the bulls\u2019 thesis on GOOGL. Alphabet Inc.\u2019s share...",
+     "datetime": 1792700784,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=76c1bd26b5efefa54a8a958e66f717ce5ce0aa2140eca2591ecdad295e7ba06b"
+    },
+    {
+     "headline": "Duke Energy (DUK) Stock Could Be 19% Overvalued Despite Data Center Cost Deal",
+     "summary": "Duke Energy has delivered a 3 year share price gain that is hard to ignore, yet the real question for investors is whether today's US$120.67 price lines up with the dividend stream that underpins the...",
+     "datetime": 1792700047,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=1f134043806d5e39b837192509b3b37835602c60307bd9bf5f9bcb507e6eac0b"
+    },
+    {
+     "headline": "Google Is Paying SpaceX $11 Billion a Year for Compute. Here's the Concentration Risk Nobody Is Pricing In.",
+     "summary": "The tech giant is paying SpaceX billions of dollars to instantly expand its cloud infrastructure.",
+     "datetime": 1792699800,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=2ea940cce4c769226bc004eef1d6ce0b25762f1748ff1989c83ce7075c3bd518"
+    },
+    {
+     "headline": "UBS portfolio manager: S&P 500 could hit 9,500 by June 2027 on AI, longevity, energy boom",
+     "summary": "A UBS portfolio manager sees three technology waves pushing stocks far beyond Wall Street's consensus, but his bullish case runs straight through two more Fed rate hikes that most investors are not...",
+     "datetime": 1792696531,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=10676d383b0f1ee8c764b7a1ca8e5d42cb0dc60e93732b81133aa8a5d1937c1a"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "MSFT",
+   "expiry": "2026-11-06",
+   "days_to_expiry": 14,
+   "atm_iv_pct": 39.7,
+   "iv_chain_percentile": 3,
+   "skew_points": 1.5,
+   "put_call_ratio": 1.32,
+   "total_put_oi": 20147,
+   "total_call_oi": 15217
+  },
+  "get_options_positioning": {
+   "ticker": "MSFT",
+   "spot": 521.08,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-06",
+   "primary_days_to_expiry": 14,
+   "max_pain_strike": 525.0,
+   "resistance_walls": [
+    {
+     "strike": 550.0,
+     "open_interest": 2297
+    },
+    {
+     "strike": 545.0,
+     "open_interest": 1604
+    },
+    {
+     "strike": 575.0,
+     "open_interest": 881
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 440.0,
+     "open_interest": 2589
+    },
+    {
+     "strike": 485.0,
+     "open_interest": 2459
+    },
+    {
+     "strike": 495.0,
+     "open_interest": 2292
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-06",
+     "days_to_expiry": 14,
+     "atm_iv_pct": 39.7
+    },
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 21,
+     "atm_iv_pct": 36.1
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 34.0
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 290.0,
+     "volume": 1358,
+     "open_interest": 60,
+     "vol_oi_ratio": 22.6,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 315.0,
+     "volume": 135,
+     "open_interest": 36,
+     "vol_oi_ratio": 3.8,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 410.0,
+     "volume": 201,
+     "open_interest": 143,
+     "vol_oi_ratio": 1.4,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 305.0,
+     "volume": 169,
+     "open_interest": 158,
+     "vol_oi_ratio": 1.1,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 520.0,
+     "volume": 189,
+     "open_interest": 265,
+     "vol_oi_ratio": 0.7,
+     "moneyness": "ITM"
+    }
+   ],
+   "otm_call_oi": 12851,
+   "otm_put_oi": 16939,
+   "positioning_lean_score": -0.14,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "MSFT",
+   "as_of": "2026-10-23",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-21",
+     "days_ago": 2,
+     "firm": "Guggenheim",
+     "action": "reiterated",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 586.0,
+     "price_target_to": 586.0,
+     "is_rating_change": false,
+     "description": "Guggenheim reiterated its Buy rating on MSFT with a $586.0 price target"
+    },
+    {
+     "date": "2026-10-20",
+     "days_ago": 3,
+     "firm": "BMO Capital",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 515.0,
+     "price_target_to": 600.0,
+     "is_rating_change": false,
+     "description": "BMO Capital maintained its Outperform rating on MSFT and raised its price target from $515.0 to $600.0"
+    },
+    {
+     "date": "2026-10-19",
+     "days_ago": 4,
+     "firm": "Bernstein",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 660.0,
+     "price_target_to": 662.0,
+     "is_rating_change": false,
+     "description": "Bernstein maintained its Outperform rating on MSFT and raised its price target from $660.0 to $662.0"
+    },
+    {
+     "date": "2026-10-16",
+     "days_ago": 7,
+     "firm": "StoneX",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 525.0,
+     "price_target_to": 600.0,
+     "is_rating_change": false,
+     "description": "StoneX maintained its Buy rating on MSFT and raised its price target from $525.0 to $600.0"
+    },
+    {
+     "date": "2026-10-15",
+     "days_ago": 8,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 525.0,
+     "price_target_to": 675.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Buy rating on MSFT and raised its price target from $525.0 to $675.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.82,
+    "verdict": "leaning bullish",
+    "analysts": 57,
+    "counts": {
+     "strongBuy": 13,
+     "buy": 41,
+     "hold": 3,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.81 to 1.82)"
+   },
+   "price_target": {
+    "mean": 601.73,
+    "median": 600.0,
+    "high": 870.0,
+    "low": 440.0,
+    "current_price": 521.08,
+    "dispersion_pct": 71.5,
+    "upside_vs_mean_pct": 15.5,
+    "upside_vs_median_pct": 15.1
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "MSFT",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1mo": {
+     "stock_change_pct": 7.02,
+     "sector_etf_change_pct": -3.94,
+     "relative_to_sector_pct": 10.96
+    },
+    "2w": {
+     "stock_change_pct": 0.6,
+     "sector_etf_change_pct": -6.38,
+     "relative_to_sector_pct": 6.98
+    },
+    "1w": {
+     "stock_change_pct": -0.14,
+     "sector_etf_change_pct": -0.99,
+     "relative_to_sector_pct": 0.85
+    },
+    "1y": {
+     "stock_change_pct": 3.98,
+     "sector_etf_change_pct": 31.52,
+     "relative_to_sector_pct": -27.54
+    },
+    "1d": {
+     "stock_change_pct": 0.2,
+     "sector_etf_change_pct": 1.67,
+     "relative_to_sector_pct": -1.47
+    },
+    "ytd": {
+     "stock_change_pct": 13.4,
+     "sector_etf_change_pct": 31.13,
+     "relative_to_sector_pct": -17.73
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-22",
+    "realtime_end": "2026-10-22",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9602,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-21",
+      "value": "16.68"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-20",
+      "value": "17.31"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-19",
+      "value": "18.44"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-16",
+      "value": "19.99"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-15",
+      "value": "16.46"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "MSFT",
+   "as_of": "2026-10-23",
+   "events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-28",
+     "description": "MSFT Q1 2027 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 5,
+     "eps_estimate": 4.8159,
+     "hour": "amc"
+    },
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 5,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "ex_dividend",
+     "date": "2026-11-19",
+     "source": "yfinance",
+     "description": "MSFT goes ex-dividend \u2014 expect a mechanical price drop of roughly the dividend",
+     "days_until": 27
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}

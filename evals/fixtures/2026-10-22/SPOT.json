@@ -1,0 +1,364 @@
+{
+ "schema": 1,
+ "ticker": "SPOT",
+ "trading_day": "2026-10-22",
+ "captured_at": "2026-10-23T00:06:42+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 11.1,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "SPOT",
+   "price": 583.66,
+   "prev_close": 525.34,
+   "change_pct": 11.1,
+   "realized_vol_annualized_pct": 31.0,
+   "changes_pct": {
+    "1d": -0.14,
+    "1w": 0.26,
+    "2w": 2.42,
+    "1mo": 4.8,
+    "1y": -22.23,
+    "ytd": -8.64
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   }
+  },
+  "get_news": {
+   "ticker": "SPOT",
+   "headlines": [
+    {
+     "headline": "Spotify Technology S.A. Reports Revenue of 4,969 Million Euros for the Three Months Ended September 30, 2026",
+     "summary": "",
+     "datetime": 1792707168,
+     "source": "Fintel",
+     "url": "https://finnhub.io/api/news?id=40abac16d8a696d6bc4f1e3cd909997b82d139b88428796c5c4c37a5880bfb0b"
+    },
+    {
+     "headline": "Spotify Technology S.A. Reports Q3 2026 Revenue of \u20ac4,969 million",
+     "summary": "",
+     "datetime": 1792670025,
+     "source": "Fintel",
+     "url": "https://finnhub.io/api/news?id=78722c18ece26cc37247f5056231dea1690a2444d4429d4b09224cde0876ad14"
+    },
+    {
+     "headline": "Spotify Technology SA (NYSE:SPOT) Q3 2026 Mixed Results: Subscriber Strength Offsets EPS Miss",
+     "summary": "Spotify Q3 2026 results were mixed: revenue met estimates, EPS fell short, yet shares rose on subscriber growth and resilient top-line momentum.",
+     "datetime": 1792668555,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=a345ca77cff6167a8226ddbe8312e1f3b679913963d22909fa6b311a195180cb"
+    },
+    {
+     "headline": "Healthcare Services Posts Upbeat Q3 Earnings, Joins Pool, Spotify And Other Big Stocks Moving Higher On Thursday",
+     "summary": "U.S. stocks fell, but Healthcare Services Group jumped 8.2% on an earnings beat. Biohaven led gainers, surging 30.5% after FDA news.",
+     "datetime": 1792664993,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=93fdcb070ce9be33b1d7a05ee1f4ffd8003d9dfd005aa911107ff0e653217241"
+    },
+    {
+     "headline": "Spotify Technology Q3 2026 Earnings Call Transcript",
+     "summary": "Spotify Technology (NYSE:SPOT) reported third-quarter financial results on Thursday. The transcript from the company\u2019s third-quarter earnings call has been provided below.This transcript is brought...",
+     "datetime": 1792659949,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=2f82aad7a880ce99e849f4b2a0f6298c2218b90bbc3053651a3d755e0898aed8"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "SPOT",
+   "expiry": "2026-11-06",
+   "days_to_expiry": 14,
+   "atm_iv_pct": 46.9,
+   "iv_chain_percentile": 2,
+   "skew_points": 1.6,
+   "put_call_ratio": 0.91,
+   "total_put_oi": 872,
+   "total_call_oi": 963
+  },
+  "get_options_positioning": {
+   "ticker": "SPOT",
+   "spot": 583.66,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-06",
+   "primary_days_to_expiry": 14,
+   "max_pain_strike": 520.0,
+   "resistance_walls": [
+    {
+     "strike": 595.0,
+     "open_interest": 129
+    },
+    {
+     "strike": 720.0,
+     "open_interest": 117
+    },
+    {
+     "strike": 600.0,
+     "open_interest": 81
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 500.0,
+     "open_interest": 82
+    },
+    {
+     "strike": 465.0,
+     "open_interest": 70
+    },
+    {
+     "strike": 470.0,
+     "open_interest": 70
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-06",
+     "days_to_expiry": 14,
+     "atm_iv_pct": 46.9
+    },
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 21,
+     "atm_iv_pct": 44.8
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 43.6
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 625.0,
+     "volume": 158,
+     "open_interest": 12,
+     "vol_oi_ratio": 13.2,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 565,
+   "otm_put_oi": 868,
+   "positioning_lean_score": -0.21,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "SPOT",
+   "as_of": "2026-10-23",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-20",
+     "days_ago": 3,
+     "firm": "Rosenblatt",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 527.0,
+     "price_target_to": 527.0,
+     "is_rating_change": false,
+     "description": "Rosenblatt maintained its Neutral rating on SPOT with a $527.0 price target"
+    },
+    {
+     "date": "2026-10-15",
+     "days_ago": 8,
+     "firm": "StoneX",
+     "action": "downgrade",
+     "from_grade": "Buy",
+     "to_grade": "Hold",
+     "price_target_from": null,
+     "price_target_to": null,
+     "is_rating_change": true,
+     "description": "StoneX downgraded SPOT from Buy to Hold"
+    },
+    {
+     "date": "2026-10-12",
+     "days_ago": 11,
+     "firm": "Cantor Fitzgerald",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 530.0,
+     "price_target_to": 490.0,
+     "is_rating_change": false,
+     "description": "Cantor Fitzgerald maintained its Neutral rating on SPOT and cut its price target from $530.0 to $490.0"
+    },
+    {
+     "date": "2026-10-08",
+     "days_ago": 15,
+     "firm": "Piper Sandler",
+     "action": "initiated coverage",
+     "from_grade": null,
+     "to_grade": "Neutral",
+     "price_target_from": null,
+     "price_target_to": 540.0,
+     "is_rating_change": false,
+     "description": "Piper Sandler initiated coverage of SPOT at Neutral with a $540.0 price target"
+    },
+    {
+     "date": "2026-10-05",
+     "days_ago": 18,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 690.0,
+     "price_target_to": 675.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Buy rating on SPOT and cut its price target from $690.0 to $675.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.0,
+    "verdict": "leaning bullish",
+    "analysts": 40,
+    "counts": {
+     "strongBuy": 9,
+     "buy": 22,
+     "hold": 9,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.95 to 2.0)"
+   },
+   "price_target": {
+    "mean": 600.19,
+    "median": 620.42,
+    "high": 719.43,
+    "low": 409.39,
+    "current_price": 583.66,
+    "dispersion_pct": 51.7,
+    "upside_vs_mean_pct": 2.8,
+    "upside_vs_median_pct": 6.3
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "SPOT",
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "comparison": {
+    "1mo": {
+     "stock_change_pct": 4.8,
+     "sector_etf_change_pct": -4.02,
+     "relative_to_sector_pct": 8.82
+    },
+    "2w": {
+     "stock_change_pct": 2.42,
+     "sector_etf_change_pct": -2.06,
+     "relative_to_sector_pct": 4.48
+    },
+    "1w": {
+     "stock_change_pct": 0.26,
+     "sector_etf_change_pct": -1.67,
+     "relative_to_sector_pct": 1.93
+    },
+    "1y": {
+     "stock_change_pct": -22.23,
+     "sector_etf_change_pct": -5.09,
+     "relative_to_sector_pct": -17.14
+    },
+    "1d": {
+     "stock_change_pct": -0.14,
+     "sector_etf_change_pct": -1.11,
+     "relative_to_sector_pct": 0.97
+    },
+    "ytd": {
+     "stock_change_pct": -8.64,
+     "sector_etf_change_pct": -5.93,
+     "relative_to_sector_pct": -2.71
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-22",
+    "realtime_end": "2026-10-22",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9602,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-21",
+      "value": "16.68"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-20",
+      "value": "17.31"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-19",
+      "value": "18.44"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-16",
+      "value": "19.99"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-15",
+      "value": "16.46"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "SPOT",
+   "as_of": "2026-10-23",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 5,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-22",
+     "description": "SPOT reported Q3 2026 earnings before the open \u2014 EPS 2.540205 vs 2.8564 expected (miss, -11.1%)",
+     "source": "finnhub",
+     "days_ago": 1,
+     "eps_actual": 2.540205,
+     "eps_estimate": 2.8564,
+     "surprise": "miss",
+     "surprise_pct": -11.1,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

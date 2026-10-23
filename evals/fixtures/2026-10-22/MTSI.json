@@ -1,0 +1,302 @@
+{
+ "schema": 1,
+ "ticker": "MTSI",
+ "trading_day": "2026-10-22",
+ "captured_at": "2026-10-23T00:07:15+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -15.87,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 3.85% \u2014 typical relative to this stock's own typical volatility (expected ~4.30%, 0.9x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "this week: -6.27% \u2014 typical relative to this stock's own typical volatility (expected ~9.61%, 0.65x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past 2 weeks: -18.71% \u2014 typical relative to this stock's own typical volatility (expected ~13.59%, 1.38x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past year: 94.58% \u2014 typical relative to this stock's own typical volatility (expected ~68.20%, 1.39x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "MTSI",
+   "price": 229.73,
+   "prev_close": 273.05,
+   "change_pct": -15.87,
+   "realized_vol_annualized_pct": 68.2,
+   "changes_pct": {
+    "1d": 3.85,
+    "1w": -6.27,
+    "2w": -18.71,
+    "1mo": -2.37,
+    "1y": 94.58,
+    "ytd": 56.06
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 3.85% \u2014 typical relative to this stock's own typical volatility (expected ~4.30%, 0.9x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "this week: -6.27% \u2014 typical relative to this stock's own typical volatility (expected ~9.61%, 0.65x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past 2 weeks: -18.71% \u2014 typical relative to this stock's own typical volatility (expected ~13.59%, 1.38x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past year: 94.58% \u2014 typical relative to this stock's own typical volatility (expected ~68.20%, 1.39x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "MTSI",
+   "headlines": [
+    {
+     "headline": "MaxLinear (MXL) Q3 Earnings and Revenues Top Estimates",
+     "summary": "MaxLinear (MXL) delivered earnings and revenue surprises of +10.71% and +1.42%, respectively, for the quarter ended September 2026. Do the numbers hold clues to what lies ahead for the stock?",
+     "datetime": 1792702806,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=d174945c92b1abfc243abb4ba8e8e43b48e145191c095ecf17cc78976f50430f"
+    },
+    {
+     "headline": "MACOM to Report Fourth Quarter and Fiscal Year 2026 Financial Results on November 5, 2026",
+     "summary": "LOWELL, Mass., Oct. 22, 2026 (GLOBE NEWSWIRE) -- MACOM Technology Solutions Holdings, Inc. (\u201cMACOM\u201d) (Nasdaq: MTSI) plans to announce financial results for its fourth quarter and fiscal year 2026,...",
+     "datetime": 1792672200,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=0a748f207771dc8a23b063dfb194f7d3bfcd6a7b2695ad836b82bf84e3d670f6"
+    },
+    {
+     "headline": "MACOM, Semtech, FormFactor, Penguin Solutions, and Seagate stocks trade up, what you need to know",
+     "summary": "A number of stocks jumped in the afternoon session after strong demand for artificial intelligence hardware and robust corporate earnings reignited investor optimism across the broader AI technology...",
+     "datetime": 1792627119,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=1018d0f1eea16329a3ccf653a61cb5348be8708c052c9ed0f31a4416cc97f2aa"
+    },
+    {
+     "headline": "2 Cash-Heavy Stocks with Promising Prospects and 1 Facing Headwinds",
+     "summary": "Companies with more cash than debt can be financially resilient, but that doesn\u2019t mean they\u2019re all strong investments. Some lack leverage because they struggle to grow or generate consistent profits,...",
+     "datetime": 1792486910,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=5ffeeb310d1e81c4a16014a53896f1a2e0a8e3351c3fd32ddfbfc8a03bb7a831"
+    },
+    {
+     "headline": "Is MACOM Technology Solutions Holdings (MTSI) Trading At A Premium To Cash Flow?",
+     "summary": "MACOM Technology Solutions Holdings has delivered a powerful multi year run, so the live question is whether the current share price lines up with the cash the business is expected to generate. After...",
+     "datetime": 1792473371,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=8e7fadabe9e720df71bf7ad6fd576c20a523b2b11a958f201159f8cb7f6196d2"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "MTSI",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 28,
+   "atm_iv_pct": 82.2,
+   "iv_chain_percentile": 18,
+   "skew_points": -1.3,
+   "put_call_ratio": 0.37,
+   "total_put_oi": 1745,
+   "total_call_oi": 4663
+  },
+  "get_options_positioning": {
+   "ticker": "MTSI",
+   "spot": 229.73,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 28,
+   "max_pain_strike": 280.0,
+   "resistance_walls": [
+    {
+     "strike": 380.0,
+     "open_interest": 891
+    },
+    {
+     "strike": 280.0,
+     "open_interest": 828
+    },
+    {
+     "strike": 300.0,
+     "open_interest": 660
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 200.0,
+     "open_interest": 235
+    },
+    {
+     "strike": 210.0,
+     "open_interest": 233
+    },
+    {
+     "strike": 230.0,
+     "open_interest": 150
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 82.2
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 230.0,
+     "volume": 102,
+     "open_interest": 150,
+     "vol_oi_ratio": 0.7,
+     "moneyness": "ITM"
+    }
+   ],
+   "otm_call_oi": 4481,
+   "otm_put_oi": 778,
+   "positioning_lean_score": 0.7,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "MTSI",
+   "as_of": "2026-10-23",
+   "analyst_coverage": "covered",
+   "recent_actions": [],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.0,
+    "verdict": "leaning bullish",
+    "analysts": 16,
+    "counts": {
+     "strongBuy": 3,
+     "buy": 10,
+     "hold": 3,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.0 to 2.0)"
+   },
+   "price_target": {
+    "mean": 390.33,
+    "median": 375.0,
+    "high": 475.0,
+    "low": 300.0,
+    "current_price": 229.73,
+    "dispersion_pct": 44.8,
+    "upside_vs_mean_pct": 69.9,
+    "upside_vs_median_pct": 63.2
+   },
+   "notes": [
+    "No analyst rating changes in the last 30 days \u2014 the consensus below is standing opinion, not a recent catalyst."
+   ]
+  },
+  "get_sector_comparison": {
+   "ticker": "MTSI",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1mo": {
+     "stock_change_pct": -2.37,
+     "sector_etf_change_pct": -3.94,
+     "relative_to_sector_pct": 1.57
+    },
+    "2w": {
+     "stock_change_pct": -18.71,
+     "sector_etf_change_pct": -6.38,
+     "relative_to_sector_pct": -12.33
+    },
+    "1w": {
+     "stock_change_pct": -6.27,
+     "sector_etf_change_pct": -0.99,
+     "relative_to_sector_pct": -5.28
+    },
+    "1y": {
+     "stock_change_pct": 94.58,
+     "sector_etf_change_pct": 31.52,
+     "relative_to_sector_pct": 63.06
+    },
+    "1d": {
+     "stock_change_pct": 3.85,
+     "sector_etf_change_pct": 1.67,
+     "relative_to_sector_pct": 2.18
+    },
+    "ytd": {
+     "stock_change_pct": 56.06,
+     "sector_etf_change_pct": 31.13,
+     "relative_to_sector_pct": 24.93
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-22",
+    "realtime_end": "2026-10-22",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9602,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-21",
+      "value": "16.68"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-20",
+      "value": "17.31"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-19",
+      "value": "18.44"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-16",
+      "value": "19.99"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-15",
+      "value": "16.46"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "MTSI",
+   "as_of": "2026-10-23",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 5,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-11-05",
+     "description": "MTSI Q4 2026 earnings scheduled (before the open)",
+     "source": "finnhub",
+     "days_until": 13,
+     "eps_estimate": 2.0388,
+     "hour": "bmo"
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}

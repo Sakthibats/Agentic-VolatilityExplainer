@@ -1,0 +1,413 @@
+{
+ "schema": 1,
+ "ticker": "NFLX",
+ "trading_day": "2026-10-22",
+ "captured_at": "2026-10-23T00:06:03+00:00",
+ "selected_as": "move",
+ "change_pct": 3.09,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: -5.31% \u2014 unusual relative to this stock's own typical volatility (expected ~2.05%, 2.59x), but elevated in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "this week: -7.84% \u2014 elevated for this stock (about 1.71x its normal move for that span, expected ~4.59%)",
+   "the past year: -47.49% \u2014 typical relative to this stock's own typical volatility (expected ~32.60%, 1.46x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "NFLX",
+   "price": 67.05,
+   "prev_close": 65.04,
+   "change_pct": 3.09,
+   "realized_vol_annualized_pct": 32.6,
+   "changes_pct": {
+    "1d": -5.31,
+    "1w": -7.84,
+    "2w": -6.69,
+    "1mo": -9.87,
+    "1y": -47.49,
+    "ytd": -28.52
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: -5.31% \u2014 unusual relative to this stock's own typical volatility (expected ~2.05%, 2.59x), but elevated in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "this week: -7.84% \u2014 elevated for this stock (about 1.71x its normal move for that span, expected ~4.59%)",
+     "the past year: -47.49% \u2014 typical relative to this stock's own typical volatility (expected ~32.60%, 1.46x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "NFLX",
+   "headlines": [
+    {
+     "headline": "Netflix CFO Eyes Double-Digit Revenue Growth Into 2027 Despite \u2018Modest\u2019 Viewership Gains, Points to 3 Key Drivers: \u2018Not Overly Dependent\u2026\u2019",
+     "summary": "Netflix Inc. says membership gains, pricing and advertising could sustain double-digit revenue growth into 2027, despite slower-than-desired viewing growth. During the company\u2019s third-quarter...",
+     "datetime": 1792697407,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=f4f59d62ff3f0dbe6113e5fa6209b2695d3308cf88421f6f3a4481201d9c5936"
+    },
+    {
+     "headline": "The Truth About Netflix\u2019s Massive Stock Buybacks",
+     "summary": "Is Netflix stock a steal after its recent post-earnings sell-off? Record share buybacks look like a bullish signal, but the management team runs a different playbook.",
+     "datetime": 1792696982,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=5e16eb9dd72b240a6cc21c6ac132e80aae3917698587e7c2894147e99acb61b4"
+    },
+    {
+     "headline": "Ted Sarandos Says Netflix 'Could Do Better\u2019 as YouTube, TikTok Threaten to Steal Viewers: Time to Take Shows and Movies 'To The Next Level'",
+     "summary": "On Tuesday, Netflix Inc. co-CEO Ted Sarandos acknowledged room to improve the streaming giant\u2019s content strategy as the company reshuffles leadership, cuts jobs and faces mounting pressure to...",
+     "datetime": 1792693812,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=1ae4de9015e87b101362b46dd02b4cd8df5d2d12cda916a53912d3aa775785dc"
+    },
+    {
+     "headline": "Netflix (NFLX) Stock Stays Cheap After Its 58% Three Year Gain",
+     "summary": "Netflix has seen its share price fall sharply over the past year despite a solid gain over three years. This puts the focus squarely on whether today's valuation is still supported by the cash it can...",
+     "datetime": 1792693002,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=aa47873eeab53621c9ed423c1faad06ccb69fab19f5e977a526b28ae88745969"
+    },
+    {
+     "headline": "Most Active S&P 500 Stocks on Oct. 22: Netflix, Super Micro, Moderna",
+     "summary": "Netflix, Super Micro, and Moderna were among the S&P 500's most active stocks on Oct. 22, each trading at least 18 million shares.",
+     "datetime": 1792692371,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=8299da548d2bdc07e3b5fc29f69d59e6d1702055520749fc9a6a5b849f99ac4c"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "NFLX",
+   "expiry": "2026-11-06",
+   "days_to_expiry": 14,
+   "atm_iv_pct": 33.3,
+   "iv_chain_percentile": 1,
+   "skew_points": 0.0,
+   "put_call_ratio": 0.69,
+   "total_put_oi": 18455,
+   "total_call_oi": 26931
+  },
+  "get_options_positioning": {
+   "ticker": "NFLX",
+   "spot": 67.05,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-06",
+   "primary_days_to_expiry": 14,
+   "max_pain_strike": 69.0,
+   "resistance_walls": [
+    {
+     "strike": 75.0,
+     "open_interest": 2541
+    },
+    {
+     "strike": 73.0,
+     "open_interest": 2334
+    },
+    {
+     "strike": 100.0,
+     "open_interest": 2050
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 60.0,
+     "open_interest": 3362
+    },
+    {
+     "strike": 65.0,
+     "open_interest": 1807
+    },
+    {
+     "strike": 64.0,
+     "open_interest": 1303
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-06",
+     "days_to_expiry": 14,
+     "atm_iv_pct": 33.3
+    },
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 21,
+     "atm_iv_pct": 33.9
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 32.4
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 74.0,
+     "volume": 542,
+     "open_interest": 100,
+     "vol_oi_ratio": 5.4,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 67.0,
+     "volume": 1826,
+     "open_interest": 749,
+     "vol_oi_ratio": 2.4,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 70.0,
+     "volume": 2647,
+     "open_interest": 1635,
+     "vol_oi_ratio": 1.6,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 76.0,
+     "volume": 1016,
+     "open_interest": 841,
+     "vol_oi_ratio": 1.2,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 67.0,
+     "volume": 624,
+     "open_interest": 608,
+     "vol_oi_ratio": 1.0,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 24183,
+   "otm_put_oi": 14039,
+   "positioning_lean_score": 0.27,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "NFLX",
+   "as_of": "2026-10-23",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-22",
+     "days_ago": 1,
+     "firm": "Wolfe Research",
+     "action": "downgrade",
+     "from_grade": "Outperform",
+     "to_grade": "Peer Perform",
+     "price_target_from": null,
+     "price_target_to": null,
+     "is_rating_change": true,
+     "description": "Wolfe Research downgraded NFLX from Outperform to Peer Perform"
+    },
+    {
+     "date": "2026-10-22",
+     "days_ago": 1,
+     "firm": "Argus Research",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 120.0,
+     "price_target_to": 95.0,
+     "is_rating_change": false,
+     "description": "Argus Research maintained its Buy rating on NFLX and cut its price target from $120.0 to $95.0"
+    },
+    {
+     "date": "2026-10-22",
+     "days_ago": 1,
+     "firm": "Pivotal Research",
+     "action": "maintained",
+     "from_grade": "Hold",
+     "to_grade": "Hold",
+     "price_target_from": 70.0,
+     "price_target_to": 65.0,
+     "is_rating_change": false,
+     "description": "Pivotal Research maintained its Hold rating on NFLX and cut its price target from $70.0 to $65.0"
+    },
+    {
+     "date": "2026-10-21",
+     "days_ago": 2,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 115.0,
+     "price_target_to": 100.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Buy rating on NFLX and cut its price target from $115.0 to $100.0"
+    },
+    {
+     "date": "2026-10-21",
+     "days_ago": 2,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 100.0,
+     "price_target_to": 85.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Buy rating on NFLX and cut its price target from $100.0 to $85.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.25,
+    "verdict": "leaning bullish",
+    "analysts": 51,
+    "counts": {
+     "strongBuy": 7,
+     "buy": 26,
+     "hold": 16,
+     "sell": 2,
+     "strongSell": 0
+    },
+    "trend": "deteriorating",
+    "trend_detail": "consensus softened over 3 months (score 2.16 to 2.25; bearish ratings 0 to 2)"
+   },
+   "price_target": {
+    "mean": 85.07,
+    "median": 84.0,
+    "high": 126.0,
+    "low": 57.0,
+    "current_price": 67.05,
+    "dispersion_pct": 81.1,
+    "upside_vs_mean_pct": 26.9,
+    "upside_vs_median_pct": 25.3
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "NFLX",
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "comparison": {
+    "1mo": {
+     "stock_change_pct": -9.87,
+     "sector_etf_change_pct": -4.02,
+     "relative_to_sector_pct": -5.85
+    },
+    "2w": {
+     "stock_change_pct": -6.69,
+     "sector_etf_change_pct": -2.06,
+     "relative_to_sector_pct": -4.63
+    },
+    "1w": {
+     "stock_change_pct": -7.84,
+     "sector_etf_change_pct": -1.67,
+     "relative_to_sector_pct": -6.17
+    },
+    "1y": {
+     "stock_change_pct": -47.49,
+     "sector_etf_change_pct": -5.09,
+     "relative_to_sector_pct": -42.4
+    },
+    "1d": {
+     "stock_change_pct": -5.31,
+     "sector_etf_change_pct": -1.11,
+     "relative_to_sector_pct": -4.2
+    },
+    "ytd": {
+     "stock_change_pct": -28.52,
+     "sector_etf_change_pct": -5.93,
+     "relative_to_sector_pct": -22.59
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-22",
+    "realtime_end": "2026-10-22",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9602,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-21",
+      "value": "16.68"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-20",
+      "value": "17.31"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-19",
+      "value": "18.44"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-16",
+      "value": "19.99"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-15",
+      "value": "16.46"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "NFLX",
+   "as_of": "2026-10-23",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 5,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-18",
+     "description": "NFLX Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 87,
+     "eps_estimate": 0.7012,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-20",
+     "description": "NFLX reported Q3 2026 earnings after the close \u2014 EPS 0.87 vs 0.8391 expected (beat, +3.7%)",
+     "source": "finnhub",
+     "days_ago": 3,
+     "eps_actual": 0.87,
+     "eps_estimate": 0.8391,
+     "surprise": "beat",
+     "surprise_pct": 3.7,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

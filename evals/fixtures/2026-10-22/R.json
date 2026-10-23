@@ -1,0 +1,344 @@
+{
+ "schema": 1,
+ "ticker": "R",
+ "trading_day": "2026-10-22",
+ "captured_at": "2026-10-23T00:06:55+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 10.49,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "the past year: 33.24% \u2014 elevated for this stock (about 1.8x its normal move for that span, expected ~18.50%)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "R",
+   "price": 265.53,
+   "prev_close": 240.31,
+   "change_pct": 10.49,
+   "realized_vol_annualized_pct": 18.5,
+   "changes_pct": {
+    "1d": 1.23,
+    "1w": 1.05,
+    "2w": 3.44,
+    "1mo": 1.61,
+    "1y": 33.24,
+    "ytd": 25.28
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "the past year: 33.24% \u2014 elevated for this stock (about 1.8x its normal move for that span, expected ~18.50%)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "R",
+   "headlines": [
+    {
+     "headline": "What Ryder System (R) Said on Its Q3 Earnings Call",
+     "summary": "Ryder System (NYSE:R) reported third-quarter results that included a 21% increase in comparable earnings per share, citing strategic initiatives, contractual revenue growth and improving conditions...",
+     "datetime": 1792706658,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=ae22e8de43e22f1589d514998feaf41d463aed6fae5371c75853391e38c51737"
+    },
+    {
+     "headline": "Ryder fleet facing possible growth need as EPA \u201827 nears",
+     "summary": "With the EPA \u201827 engine rules impacting nitrogen oxide (NoX) emissions in heavy duty vehicles getting closer every day, the new rules will have a major impact on anybody who buys new vehicles\u2026like...",
+     "datetime": 1792705670,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=12866e76a7401f270508840abdaef39943f52c9d3e99123951bab542e9877293"
+    },
+    {
+     "headline": "Ryder System, Inc. Q3 2026 Earnings Call Summary",
+     "summary": "Moby summary of Ryder System, Inc.'s Q3 2026 earnings call",
+     "datetime": 1792704334,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=21eceae4eb92d10b09352f24962c6b922d2dc54d95243e2ea61c69deaa835183"
+    },
+    {
+     "headline": "Ryder Soars 10% on Raised Outlook as Freight Recovery Drives Sizeable Earnings Growth",
+     "summary": "Key TakeawaysRyder shares rose 10% after its third-quarter comparable EPS rose 21% to $4. 33, beating estimates, and it raised its 2026 outlook.",
+     "datetime": 1792702489,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=c8245abe7ee3e8f0d5535a1a559aa183d4888b9c58353313e8685db509e48ebc"
+    },
+    {
+     "headline": "Ryder (R) Q3 2026 Earnings Call Transcript",
+     "summary": "Comparable EPS surged 21% as Fleet Management and Supply Chain Solutions drove growth.",
+     "datetime": 1792700925,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=b2ddbeda8cea13a6894d498b5419297ee056cea47d931f91d2321416e3f7ccd7"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "R",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 28,
+   "atm_iv_pct": 63.8,
+   "iv_chain_percentile": 26,
+   "skew_points": 5.7,
+   "put_call_ratio": 1.23,
+   "total_put_oi": 386,
+   "total_call_oi": 313
+  },
+  "get_options_positioning": {
+   "ticker": "R",
+   "spot": 265.53,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 28,
+   "max_pain_strike": 250.0,
+   "resistance_walls": [
+    {
+     "strike": 250.0,
+     "open_interest": 63
+    },
+    {
+     "strike": 280.0,
+     "open_interest": 52
+    },
+    {
+     "strike": 290.0,
+     "open_interest": 35
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 250.0,
+     "open_interest": 150
+    },
+    {
+     "strike": 230.0,
+     "open_interest": 81
+    },
+    {
+     "strike": 240.0,
+     "open_interest": 61
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 63.8
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [],
+   "otm_call_oi": 149,
+   "otm_put_oi": 376,
+   "positioning_lean_score": -0.43,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "R",
+   "as_of": "2026-10-23",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-08",
+     "days_ago": 15,
+     "firm": "Citigroup",
+     "action": "upgrade",
+     "from_grade": "Neutral",
+     "to_grade": "Buy",
+     "price_target_from": 283.0,
+     "price_target_to": 285.0,
+     "is_rating_change": true,
+     "description": "Citigroup upgraded R from Neutral to Buy and raised its price target from $283.0 to $285.0"
+    },
+    {
+     "date": "2026-10-05",
+     "days_ago": 18,
+     "firm": "JP Morgan",
+     "action": "upgrade",
+     "from_grade": "Neutral",
+     "to_grade": "Overweight",
+     "price_target_from": 296.0,
+     "price_target_to": 298.0,
+     "is_rating_change": true,
+     "description": "JP Morgan upgraded R from Neutral to Overweight and raised its price target from $296.0 to $298.0"
+    },
+    {
+     "date": "2026-10-02",
+     "days_ago": 21,
+     "firm": "Susquehanna",
+     "action": "maintained",
+     "from_grade": "Positive",
+     "to_grade": "Positive",
+     "price_target_from": 310.0,
+     "price_target_to": 280.0,
+     "is_rating_change": false,
+     "description": "Susquehanna maintained its Positive rating on R and cut its price target from $310.0 to $280.0"
+    },
+    {
+     "date": "2026-09-29",
+     "days_ago": 24,
+     "firm": "Baird",
+     "action": "downgrade",
+     "from_grade": "Outperform",
+     "to_grade": "Neutral",
+     "price_target_from": 290.0,
+     "price_target_to": 245.0,
+     "is_rating_change": true,
+     "description": "Baird downgraded R from Outperform to Neutral and cut its price target from $290.0 to $245.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.0,
+    "verdict": "leaning bullish",
+    "analysts": 11,
+    "counts": {
+     "strongBuy": 3,
+     "buy": 5,
+     "hold": 3,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 2 months (score 2.18 to 2.0; bearish ratings 0 to 0)"
+   },
+   "price_target": {
+    "mean": 288.33,
+    "median": 287.0,
+    "high": 320.0,
+    "low": 245.0,
+    "current_price": 265.53,
+    "dispersion_pct": 26.0,
+    "upside_vs_mean_pct": 8.6,
+    "upside_vs_median_pct": 8.1
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "R",
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "comparison": {
+    "1mo": {
+     "stock_change_pct": 1.61,
+     "sector_etf_change_pct": -1.15,
+     "relative_to_sector_pct": 2.76
+    },
+    "2w": {
+     "stock_change_pct": 3.44,
+     "sector_etf_change_pct": 0.28,
+     "relative_to_sector_pct": 3.16
+    },
+    "1w": {
+     "stock_change_pct": 1.05,
+     "sector_etf_change_pct": 0.76,
+     "relative_to_sector_pct": 0.29
+    },
+    "1y": {
+     "stock_change_pct": 33.24,
+     "sector_etf_change_pct": 10.89,
+     "relative_to_sector_pct": 22.35
+    },
+    "1d": {
+     "stock_change_pct": 1.23,
+     "sector_etf_change_pct": 0.91,
+     "relative_to_sector_pct": 0.32
+    },
+    "ytd": {
+     "stock_change_pct": 25.28,
+     "sector_etf_change_pct": 7.39,
+     "relative_to_sector_pct": 17.89
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-22",
+    "realtime_end": "2026-10-22",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9602,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-21",
+      "value": "16.68"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-20",
+      "value": "17.31"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-19",
+      "value": "18.44"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-16",
+      "value": "19.99"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-15",
+      "value": "16.46"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "R",
+   "as_of": "2026-10-23",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 5,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "ex_dividend",
+     "date": "2026-11-23",
+     "source": "yfinance",
+     "description": "R goes ex-dividend \u2014 expect a mechanical price drop of roughly the dividend",
+     "days_until": 31
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-22",
+     "description": "R reported Q3 2026 earnings before the open \u2014 EPS 4.33 vs 4.2356 expected (beat, +2.2%)",
+     "source": "finnhub",
+     "days_ago": 1,
+     "eps_actual": 4.33,
+     "eps_estimate": 4.2356,
+     "surprise": "beat",
+     "surprise_pct": 2.2,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

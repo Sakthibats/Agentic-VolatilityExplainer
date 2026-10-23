@@ -1,0 +1,403 @@
+{
+ "schema": 1,
+ "ticker": "META",
+ "trading_day": "2026-10-22",
+ "captured_at": "2026-10-23T00:05:47+00:00",
+ "selected_as": "control",
+ "change_pct": -6.98,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "META",
+   "price": 648.85,
+   "prev_close": 697.52,
+   "change_pct": -6.98,
+   "realized_vol_annualized_pct": 40.2,
+   "changes_pct": {
+    "1d": 0.47,
+    "1w": -5.43,
+    "2w": -3.3,
+    "1mo": -5.31,
+    "1y": -4.41,
+    "ytd": 7.52
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   }
+  },
+  "get_news": {
+   "ticker": "META",
+   "headlines": [
+    {
+     "headline": "Dow Jones Futures: Moderna Crashes, Meta Fuels AI Meltdown, But Warren Buffett Market Thriving",
+     "summary": "The S&P 500 and Nasdaq tumbled below 50-day lines as Meta led an AI stock rout. But the Warren Buffett market is thriving.",
+     "datetime": 1792706003,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=f2043248724c6702d304287d04dbb5fe81c19e5c040b5136715db0bbddd5dc4f"
+    },
+    {
+     "headline": "Bill Ackman Says Meta Can Finance 'Whatever They Want,' Points to $82 Billion Cash",
+     "summary": "Billionaire investor Bill Ackman says Meta Platforms Inc. (NASDAQ:META) has the financial firepower to fund its massive artificial intelligence ambitions, pointing to roughly $82 billion in cash and...",
+     "datetime": 1792703712,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=bc40abf7d2c78d49fb4ac2b1cd3d9b2231a8e81bdb017bf635e0e017179f1331"
+    },
+    {
+     "headline": "Shopify Down 3% as ATB Cormark Downgrades the Stock After a 56% Three-Month Run",
+     "summary": "Key TakeawaysShopify shares fell 3% today after ATB Cormark downgraded the stock to Sector Perform from Outperform, with a C$234 price target. The downgrade follows a 56% run in three months, driven...",
+     "datetime": 1792703593,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=eeecb26bb54da5aad107515eeb1db63c70addbe4ef05259670c060c9883335fc"
+    },
+    {
+     "headline": "Aptos Labs and five blockchain groups ask SEC for clearer crypto rules",
+     "summary": "Aptos Labs signs a joint letter urging the SEC to make its digital commodity classification part of formal rules.",
+     "datetime": 1792703114,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=11c76d7a3c5b4d0999950c887e0f6ee34c717c569496a14335d64ddac5fdf07f"
+    },
+    {
+     "headline": "Mark Zuckerberg threatened to leave California over its 5% wealth tax \u2014 so Meta created a new stock class to keep him",
+     "summary": "Meta sweetened the deal for its billionaire boss as California weighs a wealth tax that could cost Mark Zuckerberg billions.",
+     "datetime": 1792702800,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=810a3561b5ec175af7fb1fea1c673dfdc18403a20c428269aedf155f30e73d18"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "META",
+   "expiry": "2026-11-06",
+   "days_to_expiry": 14,
+   "atm_iv_pct": 40.5,
+   "iv_chain_percentile": 1,
+   "skew_points": -0.5,
+   "put_call_ratio": 0.92,
+   "total_put_oi": 20207,
+   "total_call_oi": 22021
+  },
+  "get_options_positioning": {
+   "ticker": "META",
+   "spot": 648.85,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-06",
+   "primary_days_to_expiry": 14,
+   "max_pain_strike": 720.0,
+   "resistance_walls": [
+    {
+     "strike": 800.0,
+     "open_interest": 4781
+    },
+    {
+     "strike": 750.0,
+     "open_interest": 957
+    },
+    {
+     "strike": 780.0,
+     "open_interest": 870
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 590.0,
+     "open_interest": 2157
+    },
+    {
+     "strike": 595.0,
+     "open_interest": 2039
+    },
+    {
+     "strike": 615.0,
+     "open_interest": 1350
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-06",
+     "days_to_expiry": 14,
+     "atm_iv_pct": 40.5
+    },
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 21,
+     "atm_iv_pct": 39.4
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 38.5
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 660.0,
+     "volume": 837,
+     "open_interest": 28,
+     "vol_oi_ratio": 29.9,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 650.0,
+     "volume": 778,
+     "open_interest": 43,
+     "vol_oi_ratio": 18.1,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 655.0,
+     "volume": 263,
+     "open_interest": 30,
+     "vol_oi_ratio": 8.8,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 900.0,
+     "volume": 115,
+     "open_interest": 19,
+     "vol_oi_ratio": 6.1,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 535.0,
+     "volume": 143,
+     "open_interest": 37,
+     "vol_oi_ratio": 3.9,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 21632,
+   "otm_put_oi": 13590,
+   "positioning_lean_score": 0.23,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "META",
+   "as_of": "2026-10-23",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-22",
+     "days_ago": 1,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 884.0,
+     "price_target_to": 892.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Buy rating on META and raised its price target from $884.0 to $892.0"
+    },
+    {
+     "date": "2026-10-22",
+     "days_ago": 1,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 895.0,
+     "price_target_to": 905.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Buy rating on META and raised its price target from $895.0 to $905.0"
+    },
+    {
+     "date": "2026-10-22",
+     "days_ago": 1,
+     "firm": "DA Davidson",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 700.0,
+     "price_target_to": 800.0,
+     "is_rating_change": false,
+     "description": "DA Davidson maintained its Buy rating on META and raised its price target from $700.0 to $800.0"
+    },
+    {
+     "date": "2026-10-22",
+     "days_ago": 1,
+     "firm": "BMO Capital",
+     "action": "maintained",
+     "from_grade": "Market Perform",
+     "to_grade": "Market Perform",
+     "price_target_from": 580.0,
+     "price_target_to": 685.0,
+     "is_rating_change": false,
+     "description": "BMO Capital maintained its Market Perform rating on META and raised its price target from $580.0 to $685.0"
+    },
+    {
+     "date": "2026-10-22",
+     "days_ago": 1,
+     "firm": "Evercore ISI Group",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 860.0,
+     "price_target_to": 870.0,
+     "is_rating_change": false,
+     "description": "Evercore ISI Group maintained its Outperform rating on META and raised its price target from $860.0 to $870.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.98,
+    "verdict": "leaning bullish",
+    "analysts": 62,
+    "counts": {
+     "strongBuy": 9,
+     "buy": 46,
+     "hold": 6,
+     "sell": 1,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.98 to 1.98)"
+   },
+   "price_target": {
+    "mean": 833.13,
+    "median": 847.5,
+    "high": 1050.0,
+    "low": 600.0,
+    "current_price": 648.85,
+    "dispersion_pct": 54.0,
+    "upside_vs_mean_pct": 28.4,
+    "upside_vs_median_pct": 30.6
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "META",
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "comparison": {
+    "1mo": {
+     "stock_change_pct": -5.31,
+     "sector_etf_change_pct": -4.02,
+     "relative_to_sector_pct": -1.29
+    },
+    "2w": {
+     "stock_change_pct": -3.3,
+     "sector_etf_change_pct": -2.06,
+     "relative_to_sector_pct": -1.24
+    },
+    "1w": {
+     "stock_change_pct": -5.43,
+     "sector_etf_change_pct": -1.67,
+     "relative_to_sector_pct": -3.76
+    },
+    "1y": {
+     "stock_change_pct": -4.41,
+     "sector_etf_change_pct": -5.09,
+     "relative_to_sector_pct": 0.68
+    },
+    "1d": {
+     "stock_change_pct": 0.47,
+     "sector_etf_change_pct": -1.11,
+     "relative_to_sector_pct": 1.58
+    },
+    "ytd": {
+     "stock_change_pct": 7.52,
+     "sector_etf_change_pct": -5.93,
+     "relative_to_sector_pct": 13.45
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-22",
+    "realtime_end": "2026-10-22",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9602,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-21",
+      "value": "16.68"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-20",
+      "value": "17.31"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-19",
+      "value": "18.44"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-16",
+      "value": "19.99"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-15",
+      "value": "16.46"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "META",
+   "as_of": "2026-10-23",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 5,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-21",
+     "description": "META reported Q3 2026 earnings after the close \u2014 EPS 7.4 vs 5.7889 expected (beat, +27.8%)",
+     "source": "finnhub",
+     "days_ago": 2,
+     "eps_actual": 7.4,
+     "eps_estimate": 5.7889,
+     "surprise": "beat",
+     "surprise_pct": 27.8,
+     "hour": "amc"
+    },
+    {
+     "type": "ex_dividend",
+     "date": "2026-09-21",
+     "source": "yfinance",
+     "description": "META went ex-dividend \u2014 the price drops by roughly the dividend on this date mechanically, with no news behind it",
+     "days_ago": 32
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

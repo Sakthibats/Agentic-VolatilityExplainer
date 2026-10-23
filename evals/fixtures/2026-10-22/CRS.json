@@ -1,0 +1,344 @@
+{
+ "schema": 1,
+ "ticker": "CRS",
+ "trading_day": "2026-10-22",
+ "captured_at": "2026-10-23T00:07:02+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -20.62,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "the past year: 52.71% \u2014 unusual relative to this stock's own typical volatility (expected ~20.10%, 2.62x), but elevated in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "CRS",
+   "price": 292.26,
+   "prev_close": 368.16,
+   "change_pct": -20.62,
+   "realized_vol_annualized_pct": 20.1,
+   "changes_pct": {
+    "1d": -1.17,
+    "1w": -3.0,
+    "2w": -5.83,
+    "1mo": -7.92,
+    "1y": 52.71,
+    "ytd": 9.03
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "the past year: 52.71% \u2014 unusual relative to this stock's own typical volatility (expected ~20.10%, 2.62x), but elevated in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "CRS",
+   "headlines": [
+    {
+     "headline": "Why Carpenter Technology Stock Crashed After Earnings",
+     "summary": "Carpenter built strong earnings in Q1, but then its stock price collapsed.",
+     "datetime": 1792694896,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=946980bcb3d8e2bda3661c33d4d7768ddd35dff55b88f8a280d1caef8d4af8cc"
+    },
+    {
+     "headline": "Carpenter Technology Q1 Earnings Call Highlights",
+     "summary": "Carpenter Technology (NYSE:CRS) reported record first-quarter operating income for fiscal 2027 as productivity improvements, product mix management and pricing actions offset lower production time...",
+     "datetime": 1792692279,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=daa247ce15c71f3f6e07e4f2e3f723c5e319e9228c17db5ce20e58f0f93ef528"
+    },
+    {
+     "headline": "Carpenter Technology Sinks 22% as Revenue Miss Overshadows \u201cAnother Strong Quarter\u201d",
+     "summary": "Key TakeawaysCarpenter Technology shares fell 22% today after first-quarter revenue of $798. 2 million came in about 4% below consensus, even though EPS of $3.",
+     "datetime": 1792689791,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=70f28c4e84695d4496ec98d59be8511f3322893294dbd0379d1f798c17cd43b0"
+    },
+    {
+     "headline": "Carpenter Technology (CRS) Q1 2027 Earnings Call Transcript",
+     "summary": "Record operating income and aerospace bookings signal confidence in industry super cycle.",
+     "datetime": 1792688290,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=1856113b20b19d514fb616c2a757fa85c113a593b588e2c6be8439262a4bc3bf"
+    },
+    {
+     "headline": "Carpenter (CRS) Q1 Earnings: Taking a Look at Key Metrics Versus Estimates",
+     "summary": "Although the revenue and EPS for Carpenter (CRS) give a sense of how its business performed in the quarter ended September 2026, it might be worth considering how some key metrics compare with Wall...",
+     "datetime": 1792672203,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=1be083a7da2c124882123dd980053ab7c268c109800cb2b3533f8b97e513803c"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "CRS",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 28,
+   "atm_iv_pct": 56.3,
+   "iv_chain_percentile": 8,
+   "skew_points": -7.5,
+   "put_call_ratio": 0.64,
+   "total_put_oi": 857,
+   "total_call_oi": 1348
+  },
+  "get_options_positioning": {
+   "ticker": "CRS",
+   "spot": 292.26,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 28,
+   "max_pain_strike": 390.0,
+   "resistance_walls": [
+    {
+     "strike": 450.0,
+     "open_interest": 636
+    },
+    {
+     "strike": 400.0,
+     "open_interest": 168
+    },
+    {
+     "strike": 440.0,
+     "open_interest": 116
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 350.0,
+     "open_interest": 400
+    },
+    {
+     "strike": 340.0,
+     "open_interest": 111
+    },
+    {
+     "strike": 310.0,
+     "open_interest": 84
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 56.3
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [],
+   "otm_call_oi": 1347,
+   "otm_put_oi": 33,
+   "positioning_lean_score": 0.95,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "CRS",
+   "as_of": "2026-10-23",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-14",
+     "days_ago": 9,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 700.0,
+     "price_target_to": 520.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Overweight rating on CRS and cut its price target from $700.0 to $520.0"
+    },
+    {
+     "date": "2026-10-09",
+     "days_ago": 14,
+     "firm": "TD Cowen",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 650.0,
+     "price_target_to": 500.0,
+     "is_rating_change": false,
+     "description": "TD Cowen maintained its Buy rating on CRS and cut its price target from $650.0 to $500.0"
+    },
+    {
+     "date": "2026-10-08",
+     "days_ago": 15,
+     "firm": "Keybanc",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 608.0,
+     "price_target_to": 465.0,
+     "is_rating_change": false,
+     "description": "Keybanc maintained its Overweight rating on CRS and cut its price target from $608.0 to $465.0"
+    },
+    {
+     "date": "2026-09-30",
+     "days_ago": 23,
+     "firm": "Wells Fargo",
+     "action": "maintained",
+     "from_grade": "Equal-Weight",
+     "to_grade": "Equal-Weight",
+     "price_target_from": 540.0,
+     "price_target_to": 430.0,
+     "is_rating_change": false,
+     "description": "Wells Fargo maintained its Equal-Weight rating on CRS and cut its price target from $540.0 to $430.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.0,
+    "verdict": "leaning bullish",
+    "analysts": 8,
+    "counts": {
+     "strongBuy": 1,
+     "buy": 6,
+     "hold": 1,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.0 to 2.0)"
+   },
+   "price_target": {
+    "mean": 536.25,
+    "median": 537.5,
+    "high": 620.0,
+    "low": 430.0,
+    "current_price": 292.26,
+    "dispersion_pct": 35.4,
+    "upside_vs_mean_pct": 83.5,
+    "upside_vs_median_pct": 83.9
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "CRS",
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "comparison": {
+    "1mo": {
+     "stock_change_pct": -7.92,
+     "sector_etf_change_pct": -1.15,
+     "relative_to_sector_pct": -6.77
+    },
+    "2w": {
+     "stock_change_pct": -5.83,
+     "sector_etf_change_pct": 0.28,
+     "relative_to_sector_pct": -6.11
+    },
+    "1w": {
+     "stock_change_pct": -3.0,
+     "sector_etf_change_pct": 0.76,
+     "relative_to_sector_pct": -3.76
+    },
+    "1y": {
+     "stock_change_pct": 52.71,
+     "sector_etf_change_pct": 10.89,
+     "relative_to_sector_pct": 41.82
+    },
+    "1d": {
+     "stock_change_pct": -1.17,
+     "sector_etf_change_pct": 0.91,
+     "relative_to_sector_pct": -2.08
+    },
+    "ytd": {
+     "stock_change_pct": 9.03,
+     "sector_etf_change_pct": 7.39,
+     "relative_to_sector_pct": 1.64
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-22",
+    "realtime_end": "2026-10-22",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9602,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-21",
+      "value": "16.68"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-20",
+      "value": "17.31"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-19",
+      "value": "18.44"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-16",
+      "value": "19.99"
+     },
+     {
+      "realtime_start": "2026-10-22",
+      "realtime_end": "2026-10-22",
+      "date": "2026-10-15",
+      "value": "16.46"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "CRS",
+   "as_of": "2026-10-23",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 5,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-22",
+     "description": "CRS reported Q1 2027 earnings before the open \u2014 EPS 3.25 vs 3.1672 expected (beat, +2.6%)",
+     "source": "finnhub",
+     "days_ago": 1,
+     "eps_actual": 3.25,
+     "eps_estimate": 3.1672,
+     "surprise": "beat",
+     "surprise_pct": 2.6,
+     "hour": "bmo"
+    },
+    {
+     "type": "ex_dividend",
+     "date": "2026-10-20",
+     "source": "yfinance",
+     "description": "CRS went ex-dividend \u2014 the price drops by roughly the dividend on this date mechanically, with no news behind it",
+     "days_ago": 3
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}
