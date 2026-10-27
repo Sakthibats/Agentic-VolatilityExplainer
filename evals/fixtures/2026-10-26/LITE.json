@@ -1,0 +1,389 @@
+{
+ "schema": 1,
+ "ticker": "LITE",
+ "trading_day": "2026-10-26",
+ "captured_at": "2026-10-27T00:42:55+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 8.19,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "this week: -8.25% \u2014 typical relative to this stock's own typical volatility (expected ~11.89%, 0.69x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past 2 weeks: -31.47% \u2014 elevated relative to this stock's own typical volatility (expected ~16.81%, 1.87x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past month: -18.61% \u2014 typical relative to this stock's own typical volatility (expected ~24.36%, 0.76x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past year: 378.41% \u2014 unusual for this stock (about 4.48x its normal move for that span, expected ~84.40%)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "LITE",
+   "price": 818.1,
+   "prev_close": 756.17,
+   "change_pct": 8.19,
+   "realized_vol_annualized_pct": 84.4,
+   "changes_pct": {
+    "1d": 0.48,
+    "1w": -8.25,
+    "2w": -31.47,
+    "1mo": -18.61,
+    "1y": 378.41,
+    "ytd": 95.84
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "this week: -8.25% \u2014 typical relative to this stock's own typical volatility (expected ~11.89%, 0.69x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past 2 weeks: -31.47% \u2014 elevated relative to this stock's own typical volatility (expected ~16.81%, 1.87x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past month: -18.61% \u2014 typical relative to this stock's own typical volatility (expected ~24.36%, 0.76x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past year: 378.41% \u2014 unusual for this stock (about 4.48x its normal move for that span, expected ~84.40%)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "LITE",
+   "headlines": [
+    {
+     "headline": "Lumentum stock surges 10% as AI components \u2018completely sold out\u2019",
+     "summary": "Lumentum rallied after StoneX initiated coverage with a Buy rating, citing AI-related demand stretching into 2029.",
+     "datetime": 1793053480,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=9d9b898dbcd09a9fb800fdc69756f9c2dcb1703b23ed481c72381d5f9433aaad"
+    },
+    {
+     "headline": "Stock Market Today, Oct. 26: AI Optimism Lifts Nasdaq as Tech Stocks Rebound",
+     "summary": "On Oct. 26, 2026, Anthropic's IPO filing sparked a tech rally, while Meta's $95 billion AI infrastructure plan weighed on sentiment.",
+     "datetime": 1793051400,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=51d3d633d2a09f22bf421dc2edb7d885af8b60aa24cf9a34020a6df17e2ad123"
+    },
+    {
+     "headline": "What Is The Case For Waiting On Ondas Stock?",
+     "summary": "For questions about this article or underlying research, email help@trefis.com.",
+     "datetime": 1793049039,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=df5411a057b777af15669908fc5850e783351ca86588c40116148e1da7054a29"
+    },
+    {
+     "headline": "Stock Market Today: Dow Up, These Stocks Gain On Musk Talk; DoorDash Dives (Live Coverage)",
+     "summary": "The Dow Jones index rises on the stock market today as Anthropic files for an IPO. Neoclouds rise on Elon Musk comments. Brazil plays fall.",
+     "datetime": 1793047176,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=5b5a6a93030daa7b37e7e99ccc602991694b4032ad1cee44e22da0051242e66c"
+    },
+    {
+     "headline": "Why Lumentum Holdings Stock Soared 8.2% Today",
+     "summary": "Temperatures outside are dropping, but interest in this AI stock is heating up.",
+     "datetime": 1793047000,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=2b64a8509fe329b06e22e22da17f5891261b9fff1267aefa3fd4286c23ed23e3"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "LITE",
+   "expiry": "2026-11-13",
+   "days_to_expiry": 17,
+   "atm_iv_pct": 93.6,
+   "iv_chain_percentile": 32,
+   "skew_points": -3.1,
+   "put_call_ratio": 1.46,
+   "total_put_oi": 3546,
+   "total_call_oi": 2422
+  },
+  "get_options_positioning": {
+   "ticker": "LITE",
+   "spot": 818.1,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-13",
+   "primary_days_to_expiry": 17,
+   "max_pain_strike": 880.0,
+   "resistance_walls": [
+    {
+     "strike": 850.0,
+     "open_interest": 265
+    },
+    {
+     "strike": 800.0,
+     "open_interest": 151
+    },
+    {
+     "strike": 600.0,
+     "open_interest": 102
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 460.0,
+     "open_interest": 467
+    },
+    {
+     "strike": 1100.0,
+     "open_interest": 380
+    },
+    {
+     "strike": 450.0,
+     "open_interest": 248
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 17,
+     "atm_iv_pct": 93.6
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 24,
+     "atm_iv_pct": 87.2
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 480.0,
+     "volume": 121,
+     "open_interest": 1,
+     "vol_oi_ratio": 121.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 840.0,
+     "volume": 106,
+     "open_interest": 7,
+     "vol_oi_ratio": 15.1,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 540.0,
+     "volume": 327,
+     "open_interest": 22,
+     "vol_oi_ratio": 14.9,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 770.0,
+     "volume": 154,
+     "open_interest": 19,
+     "vol_oi_ratio": 8.1,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 1926,
+   "otm_put_oi": 1918,
+   "positioning_lean_score": 0.0,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "LITE",
+   "as_of": "2026-10-27",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-26",
+     "days_ago": 1,
+     "firm": "StoneX",
+     "action": "initiated coverage",
+     "from_grade": null,
+     "to_grade": "Buy",
+     "price_target_from": null,
+     "price_target_to": 1200.0,
+     "is_rating_change": false,
+     "description": "StoneX initiated coverage of LITE at Buy with a $1200.0 price target"
+    },
+    {
+     "date": "2026-10-21",
+     "days_ago": 6,
+     "firm": "Jefferies",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 1200.0,
+     "price_target_to": 1250.0,
+     "is_rating_change": false,
+     "description": "Jefferies maintained its Buy rating on LITE and raised its price target from $1200.0 to $1250.0"
+    },
+    {
+     "date": "2026-10-05",
+     "days_ago": 22,
+     "firm": "Rosenblatt",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 1300.0,
+     "price_target_to": 1300.0,
+     "is_rating_change": false,
+     "description": "Rosenblatt maintained its Buy rating on LITE with a $1300.0 price target"
+    },
+    {
+     "date": "2026-10-05",
+     "days_ago": 22,
+     "firm": "Stifel",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 1100.0,
+     "price_target_to": 1232.0,
+     "is_rating_change": false,
+     "description": "Stifel maintained its Buy rating on LITE and raised its price target from $1100.0 to $1232.0"
+    },
+    {
+     "date": "2026-09-30",
+     "days_ago": 27,
+     "firm": "Bernstein",
+     "action": "initiated coverage",
+     "from_grade": null,
+     "to_grade": "Outperform",
+     "price_target_from": null,
+     "price_target_to": 1220.0,
+     "is_rating_change": false,
+     "description": "Bernstein initiated coverage of LITE at Outperform with a $1220.0 price target"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.0,
+    "verdict": "leaning bullish",
+    "analysts": 28,
+    "counts": {
+     "strongBuy": 5,
+     "buy": 18,
+     "hold": 5,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.96 to 2.0)"
+   },
+   "price_target": {
+    "mean": 1166.28,
+    "median": 1200.0,
+    "high": 1500.0,
+    "low": 750.0,
+    "current_price": 818.1,
+    "dispersion_pct": 64.3,
+    "upside_vs_mean_pct": 42.6,
+    "upside_vs_median_pct": 46.7
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "LITE",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1d": {
+     "stock_change_pct": 0.48,
+     "sector_etf_change_pct": 0.49,
+     "relative_to_sector_pct": -0.01
+    },
+    "2w": {
+     "stock_change_pct": -31.47,
+     "sector_etf_change_pct": -7.82,
+     "relative_to_sector_pct": -23.65
+    },
+    "ytd": {
+     "stock_change_pct": 95.84,
+     "sector_etf_change_pct": 27.44,
+     "relative_to_sector_pct": 68.4
+    },
+    "1w": {
+     "stock_change_pct": -8.25,
+     "sector_etf_change_pct": -0.13,
+     "relative_to_sector_pct": -8.12
+    },
+    "1y": {
+     "stock_change_pct": 378.41,
+     "sector_etf_change_pct": 29.02,
+     "relative_to_sector_pct": 349.39
+    },
+    "1mo": {
+     "stock_change_pct": -18.61,
+     "sector_etf_change_pct": -5.9,
+     "relative_to_sector_pct": -12.71
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-26",
+    "realtime_end": "2026-10-26",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9604,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-23",
+      "value": "19.45"
+     },
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-22",
+      "value": "19.03"
+     },
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-21",
+      "value": "16.68"
+     },
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-20",
+      "value": "17.31"
+     },
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-19",
+      "value": "18.44"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "LITE",
+   "as_of": "2026-10-27",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 1,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-11-05",
+     "description": "LITE Q1 2027 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 9,
+     "eps_estimate": 4.2718,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}

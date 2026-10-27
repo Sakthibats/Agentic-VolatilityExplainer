@@ -1,0 +1,362 @@
+{
+ "schema": 1,
+ "ticker": "NU",
+ "trading_day": "2026-10-26",
+ "captured_at": "2026-10-27T00:43:09+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -16.95,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "NU",
+   "price": 12.59,
+   "prev_close": 15.16,
+   "change_pct": -16.95,
+   "realized_vol_annualized_pct": 71.7,
+   "changes_pct": {
+    "1d": 2.92,
+    "1w": 4.12,
+    "2w": -5.96,
+    "1mo": 11.8,
+    "1y": 0.0,
+    "ytd": -10.93
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   }
+  },
+  "get_news": {
+   "ticker": "NU",
+   "headlines": [
+    {
+     "headline": "Most Active Stocks on Oct. 26: RCT, NU and BBD Top Volume",
+     "summary": "Oct. 26 most active stocks paired heavy volume with sharp moves: RCT rose 20.24%, NU fell 17.96%, BBD fell 29.73%, and XP dropped 49.44%.",
+     "datetime": 1793041227,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=45c2582c94ef5718259141780102075a063e3b3ba39783b9f2dcdc7c16467e50"
+    },
+    {
+     "headline": "This Week In Digital Payment - AI Revolutionizes Global Commerce Transforming The Payment Landscape",
+     "summary": "The digital payments sector is undergoing significant transformation due to the increasing integration of artificial intelligence (AI). A recent report highlights that AI is reshaping global digital...",
+     "datetime": 1793018299,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=5d16816a6425461c323ab6aa85c96084d5d4c4627fd6d8cff2c9ca902315898a"
+    },
+    {
+     "headline": "Lula Staged an Unexpected Comeback in Brazil's Presidential Elections. Its Markets Are Plunging.",
+     "summary": "Lula's opponent, Fl\u00e1vio Bolsonaro, is reportedly refusing to concede defeat and could stage a legal challenge of the results.",
+     "datetime": 1793016598,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=69048e64210d81fae08f824a2339409c5a659cb22c0e5c3c6e1b3f9b7a7f566e"
+    },
+    {
+     "headline": "Brazilian stocks plunge after Lula's surprising election victory",
+     "summary": "Brazilian stocks plunged premarket on Monday after the country's surprising runoff election results reversed a rally earlier this month in Brazilian assets.",
+     "datetime": 1793015005,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=0c5cd39e0b7de8e7bc4279f2d37ac007b8b239ff6a38edf59502bb396e3e222f"
+    },
+    {
+     "headline": "XP and Ambev Stocks Slump. Brazil\u2019s Path Is Unworkable After Shock Election Win.",
+     "summary": "Shares of Brazilian companies plummet after leftist President Lula\u2019s surprise victory in Sunday\u2019s runoff election.",
+     "datetime": 1793012760,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=de55466487204a09548181c0549b603c2b6e9938f6e7c21e3f6fea0879deacd9"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "NU",
+   "expiry": "2026-11-13",
+   "days_to_expiry": 17,
+   "atm_iv_pct": 65.4,
+   "iv_chain_percentile": 4,
+   "skew_points": -7.4,
+   "put_call_ratio": 0.4,
+   "total_put_oi": 3181,
+   "total_call_oi": 7925
+  },
+  "get_options_positioning": {
+   "ticker": "NU",
+   "spot": 12.59,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-13",
+   "primary_days_to_expiry": 17,
+   "max_pain_strike": 14.5,
+   "resistance_walls": [
+    {
+     "strike": 17.0,
+     "open_interest": 2040
+    },
+    {
+     "strike": 16.0,
+     "open_interest": 1318
+    },
+    {
+     "strike": 16.5,
+     "open_interest": 1191
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 14.5,
+     "open_interest": 850
+    },
+    {
+     "strike": 14.0,
+     "open_interest": 439
+    },
+    {
+     "strike": 15.0,
+     "open_interest": 362
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 17,
+     "atm_iv_pct": 65.4
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 24,
+     "atm_iv_pct": 54.0
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 14.0,
+     "volume": 9936,
+     "open_interest": 76,
+     "vol_oi_ratio": 130.7,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 12.0,
+     "volume": 519,
+     "open_interest": 4,
+     "vol_oi_ratio": 129.8,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 10.5,
+     "volume": 812,
+     "open_interest": 8,
+     "vol_oi_ratio": 101.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 12.5,
+     "volume": 1160,
+     "open_interest": 38,
+     "vol_oi_ratio": 30.5,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 11.0,
+     "volume": 333,
+     "open_interest": 107,
+     "vol_oi_ratio": 3.1,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 7810,
+   "otm_put_oi": 829,
+   "positioning_lean_score": 0.81,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "NU",
+   "as_of": "2026-10-27",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-20",
+     "days_ago": 7,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 18.2,
+     "price_target_to": 20.5,
+     "is_rating_change": false,
+     "description": "UBS maintained its Buy rating on NU and raised its price target from $18.2 to $20.5"
+    },
+    {
+     "date": "2026-10-06",
+     "days_ago": 21,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 20.0,
+     "price_target_to": 23.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Overweight rating on NU and raised its price target from $20.0 to $23.0"
+    },
+    {
+     "date": "2026-09-28",
+     "days_ago": 29,
+     "firm": "Needham",
+     "action": "reiterated",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 19.0,
+     "price_target_to": 19.0,
+     "is_rating_change": false,
+     "description": "Needham reiterated its Buy rating on NU with a $19.0 price target"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.13,
+    "verdict": "leaning bullish",
+    "analysts": 23,
+    "counts": {
+     "strongBuy": 4,
+     "buy": 14,
+     "hold": 4,
+     "sell": 0,
+     "strongSell": 1
+    },
+    "trend": "deteriorating",
+    "trend_detail": "consensus softened over 3 months (score 2.05 to 2.13; bearish ratings 1 to 1)"
+   },
+   "price_target": {
+    "mean": 18.97,
+    "median": 19.0,
+    "high": 23.0,
+    "low": 12.0,
+    "current_price": 12.59,
+    "dispersion_pct": 58.0,
+    "upside_vs_mean_pct": 50.7,
+    "upside_vs_median_pct": 50.9
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "NU",
+   "sector": "Financial Services",
+   "sector_etf": "XLF",
+   "comparison": {
+    "1d": {
+     "stock_change_pct": 2.92,
+     "sector_etf_change_pct": -1.32,
+     "relative_to_sector_pct": 4.24
+    },
+    "2w": {
+     "stock_change_pct": -5.96,
+     "sector_etf_change_pct": 2.14,
+     "relative_to_sector_pct": -8.1
+    },
+    "ytd": {
+     "stock_change_pct": -10.93,
+     "sector_etf_change_pct": 3.01,
+     "relative_to_sector_pct": -13.94
+    },
+    "1w": {
+     "stock_change_pct": 4.12,
+     "sector_etf_change_pct": 0.68,
+     "relative_to_sector_pct": 3.44
+    },
+    "1y": {
+     "stock_change_pct": 0.0,
+     "sector_etf_change_pct": 8.3,
+     "relative_to_sector_pct": -8.3
+    },
+    "1mo": {
+     "stock_change_pct": 11.8,
+     "sector_etf_change_pct": 2.51,
+     "relative_to_sector_pct": 9.29
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-26",
+    "realtime_end": "2026-10-26",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9604,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-23",
+      "value": "19.45"
+     },
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-22",
+      "value": "19.03"
+     },
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-21",
+      "value": "16.68"
+     },
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-20",
+      "value": "17.31"
+     },
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-19",
+      "value": "18.44"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "NU",
+   "as_of": "2026-10-27",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 1,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-11-12",
+     "description": "NU Q3 2026 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 16,
+     "eps_estimate": 0.2327
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}

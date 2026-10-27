@@ -1,0 +1,387 @@
+{
+ "schema": 1,
+ "ticker": "PLTR",
+ "trading_day": "2026-10-26",
+ "captured_at": "2026-10-27T00:42:08+00:00",
+ "selected_as": "control",
+ "change_pct": 1.06,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "PLTR",
+   "price": 198.84,
+   "prev_close": 196.75,
+   "change_pct": 1.06,
+   "realized_vol_annualized_pct": 45.3,
+   "changes_pct": {
+    "1d": 0.29,
+    "1w": 5.76,
+    "2w": -5.88,
+    "1mo": 2.16,
+    "1y": 12.11,
+    "ytd": 17.21
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   }
+  },
+  "get_news": {
+   "ticker": "PLTR",
+   "headlines": [
+    {
+     "headline": "Will Palantir Technologies Stock Hit $300 Before the End of 2026?",
+     "summary": "Palantir's earnings are coming up next week, and another strong performance could send the stock higher.",
+     "datetime": 1793050562,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=90dfb5ab699650921423b1902c33a242267aba6eda1084938cebfc5b1b055f9f"
+    },
+    {
+     "headline": "Anthropic\u2019s 7 Founders Will Use New Stock Class to Take  Control of the Business",
+     "summary": "Anthropic unveils a new Class F common stock in its IPO prospectus, giving its seven co-founders majority control of the AI company.",
+     "datetime": 1793046240,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=5165b8f34a90aee91b744bef1a093a84ceb6bf3f0d80f58b74d910ffdd901fdb"
+    },
+    {
+     "headline": "Burke Wealth Initiates a New Position in Palantir (PLTR) as AI Software Growth Accelerates",
+     "summary": "Burke Wealth Management, an investment management company, released its \u201cFocused Growth Strategy\u201d Q3 2026 investor letter. A copy of the letter can be downloaded here. The fund delivered strong...",
+     "datetime": 1793035850,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=af0cf76f90bc9ebdc20bb30c1b6870f1dabb8b391a6040b3813e7ce9ae7b3458"
+    },
+    {
+     "headline": "PLTR vs. ACN: Which Leading Tech Stock Should You Consider?",
+     "summary": "Palantir's Ontology and AIP platforms support strong AI growth prospects, while Accenture expands enterprise AI through consulting and acquisitions.",
+     "datetime": 1793033220,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=a6cbffb0c694ee32e4269d320d9f5b9ce50dbe155fa3f3248cc71831a70627ff"
+    },
+    {
+     "headline": "Palantir Technologies (PLTR) is an Incredible Growth Stock: 3 Reasons Why",
+     "summary": "Palantir Technologies (PLTR) could produce exceptional returns because of its solid growth attributes.",
+     "datetime": 1793029502,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=2d89eb4497636d26c88889997a3595547e21d2a83aaf2d01770d4964f7ca6cf2"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "PLTR",
+   "expiry": "2026-11-13",
+   "days_to_expiry": 17,
+   "atm_iv_pct": 74.4,
+   "iv_chain_percentile": 5,
+   "skew_points": 0.4,
+   "put_call_ratio": 1.3,
+   "total_put_oi": 16549,
+   "total_call_oi": 12759
+  },
+  "get_options_positioning": {
+   "ticker": "PLTR",
+   "spot": 198.84,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-13",
+   "primary_days_to_expiry": 17,
+   "max_pain_strike": 195.0,
+   "resistance_walls": [
+    {
+     "strike": 210.0,
+     "open_interest": 1316
+    },
+    {
+     "strike": 220.0,
+     "open_interest": 1190
+    },
+    {
+     "strike": 240.0,
+     "open_interest": 719
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 155.0,
+     "open_interest": 1645
+    },
+    {
+     "strike": 180.0,
+     "open_interest": 1308
+    },
+    {
+     "strike": 145.0,
+     "open_interest": 1216
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 17,
+     "atm_iv_pct": 74.4
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 24,
+     "atm_iv_pct": 68.0
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 135.0,
+     "volume": 161,
+     "open_interest": 27,
+     "vol_oi_ratio": 6.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 130.0,
+     "volume": 155,
+     "open_interest": 34,
+     "vol_oi_ratio": 4.6,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 197.5,
+     "volume": 367,
+     "open_interest": 275,
+     "vol_oi_ratio": 1.3,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 195.0,
+     "volume": 213,
+     "open_interest": 458,
+     "vol_oi_ratio": 0.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 175.0,
+     "volume": 273,
+     "open_interest": 601,
+     "vol_oi_ratio": 0.5,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 9819,
+   "otm_put_oi": 14928,
+   "positioning_lean_score": -0.21,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "PLTR",
+   "as_of": "2026-10-27",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-23",
+     "days_ago": 4,
+     "firm": "Piper Sandler",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 230.0,
+     "price_target_to": 231.0,
+     "is_rating_change": false,
+     "description": "Piper Sandler maintained its Overweight rating on PLTR and raised its price target from $230.0 to $231.0"
+    },
+    {
+     "date": "2026-10-22",
+     "days_ago": 5,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 245.0,
+     "price_target_to": 250.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Buy rating on PLTR and raised its price target from $245.0 to $250.0"
+    },
+    {
+     "date": "2026-10-15",
+     "days_ago": 12,
+     "firm": "Mizuho",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 215.0,
+     "price_target_to": 245.0,
+     "is_rating_change": false,
+     "description": "Mizuho maintained its Outperform rating on PLTR and raised its price target from $215.0 to $245.0"
+    },
+    {
+     "date": "2026-10-09",
+     "days_ago": 18,
+     "firm": "Barclays",
+     "action": "initiated coverage",
+     "from_grade": null,
+     "to_grade": "Overweight",
+     "price_target_from": null,
+     "price_target_to": 265.0,
+     "is_rating_change": false,
+     "description": "Barclays initiated coverage of PLTR at Overweight with a $265.0 price target"
+    },
+    {
+     "date": "2026-10-08",
+     "days_ago": 19,
+     "firm": "Goldman Sachs",
+     "action": "upgrade",
+     "from_grade": "Neutral",
+     "to_grade": "Buy",
+     "price_target_from": null,
+     "price_target_to": 230.0,
+     "is_rating_change": true,
+     "description": "Goldman Sachs upgraded PLTR from Neutral to Buy with a $230.0 price target"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.5,
+    "verdict": "leaning bullish",
+    "analysts": 30,
+    "counts": {
+     "strongBuy": 1,
+     "buy": 18,
+     "hold": 8,
+     "sell": 1,
+     "strongSell": 2
+    },
+    "trend": "deteriorating",
+    "trend_detail": "consensus softened over 3 months (score 2.44 to 2.5; bearish ratings 2 to 3)"
+   },
+   "price_target": {
+    "mean": 207.62,
+    "median": 221.5,
+    "high": 265.0,
+    "low": 80.0,
+    "current_price": 198.84,
+    "dispersion_pct": 89.1,
+    "upside_vs_mean_pct": 4.4,
+    "upside_vs_median_pct": 11.4
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "PLTR",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1d": {
+     "stock_change_pct": 0.29,
+     "sector_etf_change_pct": 0.49,
+     "relative_to_sector_pct": -0.2
+    },
+    "2w": {
+     "stock_change_pct": -5.88,
+     "sector_etf_change_pct": -7.82,
+     "relative_to_sector_pct": 1.94
+    },
+    "ytd": {
+     "stock_change_pct": 17.21,
+     "sector_etf_change_pct": 27.44,
+     "relative_to_sector_pct": -10.23
+    },
+    "1w": {
+     "stock_change_pct": 5.76,
+     "sector_etf_change_pct": -0.13,
+     "relative_to_sector_pct": 5.89
+    },
+    "1y": {
+     "stock_change_pct": 12.11,
+     "sector_etf_change_pct": 29.02,
+     "relative_to_sector_pct": -16.91
+    },
+    "1mo": {
+     "stock_change_pct": 2.16,
+     "sector_etf_change_pct": -5.9,
+     "relative_to_sector_pct": 8.06
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-26",
+    "realtime_end": "2026-10-26",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9604,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-23",
+      "value": "19.45"
+     },
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-22",
+      "value": "19.03"
+     },
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-21",
+      "value": "16.68"
+     },
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-20",
+      "value": "17.31"
+     },
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-19",
+      "value": "18.44"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "PLTR",
+   "as_of": "2026-10-27",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 1,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-11-02",
+     "description": "PLTR Q3 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 6,
+     "eps_estimate": 0.4225,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}

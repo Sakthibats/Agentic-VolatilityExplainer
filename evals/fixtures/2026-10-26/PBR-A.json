@@ -1,0 +1,269 @@
+{
+ "schema": 1,
+ "ticker": "PBR-A",
+ "trading_day": "2026-10-26",
+ "captured_at": "2026-10-27T00:43:15+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -15.43,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "the past month: 23.91% \u2014 elevated relative to this stock's own typical volatility (expected ~14.23%, 1.68x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past year: 122.61% \u2014 elevated relative to this stock's own typical volatility (expected ~49.30%, 2.49x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "PBR-A",
+   "price": 19.9,
+   "prev_close": 23.53,
+   "change_pct": -15.43,
+   "realized_vol_annualized_pct": 49.3,
+   "changes_pct": {
+    "1d": 2.75,
+    "1w": 0.99,
+    "2w": 4.72,
+    "1mo": 23.91,
+    "1y": 122.61,
+    "ytd": 117.7
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "the past month: 23.91% \u2014 elevated relative to this stock's own typical volatility (expected ~14.23%, 1.68x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past year: 122.61% \u2014 elevated relative to this stock's own typical volatility (expected ~49.30%, 2.49x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "PBR-A",
+   "headlines": []
+  },
+  "get_options_data": {
+   "ticker": "PBR-A",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 24,
+   "atm_iv_pct": 55.2,
+   "iv_chain_percentile": 4,
+   "skew_points": 9.7,
+   "put_call_ratio": 0.45,
+   "total_put_oi": 494,
+   "total_call_oi": 1094
+  },
+  "get_options_positioning": {
+   "ticker": "PBR-A",
+   "spot": 19.9,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 24,
+   "max_pain_strike": 20.0,
+   "resistance_walls": [
+    {
+     "strike": 25.0,
+     "open_interest": 511
+    },
+    {
+     "strike": 22.5,
+     "open_interest": 323
+    },
+    {
+     "strike": 20.0,
+     "open_interest": 253
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 20.0,
+     "open_interest": 435
+    },
+    {
+     "strike": 17.5,
+     "open_interest": 47
+    },
+    {
+     "strike": 22.5,
+     "open_interest": 12
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 24,
+     "atm_iv_pct": 55.2
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 20.0,
+     "volume": 986,
+     "open_interest": 253,
+     "vol_oi_ratio": 3.9,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 22.5,
+     "volume": 241,
+     "open_interest": 323,
+     "vol_oi_ratio": 0.7,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 1092,
+   "otm_put_oi": 47,
+   "positioning_lean_score": 0.92,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "PBR-A",
+   "as_of": "2026-10-27",
+   "analyst_coverage": "covered",
+   "recent_actions": [],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.7,
+    "verdict": "leaning bullish",
+    "analysts": 10,
+    "counts": {
+     "strongBuy": 4,
+     "buy": 5,
+     "hold": 1,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.7 to 1.7)"
+   },
+   "price_target": {
+    "mean": 23.86,
+    "median": 23.0,
+    "high": 28.0,
+    "low": 21.0,
+    "current_price": 19.9,
+    "dispersion_pct": 29.3,
+    "upside_vs_mean_pct": 19.9,
+    "upside_vs_median_pct": 15.6
+   },
+   "notes": [
+    "No analyst rating changes in the last 30 days \u2014 the consensus below is standing opinion, not a recent catalyst."
+   ]
+  },
+  "get_sector_comparison": {
+   "ticker": "PBR-A",
+   "sector": "Energy",
+   "sector_etf": "XLE",
+   "comparison": {
+    "1d": {
+     "stock_change_pct": 2.75,
+     "sector_etf_change_pct": 2.6,
+     "relative_to_sector_pct": 0.15
+    },
+    "2w": {
+     "stock_change_pct": 4.72,
+     "sector_etf_change_pct": 6.53,
+     "relative_to_sector_pct": -1.81
+    },
+    "ytd": {
+     "stock_change_pct": 117.7,
+     "sector_etf_change_pct": 54.88,
+     "relative_to_sector_pct": 62.82
+    },
+    "1w": {
+     "stock_change_pct": 0.99,
+     "sector_etf_change_pct": 1.6,
+     "relative_to_sector_pct": -0.61
+    },
+    "1y": {
+     "stock_change_pct": 122.61,
+     "sector_etf_change_pct": 62.43,
+     "relative_to_sector_pct": 60.18
+    },
+    "1mo": {
+     "stock_change_pct": 23.91,
+     "sector_etf_change_pct": 10.75,
+     "relative_to_sector_pct": 13.16
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-26",
+    "realtime_end": "2026-10-26",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9604,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-23",
+      "value": "19.45"
+     },
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-22",
+      "value": "19.03"
+     },
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-21",
+      "value": "16.68"
+     },
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-20",
+      "value": "17.31"
+     },
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-19",
+      "value": "18.44"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "PBR-A",
+   "as_of": "2026-10-27",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 1,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-11-10",
+     "description": "PBR-A Q3 2026 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 14,
+     "eps_estimate": 3.4598
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}

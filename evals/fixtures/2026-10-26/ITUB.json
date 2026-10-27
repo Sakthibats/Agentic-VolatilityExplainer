@@ -1,0 +1,359 @@
+{
+ "schema": 1,
+ "ticker": "ITUB",
+ "trading_day": "2026-10-26",
+ "captured_at": "2026-10-27T00:43:02+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -20.37,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "the past month: 19.72% \u2014 typical relative to this stock's own typical volatility (expected ~18.82%, 1.05x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past year: 52.29% \u2014 typical relative to this stock's own typical volatility (expected ~65.20%, 0.8x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "ITUB",
+   "price": 7.7,
+   "prev_close": 9.67,
+   "change_pct": -20.37,
+   "realized_vol_annualized_pct": 65.2,
+   "changes_pct": {
+    "1d": 1.9,
+    "1w": 2.44,
+    "2w": -4.82,
+    "1mo": 19.72,
+    "1y": 52.29,
+    "ytd": 36.68
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "the past month: 19.72% \u2014 typical relative to this stock's own typical volatility (expected ~18.82%, 1.05x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past year: 52.29% \u2014 typical relative to this stock's own typical volatility (expected ~65.20%, 0.8x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "ITUB",
+   "headlines": [
+    {
+     "headline": "Most Active Stocks on Oct. 26: RCT, NU and BBD Top Volume",
+     "summary": "Oct. 26 most active stocks paired heavy volume with sharp moves: RCT rose 20.24%, NU fell 17.96%, BBD fell 29.73%, and XP dropped 49.44%.",
+     "datetime": 1793041227,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=45c2582c94ef5718259141780102075a063e3b3ba39783b9f2dcdc7c16467e50"
+    },
+    {
+     "headline": "Ita\u00fa Unibanco Holding S.A. to Acquire NeoSpace for BRL 2,925,000,000.00",
+     "summary": "",
+     "datetime": 1793026124,
+     "source": "Fintel",
+     "url": "https://finnhub.io/api/news?id=fa3aee959e6084c7bccbc331c0819029afefb3e0ce663f76ff5caa8bea3905a0"
+    },
+    {
+     "headline": "XP and Ambev Stocks Slump. Brazil\u2019s Path Is Unworkable After Shock Election Win.",
+     "summary": "Shares of Brazilian companies plummet after leftist President Lula\u2019s surprise victory in Sunday\u2019s runoff election.",
+     "datetime": 1793012760,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=de55466487204a09548181c0549b603c2b6e9938f6e7c21e3f6fea0879deacd9"
+    },
+    {
+     "headline": "Nu Holdings Sinks 22% on Lula\u2019s Win: \u201cThe Market Was Completely Unprepared\u201d",
+     "summary": "Nu Holdings (NU:NYSE) shares are down about 22% in pre-market trading (around $11. 77) after Luiz In\u00e1cio Lula da Silva won Brazil\u2019s presidential runoff on Sunday, beating Fl\u00e1vio Bolsonaro 51.",
+     "datetime": 1793007930,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=0772baa8cbcda9f1001328d22e5ab28ad5d9d5d9caa3f5e7a4909ef1b345a831"
+    },
+    {
+     "headline": "U.S.-listed Brazilian shares slump after shock Lula election win",
+     "summary": "Investing.com -- U.S.-listed shares of Brazilian companies tumbled in premarket trading Monday, a day after President Luiz In\u00e1cio Lula da Silva pulled off a surprise win to secure a historic fourth...",
+     "datetime": 1793007496,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=5f690094349b7a1cc818a3d31c78531510290742d14aa19df4d0234c3b22f6e1"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "ITUB",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 24,
+   "atm_iv_pct": 52.9,
+   "iv_chain_percentile": 0,
+   "skew_points": 0.2,
+   "put_call_ratio": 0.98,
+   "total_put_oi": 13116,
+   "total_call_oi": 13333
+  },
+  "get_options_positioning": {
+   "ticker": "ITUB",
+   "spot": 7.7,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 24,
+   "max_pain_strike": 9.0,
+   "resistance_walls": [
+    {
+     "strike": 11.0,
+     "open_interest": 4318
+    },
+    {
+     "strike": 10.0,
+     "open_interest": 3476
+    },
+    {
+     "strike": 9.0,
+     "open_interest": 2538
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 9.0,
+     "open_interest": 5504
+    },
+    {
+     "strike": 8.0,
+     "open_interest": 4091
+    },
+    {
+     "strike": 10.0,
+     "open_interest": 3252
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 24,
+     "atm_iv_pct": 52.9
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 7.0,
+     "volume": 3962,
+     "open_interest": 150,
+     "vol_oi_ratio": 26.4,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 6.0,
+     "volume": 750,
+     "open_interest": 116,
+     "vol_oi_ratio": 6.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 8.0,
+     "volume": 1697,
+     "open_interest": 2503,
+     "vol_oi_ratio": 0.7,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 7.0,
+     "volume": 258,
+     "open_interest": 450,
+     "vol_oi_ratio": 0.6,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 9.0,
+     "volume": 1067,
+     "open_interest": 5504,
+     "vol_oi_ratio": 0.2,
+     "moneyness": "ITM"
+    }
+   ],
+   "otm_call_oi": 12868,
+   "otm_put_oi": 267,
+   "positioning_lean_score": 0.96,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "ITUB",
+   "as_of": "2026-10-27",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-09",
+     "days_ago": 18,
+     "firm": "Goldman Sachs",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 9.3,
+     "price_target_to": 10.5,
+     "is_rating_change": false,
+     "description": "Goldman Sachs maintained its Buy rating on ITUB and raised its price target from $9.3 to $10.5"
+    },
+    {
+     "date": "2026-10-08",
+     "days_ago": 19,
+     "firm": "HSBC",
+     "action": "downgrade",
+     "from_grade": "Buy",
+     "to_grade": "Hold",
+     "price_target_from": null,
+     "price_target_to": 9.1,
+     "is_rating_change": true,
+     "description": "HSBC downgraded ITUB from Buy to Hold with a $9.1 price target"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.38,
+    "verdict": "leaning bullish",
+    "analysts": 8,
+    "counts": {
+     "strongBuy": 2,
+     "buy": 3,
+     "hold": 2,
+     "sell": 0,
+     "strongSell": 1
+    },
+    "trend": "deteriorating",
+    "trend_detail": "consensus softened over 3 months (score 2.0 to 2.38; bearish ratings 0 to 1)"
+   },
+   "price_target": {
+    "mean": 9.03,
+    "median": 9.55,
+    "high": 10.5,
+    "low": 6.1,
+    "current_price": 7.7,
+    "dispersion_pct": 48.7,
+    "upside_vs_mean_pct": 17.3,
+    "upside_vs_median_pct": 24.0
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "ITUB",
+   "sector": "Financial Services",
+   "sector_etf": "XLF",
+   "comparison": {
+    "1d": {
+     "stock_change_pct": 1.9,
+     "sector_etf_change_pct": -1.32,
+     "relative_to_sector_pct": 3.22
+    },
+    "2w": {
+     "stock_change_pct": -4.82,
+     "sector_etf_change_pct": 2.14,
+     "relative_to_sector_pct": -6.96
+    },
+    "ytd": {
+     "stock_change_pct": 36.68,
+     "sector_etf_change_pct": 3.01,
+     "relative_to_sector_pct": 33.67
+    },
+    "1w": {
+     "stock_change_pct": 2.44,
+     "sector_etf_change_pct": 0.68,
+     "relative_to_sector_pct": 1.76
+    },
+    "1y": {
+     "stock_change_pct": 52.29,
+     "sector_etf_change_pct": 8.3,
+     "relative_to_sector_pct": 43.99
+    },
+    "1mo": {
+     "stock_change_pct": 19.72,
+     "sector_etf_change_pct": 2.51,
+     "relative_to_sector_pct": 17.21
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-26",
+    "realtime_end": "2026-10-26",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9604,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-23",
+      "value": "19.45"
+     },
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-22",
+      "value": "19.03"
+     },
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-21",
+      "value": "16.68"
+     },
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-20",
+      "value": "17.31"
+     },
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-19",
+      "value": "18.44"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "ITUB",
+   "as_of": "2026-10-27",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 1,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-11-03",
+     "description": "ITUB Q3 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 7,
+     "eps_estimate": 1.1783,
+     "hour": "amc"
+    },
+    {
+     "type": "ex_dividend",
+     "date": "2026-11-04",
+     "source": "yfinance",
+     "description": "ITUB goes ex-dividend \u2014 expect a mechanical price drop of roughly the dividend",
+     "days_until": 8
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}

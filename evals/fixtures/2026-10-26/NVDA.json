@@ -1,0 +1,372 @@
+{
+ "schema": 1,
+ "ticker": "NVDA",
+ "trading_day": "2026-10-26",
+ "captured_at": "2026-10-27T00:42:14+00:00",
+ "selected_as": "control",
+ "change_pct": 2.39,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "NVDA",
+   "price": 216,
+   "prev_close": 210.96,
+   "change_pct": 2.39,
+   "realized_vol_annualized_pct": 29.3,
+   "changes_pct": {
+    "1d": -0.59,
+    "1w": -1.48,
+    "2w": -7.99,
+    "1mo": -6.06,
+    "1y": 17.3,
+    "ytd": 11.97
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   }
+  },
+  "get_news": {
+   "ticker": "NVDA",
+   "headlines": [
+    {
+     "headline": "SpaceX's Adjusted Earnings Quadrupled in Q3. Is the Stock Heading Back to $200?",
+     "summary": "The space stock did get an initial boost after earnings, but that was short-lived, and it finished last week at below $148.",
+     "datetime": 1793058002,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=12dc8a8886797fe1bae827c57985b0bbdffd0d5fac1eea143429c46556c16182"
+    },
+    {
+     "headline": "Here's Exactly What Investors Should Look for From the Federal Reserve's October Meeting",
+     "summary": "Don't worry too much about it either way, whether or not the interest rate decision works for you or against you.",
+     "datetime": 1793056800,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=1c6fae5fb3cac21f8c487896770f289cf3b180219265eeac791fc0600835dec8"
+    },
+    {
+     "headline": "Anthropic Just Filed to Go Public. Should You Buy the Stock?",
+     "summary": "Anthropic\u2019s IPO filing reveals explosive growth and improving operating results. But can the company protect its profits as competing AI models catch up?",
+     "datetime": 1793055301,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=e2d74b87d26dcb74286e9eafdb9918a3f953a2944877e4db86101ffc23b6af66"
+    },
+    {
+     "headline": "Why Range Resources Stock Surged Today",
+     "summary": "The global energy industry is consolidating.",
+     "datetime": 1793054870,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=46797c83e37fa8fb3d616d8da81512df70a2c9952ea96b9f53b5025c5cb252c9"
+    },
+    {
+     "headline": "Berkshire Hathaway: Is the Stock Still a Safe Buy Without Warren Buffett?",
+     "summary": "There are signs the company is going in a different direction under new CEO Greg Abel.",
+     "datetime": 1793054761,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=90498ee95415aaaecd78a3a651010c59f4777d981d1cd988386f0fc949545e1f"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "NVDA",
+   "expiry": "2026-11-13",
+   "days_to_expiry": 17,
+   "atm_iv_pct": 37.1,
+   "iv_chain_percentile": 2,
+   "skew_points": 2.5,
+   "put_call_ratio": 1.07,
+   "total_put_oi": 101659,
+   "total_call_oi": 95012
+  },
+  "get_options_positioning": {
+   "ticker": "NVDA",
+   "spot": 216.0,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-13",
+   "primary_days_to_expiry": 17,
+   "max_pain_strike": 220.0,
+   "resistance_walls": [
+    {
+     "strike": 230.0,
+     "open_interest": 12640
+    },
+    {
+     "strike": 245.0,
+     "open_interest": 11229
+    },
+    {
+     "strike": 250.0,
+     "open_interest": 11056
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 205.0,
+     "open_interest": 13063
+    },
+    {
+     "strike": 200.0,
+     "open_interest": 10258
+    },
+    {
+     "strike": 180.0,
+     "open_interest": 8537
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 17,
+     "atm_iv_pct": 37.1
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 24,
+     "atm_iv_pct": 44.0
+    }
+   ],
+   "term_structure_trend": "Rising \u2014 market pricing in a later catalyst within the horizon",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 155.0,
+     "volume": 484,
+     "open_interest": 84,
+     "vol_oi_ratio": 5.8,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 305.0,
+     "volume": 149,
+     "open_interest": 30,
+     "vol_oi_ratio": 5.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 70.0,
+     "volume": 720,
+     "open_interest": 168,
+     "vol_oi_ratio": 4.3,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 95.0,
+     "volume": 128,
+     "open_interest": 32,
+     "vol_oi_ratio": 4.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 235.0,
+     "volume": 3323,
+     "open_interest": 5815,
+     "vol_oi_ratio": 0.6,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 86794,
+   "otm_put_oi": 85282,
+   "positioning_lean_score": 0.01,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "NVDA",
+   "as_of": "2026-10-27",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-22",
+     "days_ago": 5,
+     "firm": "Needham",
+     "action": "reiterated",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 300.0,
+     "price_target_to": 300.0,
+     "is_rating_change": false,
+     "description": "Needham reiterated its Buy rating on NVDA with a $300.0 price target"
+    },
+    {
+     "date": "2026-10-01",
+     "days_ago": 26,
+     "firm": "Cantor Fitzgerald",
+     "action": "reiterated",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 350.0,
+     "price_target_to": 350.0,
+     "is_rating_change": false,
+     "description": "Cantor Fitzgerald reiterated its Overweight rating on NVDA with a $350.0 price target"
+    },
+    {
+     "date": "2026-09-29",
+     "days_ago": 28,
+     "firm": "Rosenblatt",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 390.0,
+     "price_target_to": 390.0,
+     "is_rating_change": false,
+     "description": "Rosenblatt maintained its Buy rating on NVDA with a $390.0 price target"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.9,
+    "verdict": "leaning bullish",
+    "analysts": 62,
+    "counts": {
+     "strongBuy": 10,
+     "buy": 49,
+     "hold": 2,
+     "sell": 1,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.9 to 1.9)"
+   },
+   "price_target": {
+    "mean": 328.95,
+    "median": 315.0,
+    "high": 515.0,
+    "low": 180.0,
+    "current_price": 216.0,
+    "dispersion_pct": 101.8,
+    "upside_vs_mean_pct": 52.3,
+    "upside_vs_median_pct": 45.8
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "NVDA",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1d": {
+     "stock_change_pct": -0.59,
+     "sector_etf_change_pct": 0.49,
+     "relative_to_sector_pct": -1.08
+    },
+    "2w": {
+     "stock_change_pct": -7.99,
+     "sector_etf_change_pct": -7.82,
+     "relative_to_sector_pct": -0.17
+    },
+    "ytd": {
+     "stock_change_pct": 11.97,
+     "sector_etf_change_pct": 27.44,
+     "relative_to_sector_pct": -15.47
+    },
+    "1w": {
+     "stock_change_pct": -1.48,
+     "sector_etf_change_pct": -0.13,
+     "relative_to_sector_pct": -1.35
+    },
+    "1y": {
+     "stock_change_pct": 17.3,
+     "sector_etf_change_pct": 29.02,
+     "relative_to_sector_pct": -11.72
+    },
+    "1mo": {
+     "stock_change_pct": -6.06,
+     "sector_etf_change_pct": -5.9,
+     "relative_to_sector_pct": -0.16
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-26",
+    "realtime_end": "2026-10-26",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9604,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-23",
+      "value": "19.45"
+     },
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-22",
+      "value": "19.03"
+     },
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-21",
+      "value": "16.68"
+     },
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-20",
+      "value": "17.31"
+     },
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-19",
+      "value": "18.44"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "NVDA",
+   "as_of": "2026-10-27",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 1,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-11-17",
+     "description": "NVDA quarterly earnings scheduled (during the session)",
+     "source": "yfinance",
+     "days_until": 21,
+     "eps_estimate": 2.47,
+     "hour": "dmh"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-11-25",
+     "description": "NVDA Q3 2027 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 29,
+     "eps_estimate": 2.5263,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub+yfinance"
+  }
+ }
+}

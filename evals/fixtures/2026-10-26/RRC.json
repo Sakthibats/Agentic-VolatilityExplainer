@@ -1,0 +1,370 @@
+{
+ "schema": 1,
+ "ticker": "RRC",
+ "trading_day": "2026-10-26",
+ "captured_at": "2026-10-27T00:42:42+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 17.66,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "today: 3.78% \u2014 elevated for this stock (about 1.92x its normal move for that span, expected ~1.97%)",
+   "the past 2 weeks: 11.32% \u2014 elevated for this stock (about 1.82x its normal move for that span, expected ~6.22%)",
+   "the past month: 16.3% \u2014 elevated for this stock (about 1.81x its normal move for that span, expected ~9.01%)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "RRC",
+   "price": 53.56,
+   "prev_close": 45.52,
+   "change_pct": 17.66,
+   "realized_vol_annualized_pct": 31.2,
+   "changes_pct": {
+    "1d": 3.78,
+    "1w": 5.32,
+    "2w": 11.32,
+    "1mo": 16.3,
+    "1y": 26.81,
+    "ytd": 29.9
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "today: 3.78% \u2014 elevated for this stock (about 1.92x its normal move for that span, expected ~1.97%)",
+     "the past 2 weeks: 11.32% \u2014 elevated for this stock (about 1.82x its normal move for that span, expected ~6.22%)",
+     "the past month: 16.3% \u2014 elevated for this stock (about 1.81x its normal move for that span, expected ~9.01%)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "RRC",
+   "headlines": [
+    {
+     "headline": "Why Range Resources Stock Surged Today",
+     "summary": "The global energy industry is consolidating.",
+     "datetime": 1793054870,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=46797c83e37fa8fb3d616d8da81512df70a2c9952ea96b9f53b5025c5cb252c9"
+    },
+    {
+     "headline": "Sector Update: Energy Stocks Edge Higher Late Afternoon",
+     "summary": "Energy stocks edged higher late Monday afternoon, with the NYSE Energy Sector Index fractionally hig",
+     "datetime": 1793044849,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=1f5d341b12ad1dfb2bec885e1275e065e810cec5f56b7d2393e0ed59e4830938"
+    },
+    {
+     "headline": "Range Resources Soars 11% on EQT\u2019s All-Stock Takeover Creating \u201cA Must-Own Energy Company\u201d",
+     "summary": "[IMAGE CREDIT: Andrea Piacquadio from Pexels via Canva] Key TakeawaysRange Resources stock jumped 11% after EQT agreed to buy it for 0. 987 EQT shares apiece, a 21% premium to Range\u2019s Friday close.",
+     "datetime": 1793040789,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=121d1a3193b62279a1c3b103580882d8266629eec660f20e8dbc5bee2d3d7869"
+    },
+    {
+     "headline": "Sector Update: Energy Stocks Mixed Monday Afternoon",
+     "summary": "Energy stocks were mixed Monday afternoon, with the NYSE Energy Sector Index decreasing 0.2% and the",
+     "datetime": 1793038007,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=05738a0e14a869ccd9ebd79a169159af9800c55052ad9a967d081f0929a7cfa8"
+    },
+    {
+     "headline": "RRC Stock Surges To Over 11-Year High, RBRK Shares Hit Record Levels \u2013 What\u2019s Fueling The Rallies Today?",
+     "summary": "Range Resources surged to its highest level since June 2015 following its acquisition by EQT, while Rubrik continued its rally into a sixth session.",
+     "datetime": 1793037652,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=b24273120f60d867ce2e48bddbeea5426c2d6f6eb337704b0af1ec52a6b1e3d5"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "RRC",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 24,
+   "atm_iv_pct": 45.2,
+   "iv_chain_percentile": 6,
+   "skew_points": -11.9,
+   "put_call_ratio": 0.04,
+   "total_put_oi": 261,
+   "total_call_oi": 7077
+  },
+  "get_options_positioning": {
+   "ticker": "RRC",
+   "spot": 53.56,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 24,
+   "max_pain_strike": 40.0,
+   "resistance_walls": [
+    {
+     "strike": 47.0,
+     "open_interest": 3256
+    },
+    {
+     "strike": 45.0,
+     "open_interest": 1418
+    },
+    {
+     "strike": 40.0,
+     "open_interest": 1146
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 41.0,
+     "open_interest": 54
+    },
+    {
+     "strike": 38.0,
+     "open_interest": 49
+    },
+    {
+     "strike": 37.0,
+     "open_interest": 35
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 24,
+     "atm_iv_pct": 45.2
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 50.0,
+     "volume": 269,
+     "open_interest": 6,
+     "vol_oi_ratio": 44.8,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 50.0,
+     "volume": 171,
+     "open_interest": 55,
+     "vol_oi_ratio": 3.1,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 40.0,
+     "volume": 1487,
+     "open_interest": 1146,
+     "vol_oi_ratio": 1.3,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 46.0,
+     "volume": 146,
+     "open_interest": 225,
+     "vol_oi_ratio": 0.6,
+     "moneyness": "ITM"
+    }
+   ],
+   "otm_call_oi": 0,
+   "otm_put_oi": 261,
+   "positioning_lean_score": -1.0,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "RRC",
+   "as_of": "2026-10-27",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-20",
+     "days_ago": 7,
+     "firm": "Susquehanna",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 41.0,
+     "price_target_to": 44.0,
+     "is_rating_change": false,
+     "description": "Susquehanna maintained its Neutral rating on RRC and raised its price target from $41.0 to $44.0"
+    },
+    {
+     "date": "2026-10-15",
+     "days_ago": 12,
+     "firm": "Morgan Stanley",
+     "action": "maintained",
+     "from_grade": "Equal-Weight",
+     "to_grade": "Equal-Weight",
+     "price_target_from": 43.0,
+     "price_target_to": 45.0,
+     "is_rating_change": false,
+     "description": "Morgan Stanley maintained its Equal-Weight rating on RRC and raised its price target from $43.0 to $45.0"
+    },
+    {
+     "date": "2026-10-05",
+     "days_ago": 22,
+     "firm": "Truist Securities",
+     "action": "maintained",
+     "from_grade": "Hold",
+     "to_grade": "Hold",
+     "price_target_from": 45.0,
+     "price_target_to": 43.0,
+     "is_rating_change": false,
+     "description": "Truist Securities maintained its Hold rating on RRC and cut its price target from $45.0 to $43.0"
+    },
+    {
+     "date": "2026-10-02",
+     "days_ago": 25,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 49.0,
+     "price_target_to": 44.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Neutral rating on RRC and cut its price target from $49.0 to $44.0"
+    }
+   ],
+   "consensus": {
+    "rating": "hold",
+    "score": 2.71,
+    "verdict": "neutral",
+    "analysts": 24,
+    "counts": {
+     "strongBuy": 1,
+     "buy": 5,
+     "hold": 18,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.78 to 2.71; bearish ratings 1 to 0)"
+   },
+   "price_target": {
+    "mean": 47.04,
+    "median": 45.0,
+    "high": 67.0,
+    "low": 37.0,
+    "current_price": 53.56,
+    "dispersion_pct": 63.8,
+    "upside_vs_mean_pct": -12.2,
+    "upside_vs_median_pct": -16.0
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "RRC",
+   "sector": "Energy",
+   "sector_etf": "XLE",
+   "comparison": {
+    "1d": {
+     "stock_change_pct": 3.78,
+     "sector_etf_change_pct": 2.6,
+     "relative_to_sector_pct": 1.18
+    },
+    "2w": {
+     "stock_change_pct": 11.32,
+     "sector_etf_change_pct": 6.53,
+     "relative_to_sector_pct": 4.79
+    },
+    "ytd": {
+     "stock_change_pct": 29.9,
+     "sector_etf_change_pct": 54.88,
+     "relative_to_sector_pct": -24.98
+    },
+    "1w": {
+     "stock_change_pct": 5.32,
+     "sector_etf_change_pct": 1.6,
+     "relative_to_sector_pct": 3.72
+    },
+    "1y": {
+     "stock_change_pct": 26.81,
+     "sector_etf_change_pct": 62.43,
+     "relative_to_sector_pct": -35.62
+    },
+    "1mo": {
+     "stock_change_pct": 16.3,
+     "sector_etf_change_pct": 10.75,
+     "relative_to_sector_pct": 5.55
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-26",
+    "realtime_end": "2026-10-26",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9604,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-23",
+      "value": "19.45"
+     },
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-22",
+      "value": "19.03"
+     },
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-21",
+      "value": "16.68"
+     },
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-20",
+      "value": "17.31"
+     },
+     {
+      "realtime_start": "2026-10-26",
+      "realtime_end": "2026-10-26",
+      "date": "2026-10-19",
+      "value": "18.44"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "RRC",
+   "as_of": "2026-10-27",
+   "events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-27",
+     "description": "RRC Q3 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 0,
+     "eps_estimate": 0.7811,
+     "hour": "amc"
+    },
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 1,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}
