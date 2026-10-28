@@ -1,0 +1,350 @@
+{
+ "schema": 1,
+ "ticker": "CLS",
+ "trading_day": "2026-10-27",
+ "captured_at": "2026-10-28T00:41:24+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 12.12,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: -5.14% \u2014 typical relative to this stock's own typical volatility (expected ~4.16%, 1.24x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "this week: -17.88% \u2014 elevated relative to this stock's own typical volatility (expected ~9.30%, 1.92x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past 2 weeks: -29.02% \u2014 elevated relative to this stock's own typical volatility (expected ~13.15%, 2.21x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past month: -32.51% \u2014 elevated relative to this stock's own typical volatility (expected ~19.05%, 1.71x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "CLS",
+   "price": 276.54,
+   "prev_close": 246.65,
+   "change_pct": 12.12,
+   "realized_vol_annualized_pct": 66.0,
+   "changes_pct": {
+    "1d": -5.14,
+    "1w": -17.88,
+    "2w": -29.02,
+    "1mo": -32.51,
+    "1y": -12.76,
+    "ytd": -18.44
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: -5.14% \u2014 typical relative to this stock's own typical volatility (expected ~4.16%, 1.24x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "this week: -17.88% \u2014 elevated relative to this stock's own typical volatility (expected ~9.30%, 1.92x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past 2 weeks: -29.02% \u2014 elevated relative to this stock's own typical volatility (expected ~13.15%, 2.21x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past month: -32.51% \u2014 elevated relative to this stock's own typical volatility (expected ~19.05%, 1.71x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "CLS",
+   "headlines": [
+    {
+     "headline": "Why Celestica Stock Jumped Today",
+     "summary": "Demand for AI infrastructure is off the charts.",
+     "datetime": 1793144581,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=70df69665c9c3e8a1a5335996563a81052b0fd8047f7aafc1677baa3cab0b290"
+    },
+    {
+     "headline": "Celestica (CLS) Q3 2026 Earnings Call Transcript",
+     "summary": "Revenue surged 83% as AI infrastructure demand accelerated across networking and compute.",
+     "datetime": 1793138310,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=2fb8b8ce67acb751d76fcbb5b9e4a5bc8632666d92db82139b188333c26f29f5"
+    },
+    {
+     "headline": "What Celestica (CLS) Said on Its Q3 Earnings Call",
+     "summary": "Celestica (NYSE:CLS) reported third-quarter 2026 revenue of $5.83 billion, up 83% from a year earlier and above the high end of its guidance range, as demand for AI infrastructure lifted results...",
+     "datetime": 1793127862,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=8e2f58537714b97f7711e36ebbcfd9b5f021371220b7c6370af7e1deb1ca3b59"
+    },
+    {
+     "headline": "Celestica Inc. (CLS:CA) Analyst/Investor Day Transcript",
+     "summary": "Celestica Inc. (CLS:CA) Analyst/Investor Day October 27, 2026 8:00 AM EDTCompany ParticipantsMatthew Pallotta - Head of Investor RelationsRobert Mionis -...",
+     "datetime": 1793118593,
+     "source": "SeekingAlpha",
+     "url": "https://finnhub.io/api/news?id=15a20492b74a001cb78b0100a2bd21c9776a56bbe1b6b92709d54a13664a0716"
+    },
+    {
+     "headline": "Celestica Q3 Earnings Beat Estimates on Strong CCS Demand",
+     "summary": "CLS' Q3 2026 earnings surge 108.9% as AI infrastructure demand fuels 82.5% revenue growth, prompting higher 2026 guidance and ambitious 2027 targets.",
+     "datetime": 1793114400,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=ec2991a08d2c6b0dfbfa7ffd62edcc57b60794c4c39fb922abd44c7ef5475eb0"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "CLS",
+   "expiry": "2026-11-13",
+   "days_to_expiry": 16,
+   "atm_iv_pct": 80.2,
+   "iv_chain_percentile": 20,
+   "skew_points": -1.8,
+   "put_call_ratio": 2.12,
+   "total_put_oi": 1437,
+   "total_call_oi": 677
+  },
+  "get_options_positioning": {
+   "ticker": "CLS",
+   "spot": 276.54,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-13",
+   "primary_days_to_expiry": 16,
+   "max_pain_strike": 315.0,
+   "resistance_walls": [
+    {
+     "strike": 280.0,
+     "open_interest": 185
+    },
+    {
+     "strike": 350.0,
+     "open_interest": 63
+    },
+    {
+     "strike": 380.0,
+     "open_interest": 60
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 250.0,
+     "open_interest": 248
+    },
+    {
+     "strike": 240.0,
+     "open_interest": 148
+    },
+    {
+     "strike": 300.0,
+     "open_interest": 102
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 16,
+     "atm_iv_pct": 80.2
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 23,
+     "atm_iv_pct": 76.7
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 30,
+     "atm_iv_pct": 71.6
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 295.0,
+     "volume": 603,
+     "open_interest": 3,
+     "vol_oi_ratio": 201.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 300.0,
+     "volume": 184,
+     "open_interest": 16,
+     "vol_oi_ratio": 11.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 280.0,
+     "volume": 1218,
+     "open_interest": 185,
+     "vol_oi_ratio": 6.6,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 649,
+   "otm_put_oi": 781,
+   "positioning_lean_score": -0.09,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "CLS",
+   "as_of": "2026-10-28",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-09-30",
+     "days_ago": 28,
+     "firm": "Bernstein",
+     "action": "initiated coverage",
+     "from_grade": null,
+     "to_grade": "Outperform",
+     "price_target_from": null,
+     "price_target_to": 520.0,
+     "is_rating_change": false,
+     "description": "Bernstein initiated coverage of CLS at Outperform with a $520.0 price target"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.77,
+    "verdict": "leaning bullish",
+    "analysts": 22,
+    "counts": {
+     "strongBuy": 5,
+     "buy": 17,
+     "hold": 0,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 1.85 to 1.77; bearish ratings 0 to 0)"
+   },
+   "price_target": {
+    "mean": 468.36,
+    "median": 465.0,
+    "high": 550.0,
+    "low": 375.0,
+    "current_price": 276.54,
+    "dispersion_pct": 37.4,
+    "upside_vs_mean_pct": 69.4,
+    "upside_vs_median_pct": 68.1
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "CLS",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1d": {
+     "stock_change_pct": -5.14,
+     "sector_etf_change_pct": 1.69,
+     "relative_to_sector_pct": -6.83
+    },
+    "1y": {
+     "stock_change_pct": -12.76,
+     "sector_etf_change_pct": 29.56,
+     "relative_to_sector_pct": -42.32
+    },
+    "1w": {
+     "stock_change_pct": -17.88,
+     "sector_etf_change_pct": 0.19,
+     "relative_to_sector_pct": -18.07
+    },
+    "1mo": {
+     "stock_change_pct": -32.51,
+     "sector_etf_change_pct": -5.07,
+     "relative_to_sector_pct": -27.44
+    },
+    "ytd": {
+     "stock_change_pct": -18.44,
+     "sector_etf_change_pct": 29.59,
+     "relative_to_sector_pct": -48.03
+    },
+    "2w": {
+     "stock_change_pct": -29.02,
+     "sector_etf_change_pct": -5.11,
+     "relative_to_sector_pct": -23.91
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-27",
+    "realtime_end": "2026-10-27",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9605,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-27",
+      "realtime_end": "2026-10-27",
+      "date": "2026-10-26",
+      "value": "18.39"
+     },
+     {
+      "realtime_start": "2026-10-27",
+      "realtime_end": "2026-10-27",
+      "date": "2026-10-23",
+      "value": "19.45"
+     },
+     {
+      "realtime_start": "2026-10-27",
+      "realtime_end": "2026-10-27",
+      "date": "2026-10-22",
+      "value": "19.03"
+     },
+     {
+      "realtime_start": "2026-10-27",
+      "realtime_end": "2026-10-27",
+      "date": "2026-10-21",
+      "value": "16.68"
+     },
+     {
+      "realtime_start": "2026-10-27",
+      "realtime_end": "2026-10-27",
+      "date": "2026-10-20",
+      "value": "17.31"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "CLS",
+   "as_of": "2026-10-28",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 0,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-26",
+     "description": "CLS Q4 2026 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 90,
+     "eps_estimate": 3.5522
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-26",
+     "description": "CLS reported Q3 2026 earnings after the close \u2014 EPS 3.3 vs 3.0213 expected (beat, +9.2%)",
+     "source": "finnhub",
+     "days_ago": 2,
+     "eps_actual": 3.3,
+     "eps_estimate": 3.0213,
+     "surprise": "beat",
+     "surprise_pct": 9.2,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

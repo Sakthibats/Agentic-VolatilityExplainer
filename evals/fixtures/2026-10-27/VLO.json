@@ -1,0 +1,368 @@
+{
+ "schema": 1,
+ "ticker": "VLO",
+ "trading_day": "2026-10-27",
+ "captured_at": "2026-10-28T00:41:51+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -9.24,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "the past year: 151.72% \u2014 unusual for this stock (about 3.86x its normal move for that span, expected ~39.30%)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "VLO",
+   "price": 387.34,
+   "prev_close": 426.76,
+   "change_pct": -9.24,
+   "realized_vol_annualized_pct": 39.3,
+   "changes_pct": {
+    "1d": 1.78,
+    "1w": -1.51,
+    "2w": -2.12,
+    "1mo": 10.22,
+    "1y": 151.72,
+    "ytd": 161.98
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "the past year: 151.72% \u2014 unusual for this stock (about 3.86x its normal move for that span, expected ~39.30%)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "VLO",
+   "headlines": [
+    {
+     "headline": "Valero Energy Corporation Declares Regular Cash Dividend on Common Stock",
+     "summary": "SAN ANTONIO, October 27, 2026--The Board of Directors of Valero Energy Corporation (NYSE: VLO, \"Valero\") has declared a regular quarterly cash dividend of $1.20 per share on its common stock. The...",
+     "datetime": 1793140260,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=3d2a41275885dd70a4e1a51f266b21f3612346f9f82c33d1dd0688785941bb79"
+    },
+    {
+     "headline": "Refining Stocks Crack. Will Gasoline Prices Drop Next?",
+     "summary": "Marathon Petroleum and Valero Energy stocks fell sharply on Tuesday.",
+     "datetime": 1793132280,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=86ad87bbb994776786f7fcca6158f825863c208ea2c7f0bd1fd17c68deebb119"
+    },
+    {
+     "headline": "S&P 500 Top Movers: Oct. 27, 2026 US Session",
+     "summary": "S&P 500 top movers on Oct. 27, 2026: Pentair led gainers at 12.8%, while Xylem was the steepest decliner at -13.14%.",
+     "datetime": 1793131575,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=7348f7bba4833edc9ce7aefa4609a6fae84fff0fa9208c46e5464a0fc8ffa1e1"
+    },
+    {
+     "headline": "Seagate and One Momentum Stock to Buy Now for Big Upside",
+     "summary": "STX and VLO emerge as top momentum picks, with A Momentum Scores, strong earnings surprises and robust growth projections.",
+     "datetime": 1793124300,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=c7d316499e81c77166060a4b3d9bca56eb5cd5552e0d63e7eb4d526f5b28550f"
+    },
+    {
+     "headline": "S&P 500 Top Movers Today: Pentair Gains 12.93%, Xylem Drops 11.64%",
+     "summary": "Today's S&P 500 movers include Pentair up 12.93%, Royal Caribbean up 8.14%, Xylem down 11.64%, and Boeing down 9.38%, with industrial, energy, and technology names active.",
+     "datetime": 1793122580,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=e807d83525f58534e2b79c141af67227eb8b86588746abe8ce7ed36289b0577d"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "VLO",
+   "expiry": "2026-11-13",
+   "days_to_expiry": 16,
+   "atm_iv_pct": 55.9,
+   "iv_chain_percentile": 4,
+   "skew_points": -2.0,
+   "put_call_ratio": 1.27,
+   "total_put_oi": 582,
+   "total_call_oi": 457
+  },
+  "get_options_positioning": {
+   "ticker": "VLO",
+   "spot": 387.34,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-13",
+   "primary_days_to_expiry": 16,
+   "max_pain_strike": 425.0,
+   "resistance_walls": [
+    {
+     "strike": 440.0,
+     "open_interest": 33
+    },
+    {
+     "strike": 490.0,
+     "open_interest": 30
+    },
+    {
+     "strike": 435.0,
+     "open_interest": 28
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 370.0,
+     "open_interest": 211
+    },
+    {
+     "strike": 400.0,
+     "open_interest": 50
+    },
+    {
+     "strike": 375.0,
+     "open_interest": 28
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 16,
+     "atm_iv_pct": 55.9
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 23,
+     "atm_iv_pct": 57.7
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 30,
+     "atm_iv_pct": 53.1
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 390.0,
+     "volume": 159,
+     "open_interest": 21,
+     "vol_oi_ratio": 7.6,
+     "moneyness": "ITM"
+    }
+   ],
+   "otm_call_oi": 410,
+   "otm_put_oi": 353,
+   "positioning_lean_score": 0.07,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "VLO",
+   "as_of": "2026-10-28",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-23",
+     "days_ago": 5,
+     "firm": "Freedom Broker",
+     "action": "downgrade",
+     "from_grade": "Hold",
+     "to_grade": "Sell",
+     "price_target_from": null,
+     "price_target_to": 276.0,
+     "is_rating_change": true,
+     "description": "Freedom Broker downgraded VLO from Hold to Sell with a $276.0 price target"
+    },
+    {
+     "date": "2026-10-23",
+     "days_ago": 5,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 485.0,
+     "price_target_to": 490.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Neutral rating on VLO and raised its price target from $485.0 to $490.0"
+    },
+    {
+     "date": "2026-10-23",
+     "days_ago": 5,
+     "firm": "Wells Fargo",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 485.0,
+     "price_target_to": 489.0,
+     "is_rating_change": false,
+     "description": "Wells Fargo maintained its Overweight rating on VLO and raised its price target from $485.0 to $489.0"
+    },
+    {
+     "date": "2026-10-23",
+     "days_ago": 5,
+     "firm": "Barclays",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 441.0,
+     "price_target_to": 443.0,
+     "is_rating_change": false,
+     "description": "Barclays maintained its Overweight rating on VLO and raised its price target from $441.0 to $443.0"
+    },
+    {
+     "date": "2026-10-22",
+     "days_ago": 6,
+     "firm": "TD Cowen",
+     "action": "maintained",
+     "from_grade": "Hold",
+     "to_grade": "Hold",
+     "price_target_from": 375.0,
+     "price_target_to": 400.0,
+     "is_rating_change": false,
+     "description": "TD Cowen maintained its Hold rating on VLO and raised its price target from $375.0 to $400.0"
+    }
+   ],
+   "consensus": {
+    "rating": "hold",
+    "score": 2.55,
+    "verdict": "neutral",
+    "analysts": 20,
+    "counts": {
+     "strongBuy": 3,
+     "buy": 6,
+     "hold": 8,
+     "sell": 3,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.55 to 2.55)"
+   },
+   "price_target": {
+    "mean": 426.42,
+    "median": 440.0,
+    "high": 530.0,
+    "low": 238.0,
+    "current_price": 387.34,
+    "dispersion_pct": 68.5,
+    "upside_vs_mean_pct": 10.1,
+    "upside_vs_median_pct": 13.6
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "VLO",
+   "sector": "Energy",
+   "sector_etf": "XLE",
+   "comparison": {
+    "1d": {
+     "stock_change_pct": 1.78,
+     "sector_etf_change_pct": 0.45,
+     "relative_to_sector_pct": 1.33
+    },
+    "1y": {
+     "stock_change_pct": 151.72,
+     "sector_etf_change_pct": 61.01,
+     "relative_to_sector_pct": 90.71
+    },
+    "1w": {
+     "stock_change_pct": -1.51,
+     "sector_etf_change_pct": 2.71,
+     "relative_to_sector_pct": -4.22
+    },
+    "1mo": {
+     "stock_change_pct": 10.22,
+     "sector_etf_change_pct": 12.25,
+     "relative_to_sector_pct": -2.03
+    },
+    "ytd": {
+     "stock_change_pct": 161.98,
+     "sector_etf_change_pct": 55.58,
+     "relative_to_sector_pct": 106.4
+    },
+    "2w": {
+     "stock_change_pct": -2.12,
+     "sector_etf_change_pct": 5.5,
+     "relative_to_sector_pct": -7.62
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-27",
+    "realtime_end": "2026-10-27",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9605,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-27",
+      "realtime_end": "2026-10-27",
+      "date": "2026-10-26",
+      "value": "18.39"
+     },
+     {
+      "realtime_start": "2026-10-27",
+      "realtime_end": "2026-10-27",
+      "date": "2026-10-23",
+      "value": "19.45"
+     },
+     {
+      "realtime_start": "2026-10-27",
+      "realtime_end": "2026-10-27",
+      "date": "2026-10-22",
+      "value": "19.03"
+     },
+     {
+      "realtime_start": "2026-10-27",
+      "realtime_end": "2026-10-27",
+      "date": "2026-10-21",
+      "value": "16.68"
+     },
+     {
+      "realtime_start": "2026-10-27",
+      "realtime_end": "2026-10-27",
+      "date": "2026-10-20",
+      "value": "17.31"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "VLO",
+   "as_of": "2026-10-28",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 0,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-22",
+     "description": "VLO reported Q3 2026 earnings before the open \u2014 EPS 23.9 vs 21.2818 expected (beat, +12.3%)",
+     "source": "finnhub",
+     "days_ago": 6,
+     "eps_actual": 23.9,
+     "eps_estimate": 21.2818,
+     "surprise": "beat",
+     "surprise_pct": 12.3,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

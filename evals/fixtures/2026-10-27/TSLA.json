@@ -1,0 +1,411 @@
+{
+ "schema": 1,
+ "ticker": "TSLA",
+ "trading_day": "2026-10-27",
+ "captured_at": "2026-10-28T00:41:11+00:00",
+ "selected_as": "move",
+ "change_pct": 4.04,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "today: 5.21% \u2014 elevated for this stock (about 2.19x its normal move for that span, expected ~2.38%)",
+   "this week: 6.4% \u2014 typical relative to this stock's own typical volatility (expected ~5.32%, 1.2x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "TSLA",
+   "price": 407.46,
+   "prev_close": 391.62,
+   "change_pct": 4.04,
+   "realized_vol_annualized_pct": 37.8,
+   "changes_pct": {
+    "1d": 5.21,
+    "1w": 6.4,
+    "2w": 3.59,
+    "1mo": 5.24,
+    "1y": -12.78,
+    "ytd": -10.6
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "today: 5.21% \u2014 elevated for this stock (about 2.19x its normal move for that span, expected ~2.38%)",
+     "this week: 6.4% \u2014 typical relative to this stock's own typical volatility (expected ~5.32%, 1.2x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "TSLA",
+   "headlines": [
+    {
+     "headline": "TSLA Stock Rises As Cybercabs Overtake Model Ys In Authorized Texas Robotaxi Fleet",
+     "summary": "According to the data from the Texas DMV, Tesla has 1,051 vehicles authorized for use as robotaxis, of which 544 are Cybercabs.",
+     "datetime": 1793140797,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=7c825f029e8330132ccfe3e197e72ba477cb571cf9fca63b7e2d744da2f3c72c"
+    },
+    {
+     "headline": "Dow Jones Futures: Growth Stocks Rally, Tesla Clears Buy Point; Fed, Microsoft, Google On Tap",
+     "summary": "The S&P 500 reclaimed a key level as Tesla and growth stocks rallied. The Federal Reserve, Microsoft, Google on deck.",
+     "datetime": 1793137442,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=363fe5f026f80084da7451505ae7875524746e78d1f0ea26c24554aeddd0a3fe"
+    },
+    {
+     "headline": "Scott Galloway Warns Tesla Is the \u2018Patient\u2019 and SpaceX Its \u2018Organ Donor\u2019 in Elon Musk\u2019s $3.5 Trillion Merger Plan: 'Real Merger With a Fake Premise'",
+     "summary": "Scott Galloway warned that Elon Musk\u2019s proposed merger between Tesla Inc. and Space Exploration Technologies Corp. could rescue the electric vehicle maker at SpaceX shareholders\u2019 expense, arguing...",
+     "datetime": 1793136618,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=de2291ef2da80073ad9dcfdd68aa6f628147156f6f38d35988723bd4605b65be"
+    },
+    {
+     "headline": "Has Space Exploration Technologies (SPCX) Become Fully Valued Following Its $3.42b Shelf Filing?",
+     "summary": "Space Exploration Technologies (SPCX) has filed a US$3.42b shelf registration for Class A common stock, giving the company flexibility to issue 23.6 million shares as funding needs arise. The shelf...",
+     "datetime": 1793135265,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=a45d524d5e9f857ba41cf476b2cd17d090ccbf4b857e8834f6bfab5db56acc47"
+    },
+    {
+     "headline": "Tesla Stock Rises In A Buy Range; Musk Touts Cybercab Fleet Expansion",
+     "summary": "Tesla stock rose more than 4% on Monday. CEO Elon Musk touted the progress Tesla made expanding its Cybercab fleet.",
+     "datetime": 1793133784,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=4f9d3299f0b123580d53b9c810dc964ea3240559631413db5cb41a71d0f3afe9"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "TSLA",
+   "expiry": "2026-11-13",
+   "days_to_expiry": 16,
+   "atm_iv_pct": 39.9,
+   "iv_chain_percentile": 1,
+   "skew_points": 0.6,
+   "put_call_ratio": 0.62,
+   "total_put_oi": 20094,
+   "total_call_oi": 32603
+  },
+  "get_options_positioning": {
+   "ticker": "TSLA",
+   "spot": 407.46,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-13",
+   "primary_days_to_expiry": 16,
+   "max_pain_strike": 375.0,
+   "resistance_walls": [
+    {
+     "strike": 375.0,
+     "open_interest": 1914
+    },
+    {
+     "strike": 400.0,
+     "open_interest": 1745
+    },
+    {
+     "strike": 380.0,
+     "open_interest": 1623
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 325.0,
+     "open_interest": 1462
+    },
+    {
+     "strike": 280.0,
+     "open_interest": 1280
+    },
+    {
+     "strike": 375.0,
+     "open_interest": 1274
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 16,
+     "atm_iv_pct": 39.9
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 23,
+     "atm_iv_pct": 39.7
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 30,
+     "atm_iv_pct": 38.3
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 345.0,
+     "volume": 193,
+     "open_interest": 69,
+     "vol_oi_ratio": 2.8,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 405.0,
+     "volume": 355,
+     "open_interest": 125,
+     "vol_oi_ratio": 2.8,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 570.0,
+     "volume": 116,
+     "open_interest": 54,
+     "vol_oi_ratio": 2.1,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 525.0,
+     "volume": 153,
+     "open_interest": 72,
+     "vol_oi_ratio": 2.1,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 400.0,
+     "volume": 457,
+     "open_interest": 260,
+     "vol_oi_ratio": 1.8,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 19974,
+   "otm_put_oi": 19835,
+   "positioning_lean_score": 0.0,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "TSLA",
+   "as_of": "2026-10-28",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-26",
+     "days_ago": 2,
+     "firm": "Barclays",
+     "action": "upgrade",
+     "from_grade": "Equal-Weight",
+     "to_grade": "Overweight",
+     "price_target_from": 370.0,
+     "price_target_to": 450.0,
+     "is_rating_change": true,
+     "description": "Barclays upgraded TSLA from Equal-Weight to Overweight and raised its price target from $370.0 to $450.0"
+    },
+    {
+     "date": "2026-10-22",
+     "days_ago": 6,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 391.0,
+     "price_target_to": 425.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Neutral rating on TSLA and raised its price target from $391.0 to $425.0"
+    },
+    {
+     "date": "2026-10-22",
+     "days_ago": 6,
+     "firm": "CLSA",
+     "action": "upgrade",
+     "from_grade": "Underperform",
+     "to_grade": "Hold",
+     "price_target_from": 310.0,
+     "price_target_to": 400.0,
+     "is_rating_change": true,
+     "description": "CLSA upgraded TSLA from Underperform to Hold and raised its price target from $310.0 to $400.0"
+    },
+    {
+     "date": "2026-10-22",
+     "days_ago": 6,
+     "firm": "Canaccord Genuity",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 410.0,
+     "price_target_to": 442.0,
+     "is_rating_change": false,
+     "description": "Canaccord Genuity maintained its Buy rating on TSLA and raised its price target from $410.0 to $442.0"
+    },
+    {
+     "date": "2026-10-22",
+     "days_ago": 6,
+     "firm": "Morgan Stanley",
+     "action": "maintained",
+     "from_grade": "Equal-Weight",
+     "to_grade": "Equal-Weight",
+     "price_target_from": 400.0,
+     "price_target_to": 410.0,
+     "is_rating_change": false,
+     "description": "Morgan Stanley maintained its Equal-Weight rating on TSLA and raised its price target from $400.0 to $410.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.49,
+    "verdict": "leaning bullish",
+    "analysts": 43,
+    "counts": {
+     "strongBuy": 5,
+     "buy": 14,
+     "hold": 22,
+     "sell": 2,
+     "strongSell": 0
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.56 to 2.49; bearish ratings 6 to 2)"
+   },
+   "price_target": {
+    "mean": 410.68,
+    "median": 430.0,
+    "high": 600.0,
+    "low": 128.11,
+    "current_price": 407.46,
+    "dispersion_pct": 114.9,
+    "upside_vs_mean_pct": 0.8,
+    "upside_vs_median_pct": 5.5
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "TSLA",
+   "sector": "Consumer Cyclical",
+   "sector_etf": "XLY",
+   "comparison": {
+    "1d": {
+     "stock_change_pct": 5.21,
+     "sector_etf_change_pct": 1.03,
+     "relative_to_sector_pct": 4.18
+    },
+    "1y": {
+     "stock_change_pct": -12.78,
+     "sector_etf_change_pct": -3.35,
+     "relative_to_sector_pct": -9.43
+    },
+    "1w": {
+     "stock_change_pct": 6.4,
+     "sector_etf_change_pct": -0.17,
+     "relative_to_sector_pct": 6.57
+    },
+    "1mo": {
+     "stock_change_pct": 5.24,
+     "sector_etf_change_pct": 3.35,
+     "relative_to_sector_pct": 1.89
+    },
+    "ytd": {
+     "stock_change_pct": -10.6,
+     "sector_etf_change_pct": -2.86,
+     "relative_to_sector_pct": -7.74
+    },
+    "2w": {
+     "stock_change_pct": 3.59,
+     "sector_etf_change_pct": 1.77,
+     "relative_to_sector_pct": 1.82
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-27",
+    "realtime_end": "2026-10-27",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9605,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-27",
+      "realtime_end": "2026-10-27",
+      "date": "2026-10-26",
+      "value": "18.39"
+     },
+     {
+      "realtime_start": "2026-10-27",
+      "realtime_end": "2026-10-27",
+      "date": "2026-10-23",
+      "value": "19.45"
+     },
+     {
+      "realtime_start": "2026-10-27",
+      "realtime_end": "2026-10-27",
+      "date": "2026-10-22",
+      "value": "19.03"
+     },
+     {
+      "realtime_start": "2026-10-27",
+      "realtime_end": "2026-10-27",
+      "date": "2026-10-21",
+      "value": "16.68"
+     },
+     {
+      "realtime_start": "2026-10-27",
+      "realtime_end": "2026-10-27",
+      "date": "2026-10-20",
+      "value": "17.31"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "TSLA",
+   "as_of": "2026-10-28",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 0,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-26",
+     "description": "TSLA Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 90,
+     "eps_estimate": 0.4596,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-21",
+     "description": "TSLA reported Q3 2026 earnings after the close \u2014 EPS 0.48 vs 0.4358 expected (beat, +10.1%)",
+     "source": "finnhub",
+     "days_ago": 7,
+     "eps_actual": 0.48,
+     "eps_estimate": 0.4358,
+     "surprise": "beat",
+     "surprise_pct": 10.1,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

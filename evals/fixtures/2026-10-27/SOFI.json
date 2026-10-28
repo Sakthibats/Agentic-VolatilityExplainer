@@ -1,0 +1,378 @@
+{
+ "schema": 1,
+ "ticker": "SOFI",
+ "trading_day": "2026-10-27",
+ "captured_at": "2026-10-28T00:41:17+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 13.42,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "the past month: -12.79% \u2014 typical relative to this stock's own typical volatility (expected ~11.78%, 1.09x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past year: -48.5% \u2014 typical relative to this stock's own typical volatility (expected ~40.80%, 1.19x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "SOFI",
+   "price": 16.4,
+   "prev_close": 14.46,
+   "change_pct": 13.42,
+   "realized_vol_annualized_pct": 40.8,
+   "changes_pct": {
+    "1d": -1.06,
+    "1w": 1.12,
+    "2w": -5.06,
+    "1mo": -12.79,
+    "1y": -48.5,
+    "ytd": -47.34
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "the past month: -12.79% \u2014 typical relative to this stock's own typical volatility (expected ~11.78%, 1.09x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past year: -48.5% \u2014 typical relative to this stock's own typical volatility (expected ~40.80%, 1.19x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "SOFI",
+   "headlines": [
+    {
+     "headline": "SoFi CEO sees products quadrupling by 2030: 'It's achievable'",
+     "summary": "SoFi (SOFI) CEO Anthony Noto talks with Yahoo Finance Executive Editor Brian Sozzi about the company's 2026 and 2027 revenue and earnings guidance, as well as targets for 2030.",
+     "datetime": 1793135812,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=008f5a3e0eaac3460d7f7e1f2298b72c98e80db9b29c197aa902d4697f6140a1"
+    },
+    {
+     "headline": "Stock Market Today, Oct. 27: SoFi Soars 13% After Beating Estimates and Raising Guidance",
+     "summary": "On Oct. 27, 2026, the fintech lender posted record revenue and membership growth, signaling durable margins and accelerating loan demand.",
+     "datetime": 1793135301,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=cee1ad797e91f4c7838982a8c7b7df9741298984bd2566141176d326c6229ecc"
+    },
+    {
+     "headline": "SoFi (SOFI) stock trades up, here is why",
+     "summary": "Shares of digital financial services company SoFi Technologies (NASDAQ:SOFI) jumped 11.3% in the morning session after the company reported record third-quarter 2026 financial results and raised its...",
+     "datetime": 1793134007,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=d6df2b6404e949a3fab088cd592a1f68221f6da50725a954759571bec082bc00"
+    },
+    {
+     "headline": "SoFi surge catches short sellers flat-footed after record 1.2 million member quarter",
+     "summary": "The digital financial services company beat Wall Street estimates even as short interest has swelled to hundreds of millions of shares.",
+     "datetime": 1793132210,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=11fe4286c648836e53704436235cf2d1c6f9f5c0b8060956d35302482daca727"
+    },
+    {
+     "headline": "SoFi Earnings Top Views. Fintech Hikes 2026 Revenue Guidance.",
+     "summary": "SoFi stock rose amid Q3 earnings and revenue that beat Wall Street targets as membership rose 1.2 million, also topping views.",
+     "datetime": 1793129905,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=748153d6703c8ba476a66225100882d2d1935f210ee94e4dccba9514abbe62b3"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "SOFI",
+   "expiry": "2026-11-13",
+   "days_to_expiry": 16,
+   "atm_iv_pct": 49.4,
+   "iv_chain_percentile": 1,
+   "skew_points": 0.0,
+   "put_call_ratio": 0.63,
+   "total_put_oi": 21878,
+   "total_call_oi": 34678
+  },
+  "get_options_positioning": {
+   "ticker": "SOFI",
+   "spot": 16.4,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-13",
+   "primary_days_to_expiry": 16,
+   "max_pain_strike": 15.0,
+   "resistance_walls": [
+    {
+     "strike": 17.0,
+     "open_interest": 9269
+    },
+    {
+     "strike": 17.5,
+     "open_interest": 3043
+    },
+    {
+     "strike": 16.0,
+     "open_interest": 2956
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 14.0,
+     "open_interest": 3549
+    },
+    {
+     "strike": 15.0,
+     "open_interest": 3006
+    },
+    {
+     "strike": 14.5,
+     "open_interest": 2802
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 16,
+     "atm_iv_pct": 49.4
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 23,
+     "atm_iv_pct": 48.4
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 30,
+     "atm_iv_pct": 46.2
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 18.5,
+     "volume": 1495,
+     "open_interest": 996,
+     "vol_oi_ratio": 1.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 17.5,
+     "volume": 344,
+     "open_interest": 230,
+     "vol_oi_ratio": 1.5,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 19.0,
+     "volume": 891,
+     "open_interest": 649,
+     "vol_oi_ratio": 1.4,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 16.5,
+     "volume": 922,
+     "open_interest": 780,
+     "vol_oi_ratio": 1.2,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 18.0,
+     "volume": 2514,
+     "open_interest": 2518,
+     "vol_oi_ratio": 1.0,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 23013,
+   "otm_put_oi": 19911,
+   "positioning_lean_score": 0.07,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "SOFI",
+   "as_of": "2026-10-28",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-23",
+     "days_ago": 5,
+     "firm": "Truist Securities",
+     "action": "maintained",
+     "from_grade": "Hold",
+     "to_grade": "Hold",
+     "price_target_from": 19.0,
+     "price_target_to": 16.0,
+     "is_rating_change": false,
+     "description": "Truist Securities maintained its Hold rating on SOFI and cut its price target from $19.0 to $16.0"
+    },
+    {
+     "date": "2026-10-13",
+     "days_ago": 15,
+     "firm": "StoneX",
+     "action": "initiated coverage",
+     "from_grade": null,
+     "to_grade": "Buy",
+     "price_target_from": null,
+     "price_target_to": 25.0,
+     "is_rating_change": false,
+     "description": "StoneX initiated coverage of SOFI at Buy with a $25.0 price target"
+    },
+    {
+     "date": "2026-10-06",
+     "days_ago": 22,
+     "firm": "TD Cowen",
+     "action": "maintained",
+     "from_grade": "Hold",
+     "to_grade": "Hold",
+     "price_target_from": 18.0,
+     "price_target_to": 17.5,
+     "is_rating_change": false,
+     "description": "TD Cowen maintained its Hold rating on SOFI and cut its price target from $18.0 to $17.5"
+    }
+   ],
+   "consensus": {
+    "rating": "hold",
+    "score": 2.65,
+    "verdict": "neutral",
+    "analysts": 26,
+    "counts": {
+     "strongBuy": 4,
+     "buy": 7,
+     "hold": 11,
+     "sell": 2,
+     "strongSell": 2
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.87 to 2.65; bearish ratings 4 to 4)"
+   },
+   "price_target": {
+    "mean": 20.22,
+    "median": 19.5,
+    "high": 30.0,
+    "low": 12.0,
+    "current_price": 16.4,
+    "dispersion_pct": 89.0,
+    "upside_vs_mean_pct": 23.3,
+    "upside_vs_median_pct": 18.9
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "SOFI",
+   "sector": "Financial Services",
+   "sector_etf": "XLF",
+   "comparison": {
+    "1d": {
+     "stock_change_pct": -1.06,
+     "sector_etf_change_pct": 0.21,
+     "relative_to_sector_pct": -1.27
+    },
+    "1y": {
+     "stock_change_pct": -48.5,
+     "sector_etf_change_pct": 8.3,
+     "relative_to_sector_pct": -56.8
+    },
+    "1w": {
+     "stock_change_pct": 1.12,
+     "sector_etf_change_pct": 1.74,
+     "relative_to_sector_pct": -0.62
+    },
+    "1mo": {
+     "stock_change_pct": -12.79,
+     "sector_etf_change_pct": 2.15,
+     "relative_to_sector_pct": -14.94
+    },
+    "ytd": {
+     "stock_change_pct": -47.34,
+     "sector_etf_change_pct": 3.23,
+     "relative_to_sector_pct": -50.57
+    },
+    "2w": {
+     "stock_change_pct": -5.06,
+     "sector_etf_change_pct": 1.76,
+     "relative_to_sector_pct": -6.82
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-27",
+    "realtime_end": "2026-10-27",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9605,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-27",
+      "realtime_end": "2026-10-27",
+      "date": "2026-10-26",
+      "value": "18.39"
+     },
+     {
+      "realtime_start": "2026-10-27",
+      "realtime_end": "2026-10-27",
+      "date": "2026-10-23",
+      "value": "19.45"
+     },
+     {
+      "realtime_start": "2026-10-27",
+      "realtime_end": "2026-10-27",
+      "date": "2026-10-22",
+      "value": "19.03"
+     },
+     {
+      "realtime_start": "2026-10-27",
+      "realtime_end": "2026-10-27",
+      "date": "2026-10-21",
+      "value": "16.68"
+     },
+     {
+      "realtime_start": "2026-10-27",
+      "realtime_end": "2026-10-27",
+      "date": "2026-10-20",
+      "value": "17.31"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "SOFI",
+   "as_of": "2026-10-28",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 0,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-27",
+     "description": "SOFI reported Q3 2026 earnings before the open \u2014 EPS 0.18 vs 0.1701 expected (beat, +5.8%)",
+     "source": "finnhub",
+     "days_ago": 1,
+     "eps_actual": 0.18,
+     "eps_estimate": 0.1701,
+     "surprise": "beat",
+     "surprise_pct": 5.8,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

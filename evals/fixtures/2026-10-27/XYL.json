@@ -1,0 +1,392 @@
+{
+ "schema": 1,
+ "ticker": "XYL",
+ "trading_day": "2026-10-27",
+ "captured_at": "2026-10-28T00:41:37+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -14.21,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "this week: 4.55% \u2014 elevated relative to this stock's own typical volatility (expected ~2.48%, 1.84x), but typical in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past 2 weeks: 5.51% \u2014 elevated relative to this stock's own typical volatility (expected ~3.51%, 1.57x), but typical in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "XYL",
+   "price": 92.86,
+   "prev_close": 108.24,
+   "change_pct": -14.21,
+   "realized_vol_annualized_pct": 17.6,
+   "changes_pct": {
+    "1d": -0.46,
+    "1w": 4.55,
+    "2w": 5.51,
+    "1mo": 5.47,
+    "1y": -25.68,
+    "ytd": -20.18
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "this week: 4.55% \u2014 elevated relative to this stock's own typical volatility (expected ~2.48%, 1.84x), but typical in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past 2 weeks: 5.51% \u2014 elevated relative to this stock's own typical volatility (expected ~3.51%, 1.57x), but typical in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "XYL",
+   "headlines": [
+    {
+     "headline": "Why Xylem (XYL) stock is nosediving",
+     "summary": "Shares of water technology company Xylem (NYSE:XYL) fell 9.7% in the morning session after the company missed third-quarter revenue and earnings estimates and lowered its full-year financial outlook.",
+     "datetime": 1793135927,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=186d10c1865a4ba79f284701eaa695b727703b16d799305c69c0dbdcd433773a"
+    },
+    {
+     "headline": "Badger Meter (BMI) vs. XYL and WTS: Can Smart Water Infrastructure Growth Drive a Recovery After a 40% Pullback?",
+     "summary": "Is BMI a good stock to buy? We came across a bullish thesis on Badger Meter, Inc. on Quality At A Fair Price\u2019s Substack by Longacres Finance. The thesis was published on August 25th, when the stock...",
+     "datetime": 1793134457,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=58e55fe37626db709d4033202f9d87e0d8ae873e8473deb3779d8a9df117e2a3"
+    },
+    {
+     "headline": "S&P 500 Top Movers: Oct. 27, 2026 US Session",
+     "summary": "S&P 500 top movers on Oct. 27, 2026: Pentair led gainers at 12.8%, while Xylem was the steepest decliner at -13.14%.",
+     "datetime": 1793131575,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=7348f7bba4833edc9ce7aefa4609a6fae84fff0fa9208c46e5464a0fc8ffa1e1"
+    },
+    {
+     "headline": "Xylem (XYL) Q3 2026 Earnings Call Transcript",
+     "summary": "Data center orders surged 200% as utility spending caution pressured near-term revenue.",
+     "datetime": 1793124872,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=4553610fe6cf0ae155bccec69f92f0a9243abbdb733ba2369bb16b996db29062"
+    },
+    {
+     "headline": "S&P 500 Unusual Volume Movers on Oct. 27, 2026",
+     "summary": "S&P 500 unusual volume on Oct. 27, 2026 highlighted HUBB, GLW, META, BRO, CTAS, HCA, CNC, XYL, PNR and PCAR, with volume versus 50-day averages and price moves.",
+     "datetime": 1793124365,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=90f216b85760e4e4d78251b621d27c8e9b8d8b63271a31793b3bf173c23896a3"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "XYL",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 23,
+   "atm_iv_pct": 35.1,
+   "iv_chain_percentile": 1,
+   "skew_points": -0.5,
+   "put_call_ratio": 1.46,
+   "total_put_oi": 4773,
+   "total_call_oi": 3277
+  },
+  "get_options_positioning": {
+   "ticker": "XYL",
+   "spot": 92.86,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 23,
+   "max_pain_strike": 105.0,
+   "resistance_walls": [
+    {
+     "strike": 105.0,
+     "open_interest": 943
+    },
+    {
+     "strike": 115.0,
+     "open_interest": 733
+    },
+    {
+     "strike": 110.0,
+     "open_interest": 621
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 105.0,
+     "open_interest": 2960
+    },
+    {
+     "strike": 90.0,
+     "open_interest": 1295
+    },
+    {
+     "strike": 100.0,
+     "open_interest": 274
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 23,
+     "atm_iv_pct": 35.1
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 85.0,
+     "volume": 480,
+     "open_interest": 9,
+     "vol_oi_ratio": 53.3,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 100.0,
+     "volume": 891,
+     "open_interest": 17,
+     "vol_oi_ratio": 52.4,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 95.0,
+     "volume": 554,
+     "open_interest": 132,
+     "vol_oi_ratio": 4.2,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 120.0,
+     "volume": 231,
+     "open_interest": 302,
+     "vol_oi_ratio": 0.8,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 100.0,
+     "volume": 169,
+     "open_interest": 274,
+     "vol_oi_ratio": 0.6,
+     "moneyness": "ITM"
+    }
+   ],
+   "otm_call_oi": 3277,
+   "otm_put_oi": 1353,
+   "positioning_lean_score": 0.42,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "XYL",
+   "as_of": "2026-10-28",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-19",
+     "days_ago": 9,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 137.0,
+     "price_target_to": 118.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Neutral rating on XYL and cut its price target from $137.0 to $118.0"
+    },
+    {
+     "date": "2026-10-15",
+     "days_ago": 13,
+     "firm": "Mizuho",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 130.0,
+     "price_target_to": 110.0,
+     "is_rating_change": false,
+     "description": "Mizuho maintained its Neutral rating on XYL and cut its price target from $130.0 to $110.0"
+    },
+    {
+     "date": "2026-10-14",
+     "days_ago": 14,
+     "firm": "Oppenheimer",
+     "action": "reiterated",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 158.0,
+     "price_target_to": 150.0,
+     "is_rating_change": false,
+     "description": "Oppenheimer reiterated its Outperform rating on XYL and cut its price target from $158.0 to $150.0"
+    },
+    {
+     "date": "2026-10-14",
+     "days_ago": 14,
+     "firm": "RBC Capital",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 164.0,
+     "price_target_to": 135.0,
+     "is_rating_change": false,
+     "description": "RBC Capital maintained its Outperform rating on XYL and cut its price target from $164.0 to $135.0"
+    },
+    {
+     "date": "2026-10-13",
+     "days_ago": 15,
+     "firm": "Barclays",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 159.0,
+     "price_target_to": 139.0,
+     "is_rating_change": false,
+     "description": "Barclays maintained its Overweight rating on XYL and cut its price target from $159.0 to $139.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.14,
+    "verdict": "leaning bullish",
+    "analysts": 21,
+    "counts": {
+     "strongBuy": 4,
+     "buy": 10,
+     "hold": 7,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.26 to 2.14; bearish ratings 0 to 0)"
+   },
+   "price_target": {
+    "mean": 142.62,
+    "median": 143.0,
+    "high": 180.0,
+    "low": 110.0,
+    "current_price": 92.86,
+    "dispersion_pct": 49.1,
+    "upside_vs_mean_pct": 53.6,
+    "upside_vs_median_pct": 54.0
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "XYL",
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "comparison": {
+    "1d": {
+     "stock_change_pct": -0.46,
+     "sector_etf_change_pct": 1.42,
+     "relative_to_sector_pct": -1.88
+    },
+    "1y": {
+     "stock_change_pct": -25.68,
+     "sector_etf_change_pct": 9.1,
+     "relative_to_sector_pct": -34.78
+    },
+    "1w": {
+     "stock_change_pct": 4.55,
+     "sector_etf_change_pct": 0.17,
+     "relative_to_sector_pct": 4.38
+    },
+    "1mo": {
+     "stock_change_pct": 5.47,
+     "sector_etf_change_pct": -2.04,
+     "relative_to_sector_pct": 7.51
+    },
+    "ytd": {
+     "stock_change_pct": -20.18,
+     "sector_etf_change_pct": 6.53,
+     "relative_to_sector_pct": -26.71
+    },
+    "2w": {
+     "stock_change_pct": 5.51,
+     "sector_etf_change_pct": -1.29,
+     "relative_to_sector_pct": 6.8
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-27",
+    "realtime_end": "2026-10-27",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9605,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-27",
+      "realtime_end": "2026-10-27",
+      "date": "2026-10-26",
+      "value": "18.39"
+     },
+     {
+      "realtime_start": "2026-10-27",
+      "realtime_end": "2026-10-27",
+      "date": "2026-10-23",
+      "value": "19.45"
+     },
+     {
+      "realtime_start": "2026-10-27",
+      "realtime_end": "2026-10-27",
+      "date": "2026-10-22",
+      "value": "19.03"
+     },
+     {
+      "realtime_start": "2026-10-27",
+      "realtime_end": "2026-10-27",
+      "date": "2026-10-21",
+      "value": "16.68"
+     },
+     {
+      "realtime_start": "2026-10-27",
+      "realtime_end": "2026-10-27",
+      "date": "2026-10-20",
+      "value": "17.31"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "XYL",
+   "as_of": "2026-10-28",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 0,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-27",
+     "description": "XYL reported Q3 2026 earnings before the open \u2014 EPS 1.44 vs 1.4638 expected (miss, -1.6%)",
+     "source": "finnhub",
+     "days_ago": 1,
+     "eps_actual": 1.44,
+     "eps_estimate": 1.4638,
+     "surprise": "miss",
+     "surprise_pct": -1.6,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

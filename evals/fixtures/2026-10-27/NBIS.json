@@ -1,0 +1,379 @@
+{
+ "schema": 1,
+ "ticker": "NBIS",
+ "trading_day": "2026-10-27",
+ "captured_at": "2026-10-28T00:41:31+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 11.22,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: -3.45% \u2014 typical relative to this stock's own typical volatility (expected ~4.92%, 0.7x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "this week: -9.97% \u2014 typical relative to this stock's own typical volatility (expected ~11.00%, 0.91x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past 2 weeks: -27.04% \u2014 elevated relative to this stock's own typical volatility (expected ~15.56%, 1.74x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past month: -35.42% \u2014 elevated relative to this stock's own typical volatility (expected ~22.55%, 1.57x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past year: 44.38% \u2014 typical relative to this stock's own typical volatility (expected ~78.10%, 0.57x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "NBIS",
+   "price": 170.47,
+   "prev_close": 153.27,
+   "change_pct": 11.22,
+   "realized_vol_annualized_pct": 78.1,
+   "changes_pct": {
+    "1d": -3.45,
+    "1w": -9.97,
+    "2w": -27.04,
+    "1mo": -35.42,
+    "1y": 44.38,
+    "ytd": 70.39
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: -3.45% \u2014 typical relative to this stock's own typical volatility (expected ~4.92%, 0.7x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "this week: -9.97% \u2014 typical relative to this stock's own typical volatility (expected ~11.00%, 0.91x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past 2 weeks: -27.04% \u2014 elevated relative to this stock's own typical volatility (expected ~15.56%, 1.74x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past month: -35.42% \u2014 elevated relative to this stock's own typical volatility (expected ~22.55%, 1.57x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past year: 44.38% \u2014 typical relative to this stock's own typical volatility (expected ~78.10%, 0.57x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "NBIS",
+   "headlines": [
+    {
+     "headline": "Stock Market Today, Oct. 27: CoreWeave Surges on Denmark Data Center Launch",
+     "summary": "Today, Oct. 27, 2026, the AI infrastructure specialist switched on fresh European capacity as Wall Street expands support for AI financing.",
+     "datetime": 1793136200,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=683414513ded051cf223eb8c7b4f1491fb755455fe56ba1ca1121439f61c4fd0"
+    },
+    {
+     "headline": "Nebius vs. CoreWeave: Which neocloud stock has more debt?",
+     "summary": "CoreWeave carries $35.1B in debt and $5.5B in cash, while Nebius has $8.5B in debt and $8.0B in cash.",
+     "datetime": 1793133040,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=109410cd624ffaee3446018ae9a2306d467b834fdb57d86950dee64b3ac6b151"
+    },
+    {
+     "headline": "Nasdaq Advances For Second Straight Day",
+     "summary": "Investors seem to like tech and semiconductor stocks again. Broadcom brokers $63 billion chip deal, shares climb.",
+     "datetime": 1793129400,
+     "source": "SeekingAlpha",
+     "url": "https://finnhub.io/api/news?id=2f1aff593b0c377d243e6b61d5547b6699ec76c2ac57894c14cbd06b923cc45a"
+    },
+    {
+     "headline": "Bitcoin Outperforms Grayscale\u2019s AI Compute ETF As AI Cloud Stocks Slide",
+     "summary": "Grayscale has recently added CoreWeave, Nebius and DigitalOcean to its AI Compute ETF, which together make up about 26% of the fund.",
+     "datetime": 1793122470,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=479b5eff13e24122ac7cdb7ce041f1d19699c08686d8cbacc336bd5206ea9e2e"
+    },
+    {
+     "headline": "Nebius Group And 2 High Growth Insider Stocks To Watch",
+     "summary": "AI dealmaking has exploded, with a single day recently seeing roughly US$235b of AI related financings led by Anthropic\u2019s planned mega IPO. That kind of capital rush puts growth back in the spotlight...",
+     "datetime": 1793120884,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=8e319ce318b10e090941366c5d3d136891a28ec4527114b80d6ec0909b915934"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "NBIS",
+   "expiry": "2026-11-13",
+   "days_to_expiry": 16,
+   "atm_iv_pct": 104.6,
+   "iv_chain_percentile": 39,
+   "skew_points": -1.8,
+   "put_call_ratio": 0.96,
+   "total_put_oi": 17095,
+   "total_call_oi": 17859
+  },
+  "get_options_positioning": {
+   "ticker": "NBIS",
+   "spot": 170.47,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-13",
+   "primary_days_to_expiry": 16,
+   "max_pain_strike": 190.0,
+   "resistance_walls": [
+    {
+     "strike": 200.0,
+     "open_interest": 1990
+    },
+    {
+     "strike": 220.0,
+     "open_interest": 1422
+    },
+    {
+     "strike": 250.0,
+     "open_interest": 1183
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 130.0,
+     "open_interest": 2577
+    },
+    {
+     "strike": 165.0,
+     "open_interest": 1413
+    },
+    {
+     "strike": 190.0,
+     "open_interest": 1275
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 16,
+     "atm_iv_pct": 104.6
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 23,
+     "atm_iv_pct": 101.0
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 30,
+     "atm_iv_pct": 95.4
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 170.0,
+     "volume": 1006,
+     "open_interest": 725,
+     "vol_oi_ratio": 1.4,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 165.0,
+     "volume": 254,
+     "open_interest": 355,
+     "vol_oi_ratio": 0.7,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 185.0,
+     "volume": 141,
+     "open_interest": 313,
+     "vol_oi_ratio": 0.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 150.0,
+     "volume": 387,
+     "open_interest": 1122,
+     "vol_oi_ratio": 0.3,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 160.0,
+     "volume": 102,
+     "open_interest": 460,
+     "vol_oi_ratio": 0.2,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 16377,
+   "otm_put_oi": 9587,
+   "positioning_lean_score": 0.26,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "NBIS",
+   "as_of": "2026-10-28",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-21",
+     "days_ago": 7,
+     "firm": "Piper Sandler",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 237.0,
+     "price_target_to": 185.0,
+     "is_rating_change": false,
+     "description": "Piper Sandler maintained its Neutral rating on NBIS and cut its price target from $237.0 to $185.0"
+    },
+    {
+     "date": "2026-10-08",
+     "days_ago": 20,
+     "firm": "Rosenblatt",
+     "action": "initiated coverage",
+     "from_grade": null,
+     "to_grade": "Buy",
+     "price_target_from": null,
+     "price_target_to": 304.0,
+     "is_rating_change": false,
+     "description": "Rosenblatt initiated coverage of NBIS at Buy with a $304.0 price target"
+    },
+    {
+     "date": "2026-09-30",
+     "days_ago": 28,
+     "firm": "William Blair",
+     "action": "initiated coverage",
+     "from_grade": null,
+     "to_grade": "Outperform",
+     "price_target_from": null,
+     "price_target_to": null,
+     "is_rating_change": false,
+     "description": "William Blair initiated coverage of NBIS at Outperform"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.27,
+    "verdict": "leaning bullish",
+    "analysts": 22,
+    "counts": {
+     "strongBuy": 2,
+     "buy": 13,
+     "hold": 6,
+     "sell": 1,
+     "strongSell": 0
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.41 to 2.27; bearish ratings 1 to 1)"
+   },
+   "price_target": {
+    "mean": 281.0,
+    "median": 302.0,
+    "high": 410.0,
+    "low": 84.0,
+    "current_price": 170.47,
+    "dispersion_pct": 116.0,
+    "upside_vs_mean_pct": 64.8,
+    "upside_vs_median_pct": 77.2
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "NBIS",
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "comparison": {
+    "1d": {
+     "stock_change_pct": -3.45,
+     "sector_etf_change_pct": -1.57,
+     "relative_to_sector_pct": -1.88
+    },
+    "1y": {
+     "stock_change_pct": 44.38,
+     "sector_etf_change_pct": -8.78,
+     "relative_to_sector_pct": 53.16
+    },
+    "1w": {
+     "stock_change_pct": -9.97,
+     "sector_etf_change_pct": -5.67,
+     "relative_to_sector_pct": -4.3
+    },
+    "1mo": {
+     "stock_change_pct": -35.42,
+     "sector_etf_change_pct": -8.06,
+     "relative_to_sector_pct": -27.36
+    },
+    "ytd": {
+     "stock_change_pct": 70.39,
+     "sector_etf_change_pct": -10.35,
+     "relative_to_sector_pct": 80.74
+    },
+    "2w": {
+     "stock_change_pct": -27.04,
+     "sector_etf_change_pct": -6.82,
+     "relative_to_sector_pct": -20.22
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-27",
+    "realtime_end": "2026-10-27",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9605,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-27",
+      "realtime_end": "2026-10-27",
+      "date": "2026-10-26",
+      "value": "18.39"
+     },
+     {
+      "realtime_start": "2026-10-27",
+      "realtime_end": "2026-10-27",
+      "date": "2026-10-23",
+      "value": "19.45"
+     },
+     {
+      "realtime_start": "2026-10-27",
+      "realtime_end": "2026-10-27",
+      "date": "2026-10-22",
+      "value": "19.03"
+     },
+     {
+      "realtime_start": "2026-10-27",
+      "realtime_end": "2026-10-27",
+      "date": "2026-10-21",
+      "value": "16.68"
+     },
+     {
+      "realtime_start": "2026-10-27",
+      "realtime_end": "2026-10-27",
+      "date": "2026-10-20",
+      "value": "17.31"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "NBIS",
+   "as_of": "2026-10-28",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-10-28",
+     "days_until": 0,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-11-11",
+     "description": "NBIS Q3 2026 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 14,
+     "eps_estimate": -0.6613
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}
