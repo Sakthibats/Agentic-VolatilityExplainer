@@ -1,0 +1,398 @@
+{
+ "schema": 1,
+ "ticker": "FFIV",
+ "trading_day": "2026-10-28",
+ "captured_at": "2026-10-29T01:11:01+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -20.43,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "the past year: 53.97% \u2014 elevated for this stock (about 1.75x its normal move for that span, expected ~30.90%)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "FFIV",
+   "price": 365.53,
+   "prev_close": 459.36,
+   "change_pct": -20.43,
+   "realized_vol_annualized_pct": 30.9,
+   "changes_pct": {
+    "1d": -0.49,
+    "1w": 0.58,
+    "2w": -3.54,
+    "1mo": 5.46,
+    "1y": 53.97,
+    "ytd": 79.0
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "the past year: 53.97% \u2014 elevated for this stock (about 1.75x its normal move for that span, expected ~30.90%)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "FFIV",
+   "headlines": [
+    {
+     "headline": "Stock Market Today, Oct. 28: Markets Edge Higher as Fed Holds Rates Steady",
+     "summary": "Cloud and AI infrastructure demand remains robust despite tech spending concerns, today, Oct. 28, 2026.",
+     "datetime": 1793224997,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=a88e12c58ffaa5e2b190325974b9e6e2867062e172f7208ea85a27ae4f8120e8"
+    },
+    {
+     "headline": "US Equity Markets End Higher After Federal Reserve Votes to Keep Policy Rate Unchanged",
+     "summary": "US equity indexes ended higher Wednesday after the Federal Reserve decided to maintain policy rates",
+     "datetime": 1793218047,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=17ec4040b1af222396fbb1e8bd2a28e48411ea4e6517d5dd8705053660d4c9a8"
+    },
+    {
+     "headline": "S&P 500 Top Movers: Gainers and Losers in Today's US Session",
+     "summary": "S&P 500 top movers in today's US session: Vertiv, Flex and Oracle led gainers, while F5, CoStar and C.H. Robinson led decliners.",
+     "datetime": 1793217972,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=c7bece92ad49ddf180f89ace994421e825d2749a9395fb64593a0464e0f2060f"
+    },
+    {
+     "headline": "3 unpopular stocks with warning signs",
+     "summary": "When Wall Street turns bearish on a stock, it\u2019s worth paying attention. These calls stand out because analysts rarely issue grim ratings on companies for fear their firms will lose out in other...",
+     "datetime": 1793212714,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=fa7c7b3593dff4e8eda983419872696326cdc6a29965975247198e72f56ce644"
+    },
+    {
+     "headline": "F5: Fiscal Q4 Earnings Snapshot",
+     "summary": "SEATTLE (AP) \u2014 SEATTLE (AP) \u2014 F5 Networks Inc. (FFIV) on Tuesday reported fiscal fourth-quarter profit of $186.",
+     "datetime": 1793212465,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=770671461f2e4a56c6d18bebf5c47ec0dc37a5eaddf8ed46da953bf58b34529b"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "FFIV",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 22,
+   "atm_iv_pct": 47.7,
+   "iv_chain_percentile": 6,
+   "skew_points": 0.1,
+   "put_call_ratio": 0.99,
+   "total_put_oi": 2808,
+   "total_call_oi": 2828
+  },
+  "get_options_positioning": {
+   "ticker": "FFIV",
+   "spot": 365.53,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 22,
+   "max_pain_strike": 460.0,
+   "resistance_walls": [
+    {
+     "strike": 640.0,
+     "open_interest": 921
+    },
+    {
+     "strike": 500.0,
+     "open_interest": 419
+    },
+    {
+     "strike": 480.0,
+     "open_interest": 209
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 240.0,
+     "open_interest": 462
+    },
+    {
+     "strike": 410.0,
+     "open_interest": 398
+    },
+    {
+     "strike": 470.0,
+     "open_interest": 356
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 22,
+     "atm_iv_pct": 47.7
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 400.0,
+     "volume": 438,
+     "open_interest": 7,
+     "vol_oi_ratio": 62.6,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 320.0,
+     "volume": 121,
+     "open_interest": 9,
+     "vol_oi_ratio": 13.4,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 380.0,
+     "volume": 511,
+     "open_interest": 62,
+     "vol_oi_ratio": 8.2,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 390.0,
+     "volume": 136,
+     "open_interest": 25,
+     "vol_oi_ratio": 5.4,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 360.0,
+     "volume": 107,
+     "open_interest": 20,
+     "vol_oi_ratio": 5.3,
+     "moneyness": "ITM"
+    }
+   ],
+   "otm_call_oi": 2725,
+   "otm_put_oi": 871,
+   "positioning_lean_score": 0.52,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "FFIV",
+   "as_of": "2026-10-29",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-28",
+     "days_ago": 1,
+     "firm": "Morgan Stanley",
+     "action": "maintained",
+     "from_grade": "Equal-Weight",
+     "to_grade": "Equal-Weight",
+     "price_target_from": 415.0,
+     "price_target_to": 448.0,
+     "is_rating_change": false,
+     "description": "Morgan Stanley maintained its Equal-Weight rating on FFIV and raised its price target from $415.0 to $448.0"
+    },
+    {
+     "date": "2026-10-28",
+     "days_ago": 1,
+     "firm": "RBC Capital",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 525.0,
+     "price_target_to": 540.0,
+     "is_rating_change": false,
+     "description": "RBC Capital maintained its Outperform rating on FFIV and raised its price target from $525.0 to $540.0"
+    },
+    {
+     "date": "2026-10-28",
+     "days_ago": 1,
+     "firm": "Barclays",
+     "action": "maintained",
+     "from_grade": "Equal-Weight",
+     "to_grade": "Equal-Weight",
+     "price_target_from": 397.0,
+     "price_target_to": 428.0,
+     "is_rating_change": false,
+     "description": "Barclays maintained its Equal-Weight rating on FFIV and raised its price target from $397.0 to $428.0"
+    },
+    {
+     "date": "2026-10-28",
+     "days_ago": 1,
+     "firm": "Evercore ISI Group",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 475.0,
+     "price_target_to": 500.0,
+     "is_rating_change": false,
+     "description": "Evercore ISI Group maintained its Outperform rating on FFIV and raised its price target from $475.0 to $500.0"
+    },
+    {
+     "date": "2026-10-28",
+     "days_ago": 1,
+     "firm": "Piper Sandler",
+     "action": "downgrade",
+     "from_grade": "Overweight",
+     "to_grade": "Neutral",
+     "price_target_from": 461.0,
+     "price_target_to": 461.0,
+     "is_rating_change": true,
+     "description": "Piper Sandler downgraded FFIV from Overweight to Neutral with a $461.0 price target"
+    }
+   ],
+   "consensus": {
+    "rating": "hold",
+    "score": 2.69,
+    "verdict": "neutral",
+    "analysts": 13,
+    "counts": {
+     "strongBuy": 2,
+     "buy": 2,
+     "hold": 8,
+     "sell": 0,
+     "strongSell": 1
+    },
+    "trend": "deteriorating",
+    "trend_detail": "consensus softened over 2 months (score 2.54 to 2.69; bearish ratings 1 to 1)"
+   },
+   "price_target": {
+    "mean": 449.2,
+    "median": 454.5,
+    "high": 540.0,
+    "low": 300.0,
+    "current_price": 365.53,
+    "dispersion_pct": 53.4,
+    "upside_vs_mean_pct": 22.9,
+    "upside_vs_median_pct": 24.3
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "FFIV",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "2w": {
+     "stock_change_pct": -3.54,
+     "sector_etf_change_pct": -3.46,
+     "relative_to_sector_pct": -0.08
+    },
+    "1mo": {
+     "stock_change_pct": 5.46,
+     "sector_etf_change_pct": -2.59,
+     "relative_to_sector_pct": 8.05
+    },
+    "ytd": {
+     "stock_change_pct": 79.0,
+     "sector_etf_change_pct": 31.79,
+     "relative_to_sector_pct": 47.21
+    },
+    "1w": {
+     "stock_change_pct": 0.58,
+     "sector_etf_change_pct": 2.18,
+     "relative_to_sector_pct": -1.6
+    },
+    "1d": {
+     "stock_change_pct": -0.49,
+     "sector_etf_change_pct": 1.7,
+     "relative_to_sector_pct": -2.19
+    },
+    "1y": {
+     "stock_change_pct": 53.97,
+     "sector_etf_change_pct": 29.75,
+     "relative_to_sector_pct": 24.22
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-28",
+    "realtime_end": "2026-10-28",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9606,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-27",
+      "value": "17.52"
+     },
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-26",
+      "value": "18.39"
+     },
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-23",
+      "value": "19.45"
+     },
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-22",
+      "value": "19.03"
+     },
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-21",
+      "value": "16.68"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "FFIV",
+   "as_of": "2026-10-29",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 41,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-25",
+     "description": "FFIV Q1 2027 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 88,
+     "eps_estimate": 4.4487
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-27",
+     "description": "FFIV reported Q4 2026 earnings after the close \u2014 EPS 4.42 vs 4.3407 expected (beat, +1.8%)",
+     "source": "finnhub",
+     "days_ago": 2,
+     "eps_actual": 4.42,
+     "eps_estimate": 4.3407,
+     "surprise": "beat",
+     "surprise_pct": 1.8,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

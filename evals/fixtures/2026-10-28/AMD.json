@@ -1,0 +1,398 @@
+{
+ "schema": 1,
+ "ticker": "AMD",
+ "trading_day": "2026-10-28",
+ "captured_at": "2026-10-29T01:10:07+00:00",
+ "selected_as": "move",
+ "change_pct": 3.24,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 5.45% \u2014 elevated for this stock (about 1.55x its normal move for that span, expected ~3.52%)",
+   "the past year: 121.52% \u2014 elevated relative to this stock's own typical volatility (expected ~55.90%, 2.17x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "AMD",
+   "price": 578.44,
+   "prev_close": 560.26,
+   "change_pct": 3.24,
+   "realized_vol_annualized_pct": 55.9,
+   "changes_pct": {
+    "1d": 5.45,
+    "1w": 4.77,
+    "2w": -7.48,
+    "1mo": -7.83,
+    "1y": 121.52,
+    "ytd": 150.71
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 5.45% \u2014 elevated for this stock (about 1.55x its normal move for that span, expected ~3.52%)",
+     "the past year: 121.52% \u2014 elevated relative to this stock's own typical volatility (expected ~55.90%, 2.17x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "AMD",
+   "headlines": [
+    {
+     "headline": "Intel to report Q3 earnings as chip stocks continue to rebound",
+     "summary": "Intel will report its Q3 earnings after the bell Thursday.",
+     "datetime": 1793225833,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=344e11951a5e48991be1d30f94a41b7e1a40bd943e0113b198dfe400ec8c608f"
+    },
+    {
+     "headline": "Meta\u2019s Raising $97.5 Billion. Nvidia and AMD Are Buying In.",
+     "summary": "Meta is looking to raise up to $97.5 billion as its AI spending and future commitments balloon. Nvidia and AMD are buying in, raising fresh questions about Big Tech\u2019s circular financing loop.",
+     "datetime": 1793218852,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=8f7e3e7f932a69ce7b2b2df88974e3be77b8cbfa3eeba4d7dd6dba2e089e2c17"
+    },
+    {
+     "headline": "Is AMD Stock a Buy, Sell, or Hold Right Now? Here's What I'm Doing.",
+     "summary": "AMD's bear case seems to hold more water.",
+     "datetime": 1793212980,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=d9c4e71f5d2fa280736019cb9659cf88503537ed569c854f15ab78e0f0200362"
+    },
+    {
+     "headline": "Should You Buy AMD Stock Before Nov. 3?",
+     "summary": "AMD reports third-quarter earnings on Nov. 3.",
+     "datetime": 1793211600,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=316d25b6ada777e78efee1359cffcbadaae66bf804e02287893208238cda79d8"
+    },
+    {
+     "headline": "Intel Just Fell 24% in a Month: What Will It Take to Get INTC Stock Back Above $100?",
+     "summary": "Intel shed a quarter of its value in just one month, even as rivals AMD and NVIDIA held up far better, and now a surprise quantum acquisition has done little to reassure investors. The path back...",
+     "datetime": 1793210973,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=44a1d76291038951db943721e883203ad99f5ba0b01e3a2cd89a9009c9761816"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "AMD",
+   "expiry": "2026-11-13",
+   "days_to_expiry": 15,
+   "atm_iv_pct": 67.3,
+   "iv_chain_percentile": 1,
+   "skew_points": -2.3,
+   "put_call_ratio": 0.98,
+   "total_put_oi": 19840,
+   "total_call_oi": 20308
+  },
+  "get_options_positioning": {
+   "ticker": "AMD",
+   "spot": 578.44,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-13",
+   "primary_days_to_expiry": 15,
+   "max_pain_strike": 555.0,
+   "resistance_walls": [
+    {
+     "strike": 620.0,
+     "open_interest": 1270
+    },
+    {
+     "strike": 600.0,
+     "open_interest": 1245
+    },
+    {
+     "strike": 615.0,
+     "open_interest": 937
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 510.0,
+     "open_interest": 1706
+    },
+    {
+     "strike": 300.0,
+     "open_interest": 1287
+    },
+    {
+     "strike": 500.0,
+     "open_interest": 743
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 15,
+     "atm_iv_pct": 67.3
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 22,
+     "atm_iv_pct": 63.7
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 29,
+     "atm_iv_pct": 59.3
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 1110.0,
+     "volume": 563,
+     "open_interest": 66,
+     "vol_oi_ratio": 8.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 1120.0,
+     "volume": 403,
+     "open_interest": 52,
+     "vol_oi_ratio": 7.8,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 1140.0,
+     "volume": 181,
+     "open_interest": 53,
+     "vol_oi_ratio": 3.4,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 480.0,
+     "volume": 705,
+     "open_interest": 208,
+     "vol_oi_ratio": 3.4,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 485.0,
+     "volume": 394,
+     "open_interest": 230,
+     "vol_oi_ratio": 1.7,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 14126,
+   "otm_put_oi": 17132,
+   "positioning_lean_score": -0.1,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "AMD",
+   "as_of": "2026-10-29",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-28",
+     "days_ago": 1,
+     "firm": "Susquehanna",
+     "action": "maintained",
+     "from_grade": "Positive",
+     "to_grade": "Positive",
+     "price_target_from": 620.0,
+     "price_target_to": 650.0,
+     "is_rating_change": false,
+     "description": "Susquehanna maintained its Positive rating on AMD and raised its price target from $620.0 to $650.0"
+    },
+    {
+     "date": "2026-10-21",
+     "days_ago": 8,
+     "firm": "Susquehanna",
+     "action": "maintained",
+     "from_grade": "Positive",
+     "to_grade": "Positive",
+     "price_target_from": 550.0,
+     "price_target_to": 620.0,
+     "is_rating_change": false,
+     "description": "Susquehanna maintained its Positive rating on AMD and raised its price target from $550.0 to $620.0"
+    },
+    {
+     "date": "2026-10-20",
+     "days_ago": 9,
+     "firm": "Wedbush",
+     "action": "reiterated",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 600.0,
+     "price_target_to": 600.0,
+     "is_rating_change": false,
+     "description": "Wedbush reiterated its Outperform rating on AMD with a $600.0 price target"
+    },
+    {
+     "date": "2026-10-06",
+     "days_ago": 23,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 575.0,
+     "price_target_to": 800.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Buy rating on AMD and raised its price target from $575.0 to $800.0"
+    },
+    {
+     "date": "2026-10-06",
+     "days_ago": 23,
+     "firm": "Mizuho",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 580.0,
+     "price_target_to": 705.0,
+     "is_rating_change": false,
+     "description": "Mizuho maintained its Outperform rating on AMD and raised its price target from $580.0 to $705.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.11,
+    "verdict": "leaning bullish",
+    "analysts": 55,
+    "counts": {
+     "strongBuy": 5,
+     "buy": 39,
+     "hold": 11,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.1 to 2.11)"
+   },
+   "price_target": {
+    "mean": 640.21,
+    "median": 640.5,
+    "high": 1250.0,
+    "low": 365.0,
+    "current_price": 578.44,
+    "dispersion_pct": 138.2,
+    "upside_vs_mean_pct": 10.7,
+    "upside_vs_median_pct": 10.7
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "AMD",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "2w": {
+     "stock_change_pct": -7.48,
+     "sector_etf_change_pct": -3.46,
+     "relative_to_sector_pct": -4.02
+    },
+    "1mo": {
+     "stock_change_pct": -7.83,
+     "sector_etf_change_pct": -2.59,
+     "relative_to_sector_pct": -5.24
+    },
+    "ytd": {
+     "stock_change_pct": 150.71,
+     "sector_etf_change_pct": 31.79,
+     "relative_to_sector_pct": 118.92
+    },
+    "1w": {
+     "stock_change_pct": 4.77,
+     "sector_etf_change_pct": 2.18,
+     "relative_to_sector_pct": 2.59
+    },
+    "1d": {
+     "stock_change_pct": 5.45,
+     "sector_etf_change_pct": 1.7,
+     "relative_to_sector_pct": 3.75
+    },
+    "1y": {
+     "stock_change_pct": 121.52,
+     "sector_etf_change_pct": 29.75,
+     "relative_to_sector_pct": 91.77
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-28",
+    "realtime_end": "2026-10-28",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9606,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-27",
+      "value": "17.52"
+     },
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-26",
+      "value": "18.39"
+     },
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-23",
+      "value": "19.45"
+     },
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-22",
+      "value": "19.03"
+     },
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-21",
+      "value": "16.68"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "AMD",
+   "as_of": "2026-10-29",
+   "events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-03",
+     "description": "AMD Q3 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 5,
+     "eps_estimate": 1.9666,
+     "hour": "amc"
+    },
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 41,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}

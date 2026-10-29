@@ -1,0 +1,394 @@
+{
+ "schema": 1,
+ "ticker": "CSGP",
+ "trading_day": "2026-10-28",
+ "captured_at": "2026-10-29T01:11:14+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -13.96,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "today: -5.01% \u2014 typical relative to this stock's own typical volatility (expected ~3.45%, 1.45x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past month: 18.47% \u2014 typical relative to this stock's own typical volatility (expected ~15.82%, 1.17x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past year: -58.9% \u2014 typical relative to this stock's own typical volatility (expected ~54.80%, 1.07x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "CSGP",
+   "price": 27.54,
+   "prev_close": 32.01,
+   "change_pct": -13.96,
+   "realized_vol_annualized_pct": 54.8,
+   "changes_pct": {
+    "1d": -5.01,
+    "1w": -3.15,
+    "2w": 6.7,
+    "1mo": 18.47,
+    "1y": -58.9,
+    "ytd": -51.27
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "today: -5.01% \u2014 typical relative to this stock's own typical volatility (expected ~3.45%, 1.45x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past month: 18.47% \u2014 typical relative to this stock's own typical volatility (expected ~15.82%, 1.17x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past year: -58.9% \u2014 typical relative to this stock's own typical volatility (expected ~54.80%, 1.07x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "CSGP",
+   "headlines": [
+    {
+     "headline": "S&P 500 Top Movers: Gainers and Losers in Today's US Session",
+     "summary": "S&P 500 top movers in today's US session: Vertiv, Flex and Oracle led gainers, while F5, CoStar and C.H. Robinson led decliners.",
+     "datetime": 1793217972,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=c7bece92ad49ddf180f89ace994421e825d2749a9395fb64593a0464e0f2060f"
+    },
+    {
+     "headline": "CoStar\u2019s Vexcel Acquisition Adds Aerial Imagery for $730M",
+     "summary": "CoStar will pay about $730M in cash for Vexcel, an aerial imagery provider covering 99.6% of Americans with revenue up 30%.",
+     "datetime": 1793215511,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=11f9f1077b3e95809d887e347066573b5df4f46d56802736834713de8b222a53"
+    },
+    {
+     "headline": "CoStar To Acquire Aerial Imagery Company For $730M",
+     "summary": "The company announced the deal along with its third-quarter earnings, but its stock price fell sharply Wednesday.",
+     "datetime": 1793214987,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=632ddae96b7e6212189fadde9e50ad8fb874368475208ffb685ca6ac9fbbb018"
+    },
+    {
+     "headline": "CoStar Sinks 14% Despite Record Profit. Bookings Growth Still \u201cBelow Our Expectations\u201d",
+     "summary": "Key TakeawaysCoStar Group shares fell 14% today after third-quarter net new bookings came in at $37 million, down from $84 million a year earlier. CoStar\u2019s record profit came from holding costs down...",
+     "datetime": 1793212827,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=d7cc52028668eed7c86e334001dd97e206744463f3a6f43b4f4b552a61fa90e3"
+    },
+    {
+     "headline": "CoStar: Q3 Earnings Snapshot",
+     "summary": "(CSGP) on Tuesday reported third-quarter earnings of $74 million.On a per-share basis, the Arlington, Virginia-based company said it had net income of 18 cents.",
+     "datetime": 1793212463,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=bcb1950c34c1bf8c5d8761e79c4ae9b24407b9ecec811d70ac61c0f647c5bdb8"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "CSGP",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 22,
+   "atm_iv_pct": 54.9,
+   "iv_chain_percentile": 5,
+   "skew_points": 3.6,
+   "put_call_ratio": 1.68,
+   "total_put_oi": 2202,
+   "total_call_oi": 1309
+  },
+  "get_options_positioning": {
+   "ticker": "CSGP",
+   "spot": 27.54,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 22,
+   "max_pain_strike": 30.0,
+   "resistance_walls": [
+    {
+     "strike": 30.0,
+     "open_interest": 449
+    },
+    {
+     "strike": 35.0,
+     "open_interest": 440
+    },
+    {
+     "strike": 40.0,
+     "open_interest": 331
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 25.0,
+     "open_interest": 1006
+    },
+    {
+     "strike": 30.0,
+     "open_interest": 775
+    },
+    {
+     "strike": 22.5,
+     "open_interest": 210
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 22,
+     "atm_iv_pct": 54.9
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 25.0,
+     "volume": 1873,
+     "open_interest": 1006,
+     "vol_oi_ratio": 1.9,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 40.0,
+     "volume": 228,
+     "open_interest": 331,
+     "vol_oi_ratio": 0.7,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 22.5,
+     "volume": 116,
+     "open_interest": 210,
+     "vol_oi_ratio": 0.6,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 30.0,
+     "volume": 147,
+     "open_interest": 449,
+     "vol_oi_ratio": 0.3,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 35.0,
+     "volume": 138,
+     "open_interest": 440,
+     "vol_oi_ratio": 0.3,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 1299,
+   "otm_put_oi": 1219,
+   "positioning_lean_score": 0.03,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "CSGP",
+   "as_of": "2026-10-29",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-28",
+     "days_ago": 1,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 52.0,
+     "price_target_to": 44.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Overweight rating on CSGP and cut its price target from $52.0 to $44.0"
+    },
+    {
+     "date": "2026-10-28",
+     "days_ago": 1,
+     "firm": "Wells Fargo",
+     "action": "maintained",
+     "from_grade": "Underweight",
+     "to_grade": "Underweight",
+     "price_target_from": 25.0,
+     "price_target_to": 26.0,
+     "is_rating_change": false,
+     "description": "Wells Fargo maintained its Underweight rating on CSGP and raised its price target from $25.0 to $26.0"
+    },
+    {
+     "date": "2026-10-28",
+     "days_ago": 1,
+     "firm": "Needham",
+     "action": "reiterated",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 40.0,
+     "price_target_to": 40.0,
+     "is_rating_change": false,
+     "description": "Needham reiterated its Buy rating on CSGP with a $40.0 price target"
+    },
+    {
+     "date": "2026-10-28",
+     "days_ago": 1,
+     "firm": "BTIG",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 42.0,
+     "price_target_to": 35.0,
+     "is_rating_change": false,
+     "description": "BTIG maintained its Buy rating on CSGP and cut its price target from $42.0 to $35.0"
+    },
+    {
+     "date": "2026-10-06",
+     "days_ago": 23,
+     "firm": "Needham",
+     "action": "reiterated",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 40.0,
+     "price_target_to": 40.0,
+     "is_rating_change": false,
+     "description": "Needham reiterated its Buy rating on CSGP with a $40.0 price target"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.29,
+    "verdict": "leaning bullish",
+    "analysts": 21,
+    "counts": {
+     "strongBuy": 4,
+     "buy": 8,
+     "hold": 8,
+     "sell": 1,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.33 to 2.29)"
+   },
+   "price_target": {
+    "mean": 35.85,
+    "median": 34.5,
+    "high": 50.0,
+    "low": 26.0,
+    "current_price": 27.54,
+    "dispersion_pct": 66.9,
+    "upside_vs_mean_pct": 30.2,
+    "upside_vs_median_pct": 25.3
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "CSGP",
+   "sector": "Real Estate",
+   "sector_etf": "XLRE",
+   "comparison": {
+    "2w": {
+     "stock_change_pct": 6.7,
+     "sector_etf_change_pct": 1.46,
+     "relative_to_sector_pct": 5.24
+    },
+    "1mo": {
+     "stock_change_pct": 18.47,
+     "sector_etf_change_pct": 2.64,
+     "relative_to_sector_pct": 15.83
+    },
+    "ytd": {
+     "stock_change_pct": -51.27,
+     "sector_etf_change_pct": 7.63,
+     "relative_to_sector_pct": -58.9
+    },
+    "1w": {
+     "stock_change_pct": -3.15,
+     "sector_etf_change_pct": 0.14,
+     "relative_to_sector_pct": -3.29
+    },
+    "1d": {
+     "stock_change_pct": -5.01,
+     "sector_etf_change_pct": -0.84,
+     "relative_to_sector_pct": -4.17
+    },
+    "1y": {
+     "stock_change_pct": -58.9,
+     "sector_etf_change_pct": 3.02,
+     "relative_to_sector_pct": -61.92
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-28",
+    "realtime_end": "2026-10-28",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9606,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-27",
+      "value": "17.52"
+     },
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-26",
+      "value": "18.39"
+     },
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-23",
+      "value": "19.45"
+     },
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-22",
+      "value": "19.03"
+     },
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-21",
+      "value": "16.68"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "CSGP",
+   "as_of": "2026-10-29",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 41,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-27",
+     "description": "CSGP reported Q3 2026 earnings after the close \u2014 EPS 0.38 vs 0.344 expected (beat, +10.5%)",
+     "source": "finnhub",
+     "days_ago": 2,
+     "eps_actual": 0.38,
+     "eps_estimate": 0.344,
+     "surprise": "beat",
+     "surprise_pct": 10.5,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

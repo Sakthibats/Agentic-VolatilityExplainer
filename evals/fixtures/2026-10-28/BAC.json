@@ -1,0 +1,412 @@
+{
+ "schema": 1,
+ "ticker": "BAC",
+ "trading_day": "2026-10-28",
+ "captured_at": "2026-10-29T01:09:46+00:00",
+ "selected_as": "control",
+ "change_pct": 0.34,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "BAC",
+   "price": 50.85,
+   "prev_close": 50.68,
+   "change_pct": 0.34,
+   "realized_vol_annualized_pct": 20.8,
+   "changes_pct": {
+    "1d": 0.32,
+    "1w": 0.08,
+    "2w": -6.08,
+    "1mo": -8.64,
+    "1y": -1.54,
+    "ytd": -7.97
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   }
+  },
+  "get_news": {
+   "ticker": "BAC",
+   "headlines": [
+    {
+     "headline": "BofA adds Wisconsin to branch map, with more states to come",
+     "summary": "Bank of America announced five new locations in Wisconsin, and said it plans to expand into Alabama and Louisiana next year. All three states are new to the lender's branch network.",
+     "datetime": 1793221515,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=59c38109a362b033f312652438d71629b55f04d3010add11162434f85f7102e6"
+    },
+    {
+     "headline": "16% of Employers Are Thinking About Cutting Weight-Loss Drug Coverage",
+     "summary": "Employers are quietly reconsidering who foots the bill for GLP-1 weight-loss drugs, and the fallout hits Eli Lilly and Novo Nordisk very differently heading into earnings week.",
+     "datetime": 1793215490,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=bb85edd5ca4ef911dd157b866397613353bbf508624d96028ae81a3d91c71060"
+    },
+    {
+     "headline": "Chip Earnings Power Averages Higher as Nasdaq Volatility Cools Midweek",
+     "summary": "Stock Preachers News Commentary - Major U.S. indices pushed higher midweek, with the S&P 500 up 1.51% and the Nasdaq Composite up 1.98% over the week's three sessions, as semiconductor and tech...",
+     "datetime": 1793211840,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=8cca93701c445fbd05ef06cb5b774bdb990789cddf3626317ce31c2df490756e"
+    },
+    {
+     "headline": "Uber faces investor questions on autonomous vehicles ahead of earnings",
+     "summary": "Uber Technologies Inc (NYSE:UBER, XETRA:UT8) heads into its third-quarter results with investor attention focused on its autonomous vehicle supply pipeline, which Bank of America sees as the biggest...",
+     "datetime": 1793205300,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=e16032d6b1f6aab7e14f03c960b72c74a760af077a036dea472dc141889e8b63"
+    },
+    {
+     "headline": "FRN Variable Rate Fix",
+     "summary": "LONDON, October 28, 2026-- Re:Bank of America Corporation - BAC EMTN",
+     "datetime": 1793204880,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=40320064d960b2f37dda51101302d591df428f9edb2242232a8f90c5201edc1c"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "BAC",
+   "expiry": "2026-11-13",
+   "days_to_expiry": 15,
+   "atm_iv_pct": 29.1,
+   "iv_chain_percentile": 5,
+   "skew_points": 0.9,
+   "put_call_ratio": 0.35,
+   "total_put_oi": 4583,
+   "total_call_oi": 13046
+  },
+  "get_options_positioning": {
+   "ticker": "BAC",
+   "spot": 50.85,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-13",
+   "primary_days_to_expiry": 15,
+   "max_pain_strike": 51.0,
+   "resistance_walls": [
+    {
+     "strike": 55.0,
+     "open_interest": 2823
+    },
+    {
+     "strike": 52.0,
+     "open_interest": 2768
+    },
+    {
+     "strike": 62.0,
+     "open_interest": 1557
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 48.0,
+     "open_interest": 701
+    },
+    {
+     "strike": 49.0,
+     "open_interest": 694
+    },
+    {
+     "strike": 46.0,
+     "open_interest": 621
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 15,
+     "atm_iv_pct": 29.1
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 22,
+     "atm_iv_pct": 25.1
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 29,
+     "atm_iv_pct": 25.2
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 51.0,
+     "volume": 191,
+     "open_interest": 628,
+     "vol_oi_ratio": 0.3,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 53.0,
+     "volume": 169,
+     "open_interest": 1002,
+     "vol_oi_ratio": 0.2,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 50.0,
+     "volume": 104,
+     "open_interest": 618,
+     "vol_oi_ratio": 0.2,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 49.0,
+     "volume": 107,
+     "open_interest": 694,
+     "vol_oi_ratio": 0.2,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 52.0,
+     "volume": 190,
+     "open_interest": 2768,
+     "vol_oi_ratio": 0.1,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 12524,
+   "otm_put_oi": 3467,
+   "positioning_lean_score": 0.57,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "BAC",
+   "as_of": "2026-10-29",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-15",
+     "days_ago": 14,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 66.0,
+     "price_target_to": 60.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Buy rating on BAC and cut its price target from $66.0 to $60.0"
+    },
+    {
+     "date": "2026-10-15",
+     "days_ago": 14,
+     "firm": "Morgan Stanley",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 67.0,
+     "price_target_to": 61.0,
+     "is_rating_change": false,
+     "description": "Morgan Stanley maintained its Overweight rating on BAC and cut its price target from $67.0 to $61.0"
+    },
+    {
+     "date": "2026-10-15",
+     "days_ago": 14,
+     "firm": "Truist Securities",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 62.0,
+     "price_target_to": 58.0,
+     "is_rating_change": false,
+     "description": "Truist Securities maintained its Buy rating on BAC and cut its price target from $62.0 to $58.0"
+    },
+    {
+     "date": "2026-10-15",
+     "days_ago": 14,
+     "firm": "RBC Capital",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 65.0,
+     "price_target_to": 60.0,
+     "is_rating_change": false,
+     "description": "RBC Capital maintained its Outperform rating on BAC and cut its price target from $65.0 to $60.0"
+    },
+    {
+     "date": "2026-10-15",
+     "days_ago": 14,
+     "firm": "Barclays",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 72.0,
+     "price_target_to": 68.0,
+     "is_rating_change": false,
+     "description": "Barclays maintained its Overweight rating on BAC and cut its price target from $72.0 to $68.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.88,
+    "verdict": "leaning bullish",
+    "analysts": 25,
+    "counts": {
+     "strongBuy": 6,
+     "buy": 16,
+     "hold": 3,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 1.96 to 1.88; bearish ratings 0 to 0)"
+   },
+   "price_target": {
+    "mean": 62.95,
+    "median": 62.5,
+    "high": 71.0,
+    "low": 56.0,
+    "current_price": 50.85,
+    "dispersion_pct": 23.8,
+    "upside_vs_mean_pct": 23.8,
+    "upside_vs_median_pct": 22.9
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "BAC",
+   "sector": "Financial Services",
+   "sector_etf": "XLF",
+   "comparison": {
+    "2w": {
+     "stock_change_pct": -6.08,
+     "sector_etf_change_pct": 1.93,
+     "relative_to_sector_pct": -8.01
+    },
+    "1mo": {
+     "stock_change_pct": -8.64,
+     "sector_etf_change_pct": 3.12,
+     "relative_to_sector_pct": -11.76
+    },
+    "ytd": {
+     "stock_change_pct": -7.97,
+     "sector_etf_change_pct": 2.97,
+     "relative_to_sector_pct": -10.94
+    },
+    "1w": {
+     "stock_change_pct": 0.08,
+     "sector_etf_change_pct": 0.29,
+     "relative_to_sector_pct": -0.21
+    },
+    "1d": {
+     "stock_change_pct": 0.32,
+     "sector_etf_change_pct": -0.25,
+     "relative_to_sector_pct": 0.57
+    },
+    "1y": {
+     "stock_change_pct": -1.54,
+     "sector_etf_change_pct": 6.87,
+     "relative_to_sector_pct": -8.41
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-28",
+    "realtime_end": "2026-10-28",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9606,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-27",
+      "value": "17.52"
+     },
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-26",
+      "value": "18.39"
+     },
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-23",
+      "value": "19.45"
+     },
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-22",
+      "value": "19.03"
+     },
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-21",
+      "value": "16.68"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "BAC",
+   "as_of": "2026-10-29",
+   "events": [
+    {
+     "type": "ex_dividend",
+     "date": "2026-12-04",
+     "source": "yfinance",
+     "description": "BAC goes ex-dividend \u2014 expect a mechanical price drop of roughly the dividend",
+     "days_until": 36
+    },
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 41,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-15",
+     "description": "BAC Q4 2026 earnings scheduled (before the open)",
+     "source": "finnhub",
+     "days_until": 78,
+     "eps_estimate": 1.1315,
+     "hour": "bmo"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-14",
+     "description": "BAC reported Q3 2026 earnings before the open \u2014 EPS 1.08 vs 1.114 expected (miss, -3.1%)",
+     "source": "finnhub",
+     "days_ago": 15,
+     "eps_actual": 1.08,
+     "eps_estimate": 1.114,
+     "surprise": "miss",
+     "surprise_pct": -3.1,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

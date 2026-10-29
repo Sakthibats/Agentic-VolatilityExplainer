@@ -1,0 +1,300 @@
+{
+ "schema": 1,
+ "ticker": "ICLR",
+ "trading_day": "2026-10-28",
+ "captured_at": "2026-10-29T01:10:47+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 17.04,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "the past 2 weeks: 11.34% \u2014 typical relative to this stock's own typical volatility (expected ~8.51%, 1.33x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "ICLR",
+   "price": 214.16,
+   "prev_close": 182.98,
+   "change_pct": 17.04,
+   "realized_vol_annualized_pct": 42.7,
+   "changes_pct": {
+    "1d": -0.44,
+    "1w": 5.05,
+    "2w": 11.34,
+    "1mo": 4.22,
+    "1y": 2.73,
+    "ytd": -3.02
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "the past 2 weeks: 11.34% \u2014 typical relative to this stock's own typical volatility (expected ~8.51%, 1.33x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "ICLR",
+   "headlines": [
+    {
+     "headline": "ICON Public Limited Company (ICLR) Q3 2026 Earnings Call Transcript",
+     "summary": "ICON Public Limited Company (ICLR) Q3 2026 Earnings Call October 28, 2026 8:00 AM EDTCompany ParticipantsKate Haven - Vice President of Investor...",
+     "datetime": 1793206199,
+     "source": "SeekingAlpha",
+     "url": "https://finnhub.io/api/news?id=f675f763fa504225a843f9cb5a0065098e0b68a3ecf9cee4a82fd9d8bb162dd5"
+    },
+    {
+     "headline": "Vertiv, Evercore, Brinker, GE HealthCare And Other Big Stocks Moving Higher On Wednesday",
+     "summary": "U.S. stocks mixed; Dow gained ~100 points. Vertiv jumped 13.3% on strong results and raised guidance; Ultralife soared 145.8% on buyout news.",
+     "datetime": 1793184850,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=0c0eabcf6db929dabdade4f9b814b36b50d6f43d50b3602d31474ac583292909"
+    },
+    {
+     "headline": "Icon Q3 2026 Earnings Call Transcript",
+     "summary": "Icon (NASDAQ:ICLR) reported third-quarter financial results on Wednesday. The transcript from the company\u2019s third-quarter earnings call has been provided below.This transcript is brought to you by...",
+     "datetime": 1793179555,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=22f1dd8c75bd035c56f2216c4e6b261c1415ff11c684492ffec87189260d504e"
+    },
+    {
+     "headline": "ICON Public Limited Company 2026 Q3 - Results - Earnings Call Presentation",
+     "summary": "2026-10-28. The following slide deck was published by ICON Public Limited Company in conjunction with their 2026 Q3 earnings call.",
+     "datetime": 1793176554,
+     "source": "SeekingAlpha",
+     "url": "https://finnhub.io/api/news?id=cbd0ed8694cbc6617ef43dcf61bfa363bd8a4b8881ab6c3153b92c85e09bfb88"
+    },
+    {
+     "headline": "ICON PLC (NASDAQ:ICLR) Rallies on In-Line Q3 Results and Strong Bookings",
+     "summary": "ICON\u2019s Q3 2026 results were in line with estimates, while strong bookings, a $400M buyback, and a $24.5B backlog lifted shares after hours.",
+     "datetime": 1793142164,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=2e13251ada41ac462722b3307cec50115d7a004daa434808ec874ef740e78c86"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "ICLR",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 22,
+   "atm_iv_pct": 53.9,
+   "iv_chain_percentile": 44,
+   "skew_points": 2.2,
+   "put_call_ratio": 0.23,
+   "total_put_oi": 503,
+   "total_call_oi": 2204
+  },
+  "get_options_positioning": {
+   "ticker": "ICLR",
+   "spot": 214.16,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 22,
+   "max_pain_strike": 185.0,
+   "resistance_walls": [
+    {
+     "strike": 230.0,
+     "open_interest": 640
+    },
+    {
+     "strike": 195.0,
+     "open_interest": 550
+    },
+    {
+     "strike": 200.0,
+     "open_interest": 454
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 175.0,
+     "open_interest": 106
+    },
+    {
+     "strike": 135.0,
+     "open_interest": 91
+    },
+    {
+     "strike": 130.0,
+     "open_interest": 90
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 22,
+     "atm_iv_pct": 53.9
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 165.0,
+     "volume": 107,
+     "open_interest": 67,
+     "vol_oi_ratio": 1.6,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 869,
+   "otm_put_oi": 499,
+   "positioning_lean_score": 0.27,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "ICLR",
+   "as_of": "2026-10-29",
+   "analyst_coverage": "covered",
+   "recent_actions": [],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.5,
+    "verdict": "leaning bullish",
+    "analysts": 18,
+    "counts": {
+     "strongBuy": 1,
+     "buy": 9,
+     "hold": 7,
+     "sell": 0,
+     "strongSell": 1
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.47 to 2.5)"
+   },
+   "price_target": {
+    "mean": 188.24,
+    "median": 186.0,
+    "high": 215.0,
+    "low": 155.0,
+    "current_price": 214.16,
+    "dispersion_pct": 31.9,
+    "upside_vs_mean_pct": -12.1,
+    "upside_vs_median_pct": -13.1
+   },
+   "notes": [
+    "No analyst rating changes in the last 30 days \u2014 the consensus below is standing opinion, not a recent catalyst."
+   ]
+  },
+  "get_sector_comparison": {
+   "ticker": "ICLR",
+   "sector": "Healthcare",
+   "sector_etf": "XLV",
+   "comparison": {
+    "2w": {
+     "stock_change_pct": 11.34,
+     "sector_etf_change_pct": 5.61,
+     "relative_to_sector_pct": 5.73
+    },
+    "1mo": {
+     "stock_change_pct": 4.22,
+     "sector_etf_change_pct": 4.62,
+     "relative_to_sector_pct": -0.4
+    },
+    "ytd": {
+     "stock_change_pct": -3.02,
+     "sector_etf_change_pct": 16.65,
+     "relative_to_sector_pct": -19.67
+    },
+    "1w": {
+     "stock_change_pct": 5.05,
+     "sector_etf_change_pct": -0.36,
+     "relative_to_sector_pct": 5.41
+    },
+    "1d": {
+     "stock_change_pct": -0.44,
+     "sector_etf_change_pct": -0.06,
+     "relative_to_sector_pct": -0.38
+    },
+    "1y": {
+     "stock_change_pct": 2.73,
+     "sector_etf_change_pct": 24.75,
+     "relative_to_sector_pct": -22.02
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-28",
+    "realtime_end": "2026-10-28",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9606,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-27",
+      "value": "17.52"
+     },
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-26",
+      "value": "18.39"
+     },
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-23",
+      "value": "19.45"
+     },
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-22",
+      "value": "19.03"
+     },
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-21",
+      "value": "16.68"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "ICLR",
+   "as_of": "2026-10-29",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 41,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-27",
+     "description": "ICLR reported Q3 2026 earnings after the close \u2014 EPS 2.66 vs 2.6528 expected (in line, +0.3%)",
+     "source": "finnhub",
+     "days_ago": 2,
+     "eps_actual": 2.66,
+     "eps_estimate": 2.6528,
+     "surprise": "in line",
+     "surprise_pct": 0.3,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

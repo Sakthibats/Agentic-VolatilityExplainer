@@ -1,0 +1,380 @@
+{
+ "schema": 1,
+ "ticker": "AVGO",
+ "trading_day": "2026-10-28",
+ "captured_at": "2026-10-29T01:10:14+00:00",
+ "selected_as": "move",
+ "change_pct": 2.77,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "today: 4.0% \u2014 elevated for this stock (about 1.52x its normal move for that span, expected ~2.64%)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "AVGO",
+   "price": 351.81,
+   "prev_close": 342.33,
+   "change_pct": 2.77,
+   "realized_vol_annualized_pct": 41.9,
+   "changes_pct": {
+    "1d": 4.0,
+    "1w": 2.38,
+    "2w": -4.19,
+    "1mo": -2.07,
+    "1y": -2.61,
+    "ytd": -0.98
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "today: 4.0% \u2014 elevated for this stock (about 1.52x its normal move for that span, expected ~2.64%)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "AVGO",
+   "headlines": [
+    {
+     "headline": "2 Millionaire-Maker Custom Silicon Stocks Powering the AI Infrastructure Supercycle",
+     "summary": "If you had invested $25,000 in each of these semiconductor stocks 15 years ago, each position would now be worth well over $1 million.",
+     "datetime": 1793229600,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=ba6cf10c180f704658858f83391d6bdfbfe208d6ffdd39d364723689d95cfa64"
+    },
+    {
+     "headline": "Can Morgan Stanley (MS) Justify Its Price After AI Deal Wins?",
+     "summary": "Morgan Stanley has ridden a powerful three year run that has pulled the share price far ahead of the broader diversified financials group. This puts fresh focus on whether the returns it earns on its...",
+     "datetime": 1793225583,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=f96463c74bafb16a38d1bbd796b664b4e9dc7dc5ba34d54b5b5e2ab124eeb346"
+    },
+    {
+     "headline": "Broadcom Inc. (AVGO) Laps the Stock Market: Here's Why",
+     "summary": "The latest trading day saw Broadcom Inc. (AVGO) settling at $351.81, representing a +2.77% change from its previous close.",
+     "datetime": 1793220303,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=cd6aeca780a8ab1612583b0bca8de9de40bc1be5d634eeab2be352664eaeb2d0"
+    },
+    {
+     "headline": "Alphabet\u2019s Google Cloud Biz Did Its Job. Why the Stock Is Falling.",
+     "summary": "The Google parent reports weaker-than-expected earnings and revenue amid its reinvention as an artificial-intelligence cloud provider.",
+     "datetime": 1793218800,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=4b2a862ba8f481c78cc31a90832d1285eea1761f1b548aa747ffe0ee4e131ba8"
+    },
+    {
+     "headline": "Chip Earnings Power Averages Higher as Nasdaq Volatility Cools Midweek",
+     "summary": "Stock Preachers News Commentary - Major U.S. indices pushed higher midweek, with the S&P 500 up 1.51% and the Nasdaq Composite up 1.98% over the week's three sessions, as semiconductor and tech...",
+     "datetime": 1793211840,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=8cca93701c445fbd05ef06cb5b774bdb990789cddf3626317ce31c2df490756e"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "AVGO",
+   "expiry": "2026-11-13",
+   "days_to_expiry": 15,
+   "atm_iv_pct": 44.0,
+   "iv_chain_percentile": 3,
+   "skew_points": -0.6,
+   "put_call_ratio": 0.86,
+   "total_put_oi": 16998,
+   "total_call_oi": 19840
+  },
+  "get_options_positioning": {
+   "ticker": "AVGO",
+   "spot": 351.81,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-13",
+   "primary_days_to_expiry": 15,
+   "max_pain_strike": 340.0,
+   "resistance_walls": [
+    {
+     "strike": 390.0,
+     "open_interest": 2561
+    },
+    {
+     "strike": 365.0,
+     "open_interest": 1573
+    },
+    {
+     "strike": 340.0,
+     "open_interest": 1417
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 330.0,
+     "open_interest": 2212
+    },
+    {
+     "strike": 320.0,
+     "open_interest": 1935
+    },
+    {
+     "strike": 335.0,
+     "open_interest": 1911
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 15,
+     "atm_iv_pct": 44.0
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 22,
+     "atm_iv_pct": 43.0
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 29,
+     "atm_iv_pct": 41.1
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 410.0,
+     "volume": 116,
+     "open_interest": 0,
+     "vol_oi_ratio": 116.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 350.0,
+     "volume": 807,
+     "open_interest": 1061,
+     "vol_oi_ratio": 0.8,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 385.0,
+     "volume": 204,
+     "open_interest": 413,
+     "vol_oi_ratio": 0.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 305.0,
+     "volume": 132,
+     "open_interest": 287,
+     "vol_oi_ratio": 0.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 355.0,
+     "volume": 194,
+     "open_interest": 562,
+     "vol_oi_ratio": 0.3,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 14294,
+   "otm_put_oi": 15256,
+   "positioning_lean_score": -0.03,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "AVGO",
+   "as_of": "2026-10-29",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-27",
+     "days_ago": 2,
+     "firm": "Rosenblatt",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 600.0,
+     "price_target_to": 600.0,
+     "is_rating_change": false,
+     "description": "Rosenblatt maintained its Buy rating on AVGO with a $600.0 price target"
+    },
+    {
+     "date": "2026-10-27",
+     "days_ago": 2,
+     "firm": "DA Davidson",
+     "action": "upgrade",
+     "from_grade": "Neutral",
+     "to_grade": "Buy",
+     "price_target_from": 350.0,
+     "price_target_to": 400.0,
+     "is_rating_change": true,
+     "description": "DA Davidson upgraded AVGO from Neutral to Buy and raised its price target from $350.0 to $400.0"
+    },
+    {
+     "date": "2026-10-22",
+     "days_ago": 7,
+     "firm": "Tigress Financial",
+     "action": "initiated coverage",
+     "from_grade": null,
+     "to_grade": "Buy",
+     "price_target_from": null,
+     "price_target_to": 600.0,
+     "is_rating_change": false,
+     "description": "Tigress Financial initiated coverage of AVGO at Buy with a $600.0 price target"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.88,
+    "verdict": "leaning bullish",
+    "analysts": 51,
+    "counts": {
+     "strongBuy": 8,
+     "buy": 41,
+     "hold": 2,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 1.94 to 1.88; bearish ratings 0 to 0)"
+   },
+   "price_target": {
+    "mean": 530.14,
+    "median": 537.5,
+    "high": 660.0,
+    "low": 215.88,
+    "current_price": 351.81,
+    "dispersion_pct": 83.8,
+    "upside_vs_mean_pct": 50.7,
+    "upside_vs_median_pct": 52.8
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "AVGO",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "2w": {
+     "stock_change_pct": -4.19,
+     "sector_etf_change_pct": -3.46,
+     "relative_to_sector_pct": -0.73
+    },
+    "1mo": {
+     "stock_change_pct": -2.07,
+     "sector_etf_change_pct": -2.59,
+     "relative_to_sector_pct": 0.52
+    },
+    "ytd": {
+     "stock_change_pct": -0.98,
+     "sector_etf_change_pct": 31.79,
+     "relative_to_sector_pct": -32.77
+    },
+    "1w": {
+     "stock_change_pct": 2.38,
+     "sector_etf_change_pct": 2.18,
+     "relative_to_sector_pct": 0.2
+    },
+    "1d": {
+     "stock_change_pct": 4.0,
+     "sector_etf_change_pct": 1.7,
+     "relative_to_sector_pct": 2.3
+    },
+    "1y": {
+     "stock_change_pct": -2.61,
+     "sector_etf_change_pct": 29.75,
+     "relative_to_sector_pct": -32.36
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-28",
+    "realtime_end": "2026-10-28",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9606,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-27",
+      "value": "17.52"
+     },
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-26",
+      "value": "18.39"
+     },
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-23",
+      "value": "19.45"
+     },
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-22",
+      "value": "19.03"
+     },
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-21",
+      "value": "16.68"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "AVGO",
+   "as_of": "2026-10-29",
+   "events": [
+    {
+     "type": "earnings",
+     "date": "2026-12-09",
+     "description": "AVGO Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 41,
+     "eps_estimate": 3.9001,
+     "hour": "amc"
+    },
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 41,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "ex_dividend",
+     "date": "2026-09-21",
+     "source": "yfinance",
+     "description": "AVGO went ex-dividend \u2014 the price drops by roughly the dividend on this date mechanically, with no news behind it",
+     "days_ago": 38
+    }
+   ],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}

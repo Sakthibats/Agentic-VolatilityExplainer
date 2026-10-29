@@ -1,0 +1,413 @@
+{
+ "schema": 1,
+ "ticker": "BA",
+ "trading_day": "2026-10-28",
+ "captured_at": "2026-10-29T01:10:00+00:00",
+ "selected_as": "move",
+ "change_pct": -0.62,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: -10.69% \u2014 unusual for this stock (about 3.89x its normal move for that span, expected ~2.75%)",
+   "this week: -11.7% \u2014 elevated for this stock (about 1.91x its normal move for that span, expected ~6.14%)",
+   "the past 2 weeks: -9.82% \u2014 typical relative to this stock's own typical volatility (expected ~8.69%, 1.13x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "BA",
+   "price": 167.14,
+   "prev_close": 168.18,
+   "change_pct": -0.62,
+   "realized_vol_annualized_pct": 43.6,
+   "changes_pct": {
+    "1d": -10.69,
+    "1w": -11.7,
+    "2w": -9.82,
+    "1mo": -8.79,
+    "1y": -24.02,
+    "ytd": -26.16
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: -10.69% \u2014 unusual for this stock (about 3.89x its normal move for that span, expected ~2.75%)",
+     "this week: -11.7% \u2014 elevated for this stock (about 1.91x its normal move for that span, expected ~6.14%)",
+     "the past 2 weeks: -9.82% \u2014 typical relative to this stock's own typical volatility (expected ~8.69%, 1.13x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "BA",
+   "headlines": [
+    {
+     "headline": "New U.S. Department of Energy Consortium Advances SI-Driven Battery Manufacturing to Strengthen the Country\u2019s Competitiveness",
+     "summary": "LEMONT, Ill., October 28, 2026--The Battery Manufacturing Accelerator will integrate SI and advanced manufacturing to speed energy storage innovation from lab to market",
+     "datetime": 1793221620,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=a17eaddcff397f7edc0dddabc12f4e0d0901dbf326f6f02d6f34448f285218ef"
+    },
+    {
+     "headline": "Boeing CEO admits 737 ramp taking longer than hoped",
+     "summary": "Boeing\u2019s CEO says the 737 ramp to 47 jets per month is taking longer than expected. Here is what slipped, what it means for cash flow, and what comes next.",
+     "datetime": 1793221380,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=beaaef6d292ca9292e1bf833fd24a5ef070cf7b96a37aba9f136c5758b4415c1"
+    },
+    {
+     "headline": "What\u2019s Behind Archer Aviation (ACHR) Stock\u2019s Latest Move?",
+     "summary": "Archer Aviation (ACHR) is back in focus after unveiling plans for three Midnight air taxi networks across Austin, Dallas Fort Worth and Houston, linking major airports, downtown hubs and key leisure...",
+     "datetime": 1793214428,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=14228d0d1da6958ebc9e78db29171e9501219cac6e72526d0bfbf48969d6d2bc"
+    },
+    {
+     "headline": "S&P 500 Unusual Volume Movers: October 28, 2026 Session",
+     "summary": "S&P 500 unusual-volume movers for October 28, 2026 include FLEX, Vertiv, F5, Lennox and other names, with volume comparisons and session price moves.",
+     "datetime": 1793210752,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=31d7d0d38981582812e148f9fa5e983f6466a24f1583cf36d7b0974c89d74743"
+    },
+    {
+     "headline": "Boeing Stock Hits Fresh 18-Month Low After Slew Of Price Target Cuts \u2013 BofA Says Turnaround Story Is \u2018Still Intact\u2019",
+     "summary": "According to The Fly, UBS lowered its price target on Boeing to $240 from $275 while maintaining a \u2018Buy\u2019 rating, citing a slower-than-expected recovery in free cash flow despite progress in...",
+     "datetime": 1793208974,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=2cbc3f1fa6b9c806011c23733baae93b4fdaabdff4545a55980c29ce8a4a2b84"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "BA",
+   "expiry": "2026-11-13",
+   "days_to_expiry": 15,
+   "atm_iv_pct": 34.2,
+   "iv_chain_percentile": 2,
+   "skew_points": -3.0,
+   "put_call_ratio": 1.5,
+   "total_put_oi": 11890,
+   "total_call_oi": 7952
+  },
+  "get_options_positioning": {
+   "ticker": "BA",
+   "spot": 167.14,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-13",
+   "primary_days_to_expiry": 15,
+   "max_pain_strike": 180.0,
+   "resistance_walls": [
+    {
+     "strike": 210.0,
+     "open_interest": 2390
+    },
+    {
+     "strike": 220.0,
+     "open_interest": 831
+    },
+    {
+     "strike": 255.0,
+     "open_interest": 764
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 165.0,
+     "open_interest": 8073
+    },
+    {
+     "strike": 135.0,
+     "open_interest": 963
+    },
+    {
+     "strike": 175.0,
+     "open_interest": 432
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 15,
+     "atm_iv_pct": 34.2
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 22,
+     "atm_iv_pct": 33.2
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 29,
+     "atm_iv_pct": 32.0
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 160.0,
+     "volume": 641,
+     "open_interest": 214,
+     "vol_oi_ratio": 3.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 175.0,
+     "volume": 446,
+     "open_interest": 300,
+     "vol_oi_ratio": 1.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 195.0,
+     "volume": 115,
+     "open_interest": 112,
+     "vol_oi_ratio": 1.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 165.0,
+     "volume": 7824,
+     "open_interest": 8073,
+     "vol_oi_ratio": 1.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 180.0,
+     "volume": 249,
+     "open_interest": 297,
+     "vol_oi_ratio": 0.8,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 7764,
+   "otm_put_oi": 9970,
+   "positioning_lean_score": -0.12,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "BA",
+   "as_of": "2026-10-29",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-28",
+     "days_ago": 1,
+     "firm": "Jefferies",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 265.0,
+     "price_target_to": 230.0,
+     "is_rating_change": false,
+     "description": "Jefferies maintained its Buy rating on BA and cut its price target from $265.0 to $230.0"
+    },
+    {
+     "date": "2026-10-28",
+     "days_ago": 1,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 275.0,
+     "price_target_to": 240.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Buy rating on BA and cut its price target from $275.0 to $240.0"
+    },
+    {
+     "date": "2026-10-28",
+     "days_ago": 1,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 290.0,
+     "price_target_to": 240.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Overweight rating on BA and cut its price target from $290.0 to $240.0"
+    },
+    {
+     "date": "2026-10-28",
+     "days_ago": 1,
+     "firm": "BNP Paribas",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 265.0,
+     "price_target_to": 205.0,
+     "is_rating_change": false,
+     "description": "BNP Paribas maintained its Outperform rating on BA and cut its price target from $265.0 to $205.0"
+    },
+    {
+     "date": "2026-10-28",
+     "days_ago": 1,
+     "firm": "Barclays",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 300.0,
+     "price_target_to": 250.0,
+     "is_rating_change": false,
+     "description": "Barclays maintained its Overweight rating on BA and cut its price target from $300.0 to $250.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.89,
+    "verdict": "leaning bullish",
+    "analysts": 28,
+    "counts": {
+     "strongBuy": 6,
+     "buy": 19,
+     "hold": 3,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.18 to 1.89; bearish ratings 1 to 0)"
+   },
+   "price_target": {
+    "mean": 243.23,
+    "median": 241.0,
+    "high": 305.0,
+    "low": 157.0,
+    "current_price": 167.14,
+    "dispersion_pct": 60.8,
+    "upside_vs_mean_pct": 45.5,
+    "upside_vs_median_pct": 44.2
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "BA",
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "comparison": {
+    "2w": {
+     "stock_change_pct": -9.82,
+     "sector_etf_change_pct": -0.44,
+     "relative_to_sector_pct": -9.38
+    },
+    "1mo": {
+     "stock_change_pct": -8.79,
+     "sector_etf_change_pct": -0.51,
+     "relative_to_sector_pct": -8.28
+    },
+    "ytd": {
+     "stock_change_pct": -26.16,
+     "sector_etf_change_pct": 7.14,
+     "relative_to_sector_pct": -33.3
+    },
+    "1w": {
+     "stock_change_pct": -11.7,
+     "sector_etf_change_pct": 0.67,
+     "relative_to_sector_pct": -12.37
+    },
+    "1d": {
+     "stock_change_pct": -10.69,
+     "sector_etf_change_pct": 0.57,
+     "relative_to_sector_pct": -11.26
+    },
+    "1y": {
+     "stock_change_pct": -24.02,
+     "sector_etf_change_pct": 9.64,
+     "relative_to_sector_pct": -33.66
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-28",
+    "realtime_end": "2026-10-28",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9606,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-27",
+      "value": "17.52"
+     },
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-26",
+      "value": "18.39"
+     },
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-23",
+      "value": "19.45"
+     },
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-22",
+      "value": "19.03"
+     },
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-21",
+      "value": "16.68"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "BA",
+   "as_of": "2026-10-29",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 41,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-25",
+     "description": "BA Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 88,
+     "eps_estimate": 0.0275,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-27",
+     "description": "BA reported Q3 2026 earnings before the open \u2014 EPS -0.34 vs -0.2138 expected (miss, -59.0%)",
+     "source": "finnhub",
+     "days_ago": 2,
+     "eps_actual": -0.34,
+     "eps_estimate": -0.2138,
+     "surprise": "miss",
+     "surprise_pct": -59.0,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

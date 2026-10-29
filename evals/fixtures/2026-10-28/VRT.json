@@ -1,0 +1,411 @@
+{
+ "schema": 1,
+ "ticker": "VRT",
+ "trading_day": "2026-10-28",
+ "captured_at": "2026-10-29T01:10:54+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 16.48,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "today: 4.39% \u2014 typical relative to this stock's own typical volatility (expected ~3.16%, 1.39x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past 2 weeks: -12.11% \u2014 typical relative to this stock's own typical volatility (expected ~9.98%, 1.21x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past month: -14.54% \u2014 typical relative to this stock's own typical volatility (expected ~14.46%, 1.01x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "VRT",
+   "price": 242.94,
+   "prev_close": 208.56,
+   "change_pct": 16.48,
+   "realized_vol_annualized_pct": 50.1,
+   "changes_pct": {
+    "1d": 4.39,
+    "1w": 2.46,
+    "2w": -12.11,
+    "1mo": -14.54,
+    "1y": 12.21,
+    "ytd": 18.85
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "today: 4.39% \u2014 typical relative to this stock's own typical volatility (expected ~3.16%, 1.39x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past 2 weeks: -12.11% \u2014 typical relative to this stock's own typical volatility (expected ~9.98%, 1.21x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past month: -14.54% \u2014 typical relative to this stock's own typical volatility (expected ~14.46%, 1.01x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "VRT",
+   "headlines": [
+    {
+     "headline": "Stock Market Today, Oct. 28: Markets Edge Higher as Fed Holds Rates Steady",
+     "summary": "Cloud and AI infrastructure demand remains robust despite tech spending concerns, today, Oct. 28, 2026.",
+     "datetime": 1793224997,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=a88e12c58ffaa5e2b190325974b9e6e2867062e172f7208ea85a27ae4f8120e8"
+    },
+    {
+     "headline": "US Equity Markets End Higher After Federal Reserve Votes to Keep Policy Rate Unchanged",
+     "summary": "US equity indexes ended higher Wednesday after the Federal Reserve decided to maintain policy rates",
+     "datetime": 1793218047,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=17ec4040b1af222396fbb1e8bd2a28e48411ea4e6517d5dd8705053660d4c9a8"
+    },
+    {
+     "headline": "S&P 500 Top Movers: Gainers and Losers in Today's US Session",
+     "summary": "S&P 500 top movers in today's US session: Vertiv, Flex and Oracle led gainers, while F5, CoStar and C.H. Robinson led decliners.",
+     "datetime": 1793217972,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=c7bece92ad49ddf180f89ace994421e825d2749a9395fb64593a0464e0f2060f"
+    },
+    {
+     "headline": "Vertiv Guides for 38% Growth, GE Vernova's Orders Jumped 96%. Which AI Power Stock Is the Better Buy After the Sell-off?",
+     "summary": "Both AI infrastructure stocks are trading far below their all-time highs.",
+     "datetime": 1793217000,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=bcb3ba0e2712f369075122d6cf1d863a693f029ab21d49a1b7a9220a988d4267"
+    },
+    {
+     "headline": "3 AI Stocks Crush Earnings: Vertiv and Amphenol Soar While GE Vernova Slips",
+     "summary": "AI infrastructure stocks are surging after blockbuster earnings from Vertiv (NYSE: VRT), Amphenol (NYSE: APH), and GE Vernova (NYSE: GEV). All three companies beat Wall Street's earnings...",
+     "datetime": 1793216771,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=51312f08e61809cd0593658e034819eadd2339b166e88c83f49689ac811bcdc9"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "VRT",
+   "expiry": "2026-11-13",
+   "days_to_expiry": 15,
+   "atm_iv_pct": 58.0,
+   "iv_chain_percentile": 8,
+   "skew_points": -1.2,
+   "put_call_ratio": 1.34,
+   "total_put_oi": 3626,
+   "total_call_oi": 2708
+  },
+  "get_options_positioning": {
+   "ticker": "VRT",
+   "spot": 242.94,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-13",
+   "primary_days_to_expiry": 15,
+   "max_pain_strike": 210.0,
+   "resistance_walls": [
+    {
+     "strike": 220.0,
+     "open_interest": 432
+    },
+    {
+     "strike": 210.0,
+     "open_interest": 388
+    },
+    {
+     "strike": 225.0,
+     "open_interest": 306
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 185.0,
+     "open_interest": 1839
+    },
+    {
+     "strike": 180.0,
+     "open_interest": 209
+    },
+    {
+     "strike": 200.0,
+     "open_interest": 159
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 15,
+     "atm_iv_pct": 58.0
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 22,
+     "atm_iv_pct": 56.8
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 29,
+     "atm_iv_pct": 53.6
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 165.0,
+     "volume": 147,
+     "open_interest": 57,
+     "vol_oi_ratio": 2.6,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 250.0,
+     "volume": 194,
+     "open_interest": 81,
+     "vol_oi_ratio": 2.4,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 245.0,
+     "volume": 265,
+     "open_interest": 168,
+     "vol_oi_ratio": 1.6,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 260.0,
+     "volume": 112,
+     "open_interest": 81,
+     "vol_oi_ratio": 1.4,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 200.0,
+     "volume": 110,
+     "open_interest": 159,
+     "vol_oi_ratio": 0.7,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 641,
+   "otm_put_oi": 3541,
+   "positioning_lean_score": -0.69,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "VRT",
+   "as_of": "2026-10-29",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-15",
+     "days_ago": 14,
+     "firm": "Mizuho",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 300.0,
+     "price_target_to": 280.0,
+     "is_rating_change": false,
+     "description": "Mizuho maintained its Outperform rating on VRT and cut its price target from $300.0 to $280.0"
+    },
+    {
+     "date": "2026-10-14",
+     "days_ago": 15,
+     "firm": "RBC Capital",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 337.0,
+     "price_target_to": 323.0,
+     "is_rating_change": false,
+     "description": "RBC Capital maintained its Outperform rating on VRT and cut its price target from $337.0 to $323.0"
+    },
+    {
+     "date": "2026-10-12",
+     "days_ago": 17,
+     "firm": "Evercore ISI Group",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 375.0,
+     "price_target_to": 325.0,
+     "is_rating_change": false,
+     "description": "Evercore ISI Group maintained its Outperform rating on VRT and cut its price target from $375.0 to $325.0"
+    },
+    {
+     "date": "2026-10-09",
+     "days_ago": 20,
+     "firm": "GLJ Research",
+     "action": "reiterated",
+     "from_grade": "Sell",
+     "to_grade": "Sell",
+     "price_target_from": 188.0,
+     "price_target_to": 188.0,
+     "is_rating_change": false,
+     "description": "GLJ Research reiterated its Sell rating on VRT with a $188.0 price target"
+    },
+    {
+     "date": "2026-10-06",
+     "days_ago": 23,
+     "firm": "GLJ Research",
+     "action": "initiated coverage",
+     "from_grade": null,
+     "to_grade": "Sell",
+     "price_target_from": null,
+     "price_target_to": 188.0,
+     "is_rating_change": false,
+     "description": "GLJ Research initiated coverage of VRT at Sell with a $188.0 price target"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.03,
+    "verdict": "leaning bullish",
+    "analysts": 30,
+    "counts": {
+     "strongBuy": 3,
+     "buy": 23,
+     "hold": 4,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.04 to 2.03)"
+   },
+   "price_target": {
+    "mean": 333.0,
+    "median": 330.0,
+    "high": 427.0,
+    "low": 236.0,
+    "current_price": 242.94,
+    "dispersion_pct": 57.4,
+    "upside_vs_mean_pct": 37.1,
+    "upside_vs_median_pct": 35.8
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "VRT",
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "comparison": {
+    "2w": {
+     "stock_change_pct": -12.11,
+     "sector_etf_change_pct": -0.44,
+     "relative_to_sector_pct": -11.67
+    },
+    "1mo": {
+     "stock_change_pct": -14.54,
+     "sector_etf_change_pct": -0.51,
+     "relative_to_sector_pct": -14.03
+    },
+    "ytd": {
+     "stock_change_pct": 18.85,
+     "sector_etf_change_pct": 7.14,
+     "relative_to_sector_pct": 11.71
+    },
+    "1w": {
+     "stock_change_pct": 2.46,
+     "sector_etf_change_pct": 0.67,
+     "relative_to_sector_pct": 1.79
+    },
+    "1d": {
+     "stock_change_pct": 4.39,
+     "sector_etf_change_pct": 0.57,
+     "relative_to_sector_pct": 3.82
+    },
+    "1y": {
+     "stock_change_pct": 12.21,
+     "sector_etf_change_pct": 9.64,
+     "relative_to_sector_pct": 2.57
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-28",
+    "realtime_end": "2026-10-28",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9606,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-27",
+      "value": "17.52"
+     },
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-26",
+      "value": "18.39"
+     },
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-23",
+      "value": "19.45"
+     },
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-22",
+      "value": "19.03"
+     },
+     {
+      "realtime_start": "2026-10-28",
+      "realtime_end": "2026-10-28",
+      "date": "2026-10-21",
+      "value": "16.68"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "VRT",
+   "as_of": "2026-10-29",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 41,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-28",
+     "description": "VRT reported Q3 2026 earnings before the open \u2014 EPS 2.21 vs 1.8488 expected (beat, +19.5%)",
+     "source": "finnhub",
+     "days_ago": 1,
+     "eps_actual": 2.21,
+     "eps_estimate": 1.8488,
+     "surprise": "beat",
+     "surprise_pct": 19.5,
+     "hour": "bmo"
+    },
+    {
+     "type": "ex_dividend",
+     "date": "2026-09-14",
+     "source": "yfinance",
+     "description": "VRT went ex-dividend \u2014 the price drops by roughly the dividend on this date mechanically, with no news behind it",
+     "days_ago": 45
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}
