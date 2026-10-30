@@ -1,0 +1,371 @@
+{
+ "schema": 1,
+ "ticker": "COST",
+ "trading_day": "2026-10-29",
+ "captured_at": "2026-10-30T01:17:05+00:00",
+ "selected_as": "control",
+ "change_pct": 1.36,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "COST",
+   "price": 996.08,
+   "prev_close": 982.73,
+   "change_pct": 1.36,
+   "realized_vol_annualized_pct": 16.8,
+   "changes_pct": {
+    "1d": -0.95,
+    "1w": -1.56,
+    "2w": 0.07,
+    "1mo": 6.29,
+    "1y": 6.3,
+    "ytd": 15.51
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   }
+  },
+  "get_news": {
+   "ticker": "COST",
+   "headlines": [
+    {
+     "headline": "First Google Search, Now Amazon Retail. Tech\u2019s Moneymakers Are Stumbling.",
+     "summary": "Amazon Web Services is chugging along, but like Alphabet the day before, the business that made it famous underperformed.",
+     "datetime": 1793310180,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=81b9d203e547b4739e5fc0a7cce5145542c44c4a393205d997387d4bdae423c9"
+    },
+    {
+     "headline": "Costco (COST) Ascends While Market Falls: Some Facts to Note",
+     "summary": "In the closing of the recent trading day, Costco (COST) stood at $996.08, denoting a +1.36% move from the preceding trading day.",
+     "datetime": 1793306704,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=8a2ffbb119fcb7528ef898a670458c223affacc47c10cfa0b2228ef74c963554"
+    },
+    {
+     "headline": "Amazon Stock Tanks After Earnings Miss",
+     "summary": "The retail and cloud services giant reports weaker-than-expected earnings and revenue in the third quarter.",
+     "datetime": 1793304780,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=adc4f6be97057d970f3ecbef10a002ef4a061b8acb5b19c482743abca1df87b1"
+    },
+    {
+     "headline": "What DoorDash (DASH) Said on Its Q3 Earnings Call",
+     "summary": "DoorDash (NASDAQ:DASH) executives emphasized the company\u2019s proposed acquisition of Instacart, product investments and continued momentum in its core restaurant and new-verticals businesses during its...",
+     "datetime": 1793297683,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=092d13a03f5ec22c8f72a3cab981ff7f489c5dbf65a2d97a722d1889df06e6af"
+    },
+    {
+     "headline": "If Casey's Stock Looks Expensive, You Need To Read This",
+     "summary": "For questions about this article or underlying research, email help@trefis.com.",
+     "datetime": 1793295374,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=54a6b0352bfef667ef57a58e9fff49370501c21dff86efc8a16865a4201c1786"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "COST",
+   "expiry": "2026-11-13",
+   "days_to_expiry": 14,
+   "atm_iv_pct": 22.7,
+   "iv_chain_percentile": 2,
+   "skew_points": 1.0,
+   "put_call_ratio": 3.43,
+   "total_put_oi": 8670,
+   "total_call_oi": 2531
+  },
+  "get_options_positioning": {
+   "ticker": "COST",
+   "spot": 996.08,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-13",
+   "primary_days_to_expiry": 14,
+   "max_pain_strike": 970.0,
+   "resistance_walls": [
+    {
+     "strike": 970.0,
+     "open_interest": 177
+    },
+    {
+     "strike": 1000.0,
+     "open_interest": 145
+    },
+    {
+     "strike": 1160.0,
+     "open_interest": 111
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 640.0,
+     "open_interest": 1334
+    },
+    {
+     "strike": 630.0,
+     "open_interest": 1072
+    },
+    {
+     "strike": 600.0,
+     "open_interest": 553
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 14,
+     "atm_iv_pct": 22.7
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 21,
+     "atm_iv_pct": 21.5
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 21.7
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 1060.0,
+     "volume": 162,
+     "open_interest": 48,
+     "vol_oi_ratio": 3.4,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 770.0,
+     "volume": 114,
+     "open_interest": 60,
+     "vol_oi_ratio": 1.9,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 1160.0,
+     "volume": 192,
+     "open_interest": 111,
+     "vol_oi_ratio": 1.7,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 1764,
+   "otm_put_oi": 8389,
+   "positioning_lean_score": -0.65,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "COST",
+   "as_of": "2026-10-30",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-21",
+     "days_ago": 9,
+     "firm": "CICC",
+     "action": "initiated coverage",
+     "from_grade": null,
+     "to_grade": "Outperform",
+     "price_target_from": null,
+     "price_target_to": 1050.0,
+     "is_rating_change": false,
+     "description": "CICC initiated coverage of COST at Outperform with a $1050.0 price target"
+    },
+    {
+     "date": "2026-10-15",
+     "days_ago": 15,
+     "firm": "Tigress Financial",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 1065.0,
+     "price_target_to": 1250.0,
+     "is_rating_change": false,
+     "description": "Tigress Financial maintained its Buy rating on COST and raised its price target from $1065.0 to $1250.0"
+    },
+    {
+     "date": "2026-10-09",
+     "days_ago": 21,
+     "firm": "RBC Capital",
+     "action": "reiterated",
+     "from_grade": "Sector Perform",
+     "to_grade": "Sector Perform",
+     "price_target_from": 1000.0,
+     "price_target_to": 1000.0,
+     "is_rating_change": false,
+     "description": "RBC Capital reiterated its Sector Perform rating on COST with a $1000.0 price target"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.32,
+    "verdict": "leaning bullish",
+    "analysts": 41,
+    "counts": {
+     "strongBuy": 5,
+     "buy": 21,
+     "hold": 13,
+     "sell": 1,
+     "strongSell": 1
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.38 to 2.32; bearish ratings 2 to 2)"
+   },
+   "price_target": {
+    "mean": 1067.59,
+    "median": 1065.0,
+    "high": 1315.0,
+    "low": 770.0,
+    "current_price": 996.08,
+    "dispersion_pct": 51.0,
+    "upside_vs_mean_pct": 7.2,
+    "upside_vs_median_pct": 6.9
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "COST",
+   "sector": "Consumer Defensive",
+   "sector_etf": "XLP",
+   "comparison": {
+    "1w": {
+     "stock_change_pct": -1.56,
+     "sector_etf_change_pct": -0.31,
+     "relative_to_sector_pct": -1.25
+    },
+    "1y": {
+     "stock_change_pct": 6.3,
+     "sector_etf_change_pct": 12.63,
+     "relative_to_sector_pct": -6.33
+    },
+    "ytd": {
+     "stock_change_pct": 15.51,
+     "sector_etf_change_pct": 13.93,
+     "relative_to_sector_pct": 1.58
+    },
+    "1d": {
+     "stock_change_pct": -0.95,
+     "sector_etf_change_pct": -0.36,
+     "relative_to_sector_pct": -0.59
+    },
+    "1mo": {
+     "stock_change_pct": 6.29,
+     "sector_etf_change_pct": 6.1,
+     "relative_to_sector_pct": 0.19
+    },
+    "2w": {
+     "stock_change_pct": 0.07,
+     "sector_etf_change_pct": 0.91,
+     "relative_to_sector_pct": -0.84
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-29",
+    "realtime_end": "2026-10-29",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9607,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-28",
+      "value": "16.91"
+     },
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-27",
+      "value": "17.52"
+     },
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-26",
+      "value": "18.39"
+     },
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-23",
+      "value": "19.45"
+     },
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-22",
+      "value": "19.03"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "COST",
+   "as_of": "2026-10-30",
+   "events": [
+    {
+     "type": "ex_dividend",
+     "date": "2026-10-30",
+     "source": "yfinance",
+     "description": "COST goes ex-dividend \u2014 expect a mechanical price drop of roughly the dividend",
+     "days_until": 0
+    },
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 40,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-12-10",
+     "description": "COST Q1 2027 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 41,
+     "eps_estimate": 5.0319
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-09-24",
+     "description": "COST reported quarterly earnings after the close \u2014 EPS 6.75 vs 6.53 expected (beat, +3.4%)",
+     "source": "yfinance",
+     "days_ago": 36,
+     "eps_actual": 6.75,
+     "eps_estimate": 6.53,
+     "surprise": "beat",
+     "surprise_pct": 3.4,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub+yfinance"
+  }
+ }
+}

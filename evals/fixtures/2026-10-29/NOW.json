@@ -1,0 +1,411 @@
+{
+ "schema": 1,
+ "ticker": "NOW",
+ "trading_day": "2026-10-29",
+ "captured_at": "2026-10-30T01:18:14+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -26.95,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "today: -3.0% \u2014 typical relative to this stock's own typical volatility (expected ~2.45%, 1.22x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past month: 15.54% \u2014 typical relative to this stock's own typical volatility (expected ~11.23%, 1.38x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "NOW",
+   "price": 109.67,
+   "prev_close": 150.13,
+   "change_pct": -26.95,
+   "realized_vol_annualized_pct": 38.9,
+   "changes_pct": {
+    "1d": -3.0,
+    "1w": -1.95,
+    "2w": 7.25,
+    "1mo": 15.54,
+    "1y": -20.67,
+    "ytd": 1.82
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "today: -3.0% \u2014 typical relative to this stock's own typical volatility (expected ~2.45%, 1.22x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past month: 15.54% \u2014 typical relative to this stock's own typical volatility (expected ~11.23%, 1.38x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "NOW",
+   "headlines": [
+    {
+     "headline": "What Stagwell (STGW) Said on Its Q3 Earnings Call",
+     "summary": "Stagwell (NASDAQ:STGW) reported record third-quarter revenue, net revenue, adjusted EBITDA and adjusted earnings per share, as the marketing company emphasized its expansion into AI-based marketing...",
+     "datetime": 1793312112,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=bc45d44d6d25a6db97244f0f23e73eca4ad252b3dae50ddaca8300f91fc0c01f"
+    },
+    {
+     "headline": "Dow Jones Futures: Amazon, Intel Lead Earnings Losers After Google, ServiceNow, Fortinet Hit Nasdaq",
+     "summary": "Amazon, Intel and Illumina were earnings losers overnight after Google, ServiceNow and Fortinet slammed techs. Much of the market is doing fine.",
+     "datetime": 1793311099,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=29af632925ef1c1bbde9c465d3cd7dd95bf05d1bfc0f26c90a8c49f1868c2534"
+    },
+    {
+     "headline": "Why ServiceNow (NOW) stock is nosediving",
+     "summary": "Shares of enterprise workflow automation company ServiceNow (NYSE:NOW) fell 26.3% in the afternoon session after the company forecast fourth-quarter current remaining performance obligations growth...",
+     "datetime": 1793308354,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=26a127357dca72e661ac49ed3aedd35644f4cc6bb29b63b5835aab6b9e1ea148"
+    },
+    {
+     "headline": "ServiceNow's AI boom faces a big test: Can it reassure Wall Street?",
+     "summary": "ServiceNow President & CFO Gina Mastantuono joins Market Domination to discuss the company's growing AI revenue opportunity and its strategy for maintaining investor confidence. Mastantuono addresses...",
+     "datetime": 1793305175,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=0e1be69fe6f97c4a4722cbe4ca756ce9ad805c813473074ef348973e029e430f"
+    },
+    {
+     "headline": "S&P 500 Top Movers: Oct. 29, 2026 Gainers and Losers",
+     "summary": "S&P 500 top movers for Oct. 29, 2026, led by CVNA and GEN among gainers and NOW and FTNT among losers.",
+     "datetime": 1793304370,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=2b48361af4324a229c8c5020e404c700fb7325d2fdbfb46cba45c4a44b5d7882"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "NOW",
+   "expiry": "2026-11-13",
+   "days_to_expiry": 14,
+   "atm_iv_pct": 53.3,
+   "iv_chain_percentile": 4,
+   "skew_points": -4.6,
+   "put_call_ratio": 1.05,
+   "total_put_oi": 7340,
+   "total_call_oi": 6964
+  },
+  "get_options_positioning": {
+   "ticker": "NOW",
+   "spot": 109.67,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-13",
+   "primary_days_to_expiry": 14,
+   "max_pain_strike": 145.0,
+   "resistance_walls": [
+    {
+     "strike": 170.0,
+     "open_interest": 751
+    },
+    {
+     "strike": 190.0,
+     "open_interest": 742
+    },
+    {
+     "strike": 200.0,
+     "open_interest": 496
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 135.0,
+     "open_interest": 622
+    },
+    {
+     "strike": 115.0,
+     "open_interest": 543
+    },
+    {
+     "strike": 130.0,
+     "open_interest": 498
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 14,
+     "atm_iv_pct": 53.3
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 21,
+     "atm_iv_pct": 52.1
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 50.5
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 115.0,
+     "volume": 2425,
+     "open_interest": 15,
+     "vol_oi_ratio": 161.7,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 95.0,
+     "volume": 329,
+     "open_interest": 7,
+     "vol_oi_ratio": 47.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 85.0,
+     "volume": 313,
+     "open_interest": 7,
+     "vol_oi_ratio": 44.7,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 125.0,
+     "volume": 405,
+     "open_interest": 15,
+     "vol_oi_ratio": 27.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 123.0,
+     "volume": 238,
+     "open_interest": 9,
+     "vol_oi_ratio": 26.4,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 6931,
+   "otm_put_oi": 678,
+   "positioning_lean_score": 0.82,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "NOW",
+   "as_of": "2026-10-30",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-29",
+     "days_ago": 1,
+     "firm": "Macquarie",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 110.0,
+     "price_target_to": 120.0,
+     "is_rating_change": false,
+     "description": "Macquarie maintained its Neutral rating on NOW and raised its price target from $110.0 to $120.0"
+    },
+    {
+     "date": "2026-10-29",
+     "days_ago": 1,
+     "firm": "RBC Capital",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 176.0,
+     "price_target_to": 165.0,
+     "is_rating_change": false,
+     "description": "RBC Capital maintained its Outperform rating on NOW and cut its price target from $176.0 to $165.0"
+    },
+    {
+     "date": "2026-10-29",
+     "days_ago": 1,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 150.0,
+     "price_target_to": 160.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Overweight rating on NOW and raised its price target from $150.0 to $160.0"
+    },
+    {
+     "date": "2026-10-29",
+     "days_ago": 1,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 170.0,
+     "price_target_to": 157.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Buy rating on NOW and cut its price target from $170.0 to $157.0"
+    },
+    {
+     "date": "2026-10-29",
+     "days_ago": 1,
+     "firm": "StoneX",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 165.0,
+     "price_target_to": 150.0,
+     "is_rating_change": false,
+     "description": "StoneX maintained its Buy rating on NOW and cut its price target from $165.0 to $150.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.98,
+    "verdict": "leaning bullish",
+    "analysts": 49,
+    "counts": {
+     "strongBuy": 9,
+     "buy": 35,
+     "hold": 3,
+     "sell": 1,
+     "strongSell": 1
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.96 to 1.98)"
+   },
+   "price_target": {
+    "mean": 155.67,
+    "median": 158.5,
+    "high": 266.0,
+    "low": 72.0,
+    "current_price": 109.67,
+    "dispersion_pct": 124.6,
+    "upside_vs_mean_pct": 41.9,
+    "upside_vs_median_pct": 44.5
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "NOW",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1w": {
+     "stock_change_pct": -1.95,
+     "sector_etf_change_pct": 1.3,
+     "relative_to_sector_pct": -3.25
+    },
+    "1y": {
+     "stock_change_pct": -20.67,
+     "sector_etf_change_pct": 28.41,
+     "relative_to_sector_pct": -49.08
+    },
+    "ytd": {
+     "stock_change_pct": 1.82,
+     "sector_etf_change_pct": 32.84,
+     "relative_to_sector_pct": -31.02
+    },
+    "1d": {
+     "stock_change_pct": -3.0,
+     "sector_etf_change_pct": 0.8,
+     "relative_to_sector_pct": -3.8
+    },
+    "1mo": {
+     "stock_change_pct": 15.54,
+     "sector_etf_change_pct": -1.8,
+     "relative_to_sector_pct": 17.34
+    },
+    "2w": {
+     "stock_change_pct": 7.25,
+     "sector_etf_change_pct": 0.3,
+     "relative_to_sector_pct": 6.95
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-29",
+    "realtime_end": "2026-10-29",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9607,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-28",
+      "value": "16.91"
+     },
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-27",
+      "value": "17.52"
+     },
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-26",
+      "value": "18.39"
+     },
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-23",
+      "value": "19.45"
+     },
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-22",
+      "value": "19.03"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "NOW",
+   "as_of": "2026-10-30",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 40,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-26",
+     "description": "NOW Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 88,
+     "eps_estimate": 1.1853,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-28",
+     "description": "NOW reported Q3 2026 earnings after the close \u2014 EPS 1 vs 1.0341 expected (miss, -3.3%)",
+     "source": "finnhub",
+     "days_ago": 2,
+     "eps_actual": 1,
+     "eps_estimate": 1.0341,
+     "surprise": "miss",
+     "surprise_pct": -3.3,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

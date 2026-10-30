@@ -1,0 +1,344 @@
+{
+ "schema": 1,
+ "ticker": "FTAI",
+ "trading_day": "2026-10-29",
+ "captured_at": "2026-10-30T01:17:57+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 17.27,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "today: 5.34% \u2014 elevated for this stock (about 1.66x its normal move for that span, expected ~3.22%)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "FTAI",
+   "price": 196.01,
+   "prev_close": 167.14,
+   "change_pct": 17.27,
+   "realized_vol_annualized_pct": 51.1,
+   "changes_pct": {
+    "1d": 5.34,
+    "1w": 2.21,
+    "2w": 2.38,
+    "1mo": -1.06,
+    "1y": -9.0,
+    "ytd": -20.1
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "today: 5.34% \u2014 elevated for this stock (about 1.66x its normal move for that span, expected ~3.22%)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "FTAI",
+   "headlines": [
+    {
+     "headline": "FTAI Aviation Ltd. Q3 2026 Earnings Call Summary",
+     "summary": "Moby summary of FTAI Aviation Ltd.'s Q3 2026 earnings call",
+     "datetime": 1793312896,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=5d2f5ff9eb7cf422941107abb3fbcd7c771e1e7745ddb0dfe887c1c75690016a"
+    },
+    {
+     "headline": "FTAI Aviation falls as earnings miss estimates despite growth",
+     "summary": "Investing.com -- FTAI Aviation Ltd (NASDAQ:FTAI) reported third quarter results that fell short of analyst expectations, with adjusted earnings per share of $1.43 missing the consensus estimate of...",
+     "datetime": 1793312750,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=23fc31d57a9fee11ec86df59f30493c0c7c4bbeac7ab5fe0e7341661d60b6915"
+    },
+    {
+     "headline": "Boeing\u2019s Earnings Were Great\u2014for GE Aerospace",
+     "summary": "Problems for Boeing can benefit GE Aerospace stock. Shares aren\u2019t trading that way.",
+     "datetime": 1793304780,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=dbeb82ce6f000f5e264fc6984c619ccaf6f068ec2284828de7acd3f83fc59712"
+    },
+    {
+     "headline": "Aerospace Stock FTAI Aviation Surges On Buybacks, Despite Miss",
+     "summary": "FTAI Aviation stock shot up more than 10% on Thursday morning even though its third-quarter earnings were a mixed bag.",
+     "datetime": 1793304287,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=3110c98360edf5c1861eef3459ade337a5d2f202d8de80a84680d8ce94709be5"
+    },
+    {
+     "headline": "Why FTAI Aviation Stock Popped on Thursday",
+     "summary": "FTAI Aviation says it will buy back $1 billion in stock -- but with what cash?",
+     "datetime": 1793298164,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=3dc3b9b941ad9c8349a59597c4cf622627b63eec52922633415e3abcfbbb9862"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "FTAI",
+   "expiry": "2026-11-13",
+   "days_to_expiry": 14,
+   "atm_iv_pct": 68.5,
+   "iv_chain_percentile": 11,
+   "skew_points": 1.4,
+   "put_call_ratio": 5.17,
+   "total_put_oi": 331,
+   "total_call_oi": 64
+  },
+  "get_options_positioning": {
+   "ticker": "FTAI",
+   "spot": 196.01,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-13",
+   "primary_days_to_expiry": 14,
+   "max_pain_strike": 175.0,
+   "resistance_walls": [
+    {
+     "strike": 200.0,
+     "open_interest": 19
+    },
+    {
+     "strike": 150.0,
+     "open_interest": 11
+    },
+    {
+     "strike": 180.0,
+     "open_interest": 6
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 135.0,
+     "open_interest": 129
+    },
+    {
+     "strike": 155.0,
+     "open_interest": 66
+    },
+    {
+     "strike": 160.0,
+     "open_interest": 40
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 14,
+     "atm_iv_pct": 68.5
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 21,
+     "atm_iv_pct": 64.9
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 60.2
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 200.0,
+     "volume": 368,
+     "open_interest": 19,
+     "vol_oi_ratio": 19.4,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 31,
+   "otm_put_oi": 331,
+   "positioning_lean_score": -0.83,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "FTAI",
+   "as_of": "2026-10-30",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-28",
+     "days_ago": 2,
+     "firm": "RBC Capital",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 300.0,
+     "price_target_to": 250.0,
+     "is_rating_change": false,
+     "description": "RBC Capital maintained its Outperform rating on FTAI and cut its price target from $300.0 to $250.0"
+    },
+    {
+     "date": "2026-10-19",
+     "days_ago": 11,
+     "firm": "Morgan Stanley",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 360.0,
+     "price_target_to": 310.0,
+     "is_rating_change": false,
+     "description": "Morgan Stanley maintained its Overweight rating on FTAI and cut its price target from $360.0 to $310.0"
+    },
+    {
+     "date": "2026-10-16",
+     "days_ago": 14,
+     "firm": "Macquarie",
+     "action": "initiated coverage",
+     "from_grade": null,
+     "to_grade": "Outperform",
+     "price_target_from": null,
+     "price_target_to": 305.0,
+     "is_rating_change": false,
+     "description": "Macquarie initiated coverage of FTAI at Outperform with a $305.0 price target"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.64,
+    "verdict": "leaning bullish",
+    "analysts": 11,
+    "counts": {
+     "strongBuy": 4,
+     "buy": 7,
+     "hold": 0,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.6 to 1.64)"
+   },
+   "price_target": {
+    "mean": 338.64,
+    "median": 310.0,
+    "high": 540.0,
+    "low": 250.0,
+    "current_price": 196.01,
+    "dispersion_pct": 85.6,
+    "upside_vs_mean_pct": 72.8,
+    "upside_vs_median_pct": 58.2
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "FTAI",
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "comparison": {
+    "1w": {
+     "stock_change_pct": 2.21,
+     "sector_etf_change_pct": 0.11,
+     "relative_to_sector_pct": 2.1
+    },
+    "1y": {
+     "stock_change_pct": -9.0,
+     "sector_etf_change_pct": 9.39,
+     "relative_to_sector_pct": -18.39
+    },
+    "ytd": {
+     "stock_change_pct": -20.1,
+     "sector_etf_change_pct": 7.5,
+     "relative_to_sector_pct": -27.6
+    },
+    "1d": {
+     "stock_change_pct": 5.34,
+     "sector_etf_change_pct": 0.34,
+     "relative_to_sector_pct": 5.0
+    },
+    "1mo": {
+     "stock_change_pct": -1.06,
+     "sector_etf_change_pct": -0.38,
+     "relative_to_sector_pct": -0.68
+    },
+    "2w": {
+     "stock_change_pct": 2.38,
+     "sector_etf_change_pct": 0.87,
+     "relative_to_sector_pct": 1.51
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-29",
+    "realtime_end": "2026-10-29",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9607,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-28",
+      "value": "16.91"
+     },
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-27",
+      "value": "17.52"
+     },
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-26",
+      "value": "18.39"
+     },
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-23",
+      "value": "19.45"
+     },
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-22",
+      "value": "19.03"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "FTAI",
+   "as_of": "2026-10-30",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 40,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-29",
+     "description": "FTAI reported Q3 2026 earnings before the open \u2014 EPS 1.43 vs 1.5438 expected (miss, -7.4%)",
+     "source": "finnhub",
+     "days_ago": 1,
+     "eps_actual": 1.43,
+     "eps_estimate": 1.5438,
+     "surprise": "miss",
+     "surprise_pct": -7.4,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

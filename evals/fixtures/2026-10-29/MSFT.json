@@ -1,0 +1,411 @@
+{
+ "schema": 1,
+ "ticker": "MSFT",
+ "trading_day": "2026-10-29",
+ "captured_at": "2026-10-30T01:17:14+00:00",
+ "selected_as": "control",
+ "change_pct": -0.16,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "MSFT",
+   "price": 530.14,
+   "prev_close": 531.01,
+   "change_pct": -0.16,
+   "realized_vol_annualized_pct": 19.5,
+   "changes_pct": {
+    "1d": -0.06,
+    "1w": -0.36,
+    "2w": -0.5,
+    "1mo": 4.33,
+    "1y": 0.73,
+    "ytd": 12.99
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   }
+  },
+  "get_news": {
+   "ticker": "MSFT",
+   "headlines": [
+    {
+     "headline": "Billionaire Bill Gates Just Issued a Blunt Warning About Artificial Intelligence",
+     "summary": "The Microsoft co-founder has now issued multiple warnings about the disruptive technology since late September.",
+     "datetime": 1793312400,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=8985ca75b18fcef1c04058261ac839a1360eaa0a72fa465eb49ab1448d795714"
+    },
+    {
+     "headline": "IBM (IBM) Debuts AI Agent Security Controls For Hybrid Cloud",
+     "summary": "International Business Machines (NYSE:IBM) introduced new identity and control capabilities for AI agents across hybrid cloud environments, combining HashiCorp Vault, Agent Identity, and watsonx...",
+     "datetime": 1793312157,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=805ad502bdf9ffb938aebbac5c232e73c8a53050ee5d85787b99ac834afe5fb3"
+    },
+    {
+     "headline": "Does The Move In CrowdStrike Stock Change Anything?",
+     "summary": "For questions about this article or underlying research, email help@trefis.com.",
+     "datetime": 1793310236,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=f4bee7db6b4605bdba9e0f789657994da08b8a089c2c6bdcc8648815bea56fd1"
+    },
+    {
+     "headline": "Things to consider if a company that made AI-related job cuts wants to rehire you",
+     "summary": "When organizations assign human tasks to automated models, they often overlook the unwritten duties staff handle beyond their formal job descriptions",
+     "datetime": 1793310217,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=ed7e73ac5087dd138933b14506e4d6770165c47e8362ac08d75307a09c28fb67"
+    },
+    {
+     "headline": "Amazon's mixed Q3 earnings raises some questions",
+     "summary": "CFRA Research Senior Vice President, Equity Research, Arun Sundaram, joins Market Domination Overtime to share his takeaways from Amazon's (AMZN) mixed third-quarter earnings results. Sundaram...",
+     "datetime": 1793307315,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=f863e5078189491f87c8dc63de07dff29e77398c2d286149517452801241a5f4"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "MSFT",
+   "expiry": "2026-11-13",
+   "days_to_expiry": 14,
+   "atm_iv_pct": 27.5,
+   "iv_chain_percentile": 19,
+   "skew_points": 0.5,
+   "put_call_ratio": 0.44,
+   "total_put_oi": 11937,
+   "total_call_oi": 27141
+  },
+  "get_options_positioning": {
+   "ticker": "MSFT",
+   "spot": 530.14,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-13",
+   "primary_days_to_expiry": 14,
+   "max_pain_strike": 515.0,
+   "resistance_walls": [
+    {
+     "strike": 550.0,
+     "open_interest": 11182
+    },
+    {
+     "strike": 540.0,
+     "open_interest": 3330
+    },
+    {
+     "strike": 575.0,
+     "open_interest": 999
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 400.0,
+     "open_interest": 1362
+    },
+    {
+     "strike": 450.0,
+     "open_interest": 883
+    },
+    {
+     "strike": 500.0,
+     "open_interest": 595
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 14,
+     "atm_iv_pct": 27.5
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 21,
+     "atm_iv_pct": 27.0
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 26.8
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 470.0,
+     "volume": 784,
+     "open_interest": 363,
+     "vol_oi_ratio": 2.2,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 485.0,
+     "volume": 736,
+     "open_interest": 364,
+     "vol_oi_ratio": 2.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 505.0,
+     "volume": 367,
+     "open_interest": 204,
+     "vol_oi_ratio": 1.8,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 520.0,
+     "volume": 236,
+     "open_interest": 144,
+     "vol_oi_ratio": 1.6,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 530.0,
+     "volume": 817,
+     "open_interest": 584,
+     "vol_oi_ratio": 1.4,
+     "moneyness": "ITM"
+    }
+   ],
+   "otm_call_oi": 23239,
+   "otm_put_oi": 11180,
+   "positioning_lean_score": 0.35,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "MSFT",
+   "as_of": "2026-10-30",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-29",
+     "days_ago": 1,
+     "firm": "Bernstein",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 662.0,
+     "price_target_to": 722.0,
+     "is_rating_change": false,
+     "description": "Bernstein maintained its Outperform rating on MSFT and raised its price target from $662.0 to $722.0"
+    },
+    {
+     "date": "2026-10-29",
+     "days_ago": 1,
+     "firm": "RBC Capital",
+     "action": "reiterated",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 640.0,
+     "price_target_to": 640.0,
+     "is_rating_change": false,
+     "description": "RBC Capital reiterated its Outperform rating on MSFT with a $640.0 price target"
+    },
+    {
+     "date": "2026-10-29",
+     "days_ago": 1,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 636.0,
+     "price_target_to": 680.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Buy rating on MSFT and raised its price target from $636.0 to $680.0"
+    },
+    {
+     "date": "2026-10-29",
+     "days_ago": 1,
+     "firm": "DA Davidson",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 550.0,
+     "price_target_to": 650.0,
+     "is_rating_change": false,
+     "description": "DA Davidson maintained its Buy rating on MSFT and raised its price target from $550.0 to $650.0"
+    },
+    {
+     "date": "2026-10-29",
+     "days_ago": 1,
+     "firm": "TD Cowen",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 625.0,
+     "price_target_to": 650.0,
+     "is_rating_change": false,
+     "description": "TD Cowen maintained its Buy rating on MSFT and raised its price target from $625.0 to $650.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.82,
+    "verdict": "leaning bullish",
+    "analysts": 57,
+    "counts": {
+     "strongBuy": 13,
+     "buy": 41,
+     "hold": 3,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.81 to 1.82)"
+   },
+   "price_target": {
+    "mean": 605.12,
+    "median": 600.0,
+    "high": 870.0,
+    "low": 440.0,
+    "current_price": 530.14,
+    "dispersion_pct": 71.1,
+    "upside_vs_mean_pct": 14.1,
+    "upside_vs_median_pct": 13.2
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "MSFT",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1w": {
+     "stock_change_pct": -0.36,
+     "sector_etf_change_pct": 1.3,
+     "relative_to_sector_pct": -1.66
+    },
+    "1y": {
+     "stock_change_pct": 0.73,
+     "sector_etf_change_pct": 28.41,
+     "relative_to_sector_pct": -27.68
+    },
+    "ytd": {
+     "stock_change_pct": 12.99,
+     "sector_etf_change_pct": 32.84,
+     "relative_to_sector_pct": -19.85
+    },
+    "1d": {
+     "stock_change_pct": -0.06,
+     "sector_etf_change_pct": 0.8,
+     "relative_to_sector_pct": -0.86
+    },
+    "1mo": {
+     "stock_change_pct": 4.33,
+     "sector_etf_change_pct": -1.8,
+     "relative_to_sector_pct": 6.13
+    },
+    "2w": {
+     "stock_change_pct": -0.5,
+     "sector_etf_change_pct": 0.3,
+     "relative_to_sector_pct": -0.8
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-29",
+    "realtime_end": "2026-10-29",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9607,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-28",
+      "value": "16.91"
+     },
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-27",
+      "value": "17.52"
+     },
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-26",
+      "value": "18.39"
+     },
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-23",
+      "value": "19.45"
+     },
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-22",
+      "value": "19.03"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "MSFT",
+   "as_of": "2026-10-30",
+   "events": [
+    {
+     "type": "ex_dividend",
+     "date": "2026-11-19",
+     "source": "yfinance",
+     "description": "MSFT goes ex-dividend \u2014 expect a mechanical price drop of roughly the dividend",
+     "days_until": 20
+    },
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 40,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-26",
+     "description": "MSFT Q2 2027 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 88,
+     "eps_estimate": 4.9359
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-28",
+     "description": "MSFT reported Q1 2027 earnings after the close \u2014 EPS 4.89 vs 4.8165 expected (beat, +1.5%)",
+     "source": "finnhub",
+     "days_ago": 2,
+     "eps_actual": 4.89,
+     "eps_estimate": 4.8165,
+     "surprise": "beat",
+     "surprise_pct": 1.5,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

@@ -1,0 +1,358 @@
+{
+ "schema": 1,
+ "ticker": "GEN",
+ "trading_day": "2026-10-29",
+ "captured_at": "2026-10-30T01:18:06+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 15.81,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "the past month: 16.79% \u2014 elevated for this stock (about 1.95x its normal move for that span, expected ~8.60%)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "GEN",
+   "price": 28.2,
+   "prev_close": 24.35,
+   "change_pct": 15.81,
+   "realized_vol_annualized_pct": 29.8,
+   "changes_pct": {
+    "1d": 0.41,
+    "1w": 0.95,
+    "2w": 2.31,
+    "1mo": 16.79,
+    "1y": -7.47,
+    "ytd": -5.18
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "the past month: 16.79% \u2014 elevated for this stock (about 1.95x its normal move for that span, expected ~8.60%)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "GEN",
+   "headlines": [
+    {
+     "headline": "S&P 500 Top Movers: Oct. 29, 2026 Gainers and Losers",
+     "summary": "S&P 500 top movers for Oct. 29, 2026, led by CVNA and GEN among gainers and NOW and FTNT among losers.",
+     "datetime": 1793304370,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=2b48361af4324a229c8c5020e404c700fb7325d2fdbfb46cba45c4a44b5d7882"
+    },
+    {
+     "headline": "S&P 500 Top Movers: Today's US Session Gainers and Losers",
+     "summary": "S&P 500 top movers for today's US session: Carvana and Textron lead gainers, while ServiceNow and Fortinet post the steepest declines.",
+     "datetime": 1793295383,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=842423e0d03046a3ce490e2d5f41a923a1fd4425fcb7e2b83d7badb747f0155d"
+    },
+    {
+     "headline": "Gen Digital Surges. It Kills M&A Speculation While the Cyber Boom Drives an Earnings Beat.",
+     "summary": "Gen Digital says it\u2019s currently not working on a \u2018transformative acquisition.",
+     "datetime": 1793290440,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=2c25772843bdcf4b5eabc1cb98390b611201482eefee80ef450524954d77b1ab"
+    },
+    {
+     "headline": "S&P 500 Gap Movers: October 29, 2026 Session",
+     "summary": "S&P 500 gap movers for October 29, 2026: CVNA, TXT and NCLH gapped higher, while NOW, FTNT and MRVL gapped lower in the session.",
+     "datetime": 1793288174,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=7643239288ad56abc521d80e421f57411a6628d78e387ae8dd0942d64d271675"
+    },
+    {
+     "headline": "Gen Digital surges 11% on raised outlook and strong Q2 beat",
+     "summary": "Investing.com -- Gen Digital reported second-quarter results that exceeded analyst expectations and raised its full-year guidance, sending shares up roughly 11% Thursday.",
+     "datetime": 1793286202,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=5cf712aedd16779202df01109f51ec0890d32a0927d555257f989944a24c5a0c"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "GEN",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 21,
+   "atm_iv_pct": 41.7,
+   "iv_chain_percentile": 5,
+   "skew_points": 8.8,
+   "put_call_ratio": 0.65,
+   "total_put_oi": 4293,
+   "total_call_oi": 6557
+  },
+  "get_options_positioning": {
+   "ticker": "GEN",
+   "spot": 28.2,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 21,
+   "max_pain_strike": 23.0,
+   "resistance_walls": [
+    {
+     "strike": 28.0,
+     "open_interest": 1862
+    },
+    {
+     "strike": 23.0,
+     "open_interest": 1097
+    },
+    {
+     "strike": 26.0,
+     "open_interest": 1091
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 22.0,
+     "open_interest": 1738
+    },
+    {
+     "strike": 17.0,
+     "open_interest": 697
+    },
+    {
+     "strike": 24.0,
+     "open_interest": 582
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 21,
+     "atm_iv_pct": 41.7
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 30.0,
+     "volume": 316,
+     "open_interest": 61,
+     "vol_oi_ratio": 5.2,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 29.0,
+     "volume": 293,
+     "open_interest": 117,
+     "vol_oi_ratio": 2.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 28.0,
+     "volume": 2058,
+     "open_interest": 1862,
+     "vol_oi_ratio": 1.1,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 25.0,
+     "volume": 110,
+     "open_interest": 97,
+     "vol_oi_ratio": 1.1,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 274,
+   "otm_put_oi": 4186,
+   "positioning_lean_score": -0.88,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "GEN",
+   "as_of": "2026-10-30",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-29",
+     "days_ago": 1,
+     "firm": "RBC Capital",
+     "action": "maintained",
+     "from_grade": "Sector Perform",
+     "to_grade": "Sector Perform",
+     "price_target_from": 24.0,
+     "price_target_to": 27.0,
+     "is_rating_change": false,
+     "description": "RBC Capital maintained its Sector Perform rating on GEN and raised its price target from $24.0 to $27.0"
+    },
+    {
+     "date": "2026-10-29",
+     "days_ago": 1,
+     "firm": "Morgan Stanley",
+     "action": "maintained",
+     "from_grade": "Equal-Weight",
+     "to_grade": "Equal-Weight",
+     "price_target_from": 32.0,
+     "price_target_to": 34.0,
+     "is_rating_change": false,
+     "description": "Morgan Stanley maintained its Equal-Weight rating on GEN and raised its price target from $32.0 to $34.0"
+    },
+    {
+     "date": "2026-10-12",
+     "days_ago": 18,
+     "firm": "RBC Capital",
+     "action": "maintained",
+     "from_grade": "Sector Perform",
+     "to_grade": "Sector Perform",
+     "price_target_from": 26.0,
+     "price_target_to": 24.0,
+     "is_rating_change": false,
+     "description": "RBC Capital maintained its Sector Perform rating on GEN and cut its price target from $26.0 to $24.0"
+    }
+   ],
+   "consensus": {
+    "rating": "hold",
+    "score": 2.55,
+    "verdict": "neutral",
+    "analysts": 11,
+    "counts": {
+     "strongBuy": 0,
+     "buy": 5,
+     "hold": 6,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.55 to 2.55)"
+   },
+   "price_target": {
+    "mean": 31.48,
+    "median": 30.0,
+    "high": 46.0,
+    "low": 24.0,
+    "current_price": 28.2,
+    "dispersion_pct": 69.9,
+    "upside_vs_mean_pct": 11.6,
+    "upside_vs_median_pct": 6.4
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "GEN",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1w": {
+     "stock_change_pct": 0.95,
+     "sector_etf_change_pct": 1.3,
+     "relative_to_sector_pct": -0.35
+    },
+    "1y": {
+     "stock_change_pct": -7.47,
+     "sector_etf_change_pct": 28.41,
+     "relative_to_sector_pct": -35.88
+    },
+    "ytd": {
+     "stock_change_pct": -5.18,
+     "sector_etf_change_pct": 32.84,
+     "relative_to_sector_pct": -38.02
+    },
+    "1d": {
+     "stock_change_pct": 0.41,
+     "sector_etf_change_pct": 0.8,
+     "relative_to_sector_pct": -0.39
+    },
+    "1mo": {
+     "stock_change_pct": 16.79,
+     "sector_etf_change_pct": -1.8,
+     "relative_to_sector_pct": 18.59
+    },
+    "2w": {
+     "stock_change_pct": 2.31,
+     "sector_etf_change_pct": 0.3,
+     "relative_to_sector_pct": 2.01
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-29",
+    "realtime_end": "2026-10-29",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9607,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-28",
+      "value": "16.91"
+     },
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-27",
+      "value": "17.52"
+     },
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-26",
+      "value": "18.39"
+     },
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-23",
+      "value": "19.45"
+     },
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-22",
+      "value": "19.03"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "GEN",
+   "as_of": "2026-10-30",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 40,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-28",
+     "description": "GEN reported Q2 2027 earnings after the close \u2014 EPS 0.74 vs 0.7265 expected (beat, +1.9%)",
+     "source": "finnhub",
+     "days_ago": 2,
+     "eps_actual": 0.74,
+     "eps_estimate": 0.7265,
+     "surprise": "beat",
+     "surprise_pct": 1.9,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

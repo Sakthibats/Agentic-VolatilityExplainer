@@ -1,0 +1,368 @@
+{
+ "schema": 1,
+ "ticker": "GKOS",
+ "trading_day": "2026-10-29",
+ "captured_at": "2026-10-30T01:17:48+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 33.65,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "the past month: 14.43% \u2014 typical relative to this stock's own typical volatility (expected ~11.55%, 1.25x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past year: 139.73% \u2014 unusual for this stock (about 3.49x its normal move for that span, expected ~40.00%)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "GKOS",
+   "price": 242.48,
+   "prev_close": 181.43,
+   "change_pct": 33.65,
+   "realized_vol_annualized_pct": 40.0,
+   "changes_pct": {
+    "1d": 0.14,
+    "1w": 2.59,
+    "2w": 8.06,
+    "1mo": 14.43,
+    "1y": 139.73,
+    "ytd": 63.86
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "the past month: 14.43% \u2014 typical relative to this stock's own typical volatility (expected ~11.55%, 1.25x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past year: 139.73% \u2014 unusual for this stock (about 3.49x its normal move for that span, expected ~40.00%)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "GKOS",
+   "headlines": [
+    {
+     "headline": "US Stock Market Movers: Top Gainers and Losers for the Session",
+     "summary": "US session market movers: NUBURU led gainers at 125.0% while GameStop's GME.W fell 48.11% among the biggest losers.",
+     "datetime": 1793304032,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=72e4f42a8753e6da63e28896bb002781dc868173b0e566b117686ccffaf1e00e"
+    },
+    {
+     "headline": "Top US Stock Gainers and Losers for Oct. 29, 2026",
+     "summary": "US top gainers and losers for Oct. 29, 2026, ranked by percentage change, led by BURU's 117.0% gain and GME.W's 46.08% decline.",
+     "datetime": 1793295043,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=8afb4c8fb9ed46dbf27e877fcddb20baafcda0e79f6161fcade88e68881fb0bd"
+    },
+    {
+     "headline": "Gap-Up and Gap-Down Stocks in the Oct. 29, 2026 Session",
+     "summary": "Oct. 29, 2026 gap movers include NCPL, PCLA, INLF, ADT, GKOS, PRCH, CROX, CLMB, TDOC and KFIIR on the upside, plus GME.W, OPTT, LVWR and XRX on the downside.",
+     "datetime": 1793287837,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=80faf0638faba7813df559983b3e7dc8a5c344f2be989ac056deef76088e3fd6"
+    },
+    {
+     "headline": "Premarket Gainers and Losers on Oct. 29, 2026",
+     "summary": "Premarket movers on Oct. 29, 2026 include NCPL, PCLA, INLF, NUWE, BURU, INSM, CROX, GKOS, MAX, PRCH, IOVA, XRX, FTNT, SFM, TWI, ALNY and NOW.",
+     "datetime": 1793280648,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=b095590ce92693bac7642b3c2743ed64b05fd72d0f89f477b9049a880f33c0f2"
+    },
+    {
+     "headline": "Dow Jones Futures Fall; Microsoft Rises, But Google, ServiceNow, Fortinet Dive On Earnings",
+     "summary": "After the stock market rose for a third day, Microsoft rose late on strong earnings. But Google, ServiceNow and Fortinet dived.",
+     "datetime": 1793274884,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=fda5c06099cf8bfe09156f2324fc43bc15ee8170c17704cbe55f35cd0a352f08"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "GKOS",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 21,
+   "atm_iv_pct": 62.4,
+   "iv_chain_percentile": 33,
+   "skew_points": 19.9,
+   "put_call_ratio": 5.19,
+   "total_put_oi": 6382,
+   "total_call_oi": 1229
+  },
+  "get_options_positioning": {
+   "ticker": "GKOS",
+   "spot": 242.48,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 21,
+   "max_pain_strike": 175.0,
+   "resistance_walls": [
+    {
+     "strike": 200.0,
+     "open_interest": 407
+    },
+    {
+     "strike": 180.0,
+     "open_interest": 277
+    },
+    {
+     "strike": 250.0,
+     "open_interest": 277
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 165.0,
+     "open_interest": 2396
+    },
+    {
+     "strike": 150.0,
+     "open_interest": 2043
+    },
+    {
+     "strike": 170.0,
+     "open_interest": 795
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 21,
+     "atm_iv_pct": 62.4
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 170.0,
+     "volume": 589,
+     "open_interest": 795,
+     "vol_oi_ratio": 0.7,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 175.0,
+     "volume": 132,
+     "open_interest": 575,
+     "vol_oi_ratio": 0.2,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 277,
+   "otm_put_oi": 6382,
+   "positioning_lean_score": -0.92,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "GKOS",
+   "as_of": "2026-10-30",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-29",
+     "days_ago": 1,
+     "firm": "HC Wainwright & Co.",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 195.0,
+     "price_target_to": 248.0,
+     "is_rating_change": false,
+     "description": "HC Wainwright & Co. maintained its Buy rating on GKOS and raised its price target from $195.0 to $248.0"
+    },
+    {
+     "date": "2026-10-29",
+     "days_ago": 1,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 200.0,
+     "price_target_to": 240.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Overweight rating on GKOS and raised its price target from $200.0 to $240.0"
+    },
+    {
+     "date": "2026-10-29",
+     "days_ago": 1,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 225.0,
+     "price_target_to": 247.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Buy rating on GKOS and raised its price target from $225.0 to $247.0"
+    },
+    {
+     "date": "2026-10-29",
+     "days_ago": 1,
+     "firm": "Truist Securities",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 215.0,
+     "price_target_to": 255.0,
+     "is_rating_change": false,
+     "description": "Truist Securities maintained its Buy rating on GKOS and raised its price target from $215.0 to $255.0"
+    },
+    {
+     "date": "2026-10-29",
+     "days_ago": 1,
+     "firm": "Wells Fargo",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 178.0,
+     "price_target_to": 226.0,
+     "is_rating_change": false,
+     "description": "Wells Fargo maintained its Overweight rating on GKOS and raised its price target from $178.0 to $226.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.85,
+    "verdict": "leaning bullish",
+    "analysts": 13,
+    "counts": {
+     "strongBuy": 3,
+     "buy": 9,
+     "hold": 1,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.86 to 1.85)"
+   },
+   "price_target": {
+    "mean": 223.17,
+    "median": 225.5,
+    "high": 255.0,
+    "low": 172.0,
+    "current_price": 242.48,
+    "dispersion_pct": 37.2,
+    "upside_vs_mean_pct": -8.0,
+    "upside_vs_median_pct": -7.0
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "GKOS",
+   "sector": "Healthcare",
+   "sector_etf": "XLV",
+   "comparison": {
+    "1w": {
+     "stock_change_pct": 2.59,
+     "sector_etf_change_pct": 0.44,
+     "relative_to_sector_pct": 2.15
+    },
+    "1y": {
+     "stock_change_pct": 139.73,
+     "sector_etf_change_pct": 24.84,
+     "relative_to_sector_pct": 114.89
+    },
+    "ytd": {
+     "stock_change_pct": 63.86,
+     "sector_etf_change_pct": 17.0,
+     "relative_to_sector_pct": 46.86
+    },
+    "1d": {
+     "stock_change_pct": 0.14,
+     "sector_etf_change_pct": 0.3,
+     "relative_to_sector_pct": -0.16
+    },
+    "1mo": {
+     "stock_change_pct": 14.43,
+     "sector_etf_change_pct": 5.27,
+     "relative_to_sector_pct": 9.16
+    },
+    "2w": {
+     "stock_change_pct": 8.06,
+     "sector_etf_change_pct": 3.31,
+     "relative_to_sector_pct": 4.75
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-29",
+    "realtime_end": "2026-10-29",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9607,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-28",
+      "value": "16.91"
+     },
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-27",
+      "value": "17.52"
+     },
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-26",
+      "value": "18.39"
+     },
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-23",
+      "value": "19.45"
+     },
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-22",
+      "value": "19.03"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "GKOS",
+   "as_of": "2026-10-30",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 40,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-28",
+     "description": "GKOS reported Q3 2026 earnings after the close \u2014 EPS 0.47 vs -0.0918 expected (beat, +612.0%)",
+     "source": "finnhub",
+     "days_ago": 2,
+     "eps_actual": 0.47,
+     "eps_estimate": -0.0918,
+     "surprise": "beat",
+     "surprise_pct": 612.0,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

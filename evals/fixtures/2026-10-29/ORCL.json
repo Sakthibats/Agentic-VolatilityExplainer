@@ -1,0 +1,418 @@
+{
+ "schema": 1,
+ "ticker": "ORCL",
+ "trading_day": "2026-10-29",
+ "captured_at": "2026-10-30T01:17:23+00:00",
+ "selected_as": "move",
+ "change_pct": -3.45,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 10.73% \u2014 unusual for this stock (about 2.55x its normal move for that span, expected ~4.21%)",
+   "this week: 11.93% \u2014 typical relative to this stock's own typical volatility (expected ~9.41%, 1.27x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past 2 weeks: 10.72% \u2014 typical relative to this stock's own typical volatility (expected ~13.31%, 0.81x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past year: -47.95% \u2014 typical relative to this stock's own typical volatility (expected ~66.80%, 0.72x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "ORCL",
+   "price": 139.56,
+   "prev_close": 144.54,
+   "change_pct": -3.45,
+   "realized_vol_annualized_pct": 66.8,
+   "changes_pct": {
+    "1d": 10.73,
+    "1w": 11.93,
+    "2w": 10.72,
+    "1mo": 5.29,
+    "1y": -47.95,
+    "ytd": -25.16
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 10.73% \u2014 unusual for this stock (about 2.55x its normal move for that span, expected ~4.21%)",
+     "this week: 11.93% \u2014 typical relative to this stock's own typical volatility (expected ~9.41%, 1.27x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past 2 weeks: 10.72% \u2014 typical relative to this stock's own typical volatility (expected ~13.31%, 0.81x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past year: -47.95% \u2014 typical relative to this stock's own typical volatility (expected ~66.80%, 0.72x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "ORCL",
+   "headlines": [
+    {
+     "headline": "What Asure Software (ASUR) Said on Its Q3 Earnings Call",
+     "summary": "Asure Software (NASDAQ:ASUR) reported third-quarter 2026 revenue of $40 million, up 10% from $36.3 million a year earlier, as the human capital management provider cited growth across payroll,...",
+     "datetime": 1793315675,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=f46ca497cfac5cebd6fb9d2832f34da2bb25ed8b8f0516c876716cae1cca4bd9"
+    },
+    {
+     "headline": "Oracle (ORCL) Sees a More Significant Dip Than Broader Market: Some Facts to Know",
+     "summary": "In the most recent trading session, Oracle (ORCL) closed at $139.56, indicating a -3.45% shift from the previous trading day.",
+     "datetime": 1793306704,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=d770b1f360fb611198a1e044ab29474547d44bd115def8548617b66288d1a018"
+    },
+    {
+     "headline": "Microsoft Issues $25 Billion in New Bonds, Adding to AI Debt Spree",
+     "summary": "Microsoft, with a market value of nearly $4 trillion, has the right credentials and the timing looks ripe.",
+     "datetime": 1793304420,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=0e8b23cc6e38e4f5ca2de4c8ffd91749ffb675cf5cbd992a55e0f1402a5a55e2"
+    },
+    {
+     "headline": "Rimini Street Announces Fiscal Third Quarter 2026 Financial and Operating Results",
+     "summary": "LAS VEGAS, October 29, 2026--Rimini Street, Inc., (Nasdaq: RMNI), a global provider of end-to-end enterprise software support, managed services and Agentic AI ERP innovation solutions, and the...",
+     "datetime": 1793304060,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=9849935e20a0a8579766806984b62d3c55585a21afc3e9d6dc587d7c82a1a3e4"
+    },
+    {
+     "headline": "Want to Be Like Larry Ellison? Borrow Against Your Securities Portfolio.",
+     "summary": "It\u2019s an increasingly popular approach with investors. Just don\u2019t get carried away.",
+     "datetime": 1793301660,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=a9e427cb4dfb2cb4b546e084fe01c63523623c1ab7ba58f1272ff8eb027b84ce"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "ORCL",
+   "expiry": "2026-11-13",
+   "days_to_expiry": 14,
+   "atm_iv_pct": 53.2,
+   "iv_chain_percentile": 3,
+   "skew_points": -1.6,
+   "put_call_ratio": 1.13,
+   "total_put_oi": 19250,
+   "total_call_oi": 17039
+  },
+  "get_options_positioning": {
+   "ticker": "ORCL",
+   "spot": 139.56,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-13",
+   "primary_days_to_expiry": 14,
+   "max_pain_strike": 137.0,
+   "resistance_walls": [
+    {
+     "strike": 145.0,
+     "open_interest": 1476
+    },
+    {
+     "strike": 140.0,
+     "open_interest": 1235
+    },
+    {
+     "strike": 170.0,
+     "open_interest": 1168
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 120.0,
+     "open_interest": 2065
+    },
+    {
+     "strike": 135.0,
+     "open_interest": 1636
+    },
+    {
+     "strike": 110.0,
+     "open_interest": 1290
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 14,
+     "atm_iv_pct": 53.2
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 21,
+     "atm_iv_pct": 53.3
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 51.5
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 142.0,
+     "volume": 1609,
+     "open_interest": 216,
+     "vol_oi_ratio": 7.4,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 134.0,
+     "volume": 358,
+     "open_interest": 135,
+     "vol_oi_ratio": 2.7,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 144.0,
+     "volume": 132,
+     "open_interest": 67,
+     "vol_oi_ratio": 2.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 132.0,
+     "volume": 213,
+     "open_interest": 118,
+     "vol_oi_ratio": 1.8,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 143.0,
+     "volume": 363,
+     "open_interest": 238,
+     "vol_oi_ratio": 1.5,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 13159,
+   "otm_put_oi": 16400,
+   "positioning_lean_score": -0.11,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "ORCL",
+   "as_of": "2026-10-30",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-29",
+     "days_ago": 1,
+     "firm": "TD Cowen",
+     "action": "reiterated",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 240.0,
+     "price_target_to": 240.0,
+     "is_rating_change": false,
+     "description": "TD Cowen reiterated its Buy rating on ORCL with a $240.0 price target"
+    },
+    {
+     "date": "2026-10-29",
+     "days_ago": 1,
+     "firm": "Oppenheimer",
+     "action": "reiterated",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 275.0,
+     "price_target_to": 275.0,
+     "is_rating_change": false,
+     "description": "Oppenheimer reiterated its Outperform rating on ORCL with a $275.0 price target"
+    },
+    {
+     "date": "2026-10-29",
+     "days_ago": 1,
+     "firm": "Piper Sandler",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 225.0,
+     "price_target_to": 225.0,
+     "is_rating_change": false,
+     "description": "Piper Sandler maintained its Overweight rating on ORCL with a $225.0 price target"
+    },
+    {
+     "date": "2026-10-26",
+     "days_ago": 4,
+     "firm": "Wells Fargo",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 280.0,
+     "price_target_to": 250.0,
+     "is_rating_change": false,
+     "description": "Wells Fargo maintained its Overweight rating on ORCL and cut its price target from $280.0 to $250.0"
+    },
+    {
+     "date": "2026-10-23",
+     "days_ago": 7,
+     "firm": "Goldman Sachs",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 240.0,
+     "price_target_to": 206.0,
+     "is_rating_change": false,
+     "description": "Goldman Sachs maintained its Buy rating on ORCL and cut its price target from $240.0 to $206.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.05,
+    "verdict": "leaning bullish",
+    "analysts": 43,
+    "counts": {
+     "strongBuy": 7,
+     "buy": 28,
+     "hold": 7,
+     "sell": 1,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.0 to 2.05)"
+   },
+   "price_target": {
+    "mean": 235.8,
+    "median": 225.0,
+    "high": 400.0,
+    "low": 110.0,
+    "current_price": 139.56,
+    "dispersion_pct": 123.0,
+    "upside_vs_mean_pct": 69.0,
+    "upside_vs_median_pct": 61.2
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "ORCL",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1w": {
+     "stock_change_pct": 11.93,
+     "sector_etf_change_pct": 1.3,
+     "relative_to_sector_pct": 10.63
+    },
+    "1y": {
+     "stock_change_pct": -47.95,
+     "sector_etf_change_pct": 28.41,
+     "relative_to_sector_pct": -76.36
+    },
+    "ytd": {
+     "stock_change_pct": -25.16,
+     "sector_etf_change_pct": 32.84,
+     "relative_to_sector_pct": -58.0
+    },
+    "1d": {
+     "stock_change_pct": 10.73,
+     "sector_etf_change_pct": 0.8,
+     "relative_to_sector_pct": 9.93
+    },
+    "1mo": {
+     "stock_change_pct": 5.29,
+     "sector_etf_change_pct": -1.8,
+     "relative_to_sector_pct": 7.09
+    },
+    "2w": {
+     "stock_change_pct": 10.72,
+     "sector_etf_change_pct": 0.3,
+     "relative_to_sector_pct": 10.42
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-29",
+    "realtime_end": "2026-10-29",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9607,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-28",
+      "value": "16.91"
+     },
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-27",
+      "value": "17.52"
+     },
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-26",
+      "value": "18.39"
+     },
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-23",
+      "value": "19.45"
+     },
+     {
+      "realtime_start": "2026-10-29",
+      "realtime_end": "2026-10-29",
+      "date": "2026-10-22",
+      "value": "19.03"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "ORCL",
+   "as_of": "2026-10-30",
+   "events": [
+    {
+     "type": "earnings",
+     "date": "2026-12-08",
+     "description": "ORCL Q2 2027 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 39,
+     "eps_estimate": 1.9322
+    },
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 40,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-12-14",
+     "description": "ORCL quarterly earnings scheduled (during the session)",
+     "source": "yfinance",
+     "days_until": 45,
+     "eps_estimate": 1.89,
+     "hour": "dmh"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "ex_dividend",
+     "date": "2026-10-09",
+     "source": "yfinance",
+     "description": "ORCL went ex-dividend \u2014 the price drops by roughly the dividend on this date mechanically, with no news behind it",
+     "days_ago": 21
+    }
+   ],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub+yfinance"
+  }
+ }
+}
