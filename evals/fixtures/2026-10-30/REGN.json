@@ -1,0 +1,364 @@
+{
+ "schema": 1,
+ "ticker": "REGN",
+ "trading_day": "2026-10-30",
+ "captured_at": "2026-10-31T00:59:43+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 13.33,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "REGN",
+   "price": 927.89,
+   "prev_close": 818.77,
+   "change_pct": 13.33,
+   "realized_vol_annualized_pct": 23.6,
+   "changes_pct": {
+    "1d": 0.68,
+    "1w": -0.04,
+    "2w": 2.82,
+    "1mo": 7.98,
+    "1y": 25.74,
+    "ytd": 5.88
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   }
+  },
+  "get_news": {
+   "ticker": "REGN",
+   "headlines": [
+    {
+     "headline": "Regeneron Bolts 13% Higher, Breaking Out To A Two-Year High On Dupixent Dominance",
+     "summary": "Regeneron stock jumped to a two-year high Friday after its Sanofi-partnered inflammation giant, Dupixent, handily beat expectations.",
+     "datetime": 1793392562,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=9863ea3382ba871fd81e2df2080ec7f6909c5e8606bda6619094dd09c1ff9484"
+    },
+    {
+     "headline": "US Equity Markets End Lower After Sell-Off in Technology Stocks",
+     "summary": "US equity indexes ended lower Friday amid a sell-off in the technology sector after Intel's (INTC) Q",
+     "datetime": 1793391592,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=5c9e37faad67a5887525a43b7cd2236b339dfc9e41521d6355bb7907d51f10fc"
+    },
+    {
+     "headline": "REGN Q3 Earnings Beat on Dupixent Profits & Eylea HD Growth, Stock Up",
+     "summary": "Regeneron's Q3 earnings and revenues beat estimates, fueled by strong Dupixent profits, Eylea HD growth and robust Libtayo demand. Stock up.",
+     "datetime": 1793382900,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=dd08a5c661d8dac859f7b8e27be2006f66bd409d427319178584be08aea8c9df"
+    },
+    {
+     "headline": "Regeneron Pharmaceuticals, Inc. Q3 2026 Earnings Call Summary",
+     "summary": "Moby summary of Regeneron Pharmaceuticals, Inc.'s Q3 2026 earnings call",
+     "datetime": 1793379356,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=acceafa340fd7dea051826aaf73003864ee5a6ba3e88ab4d739f660f8d5a23cd"
+    },
+    {
+     "headline": "What Just Happened To Alnylam Stock?",
+     "summary": "For questions about this article or underlying research, email help@trefis.com.",
+     "datetime": 1793379091,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=95b8fb32139c64c941220fca114562287fba7a6f4cc8120dfe1fe8ede54fde43"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "REGN",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 20,
+   "atm_iv_pct": 40.9,
+   "iv_chain_percentile": 23,
+   "skew_points": 4.6,
+   "put_call_ratio": 0.98,
+   "total_put_oi": 1465,
+   "total_call_oi": 1495
+  },
+  "get_options_positioning": {
+   "ticker": "REGN",
+   "spot": 927.89,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-13",
+   "primary_days_to_expiry": 13,
+   "max_pain_strike": 720.0,
+   "resistance_walls": [
+    {
+     "strike": 690.0,
+     "open_interest": 12
+    },
+    {
+     "strike": 860.0,
+     "open_interest": 9
+    },
+    {
+     "strike": 810.0,
+     "open_interest": 8
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 820.0,
+     "open_interest": 9
+    },
+    {
+     "strike": 680.0,
+     "open_interest": 3
+    },
+    {
+     "strike": 660.0,
+     "open_interest": 3
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 13,
+     "atm_iv_pct": 47.1
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 20,
+     "atm_iv_pct": 40.9
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 27,
+     "atm_iv_pct": 47.3
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [],
+   "otm_call_oi": 4,
+   "otm_put_oi": 25,
+   "positioning_lean_score": -0.72,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "REGN",
+   "as_of": "2026-10-31",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-31",
+     "days_ago": 0,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 950.0,
+     "price_target_to": 1050.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Overweight rating on REGN and raised its price target from $950.0 to $1050.0"
+    },
+    {
+     "date": "2026-10-30",
+     "days_ago": 1,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 740.0,
+     "price_target_to": 825.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Neutral rating on REGN and raised its price target from $740.0 to $825.0"
+    },
+    {
+     "date": "2026-10-28",
+     "days_ago": 3,
+     "firm": "Canaccord Genuity",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 875.0,
+     "price_target_to": 922.0,
+     "is_rating_change": false,
+     "description": "Canaccord Genuity maintained its Buy rating on REGN and raised its price target from $875.0 to $922.0"
+    },
+    {
+     "date": "2026-10-21",
+     "days_ago": 10,
+     "firm": "TD Cowen",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 960.0,
+     "price_target_to": 980.0,
+     "is_rating_change": false,
+     "description": "TD Cowen maintained its Buy rating on REGN and raised its price target from $960.0 to $980.0"
+    },
+    {
+     "date": "2026-10-19",
+     "days_ago": 12,
+     "firm": "Piper Sandler",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 854.0,
+     "price_target_to": 865.0,
+     "is_rating_change": false,
+     "description": "Piper Sandler maintained its Overweight rating on REGN and raised its price target from $854.0 to $865.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.25,
+    "verdict": "leaning bullish",
+    "analysts": 28,
+    "counts": {
+     "strongBuy": 4,
+     "buy": 15,
+     "hold": 8,
+     "sell": 0,
+     "strongSell": 1
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.21 to 2.25)"
+   },
+   "price_target": {
+    "mean": 869.07,
+    "median": 900.0,
+    "high": 1030.0,
+    "low": 730.0,
+    "current_price": 927.89,
+    "dispersion_pct": 34.5,
+    "upside_vs_mean_pct": -6.3,
+    "upside_vs_median_pct": -3.0
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "REGN",
+   "sector": "Healthcare",
+   "sector_etf": "XLV",
+   "comparison": {
+    "1mo": {
+     "stock_change_pct": 7.98,
+     "sector_etf_change_pct": 9.27,
+     "relative_to_sector_pct": -1.29
+    },
+    "1w": {
+     "stock_change_pct": -0.04,
+     "sector_etf_change_pct": 1.51,
+     "relative_to_sector_pct": -1.55
+    },
+    "1d": {
+     "stock_change_pct": 0.68,
+     "sector_etf_change_pct": 2.4,
+     "relative_to_sector_pct": -1.72
+    },
+    "1y": {
+     "stock_change_pct": 25.74,
+     "sector_etf_change_pct": 28.65,
+     "relative_to_sector_pct": -2.91
+    },
+    "2w": {
+     "stock_change_pct": 2.82,
+     "sector_etf_change_pct": 3.87,
+     "relative_to_sector_pct": -1.05
+    },
+    "ytd": {
+     "stock_change_pct": 5.88,
+     "sector_etf_change_pct": 19.81,
+     "relative_to_sector_pct": -13.93
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-30",
+    "realtime_end": "2026-10-30",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9608,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-30",
+      "realtime_end": "2026-10-30",
+      "date": "2026-10-29",
+      "value": "17.2"
+     },
+     {
+      "realtime_start": "2026-10-30",
+      "realtime_end": "2026-10-30",
+      "date": "2026-10-28",
+      "value": "16.91"
+     },
+     {
+      "realtime_start": "2026-10-30",
+      "realtime_end": "2026-10-30",
+      "date": "2026-10-27",
+      "value": "17.52"
+     },
+     {
+      "realtime_start": "2026-10-30",
+      "realtime_end": "2026-10-30",
+      "date": "2026-10-26",
+      "value": "18.39"
+     },
+     {
+      "realtime_start": "2026-10-30",
+      "realtime_end": "2026-10-30",
+      "date": "2026-10-23",
+      "value": "19.45"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "REGN",
+   "as_of": "2026-10-31",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 39,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-28",
+     "description": "REGN Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 89,
+     "eps_estimate": 19.6692,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-30",
+     "description": "REGN reported Q3 2026 earnings before the open \u2014 EPS 20.07 vs 16.4787 expected (beat, +21.8%)",
+     "source": "finnhub",
+     "days_ago": 1,
+     "eps_actual": 20.07,
+     "eps_estimate": 16.4787,
+     "surprise": "beat",
+     "surprise_pct": 21.8,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

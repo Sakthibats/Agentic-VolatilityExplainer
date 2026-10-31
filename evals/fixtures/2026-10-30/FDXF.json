@@ -1,0 +1,401 @@
+{
+ "schema": 1,
+ "ticker": "FDXF",
+ "trading_day": "2026-10-30",
+ "captured_at": "2026-10-31T00:59:36+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 14.91,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "FDXF",
+   "price": 126.04,
+   "prev_close": 109.69,
+   "change_pct": 14.91,
+   "realized_vol_annualized_pct": 26.6,
+   "changes_pct": {
+    "1d": 1.26,
+    "1w": -1.2,
+    "2w": -0.73,
+    "1mo": 0.28,
+    "1y": null,
+    "ytd": -27.36
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   }
+  },
+  "get_news": {
+   "ticker": "FDXF",
+   "headlines": [
+    {
+     "headline": "Intel, Amazon, Nvidia, ExxonMobil, Sandisk, FedEx Freight, and More Stocks That Explain Today\u2019s Market",
+     "summary": "Intel stock plummets after the chip maker issues underwhelming earnings guidance.",
+     "datetime": 1793392620,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=06eaa2cc4429778eea69cac91117e410f4a78aa3389faa3c7c49011b5a320e1f"
+    },
+    {
+     "headline": "Why AutoNation Stock Popped After Earnings",
+     "summary": "AutoNation stock is really cheap -- or so its management believes.",
+     "datetime": 1793382858,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=f1cba522ed853c294b467428a61222214f5dc39a2a7d5588f30737e6178d5070"
+    },
+    {
+     "headline": "TFI International Sinks 15% on Earnings Miss and Weak Outlook as LTL Profit Falls 43%",
+     "summary": "Key TakeawaysTFI International fell 15% after a third-quarter earnings miss and fourth-quarter guidance well below estimates. Truckload operating income nearly doubled, but LTL operating income fell...",
+     "datetime": 1793376628,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=ab2d3fe9e31e9d8ff94c257b63b3071bc7b470adb29c4ffa8517d2c7d8d48f6c"
+    },
+    {
+     "headline": "FedEx Freight Q3 shipments dip slightly following spinoff",
+     "summary": "Executives said business retention and ongoing transition processes were the carrier\u2019s focus during its first four months as an independent company.",
+     "datetime": 1793374560,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=1e6e0dc0a00eeb2e426269f9f345194493f620c5be6157a49a29f02e46a4e40b"
+    },
+    {
+     "headline": "FDXF Four-Month Transition Period Earnings Beat Estimates on Higher Yields",
+     "summary": "FedEx Freight beat four-month transition period 2026 earnings estimates as higher freight yields and fuel surcharges boost revenues, prompting an upgraded transition-period earnings outlook.",
+     "datetime": 1793372340,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=9a4c1fa121789e778512774856385ce2d5bd1e354f0cd57b2810106546ce3c0c"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "FDXF",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 20,
+   "atm_iv_pct": 56.3,
+   "iv_chain_percentile": 5,
+   "skew_points": 6.6,
+   "put_call_ratio": 1.54,
+   "total_put_oi": 5474,
+   "total_call_oi": 3558
+  },
+  "get_options_positioning": {
+   "ticker": "FDXF",
+   "spot": 126.04,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 20,
+   "max_pain_strike": 110.0,
+   "resistance_walls": [
+    {
+     "strike": 120.0,
+     "open_interest": 1167
+    },
+    {
+     "strike": 165.0,
+     "open_interest": 955
+    },
+    {
+     "strike": 130.0,
+     "open_interest": 368
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 90.0,
+     "open_interest": 4476
+    },
+    {
+     "strike": 110.0,
+     "open_interest": 439
+    },
+    {
+     "strike": 120.0,
+     "open_interest": 122
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 20,
+     "atm_iv_pct": 56.3
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 150.0,
+     "volume": 371,
+     "open_interest": 14,
+     "vol_oi_ratio": 26.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 115.0,
+     "volume": 160,
+     "open_interest": 16,
+     "vol_oi_ratio": 10.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 110.0,
+     "volume": 409,
+     "open_interest": 439,
+     "vol_oi_ratio": 0.9,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 120.0,
+     "volume": 394,
+     "open_interest": 1167,
+     "vol_oi_ratio": 0.3,
+     "moneyness": "ITM"
+    }
+   ],
+   "otm_call_oi": 1872,
+   "otm_put_oi": 5456,
+   "positioning_lean_score": -0.49,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "FDXF",
+   "as_of": "2026-10-31",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-30",
+     "days_ago": 1,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 149.0,
+     "price_target_to": 151.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Overweight rating on FDXF and raised its price target from $149.0 to $151.0"
+    },
+    {
+     "date": "2026-10-30",
+     "days_ago": 1,
+     "firm": "Evercore ISI Group",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 135.0,
+     "price_target_to": 139.0,
+     "is_rating_change": false,
+     "description": "Evercore ISI Group maintained its Outperform rating on FDXF and raised its price target from $135.0 to $139.0"
+    },
+    {
+     "date": "2026-10-08",
+     "days_ago": 23,
+     "firm": "Stifel",
+     "action": "maintained",
+     "from_grade": "Hold",
+     "to_grade": "Hold",
+     "price_target_from": 160.0,
+     "price_target_to": 129.0,
+     "is_rating_change": false,
+     "description": "Stifel maintained its Hold rating on FDXF and cut its price target from $160.0 to $129.0"
+    },
+    {
+     "date": "2026-10-07",
+     "days_ago": 24,
+     "firm": "Truist Securities",
+     "action": "maintained",
+     "from_grade": "Hold",
+     "to_grade": "Hold",
+     "price_target_from": 155.0,
+     "price_target_to": 115.0,
+     "is_rating_change": false,
+     "description": "Truist Securities maintained its Hold rating on FDXF and cut its price target from $155.0 to $115.0"
+    },
+    {
+     "date": "2026-10-05",
+     "days_ago": 26,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 160.0,
+     "price_target_to": 149.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Overweight rating on FDXF and cut its price target from $160.0 to $149.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.14,
+    "verdict": "leaning bullish",
+    "analysts": 14,
+    "counts": {
+     "strongBuy": 3,
+     "buy": 6,
+     "hold": 5,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.33 to 2.14; bearish ratings 1 to 0)"
+   },
+   "price_target": {
+    "mean": 145.43,
+    "median": 140.5,
+    "high": 200.0,
+    "low": 108.0,
+    "current_price": 126.04,
+    "dispersion_pct": 63.3,
+    "upside_vs_mean_pct": 15.4,
+    "upside_vs_median_pct": 11.5
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "FDXF",
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "comparison": {
+    "1mo": {
+     "stock_change_pct": 0.28,
+     "sector_etf_change_pct": 1.89,
+     "relative_to_sector_pct": -1.61
+    },
+    "1w": {
+     "stock_change_pct": -1.2,
+     "sector_etf_change_pct": 2.04,
+     "relative_to_sector_pct": -3.24
+    },
+    "1d": {
+     "stock_change_pct": 1.26,
+     "sector_etf_change_pct": 0.97,
+     "relative_to_sector_pct": 0.29
+    },
+    "1y": {
+     "stock_change_pct": null,
+     "sector_etf_change_pct": 11.25,
+     "relative_to_sector_pct": null
+    },
+    "2w": {
+     "stock_change_pct": -0.73,
+     "sector_etf_change_pct": 1.33,
+     "relative_to_sector_pct": -2.06
+    },
+    "ytd": {
+     "stock_change_pct": -27.36,
+     "sector_etf_change_pct": 8.55,
+     "relative_to_sector_pct": -35.91
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-30",
+    "realtime_end": "2026-10-30",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9608,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-30",
+      "realtime_end": "2026-10-30",
+      "date": "2026-10-29",
+      "value": "17.2"
+     },
+     {
+      "realtime_start": "2026-10-30",
+      "realtime_end": "2026-10-30",
+      "date": "2026-10-28",
+      "value": "16.91"
+     },
+     {
+      "realtime_start": "2026-10-30",
+      "realtime_end": "2026-10-30",
+      "date": "2026-10-27",
+      "value": "17.52"
+     },
+     {
+      "realtime_start": "2026-10-30",
+      "realtime_end": "2026-10-30",
+      "date": "2026-10-26",
+      "value": "18.39"
+     },
+     {
+      "realtime_start": "2026-10-30",
+      "realtime_end": "2026-10-30",
+      "date": "2026-10-23",
+      "value": "19.45"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "FDXF",
+   "as_of": "2026-10-31",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 39,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-29",
+     "description": "FDXF reported Q3 2026 earnings after the close \u2014 EPS 1.49 vs 1.3833 expected (beat, +7.7%)",
+     "source": "finnhub",
+     "days_ago": 2,
+     "eps_actual": 1.49,
+     "eps_estimate": 1.3833,
+     "surprise": "beat",
+     "surprise_pct": 7.7,
+     "hour": "amc"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-10-29",
+     "description": "FDXF reported Q4 2026 earnings after the close \u2014 EPS 1.49 vs 0.5394 expected (beat, +176.2%)",
+     "source": "finnhub",
+     "days_ago": 2,
+     "eps_actual": 1.49,
+     "eps_estimate": 0.5394,
+     "surprise": "beat",
+     "surprise_pct": 176.2,
+     "hour": "amc"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-10-28",
+     "description": "FDXF reported Q1 2027 earnings",
+     "source": "finnhub",
+     "days_ago": 3,
+     "eps_actual": null,
+     "eps_estimate": 0.7446,
+     "surprise": null,
+     "surprise_pct": null
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

@@ -1,0 +1,400 @@
+{
+ "schema": 1,
+ "ticker": "AMZN",
+ "trading_day": "2026-10-30",
+ "captured_at": "2026-10-31T00:59:15+00:00",
+ "selected_as": "move",
+ "change_pct": -1.41,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "today: -4.25% \u2014 elevated for this stock (about 1.86x its normal move for that span, expected ~2.29%)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "AMZN",
+   "price": 240.35,
+   "prev_close": 243.79,
+   "change_pct": -1.41,
+   "realized_vol_annualized_pct": 36.3,
+   "changes_pct": {
+    "1d": -4.25,
+    "1w": -2.63,
+    "2w": -4.31,
+    "1mo": -2.15,
+    "1y": 6.34,
+    "ytd": 7.63
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "today: -4.25% \u2014 elevated for this stock (about 1.86x its normal move for that span, expected ~2.29%)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "AMZN",
+   "headlines": [
+    {
+     "headline": "Learn Why The Bull Case For Verizon Communications (VZ) Could Change Following Raised Outlook",
+     "summary": "Verizon Communications reported Q3 2026 revenue of US$34.313b and net income of US$5.198b, raised its full year outlook, expanded AI focused connectivity deals with Amazon and Alphabet, and committed...",
+     "datetime": 1793398385,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=8b3174a1e275a03617ccc0b241d308219cbe6fc69ce7ae7ecdd9c2c33338f398"
+    },
+    {
+     "headline": "Apple overtakes Nvidia to become world\u2019s most valuable company amid tech selloff",
+     "summary": "Investing.com -- Apple Inc (NASDAQ:AAPL) reclaimed its position as the world\u2019s most valuable publicly traded company on Friday, edging past NVIDIA Corporation (NASDAQ:NVDA) as mounting skepticism...",
+     "datetime": 1793396873,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=2ab228d2c7435ae6a789946286b6875a9a2b6f5ed02e52ebacb8a3b4484d8a59"
+    },
+    {
+     "headline": "Stock Market Today, Oct. 30: Amazon Misses Revenue and Earnings Expectations",
+     "summary": "Today, Oct. 30, 2026, Amazon's cloud business grew 39% but heavy AI investment and weaker cash flow kept investors on edge.",
+     "datetime": 1793396102,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=8af776c42ea3d28d485922c82c3fc941a4a6b9eff086dea13aa05e6c4fec9ce3"
+    },
+    {
+     "headline": "Cracks are emerging in the AI spending boom",
+     "summary": "Big Tech is pouring billions into AI infrastructure, but mounting debt, negative cash flow, and growing investor skepticism are raising questions about the sustainability of the AI spending boom.",
+     "datetime": 1793395060,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=d06f04fb421777e9671651d5e06a5d9ce8ac7696c65521db9c4aeb909671a979"
+    },
+    {
+     "headline": "Gene Munster 'More Concerned' About Amazon and Alphabet \u2014 Says AI Bots Mean Shopping Edge 'Will Increasingly Be Under Attack'",
+     "summary": "Personalized AI bots could threaten Amazon.com, Inc.\u2018s hold on online shopping and Alphabet Inc.\u2018s grip on search, investor Gene Munster warned on Wednesday. Bots Could Reshape Where Shoppers Start...",
+     "datetime": 1793394612,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=2e12edcd7acd3ff8255d1077d36bdb801da22743a3d0c1e1090002b50c130ba5"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "AMZN",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 20,
+   "atm_iv_pct": 34.7,
+   "iv_chain_percentile": 22,
+   "skew_points": 0.3,
+   "put_call_ratio": 0.56,
+   "total_put_oi": 256181,
+   "total_call_oi": 460284
+  },
+  "get_options_positioning": {
+   "ticker": "AMZN",
+   "spot": 240.35,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-13",
+   "primary_days_to_expiry": 13,
+   "max_pain_strike": 255.0,
+   "resistance_walls": [
+    {
+     "strike": 280.0,
+     "open_interest": 3863
+    },
+    {
+     "strike": 295.0,
+     "open_interest": 3550
+    },
+    {
+     "strike": 305.0,
+     "open_interest": 1349
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 210.0,
+     "open_interest": 5052
+    },
+    {
+     "strike": 200.0,
+     "open_interest": 2975
+    },
+    {
+     "strike": 235.0,
+     "open_interest": 1336
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-13",
+     "days_to_expiry": 13,
+     "atm_iv_pct": 36.4
+    },
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 20,
+     "atm_iv_pct": 34.7
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 27,
+     "atm_iv_pct": 33.2
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 260.0,
+     "volume": 10581,
+     "open_interest": 934,
+     "vol_oi_ratio": 11.3,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 240.0,
+     "volume": 1941,
+     "open_interest": 285,
+     "vol_oi_ratio": 6.8,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 235.0,
+     "volume": 343,
+     "open_interest": 59,
+     "vol_oi_ratio": 5.8,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 220.0,
+     "volume": 2286,
+     "open_interest": 774,
+     "vol_oi_ratio": 3.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 195.0,
+     "volume": 294,
+     "open_interest": 122,
+     "vol_oi_ratio": 2.4,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 19230,
+   "otm_put_oi": 16923,
+   "positioning_lean_score": 0.06,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "AMZN",
+   "as_of": "2026-10-31",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-30",
+     "days_ago": 1,
+     "firm": "Scotiabank",
+     "action": "maintained",
+     "from_grade": "Sector Outperform",
+     "to_grade": "Sector Outperform",
+     "price_target_from": 325.0,
+     "price_target_to": 300.0,
+     "is_rating_change": false,
+     "description": "Scotiabank maintained its Sector Outperform rating on AMZN and cut its price target from $325.0 to $300.0"
+    },
+    {
+     "date": "2026-10-30",
+     "days_ago": 1,
+     "firm": "Telsey Advisory Group",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 335.0,
+     "price_target_to": 335.0,
+     "is_rating_change": false,
+     "description": "Telsey Advisory Group maintained its Outperform rating on AMZN with a $335.0 price target"
+    },
+    {
+     "date": "2026-10-30",
+     "days_ago": 1,
+     "firm": "DA Davidson",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 250.0,
+     "price_target_to": 250.0,
+     "is_rating_change": false,
+     "description": "DA Davidson maintained its Neutral rating on AMZN with a $250.0 price target"
+    },
+    {
+     "date": "2026-10-30",
+     "days_ago": 1,
+     "firm": "Rosenblatt",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 360.0,
+     "price_target_to": 360.0,
+     "is_rating_change": false,
+     "description": "Rosenblatt maintained its Buy rating on AMZN with a $360.0 price target"
+    },
+    {
+     "date": "2026-10-30",
+     "days_ago": 1,
+     "firm": "Wells Fargo",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 329.0,
+     "price_target_to": 326.0,
+     "is_rating_change": false,
+     "description": "Wells Fargo maintained its Overweight rating on AMZN and cut its price target from $329.0 to $326.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.77,
+    "verdict": "leaning bullish",
+    "analysts": 60,
+    "counts": {
+     "strongBuy": 16,
+     "buy": 42,
+     "hold": 2,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.8 to 1.77)"
+   },
+   "price_target": {
+    "mean": 332.41,
+    "median": 330.0,
+    "high": 405.0,
+    "low": 230.0,
+    "current_price": 240.35,
+    "dispersion_pct": 52.6,
+    "upside_vs_mean_pct": 38.3,
+    "upside_vs_median_pct": 37.3
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "AMZN",
+   "sector": "Consumer Cyclical",
+   "sector_etf": "XLY",
+   "comparison": {
+    "1mo": {
+     "stock_change_pct": -2.15,
+     "sector_etf_change_pct": 6.76,
+     "relative_to_sector_pct": -8.91
+    },
+    "1w": {
+     "stock_change_pct": -2.63,
+     "sector_etf_change_pct": 1.03,
+     "relative_to_sector_pct": -3.66
+    },
+    "1d": {
+     "stock_change_pct": -4.25,
+     "sector_etf_change_pct": 0.75,
+     "relative_to_sector_pct": -5.0
+    },
+    "1y": {
+     "stock_change_pct": 6.34,
+     "sector_etf_change_pct": -2.83,
+     "relative_to_sector_pct": 9.17
+    },
+    "2w": {
+     "stock_change_pct": -4.31,
+     "sector_etf_change_pct": 2.46,
+     "relative_to_sector_pct": -6.77
+    },
+    "ytd": {
+     "stock_change_pct": 7.63,
+     "sector_etf_change_pct": -1.21,
+     "relative_to_sector_pct": 8.84
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-10-30",
+    "realtime_end": "2026-10-30",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9608,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-10-30",
+      "realtime_end": "2026-10-30",
+      "date": "2026-10-29",
+      "value": "17.2"
+     },
+     {
+      "realtime_start": "2026-10-30",
+      "realtime_end": "2026-10-30",
+      "date": "2026-10-28",
+      "value": "16.91"
+     },
+     {
+      "realtime_start": "2026-10-30",
+      "realtime_end": "2026-10-30",
+      "date": "2026-10-27",
+      "value": "17.52"
+     },
+     {
+      "realtime_start": "2026-10-30",
+      "realtime_end": "2026-10-30",
+      "date": "2026-10-26",
+      "value": "18.39"
+     },
+     {
+      "realtime_start": "2026-10-30",
+      "realtime_end": "2026-10-30",
+      "date": "2026-10-23",
+      "value": "19.45"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "AMZN",
+   "as_of": "2026-10-31",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 39,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-29",
+     "description": "AMZN reported Q3 2026 earnings after the close \u2014 EPS 1.89 vs 2.001 expected (miss, -5.5%)",
+     "source": "finnhub",
+     "days_ago": 2,
+     "eps_actual": 1.89,
+     "eps_estimate": 2.001,
+     "surprise": "miss",
+     "surprise_pct": -5.5,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}
