@@ -1,0 +1,407 @@
+{
+ "schema": 1,
+ "ticker": "GS",
+ "trading_day": "2026-11-02",
+ "captured_at": "2026-11-03T03:01:24+00:00",
+ "selected_as": "control",
+ "change_pct": 0.47,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "GS",
+   "price": 898.72,
+   "prev_close": 894.55,
+   "change_pct": 0.47,
+   "realized_vol_annualized_pct": 24.3,
+   "changes_pct": {
+    "1d": 0.47,
+    "1w": 0.61,
+    "2w": 2.62,
+    "1mo": -0.43,
+    "1y": 15.98,
+    "ytd": -0.27
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   }
+  },
+  "get_news": {
+   "ticker": "GS",
+   "headlines": [
+    {
+     "headline": "Helping PE Owned Co\u2019s Be IPO Ready: NYSE Head of East Coast Capital Markets Tad Nacheff, Live from NYSE",
+     "summary": "IPO Edge hosted a fireside chat from the floor of the New York Stock Exchange during the 3rd Annual Private Equity IPO Summit with Tad Nacheff, Head of East Coast Capital [\u2026]",
+     "datetime": 1793654858,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=6d410ebbe0c20145311e8e82827b356563bcb0efd9f021c4dc5e223e9eee4d56"
+    },
+    {
+     "headline": "3 Dividend Stocks To Own In November 2026",
+     "summary": "With oil prices forecast by Goldman Sachs to average US$105 per barrel in December, cash flow is front of mind again for income seekers. Higher energy and living costs can make each dividend cheque...",
+     "datetime": 1793632142,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=9c6af1e616ea0a06d9cec827ec2eae922b8d2ee156caf4286231ac8abd55542e"
+    },
+    {
+     "headline": "Spdr Dow Jones Industrial Avg ETF (DIA) Adds Goldman Sachs and Caterpillar on Thursday",
+     "summary": "The fund bought $130.6 million of stock, increasing all 30 positions and selling nothing.",
+     "datetime": 1793617560,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=98599e796e54caa34e790ea18e2f6d64fcf92e22aae480b21e15e485ef29bd94"
+    },
+    {
+     "headline": "34 ETFs Add to Goldman Sachs (GS) on Thursday",
+     "summary": "ETFs bought $36.8 million of Goldman Sachs stock, with 34 buyers against 18 sellers.",
+     "datetime": 1793617291,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=bfaf63901014b2bd265bf084aa2bb280013a8a56799d51701c5cdba4a373b9f5"
+    },
+    {
+     "headline": "'Goldman Restricts Traders and Bankers From Using Some AI Tools' - Bloomberg Exclusive",
+     "summary": "https://www.bloomberg.com/news/articles/2026-11-02/goldman-restricts-traders-and-bankers-from-using-some-ai-tools",
+     "datetime": 1793613258,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=3fddfe00be7a2f69db1889914e99af528872dc949276b4dba1359986d6b15cc6"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "GS",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 17,
+   "atm_iv_pct": 36.7,
+   "iv_chain_percentile": 5,
+   "skew_points": 2.2,
+   "put_call_ratio": 1.06,
+   "total_put_oi": 23736,
+   "total_call_oi": 22439
+  },
+  "get_options_positioning": {
+   "ticker": "GS",
+   "spot": 898.72,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 17,
+   "max_pain_strike": 920.0,
+   "resistance_walls": [
+    {
+     "strike": 1000.0,
+     "open_interest": 1771
+    },
+    {
+     "strike": 1100.0,
+     "open_interest": 1068
+    },
+    {
+     "strike": 1200.0,
+     "open_interest": 1044
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 880.0,
+     "open_interest": 1724
+    },
+    {
+     "strike": 800.0,
+     "open_interest": 962
+    },
+    {
+     "strike": 795.0,
+     "open_interest": 861
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 17,
+     "atm_iv_pct": 36.7
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 24,
+     "atm_iv_pct": 37.0
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 902.5,
+     "volume": 425,
+     "open_interest": 11,
+     "vol_oi_ratio": 38.6,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 907.5,
+     "volume": 179,
+     "open_interest": 16,
+     "vol_oi_ratio": 11.2,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 905.0,
+     "volume": 541,
+     "open_interest": 153,
+     "vol_oi_ratio": 3.5,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 915.0,
+     "volume": 129,
+     "open_interest": 148,
+     "vol_oi_ratio": 0.9,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 920.0,
+     "volume": 313,
+     "open_interest": 411,
+     "vol_oi_ratio": 0.8,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 20049,
+   "otm_put_oi": 17529,
+   "positioning_lean_score": 0.07,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "GS",
+   "as_of": "2026-11-03",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-02",
+     "days_ago": 1,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 1010.0,
+     "price_target_to": 1000.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Neutral rating on GS and cut its price target from $1010.0 to $1000.0"
+    },
+    {
+     "date": "2026-10-23",
+     "days_ago": 11,
+     "firm": "Freedom Broker",
+     "action": "upgrade",
+     "from_grade": "Hold",
+     "to_grade": "Buy",
+     "price_target_from": 1200.0,
+     "price_target_to": 1100.0,
+     "is_rating_change": true,
+     "description": "Freedom Broker upgraded GS from Hold to Buy and cut its price target from $1200.0 to $1100.0"
+    },
+    {
+     "date": "2026-10-19",
+     "days_ago": 15,
+     "firm": "BMO Capital",
+     "action": "maintained",
+     "from_grade": "Market Perform",
+     "to_grade": "Market Perform",
+     "price_target_from": 970.0,
+     "price_target_to": 950.0,
+     "is_rating_change": false,
+     "description": "BMO Capital maintained its Market Perform rating on GS and cut its price target from $970.0 to $950.0"
+    },
+    {
+     "date": "2026-10-16",
+     "days_ago": 18,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 955.0,
+     "price_target_to": 970.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Neutral rating on GS and raised its price target from $955.0 to $970.0"
+    },
+    {
+     "date": "2026-10-14",
+     "days_ago": 20,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 1050.0,
+     "price_target_to": 1000.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Neutral rating on GS and cut its price target from $1050.0 to $1000.0"
+    }
+   ],
+   "consensus": {
+    "rating": "hold",
+    "score": 2.73,
+    "verdict": "neutral",
+    "analysts": 26,
+    "counts": {
+     "strongBuy": 1,
+     "buy": 8,
+     "hold": 15,
+     "sell": 1,
+     "strongSell": 1
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.8 to 2.73; bearish ratings 2 to 2)"
+   },
+   "price_target": {
+    "mean": 1030.67,
+    "median": 1000.0,
+    "high": 1250.0,
+    "low": 730.0,
+    "current_price": 898.72,
+    "dispersion_pct": 50.5,
+    "upside_vs_mean_pct": 14.7,
+    "upside_vs_median_pct": 11.3
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "GS",
+   "sector": "Financial Services",
+   "sector_etf": "XLF",
+   "comparison": {
+    "1y": {
+     "stock_change_pct": 15.98,
+     "sector_etf_change_pct": 11.94,
+     "relative_to_sector_pct": 4.04
+    },
+    "1d": {
+     "stock_change_pct": 0.47,
+     "sector_etf_change_pct": 1.86,
+     "relative_to_sector_pct": -1.39
+    },
+    "ytd": {
+     "stock_change_pct": -0.27,
+     "sector_etf_change_pct": 6.07,
+     "relative_to_sector_pct": -6.34
+    },
+    "2w": {
+     "stock_change_pct": 2.62,
+     "sector_etf_change_pct": 4.54,
+     "relative_to_sector_pct": -1.92
+    },
+    "1mo": {
+     "stock_change_pct": -0.43,
+     "sector_etf_change_pct": 7.61,
+     "relative_to_sector_pct": -8.04
+    },
+    "1w": {
+     "stock_change_pct": 0.61,
+     "sector_etf_change_pct": 2.75,
+     "relative_to_sector_pct": -2.14
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-02",
+    "realtime_end": "2026-11-02",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9609,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-02",
+      "realtime_end": "2026-11-02",
+      "date": "2026-10-30",
+      "value": "19.42"
+     },
+     {
+      "realtime_start": "2026-11-02",
+      "realtime_end": "2026-11-02",
+      "date": "2026-10-29",
+      "value": "17.2"
+     },
+     {
+      "realtime_start": "2026-11-02",
+      "realtime_end": "2026-11-02",
+      "date": "2026-10-28",
+      "value": "16.91"
+     },
+     {
+      "realtime_start": "2026-11-02",
+      "realtime_end": "2026-11-02",
+      "date": "2026-10-27",
+      "value": "17.52"
+     },
+     {
+      "realtime_start": "2026-11-02",
+      "realtime_end": "2026-11-02",
+      "date": "2026-10-26",
+      "value": "18.39"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "GS",
+   "as_of": "2026-11-03",
+   "events": [
+    {
+     "type": "ex_dividend",
+     "date": "2026-12-02",
+     "source": "yfinance",
+     "description": "GS goes ex-dividend \u2014 expect a mechanical price drop of roughly the dividend",
+     "days_until": 29
+    },
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 36,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-19",
+     "description": "GS quarterly earnings scheduled (before the open)",
+     "source": "yfinance",
+     "days_until": 77,
+     "eps_estimate": 15.78,
+     "hour": "bmo"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-13",
+     "description": "GS reported Q3 2026 earnings before the open \u2014 EPS 17.01 vs 13.4156 expected (beat, +26.8%)",
+     "source": "finnhub",
+     "days_ago": 21,
+     "eps_actual": 17.01,
+     "eps_estimate": 13.4156,
+     "surprise": "beat",
+     "surprise_pct": 26.8,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub+yfinance"
+  }
+ }
+}

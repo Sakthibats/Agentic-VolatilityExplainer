@@ -1,0 +1,415 @@
+{
+ "schema": 1,
+ "ticker": "MRVL",
+ "trading_day": "2026-11-02",
+ "captured_at": "2026-11-03T03:02:48+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -12.72,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: -12.72% \u2014 elevated relative to this stock's own typical volatility (expected ~5.88%, 2.16x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "this week: -26.68% \u2014 elevated relative to this stock's own typical volatility (expected ~13.14%, 2.03x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past 2 weeks: -27.7% \u2014 typical relative to this stock's own typical volatility (expected ~18.59%, 1.49x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past month: -37.03% \u2014 typical relative to this stock's own typical volatility (expected ~26.93%, 1.37x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past year: 93.86% \u2014 typical relative to this stock's own typical volatility (expected ~93.30%, 1.01x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "MRVL",
+   "price": 171.41,
+   "prev_close": 196.4,
+   "change_pct": -12.72,
+   "realized_vol_annualized_pct": 93.3,
+   "changes_pct": {
+    "1d": -12.72,
+    "1w": -26.68,
+    "2w": -27.7,
+    "1mo": -37.03,
+    "1y": 93.86,
+    "ytd": 92.08
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: -12.72% \u2014 elevated relative to this stock's own typical volatility (expected ~5.88%, 2.16x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "this week: -26.68% \u2014 elevated relative to this stock's own typical volatility (expected ~13.14%, 2.03x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past 2 weeks: -27.7% \u2014 typical relative to this stock's own typical volatility (expected ~18.59%, 1.49x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past month: -37.03% \u2014 typical relative to this stock's own typical volatility (expected ~26.93%, 1.37x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past year: 93.86% \u2014 typical relative to this stock's own typical volatility (expected ~93.30%, 1.01x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "MRVL",
+   "headlines": [
+    {
+     "headline": "Dow Jones Futures: AI Trade Dives As Marvell, Lumentum Plunge; Apple Tumbles On Earnings With Midterm Elections Next",
+     "summary": "Dow Jones Futures: The AI trade dived Monday, while Apple stock dropped on earnings late. The midterm elections are Tuesday.",
+     "datetime": 1793662843,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=b8b8c9c3ee917d95f6d0a92f487a2fce15eb85248f3f3468471d4ba5ed05ae1d"
+    },
+    {
+     "headline": "US Stock Market Fails To Recover as $700 Billion Comeback Collapses",
+     "summary": "Jim Cramer called the biggest tech takeout. Stocks added $700 billion, then lost it as AI and chip shares slid.",
+     "datetime": 1793660177,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=3cdf7e716ed286c3968637b8ef934c2f6d24d7c1b15660294fb2c12d3a8c3b58"
+    },
+    {
+     "headline": "Marvell Technology Is Acquiring Lumentum. Why Does the Market Hate the Move?",
+     "summary": "Shares of Marvell were down big on Monday after it announced it would be acquiring Lumentum.",
+     "datetime": 1793658122,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=d7065dd1a878d9240fc1cceab0940107f3c8a7fb2e6122894d15fdf1d2032a54"
+    },
+    {
+     "headline": "3 Founder Led Stocks With Revenue Over 8b",
+     "summary": "Artificial intelligence is not just lifting chipmakers. It is triggering huge deals, such as Marvell\u2019s planned all-stock acquisition of Lumentum, worth a reported $115b, which shows how far some...",
+     "datetime": 1793657465,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=a7fbd04db325105900d8d4528111f95ba70c7c198d008229c14b06b46a2a24f9"
+    },
+    {
+     "headline": "Stock Market Today, Nov. 2: Marvell Announces $115 Billion All-Stock Acquisition of Lumentum",
+     "summary": "On Nov. 2, 2026, the data infrastructure chipmaker unveiled a major deal that sent its shares down 13% and sparked investor concerns over dilution and financing risk.",
+     "datetime": 1793657180,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=f6a4fd718e5788179e26197f3e976c8e5b7230558bb32d9c1e118514b908ee5b"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "MRVL",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 17,
+   "atm_iv_pct": 81.6,
+   "iv_chain_percentile": 8,
+   "skew_points": -0.2,
+   "put_call_ratio": 1.14,
+   "total_put_oi": 162028,
+   "total_call_oi": 142128
+  },
+  "get_options_positioning": {
+   "ticker": "MRVL",
+   "spot": 171.41,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 17,
+   "max_pain_strike": 230.0,
+   "resistance_walls": [
+    {
+     "strike": 270.0,
+     "open_interest": 18999
+    },
+    {
+     "strike": 300.0,
+     "open_interest": 17405
+    },
+    {
+     "strike": 250.0,
+     "open_interest": 8373
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 175.0,
+     "open_interest": 14700
+    },
+    {
+     "strike": 200.0,
+     "open_interest": 14122
+    },
+    {
+     "strike": 160.0,
+     "open_interest": 9571
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 17,
+     "atm_iv_pct": 81.6
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 24,
+     "atm_iv_pct": 75.2
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 200.0,
+     "volume": 7263,
+     "open_interest": 2000,
+     "vol_oi_ratio": 3.6,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 217.5,
+     "volume": 2368,
+     "open_interest": 696,
+     "vol_oi_ratio": 3.4,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 205.0,
+     "volume": 475,
+     "open_interest": 144,
+     "vol_oi_ratio": 3.3,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 85.0,
+     "volume": 517,
+     "open_interest": 278,
+     "vol_oi_ratio": 1.9,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 165.0,
+     "volume": 9797,
+     "open_interest": 7467,
+     "vol_oi_ratio": 1.3,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 132251,
+   "otm_put_oi": 72800,
+   "positioning_lean_score": 0.29,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "MRVL",
+   "as_of": "2026-11-03",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-07",
+     "days_ago": 27,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 335.0,
+     "price_target_to": 350.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Buy rating on MRVL and raised its price target from $335.0 to $350.0"
+    },
+    {
+     "date": "2026-10-07",
+     "days_ago": 27,
+     "firm": "Jefferies",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 325.0,
+     "price_target_to": 450.0,
+     "is_rating_change": false,
+     "description": "Jefferies maintained its Buy rating on MRVL and raised its price target from $325.0 to $450.0"
+    },
+    {
+     "date": "2026-10-07",
+     "days_ago": 27,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 305.0,
+     "price_target_to": 360.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Overweight rating on MRVL and raised its price target from $305.0 to $360.0"
+    },
+    {
+     "date": "2026-10-07",
+     "days_ago": 27,
+     "firm": "Wells Fargo",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 310.0,
+     "price_target_to": 365.0,
+     "is_rating_change": false,
+     "description": "Wells Fargo maintained its Overweight rating on MRVL and raised its price target from $310.0 to $365.0"
+    },
+    {
+     "date": "2026-10-07",
+     "days_ago": 27,
+     "firm": "Wolfe Research",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 280.0,
+     "price_target_to": 375.0,
+     "is_rating_change": false,
+     "description": "Wolfe Research maintained its Outperform rating on MRVL and raised its price target from $280.0 to $375.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.91,
+    "verdict": "leaning bullish",
+    "analysts": 44,
+    "counts": {
+     "strongBuy": 8,
+     "buy": 32,
+     "hold": 4,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.93 to 1.91)"
+   },
+   "price_target": {
+    "mean": 333.09,
+    "median": 335.0,
+    "high": 450.0,
+    "low": 225.0,
+    "current_price": 171.41,
+    "dispersion_pct": 67.5,
+    "upside_vs_mean_pct": 94.3,
+    "upside_vs_median_pct": 95.4
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "MRVL",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1y": {
+     "stock_change_pct": 93.86,
+     "sector_etf_change_pct": 16.59,
+     "relative_to_sector_pct": 77.27
+    },
+    "1d": {
+     "stock_change_pct": -12.72,
+     "sector_etf_change_pct": -2.95,
+     "relative_to_sector_pct": -9.77
+    },
+    "ytd": {
+     "stock_change_pct": 92.08,
+     "sector_etf_change_pct": 21.17,
+     "relative_to_sector_pct": 70.91
+    },
+    "2w": {
+     "stock_change_pct": -27.7,
+     "sector_etf_change_pct": -6.31,
+     "relative_to_sector_pct": -21.39
+    },
+    "1mo": {
+     "stock_change_pct": -37.03,
+     "sector_etf_change_pct": -12.81,
+     "relative_to_sector_pct": -24.22
+    },
+    "1w": {
+     "stock_change_pct": -26.68,
+     "sector_etf_change_pct": -6.49,
+     "relative_to_sector_pct": -20.19
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-02",
+    "realtime_end": "2026-11-02",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9609,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-02",
+      "realtime_end": "2026-11-02",
+      "date": "2026-10-30",
+      "value": "19.42"
+     },
+     {
+      "realtime_start": "2026-11-02",
+      "realtime_end": "2026-11-02",
+      "date": "2026-10-29",
+      "value": "17.2"
+     },
+     {
+      "realtime_start": "2026-11-02",
+      "realtime_end": "2026-11-02",
+      "date": "2026-10-28",
+      "value": "16.91"
+     },
+     {
+      "realtime_start": "2026-11-02",
+      "realtime_end": "2026-11-02",
+      "date": "2026-10-27",
+      "value": "17.52"
+     },
+     {
+      "realtime_start": "2026-11-02",
+      "realtime_end": "2026-11-02",
+      "date": "2026-10-26",
+      "value": "18.39"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "MRVL",
+   "as_of": "2026-11-03",
+   "events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-26",
+     "description": "MRVL Q3 2027 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 23,
+     "eps_estimate": 1.1138
+    },
+    {
+     "type": "earnings",
+     "date": "2026-12-01",
+     "description": "MRVL quarterly earnings scheduled (after the close)",
+     "source": "yfinance",
+     "days_until": 28,
+     "eps_estimate": 1.1,
+     "hour": "amc"
+    },
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 36,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "ex_dividend",
+     "date": "2026-10-09",
+     "source": "yfinance",
+     "description": "MRVL went ex-dividend \u2014 the price drops by roughly the dividend on this date mechanically, with no news behind it",
+     "days_ago": 25
+    }
+   ],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub+yfinance"
+  }
+ }
+}

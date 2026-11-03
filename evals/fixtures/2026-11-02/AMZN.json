@@ -1,0 +1,391 @@
+{
+ "schema": 1,
+ "ticker": "AMZN",
+ "trading_day": "2026-11-02",
+ "captured_at": "2026-11-03T03:01:17+00:00",
+ "selected_as": "control",
+ "change_pct": 2.2,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "AMZN",
+   "price": 245.63,
+   "prev_close": 240.35,
+   "change_pct": 2.2,
+   "realized_vol_annualized_pct": 37.2,
+   "changes_pct": {
+    "1d": 2.2,
+    "1w": -1.39,
+    "2w": -6.41,
+    "1mo": -2.34,
+    "1y": 10.22,
+    "ytd": 8.45
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   }
+  },
+  "get_news": {
+   "ticker": "AMZN",
+   "headlines": [
+    {
+     "headline": "Amazon's Report Passed Both Tests I Set for It. I'd Buy More of the Stock Now.",
+     "summary": "The e-commerce and cloud giant's report cleared both hurdles I set for it. Is it time to buy the second half?",
+     "datetime": 1793668021,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=b37bda759a7d1fece9ad11a2a912050c0b3c1ba8eead570844eaaeb69df6e686"
+    },
+    {
+     "headline": "Amazon Prime Video beats Apple TV",
+     "summary": "What seemed like a pricey vanity project has actually turned into a revenue driver.",
+     "datetime": 1793664420,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=d2d91298c8f1493bc7243b07817bd82bb6879fffda97c063539b24ebe6531679"
+    },
+    {
+     "headline": "Jim Cramer explains the 'AI cheat code' driving Apple stock higher",
+     "summary": "Silicon Valley is burning cash but one survives.",
+     "datetime": 1793664000,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=2ccb0da47317eb8d258baea519cfc2125da687c3f5308820bff039b87314b876"
+    },
+    {
+     "headline": "Alphabet Lost $500 Billion in Market Value. Should You Really Buy AI Stocks Now?",
+     "summary": "Last week, the stock had its worst day ever.",
+     "datetime": 1793661901,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=16c9bdbe1dcf033deed2cd60ca41093fd8d95561856cc7e479406382699cb870"
+    },
+    {
+     "headline": "Amazon Is Pouring About $220 Billion Into AI This Year, and Insuring Its Debt Costs 50% More Than in August",
+     "summary": "Amazon (Nasdaq: AMZN) is spending about $220 billion on AI this year, its free cash flow has turned negative, and insuring its debt costs 50% more than in August. 24/7 Wall Street Chief Investment...",
+     "datetime": 1793661749,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=25da1317e9026215a9a2f14c32e5f93b905220787af5867ba023b8c6e8c59361"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "AMZN",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 17,
+   "atm_iv_pct": 36.2,
+   "iv_chain_percentile": 20,
+   "skew_points": 3.2,
+   "put_call_ratio": 0.56,
+   "total_put_oi": 252547,
+   "total_call_oi": 453644
+  },
+  "get_options_positioning": {
+   "ticker": "AMZN",
+   "spot": 245.63,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 17,
+   "max_pain_strike": 250.0,
+   "resistance_walls": [
+    {
+     "strike": 270.0,
+     "open_interest": 38078
+    },
+    {
+     "strike": 290.0,
+     "open_interest": 36858
+    },
+    {
+     "strike": 275.0,
+     "open_interest": 35224
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 250.0,
+     "open_interest": 25850
+    },
+    {
+     "strike": 240.0,
+     "open_interest": 19371
+    },
+    {
+     "strike": 230.0,
+     "open_interest": 16139
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 17,
+     "atm_iv_pct": 36.2
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 24,
+     "atm_iv_pct": 34.1
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 277.5,
+     "volume": 698,
+     "open_interest": 479,
+     "vol_oi_ratio": 1.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 242.5,
+     "volume": 678,
+     "open_interest": 449,
+     "vol_oi_ratio": 1.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 242.5,
+     "volume": 241,
+     "open_interest": 304,
+     "vol_oi_ratio": 0.8,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 247.5,
+     "volume": 654,
+     "open_interest": 852,
+     "vol_oi_ratio": 0.8,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 237.5,
+     "volume": 870,
+     "open_interest": 1535,
+     "vol_oi_ratio": 0.6,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 419889,
+   "otm_put_oi": 183784,
+   "positioning_lean_score": 0.39,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "AMZN",
+   "as_of": "2026-11-03",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-31",
+     "days_ago": 3,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 348.0,
+     "price_target_to": 352.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Buy rating on AMZN and raised its price target from $348.0 to $352.0"
+    },
+    {
+     "date": "2026-10-30",
+     "days_ago": 4,
+     "firm": "Scotiabank",
+     "action": "maintained",
+     "from_grade": "Sector Outperform",
+     "to_grade": "Sector Outperform",
+     "price_target_from": 325.0,
+     "price_target_to": 300.0,
+     "is_rating_change": false,
+     "description": "Scotiabank maintained its Sector Outperform rating on AMZN and cut its price target from $325.0 to $300.0"
+    },
+    {
+     "date": "2026-10-30",
+     "days_ago": 4,
+     "firm": "Telsey Advisory Group",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 335.0,
+     "price_target_to": 335.0,
+     "is_rating_change": false,
+     "description": "Telsey Advisory Group maintained its Outperform rating on AMZN with a $335.0 price target"
+    },
+    {
+     "date": "2026-10-30",
+     "days_ago": 4,
+     "firm": "DA Davidson",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 250.0,
+     "price_target_to": 250.0,
+     "is_rating_change": false,
+     "description": "DA Davidson maintained its Neutral rating on AMZN with a $250.0 price target"
+    },
+    {
+     "date": "2026-10-30",
+     "days_ago": 4,
+     "firm": "Rosenblatt",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 360.0,
+     "price_target_to": 360.0,
+     "is_rating_change": false,
+     "description": "Rosenblatt maintained its Buy rating on AMZN with a $360.0 price target"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.78,
+    "verdict": "leaning bullish",
+    "analysts": 60,
+    "counts": {
+     "strongBuy": 15,
+     "buy": 43,
+     "hold": 2,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.78 to 1.78)"
+   },
+   "price_target": {
+    "mean": 327.08,
+    "median": 330.0,
+    "high": 405.0,
+    "low": 230.0,
+    "current_price": 245.63,
+    "dispersion_pct": 53.5,
+    "upside_vs_mean_pct": 33.2,
+    "upside_vs_median_pct": 34.3
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "AMZN",
+   "sector": "Consumer Cyclical",
+   "sector_etf": "XLY",
+   "comparison": {
+    "1y": {
+     "stock_change_pct": 10.22,
+     "sector_etf_change_pct": 1.93,
+     "relative_to_sector_pct": 8.29
+    },
+    "1d": {
+     "stock_change_pct": 2.2,
+     "sector_etf_change_pct": 2.41,
+     "relative_to_sector_pct": -0.21
+    },
+    "ytd": {
+     "stock_change_pct": 8.45,
+     "sector_etf_change_pct": 0.46,
+     "relative_to_sector_pct": 7.99
+    },
+    "2w": {
+     "stock_change_pct": -6.41,
+     "sector_etf_change_pct": 3.23,
+     "relative_to_sector_pct": -9.64
+    },
+    "1mo": {
+     "stock_change_pct": -2.34,
+     "sector_etf_change_pct": 7.38,
+     "relative_to_sector_pct": -9.72
+    },
+    "1w": {
+     "stock_change_pct": -1.39,
+     "sector_etf_change_pct": 3.41,
+     "relative_to_sector_pct": -4.8
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-02",
+    "realtime_end": "2026-11-02",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9609,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-02",
+      "realtime_end": "2026-11-02",
+      "date": "2026-10-30",
+      "value": "19.42"
+     },
+     {
+      "realtime_start": "2026-11-02",
+      "realtime_end": "2026-11-02",
+      "date": "2026-10-29",
+      "value": "17.2"
+     },
+     {
+      "realtime_start": "2026-11-02",
+      "realtime_end": "2026-11-02",
+      "date": "2026-10-28",
+      "value": "16.91"
+     },
+     {
+      "realtime_start": "2026-11-02",
+      "realtime_end": "2026-11-02",
+      "date": "2026-10-27",
+      "value": "17.52"
+     },
+     {
+      "realtime_start": "2026-11-02",
+      "realtime_end": "2026-11-02",
+      "date": "2026-10-26",
+      "value": "18.39"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "AMZN",
+   "as_of": "2026-11-03",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 36,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-29",
+     "description": "AMZN reported Q3 2026 earnings after the close \u2014 EPS 1.89 vs 2.003 expected (miss, -5.6%)",
+     "source": "finnhub",
+     "days_ago": 5,
+     "eps_actual": 1.89,
+     "eps_estimate": 2.003,
+     "surprise": "miss",
+     "surprise_pct": -5.6,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

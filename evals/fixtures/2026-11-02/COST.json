@@ -1,0 +1,388 @@
+{
+ "schema": 1,
+ "ticker": "COST",
+ "trading_day": "2026-11-02",
+ "captured_at": "2026-11-03T03:01:59+00:00",
+ "selected_as": "move",
+ "change_pct": 2.79,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "today: 2.79% \u2014 elevated relative to this stock's own typical volatility (expected ~1.23%, 2.26x), but typical in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past month: 13.19% \u2014 elevated for this stock (about 2.33x its normal move for that span, expected ~5.66%)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "COST",
+   "price": 1040.55,
+   "prev_close": 1012.28,
+   "change_pct": 2.79,
+   "realized_vol_annualized_pct": 19.6,
+   "changes_pct": {
+    "1d": 2.79,
+    "1w": 3.67,
+    "2w": 4.68,
+    "1mo": 13.19,
+    "1y": 13.91,
+    "ytd": 22.49
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "today: 2.79% \u2014 elevated relative to this stock's own typical volatility (expected ~1.23%, 2.26x), but typical in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past month: 13.19% \u2014 elevated for this stock (about 2.33x its normal move for that span, expected ~5.66%)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "COST",
+   "headlines": [
+    {
+     "headline": "Target copies Costco food court with new in-store snack bar",
+     "summary": "The retail giant is taking a smart page out of a major competitor\u2019s playbook.",
+     "datetime": 1793666220,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=9a8b48abebf0e2a6bc9e0e4a9cc4420027548cafdfbc95f3f185bc7c0397dffc"
+    },
+    {
+     "headline": "IREN (NasdaqGS:IREN) Objects To Tokenized Share Trading On New Blockchain Venue",
+     "summary": "IREN (NasdaqGS:IREN) has formally objected to tokenized trading of its shares on the new ICE/OKX blockchain stock platform. The objection aligns IREN with companies including Nvidia, Costco, and Nike...",
+     "datetime": 1793657436,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=3b2d7c9fd1d4e7665d61ccf4a1c90680ae46d04a189718b15744019863def5e7"
+    },
+    {
+     "headline": "Stock Market Today, Nov. 2: Amazon Rallies on Phillip Securities Buy Upgrade and $330 Target",
+     "summary": "Today, Nov. 2, 2026, the analyst upgrade cited clearer cloud-demand visibility and AI positioning as AWS revenue growth accelerates.",
+     "datetime": 1793657158,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=d3e0348b77f4d832598a0c55a5f713dd55c346e791c2fa8e51f0cf81d44fbd49"
+    },
+    {
+     "headline": "Walmart Is Asking for Your Spare Change the Same Month the FTC Is Mailing Its Customers Nearly $10 Million",
+     "summary": "While Walmart launches its holiday giving campaign with a $1 million match for military families, a separate federal action is putting far more money back into shoppers' pockets, and the math between...",
+     "datetime": 1793655655,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=33eee11fe0345b0d5886d2e1c0b9df476d9ae9daa58eebfab7ad1fb89f97e7ca"
+    },
+    {
+     "headline": "Costco Wholesale Stock Is Trading Over $1,000. Here's Why a Stock Split Still May Not Come in 2027.",
+     "summary": "Costco may not split its stock in 2027, but it's still worth considering as an investment heading into the new year.",
+     "datetime": 1793651940,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=443dc4c585a70e10b333a51e6660645c3230f2b74718e5f81952deaf2ac14702"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "COST",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 17,
+   "atm_iv_pct": 24.3,
+   "iv_chain_percentile": 14,
+   "skew_points": 2.2,
+   "put_call_ratio": 1.28,
+   "total_put_oi": 22350,
+   "total_call_oi": 17528
+  },
+  "get_options_positioning": {
+   "ticker": "COST",
+   "spot": 1040.55,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 17,
+   "max_pain_strike": 950.0,
+   "resistance_walls": [
+    {
+     "strike": 1000.0,
+     "open_interest": 1703
+    },
+    {
+     "strike": 1080.0,
+     "open_interest": 1280
+    },
+    {
+     "strike": 1060.0,
+     "open_interest": 924
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 850.0,
+     "open_interest": 1453
+    },
+    {
+     "strike": 920.0,
+     "open_interest": 1430
+    },
+    {
+     "strike": 840.0,
+     "open_interest": 1007
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 17,
+     "atm_iv_pct": 24.3
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 24,
+     "atm_iv_pct": 23.6
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 1025.0,
+     "volume": 253,
+     "open_interest": 8,
+     "vol_oi_ratio": 31.6,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 680.0,
+     "volume": 121,
+     "open_interest": 26,
+     "vol_oi_ratio": 4.7,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 1000.0,
+     "volume": 629,
+     "open_interest": 183,
+     "vol_oi_ratio": 3.4,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 1320.0,
+     "volume": 116,
+     "open_interest": 35,
+     "vol_oi_ratio": 3.3,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 1200.0,
+     "volume": 361,
+     "open_interest": 261,
+     "vol_oi_ratio": 1.4,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 6447,
+   "otm_put_oi": 22329,
+   "positioning_lean_score": -0.55,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "COST",
+   "as_of": "2026-11-03",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-21",
+     "days_ago": 13,
+     "firm": "CICC",
+     "action": "initiated coverage",
+     "from_grade": null,
+     "to_grade": "Outperform",
+     "price_target_from": null,
+     "price_target_to": 1050.0,
+     "is_rating_change": false,
+     "description": "CICC initiated coverage of COST at Outperform with a $1050.0 price target"
+    },
+    {
+     "date": "2026-10-15",
+     "days_ago": 19,
+     "firm": "Tigress Financial",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 1065.0,
+     "price_target_to": 1250.0,
+     "is_rating_change": false,
+     "description": "Tigress Financial maintained its Buy rating on COST and raised its price target from $1065.0 to $1250.0"
+    },
+    {
+     "date": "2026-10-09",
+     "days_ago": 25,
+     "firm": "RBC Capital",
+     "action": "reiterated",
+     "from_grade": "Sector Perform",
+     "to_grade": "Sector Perform",
+     "price_target_from": 1000.0,
+     "price_target_to": 1000.0,
+     "is_rating_change": false,
+     "description": "RBC Capital reiterated its Sector Perform rating on COST with a $1000.0 price target"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.32,
+    "verdict": "leaning bullish",
+    "analysts": 41,
+    "counts": {
+     "strongBuy": 5,
+     "buy": 21,
+     "hold": 13,
+     "sell": 1,
+     "strongSell": 1
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 2 months (score 2.38 to 2.32; bearish ratings 2 to 2)"
+   },
+   "price_target": {
+    "mean": 1067.59,
+    "median": 1065.0,
+    "high": 1315.0,
+    "low": 770.0,
+    "current_price": 1040.55,
+    "dispersion_pct": 51.0,
+    "upside_vs_mean_pct": 2.6,
+    "upside_vs_median_pct": 2.3
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "COST",
+   "sector": "Consumer Defensive",
+   "sector_etf": "XLP",
+   "comparison": {
+    "1y": {
+     "stock_change_pct": 13.91,
+     "sector_etf_change_pct": 21.99,
+     "relative_to_sector_pct": -8.08
+    },
+    "1d": {
+     "stock_change_pct": 2.79,
+     "sector_etf_change_pct": 1.58,
+     "relative_to_sector_pct": 1.21
+    },
+    "ytd": {
+     "stock_change_pct": 22.49,
+     "sector_etf_change_pct": 19.17,
+     "relative_to_sector_pct": 3.32
+    },
+    "2w": {
+     "stock_change_pct": 4.68,
+     "sector_etf_change_pct": 4.15,
+     "relative_to_sector_pct": 0.53
+    },
+    "1mo": {
+     "stock_change_pct": 13.19,
+     "sector_etf_change_pct": 12.79,
+     "relative_to_sector_pct": 0.4
+    },
+    "1w": {
+     "stock_change_pct": 3.67,
+     "sector_etf_change_pct": 3.26,
+     "relative_to_sector_pct": 0.41
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-02",
+    "realtime_end": "2026-11-02",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9609,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-02",
+      "realtime_end": "2026-11-02",
+      "date": "2026-10-30",
+      "value": "19.42"
+     },
+     {
+      "realtime_start": "2026-11-02",
+      "realtime_end": "2026-11-02",
+      "date": "2026-10-29",
+      "value": "17.2"
+     },
+     {
+      "realtime_start": "2026-11-02",
+      "realtime_end": "2026-11-02",
+      "date": "2026-10-28",
+      "value": "16.91"
+     },
+     {
+      "realtime_start": "2026-11-02",
+      "realtime_end": "2026-11-02",
+      "date": "2026-10-27",
+      "value": "17.52"
+     },
+     {
+      "realtime_start": "2026-11-02",
+      "realtime_end": "2026-11-02",
+      "date": "2026-10-26",
+      "value": "18.39"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "COST",
+   "as_of": "2026-11-03",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 36,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-12-10",
+     "description": "COST Q1 2027 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 37,
+     "eps_estimate": 5.0319
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "ex_dividend",
+     "date": "2026-10-30",
+     "source": "yfinance",
+     "description": "COST went ex-dividend \u2014 the price drops by roughly the dividend on this date mechanically, with no news behind it",
+     "days_ago": 4
+    },
+    {
+     "type": "earnings",
+     "date": "2026-09-24",
+     "description": "COST reported quarterly earnings after the close \u2014 EPS 6.75 vs 6.53 expected (beat, +3.4%)",
+     "source": "yfinance",
+     "days_ago": 40,
+     "eps_actual": 6.75,
+     "eps_estimate": 6.53,
+     "surprise": "beat",
+     "surprise_pct": 3.4,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub+yfinance"
+  }
+ }
+}

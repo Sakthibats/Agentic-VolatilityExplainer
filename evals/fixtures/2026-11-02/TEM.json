@@ -1,0 +1,399 @@
+{
+ "schema": 1,
+ "ticker": "TEM",
+ "trading_day": "2026-11-02",
+ "captured_at": "2026-11-03T03:02:27+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 8.67,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 8.67% \u2014 elevated relative to this stock's own typical volatility (expected ~5.76%, 1.51x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "this week: 16.86% \u2014 typical relative to this stock's own typical volatility (expected ~12.87%, 1.31x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past 2 weeks: 21.98% \u2014 typical relative to this stock's own typical volatility (expected ~18.21%, 1.21x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "TEM",
+   "price": 78.48,
+   "prev_close": 72.22,
+   "change_pct": 8.67,
+   "realized_vol_annualized_pct": 91.4,
+   "changes_pct": {
+    "1d": 8.67,
+    "1w": 16.86,
+    "2w": 21.98,
+    "1mo": 2.41,
+    "1y": -9.03,
+    "ytd": 25.85
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 8.67% \u2014 elevated relative to this stock's own typical volatility (expected ~5.76%, 1.51x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "this week: 16.86% \u2014 typical relative to this stock's own typical volatility (expected ~12.87%, 1.31x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past 2 weeks: 21.98% \u2014 typical relative to this stock's own typical volatility (expected ~18.21%, 1.21x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "TEM",
+   "headlines": [
+    {
+     "headline": "3 Stocks to Watch Following Guidance Upgrades",
+     "summary": "The Q3 earnings cycle continues to roll along, with several healthcare companies delivering positive results and raising their outlooks as a result.",
+     "datetime": 1793662440,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=1b2c73e0897e6a86a42c64002467db676f478eaf520748b5800980f92fa46316"
+    },
+    {
+     "headline": "Do You Own Tempus AI Without Knowing It? Check These ETFs After Its Earnings Surge",
+     "summary": "Tempus AI surged double digits after a blowout earnings report, and some investors felt every point of that move without ever buying a single share. Check whether a fund you already own has been...",
+     "datetime": 1793649241,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=24920582e0827da81425cd5e56bd6f17c26ed2788f564100e4b3e246398bc938"
+    },
+    {
+     "headline": "Tempus AI, Inc. Q3 2026 Earnings Call Summary",
+     "summary": "Moby summary of Tempus AI, Inc.'s Q3 2026 earnings call",
+     "datetime": 1793642312,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=8299d9f95176863fbd26c7942694b2aff80488656cae4f8d7f911f1f712831d0"
+    },
+    {
+     "headline": "Tempus AI Soars 10% on Q3 Beat and Raised Guidance as Oncology Sees \u201cAccelerating Unit Growth\u201d",
+     "summary": "Key TakeawaysTempus AI shares jumped 10% after third-quarter revenue rose 23% to $411. 5 million and the company raised its 2026 revenue guidance.",
+     "datetime": 1793638843,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=e26465f855abdd079773546dfe4ecd0e17722fbca9361d8777652ce42f00b859"
+    },
+    {
+     "headline": "Tempus (TEM) Q3 2026 Earnings Call Transcript",
+     "summary": "Oncology volume surged 32% while data licensing bookings topped $550 million year-to-date.",
+     "datetime": 1793638701,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=b89a70916f1c62b4bae48dcea66fa277600ea6879a05786019c3a02a5a0d1934"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "TEM",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 17,
+   "atm_iv_pct": 94.1,
+   "iv_chain_percentile": 28,
+   "skew_points": -4.5,
+   "put_call_ratio": 1.19,
+   "total_put_oi": 31546,
+   "total_call_oi": 26564
+  },
+  "get_options_positioning": {
+   "ticker": "TEM",
+   "spot": 78.48,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 17,
+   "max_pain_strike": 70.0,
+   "resistance_walls": [
+    {
+     "strike": 70.0,
+     "open_interest": 4869
+    },
+    {
+     "strike": 80.0,
+     "open_interest": 4731
+    },
+    {
+     "strike": 75.0,
+     "open_interest": 4176
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 50.0,
+     "open_interest": 6172
+    },
+    {
+     "strike": 45.0,
+     "open_interest": 3673
+    },
+    {
+     "strike": 40.0,
+     "open_interest": 3323
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 17,
+     "atm_iv_pct": 94.1
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 24,
+     "atm_iv_pct": 86.3
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 105.0,
+     "volume": 878,
+     "open_interest": 122,
+     "vol_oi_ratio": 7.2,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 100.0,
+     "volume": 4528,
+     "open_interest": 1472,
+     "vol_oi_ratio": 3.1,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 73.0,
+     "volume": 247,
+     "open_interest": 104,
+     "vol_oi_ratio": 2.4,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 95.0,
+     "volume": 3568,
+     "open_interest": 2254,
+     "vol_oi_ratio": 1.6,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 80.0,
+     "volume": 387,
+     "open_interest": 501,
+     "vol_oi_ratio": 0.8,
+     "moneyness": "ITM"
+    }
+   ],
+   "otm_call_oi": 13231,
+   "otm_put_oi": 30606,
+   "positioning_lean_score": -0.4,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "TEM",
+   "as_of": "2026-11-03",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-02",
+     "days_ago": 1,
+     "firm": "Needham",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 75.0,
+     "price_target_to": 89.0,
+     "is_rating_change": false,
+     "description": "Needham maintained its Buy rating on TEM and raised its price target from $75.0 to $89.0"
+    },
+    {
+     "date": "2026-10-26",
+     "days_ago": 8,
+     "firm": "HC Wainwright & Co.",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 66.0,
+     "price_target_to": 68.0,
+     "is_rating_change": false,
+     "description": "HC Wainwright & Co. maintained its Buy rating on TEM and raised its price target from $66.0 to $68.0"
+    },
+    {
+     "date": "2026-10-26",
+     "days_ago": 8,
+     "firm": "BTIG",
+     "action": "reiterated",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 80.0,
+     "price_target_to": 80.0,
+     "is_rating_change": false,
+     "description": "BTIG reiterated its Buy rating on TEM with a $80.0 price target"
+    },
+    {
+     "date": "2026-10-23",
+     "days_ago": 11,
+     "firm": "Needham",
+     "action": "reiterated",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 75.0,
+     "price_target_to": 75.0,
+     "is_rating_change": false,
+     "description": "Needham reiterated its Buy rating on TEM with a $75.0 price target"
+    },
+    {
+     "date": "2026-10-14",
+     "days_ago": 20,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 45.0,
+     "price_target_to": 70.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Neutral rating on TEM and raised its price target from $45.0 to $70.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.45,
+    "verdict": "leaning bullish",
+    "analysts": 20,
+    "counts": {
+     "strongBuy": 2,
+     "buy": 8,
+     "hold": 9,
+     "sell": 1,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.5 to 2.45)"
+   },
+   "price_target": {
+    "mean": 75.72,
+    "median": 75.0,
+    "high": 100.0,
+    "low": 35.0,
+    "current_price": 78.48,
+    "dispersion_pct": 85.8,
+    "upside_vs_mean_pct": -3.5,
+    "upside_vs_median_pct": -4.4
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "TEM",
+   "sector": "Healthcare",
+   "sector_etf": "XLV",
+   "comparison": {
+    "1y": {
+     "stock_change_pct": -9.03,
+     "sector_etf_change_pct": 30.07,
+     "relative_to_sector_pct": -39.1
+    },
+    "1d": {
+     "stock_change_pct": 8.67,
+     "sector_etf_change_pct": -0.15,
+     "relative_to_sector_pct": 8.82
+    },
+    "ytd": {
+     "stock_change_pct": 25.85,
+     "sector_etf_change_pct": 20.18,
+     "relative_to_sector_pct": 5.67
+    },
+    "2w": {
+     "stock_change_pct": 21.98,
+     "sector_etf_change_pct": 5.1,
+     "relative_to_sector_pct": 16.88
+    },
+    "1mo": {
+     "stock_change_pct": 2.41,
+     "sector_etf_change_pct": 11.08,
+     "relative_to_sector_pct": -8.67
+    },
+    "1w": {
+     "stock_change_pct": 16.86,
+     "sector_etf_change_pct": 2.97,
+     "relative_to_sector_pct": 13.89
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-02",
+    "realtime_end": "2026-11-02",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9609,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-02",
+      "realtime_end": "2026-11-02",
+      "date": "2026-10-30",
+      "value": "19.42"
+     },
+     {
+      "realtime_start": "2026-11-02",
+      "realtime_end": "2026-11-02",
+      "date": "2026-10-29",
+      "value": "17.2"
+     },
+     {
+      "realtime_start": "2026-11-02",
+      "realtime_end": "2026-11-02",
+      "date": "2026-10-28",
+      "value": "16.91"
+     },
+     {
+      "realtime_start": "2026-11-02",
+      "realtime_end": "2026-11-02",
+      "date": "2026-10-27",
+      "value": "17.52"
+     },
+     {
+      "realtime_start": "2026-11-02",
+      "realtime_end": "2026-11-02",
+      "date": "2026-10-26",
+      "value": "18.39"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "TEM",
+   "as_of": "2026-11-03",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 36,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-02",
+     "description": "TEM reported Q3 2026 earnings before the open \u2014 EPS 0.07 vs -0.0795 expected (beat, +188.1%)",
+     "source": "finnhub",
+     "days_ago": 1,
+     "eps_actual": 0.07,
+     "eps_estimate": -0.0795,
+     "surprise": "beat",
+     "surprise_pct": 188.1,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}
