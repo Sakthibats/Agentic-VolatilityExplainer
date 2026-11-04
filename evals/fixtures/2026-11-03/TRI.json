@@ -1,0 +1,346 @@
+{
+ "schema": 1,
+ "ticker": "TRI",
+ "trading_day": "2026-11-03",
+ "captured_at": "2026-11-04T01:36:57+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -9.87,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 3.37% \u2014 typical relative to this stock's own typical volatility (expected ~2.28%, 1.48x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past 2 weeks: 12.94% \u2014 elevated for this stock (about 1.79x its normal move for that span, expected ~7.21%)",
+   "the past month: 25.22% \u2014 elevated relative to this stock's own typical volatility (expected ~10.45%, 2.41x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "TRI",
+   "price": 110.18,
+   "prev_close": 122.24,
+   "change_pct": -9.87,
+   "realized_vol_annualized_pct": 36.2,
+   "changes_pct": {
+    "1d": 3.37,
+    "1w": 0.13,
+    "2w": 12.94,
+    "1mo": 25.22,
+    "1y": -17.54,
+    "ytd": 0.38
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 3.37% \u2014 typical relative to this stock's own typical volatility (expected ~2.28%, 1.48x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past 2 weeks: 12.94% \u2014 elevated for this stock (about 1.79x its normal move for that span, expected ~7.21%)",
+     "the past month: 25.22% \u2014 elevated relative to this stock's own typical volatility (expected ~10.45%, 2.41x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "TRI",
+   "headlines": [
+    {
+     "headline": "Why Thomson Reuters Stock Plummeted by Almost 10% Today",
+     "summary": "Investors felt it missed the mark with third-quarter earnings.",
+     "datetime": 1793750126,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=ec74cc70efd2f6e2ed5efde2d1f57365c8dac92c6422885691ce9cdff633dccd"
+    },
+    {
+     "headline": "Thomson Reuters Corp (TRI) (Q3 2026) Earnings Call Highlights: 10% Organic Growth, Raised ...",
+     "summary": "Thomson Reuters Corp (TRI) posts 10% organic revenue growth, lifts full-year guidance, and sees GenAI-enabled products reach 34% of annualized contract value.",
+     "datetime": 1793740136,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=78772cb589c449db2bace8cc6ea7f49aadfe9bd40a000a24270fc72aa8f3930a"
+    },
+    {
+     "headline": "Thomson Reuters Corporation (TRI:CA) Q3 2026 Earnings Call Transcript",
+     "summary": "Thomson Reuters Corporation (TRI:CA) Q3 2026 Earnings Call November 3, 2026 8:30 AM ESTCompany ParticipantsGary Bisbee - Head of Investor RelationsStephen...",
+     "datetime": 1793735758,
+     "source": "SeekingAlpha",
+     "url": "https://finnhub.io/api/news?id=2140064e8307ae57d0bd626e273247000f877f6961a738d16a0fbf59e4d1a593"
+    },
+    {
+     "headline": "What Thomson Reuters (TRI) Said on Its Q3 Earnings Call",
+     "summary": "Thomson Reuters (NASDAQ:TRI) reported third-quarter organic revenue growth of 10%, with its core \u201cBig 3\u201d businesses also growing 10% organically for a second consecutive quarter. Management said...",
+     "datetime": 1793733282,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=e063cbd65237ab4dcce7148522582d677e47f750310de90298614a9a8ca2e38b"
+    },
+    {
+     "headline": "How Did Thomson Reuters Beat Q3 Earnings Estimates and Raise Its 2026 Revenue Outlook?",
+     "summary": "Thomson Reuters Corporation (NASDAQ:TRI) reported stronger-than-expected third-quarter 2026 results on Tuesday, supported by revenue growth across its core professional information businesses and...",
+     "datetime": 1793721732,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=0bb41e382802b747af6165aae6316f9bb5fcd52728796599001994086ec5eb77"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "TRI",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 16,
+   "atm_iv_pct": 57.8,
+   "iv_chain_percentile": 30,
+   "skew_points": -0.6,
+   "put_call_ratio": 0.79,
+   "total_put_oi": 2676,
+   "total_call_oi": 3399
+  },
+  "get_options_positioning": {
+   "ticker": "TRI",
+   "spot": 110.18,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 16,
+   "max_pain_strike": 105.0,
+   "resistance_walls": [
+    {
+     "strike": 105.0,
+     "open_interest": 1261
+    },
+    {
+     "strike": 110.0,
+     "open_interest": 570
+    },
+    {
+     "strike": 155.0,
+     "open_interest": 560
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 100.0,
+     "open_interest": 559
+    },
+    {
+     "strike": 105.0,
+     "open_interest": 487
+    },
+    {
+     "strike": 115.0,
+     "open_interest": 449
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 16,
+     "atm_iv_pct": 57.8
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 120.0,
+     "volume": 649,
+     "open_interest": 34,
+     "vol_oi_ratio": 19.1,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 130.0,
+     "volume": 309,
+     "open_interest": 298,
+     "vol_oi_ratio": 1.0,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 1489,
+   "otm_put_oi": 2185,
+   "positioning_lean_score": -0.19,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "TRI",
+   "as_of": "2026-11-04",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-28",
+     "days_ago": 7,
+     "firm": "RBC Capital",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 124.0,
+     "price_target_to": 130.0,
+     "is_rating_change": false,
+     "description": "RBC Capital maintained its Outperform rating on TRI and raised its price target from $124.0 to $130.0"
+    },
+    {
+     "date": "2026-10-20",
+     "days_ago": 15,
+     "firm": "Jefferies",
+     "action": "initiated coverage",
+     "from_grade": null,
+     "to_grade": "Buy",
+     "price_target_from": null,
+     "price_target_to": 130.0,
+     "is_rating_change": false,
+     "description": "Jefferies initiated coverage of TRI at Buy with a $130.0 price target"
+    },
+    {
+     "date": "2026-10-13",
+     "days_ago": 22,
+     "firm": "Morgan Stanley",
+     "action": "maintained",
+     "from_grade": "Equal-Weight",
+     "to_grade": "Equal-Weight",
+     "price_target_from": 116.0,
+     "price_target_to": 110.0,
+     "is_rating_change": false,
+     "description": "Morgan Stanley maintained its Equal-Weight rating on TRI and cut its price target from $116.0 to $110.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.0,
+    "verdict": "leaning bullish",
+    "analysts": 19,
+    "counts": {
+     "strongBuy": 5,
+     "buy": 9,
+     "hold": 5,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 2 months (score 2.0 to 2.0)"
+   },
+   "price_target": {
+    "mean": 123.81,
+    "median": 125.0,
+    "high": 146.0,
+    "low": 110.0,
+    "current_price": 110.18,
+    "dispersion_pct": 29.1,
+    "upside_vs_mean_pct": 12.4,
+    "upside_vs_median_pct": 13.5
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "TRI",
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "comparison": {
+    "ytd": {
+     "stock_change_pct": 0.38,
+     "sector_etf_change_pct": 8.28,
+     "relative_to_sector_pct": -7.9
+    },
+    "1d": {
+     "stock_change_pct": 3.37,
+     "sector_etf_change_pct": 1.38,
+     "relative_to_sector_pct": 1.99
+    },
+    "1mo": {
+     "stock_change_pct": 25.22,
+     "sector_etf_change_pct": -0.14,
+     "relative_to_sector_pct": 25.36
+    },
+    "1y": {
+     "stock_change_pct": -17.54,
+     "sector_etf_change_pct": 10.96,
+     "relative_to_sector_pct": -28.5
+    },
+    "2w": {
+     "stock_change_pct": 12.94,
+     "sector_etf_change_pct": 1.82,
+     "relative_to_sector_pct": 11.12
+    },
+    "1w": {
+     "stock_change_pct": 0.13,
+     "sector_etf_change_pct": 1.65,
+     "relative_to_sector_pct": -1.52
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-03",
+    "realtime_end": "2026-11-03",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9610,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-03",
+      "realtime_end": "2026-11-03",
+      "date": "2026-11-02",
+      "value": "21.15"
+     },
+     {
+      "realtime_start": "2026-11-03",
+      "realtime_end": "2026-11-03",
+      "date": "2026-10-30",
+      "value": "19.42"
+     },
+     {
+      "realtime_start": "2026-11-03",
+      "realtime_end": "2026-11-03",
+      "date": "2026-10-29",
+      "value": "17.2"
+     },
+     {
+      "realtime_start": "2026-11-03",
+      "realtime_end": "2026-11-03",
+      "date": "2026-10-28",
+      "value": "16.91"
+     },
+     {
+      "realtime_start": "2026-11-03",
+      "realtime_end": "2026-11-03",
+      "date": "2026-10-27",
+      "value": "17.52"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "TRI",
+   "as_of": "2026-11-04",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 35,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-03",
+     "description": "TRI reported Q3 2026 earnings before the open \u2014 EPS 0.81 vs 0.8962 expected (miss, -9.6%)",
+     "source": "finnhub",
+     "days_ago": 1,
+     "eps_actual": 0.81,
+     "eps_estimate": 0.8962,
+     "surprise": "miss",
+     "surprise_pct": -9.6,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

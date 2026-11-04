@@ -1,0 +1,372 @@
+{
+ "schema": 1,
+ "ticker": "FISV",
+ "trading_day": "2026-11-03",
+ "captured_at": "2026-11-04T01:36:37+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 12.46,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "today: 3.82% \u2014 elevated for this stock (about 1.83x its normal move for that span, expected ~2.09%)",
+   "this week: 7.45% \u2014 elevated for this stock (about 1.6x its normal move for that span, expected ~4.66%)",
+   "the past month: 17.06% \u2014 elevated for this stock (about 1.79x its normal move for that span, expected ~9.56%)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "FISV",
+   "price": 58.4,
+   "prev_close": 51.93,
+   "change_pct": 12.46,
+   "realized_vol_annualized_pct": 33.1,
+   "changes_pct": {
+    "1d": 3.82,
+    "1w": 7.45,
+    "2w": 8.89,
+    "1mo": 17.06,
+    "1y": -20.34,
+    "ytd": -20.83
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "today: 3.82% \u2014 elevated for this stock (about 1.83x its normal move for that span, expected ~2.09%)",
+     "this week: 7.45% \u2014 elevated for this stock (about 1.6x its normal move for that span, expected ~4.66%)",
+     "the past month: 17.06% \u2014 elevated for this stock (about 1.79x its normal move for that span, expected ~9.56%)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "FISV",
+   "headlines": [
+    {
+     "headline": "Stock Market Today, Nov. 3: Markets Edge Higher as Semiconductor Stocks Rebound",
+     "summary": "Midterm elections take a back seat as chip stocks lead a mixed session that left the Dow lagging, today, Nov. 3, 2026.",
+     "datetime": 1793747039,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=de37a3796a4b947676a9ff15fb1f12a777133a8ceda8acc403b3a46dab067a1f"
+    },
+    {
+     "headline": "Apple, Palantir, Pfizer, Marvell, AMD, Bloom Energy, Gartner, and More Stocks That Explain Today\u2019s Market",
+     "summary": "Apple falls after the iPhone maker\u2019s guidance fails to meet investors\u2019 high bar.",
+     "datetime": 1793740560,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=4a1c1a5f2bbf2ce994b251c5a1229ae53dd8d66167dabc857cd0a767af92a13b"
+    },
+    {
+     "headline": "Fiserv Inc (FISV) (Q3 2026) Earnings Call Highlights: Organic Revenue Stabilizes as Merchant ...",
+     "summary": "Fiserv Inc (FISV) held organic revenue flat in Q3, doubled its Project Elevate savings target to $1 billion, and expects a return to growth in Q4 despite a $12.04 per share goodwill impairment charge.",
+     "datetime": 1793739962,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=deaee6c6e5fdd687e7a73420913334ce8081400b6b4c4570ce1a2e67d9c2e553"
+    },
+    {
+     "headline": "Fiserv (FISV) Q3 2026 Earnings Call Transcript",
+     "summary": "Fiserv signals revenue trough passed; Q4 growth expected, Project Elevate savings doubled.",
+     "datetime": 1793738301,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=0fb17627963dabe16c07575b801e3c14558b3a51fcf61f3b4424acdac6940b52"
+    },
+    {
+     "headline": "Fiserv rises 13% as it plans $500 million in share buybacks",
+     "summary": "Fiserv Inc (NYSE:FI) shares rose 13% to $58.83 as the payments technology provider announced a higher projected savings target of $1 billion and plans to resume share repurchases. The new Project...",
+     "datetime": 1793737680,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=afe64931e8c342c5555e8e9d435fdfea521df0fd471ed01f185a79ce4b876c3e"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "FISV",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 16,
+   "atm_iv_pct": 47.9,
+   "iv_chain_percentile": 1,
+   "skew_points": 0.4,
+   "put_call_ratio": 0.31,
+   "total_put_oi": 5705,
+   "total_call_oi": 18596
+  },
+  "get_options_positioning": {
+   "ticker": "FISV",
+   "spot": 58.4,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 16,
+   "max_pain_strike": 48.0,
+   "resistance_walls": [
+    {
+     "strike": 50.0,
+     "open_interest": 6665
+    },
+    {
+     "strike": 48.0,
+     "open_interest": 3584
+    },
+    {
+     "strike": 55.0,
+     "open_interest": 2845
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 45.0,
+     "open_interest": 1877
+    },
+    {
+     "strike": 40.0,
+     "open_interest": 1002
+    },
+    {
+     "strike": 50.0,
+     "open_interest": 676
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 16,
+     "atm_iv_pct": 47.9
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 23,
+     "atm_iv_pct": 46.1
+    },
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 30,
+     "atm_iv_pct": 52.6
+    }
+   ],
+   "term_structure_trend": "Rising \u2014 market pricing in a later catalyst within the horizon",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 58.0,
+     "volume": 152,
+     "open_interest": 27,
+     "vol_oi_ratio": 5.6,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 55.0,
+     "volume": 158,
+     "open_interest": 66,
+     "vol_oi_ratio": 2.4,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 65.0,
+     "volume": 581,
+     "open_interest": 542,
+     "vol_oi_ratio": 1.1,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 47.0,
+     "volume": 526,
+     "open_interest": 527,
+     "vol_oi_ratio": 1.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 44.0,
+     "volume": 368,
+     "open_interest": 411,
+     "vol_oi_ratio": 0.9,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 2601,
+   "otm_put_oi": 5524,
+   "positioning_lean_score": -0.36,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "FISV",
+   "as_of": "2026-11-04",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-27",
+     "days_ago": 8,
+     "firm": "BMO Capital",
+     "action": "maintained",
+     "from_grade": "Market Perform",
+     "to_grade": "Market Perform",
+     "price_target_from": 50.0,
+     "price_target_to": 48.0,
+     "is_rating_change": false,
+     "description": "BMO Capital maintained its Market Perform rating on FISV and cut its price target from $50.0 to $48.0"
+    },
+    {
+     "date": "2026-10-23",
+     "days_ago": 12,
+     "firm": "Truist Securities",
+     "action": "maintained",
+     "from_grade": "Hold",
+     "to_grade": "Hold",
+     "price_target_from": 53.0,
+     "price_target_to": 51.0,
+     "is_rating_change": false,
+     "description": "Truist Securities maintained its Hold rating on FISV and cut its price target from $53.0 to $51.0"
+    },
+    {
+     "date": "2026-10-16",
+     "days_ago": 19,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 57.0,
+     "price_target_to": 53.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Neutral rating on FISV and cut its price target from $57.0 to $53.0"
+    },
+    {
+     "date": "2026-10-16",
+     "days_ago": 19,
+     "firm": "Cantor Fitzgerald",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 53.0,
+     "price_target_to": 48.0,
+     "is_rating_change": false,
+     "description": "Cantor Fitzgerald maintained its Neutral rating on FISV and cut its price target from $53.0 to $48.0"
+    },
+    {
+     "date": "2026-10-09",
+     "days_ago": 26,
+     "firm": "TD Cowen",
+     "action": "maintained",
+     "from_grade": "Hold",
+     "to_grade": "Hold",
+     "price_target_from": 55.0,
+     "price_target_to": 49.0,
+     "is_rating_change": false,
+     "description": "TD Cowen maintained its Hold rating on FISV and cut its price target from $55.0 to $49.0"
+    }
+   ],
+   "consensus": {
+    "rating": "hold",
+    "score": 2.95,
+    "verdict": "neutral",
+    "analysts": 37,
+    "counts": {
+     "strongBuy": 2,
+     "buy": 4,
+     "hold": 27,
+     "sell": 2,
+     "strongSell": 2
+    },
+    "trend": "deteriorating",
+    "trend_detail": "consensus softened over 2 months (score 2.76 to 2.95; bearish ratings 2 to 4)"
+   },
+   "price_target": {
+    "mean": 57.55,
+    "median": 56.0,
+    "high": 106.0,
+    "low": 40.0,
+    "current_price": 58.4,
+    "dispersion_pct": 114.7,
+    "upside_vs_mean_pct": -1.5,
+    "upside_vs_median_pct": -4.1
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "FISV",
+   "sector": null,
+   "error": "No sector classification available for this ticker."
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-03",
+    "realtime_end": "2026-11-03",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9610,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-03",
+      "realtime_end": "2026-11-03",
+      "date": "2026-11-02",
+      "value": "21.15"
+     },
+     {
+      "realtime_start": "2026-11-03",
+      "realtime_end": "2026-11-03",
+      "date": "2026-10-30",
+      "value": "19.42"
+     },
+     {
+      "realtime_start": "2026-11-03",
+      "realtime_end": "2026-11-03",
+      "date": "2026-10-29",
+      "value": "17.2"
+     },
+     {
+      "realtime_start": "2026-11-03",
+      "realtime_end": "2026-11-03",
+      "date": "2026-10-28",
+      "value": "16.91"
+     },
+     {
+      "realtime_start": "2026-11-03",
+      "realtime_end": "2026-11-03",
+      "date": "2026-10-27",
+      "value": "17.52"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "FISV",
+   "as_of": "2026-11-04",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 35,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-03",
+     "description": "FISV reported Q3 2026 earnings before the open \u2014 EPS 1.75 vs 1.7523 expected (in line, -0.1%)",
+     "source": "finnhub",
+     "days_ago": 1,
+     "eps_actual": 1.75,
+     "eps_estimate": 1.7523,
+     "surprise": "in line",
+     "surprise_pct": -0.1,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

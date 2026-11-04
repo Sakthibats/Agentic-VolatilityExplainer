@@ -1,0 +1,414 @@
+{
+ "schema": 1,
+ "ticker": "UNH",
+ "trading_day": "2026-11-03",
+ "captured_at": "2026-11-04T01:35:37+00:00",
+ "selected_as": "control",
+ "change_pct": 1.0,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "UNH",
+   "price": 404.44,
+   "prev_close": 400.44,
+   "change_pct": 1.0,
+   "realized_vol_annualized_pct": 28.9,
+   "changes_pct": {
+    "1d": -1.6,
+    "1w": -2.5,
+    "2w": -1.58,
+    "1mo": 7.67,
+    "1y": 19.25,
+    "ytd": 21.39
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   }
+  },
+  "get_news": {
+   "ticker": "UNH",
+   "headlines": [
+    {
+     "headline": "UnitedHealth Group Incorporated (UNH) Rebounded After Better-Than-Expected Results: Mott Capital\u2019s Take",
+     "summary": "Mott Capital Management, an investment research and management firm, released its \u201cThematic Growth Strategy\u201d Q3 2026 investor letter. A copy of the letter can be downloaded here. The strategy...",
+     "datetime": 1793731489,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=509e4617be30f24ddd06bbd872f543fe975a5ffa9ed4d15701794e06bb0ad160"
+    },
+    {
+     "headline": "Pfizer Is Pitched for Its Dividend. The November 3 Report Has to Show Cash Flow Covers It",
+     "summary": "Key TakeawaysPfizer reports third-quarter results before the open on Tuesday, Nov. 3, as income pitches push its 5.",
+     "datetime": 1793729351,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=f2502c8f281d6a2f9bd4cbed6ff9a25972a113e79dbf83982fcc5fb97c788de9"
+    },
+    {
+     "headline": "UnitedHealth Just Gained 11% in a Month: Take Profits, or Buy More?",
+     "summary": "Key TakeawaysUnitedHealth Group (UNH) stock gained approximately 11% in the month through October 30, supported by stronger third-quarter earnings and another increase to its 2026 profit outlook....",
+     "datetime": 1793727211,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=b245d5d7853eae0032d8d0117ae72d24e7cd5122c3d255e4081f4ecda64358c3"
+    },
+    {
+     "headline": "3 High Conviction Stocks + Charitable Giving: Tax Alpha With Raul Shah",
+     "summary": "Raul Shah highlights opportunities in Hims & Hers, ServiceNow, and UnitedHealth + 2 tax-efficient charitable giving strategies.",
+     "datetime": 1793722320,
+     "source": "SeekingAlpha",
+     "url": "https://finnhub.io/api/news?id=a6575a68a2497a6d0621e085be5f83b046bc3c1e7ddcc18616fb218727feb474"
+    },
+    {
+     "headline": "Two Days Left: HMG Strategy\u2019s 12th Annual Charlotte C-Level Technology Leadership Summit Brings Technology Executives Together November 5",
+     "summary": "CIOs, CISOs, CTOs and senior technology leaders will convene in Charlotte to address AI, cybersecurity, enterprise transformation and the growing demands of Iconic LeadershipCHARLOTTE, N.C., Nov. 03,...",
+     "datetime": 1793717040,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=463e3338a3fead002f6301766736702eff15c672d8f17b7c51ae887077825d0e"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "UNH",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 16,
+   "atm_iv_pct": 42.8,
+   "iv_chain_percentile": 14,
+   "skew_points": 6.8,
+   "put_call_ratio": 1.22,
+   "total_put_oi": 52886,
+   "total_call_oi": 43514
+  },
+  "get_options_positioning": {
+   "ticker": "UNH",
+   "spot": 404.44,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 16,
+   "max_pain_strike": 400.0,
+   "resistance_walls": [
+    {
+     "strike": 450.0,
+     "open_interest": 7193
+    },
+    {
+     "strike": 420.0,
+     "open_interest": 4201
+    },
+    {
+     "strike": 400.0,
+     "open_interest": 4182
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 350.0,
+     "open_interest": 7739
+    },
+    {
+     "strike": 390.0,
+     "open_interest": 5136
+    },
+    {
+     "strike": 400.0,
+     "open_interest": 4562
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 16,
+     "atm_iv_pct": 42.8
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 23,
+     "atm_iv_pct": 37.1
+    },
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 30,
+     "atm_iv_pct": 38.0
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 200.0,
+     "volume": 210,
+     "open_interest": 0,
+     "vol_oi_ratio": 210.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 445.0,
+     "volume": 149,
+     "open_interest": 198,
+     "vol_oi_ratio": 0.8,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 382.5,
+     "volume": 126,
+     "open_interest": 200,
+     "vol_oi_ratio": 0.6,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 397.5,
+     "volume": 162,
+     "open_interest": 409,
+     "vol_oi_ratio": 0.4,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 470.0,
+     "volume": 541,
+     "open_interest": 1889,
+     "vol_oi_ratio": 0.3,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 32244,
+   "otm_put_oi": 47008,
+   "positioning_lean_score": -0.19,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "UNH",
+   "as_of": "2026-11-04",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-27",
+     "days_ago": 8,
+     "firm": "Wells Fargo",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 526.0,
+     "price_target_to": 487.0,
+     "is_rating_change": false,
+     "description": "Wells Fargo maintained its Overweight rating on UNH and cut its price target from $526.0 to $487.0"
+    },
+    {
+     "date": "2026-10-27",
+     "days_ago": 8,
+     "firm": "Morgan Stanley",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 529.0,
+     "price_target_to": 531.0,
+     "is_rating_change": false,
+     "description": "Morgan Stanley maintained its Overweight rating on UNH and raised its price target from $529.0 to $531.0"
+    },
+    {
+     "date": "2026-10-22",
+     "days_ago": 13,
+     "firm": "Mizuho",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 493.0,
+     "price_target_to": 500.0,
+     "is_rating_change": false,
+     "description": "Mizuho maintained its Outperform rating on UNH and raised its price target from $493.0 to $500.0"
+    },
+    {
+     "date": "2026-10-20",
+     "days_ago": 15,
+     "firm": "RBC Capital",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 478.0,
+     "price_target_to": 498.0,
+     "is_rating_change": false,
+     "description": "RBC Capital maintained its Outperform rating on UNH and raised its price target from $478.0 to $498.0"
+    },
+    {
+     "date": "2026-10-16",
+     "days_ago": 19,
+     "firm": "Bernstein",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 512.0,
+     "price_target_to": 500.0,
+     "is_rating_change": false,
+     "description": "Bernstein maintained its Outperform rating on UNH and cut its price target from $512.0 to $500.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.96,
+    "verdict": "leaning bullish",
+    "analysts": 26,
+    "counts": {
+     "strongBuy": 6,
+     "buy": 15,
+     "hold": 5,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "deteriorating",
+    "trend_detail": "consensus softened over 2 months (score 1.89 to 1.96; bearish ratings 0 to 0)"
+   },
+   "price_target": {
+    "mean": 476.64,
+    "median": 490.0,
+    "high": 531.0,
+    "low": 380.0,
+    "current_price": 404.44,
+    "dispersion_pct": 31.7,
+    "upside_vs_mean_pct": 17.9,
+    "upside_vs_median_pct": 21.2
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "UNH",
+   "sector": "Healthcare",
+   "sector_etf": "XLV",
+   "comparison": {
+    "ytd": {
+     "stock_change_pct": 21.39,
+     "sector_etf_change_pct": 20.18,
+     "relative_to_sector_pct": 1.21
+    },
+    "1d": {
+     "stock_change_pct": -1.6,
+     "sector_etf_change_pct": -0.15,
+     "relative_to_sector_pct": -1.45
+    },
+    "1mo": {
+     "stock_change_pct": 7.67,
+     "sector_etf_change_pct": 11.08,
+     "relative_to_sector_pct": -3.41
+    },
+    "1y": {
+     "stock_change_pct": 19.25,
+     "sector_etf_change_pct": 30.07,
+     "relative_to_sector_pct": -10.82
+    },
+    "2w": {
+     "stock_change_pct": -1.58,
+     "sector_etf_change_pct": 5.1,
+     "relative_to_sector_pct": -6.68
+    },
+    "1w": {
+     "stock_change_pct": -2.5,
+     "sector_etf_change_pct": 2.97,
+     "relative_to_sector_pct": -5.47
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-03",
+    "realtime_end": "2026-11-03",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9610,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-03",
+      "realtime_end": "2026-11-03",
+      "date": "2026-11-02",
+      "value": "21.15"
+     },
+     {
+      "realtime_start": "2026-11-03",
+      "realtime_end": "2026-11-03",
+      "date": "2026-10-30",
+      "value": "19.42"
+     },
+     {
+      "realtime_start": "2026-11-03",
+      "realtime_end": "2026-11-03",
+      "date": "2026-10-29",
+      "value": "17.2"
+     },
+     {
+      "realtime_start": "2026-11-03",
+      "realtime_end": "2026-11-03",
+      "date": "2026-10-28",
+      "value": "16.91"
+     },
+     {
+      "realtime_start": "2026-11-03",
+      "realtime_end": "2026-11-03",
+      "date": "2026-10-27",
+      "value": "17.52"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "UNH",
+   "as_of": "2026-11-04",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 35,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-12",
+     "description": "UNH quarterly earnings scheduled (before the open)",
+     "source": "yfinance",
+     "days_until": 69,
+     "eps_estimate": 2.26,
+     "hour": "bmo"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-25",
+     "description": "UNH Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 82,
+     "eps_estimate": 2.2901,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-13",
+     "description": "UNH reported Q3 2026 earnings before the open \u2014 EPS 4.69 vs 4.1809 expected (beat, +12.2%)",
+     "source": "finnhub",
+     "days_ago": 22,
+     "eps_actual": 4.69,
+     "eps_estimate": 4.1809,
+     "surprise": "beat",
+     "surprise_pct": 12.2,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub+yfinance"
+  }
+ }
+}

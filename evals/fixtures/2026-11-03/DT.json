@@ -1,0 +1,394 @@
+{
+ "schema": 1,
+ "ticker": "DT",
+ "trading_day": "2026-11-03",
+ "captured_at": "2026-11-04T01:36:44+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -14.69,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: -4.44% \u2014 elevated for this stock (about 1.69x its normal move for that span, expected ~2.63%)",
+   "this week: -14.1% \u2014 elevated relative to this stock's own typical volatility (expected ~5.89%, 2.39x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past 2 weeks: -10.42% \u2014 typical relative to this stock's own typical volatility (expected ~8.33%, 1.25x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "DT",
+   "price": 47.03,
+   "prev_close": 55.13,
+   "change_pct": -14.69,
+   "realized_vol_annualized_pct": 41.8,
+   "changes_pct": {
+    "1d": -4.44,
+    "1w": -14.1,
+    "2w": -10.42,
+    "1mo": -7.06,
+    "1y": 13.39,
+    "ytd": 30.18
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: -4.44% \u2014 elevated for this stock (about 1.69x its normal move for that span, expected ~2.63%)",
+     "this week: -14.1% \u2014 elevated relative to this stock's own typical volatility (expected ~5.89%, 2.39x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past 2 weeks: -10.42% \u2014 typical relative to this stock's own typical volatility (expected ~8.33%, 1.25x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "DT",
+   "headlines": [
+    {
+     "headline": "3 Cybersecurity Stocks To Watch After The Binance Crypto Theft",
+     "summary": "A record US$6.3b crypto theft at Binance has thrown a harsh spotlight on just how fragile digital finance security can be, and it has pushed cybersecurity from background concern to front-page risk....",
+     "datetime": 1793740264,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=5151f5ac062848b1bdfc55f0998551b700d688253196b35937b9cf164102e157"
+    },
+    {
+     "headline": "Dynatrace Inc (DT) (Q2 2027) Earnings Call Highlights: Solid ARR Growth and AI Momentum Offset ...",
+     "summary": "Dynatrace Inc (DT) delivered 16% total ARR growth to $2.21 billion and a 32% non-GAAP operating margin, but flat net new ARR and a dip in net retention rate tempered the quarter's momentum.",
+     "datetime": 1793739893,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=1477421dd90fc821158d464610013bbb67fc36dd5fe25c72a7962e391058d1c8"
+    },
+    {
+     "headline": "Dynatrace (DT) Q2 2027 Earnings Call Transcript",
+     "summary": "Large enterprise deals slipped into the back half, weighing on retention",
+     "datetime": 1793739513,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=2f6245afa1b829a140eb03aa8ffd07ef535b861fbb1aceeff0e83604f8abd3cc"
+    },
+    {
+     "headline": "Dynatrace Stocks Slide 14% as AI Acquisition Weighs on Margin Guidance",
+     "summary": "The Arize deal expands AI monitoring capabilities while lowering near-term profitability expectations.",
+     "datetime": 1793727525,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=4e18e1f584ef7e419785303ad7c1c450625997c86947437e01e2d09127ab1d1d"
+    },
+    {
+     "headline": "Dynatrace, Inc. Reports Second Quarter Fiscal Year 2027 Results and Authorizes $1 billion Share Repurchase Program",
+     "summary": "",
+     "datetime": 1793718704,
+     "source": "Fintel",
+     "url": "https://finnhub.io/api/news?id=c91dd1198fbfb3e0bc4a97c9f3b5f5e51e6d0d351179df588d05eaebb817f453"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "DT",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 16,
+   "atm_iv_pct": 59.4,
+   "iv_chain_percentile": 15,
+   "skew_points": 1.4,
+   "put_call_ratio": 0.4,
+   "total_put_oi": 8429,
+   "total_call_oi": 21185
+  },
+  "get_options_positioning": {
+   "ticker": "DT",
+   "spot": 47.03,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 16,
+   "max_pain_strike": 55.0,
+   "resistance_walls": [
+    {
+     "strike": 80.0,
+     "open_interest": 5134
+    },
+    {
+     "strike": 65.0,
+     "open_interest": 3752
+    },
+    {
+     "strike": 67.5,
+     "open_interest": 3605
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 55.0,
+     "open_interest": 2361
+    },
+    {
+     "strike": 52.5,
+     "open_interest": 1452
+    },
+    {
+     "strike": 50.0,
+     "open_interest": 1345
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 16,
+     "atm_iv_pct": 59.4
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 45.0,
+     "volume": 2407,
+     "open_interest": 205,
+     "vol_oi_ratio": 11.7,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 47.5,
+     "volume": 896,
+     "open_interest": 86,
+     "vol_oi_ratio": 10.4,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 47.5,
+     "volume": 166,
+     "open_interest": 107,
+     "vol_oi_ratio": 1.6,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 45.0,
+     "volume": 121,
+     "open_interest": 91,
+     "vol_oi_ratio": 1.3,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 52.5,
+     "volume": 121,
+     "open_interest": 141,
+     "vol_oi_ratio": 0.9,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 20644,
+   "otm_put_oi": 1031,
+   "positioning_lean_score": 0.9,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "DT",
+   "as_of": "2026-11-04",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-03",
+     "days_ago": 1,
+     "firm": "Needham",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 68.0,
+     "price_target_to": 65.0,
+     "is_rating_change": false,
+     "description": "Needham maintained its Buy rating on DT and cut its price target from $68.0 to $65.0"
+    },
+    {
+     "date": "2026-11-03",
+     "days_ago": 1,
+     "firm": "BTIG",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 73.0,
+     "price_target_to": 63.0,
+     "is_rating_change": false,
+     "description": "BTIG maintained its Buy rating on DT and cut its price target from $73.0 to $63.0"
+    },
+    {
+     "date": "2026-10-30",
+     "days_ago": 5,
+     "firm": "Cantor Fitzgerald",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 47.0,
+     "price_target_to": 65.0,
+     "is_rating_change": false,
+     "description": "Cantor Fitzgerald maintained its Neutral rating on DT and raised its price target from $47.0 to $65.0"
+    },
+    {
+     "date": "2026-10-29",
+     "days_ago": 6,
+     "firm": "Rosenblatt",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 62.0,
+     "price_target_to": 70.0,
+     "is_rating_change": false,
+     "description": "Rosenblatt maintained its Buy rating on DT and raised its price target from $62.0 to $70.0"
+    },
+    {
+     "date": "2026-10-28",
+     "days_ago": 7,
+     "firm": "Wells Fargo",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 60.0,
+     "price_target_to": 75.0,
+     "is_rating_change": false,
+     "description": "Wells Fargo maintained its Overweight rating on DT and raised its price target from $60.0 to $75.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.11,
+    "verdict": "leaning bullish",
+    "analysts": 37,
+    "counts": {
+     "strongBuy": 7,
+     "buy": 21,
+     "hold": 8,
+     "sell": 0,
+     "strongSell": 1
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 2 months (score 2.14 to 2.11)"
+   },
+   "price_target": {
+    "mean": 65.62,
+    "median": 66.5,
+    "high": 80.0,
+    "low": 42.0,
+    "current_price": 47.03,
+    "dispersion_pct": 57.9,
+    "upside_vs_mean_pct": 39.5,
+    "upside_vs_median_pct": 41.4
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "DT",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "ytd": {
+     "stock_change_pct": 30.18,
+     "sector_etf_change_pct": 21.17,
+     "relative_to_sector_pct": 9.01
+    },
+    "1d": {
+     "stock_change_pct": -4.44,
+     "sector_etf_change_pct": -2.95,
+     "relative_to_sector_pct": -1.49
+    },
+    "1mo": {
+     "stock_change_pct": -7.06,
+     "sector_etf_change_pct": -12.81,
+     "relative_to_sector_pct": 5.75
+    },
+    "1y": {
+     "stock_change_pct": 13.39,
+     "sector_etf_change_pct": 16.59,
+     "relative_to_sector_pct": -3.2
+    },
+    "2w": {
+     "stock_change_pct": -10.42,
+     "sector_etf_change_pct": -6.31,
+     "relative_to_sector_pct": -4.11
+    },
+    "1w": {
+     "stock_change_pct": -14.1,
+     "sector_etf_change_pct": -6.49,
+     "relative_to_sector_pct": -7.61
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-03",
+    "realtime_end": "2026-11-03",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9610,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-03",
+      "realtime_end": "2026-11-03",
+      "date": "2026-11-02",
+      "value": "21.15"
+     },
+     {
+      "realtime_start": "2026-11-03",
+      "realtime_end": "2026-11-03",
+      "date": "2026-10-30",
+      "value": "19.42"
+     },
+     {
+      "realtime_start": "2026-11-03",
+      "realtime_end": "2026-11-03",
+      "date": "2026-10-29",
+      "value": "17.2"
+     },
+     {
+      "realtime_start": "2026-11-03",
+      "realtime_end": "2026-11-03",
+      "date": "2026-10-28",
+      "value": "16.91"
+     },
+     {
+      "realtime_start": "2026-11-03",
+      "realtime_end": "2026-11-03",
+      "date": "2026-10-27",
+      "value": "17.52"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "DT",
+   "as_of": "2026-11-04",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 35,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-03",
+     "description": "DT reported Q2 2027 earnings before the open \u2014 EPS 0.54 vs 0.5057 expected (beat, +6.8%)",
+     "source": "finnhub",
+     "days_ago": 1,
+     "eps_actual": 0.54,
+     "eps_estimate": 0.5057,
+     "surprise": "beat",
+     "surprise_pct": 6.8,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

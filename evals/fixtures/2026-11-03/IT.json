@@ -1,0 +1,369 @@
+{
+ "schema": 1,
+ "ticker": "IT",
+ "trading_day": "2026-11-03",
+ "captured_at": "2026-11-04T01:36:51+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -13.19,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "the past 2 weeks: 13.26% \u2014 typical relative to this stock's own typical volatility (expected ~9.40%, 1.41x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past month: 27.31% \u2014 elevated relative to this stock's own typical volatility (expected ~13.63%, 2.0x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "IT",
+   "price": 204.22,
+   "prev_close": 235.26,
+   "change_pct": -13.19,
+   "realized_vol_annualized_pct": 47.2,
+   "changes_pct": {
+    "1d": 2.83,
+    "1w": 1.83,
+    "2w": 13.26,
+    "1mo": 27.31,
+    "1y": -5.29,
+    "ytd": -0.75
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "the past 2 weeks: 13.26% \u2014 typical relative to this stock's own typical volatility (expected ~9.40%, 1.41x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past month: 27.31% \u2014 elevated relative to this stock's own typical volatility (expected ~13.63%, 2.0x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "IT",
+   "headlines": [
+    {
+     "headline": "Gartner Inc (IT) (Q3 2026) Earnings Call Highlights: Accelerating Contract Value, Raised ...",
+     "summary": "Gartner Inc (IT) beats Q3 expectations with 2.5% contract value growth, 30% adjusted EPS jump, and upgraded full-year 2026 outlook despite persistent new business headwinds.",
+     "datetime": 1793747107,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=1d5c724932c9759e3a3ad04848a55c2bc755516fabfe56e9828d60bc700dbb15"
+    },
+    {
+     "headline": "Loyalty Must Leave the Corner Before Agents Rewrite Commerce, Says Epsilon\u2019s Hicks",
+     "summary": "If AI agents end up doing more of the shopping for consumers, the loyalty programs that brands built around apps, inboxes and points balances may need rebuilding within a few years. Gartner predicts...",
+     "datetime": 1793746385,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=7c9f0231e5105b291f02f470a20bc73989c641291d141faf9b5ac8b0706a33bf"
+    },
+    {
+     "headline": "Gartner Stock Crashed Despite Raised Guidance. Here's What Spooked Investors",
+     "summary": "The research firm beat its own targets and says AI is driving clients back to it. Wall Street wanted faster growth.",
+     "datetime": 1793739058,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=49add0607dceb4c25e1c08227bcdce42df7e272dae6857ec5acf6828f9969f35"
+    },
+    {
+     "headline": "Gartner (IT) Q3 2026 Earnings Call Transcript",
+     "summary": "AI research demand drove contract value acceleration and improved retention.",
+     "datetime": 1793738372,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=7221d3172fc06b5940cd6299b96448b43eee7c0477e11c34ea433d5ca244ffab"
+    },
+    {
+     "headline": "S&P 500 Top Movers for Today: Gainers and Losers",
+     "summary": "S&P 500 top movers in today's session: Fiserv gained 13.67% to lead gainers, while Gartner fell 13.41% to lead losers amid company updates.",
+     "datetime": 1793736384,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=7ec64d703f666f974768c541ddf76f51f8ef6236393ec9baa9390a7e6afbe0e0"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "IT",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 16,
+   "atm_iv_pct": 52.7,
+   "iv_chain_percentile": 2,
+   "skew_points": -1.6,
+   "put_call_ratio": 0.73,
+   "total_put_oi": 447,
+   "total_call_oi": 614
+  },
+  "get_options_positioning": {
+   "ticker": "IT",
+   "spot": 204.22,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 16,
+   "max_pain_strike": 200.0,
+   "resistance_walls": [
+    {
+     "strike": 240.0,
+     "open_interest": 133
+    },
+    {
+     "strike": 250.0,
+     "open_interest": 104
+    },
+    {
+     "strike": 230.0,
+     "open_interest": 101
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 190.0,
+     "open_interest": 156
+    },
+    {
+     "strike": 200.0,
+     "open_interest": 107
+    },
+    {
+     "strike": 210.0,
+     "open_interest": 34
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 16,
+     "atm_iv_pct": 52.7
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 220.0,
+     "volume": 170,
+     "open_interest": 25,
+     "vol_oi_ratio": 6.8,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 567,
+   "otm_put_oi": 407,
+   "positioning_lean_score": 0.16,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "IT",
+   "as_of": "2026-11-04",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-20",
+     "days_ago": 15,
+     "firm": "Truist Securities",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 205.0,
+     "price_target_to": 235.0,
+     "is_rating_change": false,
+     "description": "Truist Securities maintained its Buy rating on IT and raised its price target from $205.0 to $235.0"
+    },
+    {
+     "date": "2026-10-20",
+     "days_ago": 15,
+     "firm": "Wells Fargo",
+     "action": "maintained",
+     "from_grade": "Underweight",
+     "to_grade": "Underweight",
+     "price_target_from": 150.0,
+     "price_target_to": 175.0,
+     "is_rating_change": false,
+     "description": "Wells Fargo maintained its Underweight rating on IT and raised its price target from $150.0 to $175.0"
+    },
+    {
+     "date": "2026-10-20",
+     "days_ago": 15,
+     "firm": "RBC Capital",
+     "action": "reiterated",
+     "from_grade": "Sector Perform",
+     "to_grade": "Sector Perform",
+     "price_target_from": 198.0,
+     "price_target_to": 198.0,
+     "is_rating_change": false,
+     "description": "RBC Capital reiterated its Sector Perform rating on IT with a $198.0 price target"
+    },
+    {
+     "date": "2026-10-13",
+     "days_ago": 22,
+     "firm": "BMO Capital",
+     "action": "maintained",
+     "from_grade": "Market Perform",
+     "to_grade": "Market Perform",
+     "price_target_from": 206.0,
+     "price_target_to": 212.0,
+     "is_rating_change": false,
+     "description": "BMO Capital maintained its Market Perform rating on IT and raised its price target from $206.0 to $212.0"
+    },
+    {
+     "date": "2026-10-08",
+     "days_ago": 27,
+     "firm": "Morgan Stanley",
+     "action": "maintained",
+     "from_grade": "Equal-Weight",
+     "to_grade": "Equal-Weight",
+     "price_target_from": 177.0,
+     "price_target_to": 182.0,
+     "is_rating_change": false,
+     "description": "Morgan Stanley maintained its Equal-Weight rating on IT and raised its price target from $177.0 to $182.0"
+    }
+   ],
+   "consensus": {
+    "rating": "hold",
+    "score": 3.13,
+    "verdict": "neutral",
+    "analysts": 15,
+    "counts": {
+     "strongBuy": 0,
+     "buy": 3,
+     "hold": 9,
+     "sell": 1,
+     "strongSell": 2
+    },
+    "trend": "deteriorating",
+    "trend_detail": "consensus softened over 2 months (score 3.0 to 3.13; bearish ratings 2 to 3)"
+   },
+   "price_target": {
+    "mean": 193.77,
+    "median": 190.0,
+    "high": 235.0,
+    "low": 150.0,
+    "current_price": 204.22,
+    "dispersion_pct": 43.9,
+    "upside_vs_mean_pct": -5.1,
+    "upside_vs_median_pct": -7.0
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "IT",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "ytd": {
+     "stock_change_pct": -0.75,
+     "sector_etf_change_pct": 21.17,
+     "relative_to_sector_pct": -21.92
+    },
+    "1d": {
+     "stock_change_pct": 2.83,
+     "sector_etf_change_pct": -2.95,
+     "relative_to_sector_pct": 5.78
+    },
+    "1mo": {
+     "stock_change_pct": 27.31,
+     "sector_etf_change_pct": -12.81,
+     "relative_to_sector_pct": 40.12
+    },
+    "1y": {
+     "stock_change_pct": -5.29,
+     "sector_etf_change_pct": 16.59,
+     "relative_to_sector_pct": -21.88
+    },
+    "2w": {
+     "stock_change_pct": 13.26,
+     "sector_etf_change_pct": -6.31,
+     "relative_to_sector_pct": 19.57
+    },
+    "1w": {
+     "stock_change_pct": 1.83,
+     "sector_etf_change_pct": -6.49,
+     "relative_to_sector_pct": 8.32
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-03",
+    "realtime_end": "2026-11-03",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9610,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-03",
+      "realtime_end": "2026-11-03",
+      "date": "2026-11-02",
+      "value": "21.15"
+     },
+     {
+      "realtime_start": "2026-11-03",
+      "realtime_end": "2026-11-03",
+      "date": "2026-10-30",
+      "value": "19.42"
+     },
+     {
+      "realtime_start": "2026-11-03",
+      "realtime_end": "2026-11-03",
+      "date": "2026-10-29",
+      "value": "17.2"
+     },
+     {
+      "realtime_start": "2026-11-03",
+      "realtime_end": "2026-11-03",
+      "date": "2026-10-28",
+      "value": "16.91"
+     },
+     {
+      "realtime_start": "2026-11-03",
+      "realtime_end": "2026-11-03",
+      "date": "2026-10-27",
+      "value": "17.52"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "IT",
+   "as_of": "2026-11-04",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 35,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-01",
+     "description": "IT Q4 2026 earnings scheduled (before the open)",
+     "source": "finnhub",
+     "days_until": 89,
+     "eps_estimate": 4.0603,
+     "hour": "bmo"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-03",
+     "description": "IT reported Q3 2026 earnings before the open \u2014 EPS 3.59 vs 2.9279 expected (beat, +22.6%)",
+     "source": "finnhub",
+     "days_ago": 1,
+     "eps_actual": 3.59,
+     "eps_estimate": 2.9279,
+     "surprise": "beat",
+     "surprise_pct": 22.6,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}
