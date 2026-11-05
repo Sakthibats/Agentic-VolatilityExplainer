@@ -1,0 +1,396 @@
+{
+ "schema": 1,
+ "ticker": "XYZ",
+ "trading_day": "2026-11-04",
+ "captured_at": "2026-11-05T01:41:30+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 15.3,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "XYZ",
+   "price": 87.63,
+   "prev_close": 76,
+   "change_pct": 15.3,
+   "realized_vol_annualized_pct": 31.1,
+   "changes_pct": {
+    "1d": -1.4,
+    "1w": 1.51,
+    "2w": -2.69,
+    "1mo": -0.3,
+    "1y": 0.08,
+    "ytd": 16.65
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   }
+  },
+  "get_news": {
+   "ticker": "XYZ",
+   "headlines": [
+    {
+     "headline": "Block (XYZ) Reaches DOJ Settlement In Principle Over Anti Money Laundering Allegations",
+     "summary": "Block (NYSE: XYZ) has reached an agreement in principle with the U.S. Department of Justice to settle anti-money laundering allegations. The proposed resolution includes a deferred prosecution...",
+     "datetime": 1793827053,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=e5b4824025cfbf7dca49c9443b461aa3c5ce9395d4d43d3120b51720ad48305e"
+    },
+    {
+     "headline": "Affirm Reports Nov. 5 After Shopify Sank 15% on a GMV Miss. Here\u2019s What It Has to Prove",
+     "summary": "Key TakeawaysAffirm reports fiscal first-quarter results after the close on Thursday, Nov. 5, two days after Shopify fell 15% on a small third-quarter GMV miss.",
+     "datetime": 1793823935,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=4cf290a10da311b6995b4e32f096b3a0554894edcf5a883683e41cc8dabccd7b"
+    },
+    {
+     "headline": "S&P 500 Top Movers: Gainers and Losers in Today's US Session",
+     "summary": "S&P 500 top movers for today's US session, with XYZ leading gainers at 15.99% and FIS leading losers at -24.87%.",
+     "datetime": 1793822768,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=00de67f364a0e9c6936a8e31ef13f5ce904883d14b7a6c891acd5b259df9a819"
+    },
+    {
+     "headline": "Block Books $764 Million for Planned DOJ Deal That Would Defer a Bank Secrecy Act Charge",
+     "summary": "Final terms and court approval are still pending. Block\u2019s bitcoin business, meanwhile, kept about 2.9 cents of gross profit per dollar of revenue in the third quarter, down from 5.1 cents a year...",
+     "datetime": 1793822520,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=b62100ade620142c169f8d4d0c8752dcf5f7c7fce60cc3903660b65d7bf799f8"
+    },
+    {
+     "headline": "Jack Dorsey-led Block\u2019s DOJ settlement overshadows Q3 profit",
+     "summary": "Jack Dorsey\u2019s Block tops earnings estimates in Q3 2026.",
+     "datetime": 1793821800,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=119b58e67665fa9bfd6afaa8d765f530cb22a96c773d00d5682106bfb5c22b95"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "XYZ",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 15,
+   "atm_iv_pct": 45.5,
+   "iv_chain_percentile": 11,
+   "skew_points": 2.0,
+   "put_call_ratio": 1.28,
+   "total_put_oi": 57210,
+   "total_call_oi": 44620
+  },
+  "get_options_positioning": {
+   "ticker": "XYZ",
+   "spot": 87.63,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 15,
+   "max_pain_strike": 77.5,
+   "resistance_walls": [
+    {
+     "strike": 90.0,
+     "open_interest": 21125
+    },
+    {
+     "strike": 85.0,
+     "open_interest": 5210
+    },
+    {
+     "strike": 95.0,
+     "open_interest": 3051
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 65.0,
+     "open_interest": 18549
+    },
+    {
+     "strike": 72.5,
+     "open_interest": 17891
+    },
+    {
+     "strike": 70.0,
+     "open_interest": 4502
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 15,
+     "atm_iv_pct": 45.5
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 22,
+     "atm_iv_pct": 40.4
+    },
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 29,
+     "atm_iv_pct": 44.8
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 82.5,
+     "volume": 792,
+     "open_interest": 9,
+     "vol_oi_ratio": 88.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 88.0,
+     "volume": 599,
+     "open_interest": 9,
+     "vol_oi_ratio": 66.6,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 86.0,
+     "volume": 490,
+     "open_interest": 65,
+     "vol_oi_ratio": 7.5,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 91.0,
+     "volume": 175,
+     "open_interest": 118,
+     "vol_oi_ratio": 1.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 85.0,
+     "volume": 132,
+     "open_interest": 1086,
+     "vol_oi_ratio": 0.1,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 28539,
+   "otm_put_oi": 56947,
+   "positioning_lean_score": -0.33,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "XYZ",
+   "as_of": "2026-11-05",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-05",
+     "days_ago": 0,
+     "firm": "Macquarie",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 75.0,
+     "price_target_to": 80.0,
+     "is_rating_change": false,
+     "description": "Macquarie maintained its Neutral rating on XYZ and raised its price target from $75.0 to $80.0"
+    },
+    {
+     "date": "2026-11-04",
+     "days_ago": 1,
+     "firm": "Scotiabank",
+     "action": "maintained",
+     "from_grade": "Sector Perform",
+     "to_grade": "Sector Perform",
+     "price_target_from": 82.0,
+     "price_target_to": 89.0,
+     "is_rating_change": false,
+     "description": "Scotiabank maintained its Sector Perform rating on XYZ and raised its price target from $82.0 to $89.0"
+    },
+    {
+     "date": "2026-11-04",
+     "days_ago": 1,
+     "firm": "TD Cowen",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 105.0,
+     "price_target_to": 109.0,
+     "is_rating_change": false,
+     "description": "TD Cowen maintained its Buy rating on XYZ and raised its price target from $105.0 to $109.0"
+    },
+    {
+     "date": "2026-11-04",
+     "days_ago": 1,
+     "firm": "Morgan Stanley",
+     "action": "maintained",
+     "from_grade": "Equal-Weight",
+     "to_grade": "Equal-Weight",
+     "price_target_from": 80.0,
+     "price_target_to": 82.0,
+     "is_rating_change": false,
+     "description": "Morgan Stanley maintained its Equal-Weight rating on XYZ and raised its price target from $80.0 to $82.0"
+    },
+    {
+     "date": "2026-11-04",
+     "days_ago": 1,
+     "firm": "RBC Capital",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 95.0,
+     "price_target_to": 103.0,
+     "is_rating_change": false,
+     "description": "RBC Capital maintained its Outperform rating on XYZ and raised its price target from $95.0 to $103.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.0,
+    "verdict": "leaning bullish",
+    "analysts": 47,
+    "counts": {
+     "strongBuy": 9,
+     "buy": 29,
+     "hold": 9,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "deteriorating",
+    "trend_detail": "consensus softened over 3 months (score 1.93 to 2.0; bearish ratings 0 to 0)"
+   },
+   "price_target": {
+    "mean": 97.91,
+    "median": 100.0,
+    "high": 125.0,
+    "low": 75.0,
+    "current_price": 87.63,
+    "dispersion_pct": 51.1,
+    "upside_vs_mean_pct": 11.7,
+    "upside_vs_median_pct": 14.1
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "XYZ",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1w": {
+     "stock_change_pct": 1.51,
+     "sector_etf_change_pct": -6.85,
+     "relative_to_sector_pct": 8.36
+    },
+    "1mo": {
+     "stock_change_pct": -0.3,
+     "sector_etf_change_pct": -12.15,
+     "relative_to_sector_pct": 11.85
+    },
+    "1d": {
+     "stock_change_pct": -1.4,
+     "sector_etf_change_pct": 1.31,
+     "relative_to_sector_pct": -2.71
+    },
+    "1y": {
+     "stock_change_pct": 0.08,
+     "sector_etf_change_pct": 18.01,
+     "relative_to_sector_pct": -17.93
+    },
+    "ytd": {
+     "stock_change_pct": 16.65,
+     "sector_etf_change_pct": 22.76,
+     "relative_to_sector_pct": -6.11
+    },
+    "2w": {
+     "stock_change_pct": -2.69,
+     "sector_etf_change_pct": -4.82,
+     "relative_to_sector_pct": 2.13
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-04",
+    "realtime_end": "2026-11-04",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9611,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-11-03",
+      "value": "20.83"
+     },
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-11-02",
+      "value": "21.15"
+     },
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-10-30",
+      "value": "19.42"
+     },
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-10-29",
+      "value": "17.2"
+     },
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-10-28",
+      "value": "16.91"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "XYZ",
+   "as_of": "2026-11-05",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 34,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-03",
+     "description": "XYZ reported Q3 2026 earnings after the close \u2014 EPS 1.13 vs 1.0354 expected (beat, +9.1%)",
+     "source": "finnhub",
+     "days_ago": 2,
+     "eps_actual": 1.13,
+     "eps_estimate": 1.0354,
+     "surprise": "beat",
+     "surprise_pct": 9.1,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

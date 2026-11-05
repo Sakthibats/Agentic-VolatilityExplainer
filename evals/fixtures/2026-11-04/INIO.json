@@ -1,0 +1,355 @@
+{
+ "schema": 1,
+ "ticker": "INIO",
+ "trading_day": "2026-11-04",
+ "captured_at": "2026-11-05T01:41:43+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -19.5,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 11.58% \u2014 elevated relative to this stock's own typical volatility (expected ~6.00%, 1.93x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "this week: 7.83% \u2014 typical relative to this stock's own typical volatility (expected ~13.41%, 0.58x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past 2 weeks: 12.82% \u2014 typical relative to this stock's own typical volatility (expected ~18.96%, 0.68x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "INIO",
+   "price": 14.74,
+   "prev_close": 18.31,
+   "change_pct": -19.5,
+   "realized_vol_annualized_pct": 95.2,
+   "changes_pct": {
+    "1d": 11.58,
+    "1w": 7.83,
+    "2w": 12.82,
+    "1mo": -3.53,
+    "1y": null,
+    "ytd": -45.7
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 11.58% \u2014 elevated relative to this stock's own typical volatility (expected ~6.00%, 1.93x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "this week: 7.83% \u2014 typical relative to this stock's own typical volatility (expected ~13.41%, 0.58x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past 2 weeks: 12.82% \u2014 typical relative to this stock's own typical volatility (expected ~18.96%, 0.68x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "INIO",
+   "headlines": [
+    {
+     "headline": "Innio: 3 Key Takeaways for Long-Term Investors",
+     "summary": "Multiyear service contracts on a growing installed base could sustain margins long after equipment demand normalizes.",
+     "datetime": 1793740807,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=5ac32ebedfb6814ed77de4cd78ae5b378feef316bfb092580cf232c914a751a1"
+    },
+    {
+     "headline": "BrenX Shares Halted On Circuit Breaker To The Upside, Stock Now Up 54.49%",
+     "summary": "",
+     "datetime": 1793369467,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=25956576159abc372231249f3ce1e3aed47be4d303784dcb98f99f9588929397"
+    },
+    {
+     "headline": "Wall Street Analysts Believe Innio (INIO) Could Rally 94.01%: Here's is How to Trade",
+     "summary": "The average of price targets set by Wall Street analysts indicates a potential upside of 94% in Innio (INIO). While the effectiveness of this highly sought-after metric is questionable, the positive...",
+     "datetime": 1793278502,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=4040c1c59879eb348cbde0a92e8610b7fc4e097e3b953e3729a1c8d0368d4f80"
+    },
+    {
+     "headline": "Innio: Powering On With Real Operating Leverage",
+     "summary": "Innio stock offers energy solutions exposure with an $8B backlog, rising revenue, and margin gains.",
+     "datetime": 1793270989,
+     "source": "SeekingAlpha",
+     "url": "https://finnhub.io/api/news?id=6fa3a2c0b854967c2975d1682c5e2038255f75b0e53a5e3d48f14fc86624cd19"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "INIO",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 15,
+   "atm_iv_pct": 91.3,
+   "iv_chain_percentile": 22,
+   "skew_points": -6.8,
+   "put_call_ratio": 0.39,
+   "total_put_oi": 830,
+   "total_call_oi": 2126
+  },
+  "get_options_positioning": {
+   "ticker": "INIO",
+   "spot": 14.74,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 15,
+   "max_pain_strike": 17.5,
+   "resistance_walls": [
+    {
+     "strike": 20.0,
+     "open_interest": 868
+    },
+    {
+     "strike": 17.5,
+     "open_interest": 389
+    },
+    {
+     "strike": 30.0,
+     "open_interest": 288
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 17.5,
+     "open_interest": 305
+    },
+    {
+     "strike": 15.0,
+     "open_interest": 281
+    },
+    {
+     "strike": 12.5,
+     "open_interest": 88
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 15,
+     "atm_iv_pct": 91.3
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [],
+   "otm_call_oi": 2111,
+   "otm_put_oi": 171,
+   "positioning_lean_score": 0.85,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "INIO",
+   "as_of": "2026-11-05",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-28",
+     "days_ago": 8,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 22.0,
+     "price_target_to": 21.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Neutral rating on INIO and cut its price target from $22.0 to $21.0"
+    },
+    {
+     "date": "2026-10-28",
+     "days_ago": 8,
+     "firm": "Morgan Stanley",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 40.0,
+     "price_target_to": 42.0,
+     "is_rating_change": false,
+     "description": "Morgan Stanley maintained its Overweight rating on INIO and raised its price target from $40.0 to $42.0"
+    },
+    {
+     "date": "2026-10-27",
+     "days_ago": 9,
+     "firm": "BNP Paribas",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 43.0,
+     "price_target_to": 35.0,
+     "is_rating_change": false,
+     "description": "BNP Paribas maintained its Outperform rating on INIO and cut its price target from $43.0 to $35.0"
+    },
+    {
+     "date": "2026-10-19",
+     "days_ago": 17,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 40.0,
+     "price_target_to": 33.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Overweight rating on INIO and cut its price target from $40.0 to $33.0"
+    },
+    {
+     "date": "2026-10-14",
+     "days_ago": 22,
+     "firm": "Morgan Stanley",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 47.0,
+     "price_target_to": 40.0,
+     "is_rating_change": false,
+     "description": "Morgan Stanley maintained its Overweight rating on INIO and cut its price target from $47.0 to $40.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.8,
+    "verdict": "leaning bullish",
+    "analysts": 10,
+    "counts": {
+     "strongBuy": 4,
+     "buy": 4,
+     "hold": 2,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 2 months (score 1.8 to 1.8)"
+   },
+   "price_target": {
+    "mean": 31.4,
+    "median": 31.5,
+    "high": 42.0,
+    "low": 21.0,
+    "current_price": 14.74,
+    "dispersion_pct": 66.9,
+    "upside_vs_mean_pct": 113.0,
+    "upside_vs_median_pct": 113.7
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "INIO",
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "comparison": {
+    "1w": {
+     "stock_change_pct": 7.83,
+     "sector_etf_change_pct": 2.02,
+     "relative_to_sector_pct": 5.81
+    },
+    "1mo": {
+     "stock_change_pct": -3.53,
+     "sector_etf_change_pct": 0.72,
+     "relative_to_sector_pct": -4.25
+    },
+    "1d": {
+     "stock_change_pct": 11.58,
+     "sector_etf_change_pct": 0.95,
+     "relative_to_sector_pct": 10.63
+    },
+    "1y": {
+     "stock_change_pct": null,
+     "sector_etf_change_pct": 11.75,
+     "relative_to_sector_pct": null
+    },
+    "ytd": {
+     "stock_change_pct": -45.7,
+     "sector_etf_change_pct": 9.31,
+     "relative_to_sector_pct": -55.01
+    },
+    "2w": {
+     "stock_change_pct": 12.82,
+     "sector_etf_change_pct": 2.71,
+     "relative_to_sector_pct": 10.11
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-04",
+    "realtime_end": "2026-11-04",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9611,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-11-03",
+      "value": "20.83"
+     },
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-11-02",
+      "value": "21.15"
+     },
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-10-30",
+      "value": "19.42"
+     },
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-10-29",
+      "value": "17.2"
+     },
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-10-28",
+      "value": "16.91"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "INIO",
+   "as_of": "2026-11-05",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 34,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-26",
+     "description": "INIO quarterly earnings scheduled (before the open)",
+     "source": "yfinance",
+     "days_until": 82,
+     "eps_estimate": 0.18,
+     "hour": "bmo"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-27",
+     "description": "INIO reported Q3 2026 earnings before the open \u2014 EPS 0.15 vs 0.1192 expected (beat, +25.8%)",
+     "source": "finnhub",
+     "days_ago": 9,
+     "eps_actual": 0.15,
+     "eps_estimate": 0.1192,
+     "surprise": "beat",
+     "surprise_pct": 25.8,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub+yfinance"
+  }
+ }
+}

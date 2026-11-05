@@ -1,0 +1,411 @@
+{
+ "schema": 1,
+ "ticker": "FIS",
+ "trading_day": "2026-11-04",
+ "captured_at": "2026-11-05T01:41:36+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -23.67,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "this week: 9.49% \u2014 elevated for this stock (about 1.87x its normal move for that span, expected ~5.09%)",
+   "the past month: 16.11% \u2014 elevated for this stock (about 1.55x its normal move for that span, expected ~10.42%)",
+   "the past year: -35.25% \u2014 typical relative to this stock's own typical volatility (expected ~36.10%, 0.98x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "FIS",
+   "price": 29.76,
+   "prev_close": 38.99,
+   "change_pct": -23.67,
+   "realized_vol_annualized_pct": 36.1,
+   "changes_pct": {
+    "1d": -2.89,
+    "1w": 9.49,
+    "2w": 7.03,
+    "1mo": 16.11,
+    "1y": -35.25,
+    "ytd": -38.69
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "this week: 9.49% \u2014 elevated for this stock (about 1.87x its normal move for that span, expected ~5.09%)",
+     "the past month: 16.11% \u2014 elevated for this stock (about 1.55x its normal move for that span, expected ~10.42%)",
+     "the past year: -35.25% \u2014 typical relative to this stock's own typical volatility (expected ~36.10%, 0.98x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "FIS",
+   "headlines": [
+    {
+     "headline": "Guidance Cut Could Change The Case For FIS Stock",
+     "summary": "Fidelity National Information Services reported third quarter 2026 sales of US$3.45b and net income of US$356m, and also affirmed a US$0.44 quarterly dividend payable in late December. The business...",
+     "datetime": 1793826730,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=f81a07786ef30e4cb0c8dd72f9f292805672d9a670dcdb83dc7457739cae801a"
+    },
+    {
+     "headline": "Why Fidelity National Information Services Plunged Today",
+     "summary": "Fidelity beat earnings but guided for a soft fourth quarter, and its CFO stepped down.",
+     "datetime": 1793826097,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=9653ec52c09f8141572bae083e52b30d90b60299cf7179f5f3ae7d53b27a7cfa"
+    },
+    {
+     "headline": "S&P 500 Top Movers: Gainers and Losers in Today's US Session",
+     "summary": "S&P 500 top movers for today's US session, with XYZ leading gainers at 15.99% and FIS leading losers at -24.87%.",
+     "datetime": 1793822768,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=00de67f364a0e9c6936a8e31ef13f5ce904883d14b7a6c891acd5b259df9a819"
+    },
+    {
+     "headline": "Fidelity National Cuts Full-Year Outlook After Quarterly Beat; Shares Plunge",
+     "summary": "Fidelity National Information Services (FIS) lowered its 2026 financial guidance even as its third-q",
+     "datetime": 1793820518,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=3c0c030ae8f2715b928d8e159f8fd3ddd6d8b7225cf94328588938ea03a97115"
+    },
+    {
+     "headline": "Fidelity National Information Services, Inc. Q3 2026 Earnings Call Summary",
+     "summary": "Moby summary of Fidelity National Information Services, Inc.'s Q3 2026 earnings call",
+     "datetime": 1793818847,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=7f1b1736462544ca2f5140c982685a14ea932d7a6a164e6354ddc8cf28c0c189"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "FIS",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 15,
+   "atm_iv_pct": 54.0,
+   "iv_chain_percentile": 2,
+   "skew_points": -0.1,
+   "put_call_ratio": 0.71,
+   "total_put_oi": 1845,
+   "total_call_oi": 2593
+  },
+  "get_options_positioning": {
+   "ticker": "FIS",
+   "spot": 29.76,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 15,
+   "max_pain_strike": 37.5,
+   "resistance_walls": [
+    {
+     "strike": 42.5,
+     "open_interest": 608
+    },
+    {
+     "strike": 37.5,
+     "open_interest": 602
+    },
+    {
+     "strike": 40.0,
+     "open_interest": 592
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 32.5,
+     "open_interest": 450
+    },
+    {
+     "strike": 39.0,
+     "open_interest": 301
+    },
+    {
+     "strike": 30.0,
+     "open_interest": 283
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 15,
+     "atm_iv_pct": 54.0
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 22,
+     "atm_iv_pct": 51.0
+    },
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 29,
+     "atm_iv_pct": 77.6
+    }
+   ],
+   "term_structure_trend": "Rising \u2014 market pricing in a later catalyst within the horizon",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 29.0,
+     "volume": 105,
+     "open_interest": 1,
+     "vol_oi_ratio": 105.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 30.0,
+     "volume": 2116,
+     "open_interest": 43,
+     "vol_oi_ratio": 49.2,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 32.5,
+     "volume": 646,
+     "open_interest": 67,
+     "vol_oi_ratio": 9.6,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 39.0,
+     "volume": 297,
+     "open_interest": 301,
+     "vol_oi_ratio": 1.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 30.0,
+     "volume": 240,
+     "open_interest": 283,
+     "vol_oi_ratio": 0.8,
+     "moneyness": "ITM"
+    }
+   ],
+   "otm_call_oi": 2593,
+   "otm_put_oi": 94,
+   "positioning_lean_score": 0.93,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "FIS",
+   "as_of": "2026-11-05",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-04",
+     "days_ago": 1,
+     "firm": "William Blair",
+     "action": "downgrade",
+     "from_grade": "Outperform",
+     "to_grade": "Market Perform",
+     "price_target_from": null,
+     "price_target_to": null,
+     "is_rating_change": true,
+     "description": "William Blair downgraded FIS from Outperform to Market Perform"
+    },
+    {
+     "date": "2026-10-23",
+     "days_ago": 13,
+     "firm": "Truist Securities",
+     "action": "maintained",
+     "from_grade": "Hold",
+     "to_grade": "Hold",
+     "price_target_from": 43.0,
+     "price_target_to": 37.0,
+     "is_rating_change": false,
+     "description": "Truist Securities maintained its Hold rating on FIS and cut its price target from $43.0 to $37.0"
+    },
+    {
+     "date": "2026-10-16",
+     "days_ago": 20,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 45.0,
+     "price_target_to": 39.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Neutral rating on FIS and cut its price target from $45.0 to $39.0"
+    },
+    {
+     "date": "2026-10-16",
+     "days_ago": 20,
+     "firm": "Cantor Fitzgerald",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 50.0,
+     "price_target_to": 45.0,
+     "is_rating_change": false,
+     "description": "Cantor Fitzgerald maintained its Overweight rating on FIS and cut its price target from $50.0 to $45.0"
+    },
+    {
+     "date": "2026-10-13",
+     "days_ago": 23,
+     "firm": "Susquehanna",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 46.0,
+     "price_target_to": 37.0,
+     "is_rating_change": false,
+     "description": "Susquehanna maintained its Neutral rating on FIS and cut its price target from $46.0 to $37.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.47,
+    "verdict": "leaning bullish",
+    "analysts": 30,
+    "counts": {
+     "strongBuy": 4,
+     "buy": 10,
+     "hold": 15,
+     "sell": 0,
+     "strongSell": 1
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 2 months (score 2.46 to 2.47)"
+   },
+   "price_target": {
+    "mean": 47.04,
+    "median": 46.0,
+    "high": 77.0,
+    "low": 37.0,
+    "current_price": 29.76,
+    "dispersion_pct": 85.0,
+    "upside_vs_mean_pct": 58.1,
+    "upside_vs_median_pct": 54.6
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "FIS",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1w": {
+     "stock_change_pct": 9.49,
+     "sector_etf_change_pct": -6.85,
+     "relative_to_sector_pct": 16.34
+    },
+    "1mo": {
+     "stock_change_pct": 16.11,
+     "sector_etf_change_pct": -12.15,
+     "relative_to_sector_pct": 28.26
+    },
+    "1d": {
+     "stock_change_pct": -2.89,
+     "sector_etf_change_pct": 1.31,
+     "relative_to_sector_pct": -4.2
+    },
+    "1y": {
+     "stock_change_pct": -35.25,
+     "sector_etf_change_pct": 18.01,
+     "relative_to_sector_pct": -53.26
+    },
+    "ytd": {
+     "stock_change_pct": -38.69,
+     "sector_etf_change_pct": 22.76,
+     "relative_to_sector_pct": -61.45
+    },
+    "2w": {
+     "stock_change_pct": 7.03,
+     "sector_etf_change_pct": -4.82,
+     "relative_to_sector_pct": 11.85
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-04",
+    "realtime_end": "2026-11-04",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9611,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-11-03",
+      "value": "20.83"
+     },
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-11-02",
+      "value": "21.15"
+     },
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-10-30",
+      "value": "19.42"
+     },
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-10-29",
+      "value": "17.2"
+     },
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-10-28",
+      "value": "16.91"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "FIS",
+   "as_of": "2026-11-05",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 34,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "ex_dividend",
+     "date": "2026-12-14",
+     "source": "yfinance",
+     "description": "FIS goes ex-dividend \u2014 expect a mechanical price drop of roughly the dividend",
+     "days_until": 39
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-04",
+     "description": "FIS reported quarterly earnings before the open \u2014 EPS 1.61 vs 1.6 expected (in line, +0.6%)",
+     "source": "yfinance",
+     "days_ago": 1,
+     "eps_actual": 1.61,
+     "eps_estimate": 1.6,
+     "surprise": "in line",
+     "surprise_pct": 0.6,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "yfinance"
+  }
+ }
+}

@@ -1,0 +1,346 @@
+{
+ "schema": 1,
+ "ticker": "UNM",
+ "trading_day": "2026-11-04",
+ "captured_at": "2026-11-05T01:41:49+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -17.84,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "UNM",
+   "price": 74.79,
+   "prev_close": 91.03,
+   "change_pct": -17.84,
+   "realized_vol_annualized_pct": 19.4,
+   "changes_pct": {
+    "1d": 0.01,
+    "1w": 2.66,
+    "2w": -2.03,
+    "1mo": 1.78,
+    "1y": 26.92,
+    "ytd": 20.66
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   }
+  },
+  "get_news": {
+   "ticker": "UNM",
+   "headlines": [
+    {
+     "headline": "US large-cap dividend hike watch: 10 stocks with the longest growth streaks",
+     "summary": "Investing.com -- This screen looks for US large caps (market cap above $10B) with a yield above 2%, a payout ratio below 60%, and dividend growth above 5%. They also need more than 5 straight years...",
+     "datetime": 1793822471,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=19465ed6ce209866e3e581f9c6fd5f6578fbf9654f21afe57a1979e889d72190"
+    },
+    {
+     "headline": "Unum Group (UNM) Q3 2026 Earnings Call Transcript",
+     "summary": "Long-term care reinsurance reshaped the balance sheet despite claim pressure.",
+     "datetime": 1793816238,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=40ce0c655b51b27387abea7df35d84f372e11bbaa8eca6677152158795f9d4e7"
+    },
+    {
+     "headline": "UNM Q3 Earnings Beat Estimates on Premium Growth and Investment Income",
+     "summary": "Unum Group's Q3 2026 earnings beat estimates despite a 21.7% decline, as premium growth and Colonial Life's strength offset elevated disability claims.",
+     "datetime": 1793802600,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=2f93724c744df4f58122486f624aa18071f4f394bd71c2693ec1442f3d84607d"
+    },
+    {
+     "headline": "Unum Group Q3 2026 Earnings Call Summary",
+     "summary": "Moby summary of Unum Group's Q3 2026 earnings call",
+     "datetime": 1793799000,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=058b176afd9c40d887e7d93d106615b664eb57dd82be58f1cc439b24bfd4759a"
+    },
+    {
+     "headline": "Unum (UNM) Stock Looks Like A Bargain After LTC Reinsurance",
+     "summary": "Unum Group has delivered a powerful run over the past few years, which puts more weight on the question of whether the current share price is properly grounded in the returns the business earns on...",
+     "datetime": 1793767026,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=6db19d1fc9e5c22a776692b7f2ebf2216288497f665a93e2946e8edcd2ecfbdc"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "UNM",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 15,
+   "atm_iv_pct": 39.6,
+   "iv_chain_percentile": 24,
+   "skew_points": -4.2,
+   "put_call_ratio": 0.75,
+   "total_put_oi": 4418,
+   "total_call_oi": 5905
+  },
+  "get_options_positioning": {
+   "ticker": "UNM",
+   "spot": 74.79,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 15,
+   "max_pain_strike": 92.5,
+   "resistance_walls": [
+    {
+     "strike": 95.0,
+     "open_interest": 1788
+    },
+    {
+     "strike": 105.0,
+     "open_interest": 929
+    },
+    {
+     "strike": 92.5,
+     "open_interest": 791
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 87.5,
+     "open_interest": 1413
+    },
+    {
+     "strike": 90.0,
+     "open_interest": 1336
+    },
+    {
+     "strike": 80.0,
+     "open_interest": 655
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 15,
+     "atm_iv_pct": 39.6
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 75.0,
+     "volume": 189,
+     "open_interest": 324,
+     "vol_oi_ratio": 0.6,
+     "moneyness": "ITM"
+    }
+   ],
+   "otm_call_oi": 5905,
+   "otm_put_oi": 0,
+   "positioning_lean_score": 1.0,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "UNM",
+   "as_of": "2026-11-05",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-04",
+     "days_ago": 1,
+     "firm": "Barclays",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 109.0,
+     "price_target_to": 101.0,
+     "is_rating_change": false,
+     "description": "Barclays maintained its Overweight rating on UNM and cut its price target from $109.0 to $101.0"
+    },
+    {
+     "date": "2026-10-12",
+     "days_ago": 24,
+     "firm": "Wells Fargo",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 100.0,
+     "price_target_to": 102.0,
+     "is_rating_change": false,
+     "description": "Wells Fargo maintained its Overweight rating on UNM and raised its price target from $100.0 to $102.0"
+    },
+    {
+     "date": "2026-10-07",
+     "days_ago": 29,
+     "firm": "Barclays",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 110.0,
+     "price_target_to": 109.0,
+     "is_rating_change": false,
+     "description": "Barclays maintained its Overweight rating on UNM and cut its price target from $110.0 to $109.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.15,
+    "verdict": "leaning bullish",
+    "analysts": 13,
+    "counts": {
+     "strongBuy": 2,
+     "buy": 7,
+     "hold": 4,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 2 months (score 2.15 to 2.15)"
+   },
+   "price_target": {
+    "mean": 101.69,
+    "median": 99.0,
+    "high": 122.0,
+    "low": 92.0,
+    "current_price": 74.79,
+    "dispersion_pct": 29.5,
+    "upside_vs_mean_pct": 36.0,
+    "upside_vs_median_pct": 32.4
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "UNM",
+   "sector": "Financial Services",
+   "sector_etf": "XLF",
+   "comparison": {
+    "1w": {
+     "stock_change_pct": 2.66,
+     "sector_etf_change_pct": 2.34,
+     "relative_to_sector_pct": 0.32
+    },
+    "1mo": {
+     "stock_change_pct": 1.78,
+     "sector_etf_change_pct": 6.14,
+     "relative_to_sector_pct": -4.36
+    },
+    "1d": {
+     "stock_change_pct": 0.01,
+     "sector_etf_change_pct": -0.64,
+     "relative_to_sector_pct": 0.65
+    },
+    "1y": {
+     "stock_change_pct": 26.92,
+     "sector_etf_change_pct": 10.93,
+     "relative_to_sector_pct": 15.99
+    },
+    "ytd": {
+     "stock_change_pct": 20.66,
+     "sector_etf_change_pct": 5.39,
+     "relative_to_sector_pct": 15.27
+    },
+    "2w": {
+     "stock_change_pct": -2.03,
+     "sector_etf_change_pct": 2.64,
+     "relative_to_sector_pct": -4.67
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-04",
+    "realtime_end": "2026-11-04",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9611,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-11-03",
+      "value": "20.83"
+     },
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-11-02",
+      "value": "21.15"
+     },
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-10-30",
+      "value": "19.42"
+     },
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-10-29",
+      "value": "17.2"
+     },
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-10-28",
+      "value": "16.91"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "UNM",
+   "as_of": "2026-11-05",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 34,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-02",
+     "description": "UNM Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 89,
+     "eps_estimate": 2.2042,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-03",
+     "description": "UNM reported Q3 2026 earnings after the close \u2014 EPS 2.2 vs 2.1901 expected (in line, +0.5%)",
+     "source": "finnhub",
+     "days_ago": 2,
+     "eps_actual": 2.2,
+     "eps_estimate": 2.1901,
+     "surprise": "in line",
+     "surprise_pct": 0.5,
+     "hour": "amc"
+    },
+    {
+     "type": "ex_dividend",
+     "date": "2026-10-30",
+     "source": "yfinance",
+     "description": "UNM went ex-dividend \u2014 the price drops by roughly the dividend on this date mechanically, with no news behind it",
+     "days_ago": 6
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

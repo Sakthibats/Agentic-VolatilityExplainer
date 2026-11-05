@@ -1,0 +1,350 @@
+{
+ "schema": 1,
+ "ticker": "MDLN",
+ "trading_day": "2026-11-04",
+ "captured_at": "2026-11-05T01:41:23+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 18.36,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "MDLN",
+   "price": 40.35,
+   "prev_close": 34.09,
+   "change_pct": 18.36,
+   "realized_vol_annualized_pct": 29.2,
+   "changes_pct": {
+    "1d": 1.37,
+    "1w": 5.28,
+    "2w": -3.86,
+    "1mo": -4.78,
+    "1y": null,
+    "ytd": -16.08
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   }
+  },
+  "get_news": {
+   "ticker": "MDLN",
+   "headlines": [
+    {
+     "headline": "Medline Soars 18% on Q3 Earnings Beat, Raised Sales Outlook and $1 Billion Buyback",
+     "summary": "Key TakeawaysMedline shares jumped 18% after a third-quarter beat, a raised sales outlook and a $1 billion buyback. Organic sales grew 10.",
+     "datetime": 1793827150,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=2fffc916bebf01ad4c04f66b7f171f3340aea507db404b76107a912a8f4d00d0"
+    },
+    {
+     "headline": "Medline (MDLN), What Is Behind The Fresh Attention?",
+     "summary": "Medline (MDLN) landed back in focus after third quarter 2026 results and a fresh US$1b buyback plan, pairing higher sales with sharply lower net income and new capital return commitments. Medline\u2019s...",
+     "datetime": 1793826727,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=3443f460deb5a9a51562c961110781ee14c82ecc3d2f5c0f00e3bf39d6b2b741"
+    },
+    {
+     "headline": "Medical supply giant Medline laying off 304 workers",
+     "summary": "Northfield, Illinois-based medical supply company Medline is laying off 304 workers, according to a notice filed with the state \u2014 a reduction that comes almost a year after it became a publicly...",
+     "datetime": 1793826360,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=8930128e2b009db461d3e69e2804c5dc77a893a7d7f426265524e394ae11d5a1"
+    },
+    {
+     "headline": "Medline Inc. (MDLN) Q3 2026 Earnings Call Transcript",
+     "summary": "Growth from new contracts and a $1 billion buyback shaped the quarter.",
+     "datetime": 1793821528,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=dbbf083dfde0e9eac4a038d415304739485adf775b709b4b2f300e22d4db02da"
+    },
+    {
+     "headline": "Sector Update: Healthcare Stocks Rise Wednesday Afternoon",
+     "summary": "Healthcare stocks were higher Wednesday afternoon, with the NYSE Healthcare Index rising 2.6% and th",
+     "datetime": 1793817082,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=5f820063edc209aea0414e17da24995b05c4fd53db23bf0e00eef79840c6ab24"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "MDLN",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 15,
+   "atm_iv_pct": 54.6,
+   "iv_chain_percentile": 20,
+   "skew_points": 0.1,
+   "put_call_ratio": 2.57,
+   "total_put_oi": 18047,
+   "total_call_oi": 7018
+  },
+  "get_options_positioning": {
+   "ticker": "MDLN",
+   "spot": 40.35,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 15,
+   "max_pain_strike": 35.0,
+   "resistance_walls": [
+    {
+     "strike": 37.5,
+     "open_interest": 3517
+    },
+    {
+     "strike": 35.0,
+     "open_interest": 1197
+    },
+    {
+     "strike": 40.0,
+     "open_interest": 1070
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 30.0,
+     "open_interest": 6803
+    },
+    {
+     "strike": 32.5,
+     "open_interest": 4694
+    },
+    {
+     "strike": 27.5,
+     "open_interest": 2416
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 15,
+     "atm_iv_pct": 54.6
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 45.0,
+     "volume": 17803,
+     "open_interest": 488,
+     "vol_oi_ratio": 36.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 40.0,
+     "volume": 1524,
+     "open_interest": 1070,
+     "vol_oi_ratio": 1.4,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 35.0,
+     "volume": 556,
+     "open_interest": 1476,
+     "vol_oi_ratio": 0.4,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 40.0,
+     "volume": 129,
+     "open_interest": 402,
+     "vol_oi_ratio": 0.3,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 35.0,
+     "volume": 109,
+     "open_interest": 1197,
+     "vol_oi_ratio": 0.1,
+     "moneyness": "ITM"
+    }
+   ],
+   "otm_call_oi": 1042,
+   "otm_put_oi": 18013,
+   "positioning_lean_score": -0.89,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "MDLN",
+   "as_of": "2026-11-05",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-22",
+     "days_ago": 14,
+     "firm": "Mizuho",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 48.0,
+     "price_target_to": 45.0,
+     "is_rating_change": false,
+     "description": "Mizuho maintained its Outperform rating on MDLN and cut its price target from $48.0 to $45.0"
+    },
+    {
+     "date": "2026-10-09",
+     "days_ago": 27,
+     "firm": "Barclays",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 45.0,
+     "price_target_to": 43.0,
+     "is_rating_change": false,
+     "description": "Barclays maintained its Overweight rating on MDLN and cut its price target from $45.0 to $43.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.89,
+    "verdict": "leaning bullish",
+    "analysts": 27,
+    "counts": {
+     "strongBuy": 7,
+     "buy": 16,
+     "hold": 4,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 2 months (score 1.89 to 1.89)"
+   },
+   "price_target": {
+    "mean": 44.31,
+    "median": 45.0,
+    "high": 55.0,
+    "low": 34.0,
+    "current_price": 40.35,
+    "dispersion_pct": 47.4,
+    "upside_vs_mean_pct": 9.8,
+    "upside_vs_median_pct": 11.5
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "MDLN",
+   "sector": "Healthcare",
+   "sector_etf": "XLV",
+   "comparison": {
+    "1w": {
+     "stock_change_pct": 5.28,
+     "sector_etf_change_pct": 2.7,
+     "relative_to_sector_pct": 2.58
+    },
+    "1mo": {
+     "stock_change_pct": -4.78,
+     "sector_etf_change_pct": 9.95,
+     "relative_to_sector_pct": -14.73
+    },
+    "1d": {
+     "stock_change_pct": 1.37,
+     "sector_etf_change_pct": -0.31,
+     "relative_to_sector_pct": 1.68
+    },
+    "1y": {
+     "stock_change_pct": null,
+     "sector_etf_change_pct": 29.7,
+     "relative_to_sector_pct": null
+    },
+    "ytd": {
+     "stock_change_pct": -16.08,
+     "sector_etf_change_pct": 19.8,
+     "relative_to_sector_pct": -35.88
+    },
+    "2w": {
+     "stock_change_pct": -3.86,
+     "sector_etf_change_pct": 2.34,
+     "relative_to_sector_pct": -6.2
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-04",
+    "realtime_end": "2026-11-04",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9611,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-11-03",
+      "value": "20.83"
+     },
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-11-02",
+      "value": "21.15"
+     },
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-10-30",
+      "value": "19.42"
+     },
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-10-29",
+      "value": "17.2"
+     },
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-10-28",
+      "value": "16.91"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "MDLN",
+   "as_of": "2026-11-05",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 34,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-04",
+     "description": "MDLN reported Q3 2026 earnings before the open \u2014 EPS 0.44 vs 0.3551 expected (beat, +23.9%)",
+     "source": "finnhub",
+     "days_ago": 1,
+     "eps_actual": 0.44,
+     "eps_estimate": 0.3551,
+     "surprise": "beat",
+     "surprise_pct": 23.9,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

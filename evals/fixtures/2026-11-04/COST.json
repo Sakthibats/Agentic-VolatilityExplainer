@@ -1,0 +1,393 @@
+{
+ "schema": 1,
+ "ticker": "COST",
+ "trading_day": "2026-11-04",
+ "captured_at": "2026-11-05T01:40:57+00:00",
+ "selected_as": "move",
+ "change_pct": 2.67,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "today: -2.05% \u2014 elevated relative to this stock's own typical volatility (expected ~1.35%, 1.51x), but typical in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past month: 10.53% \u2014 elevated relative to this stock's own typical volatility (expected ~6.21%, 1.7x), but typical in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "COST",
+   "price": 1046.47,
+   "prev_close": 1019.26,
+   "change_pct": 2.67,
+   "realized_vol_annualized_pct": 21.5,
+   "changes_pct": {
+    "1d": -2.05,
+    "1w": 2.89,
+    "2w": 2.63,
+    "1mo": 10.53,
+    "1y": 12.49,
+    "ytd": 19.98
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "today: -2.05% \u2014 elevated relative to this stock's own typical volatility (expected ~1.35%, 1.51x), but typical in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past month: 10.53% \u2014 elevated relative to this stock's own typical volatility (expected ~6.21%, 1.7x), but typical in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "COST",
+   "headlines": [
+    {
+     "headline": "Costco (COST) Rises Higher Than Market: Key Facts",
+     "summary": "The latest trading day saw Costco (COST) settling at $1, representing a +2.67% change from its previous close.",
+     "datetime": 1793828702,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=9eced302fc138e5c53e69678eb7d433e24d7a6e3320617594fa8028790a130fd"
+    },
+    {
+     "headline": "Costco Wholesale Corporation Reports October Sales Results",
+     "summary": "ISSAQUAH, Wash., Nov. 04, 2026 (GLOBE NEWSWIRE) -- Costco Wholesale Corporation (\u201cCostco\u201d or the \u201cCompany\u201d) (Nasdaq: COST) today reported net sales of $24.50 billion for the retail month of October,...",
+     "datetime": 1793826900,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=1fbaaf95b48a1f18982a123156c865402e9f3c998d41e8a14d56a81070398deb"
+    },
+    {
+     "headline": "Uber Technologies, Inc. Q3 2026 Earnings Call Summary",
+     "summary": "Moby summary of Uber Technologies, Inc.'s Q3 2026 earnings call",
+     "datetime": 1793819940,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=b60a6db8d14ef172d0b00bf54253aebc3c1964af316bd5777a18e30e98ad0a4b"
+    },
+    {
+     "headline": "Is Dollar General Stock a Buy at Its Current Valuation?",
+     "summary": "Dollar General trades at a discount to industry peers, while store upgrades, expansion and digital growth bolster its appeal despite lingering cost pressures.",
+     "datetime": 1793805240,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=b564620f9a6b42fcf93c6bba4a04060c7dd9ef784f5fc17aaf61d58570b759ec"
+    },
+    {
+     "headline": "Costco (COST) Stock Looks Rich Despite Its Healthcare Push",
+     "summary": "Costco Wholesale has rewarded long term holders with a strong run, which puts a bright spotlight on whether the current share price lines up with what its earnings can justify. With the stock now...",
+     "datetime": 1793797880,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=43ebf90fef77c090b1098994ac5d3ca683c394dffc84e3fcdd60250889c91e8a"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "COST",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 15,
+   "atm_iv_pct": 24.9,
+   "iv_chain_percentile": 13,
+   "skew_points": 2.4,
+   "put_call_ratio": 1.3,
+   "total_put_oi": 24551,
+   "total_call_oi": 18947
+  },
+  "get_options_positioning": {
+   "ticker": "COST",
+   "spot": 1046.47,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 15,
+   "max_pain_strike": 965.0,
+   "resistance_walls": [
+    {
+     "strike": 1000.0,
+     "open_interest": 1686
+    },
+    {
+     "strike": 1080.0,
+     "open_interest": 1646
+    },
+    {
+     "strike": 1060.0,
+     "open_interest": 1018
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 845.0,
+     "open_interest": 1654
+    },
+    {
+     "strike": 850.0,
+     "open_interest": 1434
+    },
+    {
+     "strike": 920.0,
+     "open_interest": 1353
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 15,
+     "atm_iv_pct": 24.9
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 22,
+     "atm_iv_pct": 23.2
+    },
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 29,
+     "atm_iv_pct": 24.3
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 680.0,
+     "volume": 121,
+     "open_interest": 26,
+     "vol_oi_ratio": 4.7,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 775.0,
+     "volume": 108,
+     "open_interest": 31,
+     "vol_oi_ratio": 3.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 765.0,
+     "volume": 313,
+     "open_interest": 111,
+     "vol_oi_ratio": 2.8,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 1480.0,
+     "volume": 118,
+     "open_interest": 50,
+     "vol_oi_ratio": 2.4,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 1500.0,
+     "volume": 169,
+     "open_interest": 82,
+     "vol_oi_ratio": 2.1,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 7707,
+   "otm_put_oi": 24525,
+   "positioning_lean_score": -0.52,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "COST",
+   "as_of": "2026-11-05",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-21",
+     "days_ago": 15,
+     "firm": "CICC",
+     "action": "initiated coverage",
+     "from_grade": null,
+     "to_grade": "Outperform",
+     "price_target_from": null,
+     "price_target_to": 1050.0,
+     "is_rating_change": false,
+     "description": "CICC initiated coverage of COST at Outperform with a $1050.0 price target"
+    },
+    {
+     "date": "2026-10-15",
+     "days_ago": 21,
+     "firm": "Tigress Financial",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 1065.0,
+     "price_target_to": 1250.0,
+     "is_rating_change": false,
+     "description": "Tigress Financial maintained its Buy rating on COST and raised its price target from $1065.0 to $1250.0"
+    },
+    {
+     "date": "2026-10-09",
+     "days_ago": 27,
+     "firm": "RBC Capital",
+     "action": "reiterated",
+     "from_grade": "Sector Perform",
+     "to_grade": "Sector Perform",
+     "price_target_from": 1000.0,
+     "price_target_to": 1000.0,
+     "is_rating_change": false,
+     "description": "RBC Capital reiterated its Sector Perform rating on COST with a $1000.0 price target"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.32,
+    "verdict": "leaning bullish",
+    "analysts": 41,
+    "counts": {
+     "strongBuy": 5,
+     "buy": 21,
+     "hold": 13,
+     "sell": 1,
+     "strongSell": 1
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 2 months (score 2.38 to 2.32; bearish ratings 2 to 2)"
+   },
+   "price_target": {
+    "mean": 1067.59,
+    "median": 1065.0,
+    "high": 1315.0,
+    "low": 770.0,
+    "current_price": 1046.47,
+    "dispersion_pct": 51.0,
+    "upside_vs_mean_pct": 2.0,
+    "upside_vs_median_pct": 1.8
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "COST",
+   "sector": "Consumer Defensive",
+   "sector_etf": "XLP",
+   "comparison": {
+    "1w": {
+     "stock_change_pct": 2.89,
+     "sector_etf_change_pct": 2.07,
+     "relative_to_sector_pct": 0.82
+    },
+    "1mo": {
+     "stock_change_pct": 10.53,
+     "sector_etf_change_pct": 9.76,
+     "relative_to_sector_pct": 0.77
+    },
+    "1d": {
+     "stock_change_pct": -2.05,
+     "sector_etf_change_pct": -2.07,
+     "relative_to_sector_pct": 0.02
+    },
+    "1y": {
+     "stock_change_pct": 12.49,
+     "sector_etf_change_pct": 19.81,
+     "relative_to_sector_pct": -7.32
+    },
+    "ytd": {
+     "stock_change_pct": 19.98,
+     "sector_etf_change_pct": 16.7,
+     "relative_to_sector_pct": 3.28
+    },
+    "2w": {
+     "stock_change_pct": 2.63,
+     "sector_etf_change_pct": 1.37,
+     "relative_to_sector_pct": 1.26
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-04",
+    "realtime_end": "2026-11-04",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9611,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-11-03",
+      "value": "20.83"
+     },
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-11-02",
+      "value": "21.15"
+     },
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-10-30",
+      "value": "19.42"
+     },
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-10-29",
+      "value": "17.2"
+     },
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-10-28",
+      "value": "16.91"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "COST",
+   "as_of": "2026-11-05",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 34,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-12-10",
+     "description": "COST Q1 2027 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 35,
+     "eps_estimate": 5.0319
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "ex_dividend",
+     "date": "2026-10-30",
+     "source": "yfinance",
+     "description": "COST went ex-dividend \u2014 the price drops by roughly the dividend on this date mechanically, with no news behind it",
+     "days_ago": 6
+    },
+    {
+     "type": "earnings",
+     "date": "2026-09-24",
+     "description": "COST reported quarterly earnings after the close \u2014 EPS 6.75 vs 6.53 expected (beat, +3.4%)",
+     "source": "yfinance",
+     "days_ago": 42,
+     "eps_actual": 6.75,
+     "eps_estimate": 6.53,
+     "surprise": "beat",
+     "surprise_pct": 3.4,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub+yfinance"
+  }
+ }
+}

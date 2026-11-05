@@ -1,0 +1,412 @@
+{
+ "schema": 1,
+ "ticker": "JPM",
+ "trading_day": "2026-11-04",
+ "captured_at": "2026-11-05T01:40:30+00:00",
+ "selected_as": "control",
+ "change_pct": 4.18,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "JPM",
+   "price": 352.11,
+   "prev_close": 337.98,
+   "change_pct": 4.18,
+   "realized_vol_annualized_pct": 15.9,
+   "changes_pct": {
+    "1d": -0.76,
+    "1w": 0.65,
+    "2w": 0.81,
+    "1mo": 2.19,
+    "1y": 10.73,
+    "ytd": 5.84
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   }
+  },
+  "get_news": {
+   "ticker": "JPM",
+   "headlines": [
+    {
+     "headline": "What Does JPMorgan Chase (JPM) Gain From Its Dubai Push And US Hires?",
+     "summary": "JPMorgan Chase (NYSE:JPM) secured approval to open a regulated private banking branch in Dubai International Financial Centre serving regional wealth clients. The new Dubai unit is intended to...",
+     "datetime": 1793830417,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=e00c6f2b76b06de3a5870aba0c400bdb4c9dda0ae75a337497d989b8776fc514"
+    },
+    {
+     "headline": "JPMorgan Trading Desk Sees Tech Rebounding After Midterms",
+     "summary": "US stocks climbed Wednesday after reversing earlier losses as investors assessed the outcome of the midterm elections, with JPMorgan Chase & Co.\u2019s trading desk expecting technology stocks to rebound...",
+     "datetime": 1793803533,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=4ce9b416236b7fbc9b8780790d96a696f19219cdfdfa8c84227b1d9660219466"
+    },
+    {
+     "headline": "Morgan Stanley Tokenizes U.S. Equities",
+     "summary": "Investment bank Morgan Stanley (NYSE: $MS) has moved quickly to tokenize U.S. equities following the launch of new ...",
+     "datetime": 1793803140,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=0ad2f2ef4178a734dca714a1a28dcea2d477e92a22d5bdbe325cb843b7049a3b"
+    },
+    {
+     "headline": "How Will Automation and Kinexys Drive JPMorgan's Payments Growth?",
+     "summary": "JPM's automation and Kinexys blockchain platform are boosting payment efficiency, strengthening digital treasury services and supporting long-term growth.",
+     "datetime": 1793797140,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=9ce8bee66e22356d6f1178d9fd09f16673d62118e3dbf14d765358770a2e0065"
+    },
+    {
+     "headline": "Tetragon Financial Group Limited Announcement of Tender Offer to Purchase $50,000,000 of Tetragon Non-Voting Shares",
+     "summary": "Tetragon today announces the commencement of a tender offer to purchase a portion of its outstanding non-voting shares for a maximum aggregate payment of $50,000,000 in cash. The tender offer, which...",
+     "datetime": 1793775300,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=38d96101c2b4a1f3381ce457e49442c54d6f5e494e16252905f88ff5acdc511e"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "JPM",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 15,
+   "atm_iv_pct": 24.6,
+   "iv_chain_percentile": 11,
+   "skew_points": 3.3,
+   "put_call_ratio": 1.03,
+   "total_put_oi": 50646,
+   "total_call_oi": 48973
+  },
+  "get_options_positioning": {
+   "ticker": "JPM",
+   "spot": 352.11,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 15,
+   "max_pain_strike": 340.0,
+   "resistance_walls": [
+    {
+     "strike": 390.0,
+     "open_interest": 6252
+    },
+    {
+     "strike": 360.0,
+     "open_interest": 5188
+    },
+    {
+     "strike": 350.0,
+     "open_interest": 5045
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 320.0,
+     "open_interest": 7420
+    },
+    {
+     "strike": 305.0,
+     "open_interest": 5135
+    },
+    {
+     "strike": 325.0,
+     "open_interest": 3479
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 15,
+     "atm_iv_pct": 24.6
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 22,
+     "atm_iv_pct": 23.3
+    },
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 29,
+     "atm_iv_pct": 23.3
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 160.0,
+     "volume": 765,
+     "open_interest": 0,
+     "vol_oi_ratio": 765.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 210.0,
+     "volume": 245,
+     "open_interest": 0,
+     "vol_oi_ratio": 245.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 235.0,
+     "volume": 170,
+     "open_interest": 0,
+     "vol_oi_ratio": 170.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 330.0,
+     "volume": 785,
+     "open_interest": 3096,
+     "vol_oi_ratio": 0.3,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 350.0,
+     "volume": 313,
+     "open_interest": 1386,
+     "vol_oi_ratio": 0.2,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 33147,
+   "otm_put_oi": 48758,
+   "positioning_lean_score": -0.19,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "JPM",
+   "as_of": "2026-11-05",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-02",
+     "days_ago": 3,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 395.0,
+     "price_target_to": 400.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Buy rating on JPM and raised its price target from $395.0 to $400.0"
+    },
+    {
+     "date": "2026-10-15",
+     "days_ago": 21,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 360.0,
+     "price_target_to": 350.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Neutral rating on JPM and cut its price target from $360.0 to $350.0"
+    },
+    {
+     "date": "2026-10-14",
+     "days_ago": 22,
+     "firm": "Truist Securities",
+     "action": "maintained",
+     "from_grade": "Hold",
+     "to_grade": "Hold",
+     "price_target_from": 352.0,
+     "price_target_to": 361.0,
+     "is_rating_change": false,
+     "description": "Truist Securities maintained its Hold rating on JPM and raised its price target from $352.0 to $361.0"
+    },
+    {
+     "date": "2026-10-14",
+     "days_ago": 22,
+     "firm": "Barclays",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 420.0,
+     "price_target_to": 425.0,
+     "is_rating_change": false,
+     "description": "Barclays maintained its Overweight rating on JPM and raised its price target from $420.0 to $425.0"
+    },
+    {
+     "date": "2026-10-14",
+     "days_ago": 22,
+     "firm": "RBC Capital",
+     "action": "reiterated",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 370.0,
+     "price_target_to": 370.0,
+     "is_rating_change": false,
+     "description": "RBC Capital reiterated its Outperform rating on JPM with a $370.0 price target"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.23,
+    "verdict": "leaning bullish",
+    "analysts": 26,
+    "counts": {
+     "strongBuy": 5,
+     "buy": 10,
+     "hold": 11,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 2 months (score 2.38 to 2.23; bearish ratings 1 to 0)"
+   },
+   "price_target": {
+    "mean": 373.48,
+    "median": 372.0,
+    "high": 425.0,
+    "low": 312.0,
+    "current_price": 352.11,
+    "dispersion_pct": 30.3,
+    "upside_vs_mean_pct": 6.1,
+    "upside_vs_median_pct": 5.6
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "JPM",
+   "sector": "Financial Services",
+   "sector_etf": "XLF",
+   "comparison": {
+    "1w": {
+     "stock_change_pct": 0.65,
+     "sector_etf_change_pct": 2.34,
+     "relative_to_sector_pct": -1.69
+    },
+    "1mo": {
+     "stock_change_pct": 2.19,
+     "sector_etf_change_pct": 6.14,
+     "relative_to_sector_pct": -3.95
+    },
+    "1d": {
+     "stock_change_pct": -0.76,
+     "sector_etf_change_pct": -0.64,
+     "relative_to_sector_pct": -0.12
+    },
+    "1y": {
+     "stock_change_pct": 10.73,
+     "sector_etf_change_pct": 10.93,
+     "relative_to_sector_pct": -0.2
+    },
+    "ytd": {
+     "stock_change_pct": 5.84,
+     "sector_etf_change_pct": 5.39,
+     "relative_to_sector_pct": 0.45
+    },
+    "2w": {
+     "stock_change_pct": 0.81,
+     "sector_etf_change_pct": 2.64,
+     "relative_to_sector_pct": -1.83
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-04",
+    "realtime_end": "2026-11-04",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9611,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-11-03",
+      "value": "20.83"
+     },
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-11-02",
+      "value": "21.15"
+     },
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-10-30",
+      "value": "19.42"
+     },
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-10-29",
+      "value": "17.2"
+     },
+     {
+      "realtime_start": "2026-11-04",
+      "realtime_end": "2026-11-04",
+      "date": "2026-10-28",
+      "value": "16.91"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "JPM",
+   "as_of": "2026-11-05",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 34,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-14",
+     "description": "JPM Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 70,
+     "eps_estimate": 5.9106,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-13",
+     "description": "JPM reported Q3 2026 earnings before the open \u2014 EPS 5.57 vs 5.958 expected (miss, -6.5%)",
+     "source": "finnhub",
+     "days_ago": 23,
+     "eps_actual": 5.57,
+     "eps_estimate": 5.958,
+     "surprise": "miss",
+     "surprise_pct": -6.5,
+     "hour": "bmo"
+    },
+    {
+     "type": "ex_dividend",
+     "date": "2026-10-06",
+     "source": "yfinance",
+     "description": "JPM went ex-dividend \u2014 the price drops by roughly the dividend on this date mechanically, with no news behind it",
+     "days_ago": 30
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}
