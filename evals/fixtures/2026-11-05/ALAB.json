@@ -1,0 +1,406 @@
+{
+ "schema": 1,
+ "ticker": "ALAB",
+ "trading_day": "2026-11-05",
+ "captured_at": "2026-11-06T01:45:01+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -19.62,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: -4.43% \u2014 typical relative to this stock's own typical volatility (expected ~5.63%, 0.79x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "this week: -24.88% \u2014 elevated relative to this stock's own typical volatility (expected ~12.59%, 1.98x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past 2 weeks: -23.03% \u2014 typical relative to this stock's own typical volatility (expected ~17.81%, 1.29x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past month: -42.72% \u2014 elevated relative to this stock's own typical volatility (expected ~25.81%, 1.66x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "ALAB",
+   "price": 179.47,
+   "prev_close": 223.27,
+   "change_pct": -19.62,
+   "realized_vol_annualized_pct": 89.4,
+   "changes_pct": {
+    "1d": -4.43,
+    "1w": -24.88,
+    "2w": -23.03,
+    "1mo": -42.72,
+    "1y": 16.55,
+    "ytd": 24.34
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: -4.43% \u2014 typical relative to this stock's own typical volatility (expected ~5.63%, 0.79x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "this week: -24.88% \u2014 elevated relative to this stock's own typical volatility (expected ~12.59%, 1.98x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past 2 weeks: -23.03% \u2014 typical relative to this stock's own typical volatility (expected ~17.81%, 1.29x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past month: -42.72% \u2014 elevated relative to this stock's own typical volatility (expected ~25.81%, 1.66x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "ALAB",
+   "headlines": [
+    {
+     "headline": "Stock Market Today: Dow Down 1,500 Points As Volatility Spikes; Expedia Posts A Soft Outlook (Live Coverage)",
+     "summary": "The Dow Jones index rises Thursday after the postelection rally. Cava and Dutch Bros plunge on earnings.",
+     "datetime": 1793907980,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=5077f927305c7d6d6209bd8bfdb739bab68622fd790bed96467bbc23076bf198"
+    },
+    {
+     "headline": "BMO Makes Major Bullish Call on Astera Labs",
+     "summary": "AI networking complexity could push Astera's content per accelerator even higher.",
+     "datetime": 1793905490,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=2ae91a590f1ec9fe8d4010223935ae7777222703e54dd94c24792a24c1210926"
+    },
+    {
+     "headline": "Chip Stocks Tumble After Arm, Qualcomm Reports",
+     "summary": "Chip stocks continued to fall Thursday in the wake of Tuesday's election results and earnings reports from Arm, Qualcomm and others.",
+     "datetime": 1793900058,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=048cc600aa2487b0a828d1caf2d2ac86def07502d9cf8ffd398f3e7ed7a2e59d"
+    },
+    {
+     "headline": "Two Days Before Today's Selloff, Data Put Global September Chip Sales Up 146.8% Year to Year",
+     "summary": "Equity Insider News Commentary - Semiconductor stocks are having a hard session. As of 10:34 a.m. ET, the PHLX Semiconductor Index (SOX) stood at 9,419.27, down 8.27% from Wednesday's close of...",
+     "datetime": 1793895900,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=6e56ddd4d1fbac37cdd6185412f6a2fe6a2deafcda113894e2fb721df59edf08"
+    },
+    {
+     "headline": "Astera Labs Has Slumped Since June: Why J.P. Morgan Still Sees 157% Upside",
+     "summary": "Key TakeawaysAstera Labs stock is down 19% today, at about $181, and 29% over three months, even though third-quarter revenue rose 154% and fourth-quarter guidance beat analysts\u2019 estimates. J.",
+     "datetime": 1793894592,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=7a1b16c64b5c0535e3a201d2e9f29effae067ed934fa9069377249069f5860fe"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "ALAB",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 14,
+   "atm_iv_pct": 125.8,
+   "iv_chain_percentile": 8,
+   "skew_points": -12.0,
+   "put_call_ratio": 1.23,
+   "total_put_oi": 23344,
+   "total_call_oi": 18940
+  },
+  "get_options_positioning": {
+   "ticker": "ALAB",
+   "spot": 179.47,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 14,
+   "max_pain_strike": 265.0,
+   "resistance_walls": [
+    {
+     "strike": 300.0,
+     "open_interest": 1239
+    },
+    {
+     "strike": 260.0,
+     "open_interest": 930
+    },
+    {
+     "strike": 320.0,
+     "open_interest": 647
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 80.0,
+     "open_interest": 5493
+    },
+    {
+     "strike": 220.0,
+     "open_interest": 1789
+    },
+    {
+     "strike": 300.0,
+     "open_interest": 1429
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 14,
+     "atm_iv_pct": 125.8
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 21,
+     "atm_iv_pct": 114.0
+    },
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 109.1
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 115.0,
+     "volume": 131,
+     "open_interest": 0,
+     "vol_oi_ratio": 131.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 500.0,
+     "volume": 110,
+     "open_interest": 0,
+     "vol_oi_ratio": 110.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 92.5,
+     "volume": 999,
+     "open_interest": 501,
+     "vol_oi_ratio": 2.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 360.0,
+     "volume": 609,
+     "open_interest": 309,
+     "vol_oi_ratio": 2.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 350.0,
+     "volume": 431,
+     "open_interest": 273,
+     "vol_oi_ratio": 1.6,
+     "moneyness": "ITM"
+    }
+   ],
+   "otm_call_oi": 16282,
+   "otm_put_oi": 10045,
+   "positioning_lean_score": 0.24,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "ALAB",
+   "as_of": "2026-11-06",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-05",
+     "days_ago": 1,
+     "firm": "BMO Capital",
+     "action": "initiated coverage",
+     "from_grade": null,
+     "to_grade": "Outperform",
+     "price_target_from": null,
+     "price_target_to": 375.0,
+     "is_rating_change": false,
+     "description": "BMO Capital initiated coverage of ALAB at Outperform with a $375.0 price target"
+    },
+    {
+     "date": "2026-11-04",
+     "days_ago": 2,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 300.0,
+     "price_target_to": 290.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Neutral rating on ALAB and cut its price target from $300.0 to $290.0"
+    },
+    {
+     "date": "2026-11-04",
+     "days_ago": 2,
+     "firm": "TD Cowen",
+     "action": "maintained",
+     "from_grade": "Hold",
+     "to_grade": "Hold",
+     "price_target_from": 300.0,
+     "price_target_to": 225.0,
+     "is_rating_change": false,
+     "description": "TD Cowen maintained its Hold rating on ALAB and cut its price target from $300.0 to $225.0"
+    },
+    {
+     "date": "2026-11-04",
+     "days_ago": 2,
+     "firm": "Morgan Stanley",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 382.0,
+     "price_target_to": 389.0,
+     "is_rating_change": false,
+     "description": "Morgan Stanley maintained its Overweight rating on ALAB and raised its price target from $382.0 to $389.0"
+    },
+    {
+     "date": "2026-11-04",
+     "days_ago": 2,
+     "firm": "RBC Capital",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 500.0,
+     "price_target_to": 400.0,
+     "is_rating_change": false,
+     "description": "RBC Capital maintained its Outperform rating on ALAB and cut its price target from $500.0 to $400.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.04,
+    "verdict": "leaning bullish",
+    "analysts": 25,
+    "counts": {
+     "strongBuy": 7,
+     "buy": 10,
+     "hold": 8,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.0 to 2.04)"
+   },
+   "price_target": {
+    "mean": 375.66,
+    "median": 382.0,
+    "high": 500.0,
+    "low": 190.0,
+    "current_price": 179.47,
+    "dispersion_pct": 82.5,
+    "upside_vs_mean_pct": 109.3,
+    "upside_vs_median_pct": 112.8
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "ALAB",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "2w": {
+     "stock_change_pct": -23.03,
+     "sector_etf_change_pct": -6.39,
+     "relative_to_sector_pct": -16.64
+    },
+    "ytd": {
+     "stock_change_pct": 24.34,
+     "sector_etf_change_pct": 22.76,
+     "relative_to_sector_pct": 1.58
+    },
+    "1mo": {
+     "stock_change_pct": -42.72,
+     "sector_etf_change_pct": -12.62,
+     "relative_to_sector_pct": -30.1
+    },
+    "1w": {
+     "stock_change_pct": -24.88,
+     "sector_etf_change_pct": -7.59,
+     "relative_to_sector_pct": -17.29
+    },
+    "1d": {
+     "stock_change_pct": -4.43,
+     "sector_etf_change_pct": -0.01,
+     "relative_to_sector_pct": -4.42
+    },
+    "1y": {
+     "stock_change_pct": 16.55,
+     "sector_etf_change_pct": 17.52,
+     "relative_to_sector_pct": -0.97
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-05",
+    "realtime_end": "2026-11-05",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9612,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-05",
+      "realtime_end": "2026-11-05",
+      "date": "2026-11-04",
+      "value": "16.61"
+     },
+     {
+      "realtime_start": "2026-11-05",
+      "realtime_end": "2026-11-05",
+      "date": "2026-11-03",
+      "value": "20.83"
+     },
+     {
+      "realtime_start": "2026-11-05",
+      "realtime_end": "2026-11-05",
+      "date": "2026-11-02",
+      "value": "21.15"
+     },
+     {
+      "realtime_start": "2026-11-05",
+      "realtime_end": "2026-11-05",
+      "date": "2026-10-30",
+      "value": "19.42"
+     },
+     {
+      "realtime_start": "2026-11-05",
+      "realtime_end": "2026-11-05",
+      "date": "2026-10-29",
+      "value": "17.2"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "ALAB",
+   "as_of": "2026-11-06",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 33,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-03",
+     "description": "ALAB reported Q3 2026 earnings after the close \u2014 EPS 1.32 vs 1.2149 expected (beat, +8.7%)",
+     "source": "finnhub",
+     "days_ago": 3,
+     "eps_actual": 1.32,
+     "eps_estimate": 1.2149,
+     "surprise": "beat",
+     "surprise_pct": 8.7,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

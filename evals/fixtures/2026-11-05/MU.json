@@ -1,0 +1,421 @@
+{
+ "schema": 1,
+ "ticker": "MU",
+ "trading_day": "2026-11-05",
+ "captured_at": "2026-11-06T01:44:22+00:00",
+ "selected_as": "move",
+ "change_pct": -17.46,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: -7.0% \u2014 elevated relative to this stock's own typical volatility (expected ~4.05%, 1.73x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "this week: -19.12% \u2014 elevated relative to this stock's own typical volatility (expected ~9.06%, 2.11x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past 2 weeks: -12.96% \u2014 typical relative to this stock's own typical volatility (expected ~12.81%, 1.01x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past month: -23.93% \u2014 typical relative to this stock's own typical volatility (expected ~18.56%, 1.29x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past year: 239.21% \u2014 unusual for this stock (about 3.72x its normal move for that span, expected ~64.30%)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "MU",
+   "price": 656.39,
+   "prev_close": 795.23,
+   "change_pct": -17.46,
+   "realized_vol_annualized_pct": 64.3,
+   "changes_pct": {
+    "1d": -7.0,
+    "1w": -19.12,
+    "2w": -12.96,
+    "1mo": -23.93,
+    "1y": 239.21,
+    "ytd": 152.3
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: -7.0% \u2014 elevated relative to this stock's own typical volatility (expected ~4.05%, 1.73x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "this week: -19.12% \u2014 elevated relative to this stock's own typical volatility (expected ~9.06%, 2.11x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past 2 weeks: -12.96% \u2014 typical relative to this stock's own typical volatility (expected ~12.81%, 1.01x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past month: -23.93% \u2014 typical relative to this stock's own typical volatility (expected ~18.56%, 1.29x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past year: 239.21% \u2014 unusual for this stock (about 3.72x its normal move for that span, expected ~64.30%)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "MU",
+   "headlines": [
+    {
+     "headline": "Midterms Could Deepen the K-Shaped AI Trade as Data Center Curbs Favor Big Tech Companies",
+     "summary": "Democratic gubernatorial victories and data-center restrictions could benefit financially stronger technology companies by making it harder for smaller companies to compete.",
+     "datetime": 1793919301,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=c7f0b1ba0ddff777c82242d77735bd6e71c596968b79c363949180517e0c579b"
+    },
+    {
+     "headline": "S&P 500 After-Hours Movers: ABNB and SNDK Gain, AXON and SOLV Fall",
+     "summary": "S&P 500 after-hours movers after today's U.S. session included ABNB up 10.68%, SNDK up 3.17%, AXON down 12.14% and SOLV down 7.03%.",
+     "datetime": 1793916376,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=c8baf959ed6ac7e6a8a6c13e13dd7b2a5e7d98ce47ba0c504559205276777cab"
+    },
+    {
+     "headline": "US stocks nosedive as Democrat victory sparks investor panic",
+     "summary": "Wall Street suffered its worst sell-off since Donald Trump\u2019s tariff rollout amid fears the Democrats will derail the AI boom.",
+     "datetime": 1793914360,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=7bb800d88f374cb313694986e6c93ece120b641a30a4c34b645e8738bcf4e30c"
+    },
+    {
+     "headline": "Micron Announces Board of Directors Retirement",
+     "summary": "BOISE, Idaho, Nov. 05, 2026 (GLOBE NEWSWIRE) -- Micron Technology, Inc. (Nasdaq: MU) today announced that Linnie M. Haynesworth has informed the Company that she will retire from its board of...",
+     "datetime": 1793914200,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=2124fe84c8f2995be679a42d79204758878c3d9054b44c9c35b357524fc96237"
+    },
+    {
+     "headline": "The AI Trade Just Had Its Worst Day Since The Pandemic",
+     "summary": "Nvidia gave back its entire 2026 gain in one session as Wall Street reprices the AI buildout after the midterms.",
+     "datetime": 1793913671,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=988f77e04ab051ec88c3aa97d592f2a43dc88fef31c9e628f63cdce30a7dffb0"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "MU",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 14,
+   "atm_iv_pct": 96.4,
+   "iv_chain_percentile": 6,
+   "skew_points": 3.6,
+   "put_call_ratio": 0.91,
+   "total_put_oi": 199605,
+   "total_call_oi": 219687
+  },
+  "get_options_positioning": {
+   "ticker": "MU",
+   "spot": 656.39,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 14,
+   "max_pain_strike": 900.0,
+   "resistance_walls": [
+    {
+     "strike": 1050.0,
+     "open_interest": 9925
+    },
+    {
+     "strike": 1150.0,
+     "open_interest": 8567
+    },
+    {
+     "strike": 1350.0,
+     "open_interest": 8008
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 750.0,
+     "open_interest": 7645
+    },
+    {
+     "strike": 800.0,
+     "open_interest": 7102
+    },
+    {
+     "strike": 850.0,
+     "open_interest": 6774
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 14,
+     "atm_iv_pct": 96.4
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 21,
+     "atm_iv_pct": 87.7
+    },
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 83.6
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 2050.0,
+     "volume": 194,
+     "open_interest": 0,
+     "vol_oi_ratio": 194.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 690.0,
+     "volume": 1831,
+     "open_interest": 23,
+     "vol_oi_ratio": 79.6,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 750.0,
+     "volume": 5478,
+     "open_interest": 377,
+     "vol_oi_ratio": 14.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 720.0,
+     "volume": 3005,
+     "open_interest": 237,
+     "vol_oi_ratio": 12.7,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 450.0,
+     "volume": 7404,
+     "open_interest": 1426,
+     "vol_oi_ratio": 5.2,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 204622,
+   "otm_put_oi": 93459,
+   "positioning_lean_score": 0.37,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "MU",
+   "as_of": "2026-11-06",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-22",
+     "days_ago": 15,
+     "firm": "Rosenblatt",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 1900.0,
+     "price_target_to": 1900.0,
+     "is_rating_change": false,
+     "description": "Rosenblatt maintained its Buy rating on MU with a $1900.0 price target"
+    },
+    {
+     "date": "2026-10-22",
+     "days_ago": 15,
+     "firm": "Needham",
+     "action": "reiterated",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 1650.0,
+     "price_target_to": 1650.0,
+     "is_rating_change": false,
+     "description": "Needham reiterated its Buy rating on MU with a $1650.0 price target"
+    },
+    {
+     "date": "2026-10-13",
+     "days_ago": 24,
+     "firm": "Rosenblatt",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 1900.0,
+     "price_target_to": 1900.0,
+     "is_rating_change": false,
+     "description": "Rosenblatt maintained its Buy rating on MU with a $1900.0 price target"
+    },
+    {
+     "date": "2026-10-07",
+     "days_ago": 30,
+     "firm": "DA Davidson",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 2100.0,
+     "price_target_to": 3000.0,
+     "is_rating_change": false,
+     "description": "DA Davidson maintained its Buy rating on MU and raised its price target from $2100.0 to $3000.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.9,
+    "verdict": "leaning bullish",
+    "analysts": 49,
+    "counts": {
+     "strongBuy": 9,
+     "buy": 36,
+     "hold": 4,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.9 to 1.9)"
+   },
+   "price_target": {
+    "mean": 1561.91,
+    "median": 1550.0,
+    "high": 3000.0,
+    "low": 361.0,
+    "current_price": 656.39,
+    "dispersion_pct": 169.0,
+    "upside_vs_mean_pct": 138.0,
+    "upside_vs_median_pct": 136.1
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "MU",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "2w": {
+     "stock_change_pct": -12.96,
+     "sector_etf_change_pct": -6.39,
+     "relative_to_sector_pct": -6.57
+    },
+    "ytd": {
+     "stock_change_pct": 152.3,
+     "sector_etf_change_pct": 22.76,
+     "relative_to_sector_pct": 129.54
+    },
+    "1mo": {
+     "stock_change_pct": -23.93,
+     "sector_etf_change_pct": -12.62,
+     "relative_to_sector_pct": -11.31
+    },
+    "1w": {
+     "stock_change_pct": -19.12,
+     "sector_etf_change_pct": -7.59,
+     "relative_to_sector_pct": -11.53
+    },
+    "1d": {
+     "stock_change_pct": -7.0,
+     "sector_etf_change_pct": -0.01,
+     "relative_to_sector_pct": -6.99
+    },
+    "1y": {
+     "stock_change_pct": 239.21,
+     "sector_etf_change_pct": 17.52,
+     "relative_to_sector_pct": 221.69
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-05",
+    "realtime_end": "2026-11-05",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9612,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-05",
+      "realtime_end": "2026-11-05",
+      "date": "2026-11-04",
+      "value": "16.61"
+     },
+     {
+      "realtime_start": "2026-11-05",
+      "realtime_end": "2026-11-05",
+      "date": "2026-11-03",
+      "value": "20.83"
+     },
+     {
+      "realtime_start": "2026-11-05",
+      "realtime_end": "2026-11-05",
+      "date": "2026-11-02",
+      "value": "21.15"
+     },
+     {
+      "realtime_start": "2026-11-05",
+      "realtime_end": "2026-11-05",
+      "date": "2026-10-30",
+      "value": "19.42"
+     },
+     {
+      "realtime_start": "2026-11-05",
+      "realtime_end": "2026-11-05",
+      "date": "2026-10-29",
+      "value": "17.2"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "MU",
+   "as_of": "2026-11-06",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 33,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-12-15",
+     "description": "MU Q1 2027 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 39,
+     "eps_estimate": 39.3702,
+     "hour": "amc"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-12-23",
+     "description": "MU quarterly earnings scheduled (after the close)",
+     "source": "yfinance",
+     "days_until": 47,
+     "eps_estimate": 38.29,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "ex_dividend",
+     "date": "2026-10-14",
+     "source": "yfinance",
+     "description": "MU went ex-dividend \u2014 the price drops by roughly the dividend on this date mechanically, with no news behind it",
+     "days_ago": 23
+    },
+    {
+     "type": "earnings",
+     "date": "2026-09-30",
+     "description": "MU reported quarterly earnings after the close \u2014 EPS 33.42 vs 31.82 expected (beat, +5.0%)",
+     "source": "yfinance",
+     "days_ago": 37,
+     "eps_actual": 33.42,
+     "eps_estimate": 31.82,
+     "surprise": "beat",
+     "surprise_pct": 5.0,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub+yfinance"
+  }
+ }
+}

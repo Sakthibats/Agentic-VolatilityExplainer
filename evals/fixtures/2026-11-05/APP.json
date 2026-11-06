@@ -1,0 +1,402 @@
+{
+ "schema": 1,
+ "ticker": "APP",
+ "trading_day": "2026-11-05",
+ "captured_at": "2026-11-06T01:44:28+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 31.04,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 10.69% \u2014 elevated relative to this stock's own typical volatility (expected ~4.44%, 2.41x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past year: -57.01% \u2014 typical relative to this stock's own typical volatility (expected ~70.50%, 0.81x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "APP",
+   "price": 356.1,
+   "prev_close": 271.75,
+   "change_pct": 31.04,
+   "realized_vol_annualized_pct": 70.5,
+   "changes_pct": {
+    "1d": 10.69,
+    "1w": 4.53,
+    "2w": 1.44,
+    "1mo": -2.52,
+    "1y": -57.01,
+    "ytd": -56.05
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 10.69% \u2014 elevated relative to this stock's own typical volatility (expected ~4.44%, 2.41x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past year: -57.01% \u2014 typical relative to this stock's own typical volatility (expected ~70.50%, 0.81x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "APP",
+   "headlines": [
+    {
+     "headline": "AppLovin (APP) Stock Price Roars After Q3 Earnings Margin Surge",
+     "summary": "AppLovin just dropped its Q3 2026 numbers and the stock did not whisper its verdict. It roared. Coming into the release, the shares already had a strong run, then exploded another 31% in a single...",
+     "datetime": 1793924571,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=6511db13019913bff52bd1e250bffffc4147c69bb73dc89e08d79e01a4c21bd8"
+    },
+    {
+     "headline": "S&P 500 After-Hours Movers: ABNB and SNDK Gain, AXON and SOLV Fall",
+     "summary": "S&P 500 after-hours movers after today's U.S. session included ABNB up 10.68%, SNDK up 3.17%, AXON down 12.14% and SOLV down 7.03%.",
+     "datetime": 1793916376,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=c8baf959ed6ac7e6a8a6c13e13dd7b2a5e7d98ce47ba0c504559205276777cab"
+    },
+    {
+     "headline": "AI Isn\u2019t All Bad Right Now. Here Are 2 Stocks Going the Other Way.",
+     "summary": "AI-powered advertising helped lift both companies\u2019 results, offering a bright spot as concerns about data center spending battered tech stocks.",
+     "datetime": 1793914020,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=396ee45dcdcdf92fce82e77127c338803b955515d237c02ce02e55e99d727cfd"
+    },
+    {
+     "headline": "Nasdaq Plunges 1,421 Points, Dow Slides 1,833 Points in Tech Rout: Stock Market Today",
+     "summary": "Wall Street suffered a brutal sell-off in tech stocks Thursday as high valuations and a potential slowdown in the data center buildout worried investors.",
+     "datetime": 1793913303,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=3803196ef7ab75e2153f04a86a696815b3298d372e2c256ce415aca028fafad4"
+    },
+    {
+     "headline": "US Equity Markets End Lower After Crude Oil Rises, Mega-Cap Tech Stocks Fall",
+     "summary": "US equity indexes ended lower Thursday after crude oil prices rose and mega-cap technology stocks su",
+     "datetime": 1793912878,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=33faa1d5728afeebd5ec7ad7efa8e5e415995ceb01ea0a317d5d88f36c6e88b4"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "APP",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 14,
+   "atm_iv_pct": 71.4,
+   "iv_chain_percentile": 13,
+   "skew_points": -1.0,
+   "put_call_ratio": 1.28,
+   "total_put_oi": 51444,
+   "total_call_oi": 40318
+  },
+  "get_options_positioning": {
+   "ticker": "APP",
+   "spot": 356.1,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 14,
+   "max_pain_strike": 282.5,
+   "resistance_walls": [
+    {
+     "strike": 400.0,
+     "open_interest": 2726
+    },
+    {
+     "strike": 300.0,
+     "open_interest": 1795
+    },
+    {
+     "strike": 410.0,
+     "open_interest": 1644
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 200.0,
+     "open_interest": 27980
+    },
+    {
+     "strike": 270.0,
+     "open_interest": 2049
+    },
+    {
+     "strike": 220.0,
+     "open_interest": 1977
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 14,
+     "atm_iv_pct": 71.4
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 21,
+     "atm_iv_pct": 68.3
+    },
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 64.7
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 460.0,
+     "volume": 212,
+     "open_interest": 0,
+     "vol_oi_ratio": 212.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 305.0,
+     "volume": 239,
+     "open_interest": 6,
+     "vol_oi_ratio": 39.8,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 315.0,
+     "volume": 141,
+     "open_interest": 10,
+     "vol_oi_ratio": 14.1,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 450.0,
+     "volume": 1176,
+     "open_interest": 412,
+     "vol_oi_ratio": 2.9,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 380.0,
+     "volume": 878,
+     "open_interest": 501,
+     "vol_oi_ratio": 1.8,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 23674,
+   "otm_put_oi": 50419,
+   "positioning_lean_score": -0.36,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "APP",
+   "as_of": "2026-11-06",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-05",
+     "days_ago": 1,
+     "firm": "Scotiabank",
+     "action": "maintained",
+     "from_grade": "Sector Outperform",
+     "to_grade": "Sector Outperform",
+     "price_target_from": 515.0,
+     "price_target_to": 450.0,
+     "is_rating_change": false,
+     "description": "Scotiabank maintained its Sector Outperform rating on APP and cut its price target from $515.0 to $450.0"
+    },
+    {
+     "date": "2026-11-05",
+     "days_ago": 1,
+     "firm": "Macquarie",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 460.0,
+     "price_target_to": 470.0,
+     "is_rating_change": false,
+     "description": "Macquarie maintained its Outperform rating on APP and raised its price target from $460.0 to $470.0"
+    },
+    {
+     "date": "2026-11-05",
+     "days_ago": 1,
+     "firm": "RBC Capital",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 500.0,
+     "price_target_to": 520.0,
+     "is_rating_change": false,
+     "description": "RBC Capital maintained its Outperform rating on APP and raised its price target from $500.0 to $520.0"
+    },
+    {
+     "date": "2026-11-05",
+     "days_ago": 1,
+     "firm": "Goldman Sachs",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 400.0,
+     "price_target_to": 445.0,
+     "is_rating_change": false,
+     "description": "Goldman Sachs maintained its Neutral rating on APP and raised its price target from $400.0 to $445.0"
+    },
+    {
+     "date": "2026-11-05",
+     "days_ago": 1,
+     "firm": "Oppenheimer",
+     "action": "reiterated",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 490.0,
+     "price_target_to": 520.0,
+     "is_rating_change": false,
+     "description": "Oppenheimer reiterated its Outperform rating on APP and raised its price target from $490.0 to $520.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.97,
+    "verdict": "leaning bullish",
+    "analysts": 33,
+    "counts": {
+     "strongBuy": 7,
+     "buy": 20,
+     "hold": 6,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.03 to 1.97; bearish ratings 0 to 0)"
+   },
+   "price_target": {
+    "mean": 448.43,
+    "median": 440.0,
+    "high": 625.0,
+    "low": 325.0,
+    "current_price": 356.1,
+    "dispersion_pct": 66.9,
+    "upside_vs_mean_pct": 25.9,
+    "upside_vs_median_pct": 23.6
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "APP",
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "comparison": {
+    "2w": {
+     "stock_change_pct": 1.44,
+     "sector_etf_change_pct": -3.68,
+     "relative_to_sector_pct": 5.12
+    },
+    "ytd": {
+     "stock_change_pct": -56.05,
+     "sector_etf_change_pct": -9.4,
+     "relative_to_sector_pct": -46.65
+    },
+    "1mo": {
+     "stock_change_pct": -2.52,
+     "sector_etf_change_pct": -5.99,
+     "relative_to_sector_pct": 3.47
+    },
+    "1w": {
+     "stock_change_pct": 4.53,
+     "sector_etf_change_pct": 1.76,
+     "relative_to_sector_pct": 2.77
+    },
+    "1d": {
+     "stock_change_pct": 10.69,
+     "sector_etf_change_pct": 3.47,
+     "relative_to_sector_pct": 7.22
+    },
+    "1y": {
+     "stock_change_pct": -57.01,
+     "sector_etf_change_pct": -6.45,
+     "relative_to_sector_pct": -50.56
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-05",
+    "realtime_end": "2026-11-05",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9612,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-05",
+      "realtime_end": "2026-11-05",
+      "date": "2026-11-04",
+      "value": "16.61"
+     },
+     {
+      "realtime_start": "2026-11-05",
+      "realtime_end": "2026-11-05",
+      "date": "2026-11-03",
+      "value": "20.83"
+     },
+     {
+      "realtime_start": "2026-11-05",
+      "realtime_end": "2026-11-05",
+      "date": "2026-11-02",
+      "value": "21.15"
+     },
+     {
+      "realtime_start": "2026-11-05",
+      "realtime_end": "2026-11-05",
+      "date": "2026-10-30",
+      "value": "19.42"
+     },
+     {
+      "realtime_start": "2026-11-05",
+      "realtime_end": "2026-11-05",
+      "date": "2026-10-29",
+      "value": "17.2"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "APP",
+   "as_of": "2026-11-06",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 33,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-04",
+     "description": "APP reported Q3 2026 earnings after the close \u2014 EPS 4.3 vs 4.0795 expected (beat, +5.4%)",
+     "source": "finnhub",
+     "days_ago": 2,
+     "eps_actual": 4.3,
+     "eps_estimate": 4.0795,
+     "surprise": "beat",
+     "surprise_pct": 5.4,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

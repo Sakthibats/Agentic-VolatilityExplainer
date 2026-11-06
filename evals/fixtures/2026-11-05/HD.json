@@ -1,0 +1,353 @@
+{
+ "schema": 1,
+ "ticker": "HD",
+ "trading_day": "2026-11-05",
+ "captured_at": "2026-11-06T01:44:02+00:00",
+ "selected_as": "move",
+ "change_pct": -1.55,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 6.53% \u2014 unusual relative to this stock's own typical volatility (expected ~2.41%, 2.71x), but elevated in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "this week: 11.93% \u2014 elevated for this stock (about 2.21x its normal move for that span, expected ~5.39%)",
+   "the past 2 weeks: 13.15% \u2014 elevated for this stock (about 1.72x its normal move for that span, expected ~7.63%)",
+   "the past month: 23.98% \u2014 elevated relative to this stock's own typical volatility (expected ~11.06%, 2.17x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "HD",
+   "price": 349.94,
+   "prev_close": 355.44,
+   "change_pct": -1.55,
+   "realized_vol_annualized_pct": 38.3,
+   "changes_pct": {
+    "1d": 6.53,
+    "1w": 11.93,
+    "2w": 13.15,
+    "1mo": 23.98,
+    "1y": -3.39,
+    "ytd": 5.01
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 6.53% \u2014 unusual relative to this stock's own typical volatility (expected ~2.41%, 2.71x), but elevated in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "this week: 11.93% \u2014 elevated for this stock (about 2.21x its normal move for that span, expected ~5.39%)",
+     "the past 2 weeks: 13.15% \u2014 elevated for this stock (about 1.72x its normal move for that span, expected ~7.63%)",
+     "the past month: 23.98% \u2014 elevated relative to this stock's own typical volatility (expected ~11.06%, 2.17x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "HD",
+   "headlines": [
+    {
+     "headline": "Home Depot (HD) Jumped, What Is Driving Attention Now?",
+     "summary": "Home Depot (HD) jumped back into the spotlight after the midterm elections, as investors reacted to a Democratic sweep in Congress and renewed hopes for lower borrowing costs and targeted housing...",
+     "datetime": 1793909709,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=ca539dab42a5e46e29cb9458e7d5263defa1ceafb7d28be670fa8d90103a5fc4"
+    },
+    {
+     "headline": "Apple and Home Depot join list of objectors to tokenized stock plan pushed by NYSE owner",
+     "summary": "Boeing also joined the list of dozens of companies refusing to participate in the venture cochaired by former New York Gov. Andrew Cuomo.",
+     "datetime": 1793903656,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=0106f5e08ba18345759e55bfe0be0f2186cb5251da4034409fe4df2f530a824e"
+    },
+    {
+     "headline": "Bob\u2019s Discount Furniture Sees 3Q Revenue & Income Growth",
+     "summary": "By Karen Roman Bob\u2019s Discount Furniture, Inc. (BOBS) said third quarter net revenue increased 10.3% versus the year prior thanks to new store expansion and comparable sales growth of 3.8%. Adjusted...",
+     "datetime": 1793901872,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=5a9aa0eead910f44124087a64b3062c3a17d03e92fe1ffb14a39e9f4758a6ee2"
+    },
+    {
+     "headline": "The ex-Secret Service agent who flipped a hacker is now raising a second $250M cybersecurity fund",
+     "summary": "Stephen Ward, a former Secret Service agent and Home Depot CISO, is preparing a second fund of roughly $250 million for Brightmind Partners.",
+     "datetime": 1793901600,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=a51ce9373fe0d1f3dca59e98fa309a8100bc72e1925cabea467a029b57c5dfc6"
+    },
+    {
+     "headline": "Stocks outside the AI trade are rallying \u2014 and Washington just added fuel",
+     "summary": "Investors are buying travel, housing, and value stocks after the midterms while dumping the chip stocks that led the AI boom.",
+     "datetime": 1793888429,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=045b5759f39d2fe9e80f8b9b8b4ff356644295392f557d800460986e3f5b58bd"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "HD",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 14,
+   "atm_iv_pct": 43.7,
+   "iv_chain_percentile": 28,
+   "skew_points": 2.1,
+   "put_call_ratio": 0.82,
+   "total_put_oi": 20548,
+   "total_call_oi": 24907
+  },
+  "get_options_positioning": {
+   "ticker": "HD",
+   "spot": 349.94,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 14,
+   "max_pain_strike": 310.0,
+   "resistance_walls": [
+    {
+     "strike": 350.0,
+     "open_interest": 2325
+    },
+    {
+     "strike": 340.0,
+     "open_interest": 1797
+    },
+    {
+     "strike": 325.0,
+     "open_interest": 1666
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 300.0,
+     "open_interest": 2031
+    },
+    {
+     "strike": 305.0,
+     "open_interest": 1637
+    },
+    {
+     "strike": 290.0,
+     "open_interest": 1431
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 14,
+     "atm_iv_pct": 43.7
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 21,
+     "atm_iv_pct": 40.9
+    },
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 38.9
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 395.0,
+     "volume": 259,
+     "open_interest": 100,
+     "vol_oi_ratio": 2.6,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 350.0,
+     "volume": 218,
+     "open_interest": 103,
+     "vol_oi_ratio": 2.1,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 340.0,
+     "volume": 658,
+     "open_interest": 341,
+     "vol_oi_ratio": 1.9,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 355.0,
+     "volume": 171,
+     "open_interest": 109,
+     "vol_oi_ratio": 1.6,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 350.0,
+     "volume": 1453,
+     "open_interest": 2325,
+     "vol_oi_ratio": 0.6,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 10535,
+   "otm_put_oi": 20285,
+   "positioning_lean_score": -0.32,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "HD",
+   "as_of": "2026-11-06",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-26",
+     "days_ago": 11,
+     "firm": "Stifel",
+     "action": "maintained",
+     "from_grade": "Hold",
+     "to_grade": "Hold",
+     "price_target_from": 346.0,
+     "price_target_to": 322.0,
+     "is_rating_change": false,
+     "description": "Stifel maintained its Hold rating on HD and cut its price target from $346.0 to $322.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.28,
+    "verdict": "leaning bullish",
+    "analysts": 36,
+    "counts": {
+     "strongBuy": 4,
+     "buy": 18,
+     "hold": 14,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 2 months (score 2.31 to 2.28)"
+   },
+   "price_target": {
+    "mean": 379.0,
+    "median": 392.5,
+    "high": 425.0,
+    "low": 310.0,
+    "current_price": 349.94,
+    "dispersion_pct": 30.3,
+    "upside_vs_mean_pct": 8.3,
+    "upside_vs_median_pct": 12.2
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "HD",
+   "sector": "Consumer Cyclical",
+   "sector_etf": "XLY",
+   "comparison": {
+    "2w": {
+     "stock_change_pct": 13.15,
+     "sector_etf_change_pct": 5.89,
+     "relative_to_sector_pct": 7.26
+    },
+    "ytd": {
+     "stock_change_pct": 5.01,
+     "sector_etf_change_pct": 4.01,
+     "relative_to_sector_pct": 1.0
+    },
+    "1mo": {
+     "stock_change_pct": 23.98,
+     "sector_etf_change_pct": 9.5,
+     "relative_to_sector_pct": 14.48
+    },
+    "1w": {
+     "stock_change_pct": 11.93,
+     "sector_etf_change_pct": 6.07,
+     "relative_to_sector_pct": 5.86
+    },
+    "1d": {
+     "stock_change_pct": 6.53,
+     "sector_etf_change_pct": 4.26,
+     "relative_to_sector_pct": 2.27
+    },
+    "1y": {
+     "stock_change_pct": -3.39,
+     "sector_etf_change_pct": 1.85,
+     "relative_to_sector_pct": -5.24
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-05",
+    "realtime_end": "2026-11-05",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9612,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-05",
+      "realtime_end": "2026-11-05",
+      "date": "2026-11-04",
+      "value": "16.61"
+     },
+     {
+      "realtime_start": "2026-11-05",
+      "realtime_end": "2026-11-05",
+      "date": "2026-11-03",
+      "value": "20.83"
+     },
+     {
+      "realtime_start": "2026-11-05",
+      "realtime_end": "2026-11-05",
+      "date": "2026-11-02",
+      "value": "21.15"
+     },
+     {
+      "realtime_start": "2026-11-05",
+      "realtime_end": "2026-11-05",
+      "date": "2026-10-30",
+      "value": "19.42"
+     },
+     {
+      "realtime_start": "2026-11-05",
+      "realtime_end": "2026-11-05",
+      "date": "2026-10-29",
+      "value": "17.2"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "HD",
+   "as_of": "2026-11-06",
+   "events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-17",
+     "description": "HD Q3 2027 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 11,
+     "eps_estimate": 3.952
+    },
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 33,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}
