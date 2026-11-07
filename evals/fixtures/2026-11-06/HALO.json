@@ -1,0 +1,387 @@
+{
+ "schema": 1,
+ "ticker": "HALO",
+ "trading_day": "2026-11-06",
+ "captured_at": "2026-11-07T01:05:19+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -15.72,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: -5.66% \u2014 elevated for this stock (about 2.46x its normal move for that span, expected ~2.30%)",
+   "this week: -6.27% \u2014 typical relative to this stock's own typical volatility (expected ~5.14%, 1.22x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past year: 80.69% \u2014 elevated relative to this stock's own typical volatility (expected ~36.50%, 2.21x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "HALO",
+   "price": 103.63,
+   "prev_close": 122.96,
+   "change_pct": -15.72,
+   "realized_vol_annualized_pct": 36.5,
+   "changes_pct": {
+    "1d": -5.66,
+    "1w": -6.27,
+    "2w": -1.27,
+    "1mo": 10.98,
+    "1y": 80.69,
+    "ytd": 74.88
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: -5.66% \u2014 elevated for this stock (about 2.46x its normal move for that span, expected ~2.30%)",
+     "this week: -6.27% \u2014 typical relative to this stock's own typical volatility (expected ~5.14%, 1.22x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past year: 80.69% \u2014 elevated relative to this stock's own typical volatility (expected ~36.50%, 2.21x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "HALO",
+   "headlines": [
+    {
+     "headline": "Halozyme Therapeutics (HALO) Following Record Results And Higher Guidance Is The Stock Still Undervalued",
+     "summary": "Halozyme Therapeutics (HALO) just posted third quarter 2026 results that featured record revenue of US$492.97 million and net income of US$247.05 million, along with higher full year guidance and...",
+     "datetime": 1793985321,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=6bfa5acfc4a5213b53f075fa14358a976a2dbcffd770d0d74e9a16dbb7f19ae5"
+    },
+    {
+     "headline": "Halozyme Stocks Slip 4.28% Despite 39% Revenue Growth and Modestly Higher Guidance",
+     "summary": "Royalty revenue climbed 44%, but the 2026 revenue guidance midpoint rose only about $20 million.",
+     "datetime": 1793984323,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=562f2bf5a4f54704465e69a6aca0886fc7fdb645887f40f23df43a60d48c3726"
+    },
+    {
+     "headline": "Halozyme Stock Down Despite Q3 Earnings and Revenue Beat",
+     "summary": "HALO's Q3 earnings & revenues beat estimates, driven by higher royalties and product sales. The company raises its 2026 outlook, yet shares fall in after-hours.",
+     "datetime": 1793980680,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=ce70c5ac0bce37a6363efbd50dc0c1252e52cfced9b699860e48ea007befc3d5"
+    },
+    {
+     "headline": "Halozyme Reaffirms It Projects Zero to Minimal Impact to Royalty Revenue Through At Least 2035 Based on Medicare Drug Price Negotiation Program Final Rule for IPAY 2029",
+     "summary": "Halozyme Therapeutics, Inc. (Nasdaq: HALO) (\"Halozyme\" or the \"Company\") today confirmed that the Company expects zero to minimal royalty revenue impact based on its analysis of the final rule for...",
+     "datetime": 1793977440,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=e62a3f8d7e47f35ae5eb487232967bb605ce5c398882799d01d81e3f701de2fb"
+    },
+    {
+     "headline": "U.S. FDA Approves RYBREVANT FASPRO\u2122 (amivantamab and hyaluronidase-lpuj) Co-Formulated with Halozyme's ENHANZE\u00ae Technology for the Treatment of Advanced Head and Neck Cancer",
+     "summary": "Halozyme Therapeutics, Inc. (Nasdaq: HALO) (Halozyme) today announced that Johnson & Johnson was granted accelerated approval from the U.S. Food and Drug Administration (FDA) for RYBREVANT FASPRO\u2122...",
+     "datetime": 1793977020,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=aaa591e768a162e4830ff291785b72546c77e99cb1df763b4df6b14632606900"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "HALO",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 13,
+   "atm_iv_pct": 57.8,
+   "iv_chain_percentile": 4,
+   "skew_points": 14.2,
+   "put_call_ratio": 0.4,
+   "total_put_oi": 2155,
+   "total_call_oi": 5423
+  },
+  "get_options_positioning": {
+   "ticker": "HALO",
+   "spot": 103.63,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 13,
+   "max_pain_strike": 110.0,
+   "resistance_walls": [
+    {
+     "strike": 130.0,
+     "open_interest": 1661
+    },
+    {
+     "strike": 140.0,
+     "open_interest": 1402
+    },
+    {
+     "strike": 135.0,
+     "open_interest": 1069
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 105.0,
+     "open_interest": 1643
+    },
+    {
+     "strike": 115.0,
+     "open_interest": 179
+    },
+    {
+     "strike": 135.0,
+     "open_interest": 102
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 13,
+     "atm_iv_pct": 57.8
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 105.0,
+     "volume": 121,
+     "open_interest": 15,
+     "vol_oi_ratio": 8.1,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 135.0,
+     "volume": 160,
+     "open_interest": 102,
+     "vol_oi_ratio": 1.6,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 125.0,
+     "volume": 101,
+     "open_interest": 215,
+     "vol_oi_ratio": 0.5,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 5398,
+   "otm_put_oi": 40,
+   "positioning_lean_score": 0.99,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "HALO",
+   "as_of": "2026-11-07",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-07",
+     "days_ago": 0,
+     "firm": "Leerink Partners",
+     "action": "downgrade",
+     "from_grade": "Outperform",
+     "to_grade": "Market Perform",
+     "price_target_from": 110.0,
+     "price_target_to": 117.0,
+     "is_rating_change": true,
+     "description": "Leerink Partners downgraded HALO from Outperform to Market Perform and raised its price target from $110.0 to $117.0"
+    },
+    {
+     "date": "2026-11-06",
+     "days_ago": 1,
+     "firm": "Citizens",
+     "action": "maintained",
+     "from_grade": "Market Outperform",
+     "to_grade": "Market Outperform",
+     "price_target_from": 93.0,
+     "price_target_to": 149.0,
+     "is_rating_change": false,
+     "description": "Citizens maintained its Market Outperform rating on HALO and raised its price target from $93.0 to $149.0"
+    },
+    {
+     "date": "2026-11-06",
+     "days_ago": 1,
+     "firm": "Evercore ISI Group",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 123.0,
+     "price_target_to": 125.0,
+     "is_rating_change": false,
+     "description": "Evercore ISI Group maintained its Outperform rating on HALO and raised its price target from $123.0 to $125.0"
+    },
+    {
+     "date": "2026-11-06",
+     "days_ago": 1,
+     "firm": "Wells Fargo",
+     "action": "maintained",
+     "from_grade": "Equal-Weight",
+     "to_grade": "Equal-Weight",
+     "price_target_from": 95.0,
+     "price_target_to": 110.0,
+     "is_rating_change": false,
+     "description": "Wells Fargo maintained its Equal-Weight rating on HALO and raised its price target from $95.0 to $110.0"
+    },
+    {
+     "date": "2026-11-03",
+     "days_ago": 4,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 78.0,
+     "price_target_to": 79.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Neutral rating on HALO and raised its price target from $78.0 to $79.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.0,
+    "verdict": "leaning bullish",
+    "analysts": 9,
+    "counts": {
+     "strongBuy": 2,
+     "buy": 5,
+     "hold": 2,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.0 to 2.0)"
+   },
+   "price_target": {
+    "mean": 108.89,
+    "median": 110.0,
+    "high": 130.0,
+    "low": 79.0,
+    "current_price": 103.63,
+    "dispersion_pct": 46.8,
+    "upside_vs_mean_pct": 5.1,
+    "upside_vs_median_pct": 6.1
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "HALO",
+   "sector": "Healthcare",
+   "sector_etf": "XLV",
+   "comparison": {
+    "2w": {
+     "stock_change_pct": -1.27,
+     "sector_etf_change_pct": 1.99,
+     "relative_to_sector_pct": -3.26
+    },
+    "1d": {
+     "stock_change_pct": -5.66,
+     "sector_etf_change_pct": -2.5,
+     "relative_to_sector_pct": -3.16
+    },
+    "1y": {
+     "stock_change_pct": 80.69,
+     "sector_etf_change_pct": 29.57,
+     "relative_to_sector_pct": 51.12
+    },
+    "ytd": {
+     "stock_change_pct": 74.88,
+     "sector_etf_change_pct": 20.38,
+     "relative_to_sector_pct": 54.5
+    },
+    "1mo": {
+     "stock_change_pct": 10.98,
+     "sector_etf_change_pct": 9.54,
+     "relative_to_sector_pct": 1.44
+    },
+    "1w": {
+     "stock_change_pct": -6.27,
+     "sector_etf_change_pct": 0.47,
+     "relative_to_sector_pct": -6.74
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-06",
+    "realtime_end": "2026-11-06",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9613,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-11-05",
+      "value": "28.18"
+     },
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-11-04",
+      "value": "16.61"
+     },
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-11-03",
+      "value": "20.83"
+     },
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-11-02",
+      "value": "21.15"
+     },
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-10-30",
+      "value": "19.42"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "HALO",
+   "as_of": "2026-11-07",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 32,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-26",
+     "description": "HALO Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 80,
+     "eps_estimate": 2.6758,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-05",
+     "description": "HALO reported Q3 2026 earnings after the close \u2014 EPS 2.39 vs 2.397 expected (in line, -0.3%)",
+     "source": "finnhub",
+     "days_ago": 2,
+     "eps_actual": 2.39,
+     "eps_estimate": 2.397,
+     "surprise": "in line",
+     "surprise_pct": -0.3,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

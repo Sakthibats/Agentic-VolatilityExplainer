@@ -1,0 +1,397 @@
+{
+ "schema": 1,
+ "ticker": "SITM",
+ "trading_day": "2026-11-06",
+ "captured_at": "2026-11-07T01:04:59+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 17.44,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: -11.97% \u2014 elevated relative to this stock's own typical volatility (expected ~5.66%, 2.12x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "this week: -27.27% \u2014 elevated relative to this stock's own typical volatility (expected ~12.65%, 2.16x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past 2 weeks: -23.28% \u2014 typical relative to this stock's own typical volatility (expected ~17.89%, 1.3x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past month: -46.63% \u2014 elevated relative to this stock's own typical volatility (expected ~25.92%, 1.8x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "SITM",
+   "price": 416.92,
+   "prev_close": 355,
+   "change_pct": 17.44,
+   "realized_vol_annualized_pct": 89.8,
+   "changes_pct": {
+    "1d": -11.97,
+    "1w": -27.27,
+    "2w": -23.28,
+    "1mo": -46.63,
+    "1y": 27.1,
+    "ytd": -4.04
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: -11.97% \u2014 elevated relative to this stock's own typical volatility (expected ~5.66%, 2.12x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "this week: -27.27% \u2014 elevated relative to this stock's own typical volatility (expected ~12.65%, 2.16x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past 2 weeks: -23.28% \u2014 typical relative to this stock's own typical volatility (expected ~17.89%, 1.3x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past month: -46.63% \u2014 elevated relative to this stock's own typical volatility (expected ~25.92%, 1.8x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "SITM",
+   "headlines": [
+    {
+     "headline": "Rosenblatt names top semiconductor stock",
+     "summary": "Investing.com -- Rosenblatt has identified SiTime Corporation as its top pick in the semiconductor sector, assigning a Buy rating with a $900 price target on shares currently trading at $403.27. The...",
+     "datetime": 1793993947,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=60aec9d707e15a840f4d9a799e455aaec35b219f9cee3ebe1c32e4701f374e98"
+    },
+    {
+     "headline": "SiTime shares surge 16% as Seaport upgrades to Buy following post-earnings dip",
+     "summary": "Investing.com -- SiTime Corporation (NASDAQ:SITM) shares rallied 16% in Friday trading after Seaport Global Securities upgraded the precision timing specialist to Buy from Neutral with a $425 price...",
+     "datetime": 1793986720,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=2c76b0195ae0a6526b62b279c003028bf013db194c6cd2774c72a846a546351b"
+    },
+    {
+     "headline": "Molson Coors downgraded, SiTime upgraded: Wall Street's top analyst calls",
+     "summary": "Molson Coors downgraded, SiTime upgraded: Wall Street's top analyst calls",
+     "datetime": 1793977639,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=6da2d4b1e0e8d2b2f63360008f17db7a8c12527aed0ccfdd9d951b33a4f68801"
+    },
+    {
+     "headline": "Buy, Sell, or Hold? Friday\u2019s Top Upgrades and Downgrades: Becton Dickinson, BJ\u2019s Wholesale Club, Cogent Communications, Fervo Energy, JinkoSolar, Molson-Coors, Pfizer, SiTime, Steven Madden, and More",
+     "summary": "After a brutal sell-off erased Wednesday's rally and dragged the Nasdaq back into correction territory, Wall Street analysts are still moving. Some reversed course on Pfizer, Molson Coors, and BJ's,...",
+     "datetime": 1793970010,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=ba906ff1eb7f88936b6a073cbb7dd3c83db9bbcd6c8a546471ff88233a97cc39"
+    },
+    {
+     "headline": "This Centrus Energy Analyst Turns Bullish; Here Are Top 5 Upgrades For Friday",
+     "summary": "Analysts upgraded Centrus Energy, SiTime, MGE Energy, Steven Madden and Becton Dickinson, with new or higher price targets.",
+     "datetime": 1793959731,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=30093b0cc023c2e313943d20b4af4ae1b6769071b09d634a44d899a34e656e67"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "SITM",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 13,
+   "atm_iv_pct": 97.9,
+   "iv_chain_percentile": 5,
+   "skew_points": 10.0,
+   "put_call_ratio": 0.7,
+   "total_put_oi": 2655,
+   "total_call_oi": 3799
+  },
+  "get_options_positioning": {
+   "ticker": "SITM",
+   "spot": 416.92,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 13,
+   "max_pain_strike": 510.0,
+   "resistance_walls": [
+    {
+     "strike": 760.0,
+     "open_interest": 293
+    },
+    {
+     "strike": 680.0,
+     "open_interest": 246
+    },
+    {
+     "strike": 400.0,
+     "open_interest": 196
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 540.0,
+     "open_interest": 244
+    },
+    {
+     "strike": 430.0,
+     "open_interest": 206
+    },
+    {
+     "strike": 400.0,
+     "open_interest": 198
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 13,
+     "atm_iv_pct": 97.9
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 410.0,
+     "volume": 110,
+     "open_interest": 20,
+     "vol_oi_ratio": 5.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 450.0,
+     "volume": 244,
+     "open_interest": 135,
+     "vol_oi_ratio": 1.8,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 310.0,
+     "volume": 135,
+     "open_interest": 74,
+     "vol_oi_ratio": 1.8,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 560.0,
+     "volume": 112,
+     "open_interest": 166,
+     "vol_oi_ratio": 0.7,
+     "moneyness": "ITM"
+    }
+   ],
+   "otm_call_oi": 3488,
+   "otm_put_oi": 1144,
+   "positioning_lean_score": 0.51,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "SITM",
+   "as_of": "2026-11-07",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-06",
+     "days_ago": 1,
+     "firm": "Seaport Global",
+     "action": "upgrade",
+     "from_grade": "Neutral",
+     "to_grade": "Buy",
+     "price_target_from": null,
+     "price_target_to": 425.0,
+     "is_rating_change": true,
+     "description": "Seaport Global upgraded SITM from Neutral to Buy with a $425.0 price target"
+    },
+    {
+     "date": "2026-11-06",
+     "days_ago": 1,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 750.0,
+     "price_target_to": 650.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Buy rating on SITM and cut its price target from $750.0 to $650.0"
+    },
+    {
+     "date": "2026-11-05",
+     "days_ago": 2,
+     "firm": "Needham",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 900.0,
+     "price_target_to": 600.0,
+     "is_rating_change": false,
+     "description": "Needham maintained its Buy rating on SITM and cut its price target from $900.0 to $600.0"
+    },
+    {
+     "date": "2026-11-03",
+     "days_ago": 4,
+     "firm": "Rosenblatt",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 750.0,
+     "price_target_to": 900.0,
+     "is_rating_change": false,
+     "description": "Rosenblatt maintained its Buy rating on SITM and raised its price target from $750.0 to $900.0"
+    },
+    {
+     "date": "2026-10-20",
+     "days_ago": 18,
+     "firm": "Rosenblatt",
+     "action": "initiated coverage",
+     "from_grade": null,
+     "to_grade": "Buy",
+     "price_target_from": null,
+     "price_target_to": 750.0,
+     "is_rating_change": false,
+     "description": "Rosenblatt initiated coverage of SITM at Buy with a $750.0 price target"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.75,
+    "verdict": "leaning bullish",
+    "analysts": 12,
+    "counts": {
+     "strongBuy": 4,
+     "buy": 7,
+     "hold": 1,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "deteriorating",
+    "trend_detail": "consensus softened over 3 months (score 1.67 to 1.75; bearish ratings 0 to 0)"
+   },
+   "price_target": {
+    "mean": 845.91,
+    "median": 850.0,
+    "high": 900.0,
+    "low": 730.0,
+    "current_price": 416.92,
+    "dispersion_pct": 20.1,
+    "upside_vs_mean_pct": 102.9,
+    "upside_vs_median_pct": 103.9
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "SITM",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "2w": {
+     "stock_change_pct": -23.28,
+     "sector_etf_change_pct": -10.95,
+     "relative_to_sector_pct": -12.33
+    },
+    "1d": {
+     "stock_change_pct": -11.97,
+     "sector_etf_change_pct": -8.0,
+     "relative_to_sector_pct": -3.97
+    },
+    "1y": {
+     "stock_change_pct": 27.1,
+     "sector_etf_change_pct": 11.05,
+     "relative_to_sector_pct": 16.05
+    },
+    "ytd": {
+     "stock_change_pct": -4.04,
+     "sector_etf_change_pct": 12.94,
+     "relative_to_sector_pct": -16.98
+    },
+    "1mo": {
+     "stock_change_pct": -46.63,
+     "sector_etf_change_pct": -19.37,
+     "relative_to_sector_pct": -27.26
+    },
+    "1w": {
+     "stock_change_pct": -27.27,
+     "sector_etf_change_pct": -13.97,
+     "relative_to_sector_pct": -13.3
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-06",
+    "realtime_end": "2026-11-06",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9613,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-11-05",
+      "value": "28.18"
+     },
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-11-04",
+      "value": "16.61"
+     },
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-11-03",
+      "value": "20.83"
+     },
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-11-02",
+      "value": "21.15"
+     },
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-10-30",
+      "value": "19.42"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "SITM",
+   "as_of": "2026-11-07",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 32,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-02",
+     "description": "SITM Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 87,
+     "eps_estimate": 3.7961,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-04",
+     "description": "SITM reported Q3 2026 earnings after the close \u2014 EPS 4.01 vs 3.6958 expected (beat, +8.5%)",
+     "source": "finnhub",
+     "days_ago": 3,
+     "eps_actual": 4.01,
+     "eps_estimate": 3.6958,
+     "surprise": "beat",
+     "surprise_pct": 8.5,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

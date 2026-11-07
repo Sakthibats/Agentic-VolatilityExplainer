@@ -1,0 +1,408 @@
+{
+ "schema": 1,
+ "ticker": "IONQ",
+ "trading_day": "2026-11-06",
+ "captured_at": "2026-11-07T01:04:52+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 23.42,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: -10.53% \u2014 elevated relative to this stock's own typical volatility (expected ~5.63%, 1.87x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "this week: -16.68% \u2014 typical relative to this stock's own typical volatility (expected ~12.59%, 1.32x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past 2 weeks: -15.18% \u2014 typical relative to this stock's own typical volatility (expected ~17.81%, 0.85x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past month: -36.07% \u2014 typical relative to this stock's own typical volatility (expected ~25.81%, 1.4x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past year: -50.49% \u2014 typical relative to this stock's own typical volatility (expected ~89.40%, 0.56x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "IONQ",
+   "price": 32.62,
+   "prev_close": 26.43,
+   "change_pct": 23.42,
+   "realized_vol_annualized_pct": 89.4,
+   "changes_pct": {
+    "1d": -10.53,
+    "1w": -16.68,
+    "2w": -15.18,
+    "1mo": -36.07,
+    "1y": -50.49,
+    "ytd": -43.49
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: -10.53% \u2014 elevated relative to this stock's own typical volatility (expected ~5.63%, 1.87x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "this week: -16.68% \u2014 typical relative to this stock's own typical volatility (expected ~12.59%, 1.32x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past 2 weeks: -15.18% \u2014 typical relative to this stock's own typical volatility (expected ~17.81%, 0.85x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past month: -36.07% \u2014 typical relative to this stock's own typical volatility (expected ~25.81%, 1.4x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past year: -50.49% \u2014 typical relative to this stock's own typical volatility (expected ~89.40%, 0.56x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "IONQ",
+   "headlines": [
+    {
+     "headline": "Cantor Fitzgerald Maintains Overweight on IonQ, Lowers Price Target to $60",
+     "summary": "Cantor Fitzgerald  analyst Troy Jensen   maintains IonQ (NYSE:IONQ) with a Overweight and lowers the price target from $70 to $60.",
+     "datetime": 1793954102,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=5bd072a064d0916e21a26aa85aac5794b9c450f4c9c5338d6c1d5924878e9546"
+    },
+    {
+     "headline": "Needham Maintains Buy on IonQ, Lowers Price Target to $48",
+     "summary": "Needham  analyst N. Quinn Bolton   maintains IonQ (NYSE:IONQ) with a Buy and lowers the price target from $65 to $48.",
+     "datetime": 1793953732,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=2b18d8980b27779537d87c6c4b818150a224103908d38777fbbf802410aefcb4"
+    },
+    {
+     "headline": "IonQ Inc (IONQ) (Q3 2026) Earnings Call Highlights: Record Revenue, DARPA Milestone and ...",
+     "summary": "IonQ Inc (IONQ) posted record Q3 2026 revenue of $173.8 million, advanced to Stage C of DARPA's quantum benchmarking initiative, and sold out its Superion 256 capacity for 2027.",
+     "datetime": 1793942753,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=e89a564e692a432784adc2a0aea3ac26ac30bb4418d348af0c281417fd337e10"
+    },
+    {
+     "headline": "IonQ, Inc. (IONQ) Q3 2026 Earnings Call Transcript",
+     "summary": "",
+     "datetime": 1793931880,
+     "source": "SeekingAlpha",
+     "url": "https://finnhub.io/api/news?id=b0732ac5e03ffda61ff3df78eb459b0b378270d8e15e0c73bb1b3eae76328c61"
+    },
+    {
+     "headline": "IonQ (IONQ) Stock Fair Value Edges Lower After Analyst Caution On Dilution And Adoption",
+     "summary": "IonQ\u2019s modelled fair value has shifted slightly, easing from US$64.06 to US$62.28 in the latest analyst update. This change sits alongside fresh commentary that balances enthusiasm about IonQ\u2019s role...",
+     "datetime": 1793928201,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=b2bee020f36ad66e6786710c4060aad7c643cb81640897b3ab586029d28579e8"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "IONQ",
+   "expiry": "2026-11-27",
+   "days_to_expiry": 20,
+   "atm_iv_pct": 86.3,
+   "iv_chain_percentile": 20,
+   "skew_points": 11.2,
+   "put_call_ratio": 0.44,
+   "total_put_oi": 2776,
+   "total_call_oi": 6261
+  },
+  "get_options_positioning": {
+   "ticker": "IONQ",
+   "spot": 32.62,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 13,
+   "max_pain_strike": 35.0,
+   "resistance_walls": [
+    {
+     "strike": 40.0,
+     "open_interest": 16413
+    },
+    {
+     "strike": 60.0,
+     "open_interest": 9326
+    },
+    {
+     "strike": 50.0,
+     "open_interest": 7512
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 30.0,
+     "open_interest": 9102
+    },
+    {
+     "strike": 35.0,
+     "open_interest": 8722
+    },
+    {
+     "strike": 40.0,
+     "open_interest": 6003
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 13,
+     "atm_iv_pct": 90.6
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 20,
+     "atm_iv_pct": 86.3
+    },
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 27,
+     "atm_iv_pct": 85.4
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 34.0,
+     "volume": 11378,
+     "open_interest": 851,
+     "vol_oi_ratio": 13.4,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 37.5,
+     "volume": 384,
+     "open_interest": 66,
+     "vol_oi_ratio": 5.8,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 29.5,
+     "volume": 122,
+     "open_interest": 31,
+     "vol_oi_ratio": 3.9,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 20.0,
+     "volume": 8398,
+     "open_interest": 3970,
+     "vol_oi_ratio": 2.1,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 27.0,
+     "volume": 563,
+     "open_interest": 429,
+     "vol_oi_ratio": 1.3,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 65714,
+   "otm_put_oi": 32247,
+   "positioning_lean_score": 0.34,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "IONQ",
+   "as_of": "2026-11-07",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-07",
+     "days_ago": 0,
+     "firm": "Jefferies",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 80.0,
+     "price_target_to": 65.0,
+     "is_rating_change": false,
+     "description": "Jefferies maintained its Buy rating on IONQ and cut its price target from $80.0 to $65.0"
+    },
+    {
+     "date": "2026-11-06",
+     "days_ago": 1,
+     "firm": "B. Riley Securities",
+     "action": "reiterated",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 75.0,
+     "price_target_to": 70.0,
+     "is_rating_change": false,
+     "description": "B. Riley Securities reiterated its Buy rating on IONQ and cut its price target from $75.0 to $70.0"
+    },
+    {
+     "date": "2026-11-06",
+     "days_ago": 1,
+     "firm": "Cantor Fitzgerald",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 70.0,
+     "price_target_to": 60.0,
+     "is_rating_change": false,
+     "description": "Cantor Fitzgerald maintained its Overweight rating on IONQ and cut its price target from $70.0 to $60.0"
+    },
+    {
+     "date": "2026-11-06",
+     "days_ago": 1,
+     "firm": "Needham",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 65.0,
+     "price_target_to": 48.0,
+     "is_rating_change": false,
+     "description": "Needham maintained its Buy rating on IONQ and cut its price target from $65.0 to $48.0"
+    },
+    {
+     "date": "2026-11-02",
+     "days_ago": 5,
+     "firm": "B. Riley Securities",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 100.0,
+     "price_target_to": 75.0,
+     "is_rating_change": false,
+     "description": "B. Riley Securities maintained its Buy rating on IONQ and cut its price target from $100.0 to $75.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.07,
+    "verdict": "leaning bullish",
+    "analysts": 14,
+    "counts": {
+     "strongBuy": 1,
+     "buy": 11,
+     "hold": 2,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.08 to 2.07)"
+   },
+   "price_target": {
+    "mean": 62.27,
+    "median": 62.5,
+    "high": 80.0,
+    "low": 41.85,
+    "current_price": 32.62,
+    "dispersion_pct": 61.3,
+    "upside_vs_mean_pct": 90.9,
+    "upside_vs_median_pct": 91.6
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "IONQ",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "2w": {
+     "stock_change_pct": -15.18,
+     "sector_etf_change_pct": -10.95,
+     "relative_to_sector_pct": -4.23
+    },
+    "1d": {
+     "stock_change_pct": -10.53,
+     "sector_etf_change_pct": -8.0,
+     "relative_to_sector_pct": -2.53
+    },
+    "1y": {
+     "stock_change_pct": -50.49,
+     "sector_etf_change_pct": 11.05,
+     "relative_to_sector_pct": -61.54
+    },
+    "ytd": {
+     "stock_change_pct": -43.49,
+     "sector_etf_change_pct": 12.94,
+     "relative_to_sector_pct": -56.43
+    },
+    "1mo": {
+     "stock_change_pct": -36.07,
+     "sector_etf_change_pct": -19.37,
+     "relative_to_sector_pct": -16.7
+    },
+    "1w": {
+     "stock_change_pct": -16.68,
+     "sector_etf_change_pct": -13.97,
+     "relative_to_sector_pct": -2.71
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-06",
+    "realtime_end": "2026-11-06",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9613,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-11-05",
+      "value": "28.18"
+     },
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-11-04",
+      "value": "16.61"
+     },
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-11-03",
+      "value": "20.83"
+     },
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-11-02",
+      "value": "21.15"
+     },
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-10-30",
+      "value": "19.42"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "IONQ",
+   "as_of": "2026-11-07",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 32,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-05",
+     "description": "IONQ reported Q3 2026 earnings after the close \u2014 EPS -0.29 vs -0.3835 expected (beat, +24.4%)",
+     "source": "finnhub",
+     "days_ago": 2,
+     "eps_actual": -0.29,
+     "eps_estimate": -0.3835,
+     "surprise": "beat",
+     "surprise_pct": 24.4,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

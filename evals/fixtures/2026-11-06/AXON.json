@@ -1,0 +1,363 @@
+{
+ "schema": 1,
+ "ticker": "AXON",
+ "trading_day": "2026-11-06",
+ "captured_at": "2026-11-07T01:05:06+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -18.18,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: -9.81% \u2014 unusual for this stock (about 3.02x its normal move for that span, expected ~3.25%)",
+   "this week: -12.67% \u2014 elevated relative to this stock's own typical volatility (expected ~7.27%, 1.74x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past year: -45.82% \u2014 typical relative to this stock's own typical volatility (expected ~51.60%, 0.89x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "AXON",
+   "price": 313,
+   "prev_close": 382.56,
+   "change_pct": -18.18,
+   "realized_vol_annualized_pct": 51.6,
+   "changes_pct": {
+    "1d": -9.81,
+    "1w": -12.67,
+    "2w": -7.73,
+    "1mo": -5.77,
+    "1y": -45.82,
+    "ytd": -32.1
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: -9.81% \u2014 unusual for this stock (about 3.02x its normal move for that span, expected ~3.25%)",
+     "this week: -12.67% \u2014 elevated relative to this stock's own typical volatility (expected ~7.27%, 1.74x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past year: -45.82% \u2014 typical relative to this stock's own typical volatility (expected ~51.60%, 0.89x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "AXON",
+   "headlines": [
+    {
+     "headline": "Axon Just Bet $1.2 Billion That Drones Will Be the New First Responders",
+     "summary": "Axon buried its biggest bet ever inside an earnings release that missed estimates and trimmed guidance, and Wall Street sent the stock sliding. Was the market punishing a stumble, or overlooking the...",
+     "datetime": 1793991429,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=8f5b9fcc3152979bc2947c4b3ec880a4ba30017038a53d178ffe44e10de6b5e6"
+    },
+    {
+     "headline": "Axon Enterprise earnings analysis: questions answered and next catalysts",
+     "summary": "Investing.com -- Axon Enterprise (AXON) is $312.79, down 18.24% as of Nov 6, 12:51 PM EST. That is a fresh 52-week low area (range $307.00\u2013$665.07), and the market cap is about $25.3B. The Nasdaq...",
+     "datetime": 1793990080,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=49d21422de8b3d7236dfc75f326fcee50587742963e918502e1990ec58289f07"
+    },
+    {
+     "headline": "Axon Stock Plunges as Delayed Drone Deals Hit Revenue",
+     "summary": "Delays in federal drone contracts force Axon Enterprise to lower its annual revenue outlook.",
+     "datetime": 1793981100,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=0173752f2db242422a3aa06338d57f46f1e97877bb4dab73fc191fce974bac8f"
+    },
+    {
+     "headline": "Axon Sinks 17% on Revenue Miss, Guidance Cut and $1.2 Billion Skydio Bet on \u201cMillions of Drones\u201d",
+     "summary": "Key TakeawaysAxon shares fell 17% after third-quarter revenue of $909 million missed estimates and the company cut its 2026 growth outlook to about 30%. About $130 million of delayed federal Dedrone...",
+     "datetime": 1793977748,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=3fd72312823764ad4e63c3c3b928e7286d2991b86538ab3d985725454451976c"
+    },
+    {
+     "headline": "AXON Q3 Earnings Call Highlights Federal Delays and AI Growth",
+     "summary": "Axon cuts its 2026 revenue outlook amid federal counter-drone delays, even as AI adoption, software growth and a $1.2 billion Skydio investment fuel expansion.",
+     "datetime": 1793974860,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=739aeea6a05e5311ee22a5579dc57fab72e2ba3877e2848bebb1112400894db7"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "AXON",
+   "expiry": "2026-11-27",
+   "days_to_expiry": 20,
+   "atm_iv_pct": 70.2,
+   "iv_chain_percentile": 18,
+   "skew_points": -4.9,
+   "put_call_ratio": 1.55,
+   "total_put_oi": 301,
+   "total_call_oi": 194
+  },
+  "get_options_positioning": {
+   "ticker": "AXON",
+   "spot": 313.0,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 13,
+   "max_pain_strike": 430.0,
+   "resistance_walls": [
+    {
+     "strike": 480.0,
+     "open_interest": 339
+    },
+    {
+     "strike": 470.0,
+     "open_interest": 265
+    },
+    {
+     "strike": 490.0,
+     "open_interest": 192
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 360.0,
+     "open_interest": 282
+    },
+    {
+     "strike": 300.0,
+     "open_interest": 281
+    },
+    {
+     "strike": 400.0,
+     "open_interest": 245
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 13,
+     "atm_iv_pct": 75.0
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 20,
+     "atm_iv_pct": 70.2
+    },
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 27,
+     "atm_iv_pct": 67.3
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [],
+   "otm_call_oi": 2600,
+   "otm_put_oi": 543,
+   "positioning_lean_score": 0.65,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "AXON",
+   "as_of": "2026-11-07",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-06",
+     "days_ago": 1,
+     "firm": "RBC Capital",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 735.0,
+     "price_target_to": 615.0,
+     "is_rating_change": false,
+     "description": "RBC Capital maintained its Outperform rating on AXON and cut its price target from $735.0 to $615.0"
+    },
+    {
+     "date": "2026-11-06",
+     "days_ago": 1,
+     "firm": "Piper Sandler",
+     "action": "reiterated",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 561.0,
+     "price_target_to": 540.0,
+     "is_rating_change": false,
+     "description": "Piper Sandler reiterated its Overweight rating on AXON and cut its price target from $561.0 to $540.0"
+    },
+    {
+     "date": "2026-11-06",
+     "days_ago": 1,
+     "firm": "Needham",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 750.0,
+     "price_target_to": 500.0,
+     "is_rating_change": false,
+     "description": "Needham maintained its Buy rating on AXON and cut its price target from $750.0 to $500.0"
+    },
+    {
+     "date": "2026-10-26",
+     "days_ago": 12,
+     "firm": "TD Cowen",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 825.0,
+     "price_target_to": 800.0,
+     "is_rating_change": false,
+     "description": "TD Cowen maintained its Buy rating on AXON and cut its price target from $825.0 to $800.0"
+    },
+    {
+     "date": "2026-10-20",
+     "days_ago": 18,
+     "firm": "Piper Sandler",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 732.0,
+     "price_target_to": 561.0,
+     "is_rating_change": false,
+     "description": "Piper Sandler maintained its Overweight rating on AXON and cut its price target from $732.0 to $561.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.76,
+    "verdict": "leaning bullish",
+    "analysts": 21,
+    "counts": {
+     "strongBuy": 8,
+     "buy": 10,
+     "hold": 3,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 1.86 to 1.76; bearish ratings 1 to 0)"
+   },
+   "price_target": {
+    "mean": 680.37,
+    "median": 688.0,
+    "high": 830.0,
+    "low": 440.0,
+    "current_price": 313.0,
+    "dispersion_pct": 57.3,
+    "upside_vs_mean_pct": 117.4,
+    "upside_vs_median_pct": 119.8
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "AXON",
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "comparison": {
+    "2w": {
+     "stock_change_pct": -7.73,
+     "sector_etf_change_pct": -2.56,
+     "relative_to_sector_pct": -5.17
+    },
+    "1d": {
+     "stock_change_pct": -9.81,
+     "sector_etf_change_pct": -4.12,
+     "relative_to_sector_pct": -5.69
+    },
+    "1y": {
+     "stock_change_pct": -45.82,
+     "sector_etf_change_pct": 7.68,
+     "relative_to_sector_pct": -53.5
+    },
+    "ytd": {
+     "stock_change_pct": -32.1,
+     "sector_etf_change_pct": 3.66,
+     "relative_to_sector_pct": -35.76
+    },
+    "1mo": {
+     "stock_change_pct": -5.77,
+     "sector_etf_change_pct": -3.2,
+     "relative_to_sector_pct": -2.57
+    },
+    "1w": {
+     "stock_change_pct": -12.67,
+     "sector_etf_change_pct": -4.5,
+     "relative_to_sector_pct": -8.17
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-06",
+    "realtime_end": "2026-11-06",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9613,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-11-05",
+      "value": "28.18"
+     },
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-11-04",
+      "value": "16.61"
+     },
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-11-03",
+      "value": "20.83"
+     },
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-11-02",
+      "value": "21.15"
+     },
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-10-30",
+      "value": "19.42"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "AXON",
+   "as_of": "2026-11-07",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 32,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-05",
+     "description": "AXON reported quarterly earnings after the close \u2014 EPS 1.72 vs 1.89 expected (miss, -9.0%)",
+     "source": "yfinance",
+     "days_ago": 2,
+     "eps_actual": 1.72,
+     "eps_estimate": 1.89,
+     "surprise": "miss",
+     "surprise_pct": -9.0,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "yfinance"
+  }
+ }
+}

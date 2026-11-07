@@ -1,0 +1,411 @@
+{
+ "schema": 1,
+ "ticker": "AAPL",
+ "trading_day": "2026-11-06",
+ "captured_at": "2026-11-07T01:03:52+00:00",
+ "selected_as": "control",
+ "change_pct": -0.52,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "AAPL",
+   "price": 342.37,
+   "prev_close": 344.17,
+   "change_pct": -0.52,
+   "realized_vol_annualized_pct": 26.2,
+   "changes_pct": {
+    "1d": -1.53,
+    "1w": -1.36,
+    "2w": -1.16,
+    "1mo": 2.23,
+    "1y": 27.92,
+    "ytd": 27.34
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   }
+  },
+  "get_news": {
+   "ticker": "AAPL",
+   "headlines": [
+    {
+     "headline": "Dow Jones Futures: Market Needs Repair But Sandisk, Micron Broken; Apple, Amazon, Microsoft Strong",
+     "summary": "The stock market needs repair while Sandisk and Micron seem broken. Apple, Amazon and Microsoft are holding up. Berkshire earnings loom.",
+     "datetime": 1794001510,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=4ee5b6a059dd5bd95c396ca8a8e637a13a1ca1ef4f6606dee11cee58ecacdd36"
+    },
+    {
+     "headline": "5 Latest Jim Cramer Stock Picks on Twitter and Mad Money",
+     "summary": "Markets are trembling amid the latest AI stock sell-off, which has sent shares of major AI players deep into the red. But CNBC\u2019s Jim Cramer believes the downturn is not another dot-com crash. Cramer...",
+     "datetime": 1793999411,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=dfbd3a28558813fc24dd47167dfdba2097db3fb605fedf6ea6b674ac7578e653"
+    },
+    {
+     "headline": "Dan Ives: \u201c20% of the World\u201d Will Access AI Through an Apple Device",
+     "summary": "Key TakeawaysApple is worth about $615 billion more than Nvidia after Thursday\u2019s AI selloff took 9% off Nvidia\u2019s stock. Wedbush Securities analyst Dan Ives thinks about 15% of Apple\u2019s Services...",
+     "datetime": 1793993184,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=ab5323f46f0fa0682a6b445c8d67ac4b840b9604fb43c66a4553795bb3ed4d8f"
+    },
+    {
+     "headline": "Tech Stocks Rebound But Nasdaq Is Still In Correction Territory",
+     "summary": "Nvidia, Micron lead tech recovery. Jobs report comes in better than expected",
+     "datetime": 1793992200,
+     "source": "SeekingAlpha",
+     "url": "https://finnhub.io/api/news?id=c7b6c75c168ed93832eef1ecf7cd5b76d8460ecd86fd5da248568a28e38ba4ba"
+    },
+    {
+     "headline": "Dividend Champion, Contender, And Challenger Highlights: Week of November 8",
+     "summary": "Get the latest dividend activity for Dividend Champions, Contenders, and Challengers. Read this week's list here.",
+     "datetime": 1793989837,
+     "source": "SeekingAlpha",
+     "url": "https://finnhub.io/api/news?id=179932ced585c47b91f7c497290f9405d62b1ac2a2bf533cfb1fe4d053589441"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "AAPL",
+   "expiry": "2026-11-27",
+   "days_to_expiry": 20,
+   "atm_iv_pct": 27.3,
+   "iv_chain_percentile": 2,
+   "skew_points": 6.3,
+   "put_call_ratio": 1.05,
+   "total_put_oi": 26236,
+   "total_call_oi": 24892
+  },
+  "get_options_positioning": {
+   "ticker": "AAPL",
+   "spot": 342.37,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 13,
+   "max_pain_strike": 330.0,
+   "resistance_walls": [
+    {
+     "strike": 400.0,
+     "open_interest": 40963
+    },
+    {
+     "strike": 365.0,
+     "open_interest": 40261
+    },
+    {
+     "strike": 360.0,
+     "open_interest": 22812
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 310.0,
+     "open_interest": 44399
+    },
+    {
+     "strike": 300.0,
+     "open_interest": 42345
+    },
+    {
+     "strike": 330.0,
+     "open_interest": 21049
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 13,
+     "atm_iv_pct": 28.3
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 20,
+     "atm_iv_pct": 27.3
+    },
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 27,
+     "atm_iv_pct": 27.9
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 100.0,
+     "volume": 2000,
+     "open_interest": 208,
+     "vol_oi_ratio": 9.6,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 342.5,
+     "volume": 1139,
+     "open_interest": 1427,
+     "vol_oi_ratio": 0.8,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 322.5,
+     "volume": 575,
+     "open_interest": 845,
+     "vol_oi_ratio": 0.7,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 357.5,
+     "volume": 604,
+     "open_interest": 970,
+     "vol_oi_ratio": 0.6,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 342.5,
+     "volume": 425,
+     "open_interest": 962,
+     "vol_oi_ratio": 0.4,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 273892,
+   "otm_put_oi": 311345,
+   "positioning_lean_score": -0.06,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "AAPL",
+   "as_of": "2026-11-07",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-04",
+     "days_ago": 3,
+     "firm": "Bernstein",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 370.0,
+     "price_target_to": 380.0,
+     "is_rating_change": false,
+     "description": "Bernstein maintained its Buy rating on AAPL and raised its price target from $370.0 to $380.0"
+    },
+    {
+     "date": "2026-11-03",
+     "days_ago": 4,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 360.0,
+     "price_target_to": 355.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Overweight rating on AAPL and cut its price target from $360.0 to $355.0"
+    },
+    {
+     "date": "2026-11-03",
+     "days_ago": 4,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 296.0,
+     "price_target_to": 340.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Neutral rating on AAPL and raised its price target from $296.0 to $340.0"
+    },
+    {
+     "date": "2026-11-03",
+     "days_ago": 4,
+     "firm": "Argus Research",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 375.0,
+     "price_target_to": 400.0,
+     "is_rating_change": false,
+     "description": "Argus Research maintained its Buy rating on AAPL and raised its price target from $375.0 to $400.0"
+    },
+    {
+     "date": "2026-11-03",
+     "days_ago": 4,
+     "firm": "Barclays",
+     "action": "maintained",
+     "from_grade": "Underweight",
+     "to_grade": "Underweight",
+     "price_target_from": 245.0,
+     "price_target_to": 261.0,
+     "is_rating_change": false,
+     "description": "Barclays maintained its Underweight rating on AAPL and raised its price target from $245.0 to $261.0"
+    }
+   ],
+   "consensus": {
+    "rating": "hold",
+    "score": 2.52,
+    "verdict": "neutral",
+    "analysts": 44,
+    "counts": {
+     "strongBuy": 6,
+     "buy": 18,
+     "hold": 14,
+     "sell": 3,
+     "strongSell": 3
+    },
+    "trend": "deteriorating",
+    "trend_detail": "consensus softened over 3 months (score 2.45 to 2.52; bearish ratings 5 to 6)"
+   },
+   "price_target": {
+    "mean": 332.68,
+    "median": 340.0,
+    "high": 405.0,
+    "low": 250.0,
+    "current_price": 342.37,
+    "dispersion_pct": 46.6,
+    "upside_vs_mean_pct": -2.8,
+    "upside_vs_median_pct": -0.7
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "AAPL",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "2w": {
+     "stock_change_pct": -1.16,
+     "sector_etf_change_pct": -10.95,
+     "relative_to_sector_pct": 9.79
+    },
+    "1d": {
+     "stock_change_pct": -1.53,
+     "sector_etf_change_pct": -8.0,
+     "relative_to_sector_pct": 6.47
+    },
+    "1y": {
+     "stock_change_pct": 27.92,
+     "sector_etf_change_pct": 11.05,
+     "relative_to_sector_pct": 16.87
+    },
+    "ytd": {
+     "stock_change_pct": 27.34,
+     "sector_etf_change_pct": 12.94,
+     "relative_to_sector_pct": 14.4
+    },
+    "1mo": {
+     "stock_change_pct": 2.23,
+     "sector_etf_change_pct": -19.37,
+     "relative_to_sector_pct": 21.6
+    },
+    "1w": {
+     "stock_change_pct": -1.36,
+     "sector_etf_change_pct": -13.97,
+     "relative_to_sector_pct": 12.61
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-06",
+    "realtime_end": "2026-11-06",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9613,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-11-05",
+      "value": "28.18"
+     },
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-11-04",
+      "value": "16.61"
+     },
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-11-03",
+      "value": "20.83"
+     },
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-11-02",
+      "value": "21.15"
+     },
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-10-30",
+      "value": "19.42"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "AAPL",
+   "as_of": "2026-11-07",
+   "events": [
+    {
+     "type": "ex_dividend",
+     "date": "2026-11-12",
+     "source": "yfinance",
+     "description": "AAPL goes ex-dividend \u2014 expect a mechanical price drop of roughly the dividend",
+     "days_until": 5
+    },
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 32,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-27",
+     "description": "AAPL Q1 2027 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 81,
+     "eps_estimate": 2.9377
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-02",
+     "description": "AAPL reported Q4 2026 earnings after the close \u2014 EPS 2.05 vs 2.0267 expected (beat, +1.1%)",
+     "source": "finnhub",
+     "days_ago": 5,
+     "eps_actual": 2.05,
+     "eps_estimate": 2.0267,
+     "surprise": "beat",
+     "surprise_pct": 1.1,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

@@ -1,0 +1,412 @@
+{
+ "schema": 1,
+ "ticker": "TEAM",
+ "trading_day": "2026-11-06",
+ "captured_at": "2026-11-07T01:05:12+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -16.15,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: -3.47% \u2014 typical relative to this stock's own typical volatility (expected ~3.28%, 1.06x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "this week: -10.2% \u2014 typical relative to this stock's own typical volatility (expected ~7.34%, 1.39x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past 2 weeks: -17.87% \u2014 elevated relative to this stock's own typical volatility (expected ~10.38%, 1.72x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "TEAM",
+   "price": 153.68,
+   "prev_close": 183.29,
+   "change_pct": -16.15,
+   "realized_vol_annualized_pct": 52.1,
+   "changes_pct": {
+    "1d": -3.47,
+    "1w": -10.2,
+    "2w": -17.87,
+    "1mo": -6.38,
+    "1y": 11.08,
+    "ytd": 18.43
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: -3.47% \u2014 typical relative to this stock's own typical volatility (expected ~3.28%, 1.06x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "this week: -10.2% \u2014 typical relative to this stock's own typical volatility (expected ~7.34%, 1.39x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past 2 weeks: -17.87% \u2014 elevated relative to this stock's own typical volatility (expected ~10.38%, 1.72x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "TEAM",
+   "headlines": [
+    {
+     "headline": "Atlassian: Gaining Seats In Competitive Displacements, 'Buy' The Dip",
+     "summary": "Atlassian dropped over 15% post-earnings despite strong September quarter results, erasing year-to-date gains. Discover why the sell-off is a Buy opportunity.",
+     "datetime": 1793965445,
+     "source": "SeekingAlpha",
+     "url": "https://finnhub.io/api/news?id=347d263ee8733a54d83149d713935bc9764244290f542c1cf2acc3e53e813cec"
+    },
+    {
+     "headline": "Atlassian Shares Fall 16% as Cautious Fiscal 2027 Guidance Overshadows Strong Quarterly Results",
+     "summary": "Atlassian Corporation (NASDAQ:TEAM) shares declined approximately 16% in premarket trading on Friday after the collaboration software company issued a cautious growth outlook for fiscal 2027,...",
+     "datetime": 1793963326,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=9f3467b656ad25a4e8550edaeab367f0e4a6e650097c92689ef111f666670f1d"
+    },
+    {
+     "headline": "DraftKings Posts Downbeat Q3 Results, Joins Atlassian, Natera And Other Big Stocks Moving Lower In Friday\u2019s Pre-Market Session",
+     "summary": "Stock futures mixed as DraftKings plunged 21% after earnings missed estimates and FY26 guidance was cut; several other stocks also fell premarket.",
+     "datetime": 1793955786,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=e405cfc8a0c96beb47ba5c6844abeedd9c119814a4e45cc3a5672d557969b2de"
+    },
+    {
+     "headline": "Piper Sandler Maintains Overweight on Atlassian, Raises Price Target to $190",
+     "summary": "Piper Sandler  analyst Rob Owens   maintains Atlassian (NASDAQ:TEAM) with a Overweight and raises the price target from $175 to $190.",
+     "datetime": 1793953468,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=a3e5e3fd64cc5387cc8759f60ca573ce57a61704650d2fdc8b2077b8373ff4f9"
+    },
+    {
+     "headline": "12 Information Technology Stocks Moving In Friday's Pre-Market Session",
+     "summary": "Gainers\n\nGauzy (NASDAQ:GAUZ) stock increased by 39.4% to $9.1 during Friday&#39;s pre-market session. The market value of their outstanding shares is at $7.5 million. \nJFrog (NASDAQ:FROG) shares...",
+     "datetime": 1793952329,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=59e07d89f133f9990ddca1e4a2919b3c2e79931dd11f55cc190d2782e6371b44"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "TEAM",
+   "expiry": "2026-11-27",
+   "days_to_expiry": 20,
+   "atm_iv_pct": 65.1,
+   "iv_chain_percentile": 13,
+   "skew_points": 0.1,
+   "put_call_ratio": 1.32,
+   "total_put_oi": 259,
+   "total_call_oi": 196
+  },
+  "get_options_positioning": {
+   "ticker": "TEAM",
+   "spot": 153.68,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 13,
+   "max_pain_strike": 190.0,
+   "resistance_walls": [
+    {
+     "strike": 230.0,
+     "open_interest": 7741
+    },
+    {
+     "strike": 250.0,
+     "open_interest": 2589
+    },
+    {
+     "strike": 190.0,
+     "open_interest": 2534
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 160.0,
+     "open_interest": 2234
+    },
+    {
+     "strike": 95.0,
+     "open_interest": 588
+    },
+    {
+     "strike": 185.0,
+     "open_interest": 556
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 13,
+     "atm_iv_pct": 70.0
+    },
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 20,
+     "atm_iv_pct": 65.1
+    },
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 27,
+     "atm_iv_pct": 65.0
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 155.0,
+     "volume": 270,
+     "open_interest": 16,
+     "vol_oi_ratio": 16.9,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 205.0,
+     "volume": 115,
+     "open_interest": 64,
+     "vol_oi_ratio": 1.8,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 175.0,
+     "volume": 244,
+     "open_interest": 218,
+     "vol_oi_ratio": 1.1,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 150.0,
+     "volume": 315,
+     "open_interest": 304,
+     "vol_oi_ratio": 1.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 200.0,
+     "volume": 591,
+     "open_interest": 722,
+     "vol_oi_ratio": 0.8,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 17878,
+   "otm_put_oi": 1925,
+   "positioning_lean_score": 0.81,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "TEAM",
+   "as_of": "2026-11-07",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-07",
+     "days_ago": 0,
+     "firm": "Jefferies",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 245.0,
+     "price_target_to": 190.0,
+     "is_rating_change": false,
+     "description": "Jefferies maintained its Buy rating on TEAM and cut its price target from $245.0 to $190.0"
+    },
+    {
+     "date": "2026-11-06",
+     "days_ago": 1,
+     "firm": "Truist Securities",
+     "action": "reiterated",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 250.0,
+     "price_target_to": 200.0,
+     "is_rating_change": false,
+     "description": "Truist Securities reiterated its Buy rating on TEAM and cut its price target from $250.0 to $200.0"
+    },
+    {
+     "date": "2026-11-06",
+     "days_ago": 1,
+     "firm": "Oppenheimer",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 275.0,
+     "price_target_to": 240.0,
+     "is_rating_change": false,
+     "description": "Oppenheimer maintained its Outperform rating on TEAM and cut its price target from $275.0 to $240.0"
+    },
+    {
+     "date": "2026-11-06",
+     "days_ago": 1,
+     "firm": "Wells Fargo",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 270.0,
+     "price_target_to": 200.0,
+     "is_rating_change": false,
+     "description": "Wells Fargo maintained its Overweight rating on TEAM and cut its price target from $270.0 to $200.0"
+    },
+    {
+     "date": "2026-11-06",
+     "days_ago": 1,
+     "firm": "Piper Sandler",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 175.0,
+     "price_target_to": 190.0,
+     "is_rating_change": false,
+     "description": "Piper Sandler maintained its Overweight rating on TEAM and raised its price target from $175.0 to $190.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.0,
+    "verdict": "leaning bullish",
+    "analysts": 33,
+    "counts": {
+     "strongBuy": 6,
+     "buy": 21,
+     "hold": 6,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.0 to 2.0)"
+   },
+   "price_target": {
+    "mean": 230.2,
+    "median": 235.0,
+    "high": 480.0,
+    "low": 145.0,
+    "current_price": 153.68,
+    "dispersion_pct": 145.5,
+    "upside_vs_mean_pct": 49.8,
+    "upside_vs_median_pct": 52.9
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "TEAM",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "2w": {
+     "stock_change_pct": -17.87,
+     "sector_etf_change_pct": -10.95,
+     "relative_to_sector_pct": -6.92
+    },
+    "1d": {
+     "stock_change_pct": -3.47,
+     "sector_etf_change_pct": -8.0,
+     "relative_to_sector_pct": 4.53
+    },
+    "1y": {
+     "stock_change_pct": 11.08,
+     "sector_etf_change_pct": 11.05,
+     "relative_to_sector_pct": 0.03
+    },
+    "ytd": {
+     "stock_change_pct": 18.43,
+     "sector_etf_change_pct": 12.94,
+     "relative_to_sector_pct": 5.49
+    },
+    "1mo": {
+     "stock_change_pct": -6.38,
+     "sector_etf_change_pct": -19.37,
+     "relative_to_sector_pct": 12.99
+    },
+    "1w": {
+     "stock_change_pct": -10.2,
+     "sector_etf_change_pct": -13.97,
+     "relative_to_sector_pct": 3.77
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-06",
+    "realtime_end": "2026-11-06",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9613,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-11-05",
+      "value": "28.18"
+     },
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-11-04",
+      "value": "16.61"
+     },
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-11-03",
+      "value": "20.83"
+     },
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-11-02",
+      "value": "21.15"
+     },
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-10-30",
+      "value": "19.42"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "TEAM",
+   "as_of": "2026-11-07",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 32,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-01",
+     "description": "TEAM Q2 2027 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 86,
+     "eps_estimate": 1.336
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-05",
+     "description": "TEAM reported Q1 2027 earnings after the close \u2014 EPS 1.65 vs 1.4544 expected (beat, +13.4%)",
+     "source": "finnhub",
+     "days_ago": 2,
+     "eps_actual": 1.65,
+     "eps_estimate": 1.4544,
+     "surprise": "beat",
+     "surprise_pct": 13.4,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

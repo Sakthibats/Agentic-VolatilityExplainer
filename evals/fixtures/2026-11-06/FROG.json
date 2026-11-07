@@ -1,0 +1,398 @@
+{
+ "schema": 1,
+ "ticker": "FROG",
+ "trading_day": "2026-11-06",
+ "captured_at": "2026-11-07T01:04:46+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 35.33,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: -13.57% \u2014 elevated relative to this stock's own typical volatility (expected ~5.88%, 2.31x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "this week: -24.5% \u2014 elevated relative to this stock's own typical volatility (expected ~13.16%, 1.86x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past 2 weeks: -20.52% \u2014 typical relative to this stock's own typical volatility (expected ~18.61%, 1.1x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past month: -23.97% \u2014 typical relative to this stock's own typical volatility (expected ~26.96%, 0.89x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past year: 60.23% \u2014 typical relative to this stock's own typical volatility (expected ~93.40%, 0.64x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "FROG",
+   "price": 100.98,
+   "prev_close": 74.62,
+   "change_pct": 35.33,
+   "realized_vol_annualized_pct": 93.4,
+   "changes_pct": {
+    "1d": -13.57,
+    "1w": -24.5,
+    "2w": -20.52,
+    "1mo": -23.97,
+    "1y": 60.23,
+    "ytd": 25.26
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: -13.57% \u2014 elevated relative to this stock's own typical volatility (expected ~5.88%, 2.31x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "this week: -24.5% \u2014 elevated relative to this stock's own typical volatility (expected ~13.16%, 1.86x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past 2 weeks: -20.52% \u2014 typical relative to this stock's own typical volatility (expected ~18.61%, 1.1x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past month: -23.97% \u2014 typical relative to this stock's own typical volatility (expected ~26.96%, 0.89x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past year: 60.23% \u2014 typical relative to this stock's own typical volatility (expected ~93.40%, 0.64x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "FROG",
+   "headlines": [
+    {
+     "headline": "Premarket Movers Nov. 6: DBGI and CIIT Rebound, FEAM and EFXT Slide",
+     "summary": "Nov. 6 premarket movers: DBGI, CIIT and RCT led gainers while FEAM, EFXT and BDMD fell, as low-priced names rebounded and larger companies faced pressure.",
+     "datetime": 1793971831,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=0a9b74e80e7627c6d8af04b81889f73f9ac67a7f507669ac2f44c0bfe2bcf581"
+    },
+    {
+     "headline": "Piper Sandler Maintains Neutral on JFrog, Raises Price Target to $95",
+     "summary": "Piper Sandler  analyst Rob Owens   maintains JFrog (NASDAQ:FROG) with a Neutral and raises the price target from $90 to $95.",
+     "datetime": 1793961152,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=af5e9a98bf68a8b75ec663523ccb55e28f6f6d836736d0e4cbf44ecd30f1ce4b"
+    },
+    {
+     "headline": "Keybanc Maintains Overweight on JFrog, Raises Price Target to $118",
+     "summary": "Keybanc  analyst Jason Celino   maintains JFrog (NASDAQ:FROG) with a Overweight and raises the price target from $114 to $118.",
+     "datetime": 1793960748,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=20893b20d07a2cb02ef7d9b70d0d74879d8d15c394ab2f188644f19769d6becc"
+    },
+    {
+     "headline": "JFrog Cloud Business Surges as AI and Security Adoption Expand",
+     "summary": "JFrog shares surge after Q3 revenue and adjusted EPS beat estimates, while the company raises its 2026 revenue and earnings forecasts.",
+     "datetime": 1793958074,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=851f5073aeb4e8d041104a4d8c123f7e2a7236b99ea708f4f0e5bbb3deb522f3"
+    },
+    {
+     "headline": "12 Information Technology Stocks Moving In Friday's Pre-Market Session",
+     "summary": "Gainers\n\nGauzy (NASDAQ:GAUZ) stock increased by 39.4% to $9.1 during Friday&#39;s pre-market session. The market value of their outstanding shares is at $7.5 million. \nJFrog (NASDAQ:FROG) shares...",
+     "datetime": 1793952329,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=59e07d89f133f9990ddca1e4a2919b3c2e79931dd11f55cc190d2782e6371b44"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "FROG",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 13,
+   "atm_iv_pct": 79.5,
+   "iv_chain_percentile": 12,
+   "skew_points": 5.0,
+   "put_call_ratio": 0.72,
+   "total_put_oi": 3463,
+   "total_call_oi": 4821
+  },
+  "get_options_positioning": {
+   "ticker": "FROG",
+   "spot": 100.98,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 13,
+   "max_pain_strike": 92.5,
+   "resistance_walls": [
+    {
+     "strike": 150.0,
+     "open_interest": 2059
+    },
+    {
+     "strike": 100.0,
+     "open_interest": 1007
+    },
+    {
+     "strike": 97.5,
+     "open_interest": 275
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 70.0,
+     "open_interest": 1247
+    },
+    {
+     "strike": 105.0,
+     "open_interest": 436
+    },
+    {
+     "strike": 80.0,
+     "open_interest": 410
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 13,
+     "atm_iv_pct": 79.5
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 95.0,
+     "volume": 624,
+     "open_interest": 33,
+     "vol_oi_ratio": 18.9,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 85.0,
+     "volume": 1366,
+     "open_interest": 128,
+     "vol_oi_ratio": 10.7,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 110.0,
+     "volume": 213,
+     "open_interest": 74,
+     "vol_oi_ratio": 2.9,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 120.0,
+     "volume": 227,
+     "open_interest": 82,
+     "vol_oi_ratio": 2.8,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 140.0,
+     "volume": 348,
+     "open_interest": 129,
+     "vol_oi_ratio": 2.7,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 2679,
+   "otm_put_oi": 3024,
+   "positioning_lean_score": -0.06,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "FROG",
+   "as_of": "2026-11-07",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-06",
+     "days_ago": 1,
+     "firm": "Canaccord Genuity",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 105.0,
+     "price_target_to": 110.0,
+     "is_rating_change": false,
+     "description": "Canaccord Genuity maintained its Buy rating on FROG and raised its price target from $105.0 to $110.0"
+    },
+    {
+     "date": "2026-11-06",
+     "days_ago": 1,
+     "firm": "RBC Capital",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 118.0,
+     "price_target_to": 121.0,
+     "is_rating_change": false,
+     "description": "RBC Capital maintained its Outperform rating on FROG and raised its price target from $118.0 to $121.0"
+    },
+    {
+     "date": "2026-11-06",
+     "days_ago": 1,
+     "firm": "Truist Securities",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 115.0,
+     "price_target_to": 120.0,
+     "is_rating_change": false,
+     "description": "Truist Securities maintained its Buy rating on FROG and raised its price target from $115.0 to $120.0"
+    },
+    {
+     "date": "2026-11-06",
+     "days_ago": 1,
+     "firm": "Guggenheim",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 115.0,
+     "price_target_to": 125.0,
+     "is_rating_change": false,
+     "description": "Guggenheim maintained its Buy rating on FROG and raised its price target from $115.0 to $125.0"
+    },
+    {
+     "date": "2026-11-06",
+     "days_ago": 1,
+     "firm": "Piper Sandler",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 90.0,
+     "price_target_to": 95.0,
+     "is_rating_change": false,
+     "description": "Piper Sandler maintained its Neutral rating on FROG and raised its price target from $90.0 to $95.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.87,
+    "verdict": "leaning bullish",
+    "analysts": 23,
+    "counts": {
+     "strongBuy": 5,
+     "buy": 16,
+     "hold": 2,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.87 to 1.87)"
+   },
+   "price_target": {
+    "mean": 113.14,
+    "median": 115.0,
+    "high": 125.0,
+    "low": 90.0,
+    "current_price": 100.98,
+    "dispersion_pct": 30.9,
+    "upside_vs_mean_pct": 12.0,
+    "upside_vs_median_pct": 13.9
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "FROG",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "2w": {
+     "stock_change_pct": -20.52,
+     "sector_etf_change_pct": -10.95,
+     "relative_to_sector_pct": -9.57
+    },
+    "1d": {
+     "stock_change_pct": -13.57,
+     "sector_etf_change_pct": -8.0,
+     "relative_to_sector_pct": -5.57
+    },
+    "1y": {
+     "stock_change_pct": 60.23,
+     "sector_etf_change_pct": 11.05,
+     "relative_to_sector_pct": 49.18
+    },
+    "ytd": {
+     "stock_change_pct": 25.26,
+     "sector_etf_change_pct": 12.94,
+     "relative_to_sector_pct": 12.32
+    },
+    "1mo": {
+     "stock_change_pct": -23.97,
+     "sector_etf_change_pct": -19.37,
+     "relative_to_sector_pct": -4.6
+    },
+    "1w": {
+     "stock_change_pct": -24.5,
+     "sector_etf_change_pct": -13.97,
+     "relative_to_sector_pct": -10.53
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-06",
+    "realtime_end": "2026-11-06",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9613,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-11-05",
+      "value": "28.18"
+     },
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-11-04",
+      "value": "16.61"
+     },
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-11-03",
+      "value": "20.83"
+     },
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-11-02",
+      "value": "21.15"
+     },
+     {
+      "realtime_start": "2026-11-06",
+      "realtime_end": "2026-11-06",
+      "date": "2026-10-30",
+      "value": "19.42"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "FROG",
+   "as_of": "2026-11-07",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 32,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-05",
+     "description": "FROG reported Q3 2026 earnings after the close \u2014 EPS 0.32 vs 0.2368 expected (beat, +35.1%)",
+     "source": "finnhub",
+     "days_ago": 2,
+     "eps_actual": 0.32,
+     "eps_estimate": 0.2368,
+     "surprise": "beat",
+     "surprise_pct": 35.1,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}
