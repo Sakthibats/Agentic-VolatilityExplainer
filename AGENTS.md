@@ -42,7 +42,7 @@ multi-ticker comparison, anything resembling trading advice or signals.
 | Migration | Streamlit monolith → FastAPI + Next.js. Phases 0–3 ✅. **Phase 4 (metering / rate limiting) is next and not started** |
 | Backend | FastAPI, fully async, `/v1` REST + SSE, Docker → Google Cloud Run |
 | Frontend | Next.js 16 static export → Cloudflare Pages |
-| Quality gates | 296 offline pytest tests + 23 `live` tests (19 upstream data contracts, weekly; 4 LLM-vendor checks that skip without keys). ruff, eslint (blocking), tsc all clean. Heuristic quality flags on every explanation (`[quality]` log line) |
+| Quality gates | 300 offline pytest tests + 23 `live` tests (19 upstream data contracts, weekly; 4 LLM-vendor checks that skip without keys). ruff, eslint (blocking), tsc all clean. Heuristic quality flags on every explanation (`[quality]` log line) |
 | Models | Production: Claude Haiku 4.5 (`LLM_PROVIDER=anthropic`). The loop runs on Claude or OpenAI behind `llm/`; the eval harness compares models on recorded data (`evals/`, results in the README) |
 | Biggest gaps | The eval scores answers automatically but has **no labelled catalysts or judge yet**, so it can't measure whether the model found the true cause · yfinance's daily bar lags the close, so "today" can be the previous day's move after the close (`evals/README.md`) · no rate limiting and CORS `*` · `print`-based logging · token usage and `cost_usd` are returned per run (`result["usage"]`) but not logged · chart silently falls back to synthetic prices |
 

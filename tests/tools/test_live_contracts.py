@@ -15,12 +15,13 @@ the mocked tests to the new shape.
 
 Transport failures are SKIPPED, not failed — see `_upstream_available`. A 503 says nothing
 about the shape of a response that never arrived, and a canary that cries wolf every time
-Finnhub's CDN hiccups is one nobody reads. Only a response that arrived and looked wrong
-turns this red.
+Finnhub's CDN hiccups (or Yahoo Finance goes down) is one nobody reads. Only a response that
+arrived and looked wrong turns this red.
 """
 
 from __future__ import annotations
 
+import functools
 from contextlib import contextmanager
 from datetime import date, timedelta
 from unittest.mock import patch
@@ -29,6 +30,7 @@ import httpx
 import pandas as pd
 import pytest
 from volatility_explainer.config import get_settings
+from yfinance.exceptions import YFDataException, YFRateLimitError
 
 pytestmark = pytest.mark.live
 
@@ -52,6 +54,27 @@ def _upstream_available(source: str):
         pytest.skip(f"{source} returned HTTP {status} — upstream blip, not a contract change")
     except (httpx.TimeoutException, httpx.TransportError) as exc:
         pytest.skip(f"{source} unreachable ({type(exc).__name__}) — not a contract change")
+    except YFRateLimitError:
+        pytest.skip(f"{source} rate-limited this run — not a contract change")
+    except YFDataException as exc:
+        # yfinance raises this when Yahoo's own outage page comes back instead of data
+        # ("*** YAHOO! FINANCE IS CURRENTLY DOWN! ***"). Any other YFDataException may be
+        # a real parsing problem, so it still fails.
+        if "CURRENTLY DOWN" not in str(exc).upper():
+            raise
+        pytest.skip(f"{source} is down ({exc}) — not a contract change")
+
+
+def _yahoo_outage_skips(test):
+    """Run a yfinance-backed test inside _upstream_available, so a Yahoo outage or rate
+    limit skips it instead of failing it. A shape change still fails."""
+
+    @functools.wraps(test)
+    def wrapper(*args, **kwargs):
+        with _upstream_available("yfinance"):
+            return test(*args, **kwargs)
+
+    return wrapper
 
 
 _TICKER = "AAPL"  # large, liquid, pays a dividend, has options and analyst coverage
@@ -75,6 +98,7 @@ def _require_finnhub():
 # ── yfinance ──────────────────────────────────────────────────────────────────────
 
 
+@_yahoo_outage_skips
 def test_yf_calendar_is_a_dict_with_date_values(yf_ticker):
     """The exact contract that broke. `calendar` must be a dict; 'Earnings Date' a list
     of real date objects; 'Ex-Dividend Date' a single date."""
@@ -87,6 +111,7 @@ def test_yf_calendar_is_a_dict_with_date_values(yf_ticker):
     assert isinstance(cal.get("Ex-Dividend Date"), date)
 
 
+@_yahoo_outage_skips
 def test_yf_analyst_price_targets_shape(yf_ticker):
     """analyst.py reads current/mean/median/high/low. `median` in particular is why this
     replaced Ticker.info, which does not expose it."""
@@ -97,6 +122,7 @@ def test_yf_analyst_price_targets_shape(yf_ticker):
         assert isinstance(targets.get(key), (int, float)), f"{key} missing from price targets"
 
 
+@_yahoo_outage_skips
 def test_yf_recommendations_shape(yf_ticker):
     """analyst.py reads the rating distribution per period, matched by the 'period' label
     ('0m', '-1m', ...) rather than row order."""
@@ -110,6 +136,7 @@ def test_yf_recommendations_shape(yf_ticker):
     assert periods & {"-1m", "-2m", "-3m"}, "no prior period — the consensus trend needs one"
 
 
+@_yahoo_outage_skips
 def test_yf_upgrades_downgrades_shape(yf_ticker):
     """The dated-actions surface, and the reason this tool can speak to a recent move.
     Indexed by GradeDate; Action is one of the short codes analyst.py maps to labels."""
@@ -122,11 +149,13 @@ def test_yf_upgrades_downgrades_shape(yf_ticker):
     assert set(frame["Action"].str.lower()) <= {"up", "down", "init", "main", "reit"}
 
 
+@_yahoo_outage_skips
 def test_yf_info_has_sector(yf_ticker):
     """Key read by tools/sector.py to pick the comparison ETF."""
     assert yf_ticker.info.get("sector") == "Technology"
 
 
+@_yahoo_outage_skips
 def test_yf_history_has_a_close_column(yf_ticker):
     """Frame shape read by price.py, macro.py, sector.py, marketdata/snapshots.py."""
     hist = yf_ticker.history(period="1mo")
@@ -136,6 +165,7 @@ def test_yf_history_has_a_close_column(yf_ticker):
     assert hist.index.year is not None  # DatetimeIndex — price.py's YTD slice needs it
 
 
+@_yahoo_outage_skips
 def test_yf_news_items_carry_a_content_dict(yf_ticker):
     """news.py's yfinance fallback reads item['content']['title'] and nested url dicts."""
     raw = yf_ticker.news
@@ -147,6 +177,7 @@ def test_yf_news_items_carry_a_content_dict(yf_ticker):
     assert content.get("canonicalUrl", {}).get("url") or content.get("clickThroughUrl", {}).get("url")
 
 
+@_yahoo_outage_skips
 def test_yf_options_chain_shape(yf_ticker):
     """options.py reads .options, .fast_info.last_price, and option_chain(exp).calls/.puts."""
     expirations = yf_ticker.options
@@ -164,6 +195,7 @@ def test_yf_options_chain_shape(yf_ticker):
             assert column in side.columns
 
 
+@_yahoo_outage_skips
 def test_yf_earnings_dates_carries_reported_actuals(yf_ticker):
     """events.py's only remaining source of a REPORTED quarter's actual EPS, and so of the
     beat/miss verdict. Indexed by announcement timestamp; a past row must carry both an
@@ -183,6 +215,7 @@ def test_yf_earnings_dates_carries_reported_actuals(yf_ticker):
     assert frame.index.tz is not None
 
 
+@_yahoo_outage_skips
 def test_yf_earnings_dates_is_none_for_an_etf():
     """yfinance logs "no earnings dates found" and returns None rather than raising, so
     events.py must treat None as an expected absence, not a failure."""
@@ -191,6 +224,7 @@ def test_yf_earnings_dates_is_none_for_an_etf():
     assert yf.Ticker(_ETF).earnings_dates is None
 
 
+@_yahoo_outage_skips
 def test_yf_calendar_is_empty_for_an_etf():
     """Yahoo has no fundamentals for ETFs: it 404s, but yfinance logs that and hands back
     an empty dict rather than raising. events.py must therefore treat an empty calendar as
@@ -295,6 +329,7 @@ def _require_answer(result: dict, field: str, source: str) -> None:
         pytest.skip(f"{source} did not answer ({field}=unavailable) — not a contract change")
 
 
+@_yahoo_outage_skips
 def test_fetch_events_returns_a_scored_earnings_report(yf_ticker):
     """The regression guard, at full strength: a reported quarter must come back with a
     real actual EPS and a deterministic beat/miss verdict.
@@ -327,6 +362,7 @@ def test_fetch_events_returns_a_scored_earnings_report(yf_ticker):
     assert str(latest["eps_actual"]) in latest["description"]
 
 
+@_yahoo_outage_skips
 def test_fetch_events_reports_no_earnings_for_an_etf():
     from volatility_explainer.tools.events import fetch_events
 
@@ -337,6 +373,7 @@ def test_fetch_events_reports_no_earnings_for_an_etf():
     assert any(e["type"] == "fomc" for e in result["events"])
 
 
+@_yahoo_outage_skips
 def test_fetch_analyst_sentiment_returns_a_real_consensus():
     from volatility_explainer.tools.analyst import fetch_analyst_sentiment
 
@@ -349,6 +386,7 @@ def test_fetch_analyst_sentiment_returns_a_real_consensus():
     assert result["price_target"]["median"] is not None
 
 
+@_yahoo_outage_skips
 def test_fetch_analyst_sentiment_reports_no_coverage_for_an_etf():
     from volatility_explainer.tools.analyst import fetch_analyst_sentiment
 
