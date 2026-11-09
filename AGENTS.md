@@ -42,8 +42,9 @@ multi-ticker comparison, anything resembling trading advice or signals.
 | Migration | Streamlit monolith → FastAPI + Next.js. Phases 0–3 ✅. **Phase 4 (metering / rate limiting) is next and not started** |
 | Backend | FastAPI, fully async, `/v1` REST + SSE, Docker → Google Cloud Run |
 | Frontend | Next.js 16 static export → Cloudflare Pages |
-| Quality gates | 263 offline pytest tests + 19 `live` upstream contract tests (weekly). ruff, eslint (blocking), tsc all clean. Heuristic quality flags on every explanation (`[quality]` log line) |
-| Biggest gaps | No offline **eval harness** that scores the model's answers yet: fixtures are recorded daily (`evals/`), but cases, runner and scorers don't exist · no rate limiting and CORS `*` · `print`-based logging · token usage is returned per run (`result["usage"]`) but not logged or priced · chart silently falls back to synthetic prices |
+| Quality gates | 296 offline pytest tests + 23 `live` tests (19 upstream data contracts, weekly; 4 LLM-vendor checks that skip without keys). ruff, eslint (blocking), tsc all clean. Heuristic quality flags on every explanation (`[quality]` log line) |
+| Models | Production: Claude Haiku 4.5 (`LLM_PROVIDER=anthropic`). The loop runs on Claude or OpenAI behind `llm/`; the eval harness compares models on recorded data (`evals/`, results in the README) |
+| Biggest gaps | The eval scores answers automatically but has **no labelled catalysts or judge yet**, so it can't measure whether the model found the true cause · yfinance's daily bar lags the close, so "today" can be the previous day's move after the close (`evals/README.md`) · no rate limiting and CORS `*` · `print`-based logging · token usage and `cost_usd` are returned per run (`result["usage"]`) but not logged · chart silently falls back to synthetic prices |
 
 ## 4. Architecture in one screen
 
@@ -61,7 +62,7 @@ api/service.py    scope gate → final-answer cache (no-question path only) → 
        1. prefetch get_price_data + get_events in parallel — deterministic, no LLM
             → describe_move builds the "what happened" overview; sent at once
        2. splice them in as a synthetic tool_use / tool_result turn (overview quoted too)
-       3. loop ≤7 turns · Haiku 4.5 · tool_choice=any · streamed
+       3. loop ≤7 turns · a tool call forced every turn · streamed · via llm/ (Claude | OpenAI)
             model picks tools → asyncio.gather(to_thread(tool)), 15 s timeout each
        4. the turn may end ONLY via submit_analysis | flag_out_of_scope
        5. the model cites headlines as [n]; the server resolves each to a real link or drops it
@@ -86,12 +87,17 @@ current: adding, moving or deleting a file updates this map in the same change.
 
 ```
 backend/volatility_explainer/     Python package (hatchling; pytest pythonpath = . and backend)
-├── config.py                     pydantic-settings; keys are SecretStr, all optional; anthropic_model
+├── config.py                     pydantic-settings; keys are SecretStr, all optional; LLM_PROVIDER + models
 ├── api/
 │   ├── app.py                    routes, CORS, SSE plumbing (one asyncio.Task + queue per run)
 │   ├── schemas.py                ★ THE CONTRACT: every response body and SSE payload
 │   └── service.py                scope gate → final-answer cache → orchestrator → shaping → usage log
 ├── query/parsing.py              scope guardrail, 4-stage ticker resolution, _specific_question
+├── llm/                          ★ the vendor seam: one turn in, one turn out
+│   ├── base.py                   neutral conversation types + the LLMProvider interface
+│   ├── anthropic_provider.py     Claude: cache breakpoints, fine-grained streaming, tool_choice any
+│   ├── openai_provider.py        OpenAI Responses API: strict tools, reasoning items replayed
+│   └── pricing.py                $ per 1M tokens per model → cost_usd on every run
 ├── agent/
 │   ├── orchestrator.py           ★ the loop: prefetch, _TOOL_DISPATCH, streaming, citations, usage
 │   ├── tool_schemas.py           tool schemas + when-to-call guidance; submit_analysis stays last
@@ -136,9 +142,13 @@ tests/                            mirrors the backend; offline by default (`pyte
 ├── tools/                        one test file per tool + test_live_contracts.py (19 live tests)
 ├── clients/                      test_redis_cache · test_api_keys (keys never in URLs or errors)
 ├── analytics/                    test_supabase_logger (queued payload, quality_flags semantics)
-└── evals/test_capture.py         fixture selection rules
+├── llm/                          pricing + selection · test_openai_provider (scripted fake Responses
+│                                 stream through the real loop) · test_live_providers (pytest -m live)
+└── evals/                        test_capture (selection) · test_replay_and_scorers (isolation, scorers)
 
-evals/                            capture.py (daily fixture recorder) · README.md (harness plan)
+evals/                            capture.py (daily fixture recorder) · cases.py · replay.py (fixture
+                                  data through the real loop) · run.py (models x repeats, $ cap) ·
+                                  scorers.py · report.py · README.md · results/ (committed runs + tables)
                                   fixtures/<day>/<TICKER>.json: bot-committed each weekday, ~10 KB
                                   each and growing. Don't read or search them unless working on evals
 scripts/                          quality_report.py (flag rates over VOLX_SAVE_RUNS) ·
@@ -170,7 +180,10 @@ root                              pyproject.toml (deps, ruff, pytest config) · 
   error message, so an API key must never sit in a URL or an exception string. Finnhub takes its key
   in the `X-Finnhub-Token` header; FRED only accepts a query param, so `clients/fred.py` strips
   `api_key` from errors before re-raising. Pinned by `tests/clients/test_api_keys.py`.
-- **Async backend, sync tools.** LLM calls are awaited (`AsyncAnthropic`). Tools stay sync (yfinance
+- **Vendor-neutral loop.** `agent/orchestrator.py` never imports a vendor SDK; everything vendor-specific
+  (message shapes, cache markers, streaming events, usage) lives in `llm/<vendor>_provider.py`. A new
+  vendor is a new adapter plus its fake-stream tests, not a change to the loop.
+- **Async backend, sync tools.** LLM calls are awaited (`AsyncAnthropic` / `AsyncOpenAI`). Tools stay sync (yfinance
   is sync-only) and run via `asyncio.to_thread`. Never call a tool directly on the event loop.
 - **Finish-and-cache.** A client disconnect must not cancel the investigation — pinned by
   `tests/api/test_api.py::test_client_disconnect_lets_investigation_finish`.
@@ -258,22 +271,34 @@ Each entry: the decision, why, what it costs, and when to reconsider.
     the text), so reading offending write-ups still needs a local `VOLX_SAVE_RUNS` capture.
     *Revisit:* replace or back the heuristics with a scored eval set (open question 1).
 
+17. **A thin in-house provider seam, not LiteLLM or LangChain** (2026-11). `llm/base.py` defines a
+    neutral conversation and `run_turn()`; one adapter per vendor. *Why:* the loop depends on
+    things generic layers flatten: streaming a partially written tool call, explicit cache
+    breakpoints, forcing a tool call, and replaying OpenAI reasoning items verbatim. Two ~200-line
+    adapters keep all of that visible and tested. It also turns "which model?" into a measured
+    question (`evals/`) and removes vendor lock-in. *Cost:* two adapters and two fake streams to
+    maintain; each vendor's schema enforcement differs (OpenAI strict mode rejects a schema
+    violation, Claude with fine-grained streaming does not validate). *Revisit:* a third vendor,
+    or if either SDK's streaming events change shape (the live tests catch that).
+
 ## 7. Open questions — good places to ideate
 
 Framed against the portfolio goal. Each is a live tradeoff, not a settled plan.
 
-1. **Evals.** How is answer quality measured? A start exists: heuristic flags on every explanation,
-   bad write-ups pinned in `tests/agent/test_quality.py`, and `scripts/quality_report.py` over runs
-   saved with `VOLX_SAVE_RUNS`. Since 2026-10, `evals/capture.py` records all 8 tools' raw output
-   for each day's notable moves (see `evals/README.md`). Still missing: labelled cases built from
-   those fixtures, a runner that replays them through the model, and scorers for catalyst recall,
-   numbers matching tool data, abstention and calibration. The highest-signal missing piece for an
-   agentic showcase.
+1. **Evals.** How is answer quality measured? In place: heuristic flags on every production
+   explanation (`agent/quality.py`, bad write-ups pinned in `tests/agent/test_quality.py`), daily
+   fixtures of all 8 tools' raw output (`evals/capture.py`, since 2026-10), and since 2026-11 a
+   harness that replays those fixtures through the real loop on any model and scores completion,
+   schema validity, figures against the data, invented citations, tool choice, cost and stability
+   (`evals/README.md`). Still missing: labelled catalysts and a judge model for catalyst recall,
+   abstention and calibration, which is what "is the answer right?" needs.
 2. **Observability and cost.** Structured per-run traces (turns, tools chosen, tokens, cache hits, $)
    instead of `print`. Show cost per investigation on the About page?
 3. **Abuse and spend control (Phase 4).** Redis token bucket per session/IP, a daily global LLM
    budget, CORS locked to the frontend origin. Log-only first, or enforce straight away?
-4. **Model strategy.** Haiku everywhere, or split selection and synthesis across models? Depends on (1).
+4. **Model strategy.** The eval compares Haiku 4.5, Haiku 5.5 and GPT-6 Luna on cost, latency and
+   grounding. Switching production is one env var; the open part is answer accuracy, which needs
+   the labelled cases from (1).
 5. **Contract safety.** Generate `lib/api.ts` from FastAPI's OpenAPI schema, or add a contract test?
 6. **A real MCP server.** Expose `tools/` to Claude Desktop and others? Good signal, but a second
    surface to maintain.
@@ -290,6 +315,9 @@ Backend paths are relative to `backend/volatility_explainer/`.
 | Add a data tool | `tools/<name>.py` (sync, returns a dict, yfinance fallback) → `agent/tool_schemas.py` (schema, when-to-call text, add to the tile `agent` enum) → `agent/orchestrator.py` `_TOOL_DISPATCH` + `_STEP_LABELS` → `clients/redis_cache.py` `TOOL_TTL_SECONDS` → `frontend/components/evidence-tiles.tsx` `AGENT_ICONS` → `tests/tools/` (plus a live contract test) |
 | What the model is told | Per-tool guidance and the explanation's shape: `agent/tool_schemas.py`. Global reading, output, framing and data rules: `agent/prompts.py` |
 | Eval fixtures (daily capture) | `evals/capture.py` (selection rules, pacing) + `tests/evals/test_capture.py`; schedule in `.github/workflows/eval-capture.yml` |
+| Eval runner / scorers / report | `evals/cases.py`, `evals/replay.py`, `evals/run.py`, `evals/scorers.py`, `evals/report.py` + `tests/evals/test_replay_and_scorers.py` |
+| Add or change an LLM vendor | `llm/<vendor>_provider.py` + `llm/__init__.py` (`build_provider`) + `llm/pricing.py` + `config.py` + a fake-stream test in `tests/llm/` + a case in `tests/llm/test_live_providers.py` |
+| Model prices | `llm/pricing.py` (update the date in its docstring) |
 | Write-up quality checks | `agent/quality.py` + `tests/agent/test_quality.py` (add each new bad write-up as a regression case). Report over saved runs: `scripts/quality_report.py` |
 | Citations | Numbering + resolution: `agent/orchestrator.py` (`_with_news_refs`, `_resolve_citations`) → `frontend/components/md.tsx` |
 | Agent loop behaviour | `agent/orchestrator.py` + extend `tests/agent/test_orchestrator.py` |
@@ -315,6 +343,9 @@ uvicorn volatility_explainer.api.app:app --reload --port 8080
 VOLX_SAVE_RUNS=runs.jsonl uvicorn volatility_explainer.api.app:app --port 8080   # also save each run
 python scripts/quality_report.py runs.jsonl   # quality-flag rates; --show <flag> prints offenders
 python -m evals.capture --dry-run             # today's eval-fixture selection (no LLM calls)
+python -m evals.run --models anthropic:claude-haiku-5-5,openai:gpt-6-luna@low --cases 5 --repeats 1 --budget 0.5 --out /tmp/pilot.jsonl
+python -m evals.report evals/results/2026-11-09.jsonl   # comparison table from a results file
+pytest -m live tests/llm                      # each vendor still accepts our exact request
 
 cd frontend && npm install
 npm run dev                      # :3000; NEXT_PUBLIC_API_URL defaults to http://localhost:8080
