@@ -30,3 +30,6 @@ venv/
 
 # Local run captures for scripts/quality_report.py (VOLX_SAVE_RUNS)
 /runs*.jsonl
+
+# macOS Finder metadata (any directory)
+.DS_Store
