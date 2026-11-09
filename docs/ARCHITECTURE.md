@@ -186,8 +186,12 @@ Settings load through pydantic-settings from `.env` at the repo root, regardless
 
 | Var | Required? | Effect if missing |
 |---|---|---|
-| `ANTHROPIC_API_KEY` | for `/v1/analyze` | Investigations fail with `status: "error"`; chart/stats endpoints still work |
+| `ANTHROPIC_API_KEY` | for `/v1/analyze` on the default `LLM_PROVIDER=anthropic` | Investigations fail with `status: "error"`; chart/stats endpoints still work |
+| `LLM_PROVIDER` | no | `anthropic` (default) or `openai`: which vendor runs the agent loop and the ticker fallback |
 | `ANTHROPIC_MODEL` | no | Defaults to `claude-haiku-4-5-20251001` |
+| `OPENAI_API_KEY` | only with `LLM_PROVIDER=openai` | Also used by `python -m evals.run` for OpenAI arms |
+| `OPENAI_MODEL` | no | Defaults to `gpt-6-luna` |
+| `OPENAI_REASONING_EFFORT` | no | `none` / `low` (default) / `medium` / `high`, for OpenAI reasoning models |
 | `FINNHUB_API_KEY` | no | Quotes, news and upcoming earnings fall back to yfinance |
 | `FRED_API_KEY` | no | Macro falls back to yfinance `^VIX` / `^GSPC` |
 | `REDIS_URL` | no | Redis tool cache and final-answer cache become no-ops (process memo remains) |

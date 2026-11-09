@@ -5,9 +5,13 @@ tool-selection time), so they are deliberately not repeated in prompts.py. Imple
 live in volatility_explainer.tools and are wired to these names by the orchestrator's
 _TOOL_DISPATCH — keep both name sets (and clients/redis_cache.py's TTL table) in sync.
 
-Order matters: submit_analysis stays LAST, since its cache_control marks the prompt-cache
-breakpoint for the whole tool list, and `explanation` stays its LAST property (see
-eager_input_streaming at the bottom).
+The definitions are vendor-neutral: `name`, `description`, `input_schema`. Each provider in
+volatility_explainer.llm translates them and adds its own extras (Anthropic's cache breakpoint
+and fine-grained streaming, OpenAI's function-tool wrapper).
+
+Order matters: submit_analysis stays LAST, since the Anthropic adapter puts the prompt-cache
+breakpoint for the whole tool list on the last tool, and `explanation` stays its LAST
+property (see the note at the bottom).
 """
 
 from __future__ import annotations
@@ -291,17 +295,14 @@ TOOL_DEFINITIONS: list[dict] = [
             },
             "required": ["tiles", "hypotheses", "explanation"],
         },
-        "cache_control": {"type": "ephemeral"},
-        # Stream this tool's input in fine-grained chunks rather than a few large ones, so
-        # `explanation` can be surfaced to the reader as it is written. It is the LAST
-        # property in the schema above and must stay there — the model emits properties in
-        # schema order, and the why-paragraph is only worth reading once the model has
-        # already committed to its tiles and ranked hypotheses. (It used to come first,
-        # which rendered sooner but meant the model concluded before it had reasoned.) The
-        # reader isn't left waiting meanwhile: the deterministic overview from
+        # `explanation` is streamed to the reader as it is written (the orchestrator passes
+        # stream_tool="submit_analysis"; the Anthropic adapter turns on fine-grained input
+        # streaming for it). It is the LAST property above and must stay there — the model
+        # emits properties in schema order, and the why-paragraph is only worth reading once
+        # the model has already committed to its tiles and ranked hypotheses. (It used to
+        # come first, which rendered sooner but meant the model concluded before it had
+        # reasoned.) The reader isn't left waiting meanwhile: the deterministic overview from
         # tools/price.describe_move is on screen from the end of the pre-fetch. Named so no
         # nested property shares it — the partial-JSON reader matches the first occurrence.
-        # Not a beta feature.
-        "eager_input_streaming": True,
     },
 ]

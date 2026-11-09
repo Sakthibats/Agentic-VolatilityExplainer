@@ -33,3 +33,6 @@ venv/
 
 # macOS Finder metadata (any directory)
 .DS_Store
+
+# Per-turn loop logs from python -m evals.run (results .jsonl and .md are committed)
+evals/results/*.log
