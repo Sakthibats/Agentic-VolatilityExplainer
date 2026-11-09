@@ -1,3 +1,4 @@
+from types import SimpleNamespace
 from unittest.mock import MagicMock, patch
 
 import pytest
@@ -231,3 +232,24 @@ def test_empty_query_is_out_of_scope_without_lookup():
     assert decision.in_scope is False
     assert decision.ticker is None
     mock_search.assert_not_called()
+
+
+def _fake_llm_reply(monkeypatch, text: str):
+    from volatility_explainer import llm
+
+    monkeypatch.setattr(llm, "get_provider", lambda settings: SimpleNamespace(
+        complete=lambda prompt, max_tokens: text))
+
+
+def test_llm_fallback_reads_a_ticker_wrapped_in_a_code_fence(monkeypatch):
+    # Haiku 4.5 answers '```json\n{"ticker": "SNDK"}\n```'. Unstripped, json.loads failed and
+    # the error was swallowed, so the fallback silently returned no ticker.
+    _fake_llm_reply(monkeypatch, '```json\n{"ticker": "SNDK"}\n```')
+
+    assert p._resolve_ticker_llm("sandisk") == "SNDK"
+
+
+def test_llm_fallback_reads_bare_json_and_null(monkeypatch):
+    _fake_llm_reply(monkeypatch, '{"ticker": null}')
+
+    assert p._resolve_ticker_llm("bake a cake") is None

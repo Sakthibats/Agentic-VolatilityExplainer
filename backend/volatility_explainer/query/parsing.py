@@ -118,6 +118,9 @@ _ticker_cache: dict[str, str | None] = {}
 _llm_ticker_cache: dict[str, str | None] = {}
 
 
+_CODE_FENCE = re.compile(r"^\s*```(?:json)?|```\s*$", re.IGNORECASE)
+
+
 def _resolve_ticker_llm(query: str) -> str | None:
     """Ask the configured LLM to map a free-form query to the most relevant US ticker.
     Result is cached per unique query string. Returns None for anything that isn't
@@ -148,7 +151,9 @@ def _resolve_ticker_llm(query: str) -> str | None:
                 '"bake a cake"→null, "how do I learn python"→null, "weather today"→null'
             ),
         )
-        data = _json.loads(text.strip())
+        # Models often wrap a JSON-only reply in a ```json fence; json.loads rejects that,
+        # and the except below used to turn every such reply into "no ticker" silently.
+        data = _json.loads(_CODE_FENCE.sub("", text).strip())
         t = str(data.get("ticker") or "").strip().upper()
         if re.match(r"^[A-Z]{1,5}$", t):
             result = t

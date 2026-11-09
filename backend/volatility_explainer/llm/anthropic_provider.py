@@ -127,6 +127,11 @@ class AnthropicProvider:
         msg = client.messages.create(
             model=self.model,
             max_tokens=max_tokens,
+            # Haiku 5.5 thinks by default, and thinking counts toward max_tokens: a 30-token
+            # reply budget was spent entirely on thinking, leaving no answer. Off explicitly
+            # (accepted on Haiku 4.5 and 5.5; run_turn needs nothing, since a forced
+            # tool_choice already skips thinking).
+            thinking={"type": "disabled"},
             messages=[{"role": "user", "content": prompt}],
         )
         return "".join(b.text for b in msg.content if b.type == "text")

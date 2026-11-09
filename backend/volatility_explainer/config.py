@@ -21,6 +21,8 @@ class Settings(BaseSettings):
     llm_provider: str = "anthropic"
     anthropic_model: str = "claude-haiku-4-5-20251001"
     openai_model: str = "gpt-6-luna"
+    # How much an OpenAI reasoning model thinks before each turn: none | low | medium | high.
+    openai_reasoning_effort: str = "low"
     supabase_url: SecretStr = SecretStr("")
     supabase_key: SecretStr = SecretStr("")
     redis_url: SecretStr = SecretStr("")

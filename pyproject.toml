@@ -13,6 +13,9 @@ dependencies = [
     "pandas>=2.0",
     "numpy>=1.26",
     "anthropic>=0.40",
+    # The OpenAI adapter (llm/openai_provider.py) uses the Responses API's streaming events
+    # and usage fields as of 3.46; widen alongside a green `pytest -m live tests/llm` run.
+    "openai~=3.46",
     # Pinned to a minor range on purpose: yfinance reshapes its return types in minor
     # releases (Ticker.calendar went DataFrame -> dict in 0.2 and silently broke
     # fetch_events). Widen only alongside a green `pytest -m live` contract run.
