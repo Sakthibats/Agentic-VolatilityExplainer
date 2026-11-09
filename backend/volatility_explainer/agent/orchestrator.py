@@ -1,4 +1,8 @@
-"""Agent orchestrator — Claude-driven tool-use loop for financial investigation."""
+"""Agent orchestrator — the vendor-neutral tool-use loop for financial investigation.
+
+The model behind the loop comes from volatility_explainer.llm (Claude or OpenAI); nothing in
+this module depends on which one it is.
+"""
 
 from __future__ import annotations
 
@@ -10,7 +14,6 @@ import time
 from collections.abc import Callable
 from typing import Any
 
-import anthropic
 from volatility_explainer.agent.prompts import SYSTEM_PROMPT
 from volatility_explainer.agent.quality import check_explanation
 from volatility_explainer.agent.tool_schemas import TERMINAL_TOOLS, TOOL_DEFINITIONS
@@ -21,6 +24,17 @@ from volatility_explainer.clients.redis_cache import (
     set_memoized_tool_data,
 )
 from volatility_explainer.config import get_settings
+from volatility_explainer.llm import get_provider
+from volatility_explainer.llm.base import (
+    AssistantTurn,
+    HistoryItem,
+    LLMProvider,
+    ToolCall,
+    ToolResults,
+    Usage,
+    UserMessage,
+)
+from volatility_explainer.llm.pricing import cost_usd
 from volatility_explainer.tools.analyst import apply_reference_price, fetch_analyst_sentiment
 from volatility_explainer.tools.events import fetch_events
 from volatility_explainer.tools.macro import fetch_macro
@@ -51,6 +65,10 @@ _TOOL_DISPATCH: dict[str, Any] = {
 }
 
 _MAX_TURNS = 7
+
+# Output budget per turn. A reasoning model spends part of it thinking before it writes the
+# tool call, so this leaves headroom over the ~1,000-token submit_analysis payload.
+_MAX_OUTPUT_TOKENS = 2000
 
 # Ceiling on any single tool fetch. Measured tool times are 90-700ms; the retry helper in
 # tools/_retry.py can add roughly another second. 15s is far above anything healthy,
@@ -324,6 +342,7 @@ async def run_explainer(
     on_step: Callable[[str], None] | None = None,
     on_summary: Callable[[str], None] | None = None,
     on_overview: Callable[[str], None] | None = None,
+    provider: LLMProvider | None = None,
 ) -> dict:
     """Run the investigation: a deterministic parallel pre-fetch of _PREFETCH_TOOLS (price —
     non-negotiable, it also feeds the sideline chart — plus events), then a Claude-driven
@@ -348,13 +367,15 @@ async def run_explainer(
     places after tiles and hypotheses so it is generated from them rather than ahead of
     them. on_summary is called with the cumulative text each time, not a delta, so a dropped
     call cannot corrupt it.
+
+    `provider` defaults to the configured one (LLM_PROVIDER); the eval harness passes its own
+    to compare models on identical data.
     """
     ticker = ticker.upper()
     run_t0 = time.perf_counter()
 
-    settings = get_settings()
-    api_key = settings.anthropic_api_key.get_secret_value() or None
-    client = anthropic.AsyncAnthropic(api_key=api_key)
+    if provider is None:
+        provider = get_provider(get_settings())
 
     tool_data: dict[str, dict] = {}
     cache_hit_names: set[str] = set()
@@ -362,8 +383,8 @@ async def run_explainer(
     tool_time = 0.0
     # Returned with the result, not just printed: the eval harness scores cost and tool
     # choice from it. tool_rounds holds the model's own picks per turn (pre-fetch excluded).
-    usage_totals = {"turns": 0, "input_tokens": 0, "cache_read_tokens": 0,
-                    "cache_write_tokens": 0, "output_tokens": 0}
+    run_tokens = Usage()
+    turns_used = 0
     tool_rounds: list[list[str]] = []
 
     # ── Deterministic pre-fetch — skip the LLM round trip for tools we always need ──
@@ -403,27 +424,20 @@ async def run_explainer(
             f"price data: \"{overview}\" Your explanation appears directly beneath it."
         )
 
-    messages: list[dict] = [{"role": "user", "content": user_content}]
+    history: list[HistoryItem] = [UserMessage(user_content)]
 
-    # Splice the deterministically pre-fetched results in as a real assistant tool_use /
-    # user tool_result turn — this is the exact format the model already handles reliably
-    # for genuine tool calls, so it reads pre-fetched data the same way it reads its own.
+    # Splice the deterministically pre-fetched results in as a real assistant tool call /
+    # tool result turn — this is the exact format the model already handles reliably for
+    # genuine tool calls, so it reads pre-fetched data the same way it reads its own.
     if tool_data:
-        assistant_blocks = [
-            {"type": "tool_use", "id": f"toolu_prefetch_{name}", "name": name, "input": {"ticker": ticker}}
+        history.append(AssistantTurn(tool_calls=[
+            ToolCall(id=f"toolu_prefetch_{name}", name=name, input={"ticker": ticker})
             for name in tool_data
-        ]
-        result_blocks = [
-            {"type": "tool_result", "tool_use_id": f"toolu_prefetch_{name}", "content": json.dumps(result, default=str)}
+        ]))
+        history.append(ToolResults([
+            (f"toolu_prefetch_{name}", json.dumps(result, default=str))
             for name, result in tool_data.items()
-        ]
-        messages.append({"role": "assistant", "content": assistant_blocks})
-        messages.append({"role": "user", "content": result_blocks})
-
-    # system is a single static block across every turn of this run (and identical across
-    # runs) — mark it cacheable so only the growing tool-result tail gets re-processed each
-    # turn. TOOL_DEFINITIONS carries its own cache_control on its last entry.
-    system_blocks = [{"type": "text", "text": SYSTEM_PROMPT, "cache_control": {"type": "ephemeral"}}]
+        ]))
 
     final_kind: str | None = None  # "analysis" | "guardrail" | None (ran out of turns)
     final_input: dict = {}
@@ -435,48 +449,34 @@ async def run_explainer(
             on_step(_STEP_DECIDING if turn == 0 else _STEP_SYNTHESIZING)
 
         if _LOG_LLM_PAYLOAD:
-            messages_json = json.dumps(messages, default=str)
+            history_json = json.dumps([vars(item) for item in history], default=str)
             print(
-                f"[llm]   turn {turn + 1} payload          messages={len(messages)}  "
-                f"~{len(SYSTEM_PROMPT) + len(messages_json):,} chars (system+history, excl. tool defs)"
+                f"[llm]   turn {turn + 1} payload          history={len(history)}  "
+                f"~{len(SYSTEM_PROMPT) + len(history_json):,} chars (system+history, excl. tool defs)"
             )
             print(f"[llm]   turn {turn + 1} system:\n{SYSTEM_PROMPT}")
-            print(f"[llm]   turn {turn + 1} messages:\n{json.dumps(messages, indent=2, default=str)}")
+            print(f"[llm]   turn {turn + 1} history:\n{history_json}")
 
         llm_t0 = time.perf_counter()
         # Streamed so the explanation can be surfaced as it is generated (see on_summary in
-        # the docstring). get_final_message() still hands back the same Message object the
-        # non-streaming call returned, so everything below is unchanged.
+        # the docstring). The provider hands over the streamed tool's input JSON so far.
         streamed_text = ""
-        streaming_tool: str | None = None
-        input_json = ""
 
-        async with client.messages.stream(
-            model=settings.anthropic_model,
-            max_tokens=2000,
-            system=system_blocks,
+        def on_tool_input(_name: str, input_json: str) -> None:
+            nonlocal streamed_text
+            partial = _partial_json_string(input_json, _STREAMED_FIELD)
+            if partial and partial != streamed_text:
+                streamed_text = partial
+                on_summary(partial)
+
+        response = await provider.run_turn(
+            system=SYSTEM_PROMPT,
+            history=history,
             tools=TOOL_DEFINITIONS,
-            tool_choice={"type": "any"},
-            messages=messages,
-        ) as stream:
-            async for event in stream:
-                if event.type == "content_block_start":
-                    block = event.content_block
-                    streaming_tool = block.name if block.type == "tool_use" else None
-                    input_json = ""
-                elif (
-                    on_summary is not None
-                    and streaming_tool == "submit_analysis"
-                    and event.type == "content_block_delta"
-                    and event.delta.type == "input_json_delta"
-                ):
-                    input_json += event.delta.partial_json
-                    partial = _partial_json_string(input_json, _STREAMED_FIELD)
-                    if partial and partial != streamed_text:
-                        streamed_text = partial
-                        on_summary(partial)
-
-            response = await stream.get_final_message()
+            max_tokens=_MAX_OUTPUT_TOKENS,
+            stream_tool="submit_analysis",
+            on_tool_input=on_tool_input if on_summary is not None else None,
+        )
 
         llm_elapsed = time.perf_counter() - llm_t0
         llm_time += llm_elapsed
@@ -484,30 +484,26 @@ async def run_explainer(
         usage = response.usage
         print(
             f"[llm]   turn {turn + 1} usage            in={usage.input_tokens} "
-            f"(cache_read={usage.cache_read_input_tokens or 0}, "
-            f"cache_write={usage.cache_creation_input_tokens or 0})  out={usage.output_tokens}"
+            f"(cache_read={usage.cache_read_tokens}, cache_write={usage.cache_write_tokens})  "
+            f"out={usage.output_tokens} (reasoning={usage.reasoning_tokens})"
         )
-        usage_totals["turns"] += 1
-        usage_totals["input_tokens"] += usage.input_tokens or 0
-        usage_totals["cache_read_tokens"] += usage.cache_read_input_tokens or 0
-        usage_totals["cache_write_tokens"] += usage.cache_creation_input_tokens or 0
-        usage_totals["output_tokens"] += usage.output_tokens or 0
-        # Breakdown of where output tokens actually went — a "text" block here is a preamble
-        # the model wrote before its tool call, pure overhead we could suppress with a forced
-        # tool_choice; "tool_use" size approximates the JSON payload itself (tiles/hypotheses).
+        turns_used += 1
+        for field_name in vars(run_tokens):
+            setattr(run_tokens, field_name, getattr(run_tokens, field_name) + getattr(usage, field_name))
+        # Where output went — text is a preamble the model wrote before its tool call, pure
+        # overhead; a tool call's size approximates the JSON payload itself (tiles/hypotheses).
         if _LOG_LLM_PAYLOAD:
-            for block in response.content:
-                if block.type == "text":
-                    print(f"[llm]   turn {turn + 1} content block     text       {len(block.text):5d} chars (preamble — unwanted)")
-                elif block.type == "tool_use":
-                    size = len(json.dumps(block.input, default=str))
-                    print(f"[llm]   turn {turn + 1} content block     tool_use   {size:5d} chars  ({block.name})")
+            if response.text:
+                print(f"[llm]   turn {turn + 1} content block     text       {len(response.text):5d} chars (preamble — unwanted)")
+            for call in response.tool_calls:
+                size = len(json.dumps(call.input, default=str))
+                print(f"[llm]   turn {turn + 1} content block     tool_use   {size:5d} chars  ({call.name})")
 
-        tool_blocks = [b for b in response.content if b.type == "tool_use"]
+        tool_blocks = response.tool_calls
         terminal_block = next((b for b in tool_blocks if b.name in TERMINAL_TOOLS), None)
         print(f"[llm]   turn {turn + 1} {'(final)' if terminal_block else '(tool selection)':<17} {llm_elapsed * 1000:6.0f}ms")
 
-        messages.append({"role": "assistant", "content": response.content})
+        history.append(response)
 
         if terminal_block:
             # No step emitted here on purpose — _STEP_SYNTHESIZING already went out before
@@ -528,7 +524,6 @@ async def run_explainer(
             for block in tool_blocks:
                 on_step(_STEP_LABELS.get(block.name, f"Running {block.name}..."))
 
-        tool_result_blocks: list[dict] = []
         results_by_id: dict[str, dict] = {}
         turn_tool_max = 0.0
 
@@ -564,14 +559,9 @@ async def run_explainer(
             print(f"[agent] {'+'.join(b.name for b in fresh_blocks):<25} {batch_elapsed * 1000:6.0f}ms  (batch wall time, n={len(fresh_blocks)})")
         tool_time += turn_tool_max
 
-        for block in tool_blocks:
-            tool_result_blocks.append({
-                "type": "tool_result",
-                "tool_use_id": block.id,
-                "content": json.dumps(results_by_id[block.id], default=str),
-            })
-
-        messages.append({"role": "user", "content": tool_result_blocks})
+        history.append(ToolResults([
+            (block.id, json.dumps(results_by_id[block.id], default=str)) for block in tool_blocks
+        ]))
 
     total_elapsed = time.perf_counter() - run_t0
     print(f"[orchestrator] {ticker:<6} total {total_elapsed * 1000:6.0f}ms  (llm {llm_time * 1000:.0f}ms, tools {tool_time * 1000:.0f}ms)")
@@ -579,8 +569,11 @@ async def run_explainer(
     # Tools whose data came from Redis this run rather than a live fetch.
     cache_hits = sorted(cache_hit_names)
     run_usage = {
-        **usage_totals,
-        "model": settings.anthropic_model,
+        "turns": turns_used,
+        **vars(run_tokens),
+        "provider": provider.name,
+        "model": provider.model,
+        "cost_usd": cost_usd(provider.model, run_tokens),
         "tool_rounds": tool_rounds,
         "llm_ms": round(llm_time * 1000),
         "tool_ms": round(tool_time * 1000),

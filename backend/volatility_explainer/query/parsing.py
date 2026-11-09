@@ -119,7 +119,7 @@ _llm_ticker_cache: dict[str, str | None] = {}
 
 
 def _resolve_ticker_llm(query: str) -> str | None:
-    """Call Claude Haiku to map a free-form query to the most relevant US ticker.
+    """Ask the configured LLM to map a free-form query to the most relevant US ticker.
     Result is cached per unique query string. Returns None for anything that isn't
     clearly a financial/company/sector reference — this is a last-resort fallback,
     so it must be conservative rather than guessing a plausible-looking ticker.
@@ -131,17 +131,12 @@ def _resolve_ticker_llm(query: str) -> str | None:
     try:
         import json as _json
 
-        import anthropic
-
         from volatility_explainer.config import get_settings
+        from volatility_explainer.llm import get_provider
 
-        settings = get_settings()
-        api_key = settings.anthropic_api_key.get_secret_value() or None
-        client = anthropic.Anthropic(api_key=api_key)
-        msg = client.messages.create(
-            model=settings.anthropic_model,
+        text = get_provider(get_settings()).complete(
             max_tokens=30,
-            messages=[{"role": "user", "content": (
+            prompt=(
                 f'Does this text clearly refer to a specific US-listed stock, company, sector, '
                 f'or asset (not a generic word, unrelated topic, or full sentence about something '
                 f'else)? Text: "{query}"\n'
@@ -151,9 +146,9 @@ def _resolve_ticker_llm(query: str) -> str | None:
                 'Examples: "sandisk"→SNDK, "apple"→AAPL, "chip sector"→SOXX, '
                 '"gold"→GLD, "market"→SPY, "nasdaq"→QQQ, "crypto"→IBIT, '
                 '"bake a cake"→null, "how do I learn python"→null, "weather today"→null'
-            )}],
+            ),
         )
-        data = _json.loads(msg.content[0].text.strip())
+        data = _json.loads(text.strip())
         t = str(data.get("ticker") or "").strip().upper()
         if re.match(r"^[A-Z]{1,5}$", t):
             result = t

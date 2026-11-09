@@ -1,8 +1,8 @@
 """Orchestrator tests — the tool-use loop, exercised with a scripted fake Anthropic client.
 
 No network, no Redis, no real tools: every seam the loop depends on
-(anthropic.Anthropic, the tool dispatch table, the cache functions, settings)
-is patched at the orchestrator's module level.
+(the Anthropic client inside llm/anthropic_provider.py, the tool dispatch table, the cache
+functions, settings) is patched at module level.
 """
 
 from __future__ import annotations
@@ -15,6 +15,7 @@ from unittest.mock import MagicMock
 import pytest
 from volatility_explainer.agent import orchestrator, tool_schemas
 from volatility_explainer.clients.redis_cache import clear_memoized_tool_data
+from volatility_explainer.llm import anthropic_provider
 
 # ── Fakes ────────────────────────────────────────────────────────────────────
 
@@ -143,7 +144,7 @@ def env(monkeypatch):
 
     # messages.stream() is NOT awaited — it returns an async context manager directly.
     client.messages.stream = MagicMock(side_effect=lambda **kwargs: FakeStream(responses.pop(0)))
-    monkeypatch.setattr(orchestrator.anthropic, "AsyncAnthropic", lambda api_key=None: client)
+    monkeypatch.setattr(anthropic_provider.anthropic, "AsyncAnthropic", lambda api_key=None: client)
 
     monkeypatch.setattr(
         orchestrator, "get_settings",
@@ -212,6 +213,8 @@ async def test_result_carries_token_usage_and_the_models_tool_picks(env):
     assert usage["input_tokens"] == 200
     assert usage["output_tokens"] == 100
     assert usage["model"] == "claude-test-model"
+    assert usage["provider"] == "anthropic"
+    assert usage["cost_usd"] is None  # the test model has no price; real ones do
     assert usage["tool_rounds"] == [["get_news", "get_analyst_sentiment"]]
     assert usage["total_ms"] >= usage["llm_ms"]
 
@@ -703,8 +706,26 @@ async def test_no_overview_when_price_data_failed(env, monkeypatch):
     assert "overview" not in first_user_turn
 
 
-def test_submit_analysis_opts_into_fine_grained_streaming():
-    assert tool_schemas.TOOL_DEFINITIONS[-1]["eager_input_streaming"] is True
+async def test_claude_request_streams_submit_analysis_and_caches_system_and_tools(env):
+    """The Anthropic adapter adds what the neutral schemas leave out: fine-grained streaming
+    for the streamed tool, and cache breakpoints on the system prompt and the LAST tool."""
+    env.responses.append(fake_response([tool_use("submit_analysis", SUBMIT_INPUT)]))
+
+    await orchestrator.run_explainer("AAPL")
+
+    request = env.client.messages.stream.call_args_list[0].kwargs
+    tools = request["tools"]
+    assert tools[-1]["name"] == "submit_analysis"
+    assert tools[-1]["eager_input_streaming"] is True
+    assert tools[-1]["cache_control"] == {"type": "ephemeral"}
+    assert not any("cache_control" in t or "eager_input_streaming" in t for t in tools[:-1])
+    assert request["system"][0]["cache_control"] == {"type": "ephemeral"}
+    assert request["tool_choice"] == {"type": "any"}
+
+
+def test_neutral_tool_definitions_carry_no_vendor_keys():
+    for tool in tool_schemas.TOOL_DEFINITIONS:
+        assert set(tool) == {"name", "description", "input_schema"}, tool["name"]
 
 
 async def test_every_llm_turn_is_covered_by_a_label_emitted_before_it(env):
