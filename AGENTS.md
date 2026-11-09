@@ -4,7 +4,7 @@
 > this into). It is written to be enough on its own to reason about goals, tradeoffs, and where to
 > change things. Deeper references: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) ·
 > [docs/ROADMAP.md](docs/ROADMAP.md) · [BACKLOG.md](BACKLOG.md).
-> Last reviewed: 2026-09-15.
+> Last reviewed: 2026-11-09.
 
 ## 1. What this is
 
@@ -42,7 +42,7 @@ multi-ticker comparison, anything resembling trading advice or signals.
 | Migration | Streamlit monolith → FastAPI + Next.js. Phases 0–3 ✅. **Phase 4 (metering / rate limiting) is next and not started** |
 | Backend | FastAPI, fully async, `/v1` REST + SSE, Docker → Google Cloud Run |
 | Frontend | Next.js 16 static export → Cloudflare Pages |
-| Quality gates | 260 offline pytest tests + 19 `live` upstream contract tests (weekly). ruff, eslint (blocking), tsc all clean. Heuristic quality flags on every explanation (`[quality]` log line) |
+| Quality gates | 263 offline pytest tests + 19 `live` upstream contract tests (weekly). ruff, eslint (blocking), tsc all clean. Heuristic quality flags on every explanation (`[quality]` log line) |
 | Biggest gaps | No offline **eval harness** that scores the model's answers yet: fixtures are recorded daily (`evals/`), but cases, runner and scorers don't exist · no rate limiting and CORS `*` · `print`-based logging · token usage is returned per run (`result["usage"]`) but not logged or priced · chart silently falls back to synthetic prices |
 
 ## 4. Architecture in one screen
@@ -79,6 +79,77 @@ SSE order: `investigation_started` → `step`* → `overview`? (code-built "what
 `guardrail` | `error`. The contract is
 `backend/volatility_explainer/api/schemas.py`, mirrored by hand in `frontend/lib/api.ts`.
 
+### Repo map
+
+Every tracked file that matters, with a one-line role. ★ marks the files to read first. Keep this
+current: adding, moving or deleting a file updates this map in the same change.
+
+```
+backend/volatility_explainer/     Python package (hatchling; pytest pythonpath = . and backend)
+├── config.py                     pydantic-settings; keys are SecretStr, all optional; anthropic_model
+├── api/
+│   ├── app.py                    routes, CORS, SSE plumbing (one asyncio.Task + queue per run)
+│   ├── schemas.py                ★ THE CONTRACT: every response body and SSE payload
+│   └── service.py                scope gate → final-answer cache → orchestrator → shaping → usage log
+├── query/parsing.py              scope guardrail, 4-stage ticker resolution, _specific_question
+├── agent/
+│   ├── orchestrator.py           ★ the loop: prefetch, _TOOL_DISPATCH, streaming, citations, usage
+│   ├── tool_schemas.py           tool schemas + when-to-call guidance; submit_analysis stays last
+│   ├── prompts.py                system prompt: reading data, output, framing and data rules
+│   └── quality.py                heuristic write-up flags (measure, never rewrite)
+├── tools/                        8 sync data tools, MCP-shaped but in-process; each falls back to yfinance
+│   ├── price.py                  get_price_data: quote, history, realized vol, move_assessment, describe_move
+│   ├── news.py                   get_news: Finnhub company news → yfinance
+│   ├── options.py                get_options_data (IV, put/call, skew) + get_options_positioning
+│   │                             (max pain, OI walls, term structure)
+│   ├── analyst.py                get_analyst_sentiment: up/downgrades, consensus trend, targets
+│   ├── sector.py                 get_sector_comparison: stock vs. its sector ETF, same horizons
+│   ├── macro.py                  get_macro: FRED VIX → yfinance ^VIX/^GSPC
+│   ├── events.py                 get_events: EPS beat/miss, next earnings, ex-div, static FOMC list
+│   └── _retry.py                 with_retry: backoff helper for flaky yfinance calls
+├── clients/                      finnhub.py (key sent as a header) · fred.py (key stripped from
+│                                 errors) · redis_cache.py (in-process memo + Redis, per-tool TTLs)
+├── marketdata/snapshots.py       chart history + sidebar stats behind /v1/tickers/{t}/*
+└── analytics/supabase_logger.py  optional usage log: bounded queue, background worker
+
+frontend/                         Next.js 16 App Router, static export (output: "export")
+├── app/layout.tsx                header, providers (theme, feedback, investigation), GA4
+├── app/page.tsx                  the investigation UI
+├── app/about/page.tsx            long-form methodology copy
+├── app/globals.css               ★ all colour tokens: light blue / dark trading terminal
+├── lib/api.ts                    ★ hand mirror of api/schemas.py + the SSE-over-fetch parser
+├── lib/use-typewriter.ts         paced reveal of the streamed write-up
+├── lib/utils.ts                  cn() class merge
+└── components/
+    ├── investigation-provider.tsx  run state + SSE; in the root layout so navigation keeps the stream
+    ├── query-bar · timeline (InvestigationLog) · evidence-tiles (AGENT_ICONS) · hypotheses
+    ├── md.tsx                    **bold** + [n] → citation links from result.citations
+    ├── price-chart · stats-panel · nav-tabs · theme-toggle
+    ├── feedback · support-button · analytics (GA4 ID, public by design)
+    └── ui/                       shadcn primitives: badge, button, card
+
+tests/                            mirrors the backend; offline by default (`pytest -m live` for upstream)
+├── agent/                        test_orchestrator (scripted fake Anthropic client pins the loop) ·
+│                                 test_quality (real bad write-ups pinned verbatim)
+├── api/test_api.py               routes, SSE order, client disconnect still finishes the run
+├── query/test_parsing.py         guardrail + resolver, incl. "no network call" assertions
+├── tools/                        one test file per tool + test_live_contracts.py (19 live tests)
+├── clients/                      test_redis_cache · test_api_keys (keys never in URLs or errors)
+├── analytics/                    test_supabase_logger (queued payload, quality_flags semantics)
+└── evals/test_capture.py         fixture selection rules
+
+evals/                            capture.py (daily fixture recorder) · README.md (harness plan)
+                                  fixtures/<day>/<TICKER>.json: bot-committed each weekday, ~10 KB
+                                  each and growing. Don't read or search them unless working on evals
+scripts/                          quality_report.py (flag rates over VOLX_SAVE_RUNS) ·
+                                  benchmark_api.py (sequential vs. concurrent latency)
+docs/                             ARCHITECTURE.md · ROADMAP.md · sql/ (hand-run Supabase changes) ·
+                                  theme-schemes.ts (archived alternate colour schemes)
+.github/workflows/                test · docker-publish · frontend-deploy · live-contracts · eval-capture
+root                              pyproject.toml (deps, ruff, pytest config) · Dockerfile ·
+                                  docker-compose.yml · .env.example · BACKLOG.md · PRIVACY.md
+```
+
 ## 5. Invariants — don't break these without an explicit decision
 
 - **API-first.** The frontend talks to the backend only through `/v1`. `api/schemas.py` is the source
@@ -95,6 +166,10 @@ SSE order: `investigation_started` → `step`* → `overview`? (code-built "what
   alter or block the answer, and a failing check must not fail the run.
 - **Degrade gracefully.** Every data source keeps a yfinance fallback. Redis, Supabase, Finnhub and
   FRED are all optional. `service.analyze()` never raises.
+- **Keys stay out of logs.** Tools print upstream errors, and httpx puts the full URL in every
+  error message, so an API key must never sit in a URL or an exception string. Finnhub takes its key
+  in the `X-Finnhub-Token` header; FRED only accepts a query param, so `clients/fred.py` strips
+  `api_key` from errors before re-raising. Pinned by `tests/clients/test_api_keys.py`.
 - **Async backend, sync tools.** LLM calls are awaited (`AsyncAnthropic`). Tools stay sync (yfinance
   is sync-only) and run via `asyncio.to_thread`. Never call a tool directly on the event loop.
 - **Finish-and-cache.** A client disconnect must not cancel the investigation — pinned by
@@ -224,6 +299,7 @@ Backend paths are relative to `backend/volatility_explainer/`.
 | Investigation UI | `frontend/app/page.tsx` and `frontend/components/` (state lives in `investigation-provider.tsx`) |
 | Colours / theme | `frontend/app/globals.css` only. Archived alternates: `docs/theme-schemes.ts` |
 | Cache TTLs | `clients/redis_cache.py` |
+| Upstream HTTP clients / API keys | `clients/finnhub.py`, `clients/fred.py` + `tests/clients/test_api_keys.py` (keys never in URLs or errors) + a live contract test |
 | Usage-log fields (Supabase) | `analytics/supabase_logger.py` + a SQL file in `docs/sql/` (run in Supabase **before** deploying) + `PRIVACY.md` + `tests/analytics/` |
 | Settings / env vars | `config.py` + `.env.example` + the env table in `docs/ARCHITECTURE.md` |
 | CI / deploy | `.github/workflows/`, `Dockerfile`, `frontend/next.config.ts` |

@@ -7,57 +7,8 @@ start with [AGENTS.md](../AGENTS.md).
 
 ## Repo map
 
-```
-backend/volatility_explainer/     Python package (hatchling; see pyproject.toml)
-├── config.py                     pydantic-settings; secrets are SecretStr, all optional; model ID
-├── api/
-│   ├── app.py                    FastAPI routes, CORS, SSE plumbing (task + queue)
-│   ├── schemas.py                ★ THE CONTRACT — every response body and SSE payload
-│   └── service.py                scope gate → final-answer cache → orchestrator → shaping → usage log
-├── query/parsing.py              scope guardrail + 4-stage ticker resolution
-├── agent/
-│   ├── orchestrator.py           ★ the tool-use loop: prefetch, dispatch, streaming, citations
-│   ├── tool_schemas.py           tool JSON schemas + the when-to-call guidance the model reads
-│   ├── prompts.py                system prompt: reading price data, output, framing and data rules
-│   └── quality.py                heuristic checks on the explanation — flags, never rewrites
-├── tools/                        8 sync data tools — MCP-shaped, in-process
-│   ├── price.py                  Finnhub quote + yfinance history; computes move_assessment
-│   ├── news.py                   Finnhub company news → yfinance fallback
-│   ├── options.py                snapshot (IV, put/call, skew) + positioning (max pain, OI walls, term structure)
-│   ├── analyst.py                dated up/downgrades, consensus trend, price targets
-│   ├── sector.py                 stock vs. its sector ETF over the same horizons
-│   ├── macro.py                  FRED VIX → yfinance ^VIX/^GSPC fallback
-│   ├── events.py                 reported EPS beat/miss, next earnings, ex-dividend, static FOMC calendar
-│   └── _retry.py                 small retry helper for flaky yfinance calls
-├── marketdata/snapshots.py       chart history + sidebar stats (feeds /v1/tickers/*)
-├── clients/                      finnhub.py · fred.py · redis_cache.py (memo + Redis)
-└── analytics/supabase_logger.py  optional usage log (see Usage log): bounded queue, background worker
-
-frontend/                         Next.js 16 App Router, static export (output: "export")
-├── lib/api.ts                    ★ hand mirror of api/schemas.py + the SSE-over-fetch parser
-├── lib/use-typewriter.ts         paced reveal of the streamed write-up
-├── app/globals.css               design tokens: light "Cobalt" / dark trading terminal
-├── app/layout.tsx                header, providers (theme, feedback, investigation), GA4
-├── app/page.tsx                  the investigation UI
-├── app/about/page.tsx            long-form methodology copy
-└── components/                   investigation-provider (state), query-bar, timeline, evidence-tiles,
-                                  hypotheses, price-chart, stats-panel, md (bold + [n] citation
-                                  links), feedback, support-button, ui/
-
-tests/                            mirrors the backend layout; no network by default
-├── agent/test_orchestrator.py    scripted fake Anthropic client pins the whole loop
-├── agent/test_quality.py         write-up quality checks + real bad explanations pinned verbatim
-├── api/test_api.py               routes, SSE ordering, client-disconnect behaviour
-├── query/test_parsing.py         guardrail + resolver, incl. "no network call" assertions
-├── tools/                        per-tool unit tests + test_live_contracts.py (pytest -m live)
-├── clients/test_redis_cache.py
-└── analytics/test_supabase_logger.py   the queued usage-log payload (quality_flags semantics)
-
-docs/sql/                         hand-run Supabase schema changes + reporting queries
-docs/theme-schemes.ts             archived alternate colour schemes (future theme picker)
-scripts/benchmark_api.py          sequential latency vs. concurrent wall-time benchmark
-scripts/quality_report.py         quality-flag rates across runs saved with VOLX_SAVE_RUNS
-```
+The file-by-file map lives in [AGENTS.md → Repo map](../AGENTS.md#repo-map), so there is one copy
+to keep current. AI assistants load it automatically.
 
 ---
 

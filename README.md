@@ -19,7 +19,7 @@ evidence and must finish with a structured, cited answer.
 | **Status** | Public and live since ‹MONTH 2026›. Free, no sign-up |
 | **Usage** | ‹N› investigations from ‹M› anonymous sessions across ‹K› tickers (Supabase usage log, as of ‹DATE›) |
 | **Runs on** | Claude Haiku 4.5 · FastAPI on Cloud Run (scales to zero) · Next.js static export on Cloudflare Pages |
-| **Quality gates** | 260 offline tests (the agent loop is driven by a scripted fake Claude client) · 19 weekly live API contract tests · quality checks on every write-up |
+| **Quality gates** | 263 offline tests (the agent loop is driven by a scripted fake Claude client) · 19 weekly live API contract tests · quality checks on every write-up |
 
 <img width="1222" height="763" alt="Market Explainer answering why a stock moved: price chart, evidence tiles, ranked hypotheses and a cited explanation" src="https://github.com/user-attachments/assets/8d5fbb86-2ba6-4419-ad0b-90cb79a46b13" />
 
