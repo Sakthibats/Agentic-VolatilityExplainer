@@ -1,0 +1,380 @@
+{
+ "schema": 1,
+ "ticker": "MPWR",
+ "trading_day": "2026-11-09",
+ "captured_at": "2026-11-10T03:45:45+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 16.6,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 16.6% \u2014 unusual for this stock (about 2.82x its normal move for that span, expected ~5.88%)",
+   "this week: 11.58% \u2014 typical relative to this stock's own typical volatility (expected ~13.14%, 0.88x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past 2 weeks: 18.91% \u2014 typical relative to this stock's own typical volatility (expected ~18.59%, 1.02x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past year: 45.85% \u2014 typical relative to this stock's own typical volatility (expected ~93.30%, 0.49x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "MPWR",
+   "price": 1388.05,
+   "prev_close": 1190.44,
+   "change_pct": 16.6,
+   "realized_vol_annualized_pct": 93.3,
+   "changes_pct": {
+    "1d": 16.6,
+    "1w": 11.58,
+    "2w": 18.91,
+    "1mo": 0.13,
+    "1y": 45.85,
+    "ytd": 48.99
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 16.6% \u2014 unusual for this stock (about 2.82x its normal move for that span, expected ~5.88%)",
+     "this week: 11.58% \u2014 typical relative to this stock's own typical volatility (expected ~13.14%, 0.88x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past 2 weeks: 18.91% \u2014 typical relative to this stock's own typical volatility (expected ~18.59%, 1.02x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past year: 45.85% \u2014 typical relative to this stock's own typical volatility (expected ~93.30%, 0.49x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "MPWR",
+   "headlines": [
+    {
+     "headline": "Stock Market Today: Dow Rallies As Oil Prices Slide; Nvidia Stock Dives On CEO Huang Probe (Live Coverage)",
+     "summary": "The Dow Jones index rallies 500 points Monday as oil prices drop. Nvidia stock dives on the probe into CEO Jensen Huang.",
+     "datetime": 1794260466,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=9ed519a9581c0b645208639091ac07e8066a724f30fe3e5d74827003446af2c6"
+    },
+    {
+     "headline": "S&P 500 Top Movers: Gainers and Losers for Nov. 9, 2026",
+     "summary": "S&P 500 top movers for Nov. 9, 2026 include COHR's 17.41% gain, NVDA's 7.27% decline, and moves in MPWR, AMD, FSLR and AXON.",
+     "datetime": 1794254786,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=8dbe13d7bad59b65126f092b011cd055233dfd03d70a27cbf9c95faf7c97444b"
+    },
+    {
+     "headline": "S&P 500 Top Movers: Today's US Session Gainers and Losers",
+     "summary": "S&P 500 top gainers and losers from today's US session, with percentage moves and latest prices for each listed ticker.",
+     "datetime": 1794245771,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=20d8a95fb6d88aa6d92d94f3823a12edc8192a1213a79a8e22a78db334a9693f"
+    },
+    {
+     "headline": "This AI-Adjacent Company Doesn\u2019t See Much Delay or Pause in Data-Center Projects",
+     "summary": "Ferguson Enterprises distributes plumbing and HVAC systems to a wide variety of development projects. Its stock is on pace for its best daily percentage gain in more than a year.",
+     "datetime": 1794245280,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=8da8d888a5e0adaa50157c9923bd6f45f73c9659083366f3a4b3ada74ab5dfb0"
+    },
+    {
+     "headline": "Reed Semiconductor Prevails in Patent Lawsuit Brought by Monolithic Power Systems",
+     "summary": "WARWICK, R.I., November 09, 2026--Reed Semiconductor today announced a favorable jury verdict in the patent infringement litigation brought by Monolithic Power Systems in the United States District...",
+     "datetime": 1794234540,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=9dd619e3e6a444c513b057e88adb96e256fe444c866db2cc6e76cbccb0a16235"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "MPWR",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 10,
+   "atm_iv_pct": 74.2,
+   "iv_chain_percentile": 9,
+   "skew_points": 3.6,
+   "put_call_ratio": 0.78,
+   "total_put_oi": 2877,
+   "total_call_oi": 3708
+  },
+  "get_options_positioning": {
+   "ticker": "MPWR",
+   "spot": 1388.05,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 10,
+   "max_pain_strike": 1250.0,
+   "resistance_walls": [
+    {
+     "strike": 1600.0,
+     "open_interest": 429
+    },
+    {
+     "strike": 1420.0,
+     "open_interest": 293
+    },
+    {
+     "strike": 1200.0,
+     "open_interest": 217
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 1400.0,
+     "open_interest": 188
+    },
+    {
+     "strike": 1120.0,
+     "open_interest": 175
+    },
+    {
+     "strike": 1200.0,
+     "open_interest": 145
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 10,
+     "atm_iv_pct": 74.2
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 1600.0,
+     "volume": 103,
+     "open_interest": 429,
+     "vol_oi_ratio": 0.2,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 2145,
+   "otm_put_oi": 2502,
+   "positioning_lean_score": -0.08,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "MPWR",
+   "as_of": "2026-11-10",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-30",
+     "days_ago": 11,
+     "firm": "Truist Securities",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 1889.0,
+     "price_target_to": 1906.0,
+     "is_rating_change": false,
+     "description": "Truist Securities maintained its Buy rating on MPWR and raised its price target from $1889.0 to $1906.0"
+    },
+    {
+     "date": "2026-10-30",
+     "days_ago": 11,
+     "firm": "Rosenblatt",
+     "action": "upgrade",
+     "from_grade": "Neutral",
+     "to_grade": "Buy",
+     "price_target_from": 1575.0,
+     "price_target_to": 1700.0,
+     "is_rating_change": true,
+     "description": "Rosenblatt upgraded MPWR from Neutral to Buy and raised its price target from $1575.0 to $1700.0"
+    },
+    {
+     "date": "2026-10-23",
+     "days_ago": 18,
+     "firm": "Oppenheimer",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 1700.0,
+     "price_target_to": 1500.0,
+     "is_rating_change": false,
+     "description": "Oppenheimer maintained its Outperform rating on MPWR and cut its price target from $1700.0 to $1500.0"
+    },
+    {
+     "date": "2026-10-20",
+     "days_ago": 21,
+     "firm": "Wells Fargo",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 1800.0,
+     "price_target_to": 1550.0,
+     "is_rating_change": false,
+     "description": "Wells Fargo maintained its Overweight rating on MPWR and cut its price target from $1800.0 to $1550.0"
+    },
+    {
+     "date": "2026-10-19",
+     "days_ago": 22,
+     "firm": "TD Cowen",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 1850.0,
+     "price_target_to": 1700.0,
+     "is_rating_change": false,
+     "description": "TD Cowen maintained its Buy rating on MPWR and cut its price target from $1850.0 to $1700.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.81,
+    "verdict": "leaning bullish",
+    "analysts": 16,
+    "counts": {
+     "strongBuy": 3,
+     "buy": 13,
+     "hold": 0,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 1.88 to 1.81; bearish ratings 0 to 0)"
+   },
+   "price_target": {
+    "mean": 1820.64,
+    "median": 1810.0,
+    "high": 2100.0,
+    "low": 1500.0,
+    "current_price": 1388.05,
+    "dispersion_pct": 33.0,
+    "upside_vs_mean_pct": 31.2,
+    "upside_vs_median_pct": 30.4
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "MPWR",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "2w": {
+     "stock_change_pct": 18.91,
+     "sector_etf_change_pct": -8.29,
+     "relative_to_sector_pct": 27.2
+    },
+    "1d": {
+     "stock_change_pct": 16.6,
+     "sector_etf_change_pct": 3.73,
+     "relative_to_sector_pct": 12.87
+    },
+    "1w": {
+     "stock_change_pct": 11.58,
+     "sector_etf_change_pct": -1.92,
+     "relative_to_sector_pct": 13.5
+    },
+    "1y": {
+     "stock_change_pct": 45.85,
+     "sector_etf_change_pct": 18.8,
+     "relative_to_sector_pct": 27.05
+    },
+    "1mo": {
+     "stock_change_pct": 0.13,
+     "sector_etf_change_pct": -14.04,
+     "relative_to_sector_pct": 14.17
+    },
+    "ytd": {
+     "stock_change_pct": 48.99,
+     "sector_etf_change_pct": 18.85,
+     "relative_to_sector_pct": 30.14
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-09",
+    "realtime_end": "2026-11-09",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9614,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-09",
+      "realtime_end": "2026-11-09",
+      "date": "2026-11-06",
+      "value": "25.64"
+     },
+     {
+      "realtime_start": "2026-11-09",
+      "realtime_end": "2026-11-09",
+      "date": "2026-11-05",
+      "value": "28.18"
+     },
+     {
+      "realtime_start": "2026-11-09",
+      "realtime_end": "2026-11-09",
+      "date": "2026-11-04",
+      "value": "16.61"
+     },
+     {
+      "realtime_start": "2026-11-09",
+      "realtime_end": "2026-11-09",
+      "date": "2026-11-03",
+      "value": "20.83"
+     },
+     {
+      "realtime_start": "2026-11-09",
+      "realtime_end": "2026-11-09",
+      "date": "2026-11-02",
+      "value": "21.15"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "MPWR",
+   "as_of": "2026-11-10",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 29,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-03",
+     "description": "MPWR Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 85,
+     "eps_estimate": 9.6391,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-29",
+     "description": "MPWR reported Q3 2026 earnings after the close \u2014 EPS 8.19 vs 7.9065 expected (beat, +3.6%)",
+     "source": "finnhub",
+     "days_ago": 12,
+     "eps_actual": 8.19,
+     "eps_estimate": 7.9065,
+     "surprise": "beat",
+     "surprise_pct": 3.6,
+     "hour": "amc"
+    },
+    {
+     "type": "ex_dividend",
+     "date": "2026-09-30",
+     "source": "yfinance",
+     "description": "MPWR went ex-dividend \u2014 the price drops by roughly the dividend on this date mechanically, with no news behind it",
+     "days_ago": 41
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

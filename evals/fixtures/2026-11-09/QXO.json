@@ -1,0 +1,337 @@
+{
+ "schema": 1,
+ "ticker": "QXO",
+ "trading_day": "2026-11-09",
+ "captured_at": "2026-11-10T03:45:32+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 19.2,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 19.2% \u2014 unusual for this stock (about 2.99x its normal move for that span, expected ~6.41%)",
+   "this week: 17.98% \u2014 typical relative to this stock's own typical volatility (expected ~14.34%, 1.25x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past 2 weeks: 31.49% \u2014 elevated relative to this stock's own typical volatility (expected ~20.28%, 1.55x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past month: 27.47% \u2014 typical relative to this stock's own typical volatility (expected ~29.39%, 0.93x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "QXO",
+   "price": 13.78,
+   "prev_close": 11.56,
+   "change_pct": 19.2,
+   "realized_vol_annualized_pct": 101.8,
+   "changes_pct": {
+    "1d": 19.2,
+    "1w": 17.98,
+    "2w": 31.49,
+    "1mo": 27.47,
+    "1y": -14.62,
+    "ytd": -30.12
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 19.2% \u2014 unusual for this stock (about 2.99x its normal move for that span, expected ~6.41%)",
+     "this week: 17.98% \u2014 typical relative to this stock's own typical volatility (expected ~14.34%, 1.25x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past 2 weeks: 31.49% \u2014 elevated relative to this stock's own typical volatility (expected ~20.28%, 1.55x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past month: 27.47% \u2014 typical relative to this stock's own typical volatility (expected ~29.39%, 0.93x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "QXO",
+   "headlines": [
+    {
+     "headline": "QXO, Inc. Announces Preliminary Third Quarter 2026 Financial Information with Net Sales of approximately $4.90 billion",
+     "summary": "",
+     "datetime": 1794228781,
+     "source": "Fintel",
+     "url": "https://finnhub.io/api/news?id=8027af1ba5a46e5ee4669442fb0d46d411b862b41e3092c4aaf0e02531c212c2"
+    },
+    {
+     "headline": "Brad Jacobs to Lead $1 Billion Equity Investment in CKX Lands",
+     "summary": "Jacobs Will Continue to Serve as Chairman and CEO of QXO, while Leading a Separate Venture in an Industry to Be Determined Conference Call to Be Held at 8:30 a.m. Eastern Time Today GREENWICH, Conn....",
+     "datetime": 1794222060,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=3312445174f98e60542866e654f17b57364a833c65a784cba2ee86bb4f5fb175"
+    },
+    {
+     "headline": "QXO Announces Third Quarter 2026 Preliminary Financial Information",
+     "summary": "GREENWICH, Conn., November 09, 2026--QXO, Inc. (\"QXO\" or the \"Company\") (NYSE: QXO) today announced the following preliminary financial information for the third quarter of 2026. The Company expects...",
+     "datetime": 1794222000,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=52cc490db3a68049cfaa5a46a658d98105fb92faedb633c02ddc6dce55525b4f"
+    },
+    {
+     "headline": "Undercovered Dozen: NNN REIT, Weyerhaeuser, Vicor, And More",
+     "summary": "",
+     "datetime": 1793966581,
+     "source": "SeekingAlpha",
+     "url": "https://finnhub.io/api/news?id=f2b44ba09fc88cccd67650cb4b7191e82d11e3adc58f24f1ec1908025e0331fd"
+    },
+    {
+     "headline": "Alger Concentrated Equity ETF Q3 2026 Portfolio Update",
+     "summary": "Explore Q3 2026 insights for the Alger Concentrated Equity ETF, highlighting top contributors and detractors. Read the full review now.",
+     "datetime": 1793929200,
+     "source": "SeekingAlpha",
+     "url": "https://finnhub.io/api/news?id=20de5132ce256af84fbe0c4891ecee3b23e8fa84164c2f77f069cbfe0ed39484"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "QXO",
+   "expiry": "2026-11-27",
+   "days_to_expiry": 17,
+   "atm_iv_pct": 69.3,
+   "iv_chain_percentile": 2,
+   "skew_points": -0.8,
+   "put_call_ratio": 0.49,
+   "total_put_oi": 915,
+   "total_call_oi": 1861
+  },
+  "get_options_positioning": {
+   "ticker": "QXO",
+   "spot": 13.78,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-27",
+   "primary_days_to_expiry": 17,
+   "max_pain_strike": 10.5,
+   "resistance_walls": [
+    {
+     "strike": 15.0,
+     "open_interest": 742
+    },
+    {
+     "strike": 14.0,
+     "open_interest": 271
+    },
+    {
+     "strike": 13.0,
+     "open_interest": 203
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 10.0,
+     "open_interest": 262
+    },
+    {
+     "strike": 9.0,
+     "open_interest": 245
+    },
+    {
+     "strike": 8.5,
+     "open_interest": 190
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 17,
+     "atm_iv_pct": 69.3
+    },
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 24,
+     "atm_iv_pct": 67.0
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 14.5,
+     "volume": 118,
+     "open_interest": 11,
+     "vol_oi_ratio": 10.7,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 1153,
+   "otm_put_oi": 899,
+   "positioning_lean_score": 0.12,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "QXO",
+   "as_of": "2026-11-10",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-16",
+     "days_ago": 25,
+     "firm": "Wells Fargo",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 16.0,
+     "price_target_to": 15.0,
+     "is_rating_change": false,
+     "description": "Wells Fargo maintained its Overweight rating on QXO and cut its price target from $16.0 to $15.0"
+    },
+    {
+     "date": "2026-10-13",
+     "days_ago": 28,
+     "firm": "Wells Fargo",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 18.0,
+     "price_target_to": 16.0,
+     "is_rating_change": false,
+     "description": "Wells Fargo maintained its Overweight rating on QXO and cut its price target from $18.0 to $16.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.79,
+    "verdict": "leaning bullish",
+    "analysts": 19,
+    "counts": {
+     "strongBuy": 4,
+     "buy": 15,
+     "hold": 0,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.78 to 1.79)"
+   },
+   "price_target": {
+    "mean": 23.89,
+    "median": 21.0,
+    "high": 50.0,
+    "low": 14.0,
+    "current_price": 13.78,
+    "dispersion_pct": 150.7,
+    "upside_vs_mean_pct": 73.4,
+    "upside_vs_median_pct": 52.4
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "QXO",
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "comparison": {
+    "2w": {
+     "stock_change_pct": 31.49,
+     "sector_etf_change_pct": 1.16,
+     "relative_to_sector_pct": 30.33
+    },
+    "1d": {
+     "stock_change_pct": 19.2,
+     "sector_etf_change_pct": 3.82,
+     "relative_to_sector_pct": 15.38
+    },
+    "1w": {
+     "stock_change_pct": 17.98,
+     "sector_etf_change_pct": -0.48,
+     "relative_to_sector_pct": 18.46
+    },
+    "1y": {
+     "stock_change_pct": -14.62,
+     "sector_etf_change_pct": 11.95,
+     "relative_to_sector_pct": -26.57
+    },
+    "1mo": {
+     "stock_change_pct": 27.47,
+     "sector_etf_change_pct": -0.21,
+     "relative_to_sector_pct": 27.68
+    },
+    "ytd": {
+     "stock_change_pct": -30.12,
+     "sector_etf_change_pct": 7.76,
+     "relative_to_sector_pct": -37.88
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-09",
+    "realtime_end": "2026-11-09",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9614,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-09",
+      "realtime_end": "2026-11-09",
+      "date": "2026-11-06",
+      "value": "25.64"
+     },
+     {
+      "realtime_start": "2026-11-09",
+      "realtime_end": "2026-11-09",
+      "date": "2026-11-05",
+      "value": "28.18"
+     },
+     {
+      "realtime_start": "2026-11-09",
+      "realtime_end": "2026-11-09",
+      "date": "2026-11-04",
+      "value": "16.61"
+     },
+     {
+      "realtime_start": "2026-11-09",
+      "realtime_end": "2026-11-09",
+      "date": "2026-11-03",
+      "value": "20.83"
+     },
+     {
+      "realtime_start": "2026-11-09",
+      "realtime_end": "2026-11-09",
+      "date": "2026-11-02",
+      "value": "21.15"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "QXO",
+   "as_of": "2026-11-10",
+   "events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-12",
+     "description": "QXO quarterly earnings scheduled (after the close)",
+     "source": "yfinance",
+     "days_until": 2,
+     "eps_estimate": 0.14,
+     "hour": "amc"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-11-17",
+     "description": "QXO Q3 2026 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 7,
+     "eps_estimate": 0.136
+    },
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 29,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub+yfinance"
+  }
+ }
+}

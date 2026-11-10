@@ -1,0 +1,401 @@
+{
+ "schema": 1,
+ "ticker": "LLY",
+ "trading_day": "2026-11-09",
+ "captured_at": "2026-11-10T03:45:18+00:00",
+ "selected_as": "move",
+ "change_pct": 4.28,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "today: 4.28% \u2014 elevated for this stock (about 1.65x its normal move for that span, expected ~2.60%)",
+   "the past 2 weeks: 10.38% \u2014 typical relative to this stock's own typical volatility (expected ~8.23%, 1.26x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past month: 19.73% \u2014 elevated for this stock (about 1.65x its normal move for that span, expected ~11.92%)",
+   "the past year: 51.57% \u2014 typical relative to this stock's own typical volatility (expected ~41.30%, 1.25x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "LLY",
+   "price": 1411.95,
+   "prev_close": 1354,
+   "change_pct": 4.28,
+   "realized_vol_annualized_pct": 41.3,
+   "changes_pct": {
+    "1d": 4.28,
+    "1w": 0.07,
+    "2w": 10.38,
+    "1mo": 19.73,
+    "1y": 51.57,
+    "ytd": 31.32
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "today: 4.28% \u2014 elevated for this stock (about 1.65x its normal move for that span, expected ~2.60%)",
+     "the past 2 weeks: 10.38% \u2014 typical relative to this stock's own typical volatility (expected ~8.23%, 1.26x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past month: 19.73% \u2014 elevated for this stock (about 1.65x its normal move for that span, expected ~11.92%)",
+     "the past year: 51.57% \u2014 typical relative to this stock's own typical volatility (expected ~41.30%, 1.25x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "LLY",
+   "headlines": [
+    {
+     "headline": "Hims & Hers Stock Extends Losses After Earnings Stumble",
+     "summary": "Analysts expect subscriber numbers to rise for the telehealth provider in the third quarter.",
+     "datetime": 1794260220,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=ce1081d2544d797fe06c83995af959f2b3054006f0d476d9bb8d04d744624e5b"
+    },
+    {
+     "headline": "Hims' Roller Coaster Ride Continues With Surprise Losses, Light Sales And A Guidance Cut",
+     "summary": "Hims stock took a hit late Monday after the company reported surprise losses and issued a light guide for the year.",
+     "datetime": 1794259072,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=5022074314dcc21415f78babea78e9ee17a0ae8f76f674ea399c756a2541851c"
+    },
+    {
+     "headline": "Hims & Hers Stock Is Falling Ahead of Earnings. What to Expect.",
+     "summary": "Analysts expect subscriber numbers to rise for the telehealth provider in the third quarter.",
+     "datetime": 1794257400,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=2c5a69669a85cafc87d4c7a8b2e97d0772eba21db323ec792be41aa476537ffe"
+    },
+    {
+     "headline": "Jim Cramer Says Eli Lilly \u201cIs a $2 Trillion Stock\u201d as It Nears Tesla\u2019s Market Cap",
+     "summary": "Key TakeawaysEli Lilly closed Friday worth $1. 27 trillion, about 10% short of Tesla\u2019s value, after a week when Tesla and the AI trade sold off.",
+     "datetime": 1794253869,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=9454d4fa9876d4168f5de927e25e04ff4db19d0205e6859fee376d34b43f71d1"
+    },
+    {
+     "headline": "Eli Lilly\u2019s Weight-Loss Pill Shows Sleep Apnea Benefits. Can It Gain on Novo?",
+     "summary": "Lilly plans to seek FDA approval for Foundayo to treat sleep apnea, potentially giving its weight-loss pill an edge over Novo Nordisk\u2019s oral Wegovy.",
+     "datetime": 1794252420,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=a89e62a68377bcf9eafbbef6d0578b2a49d05b4c0a8d8e164366177660b43452"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "LLY",
+   "expiry": "2026-11-27",
+   "days_to_expiry": 17,
+   "atm_iv_pct": 36.2,
+   "iv_chain_percentile": 25,
+   "skew_points": -1.4,
+   "put_call_ratio": 1.98,
+   "total_put_oi": 5514,
+   "total_call_oi": 2781
+  },
+  "get_options_positioning": {
+   "ticker": "LLY",
+   "spot": 1411.95,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-27",
+   "primary_days_to_expiry": 17,
+   "max_pain_strike": 1320.0,
+   "resistance_walls": [
+    {
+     "strike": 1420.0,
+     "open_interest": 634
+    },
+    {
+     "strike": 1440.0,
+     "open_interest": 305
+    },
+    {
+     "strike": 1400.0,
+     "open_interest": 219
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 640.0,
+     "open_interest": 428
+    },
+    {
+     "strike": 650.0,
+     "open_interest": 423
+    },
+    {
+     "strike": 660.0,
+     "open_interest": 299
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 17,
+     "atm_iv_pct": 36.2
+    },
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 24,
+     "atm_iv_pct": 34.0
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 770.0,
+     "volume": 231,
+     "open_interest": 3,
+     "vol_oi_ratio": 77.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 750.0,
+     "volume": 258,
+     "open_interest": 4,
+     "vol_oi_ratio": 64.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 840.0,
+     "volume": 105,
+     "open_interest": 2,
+     "vol_oi_ratio": 52.5,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 1603,
+   "otm_put_oi": 5450,
+   "positioning_lean_score": -0.55,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "LLY",
+   "as_of": "2026-11-10",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-09",
+     "days_ago": 1,
+     "firm": "Jefferies",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 1610.0,
+     "price_target_to": 1700.0,
+     "is_rating_change": false,
+     "description": "Jefferies maintained its Buy rating on LLY and raised its price target from $1610.0 to $1700.0"
+    },
+    {
+     "date": "2026-11-02",
+     "days_ago": 8,
+     "firm": "Cantor Fitzgerald",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 1440.0,
+     "price_target_to": 1600.0,
+     "is_rating_change": false,
+     "description": "Cantor Fitzgerald maintained its Overweight rating on LLY and raised its price target from $1440.0 to $1600.0"
+    },
+    {
+     "date": "2026-10-31",
+     "days_ago": 10,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 1425.0,
+     "price_target_to": 1625.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Buy rating on LLY and raised its price target from $1425.0 to $1625.0"
+    },
+    {
+     "date": "2026-10-30",
+     "days_ago": 11,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 1500.0,
+     "price_target_to": 1650.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Overweight rating on LLY and raised its price target from $1500.0 to $1650.0"
+    },
+    {
+     "date": "2026-10-30",
+     "days_ago": 11,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 1600.0,
+     "price_target_to": 1650.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Buy rating on LLY and raised its price target from $1600.0 to $1650.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.06,
+    "verdict": "leaning bullish",
+    "analysts": 31,
+    "counts": {
+     "strongBuy": 6,
+     "buy": 20,
+     "hold": 3,
+     "sell": 1,
+     "strongSell": 1
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.1 to 2.06)"
+   },
+   "price_target": {
+    "mean": 1453.4,
+    "median": 1557.0,
+    "high": 1690.0,
+    "low": 940.0,
+    "current_price": 1411.95,
+    "dispersion_pct": 51.6,
+    "upside_vs_mean_pct": 2.9,
+    "upside_vs_median_pct": 10.3
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "LLY",
+   "sector": "Healthcare",
+   "sector_etf": "XLV",
+   "comparison": {
+    "2w": {
+     "stock_change_pct": 10.38,
+     "sector_etf_change_pct": 5.05,
+     "relative_to_sector_pct": 5.33
+    },
+    "1d": {
+     "stock_change_pct": 4.28,
+     "sector_etf_change_pct": 1.91,
+     "relative_to_sector_pct": 2.37
+    },
+    "1w": {
+     "stock_change_pct": 0.07,
+     "sector_etf_change_pct": 2.02,
+     "relative_to_sector_pct": -1.95
+    },
+    "1y": {
+     "stock_change_pct": 51.57,
+     "sector_etf_change_pct": 31.2,
+     "relative_to_sector_pct": 20.37
+    },
+    "1mo": {
+     "stock_change_pct": 19.73,
+     "sector_etf_change_pct": 10.26,
+     "relative_to_sector_pct": 9.47
+    },
+    "ytd": {
+     "stock_change_pct": 31.32,
+     "sector_etf_change_pct": 22.61,
+     "relative_to_sector_pct": 8.71
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-09",
+    "realtime_end": "2026-11-09",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9614,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-09",
+      "realtime_end": "2026-11-09",
+      "date": "2026-11-06",
+      "value": "25.64"
+     },
+     {
+      "realtime_start": "2026-11-09",
+      "realtime_end": "2026-11-09",
+      "date": "2026-11-05",
+      "value": "28.18"
+     },
+     {
+      "realtime_start": "2026-11-09",
+      "realtime_end": "2026-11-09",
+      "date": "2026-11-04",
+      "value": "16.61"
+     },
+     {
+      "realtime_start": "2026-11-09",
+      "realtime_end": "2026-11-09",
+      "date": "2026-11-03",
+      "value": "20.83"
+     },
+     {
+      "realtime_start": "2026-11-09",
+      "realtime_end": "2026-11-09",
+      "date": "2026-11-02",
+      "value": "21.15"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "LLY",
+   "as_of": "2026-11-10",
+   "events": [
+    {
+     "type": "ex_dividend",
+     "date": "2026-11-13",
+     "source": "yfinance",
+     "description": "LLY goes ex-dividend \u2014 expect a mechanical price drop of roughly the dividend",
+     "days_until": 3
+    },
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 29,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-02",
+     "description": "LLY Q4 2026 earnings scheduled (before the open)",
+     "source": "finnhub",
+     "days_until": 84,
+     "eps_estimate": 11.2865,
+     "hour": "bmo"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-29",
+     "description": "LLY reported Q3 2026 earnings before the open \u2014 EPS 7.48 vs 6.3219 expected (beat, +18.3%)",
+     "source": "finnhub",
+     "days_ago": 12,
+     "eps_actual": 7.48,
+     "eps_estimate": 6.3219,
+     "surprise": "beat",
+     "surprise_pct": 18.3,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

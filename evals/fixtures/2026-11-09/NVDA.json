@@ -1,0 +1,385 @@
+{
+ "schema": 1,
+ "ticker": "NVDA",
+ "trading_day": "2026-11-09",
+ "captured_at": "2026-11-10T03:45:58+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -4.27,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: -4.27% \u2014 typical relative to this stock's own typical volatility (expected ~3.02%, 1.41x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "this week: -11.58% \u2014 elevated for this stock (about 1.71x its normal move for that span, expected ~6.76%)",
+   "the past 2 weeks: -17.28% \u2014 elevated relative to this stock's own typical volatility (expected ~9.56%, 1.81x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past month: -22.07% \u2014 elevated relative to this stock's own typical volatility (expected ~13.86%, 1.59x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "NVDA",
+   "price": 178.67,
+   "prev_close": 186.64,
+   "change_pct": -4.27,
+   "realized_vol_annualized_pct": 48.0,
+   "changes_pct": {
+    "1d": -4.27,
+    "1w": -11.58,
+    "2w": -17.28,
+    "1mo": -22.07,
+    "1y": -4.78,
+    "ytd": -5.17
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: -4.27% \u2014 typical relative to this stock's own typical volatility (expected ~3.02%, 1.41x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "this week: -11.58% \u2014 elevated for this stock (about 1.71x its normal move for that span, expected ~6.76%)",
+     "the past 2 weeks: -17.28% \u2014 elevated relative to this stock's own typical volatility (expected ~9.56%, 1.81x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past month: -22.07% \u2014 elevated relative to this stock's own typical volatility (expected ~13.86%, 1.59x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "NVDA",
+   "headlines": [
+    {
+     "headline": "Is Wall Street Turning on AI?",
+     "summary": "Alphabet\u2019s sharp sell-off raises a big question: Are investors more concerned about AI spending than AI growth?",
+     "datetime": 1794275581,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=823ba12888a38b1e7a551dbfc81ac687d11ea4e328049a7144f5e5bb3b1d80d2"
+    },
+    {
+     "headline": "We Are Witnessing the Stock Market Do Something for Only the 2nd Time in 136 Years, and History Is Clear What Comes Next for Stocks",
+     "summary": "After over four years of strong returns, the stock market looks pricey based on some closely watched metrics.",
+     "datetime": 1794275400,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=e17942e210b3e0a0539323136a367844b4c8ae35bb03a7c02fc30b5abca383a1"
+    },
+    {
+     "headline": "Why Lincoln Educational Stock Surged Today",
+     "summary": "Students are demanding a higher return on their investments.",
+     "datetime": 1794273613,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=df1ffa3770f96a6f013360dec55b81ee2b83b178defc1eb43db2dc3c57187afe"
+    },
+    {
+     "headline": "The AI Trade Looks Like It's Falling Apart. AMD's Earnings Delivered a Reality Check.",
+     "summary": "AMD is still growing and is optimistic about the fourth quarter, despite recent market noise about the AI trade.",
+     "datetime": 1794273600,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=07fdb88990dd582c711543dad5ad060ce669a3c3240c5d7e783d370648ac943a"
+    },
+    {
+     "headline": "What Does Nvidia (NVDA) Need To Prove As AI Rivalry And CEO Scrutiny Build?",
+     "summary": "Nvidia (NasdaqGS:NVDA) faces fresh rivalry as Google announces new advanced tensor processing units for AI workloads in early November 2026. Google's latest TPUs are described as tailored for...",
+     "datetime": 1794273397,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=f55af9c53b5fac3d7a8783f85feec5091ffabcbe8fe51e63fb640dbfa6422074"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "NVDA",
+   "expiry": "2026-11-27",
+   "days_to_expiry": 17,
+   "atm_iv_pct": 64.6,
+   "iv_chain_percentile": 4,
+   "skew_points": 2.7,
+   "put_call_ratio": 0.69,
+   "total_put_oi": 69540,
+   "total_call_oi": 100080
+  },
+  "get_options_positioning": {
+   "ticker": "NVDA",
+   "spot": 178.67,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-27",
+   "primary_days_to_expiry": 17,
+   "max_pain_strike": 205.0,
+   "resistance_walls": [
+    {
+     "strike": 230.0,
+     "open_interest": 18791
+    },
+    {
+     "strike": 235.0,
+     "open_interest": 9277
+    },
+    {
+     "strike": 240.0,
+     "open_interest": 7944
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 185.0,
+     "open_interest": 16111
+    },
+    {
+     "strike": 200.0,
+     "open_interest": 7873
+    },
+    {
+     "strike": 210.0,
+     "open_interest": 5956
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 17,
+     "atm_iv_pct": 64.6
+    },
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 24,
+     "atm_iv_pct": 59.1
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 120.0,
+     "volume": 205,
+     "open_interest": 1,
+     "vol_oi_ratio": 205.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 145.0,
+     "volume": 9986,
+     "open_interest": 490,
+     "vol_oi_ratio": 20.4,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 175.0,
+     "volume": 2449,
+     "open_interest": 169,
+     "vol_oi_ratio": 14.5,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 155.0,
+     "volume": 3953,
+     "open_interest": 884,
+     "vol_oi_ratio": 4.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 280.0,
+     "volume": 965,
+     "open_interest": 229,
+     "vol_oi_ratio": 4.2,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 99182,
+   "otm_put_oi": 14479,
+   "positioning_lean_score": 0.75,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "NVDA",
+   "as_of": "2026-11-10",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-09",
+     "days_ago": 1,
+     "firm": "RBC Capital",
+     "action": "reiterated",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 330.0,
+     "price_target_to": 330.0,
+     "is_rating_change": false,
+     "description": "RBC Capital reiterated its Outperform rating on NVDA with a $330.0 price target"
+    },
+    {
+     "date": "2026-11-09",
+     "days_ago": 1,
+     "firm": "Goldman Sachs",
+     "action": "reiterated",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 300.0,
+     "price_target_to": 300.0,
+     "is_rating_change": false,
+     "description": "Goldman Sachs reiterated its Buy rating on NVDA with a $300.0 price target"
+    },
+    {
+     "date": "2026-11-02",
+     "days_ago": 8,
+     "firm": "Melius Research",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 420.0,
+     "price_target_to": 315.0,
+     "is_rating_change": false,
+     "description": "Melius Research maintained its Buy rating on NVDA and cut its price target from $420.0 to $315.0"
+    },
+    {
+     "date": "2026-10-22",
+     "days_ago": 19,
+     "firm": "Needham",
+     "action": "reiterated",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 300.0,
+     "price_target_to": 300.0,
+     "is_rating_change": false,
+     "description": "Needham reiterated its Buy rating on NVDA with a $300.0 price target"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.92,
+    "verdict": "leaning bullish",
+    "analysts": 62,
+    "counts": {
+     "strongBuy": 10,
+     "buy": 48,
+     "hold": 3,
+     "sell": 1,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.92 to 1.92)"
+   },
+   "price_target": {
+    "mean": 326.92,
+    "median": 315.0,
+    "high": 515.0,
+    "low": 180.0,
+    "current_price": 178.67,
+    "dispersion_pct": 102.5,
+    "upside_vs_mean_pct": 83.0,
+    "upside_vs_median_pct": 76.3
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "NVDA",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "2w": {
+     "stock_change_pct": -17.28,
+     "sector_etf_change_pct": -8.29,
+     "relative_to_sector_pct": -8.99
+    },
+    "1d": {
+     "stock_change_pct": -4.27,
+     "sector_etf_change_pct": 3.73,
+     "relative_to_sector_pct": -8.0
+    },
+    "1w": {
+     "stock_change_pct": -11.58,
+     "sector_etf_change_pct": -1.92,
+     "relative_to_sector_pct": -9.66
+    },
+    "1y": {
+     "stock_change_pct": -4.78,
+     "sector_etf_change_pct": 18.8,
+     "relative_to_sector_pct": -23.58
+    },
+    "1mo": {
+     "stock_change_pct": -22.07,
+     "sector_etf_change_pct": -14.04,
+     "relative_to_sector_pct": -8.03
+    },
+    "ytd": {
+     "stock_change_pct": -5.17,
+     "sector_etf_change_pct": 18.85,
+     "relative_to_sector_pct": -24.02
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-09",
+    "realtime_end": "2026-11-09",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9614,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-09",
+      "realtime_end": "2026-11-09",
+      "date": "2026-11-06",
+      "value": "25.64"
+     },
+     {
+      "realtime_start": "2026-11-09",
+      "realtime_end": "2026-11-09",
+      "date": "2026-11-05",
+      "value": "28.18"
+     },
+     {
+      "realtime_start": "2026-11-09",
+      "realtime_end": "2026-11-09",
+      "date": "2026-11-04",
+      "value": "16.61"
+     },
+     {
+      "realtime_start": "2026-11-09",
+      "realtime_end": "2026-11-09",
+      "date": "2026-11-03",
+      "value": "20.83"
+     },
+     {
+      "realtime_start": "2026-11-09",
+      "realtime_end": "2026-11-09",
+      "date": "2026-11-02",
+      "value": "21.15"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "NVDA",
+   "as_of": "2026-11-10",
+   "events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-17",
+     "description": "NVDA Q3 2027 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 7,
+     "eps_estimate": 2.5263,
+     "hour": "amc"
+    },
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 29,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}

@@ -1,0 +1,370 @@
+{
+ "schema": 1,
+ "ticker": "GS",
+ "trading_day": "2026-11-09",
+ "captured_at": "2026-11-10T03:45:03+00:00",
+ "selected_as": "move",
+ "change_pct": 4.67,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "today: 4.67% \u2014 elevated for this stock (about 1.89x its normal move for that span, expected ~2.47%)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "GS",
+   "price": 906.22,
+   "prev_close": 865.82,
+   "change_pct": 4.67,
+   "realized_vol_annualized_pct": 39.2,
+   "changes_pct": {
+    "1d": 4.67,
+    "1w": 0.83,
+    "2w": 1.45,
+    "1mo": 1.22,
+    "1y": 17.33,
+    "ytd": 0.56
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "today: 4.67% \u2014 elevated for this stock (about 1.89x its normal move for that span, expected ~2.47%)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "GS",
+   "headlines": [
+    {
+     "headline": "AI Could Force 11 Million Americans to Change Careers. At 60, Five More Years Earning $70,000 Could Replace Five Zero Years in Social Security",
+     "summary": "A 60-year-old loses his job to automation and faces a choice between retiring early and retraining. Hidden in his Social Security record are five blank years, and one common claiming mistake could...",
+     "datetime": 1794270748,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=c9d8547c62730aae5295a0cd5c156688130d8993d16d1d0a374385928324fe21"
+    },
+    {
+     "headline": "Goldman Sachs sees something Wall Street may be missing on Nvidia",
+     "summary": "Nvidia\u2019s recent slide has put its growth story under fresh scrutiny, with several developments leaving investors looking for answers.",
+     "datetime": 1794268800,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=122223994a207338d6cb9bf057458cfd628c12b4dd8020e296e27014ddadcd1a"
+    },
+    {
+     "headline": "Cloudflare Tumbled Into Earnings: Why Goldman Sachs Sees 56% Upside",
+     "summary": "Key TakeawaysCloudflare fell 32% from its Oct. 9 record close to its Nov.",
+     "datetime": 1794259282,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=e0c1bc56ef951929e06b86f2f8358a9fcbb2a8a18172394d93614be2ee62209a"
+    },
+    {
+     "headline": "Dow Jones Gainers Today: Caterpillar, Cisco and Goldman Sachs Lead US Session",
+     "summary": "Dow Jones top gainers in today's US session were led by Caterpillar (+6.72%), Cisco (+5.18%) and Goldman Sachs (+5.17%).",
+     "datetime": 1794255072,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=92116e6e259f79c5b099611cc06d2df36603031623883ef3b3e708a29e5fa995"
+    },
+    {
+     "headline": "Goldman CEO says AI infrastructure demand remains strong",
+     "summary": "Investing.com -- Goldman Sachs Group CEO David Solomon said Monday that financing demand for artificial intelligence infrastructure remains strong despite recent market volatility as investors...",
+     "datetime": 1794253433,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=3c053c85d6dfcfcbfd104eede9d84d7710add7cfdacab955da2c42991557a5d7"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "GS",
+   "expiry": "2026-11-27",
+   "days_to_expiry": 17,
+   "atm_iv_pct": 35.8,
+   "iv_chain_percentile": 7,
+   "skew_points": 3.4,
+   "put_call_ratio": 1.16,
+   "total_put_oi": 2812,
+   "total_call_oi": 2414
+  },
+  "get_options_positioning": {
+   "ticker": "GS",
+   "spot": 906.22,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-27",
+   "primary_days_to_expiry": 17,
+   "max_pain_strike": 885.0,
+   "resistance_walls": [
+    {
+     "strike": 955.0,
+     "open_interest": 160
+    },
+    {
+     "strike": 1000.0,
+     "open_interest": 158
+    },
+    {
+     "strike": 950.0,
+     "open_interest": 108
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 750.0,
+     "open_interest": 185
+    },
+    {
+     "strike": 860.0,
+     "open_interest": 174
+    },
+    {
+     "strike": 870.0,
+     "open_interest": 130
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 17,
+     "atm_iv_pct": 35.8
+    },
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 24,
+     "atm_iv_pct": 37.3
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [],
+   "otm_call_oi": 1741,
+   "otm_put_oi": 2538,
+   "positioning_lean_score": -0.19,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "GS",
+   "as_of": "2026-11-10",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-02",
+     "days_ago": 8,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 1010.0,
+     "price_target_to": 1000.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Neutral rating on GS and cut its price target from $1010.0 to $1000.0"
+    },
+    {
+     "date": "2026-10-23",
+     "days_ago": 18,
+     "firm": "Freedom Broker",
+     "action": "upgrade",
+     "from_grade": "Hold",
+     "to_grade": "Buy",
+     "price_target_from": 1200.0,
+     "price_target_to": 1100.0,
+     "is_rating_change": true,
+     "description": "Freedom Broker upgraded GS from Hold to Buy and cut its price target from $1200.0 to $1100.0"
+    },
+    {
+     "date": "2026-10-19",
+     "days_ago": 22,
+     "firm": "BMO Capital",
+     "action": "maintained",
+     "from_grade": "Market Perform",
+     "to_grade": "Market Perform",
+     "price_target_from": 970.0,
+     "price_target_to": 950.0,
+     "is_rating_change": false,
+     "description": "BMO Capital maintained its Market Perform rating on GS and cut its price target from $970.0 to $950.0"
+    },
+    {
+     "date": "2026-10-16",
+     "days_ago": 25,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 955.0,
+     "price_target_to": 970.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Neutral rating on GS and raised its price target from $955.0 to $970.0"
+    },
+    {
+     "date": "2026-10-14",
+     "days_ago": 27,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 1050.0,
+     "price_target_to": 1000.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Neutral rating on GS and cut its price target from $1050.0 to $1000.0"
+    }
+   ],
+   "consensus": {
+    "rating": "hold",
+    "score": 2.73,
+    "verdict": "neutral",
+    "analysts": 26,
+    "counts": {
+     "strongBuy": 1,
+     "buy": 8,
+     "hold": 15,
+     "sell": 1,
+     "strongSell": 1
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.8 to 2.73; bearish ratings 2 to 2)"
+   },
+   "price_target": {
+    "mean": 1030.67,
+    "median": 1000.0,
+    "high": 1250.0,
+    "low": 730.0,
+    "current_price": 906.22,
+    "dispersion_pct": 50.5,
+    "upside_vs_mean_pct": 13.7,
+    "upside_vs_median_pct": 10.3
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "GS",
+   "sector": "Financial Services",
+   "sector_etf": "XLF",
+   "comparison": {
+    "2w": {
+     "stock_change_pct": 1.45,
+     "sector_etf_change_pct": 3.52,
+     "relative_to_sector_pct": -2.07
+    },
+    "1d": {
+     "stock_change_pct": 4.67,
+     "sector_etf_change_pct": 1.45,
+     "relative_to_sector_pct": 3.22
+    },
+    "1w": {
+     "stock_change_pct": 0.83,
+     "sector_etf_change_pct": 0.75,
+     "relative_to_sector_pct": 0.08
+    },
+    "1y": {
+     "stock_change_pct": 17.33,
+     "sector_etf_change_pct": 12.39,
+     "relative_to_sector_pct": 4.94
+    },
+    "1mo": {
+     "stock_change_pct": 1.22,
+     "sector_etf_change_pct": 5.96,
+     "relative_to_sector_pct": -4.74
+    },
+    "ytd": {
+     "stock_change_pct": 0.56,
+     "sector_etf_change_pct": 6.86,
+     "relative_to_sector_pct": -6.3
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-09",
+    "realtime_end": "2026-11-09",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9614,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-09",
+      "realtime_end": "2026-11-09",
+      "date": "2026-11-06",
+      "value": "25.64"
+     },
+     {
+      "realtime_start": "2026-11-09",
+      "realtime_end": "2026-11-09",
+      "date": "2026-11-05",
+      "value": "28.18"
+     },
+     {
+      "realtime_start": "2026-11-09",
+      "realtime_end": "2026-11-09",
+      "date": "2026-11-04",
+      "value": "16.61"
+     },
+     {
+      "realtime_start": "2026-11-09",
+      "realtime_end": "2026-11-09",
+      "date": "2026-11-03",
+      "value": "20.83"
+     },
+     {
+      "realtime_start": "2026-11-09",
+      "realtime_end": "2026-11-09",
+      "date": "2026-11-02",
+      "value": "21.15"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "GS",
+   "as_of": "2026-11-10",
+   "events": [
+    {
+     "type": "ex_dividend",
+     "date": "2026-12-02",
+     "source": "yfinance",
+     "description": "GS goes ex-dividend \u2014 expect a mechanical price drop of roughly the dividend",
+     "days_until": 22
+    },
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 29,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-19",
+     "description": "GS quarterly earnings scheduled (before the open)",
+     "source": "yfinance",
+     "days_until": 70,
+     "eps_estimate": 15.78,
+     "hour": "bmo"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-13",
+     "description": "GS reported Q3 2026 earnings before the open \u2014 EPS 17.01 vs 13.4156 expected (beat, +26.8%)",
+     "source": "finnhub",
+     "days_ago": 28,
+     "eps_actual": 17.01,
+     "eps_estimate": 13.4156,
+     "surprise": "beat",
+     "surprise_pct": 26.8,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub+yfinance"
+  }
+ }
+}
