@@ -833,3 +833,35 @@ def test_partial_json_returns_none_when_the_field_is_absent():
 
 def test_partial_json_empty_value():
     assert _extract('{"summary": "') == ""
+
+
+# ── The answer is held to the submit_analysis contract in code ───────────────
+# Claude doesn't validate a tool call it streams. These are Haiku 5.5's real violations from
+# the 2026-11-09 eval: only the first hypothesis ranked, and more than 4 tiles.
+
+
+async def test_hypotheses_are_ranked_by_the_order_written(env):
+    unranked = [{k: v for k, v in h.items() if k != "rank"} for h in SUBMIT_INPUT["hypotheses"]]
+    unranked[0]["rank"] = 1  # the eval pattern: [1, None]
+    env.responses.append(fake_response([tool_use("submit_analysis", {
+        **SUBMIT_INPUT,
+        "hypotheses": [*unranked, "not-a-hypothesis", {"hypothesis": "Third", "rank": 7}],
+    })]))
+
+    result = await orchestrator.run_explainer("AAPL", "")
+
+    assert [(h["rank"], h["hypothesis"]) for h in result["hypotheses"]] == [
+        (1, "Supply-chain delay"), (2, "Broad tech selloff"), (3, "Third"),
+    ]
+
+
+async def test_tiles_are_capped_at_four_in_the_order_written(env):
+    tiles = [{"agent": a, "title": a, "summary": f"{a} summary", "reasoning": "r"}
+             for a in ("price", "news", "sector", "macro", "analyst", "options")]
+    env.responses.append(fake_response([tool_use("submit_analysis", {
+        **SUBMIT_INPUT, "tiles": ["malformed", *tiles],
+    })]))
+
+    result = await orchestrator.run_explainer("AAPL", "")
+
+    assert [t["agent"] for t in result["tiles"]] == ["price", "news", "sector", "macro"]

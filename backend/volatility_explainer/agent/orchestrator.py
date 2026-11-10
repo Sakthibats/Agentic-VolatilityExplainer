@@ -274,6 +274,30 @@ def _partial_json_string(buffer: str, field: str) -> str | None:
     return ""
 
 
+# submit_analysis's caps (tool_schemas.py: tiles maxItems, hypotheses maxItems). Enforced here
+# as well because Claude doesn't validate a tool call it streams: Haiku 5.5 sent 5-6 tiles on
+# 23% of eval runs.
+_MAX_TILES = 4
+_MAX_HYPOTHESES = 3
+
+
+def _normalize_answer(final_input: dict) -> tuple[list[dict], list[dict]]:
+    """submit_analysis's tiles and hypotheses, held to the contract in plain code.
+
+    Malformed entries are dropped first, so they never take a slot. Then tiles and
+    hypotheses are capped in the order the model wrote them, and hypotheses are ranked by
+    that order: the model writes them most likely first, but Haiku 5.5 often numbers only the
+    first ([1, None, None] on 38% of eval runs). Position is the rank; the field is overwritten.
+    """
+    raw_tiles = final_input.get("tiles")
+    raw_hyps = final_input.get("hypotheses")
+    tiles = [t for t in (raw_tiles if isinstance(raw_tiles, list) else [])
+             if isinstance(t, dict) and t.get("summary")][:_MAX_TILES]
+    hyps = [h for h in (raw_hyps if isinstance(raw_hyps, list) else [])
+            if isinstance(h, dict) and h.get("hypothesis")][:_MAX_HYPOTHESES]
+    return tiles, [{**h, "rank": i} for i, h in enumerate(hyps, start=1)]
+
+
 def _attach_news_citations(tiles: list[dict], tool_data: dict) -> list[dict]:
     """Attach numbered {number, source, url} citations to the news tile, sourced directly
     from get_news's headlines — not from the LLM — so links are always real, never
@@ -598,7 +622,8 @@ async def run_explainer(
     if not isinstance(explanation, str):
         explanation = ""
     summary, citations, removed = _resolve_citations(explanation, tool_data)
-    tiles = _attach_news_citations(final_input.get("tiles", []), tool_data)
+    tiles, hypotheses = _normalize_answer(final_input)
+    tiles = _attach_news_citations(tiles, tool_data)
 
     # Measured, never enforced: the flags describe the write-up, they don't change it.
     quality_flags: list[str] = []
@@ -619,7 +644,7 @@ async def run_explainer(
         "summary": summary,
         "citations": citations,
         "tiles": tiles,
-        "hypotheses": final_input.get("hypotheses", []),
+        "hypotheses": hypotheses,
         "status": "complete" if final_kind == "analysis" else "incomplete",
         "cache_hits": cache_hits,
         "quality_flags": quality_flags,

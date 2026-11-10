@@ -20,9 +20,32 @@ from typing import Literal
 
 from pydantic import BaseModel, Field
 
+LLMProviderName = Literal["anthropic", "openai"]
+
 
 class AnalyzeRequest(BaseModel):
     query: str = Field(min_length=1, max_length=500, description="Free-form question or ticker")
+    # Which vendor runs the investigation. Only the vendor: each one's model is server config
+    # (ANTHROPIC_MODEL / OPENAI_MODEL). Omitted → the server default, LLM_PROVIDER.
+    provider: LLMProviderName | None = None
+
+
+class ModelOption(BaseModel):
+    """One vendor the user can pick, as this server is configured to run it."""
+
+    provider: LLMProviderName
+    vendor: str  # display name of the company: "OpenAI" | "Anthropic"
+    model: str  # the model ID this server runs for that vendor
+    # OpenAI reasoning effort ("low", ...). None: no separate reasoning step (Claude runs with
+    # extended thinking off, which forced tool calls require).
+    reasoning_effort: str | None = None
+    available: bool  # False: no API key on this server, so a run would be refused
+
+
+class ModelCatalog(BaseModel):
+    """GET /v1/models — what the model picker offers, in display order."""
+
+    options: list[ModelOption]
 
 
 class Citation(BaseModel):

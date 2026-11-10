@@ -21,6 +21,7 @@ from volatility_explainer.api.schemas import (
     Guardrail,
     Health,
     InvestigationStarted,
+    ModelCatalog,
     Overview,
     PriceHistory,
     PricePoint,
@@ -51,7 +52,7 @@ def _session_id(header_value: str | None) -> str:
     return header_value or str(uuid.uuid4())
 
 
-async def _analyze_event_stream(raw_query: str, session_id: str):
+async def _analyze_event_stream(raw_query: str, session_id: str, provider: str | None = None):
     """Yield SSE events while the investigation runs as an independent task.
 
     The task is deliberately NOT tied to this generator's lifetime: if the client
@@ -65,6 +66,7 @@ async def _analyze_event_stream(raw_query: str, session_id: str):
         try:
             result = await service.analyze(
                 raw_query, session_id,
+                provider_name=provider,
                 on_step=lambda label: events.put_nowait(("step", Step(label=label))),
                 on_overview=lambda text: events.put_nowait(("overview", Overview(text=text))),
                 on_summary=lambda text: events.put_nowait(
@@ -105,8 +107,13 @@ async def analyze(
 ):
     session_id = _session_id(x_session_id)
     if stream:
-        return EventSourceResponse(_analyze_event_stream(body.query, session_id))
-    return await service.analyze(body.query, session_id)
+        return EventSourceResponse(_analyze_event_stream(body.query, session_id, body.provider))
+    return await service.analyze(body.query, session_id, provider_name=body.provider)
+
+
+@app.get("/v1/models", response_model=ModelCatalog)
+def models() -> ModelCatalog:
+    return service.model_catalog()
 
 
 @app.get("/v1/tickers/{ticker}/history", response_model=PriceHistory)

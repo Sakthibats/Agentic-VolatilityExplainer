@@ -209,6 +209,8 @@ def log_query_background(
     query: str,
     result: dict,
     elapsed_ms: float,
+    llm_provider: str | None = None,
+    llm_model: str | None = None,
 ) -> None:
     """Log one investigation run via the background worker so a slow/unavailable
     Supabase never adds latency to the user-facing analysis.
@@ -236,6 +238,10 @@ def log_query_background(
         # [] means checked and clean, None means there was no explanation to check.
         "quality_flags": result.get("quality_flags") if result.get("summary") else None,
         "elapsed_ms": round(elapsed_ms),
+        # Which model answered — users choose it per run. Needs the columns from
+        # docs/sql/query_log_llm_model.sql, run before deploying.
+        "llm_provider": llm_provider,
+        "llm_model": llm_model,
     }
 
     _ensure_worker()

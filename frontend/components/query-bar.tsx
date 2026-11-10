@@ -1,7 +1,8 @@
 "use client";
 
-import { ArrowRight, Search, Square } from "lucide-react";
+import { ArrowRight, Square } from "lucide-react";
 
+import { ModelPicker } from "@/components/model-picker";
 import { Button } from "@/components/ui/button";
 
 /* Controlled input: the page owns the query text so the example chips and the
@@ -34,12 +35,13 @@ export function QueryBar({
       }}
     >
       <div className="relative flex-1">
-        <Search className="absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+        {/* The model picker takes the search icon's place: the choice sits where it applies. */}
+        <ModelPicker disabled={busy} />
         <input
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder="Ticker, company, or a question"
-          className="h-12 w-full rounded-full border bg-card pl-10 pr-3 text-base shadow-sm outline-none ring-ring/40 transition-shadow placeholder:text-muted-foreground/70 focus:ring-2 sm:text-sm"
+          className="h-12 w-full rounded-full border bg-card pl-[4.5rem] pr-3 text-base shadow-sm outline-none ring-ring/40 transition-shadow placeholder:text-muted-foreground/70 focus:ring-2 sm:text-sm"
           disabled={busy}
           aria-label="Market question"
           enterKeyHint="search"

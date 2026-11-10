@@ -29,3 +29,15 @@ def test_a_clean_explanation_logs_an_empty_list_not_null(monkeypatch):
 def test_no_explanation_logs_null_flags(monkeypatch):
     assert _logged(monkeypatch, {"status": "error", "data": {}})["quality_flags"] is None
     assert _logged(monkeypatch, {"summary": "", "quality_flags": []})["quality_flags"] is None
+
+
+def test_the_model_that_answered_is_logged(monkeypatch):
+    queued: list[dict] = []
+    monkeypatch.setattr(supabase_logger, "_ensure_worker", lambda: None)
+    monkeypatch.setattr(supabase_logger._queue, "put_nowait", queued.append)
+    supabase_logger.log_query_background(
+        anonymous_id="anon", ticker="AAPL", query="", result={"summary": "Why."},
+        elapsed_ms=1.0, llm_provider="openai", llm_model="gpt-6-luna",
+    )
+
+    assert (queued[0]["llm_provider"], queued[0]["llm_model"]) == ("openai", "gpt-6-luna")

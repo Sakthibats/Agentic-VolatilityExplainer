@@ -10,6 +10,7 @@ import {
   type AnalysisResult,
   type TickerStats,
 } from "@/lib/api";
+import { getProvider } from "@/lib/model-choice";
 
 export type Phase = "idle" | "running" | "done" | "guardrail" | "error";
 
@@ -69,6 +70,7 @@ export function InvestigationProvider({ children }: { children: React.ReactNode 
 
       analyzeStream(
         raw,
+        getProvider(), // read at submit time: a run keeps the model it started with
         {
           onStarted: (t, sessionId) => {
             setFeedbackContext({ ticker: t || null, sessionId });

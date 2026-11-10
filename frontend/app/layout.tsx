@@ -39,7 +39,7 @@ export default function RootLayout({
           <FeedbackProvider>
           <InvestigationProvider>
           <header className="sticky top-0 z-10 border-b border-black/5 bg-background/75 backdrop-blur-md dark:border-white/5">
-            <div className="mx-auto flex h-16 max-w-5xl items-center gap-3 px-4">
+            <div className="mx-auto flex h-16 max-w-5xl items-center gap-2 px-4 sm:gap-3">
               <Link href="/" className="flex items-center gap-3">
                 <span className="gradient-tile flex size-9 items-center justify-center rounded-xl text-[11px] font-bold tracking-wide text-[#f5f8fc]">
                   AME
@@ -52,11 +52,11 @@ export default function RootLayout({
                     AI investigates why any stock or market moved
                   </span>
                 </span>
-                <span className="text-sm font-semibold tracking-tight sm:hidden">
+                <span className="hidden text-sm font-semibold tracking-tight min-[420px]:inline sm:hidden">
                   Agentic <span className="gradient-wordmark">ME</span>
                 </span>
               </Link>
-              <span className="rounded-full border border-primary/25 bg-accent px-2 py-0.5 text-[10px] font-semibold tracking-widest text-primary">
+              <span className="hidden rounded-full border border-primary/25 bg-accent px-2 py-0.5 text-[10px] sm:inline font-semibold tracking-widest text-primary">
                 BETA
               </span>
               <NavTabs />
@@ -97,7 +97,7 @@ export default function RootLayout({
                 <span>
                   © {new Date().getFullYear()}{" "}
                   Agentic Market Explainer · Data via Finnhub, yfinance &amp; FRED ·
-                  Analysis by Claude
+                  Analysis by OpenAI or Claude
                 </span>
                 <FeedbackLink />
               </div>
