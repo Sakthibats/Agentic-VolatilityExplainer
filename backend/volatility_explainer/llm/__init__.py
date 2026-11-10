@@ -25,14 +25,25 @@ def build_provider(
     raise ValueError(f"Unknown LLM provider {name!r}; expected one of {PROVIDERS}")
 
 
-def get_provider(settings: Any) -> LLMProvider:
-    """The provider and model that production is configured to use."""
-    name = getattr(settings, "llm_provider", "anthropic") or "anthropic"
+def _api_key(settings: Any, name: str) -> str | None:
+    return getattr(settings, f"{name}_api_key").get_secret_value() or None
+
+
+def is_configured(settings: Any, name: str) -> bool:
+    """Whether the server holds an API key for this vendor."""
+    return name in PROVIDERS and _api_key(settings, name) is not None
+
+
+def get_provider(settings: Any, name: str | None = None) -> LLMProvider:
+    """A provider for `name`, or for the server default (LLM_PROVIDER) when it's None.
+
+    The caller picks only the vendor; which model each vendor runs stays server config, so
+    a client can choose between the two configured models but never name its own.
+    """
+    name = name or getattr(settings, "llm_provider", "anthropic") or "anthropic"
     if name == "openai":
         return build_provider(
-            name, settings.openai_model, settings.openai_api_key.get_secret_value() or None,
+            name, settings.openai_model, _api_key(settings, name),
             reasoning_effort=settings.openai_reasoning_effort,
         )
-    return build_provider(
-        name, settings.anthropic_model, settings.anthropic_api_key.get_secret_value() or None
-    )
+    return build_provider(name, settings.anthropic_model, _api_key(settings, "anthropic"))

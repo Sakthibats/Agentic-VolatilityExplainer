@@ -14,7 +14,7 @@ Two independent caches:
   get_memoized_tool_data) sits in front of this tier under the same TTLs, so a
   deployment without Redis still avoids re-fetching every tool on every request.
 - final_answer: the fully synthesized response (summary/tiles/hypotheses), keyed by
-  ticker only. Only safe to use for the no-query "explain the recent price action"
+  ticker and LLM vendor, so a user who switches models gets that model's answer. Only safe to use for the no-query "explain the recent price action"
   default — that path is already generic by construction, so a cache hit there can
   skip the LLM call entirely without silently ignoring a user's actual question.
 """
@@ -109,8 +109,8 @@ def _get_client() -> Any:
         return _client
 
 
-def _final_answer_key(ticker: str) -> str:
-    return f"{_FINAL_ANSWER_PREFIX}:{ticker.upper()}"
+def _final_answer_key(ticker: str, provider: str) -> str:
+    return f"{_FINAL_ANSWER_PREFIX}:{provider}:{ticker.upper()}"
 
 
 def _tool_key(ticker: str, tool_name: str) -> str:
@@ -201,15 +201,16 @@ def clear_memoized_tool_data() -> None:
         _memo.clear()
 
 
-def get_cached_final_answer(ticker: str) -> dict | None:
-    """Return the cached, fully-synthesized no-query result for a ticker, or None on a
+def get_cached_final_answer(ticker: str, provider: str) -> dict | None:
+    """Return the cached, fully-synthesized no-query result for a ticker from one LLM
+    vendor ("anthropic" | "openai"), or None on a
     miss/unavailable cache. Only ever populated from the query-less default-explain path.
     """
     client = _get_client()
     if client is None:
         return None
     try:
-        raw = client.get(_final_answer_key(ticker))
+        raw = client.get(_final_answer_key(ticker, provider))
         if raw is None:
             return None
         return json.loads(raw)
@@ -218,8 +219,9 @@ def get_cached_final_answer(ticker: str) -> dict | None:
         return None
 
 
-def set_cached_final_answer(ticker: str, result: dict) -> None:
-    """Store a fully-synthesized no-query result for a ticker (TTL: _FINAL_ANSWER_TTL_SECONDS)."""
+def set_cached_final_answer(ticker: str, provider: str, result: dict) -> None:
+    """Store one vendor's fully-synthesized no-query result for a ticker
+    (TTL: _FINAL_ANSWER_TTL_SECONDS)."""
     client = _get_client()
     if client is None:
         return
@@ -227,6 +229,6 @@ def set_cached_final_answer(ticker: str, result: dict) -> None:
         # Also capped at midnight: a synthesized answer quotes get_events' day counts
         # ("reported 3 days ago"), which stop being true once the date rolls over.
         ttl = max(min(_FINAL_ANSWER_TTL_SECONDS, _seconds_until_midnight()), _MIN_TTL_SECONDS)
-        client.setex(_final_answer_key(ticker), ttl, json.dumps(result, default=str))
+        client.setex(_final_answer_key(ticker, provider), ttl, json.dumps(result, default=str))
     except (RedisError, OSError, TypeError, ValueError):
         _logger.exception("[redis_cache] final_answer write failed for %s", ticker)

@@ -41,7 +41,7 @@ const PIPELINE = [
   {
     icon: "🧠",
     title: "4. The LLM decides what else is needed",
-    body: "Reasoning is handled by Claude Haiku, chosen for its balance of speed, cost, and quality in this kind of tool-use loop. A tool-use loop (max 7 turns) reasons about whether anything conditional is still missing, macro context, sector comparison, earnings/FOMC proximity, and calls only the tools that are genuinely relevant.",
+    body: "Reasoning is handled by a fast, low-cost model, OpenAI by default or Claude Haiku, switchable from the logo at the left of the search bar. Both run the same tool-use loop on the same data. A tool-use loop (max 7 turns) reasons about whether anything conditional is still missing, macro context, sector comparison, earnings/FOMC proximity, and calls only the tools that are genuinely relevant.",
   },
   {
     icon: "✅",

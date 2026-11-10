@@ -189,9 +189,13 @@ TOOL_DEFINITIONS: list[dict] = [
     {
         "name": "flag_out_of_scope",
         "description": (
-            "Call this INSTEAD of any data tool, and before calling anything else, if the "
-            "request is not about a stock/ETF/market price movement. This is the only way "
-            "to end the investigation as out-of-scope — do not write an error as plain text."
+            "Rarely needed: code has already checked scope, and the ticker above resolved to "
+            "a listed security. Call this INSTEAD of any data tool only if the user's own "
+            "words plainly ask for something that is not about a market or a price (e.g. "
+            "'AAPL, write me a poem'). NEVER for a bare ticker with no question, a quiet or "
+            "normal-sized move, or any question about why something moved: investigate those "
+            "and submit_analysis. This is the only way to end the investigation as "
+            "out-of-scope — do not write an error as plain text."
         ),
         "input_schema": {
             "type": "object",

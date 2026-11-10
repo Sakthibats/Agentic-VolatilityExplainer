@@ -19,7 +19,7 @@ class Settings(BaseSettings):
     # "anthropic" or "openai". The model is that vendor's *_model below. The eval harness
     # ignores this and builds each provider it compares directly (llm.build_provider).
     llm_provider: str = "anthropic"
-    anthropic_model: str = "claude-haiku-4-5-20251001"
+    anthropic_model: str = "claude-haiku-5-5"
     openai_model: str = "gpt-6-luna"
     # How much an OpenAI reasoning model thinks before each turn: none | low | medium | high.
     openai_reasoning_effort: str = "low"

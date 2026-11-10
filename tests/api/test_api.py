@@ -11,6 +11,7 @@ from types import SimpleNamespace
 from unittest.mock import patch
 
 import pandas as pd
+import pytest
 from fastapi.testclient import TestClient
 from volatility_explainer.api import service
 from volatility_explainer.api.app import app
@@ -45,6 +46,24 @@ OUT_OF_SCOPE = SimpleNamespace(in_scope=False, ticker=None, question="bake a cak
                                source=None, message="Stocks and ETFs only.")
 
 
+def _fake_settings(*, default="anthropic", anthropic_key="a-key", openai_key="o-key"):
+    def secret(value):
+        return SimpleNamespace(get_secret_value=lambda: value)
+
+    return SimpleNamespace(
+        llm_provider=default,
+        anthropic_api_key=secret(anthropic_key), anthropic_model="claude-haiku-4-5-20251001",
+        openai_api_key=secret(openai_key), openai_model="gpt-6-luna", openai_reasoning_effort="low",
+    )
+
+
+@pytest.fixture(autouse=True)
+def _both_vendors_configured():
+    """Both API keys present (fake ones), so every test reaches the mocked orchestrator."""
+    with patch.object(service, "get_settings", lambda: _fake_settings()):
+        yield
+
+
 def _patched(decision=IN_SCOPE, orch=None):
     orch_fn = orch or (lambda t, q, **callbacks: ORCH_RESULT)
 
@@ -55,7 +74,7 @@ def _patched(decision=IN_SCOPE, orch=None):
         patch.object(service, "evaluate_query", return_value=decision),
         patch.object(service, "run_explainer", side_effect=async_orch),
         patch.object(service, "log_query_background", lambda **kw: None),
-        patch.object(service, "get_cached_final_answer", lambda t: None),
+        patch.object(service, "get_cached_final_answer", lambda t, provider: None),
     )
 
 
@@ -99,7 +118,7 @@ def test_bare_ticker_is_served_from_the_final_answer_cache():
     # skipped the cache — 0 of 319 production runs were ever served from it.
     bare = SimpleNamespace(**{**IN_SCOPE.__dict__, "question": ""})
     p1, p2, p3, _ = _patched(decision=bare)
-    with p1, p2 as orch, p3, patch.object(service, "get_cached_final_answer", lambda t: ORCH_RESULT):
+    with p1, p2 as orch, p3, patch.object(service, "get_cached_final_answer", lambda t, provider: ORCH_RESULT):
         r = client.post("/v1/analyze?stream=false", json={"query": "AAPL"})
     body = r.json()
     assert body["status"] == "complete"
@@ -133,7 +152,7 @@ def test_analyze_sse_event_sequence():
 def test_analyze_sse_streams_summary_events_before_the_result():
     """The write-up is the longest step in a run; `summary` events carry it to the client
     as it is generated rather than after it lands."""
-    def orch_with_summary(ticker, query, on_step=None, on_summary=None, on_overview=None):
+    def orch_with_summary(ticker, query, on_step=None, on_summary=None, on_overview=None, **_):
         if on_overview:
             on_overview(ORCH_RESULT["overview"])
         if on_step:
@@ -262,3 +281,82 @@ async def test_client_disconnect_lets_investigation_finish():
         assert first["event"] == "investigation_started"
         await gen.aclose()  # simulate the client disconnecting mid-stream
         await asyncio.wait_for(finished.wait(), timeout=2)  # investigation still completes
+
+
+# ── Model choice (AnalyzeRequest.provider) ──────────────────────────────────
+
+
+def _run_capturing_vendor(body: dict, decision=IN_SCOPE) -> tuple[dict, dict]:
+    """POST body; return (response JSON, what the orchestrator and the cache were given)."""
+    seen: dict = {}
+
+    def orch(t, q, provider=None, **callbacks):
+        seen["orchestrator"] = (provider.name, provider.model)
+        return ORCH_RESULT
+
+    def cache_lookup(t, provider):
+        seen["cache"] = provider
+        return None
+
+    p1, p2, p3, _ = _patched(decision=decision, orch=orch)
+    with p1, p2, p3, patch.object(service, "get_cached_final_answer", cache_lookup), \
+            patch.object(service, "set_cached_final_answer", lambda *a: None):
+        r = client.post("/v1/analyze?stream=false", json=body)
+    return r.json(), seen
+
+
+def test_the_requested_vendor_runs_the_investigation():
+    body, seen = _run_capturing_vendor({"query": "why did AAPL drop?", "provider": "openai"})
+
+    assert body["status"] == "complete"
+    assert seen["orchestrator"] == ("openai", "gpt-6-luna")  # the model stays server config
+
+
+def test_no_vendor_in_the_request_means_the_server_default():
+    _, seen = _run_capturing_vendor({"query": "why did AAPL drop?"})
+
+    assert seen["orchestrator"] == ("anthropic", "claude-haiku-4-5-20251001")
+
+
+def test_the_final_answer_cache_is_looked_up_for_the_chosen_vendor():
+    bare = SimpleNamespace(**{**IN_SCOPE.__dict__, "question": ""})
+    _, seen = _run_capturing_vendor({"query": "AAPL", "provider": "openai"}, decision=bare)
+
+    assert seen["cache"] == "openai"
+
+
+def test_a_vendor_without_a_key_fails_fast_with_a_clear_message():
+    settings = _fake_settings(openai_key="")
+    p1, p2, p3, p4 = _patched()
+    with p1 as gate, p2 as orch, p3, p4, patch.object(service, "get_settings", lambda: settings):
+        r = client.post("/v1/analyze", json={"query": "why did AAPL drop?", "provider": "openai"})
+
+    events = _parse_sse(r.text)
+    assert [name for name, _ in events] == ["error"]
+    assert "OpenAI isn't set up" in events[0][1]["message"]
+    gate.assert_not_called()  # nothing fetched or resolved for a run that can't happen
+    orch.assert_not_called()
+
+
+def test_an_unknown_vendor_is_rejected():
+    r = client.post("/v1/analyze", json={"query": "AAPL", "provider": "gemini"})
+
+    assert r.status_code == 422
+
+
+def test_models_lists_each_vendor_with_the_model_it_runs_here():
+    body = client.get("/v1/models").json()
+
+    assert body["options"] == [
+        {"provider": "openai", "vendor": "OpenAI", "model": "gpt-6-luna",
+         "reasoning_effort": "low", "available": True},
+        {"provider": "anthropic", "vendor": "Anthropic", "model": "claude-haiku-4-5-20251001",
+         "reasoning_effort": None, "available": True},
+    ]
+
+
+def test_models_marks_a_vendor_without_a_key_unavailable():
+    with patch.object(service, "get_settings", lambda: _fake_settings(anthropic_key="")):
+        options = client.get("/v1/models").json()["options"]
+
+    assert {o["provider"]: o["available"] for o in options} == {"openai": True, "anthropic": False}

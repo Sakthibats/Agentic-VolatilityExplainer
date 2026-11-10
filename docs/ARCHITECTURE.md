@@ -38,7 +38,7 @@ the whole flow.
    horizon (1d/1w/2w/1mo/ytd/1y). The reader-facing overview states the stock's usual daily range
    ("usually moves up to about 3.7% a day") and names the absolute floor only as a comparison
    with other stocks ("normal for DDOG, but large by most stocks' standards").
-6. **Tool-use loop.** Model from `settings.anthropic_model` (default `claude-haiku-4-5-20251001`),
+6. **Tool-use loop.** Model from `settings.anthropic_model` (default `claude-haiku-5-5`),
    `tool_choice: {"type": "any"}`, max **7 turns**. Turn 1 is the real tool-selection layer: the
    model picks whichever tools help and calls them together; they fan out with `asyncio.gather`,
    each on a worker thread under a **15 s** timeout. A tool already called this run is served from
@@ -76,7 +76,8 @@ the whole flow.
 
 | Endpoint | Notes |
 |---|---|
-| `POST /v1/analyze` | SSE by default; `?stream=false` returns one `AnalysisResult` JSON document. Optional `x-session-id` header (a UUID is minted otherwise). Body: `{"query": "..."}`, 1–500 chars |
+| `POST /v1/analyze` | SSE by default; `?stream=false` returns one `AnalysisResult` JSON document. Optional `x-session-id` header (a UUID is minted otherwise). Body: `{"query": "...", "provider": "openai"}`: query 1–500 chars; `provider` (`openai` \| `anthropic`) is optional and defaults to `LLM_PROVIDER`. It picks only the vendor; each vendor's model is server config. A vendor without an API key ends the run at once with an `error` event |
+| `GET /v1/models` | `{"options": [ModelOption]}`: each vendor the model picker offers, with the model ID this server runs for it, its reasoning setting, and `available` (an API key is set). OpenAI first |
 | `GET /v1/tickers/{ticker}/history?period=` | `1W` / `1M` / `6M` / `YTD` / `1Y` |
 | `GET /v1/tickers/{ticker}/stats` | quick stats + analyst targets for the sidebar |
 | `GET /v1/health` | `{"status": "ok", "version": ...}` |
@@ -125,8 +126,9 @@ no-op without `REDIS_URL`.
 
    Day-scoped tools expire at midnight because their payloads embed day counts ("earnings in 8
    days") that are only correct on the day they were computed.
-2. **Final-answer cache** (15 min) — skips tools *and* the LLM, only on the no-question path. Written
-   back on a background thread.
+2. **Final-answer cache** (15 min) — skips tools *and* the LLM, only on the no-question path. Keyed
+   by vendor and ticker (`final_answer:openai:AAPL`), so switching models never serves the
+   other model's answer. Written back on a background thread.
 3. **Anthropic prompt caching** — the system prompt and tool list carry `cache_control`, so only the
    growing tool-result tail is processed fresh each turn.
 4. A 30-second in-process cache inside `options.py` for the expensive chain fetch.
@@ -137,6 +139,14 @@ no-op without `REDIS_URL`.
 
 - **State lives in `InvestigationProvider`, in the root layout**, so switching between Home and About
   doesn't unmount an in-flight investigation or its SSE stream.
+- **Model picker** (`components/model-picker.tsx`, at the left of the query bar, where the search
+  icon was): the current vendor's logo (`components/vendor-icons.tsx`, monochrome so the theme
+  holds) opens a menu listing each vendor with the model ID and reasoning setting from
+  `GET /v1/models`. Disabled while a run is in progress. The choice (default OpenAI) is saved in
+  `localStorage` by `lib/model-choice.ts`, which falls back to the other vendor, unsaved, if the
+  server reports the chosen one unavailable. `investigate()` reads it when a run starts and sends
+  it as `provider`. Against a backend without `/v1/models` the picker still works, without model
+  names.
 - **SSE is parsed by hand from the fetch body** (`lib/api.ts`), because `EventSource` can't POST. A new
   query aborts the previous stream.
 - **The write-up is revealed on the client** (`lib/use-typewriter.ts`). The overview arrives as one
@@ -186,10 +196,10 @@ Settings load through pydantic-settings from `.env` at the repo root, regardless
 
 | Var | Required? | Effect if missing |
 |---|---|---|
-| `ANTHROPIC_API_KEY` | for `/v1/analyze` on the default `LLM_PROVIDER=anthropic` | Investigations fail with `status: "error"`; chart/stats endpoints still work |
-| `LLM_PROVIDER` | no | `anthropic` (default) or `openai`: which vendor runs the agent loop and the ticker fallback |
-| `ANTHROPIC_MODEL` | no | Defaults to `claude-haiku-4-5-20251001` |
-| `OPENAI_API_KEY` | only with `LLM_PROVIDER=openai` | Also used by `python -m evals.run` for OpenAI arms |
+| `ANTHROPIC_API_KEY` | for Claude runs (Claude picked in the UI, or no `provider` with `LLM_PROVIDER=anthropic`) | Those runs end at once with a "Claude isn't set up" error; chart/stats endpoints still work |
+| `LLM_PROVIDER` | no | `anthropic` (default) or `openai`: the vendor for requests that don't name one, and always for the ticker-resolution fallback. The web UI always names one (its picker defaults to OpenAI) |
+| `ANTHROPIC_MODEL` | no | Defaults to `claude-haiku-5-5` (Haiku 4.5 until 2026-11-10) |
+| `OPENAI_API_KEY` | for OpenAI runs, which the web UI defaults to | Those runs end at once with an "OpenAI isn't set up" error. Also used by `python -m evals.run` for OpenAI arms |
 | `OPENAI_MODEL` | no | Defaults to `gpt-6-luna` |
 | `OPENAI_REASONING_EFFORT` | no | `none` / `low` (default) / `medium` / `high`, for OpenAI reasoning models |
 | `FINNHUB_API_KEY` | no | Quotes, news and upcoming earnings fall back to yfinance |
@@ -208,7 +218,8 @@ Settings load through pydantic-settings from `.env` at the repo root, regardless
 Optional — a no-op without `SUPABASE_URL` / `SUPABASE_KEY`. `analytics/supabase_logger.py` writes one
 `query_log` row per investigation through a bounded queue and a single background worker: session
 ID, ticker, question, status, `move_assessment`, tools called (live or cached), hypotheses, news-tile
-citations, `quality_flags` (`{}` = checked and clean, `NULL` = nothing to check) and elapsed time.
+citations, `quality_flags` (`{}` = checked and clean, `NULL` = nothing to check), elapsed time, and
+the model that ran it (`llm_provider`, `llm_model`; [`docs/sql/query_log_llm_model.sql`](sql/query_log_llm_model.sql)).
 The reader-facing version of this list is [PRIVACY.md](../PRIVACY.md).
 
 - **The table's original schema isn't in the repo.** Changes made since are, as SQL in

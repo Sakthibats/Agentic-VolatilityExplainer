@@ -15,7 +15,8 @@ each investigation you run is logged for usage analytics:
 - **Whether the move looked normal or unusual** for that stock (`move_assessment`), which
   optional tools the AI chose to call, the resulting hypotheses, and any news citations
   used.
-- **How long the request took** (`elapsed_ms`).
+- **How long the request took** (`elapsed_ms`), and **which AI model answered** (`llm_provider`,
+  `llm_model`). Your model choice is also remembered in your browser's local storage.
 - **Automatic quality checks on the AI's explanation** (`quality_flags`) — short labels such as
   `too_long` describing the generated text, not you. The explanation text itself isn't stored.
 

@@ -4,7 +4,7 @@
 > this into). It is written to be enough on its own to reason about goals, tradeoffs, and where to
 > change things. Deeper references: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) ·
 > [docs/ROADMAP.md](docs/ROADMAP.md) · [BACKLOG.md](BACKLOG.md).
-> Last reviewed: 2026-11-09.
+> Last reviewed: 2026-11-10.
 
 ## 1. What this is
 
@@ -42,8 +42,8 @@ multi-ticker comparison, anything resembling trading advice or signals.
 | Migration | Streamlit monolith → FastAPI + Next.js. Phases 0–3 ✅. **Phase 4 (metering / rate limiting) is next and not started** |
 | Backend | FastAPI, fully async, `/v1` REST + SSE, Docker → Google Cloud Run |
 | Frontend | Next.js 16 static export → Cloudflare Pages |
-| Quality gates | 300 offline pytest tests + 23 `live` tests (19 upstream data contracts, weekly; 4 LLM-vendor checks that skip without keys). ruff, eslint (blocking), tsc all clean. Heuristic quality flags on every explanation (`[quality]` log line) |
-| Models | Production: Claude Haiku 4.5 (`LLM_PROVIDER=anthropic`). The loop runs on Claude or OpenAI behind `llm/`; the eval harness compares models on recorded data (`evals/`, results in the README) |
+| Quality gates | 310 offline pytest tests + 23 `live` tests (19 upstream data contracts, weekly; 4 LLM-vendor checks that skip without keys). ruff, eslint (blocking), tsc all clean. Heuristic quality flags on every explanation (`[quality]` log line) |
+| Models | Users pick the vendor per run with a model picker in the query bar: OpenAI (`OPENAI_MODEL`, default `gpt-6-luna`; the picker's default) or Claude (`ANTHROPIC_MODEL`, Haiku 5.5). Requests without `provider` use `LLM_PROVIDER` (default `anthropic`). Both run the same loop behind `llm/`; the eval harness compares models on recorded data (`evals/`, results in the README) |
 | Biggest gaps | The eval scores answers automatically but has **no labelled catalysts or judge yet**, so it can't measure whether the model found the true cause · yfinance's daily bar lags the close, so "today" can be the previous day's move after the close (`evals/README.md`) · no rate limiting and CORS `*` · `print`-based logging · token usage and `cost_usd` are returned per run (`result["usage"]`) but not logged · chart silently falls back to synthetic prices |
 
 ## 4. Architecture in one screen
@@ -53,10 +53,11 @@ Browser — Next.js static export (Cloudflare Pages)
   │  POST /v1/analyze               SSE over a fetch stream (EventSource can't POST)
   │  GET  /v1/tickers/{t}/history   chart     ┐ plain JSON, loaded as soon as the
   │  GET  /v1/tickers/{t}/stats     sidebar   ┘ ticker resolves
+  │  GET  /v1/models                the model picker: each vendor's model + availability
   ▼
 api/app.py        each investigation runs as its own asyncio.Task → queue → SSE
-api/service.py    scope gate → final-answer cache (no-question path only) → orchestrator
-                  → shape into schemas → background usage log. Never raises.
+api/service.py    vendor check → scope gate → final-answer cache (no-question path, per vendor)
+                  → orchestrator → shape into schemas → background usage log. Never raises.
   ├─ query/parsing.py         guardrail + 4-stage ticker resolution (LLM only as last resort)
   └─ agent/orchestrator.py
        1. prefetch get_price_data + get_events in parallel — deterministic, no LLM
@@ -91,7 +92,7 @@ backend/volatility_explainer/     Python package (hatchling; pytest pythonpath =
 ├── api/
 │   ├── app.py                    routes, CORS, SSE plumbing (one asyncio.Task + queue per run)
 │   ├── schemas.py                ★ THE CONTRACT: every response body and SSE payload
-│   └── service.py                scope gate → final-answer cache → orchestrator → shaping → usage log
+│   └── service.py                vendor check → scope gate → final-answer cache → orchestrator → shaping → usage log
 ├── query/parsing.py              scope guardrail, 4-stage ticker resolution, _specific_question
 ├── llm/                          ★ the vendor seam: one turn in, one turn out
 │   ├── base.py                   neutral conversation types + the LLMProvider interface
@@ -124,13 +125,15 @@ frontend/                         Next.js 16 App Router, static export (output: 
 ├── app/about/page.tsx            long-form methodology copy
 ├── app/globals.css               ★ all colour tokens: light blue / dark trading terminal
 ├── lib/api.ts                    ★ hand mirror of api/schemas.py + the SSE-over-fetch parser
+├── lib/model-choice.ts           the chosen LLM vendor (localStorage; default OpenAI), read when a run starts
 ├── lib/use-typewriter.ts         paced reveal of the streamed write-up
 ├── lib/utils.ts                  cn() class merge
 └── components/
     ├── investigation-provider.tsx  run state + SSE; in the root layout so navigation keeps the stream
     ├── query-bar · timeline (InvestigationLog) · evidence-tiles (AGENT_ICONS) · hypotheses
     ├── md.tsx                    **bold** + [n] → citation links from result.citations
-    ├── price-chart · stats-panel · nav-tabs · theme-toggle
+    ├── price-chart · stats-panel · nav-tabs · theme-toggle · model-picker (vendor logo + menu, in query-bar)
+    ├── vendor-icons              OpenAI / Claude marks (MIT, lobe-icons), monochrome
     ├── feedback · support-button · analytics (GA4 ID, public by design)
     └── ui/                       shadcn primitives: badge, button, card
 
@@ -210,16 +213,23 @@ Each entry: the decision, why, what it costs, and when to reconsider.
    exists.
 2. **Terminal tools instead of JSON-in-text.** *Why:* schema-shaped output, no regex extraction, an
    explicit out-of-scope path. *Cost:* a large tool schema in every request; a prose reply ends the
-   run as `incomplete` with no retry. *Revisit:* if the incomplete rate turns out to matter (it
-   isn't measured today).
+   run as `incomplete` with no retry. A schema is a request, not a guarantee: Claude doesn't
+   validate tool input it streams, so `orchestrator._normalize_answer` re-applies the contract in
+   code (malformed entries dropped, ≤4 tiles, ≤3 hypotheses ranked by the order written).
+   *Revisit:* if the incomplete rate turns out to matter (the eval measures it; production
+   doesn't).
 3. **Deterministic prefetch of price + events, spliced in as fake tool calls.** *Why:* both are needed
    on nearly every run and decide the first tool choice; this saves an LLM round trip for ~0
    marginal wall time, and the model reads them exactly like its own calls. *Cost:* the events fetch
    is paid even when irrelevant.
-4. **Claude Haiku 4.5, ≤7 turns, `tool_choice: any`, prompt caching.** *Why:* latency and cost for a
-   free public demo; most runs finish in one tool round (two LLM turns). *Cost:* shallower
-   reasoning than a larger model. The model is configurable via `ANTHROPIC_MODEL`. *Revisit:* with
-   evals, e.g. Haiku for tool selection and a larger model for synthesis.
+4. **Claude Haiku 5.5, ≤7 turns, `tool_choice: any`, prompt caching.** *Why:* latency and cost for a
+   free public demo; most runs finish in one tool round (two LLM turns). Moved from Haiku 4.5 on
+   2026-11-10 after the eval: ~12x cheaper, about twice as fast, and far fewer quality flags. Its
+   two failures there, wrongly refusing in-scope tickers and breaking the tile/rank schema, were
+   fixed first (a clearer scope rule in the prompt; `_normalize_answer`, decision 2). *Cost:*
+   shallower reasoning than a larger model, and extended thinking stays off (forced tool calls
+   rule it out). The model is configurable via `ANTHROPIC_MODEL`. *Revisit:* with labelled evals,
+   e.g. Haiku for tool selection and a larger model for synthesis.
 5. **Async FastAPI with sync tools on threads** — not Go, not async rewrites of each tool. *Why:* the
    workload is I/O-bound, and yfinance (the universal fallback) is sync-only. *Cost:* `to_thread`
    work can't be cancelled, so a timed-out tool keeps running (its cache write still lands); the
@@ -281,6 +291,16 @@ Each entry: the decision, why, what it costs, and when to reconsider.
     violation, Claude with fine-grained streaming does not validate). *Revisit:* a third vendor,
     or if either SDK's streaming events change shape (the live tests catch that).
 
+18. **Users choose the vendor, the server chooses the model** (2026-11). `AnalyzeRequest.provider`
+    is `openai` | `anthropic`; the query-bar picker sends it, defaulting to OpenAI. *Why:* lets a
+    visitor compare the two loops side by side, and the model IDs stay server config, so a client
+    can't pick an expensive model; `GET /v1/models` tells the UI which model IDs those are and which
+    vendors have a key. A vendor without a key fails before any data is fetched, with a message
+    saying to switch. The final-answer cache is keyed per vendor, and each `query_log` row
+    records `llm_provider` / `llm_model`. *Cost:* two API keys to keep funded; the cache hit rate is
+    split across vendors; the ticker-resolution fallback still uses `LLM_PROVIDER`. *Revisit:* once
+    evals pick a winner on accuracy, or if spend control (Phase 4) needs a per-vendor budget.
+
 ## 7. Open questions — good places to ideate
 
 Framed against the portfolio goal. Each is a live tradeoff, not a settled plan.
@@ -297,7 +317,9 @@ Framed against the portfolio goal. Each is a live tradeoff, not a settled plan.
 3. **Abuse and spend control (Phase 4).** Redis token bucket per session/IP, a daily global LLM
    budget, CORS locked to the frontend origin. Log-only first, or enforce straight away?
 4. **Model strategy.** The eval compares Haiku 4.5, Haiku 5.5 and GPT-6 Luna on cost, latency and
-   grounding. Switching production is one env var; the open part is answer accuracy, which needs
+   grounding; Claude runs moved to Haiku 5.5 on that evidence (decision 4), and visitors can switch
+   vendor per run (decision 18). Changing either vendor's
+   model is one env var; the open part is answer accuracy, which needs
    the labelled cases from (1).
 5. **Contract safety.** Generate `lib/api.ts` from FastAPI's OpenAPI schema, or add a contract test?
 6. **A real MCP server.** Expose `tools/` to Claude Desktop and others? Good signal, but a second

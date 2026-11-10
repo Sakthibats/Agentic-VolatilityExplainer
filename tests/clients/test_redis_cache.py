@@ -54,8 +54,10 @@ def test_tool_key_is_market_wide_for_macro_but_per_ticker_for_others():
     assert redis_cache._tool_key("aapl", "get_price_data") == "AAPL_get_price_data"
 
 
-def test_final_answer_key_is_ticker_scoped():
-    assert redis_cache._final_answer_key("aapl") == "final_answer:AAPL"
+def test_final_answer_key_is_scoped_to_vendor_and_ticker():
+    # Per vendor: after switching models, a user must not be served the other one's answer.
+    assert redis_cache._final_answer_key("aapl", "openai") == "final_answer:openai:AAPL"
+    assert redis_cache._final_answer_key("aapl", "anthropic") != redis_cache._final_answer_key("aapl", "openai")
 
 
 # ---------------------------------------------------------------------------
@@ -146,10 +148,10 @@ def test_final_answer_roundtrip_uses_ticker_key_and_ttl():
     # within 15 minutes of it would see a shorter value and fail spuriously.
     with patch.object(redis_cache, "_get_client", return_value=client), \
          patch.object(redis_cache, "_seconds_until_midnight", return_value=80_000):
-        redis_cache.set_cached_final_answer("AAPL", {"summary": "hi"})
+        redis_cache.set_cached_final_answer("AAPL", "openai", {"summary": "hi"})
 
     client.setex.assert_called_once_with(
-        "final_answer:AAPL", redis_cache._FINAL_ANSWER_TTL_SECONDS, json.dumps({"summary": "hi"})
+        "final_answer:openai:AAPL", redis_cache._FINAL_ANSWER_TTL_SECONDS, json.dumps({"summary": "hi"})
     )
 
 
@@ -159,7 +161,7 @@ def test_final_answer_ttl_is_capped_at_midnight():
 
     with patch.object(redis_cache, "_get_client", return_value=client), \
          patch.object(redis_cache, "_seconds_until_midnight", return_value=120):
-        redis_cache.set_cached_final_answer("AAPL", {"summary": "hi"})
+        redis_cache.set_cached_final_answer("AAPL", "openai", {"summary": "hi"})
 
     assert client.setex.call_args.args[1] == 120
 
@@ -169,12 +171,12 @@ def test_final_answer_get_returns_none_on_miss():
     client.get.return_value = None
 
     with patch.object(redis_cache, "_get_client", return_value=client):
-        assert redis_cache.get_cached_final_answer("AAPL") is None
+        assert redis_cache.get_cached_final_answer("AAPL", "openai") is None
 
 
 def test_final_answer_get_returns_none_when_no_client():
     with patch.object(redis_cache, "_get_client", return_value=None):
-        assert redis_cache.get_cached_final_answer("AAPL") is None
+        assert redis_cache.get_cached_final_answer("AAPL", "openai") is None
 
 
 def test_final_answer_get_decodes_hit():
@@ -182,7 +184,7 @@ def test_final_answer_get_decodes_hit():
     client.get.return_value = json.dumps({"summary": "hi"})
 
     with patch.object(redis_cache, "_get_client", return_value=client):
-        assert redis_cache.get_cached_final_answer("AAPL") == {"summary": "hi"}
+        assert redis_cache.get_cached_final_answer("AAPL", "openai") == {"summary": "hi"}
 
 
 # ---------------------------------------------------------------------------

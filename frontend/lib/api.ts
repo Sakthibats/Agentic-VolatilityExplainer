@@ -4,6 +4,23 @@
 export const API_BASE =
   process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8080";
 
+/** Which vendor runs an investigation (AnalyzeRequest.provider). The backend picks each
+ *  vendor's model. */
+export type LlmProvider = "anthropic" | "openai";
+
+/** GET /v1/models — one vendor the model picker offers, as this server runs it. */
+export interface ModelOption {
+  provider: LlmProvider;
+  /** Company display name: "OpenAI" | "Anthropic". */
+  vendor: string;
+  /** The model ID the server runs for this vendor. */
+  model: string;
+  /** OpenAI reasoning effort; null when the model has no separate reasoning step. */
+  reasoning_effort: string | null;
+  /** False when the server has no API key for this vendor. */
+  available: boolean;
+}
+
 export interface Citation {
   number: number;
   source: string;
@@ -91,6 +108,7 @@ function sessionId(): string {
 /* POST /v1/analyze streams SSE; EventSource can't POST, so parse the fetch body stream. */
 export async function analyzeStream(
   query: string,
+  provider: LlmProvider,
   cb: AnalyzeCallbacks,
   signal?: AbortSignal,
 ): Promise<void> {
@@ -100,7 +118,8 @@ export async function analyzeStream(
       "content-type": "application/json",
       "x-session-id": sessionId(),
     },
-    body: JSON.stringify({ query }),
+    // A backend older than the model picker ignores `provider` and uses its default.
+    body: JSON.stringify({ query, provider }),
     signal,
   });
   if (!res.ok || !res.body) {
@@ -167,4 +186,10 @@ export async function fetchStats(ticker: string): Promise<TickerStats> {
   );
   if (!res.ok) throw new Error(`stats ${res.status}`);
   return res.json();
+}
+
+export async function fetchModels(): Promise<ModelOption[]> {
+  const res = await fetch(`${API_BASE}/v1/models`);
+  if (!res.ok) throw new Error(`models ${res.status}`);
+  return (await res.json()).options;
 }
