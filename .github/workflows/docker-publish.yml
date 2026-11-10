@@ -85,6 +85,22 @@ jobs:
         with:
           project_id: ${{ env.GCP_PROJECT_ID }}
 
+      # Cloud Run pulls Docker Hub images through Google's mirror (mirror.gcr.io),
+      # which can lag a fresh push by a few minutes. Deploying straight after the
+      # push then fails with "Image ... not found", so wait for the mirror first.
+      - name: Wait for the image on mirror.gcr.io
+        run: |
+          url="https://mirror.gcr.io/v2/${{ env.IMAGE_NAME }}/manifests/${{ github.run_number }}"
+          accept="application/vnd.oci.image.index.v1+json,application/vnd.docker.distribution.manifest.list.v2+json,application/vnd.docker.distribution.manifest.v2+json"
+          for i in $(seq 1 30); do
+            code=$(curl -s -o /dev/null -w "%{http_code}" -H "Accept: $accept" "$url")
+            if [ "$code" = "200" ]; then echo "Mirror has the image (attempt $i)"; exit 0; fi
+            echo "Attempt $i: mirror returned $code, retrying in 20s"
+            sleep 20
+          done
+          echo "::error::Image not on mirror.gcr.io after 10 minutes"
+          exit 1
+
       - name: Deploy to Cloud Run
         run: |
           gcloud run deploy "${{ env.CLOUD_RUN_SERVICE }}" \
