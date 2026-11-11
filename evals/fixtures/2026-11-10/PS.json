@@ -1,0 +1,376 @@
+{
+ "schema": 1,
+ "ticker": "PS",
+ "trading_day": "2026-11-10",
+ "captured_at": "2026-11-11T01:24:51+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -14.92,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "this week: 11.43% \u2014 typical relative to this stock's own typical volatility (expected ~11.63%, 0.98x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past 2 weeks: 14.05% \u2014 typical relative to this stock's own typical volatility (expected ~16.45%, 0.85x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "PS",
+   "price": 44.2,
+   "prev_close": 51.95,
+   "change_pct": -14.92,
+   "realized_vol_annualized_pct": 82.6,
+   "changes_pct": {
+    "1d": 0.97,
+    "1w": 11.43,
+    "2w": 14.05,
+    "1mo": -4.84,
+    "1y": null,
+    "ytd": 115.83
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "this week: 11.43% \u2014 typical relative to this stock's own typical volatility (expected ~11.63%, 0.98x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past 2 weeks: 14.05% \u2014 typical relative to this stock's own typical volatility (expected ~16.45%, 0.85x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "PS",
+   "headlines": [
+    {
+     "headline": "Howard Hughes Holdings: Strong Economics Of Real Estate And Vantage To Drive Value",
+     "summary": "Explore Vantage\u00e2\u0080\u0099s real estate asset value, insurance execution, and investment portfolio strategy\u00e2\u0080\u0094see what investors should watch about HHH stock.",
+     "datetime": 1794009816,
+     "source": "SeekingAlpha",
+     "url": "https://finnhub.io/api/news?id=1db95c3c626c15646a172ba15e07f1823ec14551617551ecdc9c1abc94289735"
+    },
+    {
+     "headline": "Bill Ackman Bought Meta \u201cat a Huge Discount.\u201d He Says Analysts Are Missing Its Growth",
+     "summary": "Key TakeawaysBill Ackman said on CNBC\u2019s Squawk Pod that Pershing Square bought Meta at a huge discount after it announced big capex spending, and that it had bought Microsoft and Amazon the same way...",
+     "datetime": 1793993327,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=fa3296b8847683ab18f96df149ebdac5a9dadda5d1761f11df9d46aa3b4b4410"
+    },
+    {
+     "headline": "Tigress Financial Maintains Neutral on Pershing Square, Raises Price Target to $54",
+     "summary": "Tigress Financial  analyst Ivan Feinseth   maintains Pershing Square (NYSE:PS) with a Neutral and raises the price target from $41 to $54.",
+     "datetime": 1793916601,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=b838ec15a7ae6536a8eb8ad3feeee1a63bb6b4d3f782910afb40d78bd941b1a2"
+    },
+    {
+     "headline": "Billionaire Bill Ackman Sees Potential $500 Billion Windfall \u2014 Even After These Investments Plunged 61%",
+     "summary": "Freddie Mac earned billions last quarter, yet common shareholders saw almost none of it. Bill Ackman says that gap hides a historic payoff, and the answer depends on a decision Washington has not...",
+     "datetime": 1793897544,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=4e89e7686e4828a28ba35cf623b53fa0ac921c2476e139f8efdfec5e3b161e14"
+    },
+    {
+     "headline": "What Just Happened To Pershing Square Stock?",
+     "summary": "For questions about this article or underlying research, email help@trefis.com.",
+     "datetime": 1793897443,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=8bc0dd802a3c795df546cf9072f4bd4062a963a20eb0ec352cb62ec2d9d7477a"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "PS",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 9,
+   "atm_iv_pct": 64.0,
+   "iv_chain_percentile": 6,
+   "skew_points": -0.5,
+   "put_call_ratio": 4.33,
+   "total_put_oi": 7515,
+   "total_call_oi": 1736
+  },
+  "get_options_positioning": {
+   "ticker": "PS",
+   "spot": 44.2,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 9,
+   "max_pain_strike": 50.0,
+   "resistance_walls": [
+    {
+     "strike": 45.0,
+     "open_interest": 567
+    },
+    {
+     "strike": 60.0,
+     "open_interest": 328
+    },
+    {
+     "strike": 65.0,
+     "open_interest": 283
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 30.0,
+     "open_interest": 1719
+    },
+    {
+     "strike": 25.0,
+     "open_interest": 1712
+    },
+    {
+     "strike": 40.0,
+     "open_interest": 1560
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 9,
+     "atm_iv_pct": 64.0
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 65.0,
+     "volume": 937,
+     "open_interest": 459,
+     "vol_oi_ratio": 2.0,
+     "moneyness": "ITM"
+    }
+   ],
+   "otm_call_oi": 1724,
+   "otm_put_oi": 6147,
+   "positioning_lean_score": -0.56,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "PS",
+   "as_of": "2026-11-11",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-06",
+     "days_ago": 5,
+     "firm": "Tigress Financial",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 41.0,
+     "price_target_to": 54.0,
+     "is_rating_change": false,
+     "description": "Tigress Financial maintained its Neutral rating on PS and raised its price target from $41.0 to $54.0"
+    },
+    {
+     "date": "2026-11-04",
+     "days_ago": 7,
+     "firm": "RBC Capital",
+     "action": "maintained",
+     "from_grade": "Sector Perform",
+     "to_grade": "Sector Perform",
+     "price_target_from": 44.0,
+     "price_target_to": 45.0,
+     "is_rating_change": false,
+     "description": "RBC Capital maintained its Sector Perform rating on PS and raised its price target from $44.0 to $45.0"
+    },
+    {
+     "date": "2026-10-23",
+     "days_ago": 19,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 39.0,
+     "price_target_to": 44.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Neutral rating on PS and raised its price target from $39.0 to $44.0"
+    },
+    {
+     "date": "2026-10-15",
+     "days_ago": 27,
+     "firm": "Wells Fargo",
+     "action": "maintained",
+     "from_grade": "Underweight",
+     "to_grade": "Underweight",
+     "price_target_from": 41.0,
+     "price_target_to": 40.0,
+     "is_rating_change": false,
+     "description": "Wells Fargo maintained its Underweight rating on PS and cut its price target from $41.0 to $40.0"
+    },
+    {
+     "date": "2026-10-13",
+     "days_ago": 29,
+     "firm": "B of A Securities",
+     "action": "downgrade",
+     "from_grade": "Neutral",
+     "to_grade": "Underperform",
+     "price_target_from": 54.0,
+     "price_target_to": 38.0,
+     "is_rating_change": true,
+     "description": "B of A Securities downgraded PS from Neutral to Underperform and cut its price target from $54.0 to $38.0"
+    }
+   ],
+   "consensus": {
+    "rating": "hold",
+    "score": 3.3,
+    "verdict": "neutral",
+    "analysts": 10,
+    "counts": {
+     "strongBuy": 0,
+     "buy": 1,
+     "hold": 6,
+     "sell": 2,
+     "strongSell": 1
+    },
+    "trend": "deteriorating",
+    "trend_detail": "consensus softened over 3 months (score 2.8 to 3.3; bearish ratings 0 to 3)"
+   },
+   "price_target": {
+    "mean": 44.0,
+    "median": 44.0,
+    "high": 51.0,
+    "low": 38.0,
+    "current_price": 44.2,
+    "dispersion_pct": 29.5,
+    "upside_vs_mean_pct": -0.5,
+    "upside_vs_median_pct": -0.5
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "PS",
+   "sector": "Financial Services",
+   "sector_etf": "XLF",
+   "comparison": {
+    "1d": {
+     "stock_change_pct": 0.97,
+     "sector_etf_change_pct": 1.45,
+     "relative_to_sector_pct": -0.48
+    },
+    "2w": {
+     "stock_change_pct": 14.05,
+     "sector_etf_change_pct": 3.52,
+     "relative_to_sector_pct": 10.53
+    },
+    "ytd": {
+     "stock_change_pct": 115.83,
+     "sector_etf_change_pct": 6.86,
+     "relative_to_sector_pct": 108.97
+    },
+    "1y": {
+     "stock_change_pct": null,
+     "sector_etf_change_pct": 12.39,
+     "relative_to_sector_pct": null
+    },
+    "1mo": {
+     "stock_change_pct": -4.84,
+     "sector_etf_change_pct": 5.96,
+     "relative_to_sector_pct": -10.8
+    },
+    "1w": {
+     "stock_change_pct": 11.43,
+     "sector_etf_change_pct": 0.75,
+     "relative_to_sector_pct": 10.68
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-10",
+    "realtime_end": "2026-11-10",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9615,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-09",
+      "value": "19.92"
+     },
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-06",
+      "value": "25.64"
+     },
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-05",
+      "value": "28.18"
+     },
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-04",
+      "value": "16.61"
+     },
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-03",
+      "value": "20.83"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "PS",
+   "as_of": "2026-11-11",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 28,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-08",
+     "description": "PS quarterly earnings scheduled (after the close)",
+     "source": "yfinance",
+     "days_until": 89,
+     "eps_estimate": 0.13,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-02",
+     "description": "PS reported Q3 2026 earnings after the close \u2014 EPS 0.12 vs 0.1292 expected (miss, -7.1%)",
+     "source": "finnhub",
+     "days_ago": 9,
+     "eps_actual": 0.12,
+     "eps_estimate": 0.1292,
+     "surprise": "miss",
+     "surprise_pct": -7.1,
+     "hour": "amc"
+    },
+    {
+     "type": "ex_dividend",
+     "date": "2026-10-09",
+     "source": "yfinance",
+     "description": "PS went ex-dividend \u2014 the price drops by roughly the dividend on this date mechanically, with no news behind it",
+     "days_ago": 33
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub+yfinance"
+  }
+ }
+}

@@ -1,0 +1,389 @@
+{
+ "schema": 1,
+ "ticker": "CHTR",
+ "trading_day": "2026-11-10",
+ "captured_at": "2026-11-11T01:24:31+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 10.61,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "the past 2 weeks: 18.61% \u2014 elevated relative to this stock's own typical volatility (expected ~11.18%, 1.67x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past month: 17.24% \u2014 typical relative to this stock's own typical volatility (expected ~16.19%, 1.06x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past year: -44.37% \u2014 typical relative to this stock's own typical volatility (expected ~56.10%, 0.79x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "CHTR",
+   "price": 134.06,
+   "prev_close": 121.2,
+   "change_pct": 10.61,
+   "realized_vol_annualized_pct": 56.1,
+   "changes_pct": {
+    "1d": 2.65,
+    "1w": 4.9,
+    "2w": 18.61,
+    "1mo": 17.24,
+    "1y": -44.37,
+    "ytd": -42.09
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "the past 2 weeks: 18.61% \u2014 elevated relative to this stock's own typical volatility (expected ~11.18%, 1.67x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past month: 17.24% \u2014 typical relative to this stock's own typical volatility (expected ~16.19%, 1.06x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past year: -44.37% \u2014 typical relative to this stock's own typical volatility (expected ~56.10%, 0.79x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "CHTR",
+   "headlines": [
+    {
+     "headline": "Is AT&T Stock Stronger Than It Looks?",
+     "summary": "For questions about this article or underlying research, email help@trefis.com.",
+     "datetime": 1794347901,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=ecf279ecf55c77856539e0db0dfd7c07713a9bba2f17d65dab308dffd119d60e"
+    },
+    {
+     "headline": "Charter Soars 11% on $1.5 Billion Tender Offer for Long-Dated Notes",
+     "summary": "Key TakeawaysCharter Communications shares jumped 11% after it offered to spend up to $1. 5 billion buying back low-coupon notes due as late as 2062.",
+     "datetime": 1794345488,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=d78a22abcec5ad219f03e300b5ac35933a53101a55501fdb46dcd3d3304cbbb7"
+    },
+    {
+     "headline": "S&P 500 Top Gainers and Losers for Today's Session",
+     "summary": "S&P 500 market movers for today's session: Charter Communications led gainers at 9.68%, while Carvana led losers at 6.32%.",
+     "datetime": 1794341167,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=6fce76dd7876e030d37b388ebacf02dc819d615b61dee883f327a61f69708576"
+    },
+    {
+     "headline": "S&P 500 Top Movers: Today's US Session Gainers and Losers",
+     "summary": "S&P 500 top movers for today's US session: Take-Two Interactive led gainers at 7.57%, while GE Vernova led decliners at 7.19%.",
+     "datetime": 1794332163,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=7298d9b65a4f1c1d8597bf187062a57b8ac62c13c137ce3889144a6764273edf"
+    },
+    {
+     "headline": "Charter Announces Tender Offers for Eight Series of Notes",
+     "summary": "Charter Communications, Inc. (NASDAQ: CHTR, CHTRP) (along with its subsidiaries, \"Charter\") announced today the commencement by its wholly-owned subsidiaries, Charter Communications Operating, LLC...",
+     "datetime": 1794317460,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=37b9b1f45b157c7b31fe225f7f5accaf585a9ea316e2639f6767a0a6c6c6ea1a"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "CHTR",
+   "expiry": "2026-11-27",
+   "days_to_expiry": 16,
+   "atm_iv_pct": 56.6,
+   "iv_chain_percentile": 2,
+   "skew_points": -1.5,
+   "put_call_ratio": 0.74,
+   "total_put_oi": 545,
+   "total_call_oi": 733
+  },
+  "get_options_positioning": {
+   "ticker": "CHTR",
+   "spot": 134.06,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-27",
+   "primary_days_to_expiry": 16,
+   "max_pain_strike": 108.0,
+   "resistance_walls": [
+    {
+     "strike": 108.0,
+     "open_interest": 250
+    },
+    {
+     "strike": 140.0,
+     "open_interest": 111
+    },
+    {
+     "strike": 175.0,
+     "open_interest": 75
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 75.0,
+     "open_interest": 126
+    },
+    {
+     "strike": 105.0,
+     "open_interest": 79
+    },
+    {
+     "strike": 116.0,
+     "open_interest": 55
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 16,
+     "atm_iv_pct": 56.6
+    },
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 23,
+     "atm_iv_pct": 58.4
+    },
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 30,
+     "atm_iv_pct": 59.1
+    }
+   ],
+   "term_structure_trend": "Rising \u2014 market pricing in a later catalyst within the horizon",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 175.0,
+     "volume": 150,
+     "open_interest": 75,
+     "vol_oi_ratio": 2.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 75.0,
+     "volume": 136,
+     "open_interest": 126,
+     "vol_oi_ratio": 1.1,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 259,
+   "otm_put_oi": 540,
+   "positioning_lean_score": -0.35,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "CHTR",
+   "as_of": "2026-11-11",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-10",
+     "days_ago": 1,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 140.0,
+     "price_target_to": 150.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Buy rating on CHTR and raised its price target from $140.0 to $150.0"
+    },
+    {
+     "date": "2026-11-09",
+     "days_ago": 2,
+     "firm": "TD Cowen",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 372.0,
+     "price_target_to": 345.0,
+     "is_rating_change": false,
+     "description": "TD Cowen maintained its Buy rating on CHTR and cut its price target from $372.0 to $345.0"
+    },
+    {
+     "date": "2026-11-09",
+     "days_ago": 2,
+     "firm": "Wells Fargo",
+     "action": "maintained",
+     "from_grade": "Underweight",
+     "to_grade": "Underweight",
+     "price_target_from": 101.0,
+     "price_target_to": 103.0,
+     "is_rating_change": false,
+     "description": "Wells Fargo maintained its Underweight rating on CHTR and raised its price target from $101.0 to $103.0"
+    },
+    {
+     "date": "2026-11-09",
+     "days_ago": 2,
+     "firm": "StoneX",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 380.0,
+     "price_target_to": 200.0,
+     "is_rating_change": false,
+     "description": "StoneX maintained its Buy rating on CHTR and cut its price target from $380.0 to $200.0"
+    },
+    {
+     "date": "2026-11-03",
+     "days_ago": 8,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 180.0,
+     "price_target_to": 140.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Buy rating on CHTR and cut its price target from $180.0 to $140.0"
+    }
+   ],
+   "consensus": {
+    "rating": "hold",
+    "score": 3.14,
+    "verdict": "neutral",
+    "analysts": 21,
+    "counts": {
+     "strongBuy": 0,
+     "buy": 5,
+     "hold": 10,
+     "sell": 4,
+     "strongSell": 2
+    },
+    "trend": "deteriorating",
+    "trend_detail": "consensus softened over 3 months (score 3.05 to 3.14; bearish ratings 5 to 6)"
+   },
+   "price_target": {
+    "mean": 170.44,
+    "median": 145.0,
+    "high": 380.0,
+    "low": 68.0,
+    "current_price": 134.06,
+    "dispersion_pct": 183.1,
+    "upside_vs_mean_pct": 27.1,
+    "upside_vs_median_pct": 8.2
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "CHTR",
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "comparison": {
+    "1d": {
+     "stock_change_pct": 2.65,
+     "sector_etf_change_pct": 2.45,
+     "relative_to_sector_pct": 0.2
+    },
+    "2w": {
+     "stock_change_pct": 18.61,
+     "sector_etf_change_pct": 3.38,
+     "relative_to_sector_pct": 15.23
+    },
+    "ytd": {
+     "stock_change_pct": -42.09,
+     "sector_etf_change_pct": -7.32,
+     "relative_to_sector_pct": -34.77
+    },
+    "1y": {
+     "stock_change_pct": -44.37,
+     "sector_etf_change_pct": -3.3,
+     "relative_to_sector_pct": -41.07
+    },
+    "1mo": {
+     "stock_change_pct": 17.24,
+     "sector_etf_change_pct": -2.74,
+     "relative_to_sector_pct": 19.98
+    },
+    "1w": {
+     "stock_change_pct": 4.9,
+     "sector_etf_change_pct": 7.08,
+     "relative_to_sector_pct": -2.18
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-10",
+    "realtime_end": "2026-11-10",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9615,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-09",
+      "value": "19.92"
+     },
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-06",
+      "value": "25.64"
+     },
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-05",
+      "value": "28.18"
+     },
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-04",
+      "value": "16.61"
+     },
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-03",
+      "value": "20.83"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "CHTR",
+   "as_of": "2026-11-11",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 28,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-28",
+     "description": "CHTR Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 78,
+     "eps_estimate": 9.8845,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-06",
+     "description": "CHTR reported Q3 2026 earnings before the open \u2014 EPS 21.7 vs 8.213 expected (beat, +164.2%)",
+     "source": "finnhub",
+     "days_ago": 5,
+     "eps_actual": 21.7,
+     "eps_estimate": 8.213,
+     "surprise": "beat",
+     "surprise_pct": 164.2,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

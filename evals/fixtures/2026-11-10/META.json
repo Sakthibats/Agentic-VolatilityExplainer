@@ -1,0 +1,401 @@
+{
+ "schema": 1,
+ "ticker": "META",
+ "trading_day": "2026-11-10",
+ "captured_at": "2026-11-11T01:24:24+00:00",
+ "selected_as": "move",
+ "change_pct": 0.0,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "today: 5.12% \u2014 elevated for this stock (about 1.89x its normal move for that span, expected ~2.72%)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "META",
+   "price": 641.39,
+   "prev_close": 641.37,
+   "change_pct": 0.0,
+   "realized_vol_annualized_pct": 43.1,
+   "changes_pct": {
+    "1d": 5.12,
+    "1w": 5.71,
+    "2w": 1.71,
+    "1mo": -10.76,
+    "1y": 3.98,
+    "ytd": -1.14
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "today: 5.12% \u2014 elevated for this stock (about 1.89x its normal move for that span, expected ~2.72%)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "META",
+   "headlines": [
+    {
+     "headline": "HIMS Stock Faces Dual Blow From Expanded FTC Privacy Lawsuit After Selloff Driven By Q3 Subscriber Loss",
+     "summary": "The Federal Trade Commission on Tuesday filed an amended complaint in the U.S. District Court for the Northern District of California, adding Arizona, Florida, Nebraska, Ohio, and Wisconsin as...",
+     "datetime": 1794352226,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=78c105a0cc218ea054e1111ac0fcb8798c5d20b91e0035761c2de0ac20e4fa5c"
+    },
+    {
+     "headline": "CoreWeave Earnings Were Strong. Investors Remain Antsy as Stock Edges Up.",
+     "summary": "The AI cloud provider\u2019s rapid expansion is paying off as the company handily beat analyst expectations.",
+     "datetime": 1794351780,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=de16f5bf51708a4ad363c682285fc81f484ec1b5757b1ccb77b1afb8f093814f"
+    },
+    {
+     "headline": "Stock Market Today, Nov. 10: Wall Street's Rally Hits a Roadblock as Hot Inflation Raises the Stakes for the Fed",
+     "summary": "Yesterday's rebound lost momentum as rising Treasury yields and renewed inflation concerns weighed on stocks",
+     "datetime": 1794351007,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=2cc89abdb0cf56de5b9d7d48d5c1dbed8a778aec93f583952367b381bca99919"
+    },
+    {
+     "headline": "Halliburton Announces Dividend",
+     "summary": "HOUSTON, November 10, 2026--Halliburton Company (NYSE: HAL) announced today that its board of directors has declared a 2026 fourth quarter dividend of seventeen cents ($0.17) a share on the Company\u2019s...",
+     "datetime": 1794348900,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=a20020c87064d7fadbeae97de87b272e655639c7b4aeabe223fcfd6f58900f2d"
+    },
+    {
+     "headline": "Meta's Ember is a bet on cheaper models with competitors",
+     "summary": "Yahoo Finance's Deirdre Bosa and \"In the Loop\" host Ejaaz Ahamadeen discuss Meta's  (META) new Ember model, designed as a low-cost, quick option to compete with smaller models like ChatGPT's Luna and...",
+     "datetime": 1794347728,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=bc239ea631cadf14b381b77d11d651f1333fb0c72a053a7b89c1c232a62f58f5"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "META",
+   "expiry": "2026-11-27",
+   "days_to_expiry": 16,
+   "atm_iv_pct": 41.2,
+   "iv_chain_percentile": 1,
+   "skew_points": 0.7,
+   "put_call_ratio": 0.8,
+   "total_put_oi": 17522,
+   "total_call_oi": 21836
+  },
+  "get_options_positioning": {
+   "ticker": "META",
+   "spot": 641.39,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-27",
+   "primary_days_to_expiry": 16,
+   "max_pain_strike": 630.0,
+   "resistance_walls": [
+    {
+     "strike": 700.0,
+     "open_interest": 2480
+    },
+    {
+     "strike": 705.0,
+     "open_interest": 2188
+    },
+    {
+     "strike": 625.0,
+     "open_interest": 1058
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 500.0,
+     "open_interest": 2269
+    },
+    {
+     "strike": 600.0,
+     "open_interest": 1080
+    },
+    {
+     "strike": 590.0,
+     "open_interest": 1002
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 16,
+     "atm_iv_pct": 41.2
+    },
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 23,
+     "atm_iv_pct": 40.8
+    },
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 30,
+     "atm_iv_pct": 41.0
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 695.0,
+     "volume": 121,
+     "open_interest": 222,
+     "vol_oi_ratio": 0.5,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 650.0,
+     "volume": 350,
+     "open_interest": 906,
+     "vol_oi_ratio": 0.4,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 645.0,
+     "volume": 124,
+     "open_interest": 497,
+     "vol_oi_ratio": 0.2,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 700.0,
+     "volume": 259,
+     "open_interest": 2480,
+     "vol_oi_ratio": 0.1,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 18437,
+   "otm_put_oi": 15247,
+   "positioning_lean_score": 0.09,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "META",
+   "as_of": "2026-11-11",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-22",
+     "days_ago": 20,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 884.0,
+     "price_target_to": 892.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Buy rating on META and raised its price target from $884.0 to $892.0"
+    },
+    {
+     "date": "2026-10-22",
+     "days_ago": 20,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 895.0,
+     "price_target_to": 905.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Buy rating on META and raised its price target from $895.0 to $905.0"
+    },
+    {
+     "date": "2026-10-22",
+     "days_ago": 20,
+     "firm": "DA Davidson",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 700.0,
+     "price_target_to": 800.0,
+     "is_rating_change": false,
+     "description": "DA Davidson maintained its Buy rating on META and raised its price target from $700.0 to $800.0"
+    },
+    {
+     "date": "2026-10-22",
+     "days_ago": 20,
+     "firm": "BMO Capital",
+     "action": "maintained",
+     "from_grade": "Market Perform",
+     "to_grade": "Market Perform",
+     "price_target_from": 580.0,
+     "price_target_to": 685.0,
+     "is_rating_change": false,
+     "description": "BMO Capital maintained its Market Perform rating on META and raised its price target from $580.0 to $685.0"
+    },
+    {
+     "date": "2026-10-22",
+     "days_ago": 20,
+     "firm": "Evercore ISI Group",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 860.0,
+     "price_target_to": 870.0,
+     "is_rating_change": false,
+     "description": "Evercore ISI Group maintained its Outperform rating on META and raised its price target from $860.0 to $870.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.98,
+    "verdict": "leaning bullish",
+    "analysts": 61,
+    "counts": {
+     "strongBuy": 9,
+     "buy": 45,
+     "hold": 6,
+     "sell": 1,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.98 to 1.98)"
+   },
+   "price_target": {
+    "mean": 850.1,
+    "median": 850.0,
+    "high": 1050.0,
+    "low": 629.06,
+    "current_price": 641.39,
+    "dispersion_pct": 49.5,
+    "upside_vs_mean_pct": 32.5,
+    "upside_vs_median_pct": 32.5
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "META",
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "comparison": {
+    "1d": {
+     "stock_change_pct": 5.12,
+     "sector_etf_change_pct": 2.45,
+     "relative_to_sector_pct": 2.67
+    },
+    "2w": {
+     "stock_change_pct": 1.71,
+     "sector_etf_change_pct": 3.38,
+     "relative_to_sector_pct": -1.67
+    },
+    "ytd": {
+     "stock_change_pct": -1.14,
+     "sector_etf_change_pct": -7.32,
+     "relative_to_sector_pct": 6.18
+    },
+    "1y": {
+     "stock_change_pct": 3.98,
+     "sector_etf_change_pct": -3.3,
+     "relative_to_sector_pct": 7.28
+    },
+    "1mo": {
+     "stock_change_pct": -10.76,
+     "sector_etf_change_pct": -2.74,
+     "relative_to_sector_pct": -8.02
+    },
+    "1w": {
+     "stock_change_pct": 5.71,
+     "sector_etf_change_pct": 7.08,
+     "relative_to_sector_pct": -1.37
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-10",
+    "realtime_end": "2026-11-10",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9615,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-09",
+      "value": "19.92"
+     },
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-06",
+      "value": "25.64"
+     },
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-05",
+      "value": "28.18"
+     },
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-04",
+      "value": "16.61"
+     },
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-03",
+      "value": "20.83"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "META",
+   "as_of": "2026-11-11",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 28,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-26",
+     "description": "META Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 76,
+     "eps_estimate": 8.5691,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-21",
+     "description": "META reported Q3 2026 earnings after the close \u2014 EPS 7.4 vs 6.8723 expected (beat, +7.7%)",
+     "source": "finnhub",
+     "days_ago": 21,
+     "eps_actual": 7.4,
+     "eps_estimate": 6.8723,
+     "surprise": "beat",
+     "surprise_pct": 7.7,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

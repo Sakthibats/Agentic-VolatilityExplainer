@@ -1,0 +1,372 @@
+{
+ "schema": 1,
+ "ticker": "AVGO",
+ "trading_day": "2026-11-10",
+ "captured_at": "2026-11-11T01:23:58+00:00",
+ "selected_as": "move",
+ "change_pct": 3.91,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 8.78% \u2014 elevated relative to this stock's own typical volatility (expected ~4.07%, 2.16x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "AVGO",
+   "price": 331.98,
+   "prev_close": 319.48,
+   "change_pct": 3.91,
+   "realized_vol_annualized_pct": 64.6,
+   "changes_pct": {
+    "1d": 8.78,
+    "1w": -0.85,
+    "2w": -2.94,
+    "1mo": -11.63,
+    "1y": -9.49,
+    "ytd": -7.59
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 8.78% \u2014 elevated relative to this stock's own typical volatility (expected ~4.07%, 2.16x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "AVGO",
+   "headlines": [
+    {
+     "headline": "S&P 500 Top Gainers and Losers for Today's Session",
+     "summary": "S&P 500 market movers for today's session: Charter Communications led gainers at 9.68%, while Carvana led losers at 6.32%.",
+     "datetime": 1794341167,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=6fce76dd7876e030d37b388ebacf02dc819d615b61dee883f327a61f69708576"
+    },
+    {
+     "headline": "5 Best Tech Stocks That Pay Dividends",
+     "summary": "The idea that technology companies don\u2019t pay dividends comes from the industry\u2019s early years, when most businesses focused on growing as quickly as possible. During the dot-com boom of the late 1990s...",
+     "datetime": 1794339702,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=deac1c09e5d675c435bf5b2fe037f6d37b584ea7d0c5bee2b944b2e6f6050a8e"
+    },
+    {
+     "headline": "Will Broadcom Inc. (AVGO) Beat Estimates Again in Its Next Earnings Report?",
+     "summary": "Broadcom Inc. (AVGO) has an impressive earnings surprise history and currently possesses the right combination of the two key ingredients for a likely beat in its next quarterly report.",
+     "datetime": 1794339567,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=93247fed5168ea262d0d22a595fd5fbd7a39c976fd9c8f3444c67f8f01c2bfdb"
+    },
+    {
+     "headline": "Should You Buy, Sell, or Hold Cerebras Systems Stock Before Q3 Earnings?",
+     "summary": "CBRS Q3 results are likely to reflect strong AI inference demand and growing cloud adoption, but margin pressure, persistent losses, and valuation risks remain.",
+     "datetime": 1794339180,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=47cbb5792cedf3355996e1c3fa5de48640916bdc8c6464175d22ccb5c48ea194"
+    },
+    {
+     "headline": "Texas Instruments Stock Surges 70% YTD: Is the Rally Set to Continue?",
+     "summary": "TXN surges 70% YTD. Strong earnings, rising AI data center demand and robust cash flow could fuel further gains despite a premium valuation.",
+     "datetime": 1794336780,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=d7db2714d29a58dd161cf34a770d44480e31f91e2bbcf199302c7a3b3f7008a1"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "AVGO",
+   "expiry": "2026-11-27",
+   "days_to_expiry": 16,
+   "atm_iv_pct": 51.6,
+   "iv_chain_percentile": 2,
+   "skew_points": 0.6,
+   "put_call_ratio": 1.45,
+   "total_put_oi": 22889,
+   "total_call_oi": 15832
+  },
+  "get_options_positioning": {
+   "ticker": "AVGO",
+   "spot": 331.98,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-27",
+   "primary_days_to_expiry": 16,
+   "max_pain_strike": 335.0,
+   "resistance_walls": [
+    {
+     "strike": 350.0,
+     "open_interest": 1635
+    },
+    {
+     "strike": 370.0,
+     "open_interest": 1172
+    },
+    {
+     "strike": 400.0,
+     "open_interest": 1134
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 310.0,
+     "open_interest": 1878
+    },
+    {
+     "strike": 305.0,
+     "open_interest": 1877
+    },
+    {
+     "strike": 235.0,
+     "open_interest": 1813
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 16,
+     "atm_iv_pct": 51.6
+    },
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 23,
+     "atm_iv_pct": 50.6
+    },
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 30,
+     "atm_iv_pct": 56.4
+    }
+   ],
+   "term_structure_trend": "Rising \u2014 market pricing in a later catalyst within the horizon",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 385.0,
+     "volume": 705,
+     "open_interest": 515,
+     "vol_oi_ratio": 1.4,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 255.0,
+     "volume": 216,
+     "open_interest": 212,
+     "vol_oi_ratio": 1.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 270.0,
+     "volume": 145,
+     "open_interest": 194,
+     "vol_oi_ratio": 0.7,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 365.0,
+     "volume": 345,
+     "open_interest": 556,
+     "vol_oi_ratio": 0.6,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 310.0,
+     "volume": 115,
+     "open_interest": 237,
+     "vol_oi_ratio": 0.5,
+     "moneyness": "ITM"
+    }
+   ],
+   "otm_call_oi": 12458,
+   "otm_put_oi": 19234,
+   "positioning_lean_score": -0.21,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "AVGO",
+   "as_of": "2026-11-11",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-27",
+     "days_ago": 15,
+     "firm": "Rosenblatt",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 600.0,
+     "price_target_to": 600.0,
+     "is_rating_change": false,
+     "description": "Rosenblatt maintained its Buy rating on AVGO with a $600.0 price target"
+    },
+    {
+     "date": "2026-10-27",
+     "days_ago": 15,
+     "firm": "DA Davidson",
+     "action": "upgrade",
+     "from_grade": "Neutral",
+     "to_grade": "Buy",
+     "price_target_from": 350.0,
+     "price_target_to": 400.0,
+     "is_rating_change": true,
+     "description": "DA Davidson upgraded AVGO from Neutral to Buy and raised its price target from $350.0 to $400.0"
+    },
+    {
+     "date": "2026-10-22",
+     "days_ago": 20,
+     "firm": "Tigress Financial",
+     "action": "initiated coverage",
+     "from_grade": null,
+     "to_grade": "Buy",
+     "price_target_from": null,
+     "price_target_to": 600.0,
+     "is_rating_change": false,
+     "description": "Tigress Financial initiated coverage of AVGO at Buy with a $600.0 price target"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.88,
+    "verdict": "leaning bullish",
+    "analysts": 51,
+    "counts": {
+     "strongBuy": 8,
+     "buy": 41,
+     "hold": 2,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.92 to 1.88)"
+   },
+   "price_target": {
+    "mean": 533.42,
+    "median": 535.0,
+    "high": 660.0,
+    "low": 400.0,
+    "current_price": 331.98,
+    "dispersion_pct": 48.7,
+    "upside_vs_mean_pct": 60.7,
+    "upside_vs_median_pct": 61.2
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "AVGO",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1d": {
+     "stock_change_pct": 8.78,
+     "sector_etf_change_pct": 3.73,
+     "relative_to_sector_pct": 5.05
+    },
+    "2w": {
+     "stock_change_pct": -2.94,
+     "sector_etf_change_pct": -8.29,
+     "relative_to_sector_pct": 5.35
+    },
+    "ytd": {
+     "stock_change_pct": -7.59,
+     "sector_etf_change_pct": 18.85,
+     "relative_to_sector_pct": -26.44
+    },
+    "1y": {
+     "stock_change_pct": -9.49,
+     "sector_etf_change_pct": 18.8,
+     "relative_to_sector_pct": -28.29
+    },
+    "1mo": {
+     "stock_change_pct": -11.63,
+     "sector_etf_change_pct": -14.04,
+     "relative_to_sector_pct": 2.41
+    },
+    "1w": {
+     "stock_change_pct": -0.85,
+     "sector_etf_change_pct": -1.92,
+     "relative_to_sector_pct": 1.07
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-10",
+    "realtime_end": "2026-11-10",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9615,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-09",
+      "value": "19.92"
+     },
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-06",
+      "value": "25.64"
+     },
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-05",
+      "value": "28.18"
+     },
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-04",
+      "value": "16.61"
+     },
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-03",
+      "value": "20.83"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "AVGO",
+   "as_of": "2026-11-11",
+   "events": [
+    {
+     "type": "earnings",
+     "date": "2026-12-09",
+     "description": "AVGO Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 28,
+     "eps_estimate": 3.8912,
+     "hour": "amc"
+    },
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 28,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}

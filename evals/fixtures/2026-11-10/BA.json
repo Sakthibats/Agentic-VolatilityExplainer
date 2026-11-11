@@ -1,0 +1,389 @@
+{
+ "schema": 1,
+ "ticker": "BA",
+ "trading_day": "2026-11-10",
+ "captured_at": "2026-11-11T01:23:44+00:00",
+ "selected_as": "control",
+ "change_pct": 0.58,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "BA",
+   "price": 173.38,
+   "prev_close": 172.38,
+   "change_pct": 0.58,
+   "realized_vol_annualized_pct": 45.6,
+   "changes_pct": {
+    "1d": -0.59,
+    "1w": -1.72,
+    "2w": -8.46,
+    "1mo": -9.45,
+    "1y": -12.27,
+    "ytd": -24.32
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   }
+  },
+  "get_news": {
+   "ticker": "BA",
+   "headlines": [
+    {
+     "headline": "Northrop Grumman (NOC) Will Not Protest Its F A XX Loss",
+     "summary": "Northrop Grumman (NYSE:NOC) has chosen not to protest the U.S. Navy's F/A-XX fighter award to Boeing. The decision follows the Navy's selection of Boeing for the next-generation carrier-based fighter...",
+     "datetime": 1794352636,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=286572267c8be6ce8278930b602c78dfa833fd8072cd401729d2ae27aa75d7db"
+    },
+    {
+     "headline": "Boeing October Jet Deliveries Decline, Trail Airbus Tally",
+     "summary": "Boeing's (BA) jet deliveries dropped sequentially and annually in October, with the monthly count la",
+     "datetime": 1794343026,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=0c248b02351019983080f969b1fa15b309fe8f4fff25301388c08810febac675"
+    },
+    {
+     "headline": "BA Stock Layoffs: What to Know About the Latest Boeing Job Cuts",
+     "summary": "Boeing announces fresh wave of layoffs affecting its commercial airplane segment. Here\u2019s what the announcement really means for BA shares.",
+     "datetime": 1794323890,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=f44b3ecbeb1c686e290fe649ee5c063f3defabf614450f2a48ecb42dad585f56"
+    },
+    {
+     "headline": "BAE Systems accelerates delivery of advanced LRASM missile sensors",
+     "summary": "BAE Systems (LON: BA) has delivered all Lot 8 units of its advanced radio-frequency (RF) sensor to Lockheed Martin for the Long-Range Anti-Ship Missile (LRASM). To meet an accelerated production...",
+     "datetime": 1794322800,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=8f3c7e04a9d1566bcc9ad751f88ba7a61efb4ae3d8b2732c2922552cbf1e642c"
+    },
+    {
+     "headline": "Global Unmanned Aerial Vehicles (UAV) Market Report 2026-2030 | Capitalize on 13.8% CAGR as Boeing, Airbus, DJI and Anduril Accelerate Defense, BVLOS and Drone Logistics",
+     "summary": "Players: Boeing, Airbus, Lockheed Martin, Northrop Grumman and Leonardo. Profiles cover UAV offerings, innovations, acquisitions and regional presence.Dublin, Nov. 10, 2026 (GLOBE NEWSWIRE) --...",
+     "datetime": 1794321660,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=3c37f702698e4a3c96543bd848b520722656d54b2a92cbebf985175265c4033c"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "BA",
+   "expiry": "2026-11-27",
+   "days_to_expiry": 16,
+   "atm_iv_pct": 34.9,
+   "iv_chain_percentile": 1,
+   "skew_points": -0.3,
+   "put_call_ratio": 1.14,
+   "total_put_oi": 6351,
+   "total_call_oi": 5561
+  },
+  "get_options_positioning": {
+   "ticker": "BA",
+   "spot": 173.38,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-27",
+   "primary_days_to_expiry": 16,
+   "max_pain_strike": 175.0,
+   "resistance_walls": [
+    {
+     "strike": 185.0,
+     "open_interest": 1091
+    },
+    {
+     "strike": 190.0,
+     "open_interest": 913
+    },
+    {
+     "strike": 195.0,
+     "open_interest": 636
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 165.0,
+     "open_interest": 901
+    },
+    {
+     "strike": 160.0,
+     "open_interest": 849
+    },
+    {
+     "strike": 155.0,
+     "open_interest": 703
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 16,
+     "atm_iv_pct": 34.9
+    },
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 23,
+     "atm_iv_pct": 35.3
+    },
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 30,
+     "atm_iv_pct": 35.2
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 225.0,
+     "volume": 134,
+     "open_interest": 15,
+     "vol_oi_ratio": 8.9,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 205.0,
+     "volume": 121,
+     "open_interest": 121,
+     "vol_oi_ratio": 1.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 215.0,
+     "volume": 107,
+     "open_interest": 107,
+     "vol_oi_ratio": 1.0,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 5193,
+   "otm_put_oi": 5539,
+   "positioning_lean_score": -0.03,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "BA",
+   "as_of": "2026-11-11",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-29",
+     "days_ago": 13,
+     "firm": "Bernstein",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 278.0,
+     "price_target_to": 223.0,
+     "is_rating_change": false,
+     "description": "Bernstein maintained its Outperform rating on BA and cut its price target from $278.0 to $223.0"
+    },
+    {
+     "date": "2026-10-28",
+     "days_ago": 14,
+     "firm": "Jefferies",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 265.0,
+     "price_target_to": 230.0,
+     "is_rating_change": false,
+     "description": "Jefferies maintained its Buy rating on BA and cut its price target from $265.0 to $230.0"
+    },
+    {
+     "date": "2026-10-28",
+     "days_ago": 14,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 275.0,
+     "price_target_to": 240.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Buy rating on BA and cut its price target from $275.0 to $240.0"
+    },
+    {
+     "date": "2026-10-28",
+     "days_ago": 14,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 290.0,
+     "price_target_to": 240.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Overweight rating on BA and cut its price target from $290.0 to $240.0"
+    },
+    {
+     "date": "2026-10-28",
+     "days_ago": 14,
+     "firm": "BNP Paribas",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 265.0,
+     "price_target_to": 205.0,
+     "is_rating_change": false,
+     "description": "BNP Paribas maintained its Outperform rating on BA and cut its price target from $265.0 to $205.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.89,
+    "verdict": "leaning bullish",
+    "analysts": 28,
+    "counts": {
+     "strongBuy": 6,
+     "buy": 19,
+     "hold": 3,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.0 to 1.89; bearish ratings 0 to 0)"
+   },
+   "price_target": {
+    "mean": 233.35,
+    "median": 235.0,
+    "high": 305.0,
+    "low": 157.0,
+    "current_price": 173.38,
+    "dispersion_pct": 63.4,
+    "upside_vs_mean_pct": 34.6,
+    "upside_vs_median_pct": 35.5
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "BA",
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "comparison": {
+    "1d": {
+     "stock_change_pct": -0.59,
+     "sector_etf_change_pct": 3.82,
+     "relative_to_sector_pct": -4.41
+    },
+    "2w": {
+     "stock_change_pct": -8.46,
+     "sector_etf_change_pct": 1.16,
+     "relative_to_sector_pct": -9.62
+    },
+    "ytd": {
+     "stock_change_pct": -24.32,
+     "sector_etf_change_pct": 7.76,
+     "relative_to_sector_pct": -32.08
+    },
+    "1y": {
+     "stock_change_pct": -12.27,
+     "sector_etf_change_pct": 11.95,
+     "relative_to_sector_pct": -24.22
+    },
+    "1mo": {
+     "stock_change_pct": -9.45,
+     "sector_etf_change_pct": -0.21,
+     "relative_to_sector_pct": -9.24
+    },
+    "1w": {
+     "stock_change_pct": -1.72,
+     "sector_etf_change_pct": -0.48,
+     "relative_to_sector_pct": -1.24
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-10",
+    "realtime_end": "2026-11-10",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9615,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-09",
+      "value": "19.92"
+     },
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-06",
+      "value": "25.64"
+     },
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-05",
+      "value": "28.18"
+     },
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-04",
+      "value": "16.61"
+     },
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-03",
+      "value": "20.83"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "BA",
+   "as_of": "2026-11-11",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 28,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-25",
+     "description": "BA Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 75,
+     "eps_estimate": -0.8401,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-27",
+     "description": "BA reported Q3 2026 earnings before the open \u2014 EPS -0.34 vs -0.2138 expected (miss, -59.0%)",
+     "source": "finnhub",
+     "days_ago": 15,
+     "eps_actual": -0.34,
+     "eps_estimate": -0.2138,
+     "surprise": "miss",
+     "surprise_pct": -59.0,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

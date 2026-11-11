@@ -1,0 +1,308 @@
+{
+ "schema": 1,
+ "ticker": "EMBJ",
+ "trading_day": "2026-11-10",
+ "captured_at": "2026-11-11T01:24:44+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 7.05,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "today: 4.04% \u2014 typical relative to this stock's own typical volatility (expected ~2.78%, 1.45x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "EMBJ",
+   "price": 82.5,
+   "prev_close": 77.07,
+   "change_pct": 7.05,
+   "realized_vol_annualized_pct": 44.2,
+   "changes_pct": {
+    "1d": 4.04,
+    "1w": 2.32,
+    "2w": 8.44,
+    "1mo": 8.31,
+    "1y": 21.35,
+    "ytd": 18.47
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "today: 4.04% \u2014 typical relative to this stock's own typical volatility (expected ~2.78%, 1.45x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "EMBJ",
+   "headlines": [
+    {
+     "headline": "Embraer (EMBJ) Q3 2026 Earnings Call Transcript",
+     "summary": "Eve's transition flights advance as Embraer's record backlog keeps growing.",
+     "datetime": 1794352696,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=b67802606df9ee64c0efbd1bb748fe733541a55a0591655b3777e9c80ad3a1d8"
+    },
+    {
+     "headline": "What Embraer-Empresa Brasileira de Aeronautica (EMBJ) Said on Its Q3 Earnings Call",
+     "summary": "Embraer-Empresa Brasileira de Aeronautica (NYSE:EMBJ) raised its 2026 revenue and free cash flow forecasts after reporting record third-quarter revenue and an all-time high backlog, as growth across...",
+     "datetime": 1794341694,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=7fc6729831b7ae649a25058ce33871b8d590ff8e362a3224463b8f9dfd598971"
+    },
+    {
+     "headline": "Embraer SA (EMBJ) (Q3 2026) Earnings Call Highlights: Record $35. ...",
+     "summary": "Embraer SA (EMBJ) posted record third-quarter revenue of $2.35 billion, lifted 2026 revenue and free cash flow guidance, and signaled further margin expansion across its business units.",
+     "datetime": 1794337544,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=2e23a1da7e49adea31f4461c51cc8669897dd65dace58930ba733ee69efb474a"
+    },
+    {
+     "headline": "Embraer Stocks Rise 5.51% as Record $35.7 Billion Backlog Comes With Higher Guidance",
+     "summary": "The Brazilian planemaker lifted its 2026 revenue and free cash flow targets after record third-quarter sales and sharply wider margins.",
+     "datetime": 1794336116,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=c8b7d9be9d0b44e0ad19349e3fc3f76f38cabd1bb04638cf038ccbfca3e76f7f"
+    },
+    {
+     "headline": "Embraer Q3 Earnings Miss Estimates, Revenues Beat, Outlook Raised",
+     "summary": "EMBJ's Q3 earnings miss estimates despite 17.2% revenue growth, while record backlog, higher aircraft deliveries and stronger cash flow drive an upbeat outlook.",
+     "datetime": 1794333600,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=cdd9103c448f6c3bab3aacd72dcdb6639c4795f5ff2c3047cd182eaac68a6d10"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "EMBJ",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 9,
+   "atm_iv_pct": 52.7,
+   "iv_chain_percentile": 18,
+   "skew_points": -0.4,
+   "put_call_ratio": 0.36,
+   "total_put_oi": 8045,
+   "total_call_oi": 22202
+  },
+  "get_options_positioning": {
+   "ticker": "EMBJ",
+   "spot": 82.5,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 9,
+   "max_pain_strike": 75.0,
+   "resistance_walls": [
+    {
+     "strike": 95.0,
+     "open_interest": 14625
+    },
+    {
+     "strike": 75.0,
+     "open_interest": 2069
+    },
+    {
+     "strike": 85.0,
+     "open_interest": 1831
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 70.0,
+     "open_interest": 3512
+    },
+    {
+     "strike": 75.0,
+     "open_interest": 2061
+    },
+    {
+     "strike": 65.0,
+     "open_interest": 920
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 9,
+     "atm_iv_pct": 52.7
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 80.0,
+     "volume": 398,
+     "open_interest": 1049,
+     "vol_oi_ratio": 0.4,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 85.0,
+     "volume": 137,
+     "open_interest": 1831,
+     "vol_oi_ratio": 0.1,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 16947,
+   "otm_put_oi": 7860,
+   "positioning_lean_score": 0.37,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "EMBJ",
+   "as_of": "2026-11-11",
+   "analyst_coverage": "covered",
+   "recent_actions": [],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.73,
+    "verdict": "leaning bullish",
+    "analysts": 15,
+    "counts": {
+     "strongBuy": 5,
+     "buy": 9,
+     "hold": 1,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.73 to 1.73)"
+   },
+   "price_target": {
+    "mean": 94.8,
+    "median": 95.0,
+    "high": 106.0,
+    "low": 80.0,
+    "current_price": 82.5,
+    "dispersion_pct": 27.4,
+    "upside_vs_mean_pct": 14.9,
+    "upside_vs_median_pct": 15.2
+   },
+   "notes": [
+    "No analyst rating changes in the last 30 days \u2014 the consensus below is standing opinion, not a recent catalyst."
+   ]
+  },
+  "get_sector_comparison": {
+   "ticker": "EMBJ",
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "comparison": {
+    "1d": {
+     "stock_change_pct": 4.04,
+     "sector_etf_change_pct": 3.82,
+     "relative_to_sector_pct": 0.22
+    },
+    "2w": {
+     "stock_change_pct": 8.44,
+     "sector_etf_change_pct": 1.16,
+     "relative_to_sector_pct": 7.28
+    },
+    "ytd": {
+     "stock_change_pct": 18.47,
+     "sector_etf_change_pct": 7.76,
+     "relative_to_sector_pct": 10.71
+    },
+    "1y": {
+     "stock_change_pct": 21.35,
+     "sector_etf_change_pct": 11.95,
+     "relative_to_sector_pct": 9.4
+    },
+    "1mo": {
+     "stock_change_pct": 8.31,
+     "sector_etf_change_pct": -0.21,
+     "relative_to_sector_pct": 8.52
+    },
+    "1w": {
+     "stock_change_pct": 2.32,
+     "sector_etf_change_pct": -0.48,
+     "relative_to_sector_pct": 2.8
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-10",
+    "realtime_end": "2026-11-10",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9615,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-09",
+      "value": "19.92"
+     },
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-06",
+      "value": "25.64"
+     },
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-05",
+      "value": "28.18"
+     },
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-04",
+      "value": "16.61"
+     },
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-03",
+      "value": "20.83"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "EMBJ",
+   "as_of": "2026-11-11",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 28,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-10",
+     "description": "EMBJ reported Q3 2026 earnings before the open \u2014 EPS 2.262134 vs 0.214 expected (beat, +957.1%)",
+     "source": "finnhub",
+     "days_ago": 1,
+     "eps_actual": 2.262134,
+     "eps_estimate": 0.214,
+     "surprise": "beat",
+     "surprise_pct": 957.1,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

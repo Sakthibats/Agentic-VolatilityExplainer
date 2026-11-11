@@ -1,0 +1,419 @@
+{
+ "schema": 1,
+ "ticker": "TTWO",
+ "trading_day": "2026-11-10",
+ "captured_at": "2026-11-11T01:24:38+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 8.31,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "today: -3.48% \u2014 typical relative to this stock's own typical volatility (expected ~2.59%, 1.34x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "this week: 7.96% \u2014 typical relative to this stock's own typical volatility (expected ~5.79%, 1.37x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "TTWO",
+   "price": 224.64,
+   "prev_close": 207.4,
+   "change_pct": 8.31,
+   "realized_vol_annualized_pct": 41.1,
+   "changes_pct": {
+    "1d": -3.48,
+    "1w": 7.96,
+    "2w": 1.99,
+    "1mo": -2.83,
+    "1y": -17.83,
+    "ytd": -17.57
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "today: -3.48% \u2014 typical relative to this stock's own typical volatility (expected ~2.59%, 1.34x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "this week: 7.96% \u2014 typical relative to this stock's own typical volatility (expected ~5.79%, 1.37x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "TTWO",
+   "headlines": [
+    {
+     "headline": "Take-Two isn\u2019t ready to \u2018declare victory\u2019 on GTA 6 before launch",
+     "summary": "Preorders are running ahead of Take-Two\u2019s own plan, yet management is keeping its cards close after a weaker quarter elsewhere.",
+     "datetime": 1794346380,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=0f3669b09a32a3a8c19e4376d32f6162fa10ba70bd9a4e1e8aa25676b1e9326f"
+    },
+    {
+     "headline": "S&P 500 Top Gainers and Losers for Today's Session",
+     "summary": "S&P 500 market movers for today's session: Charter Communications led gainers at 9.68%, while Carvana led losers at 6.32%.",
+     "datetime": 1794341167,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=6fce76dd7876e030d37b388ebacf02dc819d615b61dee883f327a61f69708576"
+    },
+    {
+     "headline": "Why Take-Two Stock's Got Game Today",
+     "summary": "The video game specialist reported results ahead of its most promising hit in years.",
+     "datetime": 1794337197,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=01e3c2d215ac58ae9e0ce5c151a1c30c1a676994d4dc51370b9aa6b7e3724dac"
+    },
+    {
+     "headline": "Take-Two Stocks Rise 4.96% as GTA VI Pre-Orders Track Far Above Plan",
+     "summary": "Management kept its $8.0 billion-$8.2 billion bookings outlook even after second-quarter results slipped below guidance.",
+     "datetime": 1794336030,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=9b6540d4eb3598d706b2fae912bfb615a18463da4411c74b46f3d048410b56ea"
+    },
+    {
+     "headline": "Take-Two Q2 Earnings Beat on Lower Costs Despite Bookings Miss",
+     "summary": "TTWO's fiscal Q2 earnings beat estimates as lower costs lift margins, but Net Bookings miss amid NBA 2K27's shortfall. See its fiscal 2027 outlook.",
+     "datetime": 1794334860,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=7a52fb15f3dd76639517149a06d85a2f9d42aba1cb1bb46218f46c558d655ed9"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "TTWO",
+   "expiry": "2026-11-27",
+   "days_to_expiry": 16,
+   "atm_iv_pct": 70.1,
+   "iv_chain_percentile": 10,
+   "skew_points": -2.9,
+   "put_call_ratio": 0.72,
+   "total_put_oi": 3387,
+   "total_call_oi": 4716
+  },
+  "get_options_positioning": {
+   "ticker": "TTWO",
+   "spot": 224.64,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-27",
+   "primary_days_to_expiry": 16,
+   "max_pain_strike": 200.0,
+   "resistance_walls": [
+    {
+     "strike": 270.0,
+     "open_interest": 883
+    },
+    {
+     "strike": 250.0,
+     "open_interest": 693
+    },
+    {
+     "strike": 215.0,
+     "open_interest": 494
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 180.0,
+     "open_interest": 736
+    },
+    {
+     "strike": 185.0,
+     "open_interest": 456
+    },
+    {
+     "strike": 170.0,
+     "open_interest": 349
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 16,
+     "atm_iv_pct": 70.1
+    },
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 23,
+     "atm_iv_pct": 60.9
+    },
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 30,
+     "atm_iv_pct": 58.6
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 225.0,
+     "volume": 236,
+     "open_interest": 2,
+     "vol_oi_ratio": 118.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 220.0,
+     "volume": 315,
+     "open_interest": 12,
+     "vol_oi_ratio": 26.2,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 220.0,
+     "volume": 502,
+     "open_interest": 70,
+     "vol_oi_ratio": 7.2,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 235.0,
+     "volume": 157,
+     "open_interest": 94,
+     "vol_oi_ratio": 1.7,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 225.0,
+     "volume": 199,
+     "open_interest": 143,
+     "vol_oi_ratio": 1.4,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 3295,
+   "otm_put_oi": 3348,
+   "positioning_lean_score": -0.01,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "TTWO",
+   "as_of": "2026-11-11",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-10",
+     "days_ago": 1,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 300.0,
+     "price_target_to": 295.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Buy rating on TTWO and cut its price target from $300.0 to $295.0"
+    },
+    {
+     "date": "2026-11-10",
+     "days_ago": 1,
+     "firm": "BTIG",
+     "action": "reiterated",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 262.0,
+     "price_target_to": 262.0,
+     "is_rating_change": false,
+     "description": "BTIG reiterated its Buy rating on TTWO with a $262.0 price target"
+    },
+    {
+     "date": "2026-11-07",
+     "days_ago": 4,
+     "firm": "Macquarie",
+     "action": "initiated coverage",
+     "from_grade": null,
+     "to_grade": "Outperform",
+     "price_target_from": null,
+     "price_target_to": 300.0,
+     "is_rating_change": false,
+     "description": "Macquarie initiated coverage of TTWO at Outperform with a $300.0 price target"
+    },
+    {
+     "date": "2026-11-04",
+     "days_ago": 7,
+     "firm": "BTIG",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 313.0,
+     "price_target_to": 262.0,
+     "is_rating_change": false,
+     "description": "BTIG maintained its Buy rating on TTWO and cut its price target from $313.0 to $262.0"
+    },
+    {
+     "date": "2026-10-27",
+     "days_ago": 15,
+     "firm": "B of A Securities",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 368.0,
+     "price_target_to": 330.0,
+     "is_rating_change": false,
+     "description": "B of A Securities maintained its Buy rating on TTWO and cut its price target from $368.0 to $330.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.0,
+    "verdict": "leaning bullish",
+    "analysts": 29,
+    "counts": {
+     "strongBuy": 3,
+     "buy": 25,
+     "hold": 0,
+     "sell": 0,
+     "strongSell": 1
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.0 to 2.0)"
+   },
+   "price_target": {
+    "mean": 283.96,
+    "median": 285.0,
+    "high": 330.0,
+    "low": 170.0,
+    "current_price": 224.64,
+    "dispersion_pct": 56.3,
+    "upside_vs_mean_pct": 26.4,
+    "upside_vs_median_pct": 26.9
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "TTWO",
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "comparison": {
+    "1d": {
+     "stock_change_pct": -3.48,
+     "sector_etf_change_pct": 2.45,
+     "relative_to_sector_pct": -5.93
+    },
+    "2w": {
+     "stock_change_pct": 1.99,
+     "sector_etf_change_pct": 3.38,
+     "relative_to_sector_pct": -1.39
+    },
+    "ytd": {
+     "stock_change_pct": -17.57,
+     "sector_etf_change_pct": -7.32,
+     "relative_to_sector_pct": -10.25
+    },
+    "1y": {
+     "stock_change_pct": -17.83,
+     "sector_etf_change_pct": -3.3,
+     "relative_to_sector_pct": -14.53
+    },
+    "1mo": {
+     "stock_change_pct": -2.83,
+     "sector_etf_change_pct": -2.74,
+     "relative_to_sector_pct": -0.09
+    },
+    "1w": {
+     "stock_change_pct": 7.96,
+     "sector_etf_change_pct": 7.08,
+     "relative_to_sector_pct": 0.88
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-10",
+    "realtime_end": "2026-11-10",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9615,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-09",
+      "value": "19.92"
+     },
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-06",
+      "value": "25.64"
+     },
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-05",
+      "value": "28.18"
+     },
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-04",
+      "value": "16.61"
+     },
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-03",
+      "value": "20.83"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "TTWO",
+   "as_of": "2026-11-11",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 28,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-01",
+     "description": "TTWO Q3 2027 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 82,
+     "eps_estimate": 4.0318
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-09",
+     "description": "TTWO quarterly earnings scheduled (after the close)",
+     "source": "yfinance",
+     "days_until": 90,
+     "eps_estimate": 1.78,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-09",
+     "description": "TTWO reported Q2 2027 earnings after the close \u2014 EPS 1 vs 0.9589 expected (beat, +4.3%)",
+     "source": "finnhub",
+     "days_ago": 2,
+     "eps_actual": 1,
+     "eps_estimate": 0.9589,
+     "surprise": "beat",
+     "surprise_pct": 4.3,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub+yfinance"
+  }
+ }
+}

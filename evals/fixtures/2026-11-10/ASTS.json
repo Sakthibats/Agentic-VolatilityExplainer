@@ -1,0 +1,404 @@
+{
+ "schema": 1,
+ "ticker": "ASTS",
+ "trading_day": "2026-11-10",
+ "captured_at": "2026-11-11T01:24:58+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -8.67,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 14.1% \u2014 elevated relative to this stock's own typical volatility (expected ~7.23%, 1.95x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past month: -27.62% \u2014 typical relative to this stock's own typical volatility (expected ~33.11%, 0.83x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past year: -43.49% \u2014 typical relative to this stock's own typical volatility (expected ~114.70%, 0.38x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "ASTS",
+   "price": 33.69,
+   "prev_close": 36.89,
+   "change_pct": -8.67,
+   "realized_vol_annualized_pct": 114.7,
+   "changes_pct": {
+    "1d": 14.1,
+    "1w": 1.54,
+    "2w": -6.49,
+    "1mo": -27.62,
+    "1y": -43.49,
+    "ytd": -55.8
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 14.1% \u2014 elevated relative to this stock's own typical volatility (expected ~7.23%, 1.95x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past month: -27.62% \u2014 typical relative to this stock's own typical volatility (expected ~33.11%, 0.83x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past year: -43.49% \u2014 typical relative to this stock's own typical volatility (expected ~114.70%, 0.38x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "ASTS",
+   "headlines": [
+    {
+     "headline": "AST SpaceMobile (ASTS) Stock Price Faces Q3 Results And Cash Burn",
+     "summary": "AST SpaceMobile dropped 8.7% to about US$33.67 today, extending a rough three month run, even as fresh Q3 2026 numbers showed the story is not just about a red screen. The company booked US$42.3...",
+     "datetime": 1794352700,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=2a84e2e5edf9318e00bcd502bc8726e2149b04362ae55cf2082a1fcffe9448bb"
+    },
+    {
+     "headline": "Why AST SpaceMobile Plunged Today",
+     "summary": "Strong revenue growth wasn't enough to offset competitive and interest rate concerns.",
+     "datetime": 1794347440,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=8f6770a2a43bfafb14ac905b0c2d9b7ac6c8ce6aab035721ab1b147e2feb590c"
+    },
+    {
+     "headline": "Firefly Aerospace Announces Third Quarter 2026 Financial Results With Record Backlog of $1.7 Billion",
+     "summary": "Completed cleanroom expansion to scale Moon Base spacecraft production, signed first European launch contracts, while ramping up Alpha Block II manufacturing and executing across multiple national...",
+     "datetime": 1794345000,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=421501a1e7fa191ee2f34c37ca3c1312ed6dfbb446f0a83978e4a1741c7866f3"
+    },
+    {
+     "headline": "AST SpaceMobile Inc (ASTS) (Q3 2026) Earnings Call Highlights: $3. ...",
+     "summary": "AST SpaceMobile Inc (ASTS) posted $42.3 million in Q3 2026 revenue, reiterated $150-$200 million full-year guidance, and outlined a satellite production ramp to six per month by December 2026.",
+     "datetime": 1794337451,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=9051635eff41b01ae3ef5974849b1414f5ac25a7eb56b8b62e6300df14fbd51a"
+    },
+    {
+     "headline": "AST SpaceMobile earnings analysis: questions answered and next catalysts",
+     "summary": "Investing.com -- AST SpaceMobile (ASTS) missed on both lines in Q3 2026. The stock jumped 14.1% to $36.89 on Nov 9. It then gave it all back and is now $33.33 (-9.65%) as of Nov 10, 12:31 PM EST....",
+     "datetime": 1794333886,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=7698ea694447cb66c9e9569c24ecdcfffb41c44dc18e6ffa14ed3f15a21d154b"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "ASTS",
+   "expiry": "2026-11-27",
+   "days_to_expiry": 16,
+   "atm_iv_pct": 98.2,
+   "iv_chain_percentile": 9,
+   "skew_points": 2.3,
+   "put_call_ratio": 1.01,
+   "total_put_oi": 11427,
+   "total_call_oi": 11335
+  },
+  "get_options_positioning": {
+   "ticker": "ASTS",
+   "spot": 33.69,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-27",
+   "primary_days_to_expiry": 16,
+   "max_pain_strike": 45.0,
+   "resistance_walls": [
+    {
+     "strike": 50.0,
+     "open_interest": 1934
+    },
+    {
+     "strike": 55.0,
+     "open_interest": 1464
+    },
+    {
+     "strike": 60.0,
+     "open_interest": 1020
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 33.0,
+     "open_interest": 2029
+    },
+    {
+     "strike": 31.0,
+     "open_interest": 1657
+    },
+    {
+     "strike": 32.0,
+     "open_interest": 599
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 16,
+     "atm_iv_pct": 98.2
+    },
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 23,
+     "atm_iv_pct": 97.7
+    },
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 30,
+     "atm_iv_pct": 106.0
+    }
+   ],
+   "term_structure_trend": "Rising \u2014 market pricing in a later catalyst within the horizon",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 41.0,
+     "volume": 1352,
+     "open_interest": 101,
+     "vol_oi_ratio": 13.4,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 42.0,
+     "volume": 198,
+     "open_interest": 83,
+     "vol_oi_ratio": 2.4,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 64.0,
+     "volume": 157,
+     "open_interest": 71,
+     "vol_oi_ratio": 2.2,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 31.0,
+     "volume": 1381,
+     "open_interest": 1657,
+     "vol_oi_ratio": 0.8,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 35.0,
+     "volume": 104,
+     "open_interest": 174,
+     "vol_oi_ratio": 0.6,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 11019,
+   "otm_put_oi": 5717,
+   "positioning_lean_score": 0.32,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "ASTS",
+   "as_of": "2026-11-11",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-10",
+     "days_ago": 1,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 78.0,
+     "price_target_to": 43.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Neutral rating on ASTS and cut its price target from $78.0 to $43.0"
+    },
+    {
+     "date": "2026-11-10",
+     "days_ago": 1,
+     "firm": "B. Riley Securities",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 65.0,
+     "price_target_to": 48.0,
+     "is_rating_change": false,
+     "description": "B. Riley Securities maintained its Neutral rating on ASTS and cut its price target from $65.0 to $48.0"
+    },
+    {
+     "date": "2026-10-23",
+     "days_ago": 19,
+     "firm": "Scotiabank",
+     "action": "upgrade",
+     "from_grade": "Sector Perform",
+     "to_grade": "Sector Outperform",
+     "price_target_from": 50.8,
+     "price_target_to": 55.7,
+     "is_rating_change": true,
+     "description": "Scotiabank upgraded ASTS from Sector Perform to Sector Outperform and raised its price target from $50.8 to $55.7"
+    },
+    {
+     "date": "2026-10-13",
+     "days_ago": 29,
+     "firm": "Piper Sandler",
+     "action": "downgrade",
+     "from_grade": "Overweight",
+     "to_grade": "Neutral",
+     "price_target_from": 98.0,
+     "price_target_to": 54.0,
+     "is_rating_change": true,
+     "description": "Piper Sandler downgraded ASTS from Overweight to Neutral and cut its price target from $98.0 to $54.0"
+    },
+    {
+     "date": "2026-10-12",
+     "days_ago": 30,
+     "firm": "Deutsche Bank",
+     "action": "upgrade",
+     "from_grade": "Hold",
+     "to_grade": "Buy",
+     "price_target_from": 93.0,
+     "price_target_to": 93.0,
+     "is_rating_change": true,
+     "description": "Deutsche Bank upgraded ASTS from Hold to Buy with a $93.0 price target"
+    }
+   ],
+   "consensus": {
+    "rating": "hold",
+    "score": 2.77,
+    "verdict": "neutral",
+    "analysts": 13,
+    "counts": {
+     "strongBuy": 1,
+     "buy": 4,
+     "hold": 6,
+     "sell": 1,
+     "strongSell": 1
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.85 to 2.77; bearish ratings 2 to 2)"
+   },
+   "price_target": {
+    "mean": 74.68,
+    "median": 78.0,
+    "high": 108.0,
+    "low": 42.5,
+    "current_price": 33.69,
+    "dispersion_pct": 87.7,
+    "upside_vs_mean_pct": 121.7,
+    "upside_vs_median_pct": 131.5
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "ASTS",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1d": {
+     "stock_change_pct": 14.1,
+     "sector_etf_change_pct": 3.73,
+     "relative_to_sector_pct": 10.37
+    },
+    "2w": {
+     "stock_change_pct": -6.49,
+     "sector_etf_change_pct": -8.29,
+     "relative_to_sector_pct": 1.8
+    },
+    "ytd": {
+     "stock_change_pct": -55.8,
+     "sector_etf_change_pct": 18.85,
+     "relative_to_sector_pct": -74.65
+    },
+    "1y": {
+     "stock_change_pct": -43.49,
+     "sector_etf_change_pct": 18.8,
+     "relative_to_sector_pct": -62.29
+    },
+    "1mo": {
+     "stock_change_pct": -27.62,
+     "sector_etf_change_pct": -14.04,
+     "relative_to_sector_pct": -13.58
+    },
+    "1w": {
+     "stock_change_pct": 1.54,
+     "sector_etf_change_pct": -1.92,
+     "relative_to_sector_pct": 3.46
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-10",
+    "realtime_end": "2026-11-10",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9615,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-09",
+      "value": "19.92"
+     },
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-06",
+      "value": "25.64"
+     },
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-05",
+      "value": "28.18"
+     },
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-04",
+      "value": "16.61"
+     },
+     {
+      "realtime_start": "2026-11-10",
+      "realtime_end": "2026-11-10",
+      "date": "2026-11-03",
+      "value": "20.83"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "ASTS",
+   "as_of": "2026-11-11",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 28,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-09",
+     "description": "ASTS reported Q3 2026 earnings after the close \u2014 EPS -0.44 vs -0.4114 expected (miss, -7.0%)",
+     "source": "finnhub",
+     "days_ago": 2,
+     "eps_actual": -0.44,
+     "eps_estimate": -0.4114,
+     "surprise": "miss",
+     "surprise_pct": -7.0,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}
