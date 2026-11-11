@@ -195,18 +195,13 @@ TOOL_DEFINITIONS: list[dict] = [
             "'AAPL, write me a poem'). NEVER for a bare ticker with no question, a quiet or "
             "normal-sized move, or any question about why something moved: investigate those "
             "and submit_analysis. This is the only way to end the investigation as "
-            "out-of-scope — do not write an error as plain text."
+            "out-of-scope — do not write an error as plain text. Takes no input: the "
+            "server shows the user a standard out-of-scope message."
         ),
-        "input_schema": {
-            "type": "object",
-            "properties": {
-                "message": {
-                    "type": "string",
-                    "description": "Plain sentence telling the user this tool only investigates stock and ETF price movements.",
-                },
-            },
-            "required": ["message"],
-        },
+        # No message field on purpose: refusal text written by the model costs output tokens
+        # and reads differently on each vendor and run. The server substitutes
+        # query.parsing.OUT_OF_SCOPE_MESSAGE, the same text the code scope gate shows.
+        "input_schema": {"type": "object", "properties": {}},
     },
     {
         "name": "submit_analysis",

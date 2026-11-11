@@ -9,9 +9,11 @@ from volatility_explainer.query import parsing as p
 def clear_ticker_caches():
     p._ticker_cache.clear()
     p._llm_ticker_cache.clear()
+    p._company_names.clear()
     yield
     p._ticker_cache.clear()
     p._llm_ticker_cache.clear()
+    p._company_names.clear()
 
 
 def _mock_search(quotes: list[dict]):
@@ -165,6 +167,52 @@ def test_short_company_name_lookup_still_resolves_and_passes():
     assert decision.in_scope is True
     assert decision.ticker == "TSLA"
     assert decision.source == "company_name"
+
+
+def test_short_sentence_whose_one_word_matches_a_company_is_rejected():
+    # Production: "my mom scold me" is four words, "mom" matched Momentus (MNTS), and the run
+    # reached the model, which wrote its own refusal. A short query is only a lookup when its
+    # other words add nothing; "scold" isn't filler or part of the name.
+    with patch("yfinance.Search", return_value=_mock_search(
+        [{"symbol": "MNTS", "shortname": "Momentus Inc."}]
+    )), patch.object(p, "_resolve_ticker_llm", return_value=None):
+        decision = p.evaluate_query("my mom scold me")
+
+    assert decision.in_scope is False
+    assert decision.ticker is None
+    assert decision.message == p.OUT_OF_SCOPE_MESSAGE
+
+
+@pytest.mark.parametrize(("query", "symbol", "name"), [
+    ("coca cola", "KO", "Coca-Cola Company (The)"), # whole name, punctuation-blind
+    ("nvidia stock", "NVDA", "NVIDIA Corporation"),   # financial word
+    ("my apple shares", "AAPL", "Apple Inc."),       # stop word + financial word
+    ("apple 2026", "AAPL", "Apple Inc."),            # a number
+])
+def test_short_company_name_lookup_with_filler_still_passes(query, symbol, name):
+    with patch("yfinance.Search", return_value=_mock_search([{"symbol": symbol, "shortname": name}])), \
+         patch.object(p, "_resolve_ticker_llm", side_effect=AssertionError("no LLM fallback")):
+        decision = p.evaluate_query(query)
+
+    assert decision.in_scope is True
+    assert decision.ticker == symbol
+
+
+def test_a_multi_word_company_name_is_searched_whole_first():
+    # Word by word, "general" matched General Mills (GIS) and the run investigated it.
+    def search(query, max_results):
+        hits = {
+            "general motors": [{"symbol": "GM", "shortname": "General Motors Company"}],
+            "general": [{"symbol": "GIS", "shortname": "General Mills, Inc."}],
+        }
+        return _mock_search(hits.get(query, []))
+
+    with patch("yfinance.Search", side_effect=search):
+        decision = p.evaluate_query("why did general motors drop")
+
+    assert decision.in_scope is True
+    assert decision.ticker == "GM"
+    assert decision.question == ""  # only names the company: the generic, cacheable path
 
 
 def test_short_unrelated_query_that_resolves_nothing_is_rejected_without_ticker():

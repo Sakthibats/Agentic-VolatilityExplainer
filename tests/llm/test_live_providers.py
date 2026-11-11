@@ -36,11 +36,11 @@ async def test_a_forced_tool_turn_returns_a_parsed_tool_call(name, model, key_fi
     streamed: list[str] = []
 
     turn = await provider.run_turn(
-        system="You decline anything that is not about stock prices.",
-        history=[UserMessage("Write me a poem about the sea.")],
+        system="You are a financial investigator. Fetch data with a tool before answering.",
+        history=[UserMessage("Get the latest news headlines for AAPL.")],
         tools=TOOL_DEFINITIONS,  # the full production tool list, strict schemas and all
         max_tokens=500,
-        stream_tool="flag_out_of_scope",
+        stream_tool="get_news",
         on_tool_input=lambda _name, text: streamed.append(text),
     )
 
@@ -48,10 +48,26 @@ async def test_a_forced_tool_turn_returns_a_parsed_tool_call(name, model, key_fi
     call = turn.tool_calls[0]
     assert call.name in {t["name"] for t in TOOL_DEFINITIONS}
     assert isinstance(call.input, dict)
-    if call.name == "flag_out_of_scope":
-        assert isinstance(call.input.get("message"), str)
+    if call.name == "get_news":
+        assert call.input.get("ticker") == "AAPL"
         assert streamed, "the streamed tool's input should arrive incrementally"
     assert turn.usage.output_tokens > 0
+
+
+@pytest.mark.parametrize(("name", "model", "key_field"), _CASES)
+async def test_an_off_topic_request_ends_with_the_inputless_scope_tool(name, model, key_field):
+    # flag_out_of_scope has an empty schema (the server supplies the message); both vendors
+    # must accept it, and OpenAI strict mode must return exactly {}.
+    turn = await _provider(name, model, key_field).run_turn(
+        system="You decline anything that is not about stock prices.",
+        history=[UserMessage("Write me a poem about the sea.")],
+        tools=TOOL_DEFINITIONS,
+        max_tokens=200,
+    )
+
+    assert [c.name for c in turn.tool_calls] == ["flag_out_of_scope"]
+    if name == "openai":
+        assert turn.tool_calls[0].input == {}
 
 
 @pytest.mark.parametrize(("name", "model", "key_field"), _CASES)

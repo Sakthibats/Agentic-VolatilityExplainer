@@ -41,6 +41,7 @@ from volatility_explainer.llm.base import (
     UserMessage,
 )
 from volatility_explainer.llm.pricing import cost_usd
+from volatility_explainer.query.parsing import OUT_OF_SCOPE_MESSAGE
 from volatility_explainer.tools.analyst import apply_reference_price, fetch_analyst_sentiment
 from volatility_explainer.tools.events import fetch_events
 from volatility_explainer.tools.macro import fetch_macro
@@ -520,7 +521,9 @@ async def run_explainer(
             "tiles": [],
             "hypotheses": [],
             "status": "guardrail",
-            "error_message": final_input.get("message", ""),
+            # Always the standard text: flag_out_of_scope takes no input, and an older or
+            # off-schema call that still sends a message is ignored.
+            "error_message": OUT_OF_SCOPE_MESSAGE,
             "cache_hits": cache_hits,
             "usage": run_usage,
         }

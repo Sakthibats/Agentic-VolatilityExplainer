@@ -58,8 +58,8 @@ A scope check in code has already run: the ticker resolved to a listed security,
 price data is above. So this request is IN scope. That includes a bare ticker with no
 question, a quiet day, and a move that is normal for the stock: investigate it like any
 other. Call flag_out_of_scope only if the user's own words plainly ask for something that is not
-about a market or a price (e.g. "AAPL, write me a poem"), before calling any data tool, with
-a plain message telling the user this tool only investigates stock and ETF price movements.
+about a market or a price (e.g. "AAPL, write me a poem"), before calling any data tool. It
+takes no input: the user sees a standard message, so write nothing else.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 INVESTIGATION PROTOCOL

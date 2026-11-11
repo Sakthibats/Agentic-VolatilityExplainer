@@ -16,6 +16,7 @@ import pytest
 from volatility_explainer.agent import orchestrator, tool_schemas
 from volatility_explainer.clients.redis_cache import clear_memoized_tool_data
 from volatility_explainer.llm import anthropic_provider
+from volatility_explainer.query.parsing import OUT_OF_SCOPE_MESSAGE
 
 # ── Fakes ────────────────────────────────────────────────────────────────────
 
@@ -341,16 +342,28 @@ async def test_finished_runs_are_saved_when_volx_save_runs_is_set(env, monkeypat
 
 async def test_out_of_scope_guardrail(env):
     env.responses.append(
-        fake_response([tool_use("flag_out_of_scope", {"message": "Stocks and ETFs only."})])
+        fake_response([tool_use("flag_out_of_scope", {})])
     )
 
     result = await orchestrator.run_explainer("AAPL", "write me a poem")
 
     assert result["status"] == "guardrail"
-    assert result["error_message"] == "Stocks and ETFs only."
+    assert result["error_message"] == OUT_OF_SCOPE_MESSAGE
     assert result["summary"] == ""
     assert result["tiles"] == [] and result["hypotheses"] == []
     assert env.client.messages.stream.call_count == 1
+
+
+async def test_out_of_scope_ignores_any_text_the_model_writes(env):
+    # The tool takes no input, but a model can still send one (Claude doesn't validate
+    # streamed tool input). The user always sees the standard message, never the model's.
+    env.responses.append(fake_response([tool_use(
+        "flag_out_of_scope", {"message": "I can't advise on being scolded by your mom."},
+    )]))
+
+    result = await orchestrator.run_explainer("AAPL", "write me a poem")
+
+    assert result["error_message"] == OUT_OF_SCOPE_MESSAGE
 
 
 async def test_turn_limit_exhaustion_returns_incomplete(env):
@@ -639,7 +652,7 @@ async def test_no_summary_events_for_a_tool_selection_turn(env):
     partials: list[str] = []
     env.responses.extend([
         fake_response([tool_use("get_news", {"ticker": "AAPL"})]),
-        fake_response([tool_use("flag_out_of_scope", {"message": "Stocks and ETFs only."})]),
+        fake_response([tool_use("flag_out_of_scope", {})]),
     ])
 
     await orchestrator.run_explainer("AAPL", on_summary=partials.append)
@@ -793,7 +806,7 @@ async def test_every_llm_turn_is_covered_by_a_label_emitted_before_it(env):
 async def test_guardrail_turn_still_gets_a_label(env):
     steps: list[str] = []
     env.responses.append(
-        fake_response([tool_use("flag_out_of_scope", {"message": "Stocks and ETFs only."})])
+        fake_response([tool_use("flag_out_of_scope", {})])
     )
 
     result = await orchestrator.run_explainer("AAPL", on_step=steps.append)

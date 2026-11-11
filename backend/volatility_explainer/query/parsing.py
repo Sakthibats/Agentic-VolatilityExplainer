@@ -108,14 +108,22 @@ _FINANCIAL_INTENT_WORDS: frozenset[str] = frozenset({
     "investigate", "analyze", "volatile", "lower", "higher", "up", "down",
 })
 
-_OUT_OF_SCOPE_MESSAGE = (
+# The one out-of-scope reply, shown whether the scope gate below or the agent's
+# flag_out_of_scope tool rejects a query: the model never writes its own refusal text.
+OUT_OF_SCOPE_MESSAGE = (
     "This tool investigates **stock and ETF price movements** only. "
     "Ask about a company (*why did Apple dip?*), a ticker (*TSLA*), "
     "or a market/asset (*what happened to gold?*, *why is the market down?*)."
 )
 
 _ticker_cache: dict[str, str | None] = {}
+# Lower-cased company name of each symbol _resolve_ticker accepted, so the scope gate can tell
+# "coca cola" (both words are the name) from "my mom scold me" ("mom" matched Momentus).
+_company_names: dict[str, str] = {}
 _llm_ticker_cache: dict[str, str | None] = {}
+# Lower-cased company name of each symbol _resolve_ticker accepted, so the scope gate can tell
+# "coca cola" (both words are the name) from "my mom scold me" ("mom" matched Momentus).
+_company_names: dict[str, str] = {}
 
 
 _CODE_FENCE = re.compile(r"^\s*```(?:json)?|```\s*$", re.IGNORECASE)
@@ -163,6 +171,11 @@ def _resolve_ticker_llm(query: str) -> str | None:
     return result
 
 
+def _words(text: str) -> str:
+    """Lower-cased words joined by single spaces: "Coca-Cola, Inc." → "coca cola inc"."""
+    return " ".join(re.findall(r"[a-z0-9]+", text.lower()))
+
+
 def _resolve_ticker(term: str, search_query: str | None = None, *, require_name_match: bool = False) -> str | None:
     """Resolve a word/phrase to a valid US equity ticker via yfinance search.
     If search_query is given it overrides the search text (but term is still the cache key).
@@ -185,10 +198,12 @@ def _resolve_ticker(term: str, search_query: str | None = None, *, require_name_
             # Accept only clean 1-5 letter tickers (no dots, hyphens — those are usually foreign or preferred)
             if not re.match(r"^[A-Z]{1,5}$", sym):
                 continue
-            if require_name_match:
-                name = (h.get("shortname") or h.get("longname") or "").strip().lower()
-                if not name.startswith(query.strip().lower()):
-                    continue
+            name = (h.get("shortname") or h.get("longname") or "").strip().lower()
+            # Punctuation-blind, so "coca cola" matches "Coca-Cola Company".
+            if require_name_match and not _words(name).startswith(_words(query)):
+                continue
+            if name:
+                _company_names[sym] = name
             result = sym
             break
     except Exception:
@@ -197,7 +212,23 @@ def _resolve_ticker(term: str, search_query: str | None = None, *, require_name_
     return result
 
 
-def validate_financial_query(raw: str, ticker: str | None, source: str | None = None) -> tuple[bool, str]:
+def _is_name_lookup(raw: str, ticker: str, matched: str) -> bool:
+    """True when a query is just the matched company name plus filler words.
+
+    Every other word must be a stop word, a financial word, the ticker, a number, or part
+    of the company's own name ("coca cola" → "The Coca-Cola Company"). "my mom scold me"
+    fails: "mom" matched Momentus (MNTS), and "scold" is none of those.
+    """
+    rest = re.sub(re.escape(matched), " ", raw, count=1, flags=re.IGNORECASE).lower()
+    name_words = set(re.findall(r"[a-z0-9]+", _company_names.get(ticker, "")))
+    allowed = (_STOP_WORDS | _GENERIC_ASK_WORDS | _FINANCIAL_KEYWORDS | _FINANCIAL_INTENT_WORDS
+               | name_words | {ticker.lower()})
+    return all(w in allowed or w.isdigit() for w in re.findall(r"[a-z0-9]+", rest))
+
+
+def validate_financial_query(
+    raw: str, ticker: str | None, source: str | None = None, matched: str | None = None,
+) -> tuple[bool, str]:
     """Return (is_valid, error_message).
 
     A ticker resolved from an explicit symbol or a recognized concept phrase (gold,
@@ -211,10 +242,15 @@ def validate_financial_query(raw: str, ticker: str | None, source: str | None = 
     below, so an unrelated sentence can't slip past the guardrail just because one of
     its words happens to match some ticker's company name (e.g. "I want to bake a
     cake today" matching CAKE).
+
+    `matched` is the word that resolved a company_name ticker. When given, a short query
+    counts as a lookup only if its other words add nothing (_is_name_lookup): "my mom scold
+    me" is four words, but it's a sentence, not a search for Momentus.
     """
     if ticker and source in ("concept", "ticker_symbol"):
         return True, ""
-    if ticker and source in ("company_name", "llm") and len(raw.split()) <= 4:
+    short_lookup = ticker and source in ("company_name", "llm") and len(raw.split()) <= 4
+    if short_lookup and (source == "llm" or matched is None or _is_name_lookup(raw, ticker, matched)):
         return True, ""
 
     text_lower = raw.lower()
@@ -229,7 +265,7 @@ def validate_financial_query(raw: str, ticker: str | None, source: str | None = 
     if words & (_FINANCIAL_KEYWORDS | _FINANCIAL_INTENT_WORDS):
         return True, ""
 
-    return False, _OUT_OF_SCOPE_MESSAGE
+    return False, OUT_OF_SCOPE_MESSAGE
 
 
 def parse_search_input(raw: str) -> tuple[str | None, str, str | None]:
@@ -289,6 +325,13 @@ def _parse_search_input(raw: str) -> tuple[str | None, str, str | None, str | No
     # actually start with the candidate word, so an incidental substring match
     # (e.g. "cake" inside "Cheesecake Factory") doesn't get treated as a real hit.
     other_candidates = [t for t in tokens if t.lower() not in _STOP_WORDS and not re.match(r"^[A-Z]{1,5}$", t)]
+    # The whole name first when it's several words in a row: word by word, "general motors"
+    # matched "general" → General Mills (GIS).
+    phrase = " ".join(other_candidates)
+    if len(other_candidates) > 1 and phrase.lower() in " ".join(tokens).lower():
+        ticker = _resolve_ticker(phrase, require_name_match=True)
+        if ticker:
+            return ticker, text, "company_name", phrase
     for candidate in other_candidates:
         ticker = _resolve_ticker(candidate, require_name_match=True)
         if ticker:
@@ -364,13 +407,13 @@ def evaluate_query(raw: str) -> QueryDecision:
     """
     text = raw.strip()
     if not text:
-        return QueryDecision(False, None, "", None, _OUT_OF_SCOPE_MESSAGE)
+        return QueryDecision(False, None, "", None, OUT_OF_SCOPE_MESSAGE)
 
     if len(text.split()) > 4 and not _has_cheap_financial_signal(text):
-        return QueryDecision(False, None, text, None, _OUT_OF_SCOPE_MESSAGE)
+        return QueryDecision(False, None, text, None, OUT_OF_SCOPE_MESSAGE)
 
     ticker, question, source, matched = _parse_search_input(text)
-    is_valid, message = validate_financial_query(text, ticker, source)
+    is_valid, message = validate_financial_query(text, ticker, source, matched)
     if not is_valid:
         return QueryDecision(False, None, question, None, message)
     return QueryDecision(True, ticker, _specific_question(question, ticker, matched), source)

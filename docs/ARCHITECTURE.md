@@ -21,8 +21,12 @@ the whole flow.
 1. **Scope gate** ([`query/parsing.py`](../backend/volatility_explainer/query/parsing.py)). A query
    of more than 4 words with no local financial signal is rejected before touching yfinance or an
    LLM. Ticker resolution runs cheapest first: concept phrases (`gold` → a fund search) →
-   uppercase ticker tokens → company-name search (must be a name *prefix* match, so "bake a cake"
-   can't resolve to CAKE) → a conservative Claude fallback.
+   uppercase ticker tokens → company-name search (the whole multi-word name first, then single
+   words; must be a name *prefix* match, so "bake a cake" can't resolve to CAKE) → a conservative
+   LLM fallback. A query of 4 words or fewer that resolved by company name counts as a lookup only
+   if its other words are filler or part of that company's name, so "my mom scold me" ("mom" →
+   Momentus) is rejected here rather than reaching the model. Every rejection shows the same
+   fixed message (`OUT_OF_SCOPE_MESSAGE`).
 2. **`investigation_started`** fires as soon as a ticker resolves, so the frontend starts loading the
    chart and stats while the agent works.
 3. **Final-answer cache** — only on the no-question path ("explain the recent price action"), which
@@ -44,8 +48,9 @@ the whole flow.
    each on a worker thread under a **15 s** timeout. A tool already called this run is served from
    memory, not re-fetched. Most investigations resolve in one round.
 7. **Only two ways to finish:** `submit_analysis` (≤4 tiles → 2–3 ranked hypotheses → explanation) or
-   `flag_out_of_scope`. If the model writes prose, the loop stops and the run comes back
-   `status: "incomplete"` rather than hanging.
+   `flag_out_of_scope`. The latter takes no input: the server returns the scope gate's fixed
+   message, so a refusal costs a few output tokens and reads the same on both vendors. If the model
+   writes prose, the loop stops and the run comes back `status: "incomplete"` rather than hanging.
 8. **Streaming the write-up, in two paragraphs.** Right after the pre-fetch,
    `tools/price.describe_move` turns the price data into a factual "what happened" paragraph — no
    LLM — sent as a single `overview` event and quoted to the model so it doesn't repeat it. Every
