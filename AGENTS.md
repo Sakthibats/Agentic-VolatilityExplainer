@@ -66,7 +66,8 @@ api/service.py    vendor check → scope gate → final-answer cache (no-questio
        3. loop ≤7 turns · a tool call forced every turn · streamed · via llm/ (Claude | OpenAI)
             model picks tools → asyncio.gather(to_thread(tool)), 15 s timeout each
        4. the turn may end ONLY via submit_analysis | flag_out_of_scope
-       5. the model cites headlines as [n]; the server resolves each to a real link or drops it
+       5. agent/answer.py: the model cites headlines as [n]; the server resolves each to a
+          real link or drops it, and re-applies the answer schema (repairs reported)
        6. agent/quality.py flags the explanation — logged per run, never rewrites it
        ├─ agent/tool_schemas.py   what the model sees: schemas + when-to-call guidance
        ├─ agent/prompts.py        how to read the data, output and framing rules
@@ -100,7 +101,8 @@ backend/volatility_explainer/     Python package (hatchling; pytest pythonpath =
 │   ├── openai_provider.py        OpenAI Responses API: strict tools, reasoning items replayed
 │   └── pricing.py                $ per 1M tokens per model → cost_usd on every run
 ├── agent/
-│   ├── orchestrator.py           ★ the loop: prefetch, _TOOL_DISPATCH, streaming, citations, usage
+│   ├── orchestrator.py           ★ the loop: prefetch, _TOOL_DISPATCH, streaming, usage
+│   ├── answer.py                 model answer → reader: headline numbering, [n] resolution, schema repairs
 │   ├── tool_schemas.py           tool schemas + when-to-call guidance; submit_analysis stays last
 │   ├── prompts.py                system prompt: reading data, output, framing and data rules
 │   └── quality.py                heuristic write-up flags (measure, never rewrite)
@@ -214,7 +216,7 @@ Each entry: the decision, why, what it costs, and when to reconsider.
 2. **Terminal tools instead of JSON-in-text.** *Why:* schema-shaped output, no regex extraction, an
    explicit out-of-scope path. *Cost:* a large tool schema in every request; a prose reply ends the
    run as `incomplete` with no retry. A schema is a request, not a guarantee: Claude doesn't
-   validate tool input it streams, so `orchestrator._normalize_answer` re-applies the contract in
+   validate tool input it streams, so `answer.normalize_answer` re-applies the contract in
    code (malformed entries dropped, ≤4 tiles, ≤3 hypotheses ranked by the order written), and
    reports each repair (`result["answer_repairs"]`, an `[answer]` log line), so the model's own
    compliance stays measurable. *Revisit:* if the incomplete rate turns out to matter (the eval
@@ -227,7 +229,7 @@ Each entry: the decision, why, what it costs, and when to reconsider.
    free public demo; most runs finish in one tool round (two LLM turns). Moved from Haiku 4.5 on
    2026-11-10 after the eval: ~12x cheaper, about twice as fast, and far fewer quality flags. Its
    two failures there, wrongly refusing in-scope tickers and breaking the tile/rank schema, were
-   fixed first (a clearer scope rule in the prompt; `_normalize_answer`, decision 2). *Cost:*
+   fixed first (a clearer scope rule in the prompt; `answer.normalize_answer`, decision 2). *Cost:*
    shallower reasoning than a larger model, and extended thinking stays off (forced tool calls
    rule it out). The model is configurable via `ANTHROPIC_MODEL`. *Revisit:* with labelled evals,
    e.g. Haiku for tool selection and a larger model for synthesis.
@@ -341,8 +343,8 @@ Backend paths are relative to `backend/volatility_explainer/`.
 | Add or change an LLM vendor | `llm/<vendor>_provider.py` + `llm/__init__.py` (`build_provider`) + `llm/pricing.py` + `config.py` + a fake-stream test in `tests/llm/` + a case in `tests/llm/test_live_providers.py` |
 | Model prices | `llm/pricing.py` (update the date in its docstring) |
 | Write-up quality checks | `agent/quality.py` + `tests/agent/test_quality.py` (add each new bad write-up as a regression case). Report over saved runs: `scripts/quality_report.py` |
-| Citations | Numbering + resolution: `agent/orchestrator.py` (`_with_news_refs`, `_resolve_citations`) → `frontend/components/md.tsx` |
-| Agent loop behaviour | `agent/orchestrator.py` + extend `tests/agent/test_orchestrator.py` |
+| Citations | Numbering + resolution: `agent/answer.py` (`number_headlines`, `resolve_citations`, `attach_news_citations`) → `frontend/components/md.tsx` |
+| Agent loop behaviour | `agent/orchestrator.py` (the loop) or `agent/answer.py` (what happens to the answer) + extend `tests/agent/test_orchestrator.py` |
 | Significance thresholds | `tools/price.py` (`_RELATIVE_BANDS`, `_ABS_THRESHOLDS_PCT`) + `tests/tools/test_price.py` — also changes the overview wording and the size check in `agent/quality.py` |
 | Scope guardrail / ticker resolution | `query/parsing.py` + `tests/query/test_parsing.py` |
 | API shape / SSE events | `api/schemas.py` → `api/app.py`, `api/service.py` → `frontend/lib/api.ts` → `frontend/components/investigation-provider.tsx` |

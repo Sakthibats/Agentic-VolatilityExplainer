@@ -17,7 +17,7 @@ import json
 from collections import Counter
 from pathlib import Path
 
-from volatility_explainer.agent.orchestrator import _resolve_citations
+from volatility_explainer.agent.answer import resolve_citations
 from volatility_explainer.agent.quality import check_explanation
 
 
@@ -37,7 +37,7 @@ def main() -> None:
         if not raw:
             continue
         data = run.get("data") or {}
-        text, _, removed = _resolve_citations(raw, data)
+        text, _, removed = resolve_citations(raw, data)
         flags = check_explanation(
             text,
             ticker=run.get("ticker") or "",

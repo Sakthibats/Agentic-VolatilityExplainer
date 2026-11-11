@@ -56,7 +56,7 @@ measure cost per run before a full run.
 |---|---|---|
 | Completed | the run ended with `submit_analysis` | prose or a turn-limit exit ships no answer |
 | Schema-valid (after repairs) | ≤4 tiles, known tile agents, 2–3 hypotheses ranked 1..n, valid confidence, on the answer the reader got | the UI renders exactly this shape |
-| Schema-valid as the model wrote it | no entry in the run's `answer_repairs`: what `orchestrator._normalize_answer` had to fix (dropped or extra entries, rewritten ranks) | the code hides schema breaks from the reader, so this is the model's own compliance (`n/a` for results recorded before 2026-11-11) |
+| Schema-valid as the model wrote it | no entry in the run's `answer_repairs`: what `answer.normalize_answer` had to fix (dropped or extra entries, rewritten ranks) | the code hides schema breaks from the reader, so this is the model's own compliance (`n/a` for results recorded before 2026-11-11) |
 | No quality flag | `agent/quality.py`, the production heuristics | the known write-up failures |
 | Invented citation tags | a bracketed tag that isn't `[n]` | only `[n]` can become a real link |
 | Figures found in the data | every `%` and `$` figure in the write-up, tiles and hypotheses must match a number in the tool data at the precision written | a cheap lower bound on made-up numbers |

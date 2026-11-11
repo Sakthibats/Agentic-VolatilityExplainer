@@ -3,7 +3,7 @@ from datetime import date, timedelta
 from volatility_explainer.config import get_settings
 
 # Only the first 3 headlines with a url ever surface as citations (see
-# _attach_news_citations in the orchestrator), and the synthesis step only needs enough
+# attach_news_citations in agent/answer.py), and the synthesis step only needs enough
 # text to name a catalyst — so keep this payload small rather than fetching everything.
 _MAX_HEADLINES = 5
 _MAX_SUMMARY_CHARS = 200
