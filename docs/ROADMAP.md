@@ -4,23 +4,13 @@ Where the project has been, what's next, and what is deliberately out of scope. 
 reasoning behind these choices are in [AGENTS.md](../AGENTS.md); known debt is in
 [BACKLOG.md](../BACKLOG.md).
 
-## Migration: Streamlit monolith → decoupled stack
+## Where it came from
 
-| Phase | Scope | Status |
-|---|---|---|
-| 0 | Repo restructure (`backend/`, `tests/`), orchestrator pinned by tests | ✅ |
-| 1 | FastAPI + SSE skeleton, versioned `/v1`; Streamlit `apps/` deleted | ✅ |
-| 2 | Async refactor: `AsyncAnthropic`, per-turn `asyncio.gather` fan-out, tools on threads | ✅ |
-| 3 | Next.js frontend (dual theme), deployed to Cloudflare Pages; backend on Cloud Run | ✅ |
-| 4 | Metering and rate limiting | **Next — not started** |
+The project started as a Streamlit monolith and was migrated to the current FastAPI + Next.js
+stack in four phases (0–3: repo restructure, `/v1` API, async backend, new frontend), all done.
+Phase 4 is next.
 
-Since Phase 3: a two-paragraph write-up (code-built overview, then the model's explanation) revealed
-as typed text; wider significance bands; server-resolved `[n]` citations and heuristic quality
-flags on the explanation (logged to Supabase as `query_log.quality_flags`); streaming summary events, deterministic events prefetch, analyst and sector tools,
-weekly live contract tests, and a 2026-09 cleanup (`mcp/tools/` → `tools/`, tool schemas split out
-of the orchestrator, model ID moved into config, frontend lint made blocking).
-
-## Phase 4 — metering and rate limiting
+## Phase 4 — metering and rate limiting (next, not started)
 
 The goal is to make freemium a *configuration change later*, not a rearchitecture — without
 building payments now.
@@ -39,17 +29,15 @@ building payments now.
 
 Ordered roughly by value to the portfolio goal. None are committed.
 
-1. **Offline eval harness** *(started: heuristic quality flags, pinned bad write-ups,
-   `scripts/quality_report.py`)* — golden set of historical moves with known catalysts; score catalyst
-   recall, number fidelity and hypothesis calibration; use it to compare prompts and models.
+1. **Eval labels and a judge** — the replay harness and automatic scorers exist (`evals/`); add
+   hand-labelled catalysts and a judge model to score catalyst recall, abstention and calibration.
 2. **Structured observability** — per-run traces (turns, tools, tokens, cache hits, cost) in place of
    `print` logging.
-3. **Honest chart fallback** — remove the synthetic random-walk history (BACKLOG).
-4. **Real MCP server** — expose `tools/` over MCP for external clients.
-5. **Historical IV rank** — replace the intra-chain IV percentile with a proper 52-week rank
+3. **Real MCP server** — expose `tools/` over MCP for external clients.
+4. **Historical IV rank** — replace the intra-chain IV percentile with a proper 52-week rank
    (needs stored IV history).
-6. **Typed contract** — generate `frontend/lib/api.ts` from the OpenAPI schema, or add a contract test.
-7. **Product breadth** — crypto and FX coverage, multi-ticker comparisons, persistent query history.
+5. **Typed contract** — generate `frontend/lib/api.ts` from the OpenAPI schema, or add a contract test.
+6. **Product breadth** — crypto and FX coverage, multi-ticker comparisons, persistent query history.
 
 ## Explicitly out of scope
 

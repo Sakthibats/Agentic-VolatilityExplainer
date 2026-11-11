@@ -4,7 +4,7 @@
 > this into). It is written to be enough on its own to reason about goals, tradeoffs, and where to
 > change things. Deeper references: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) ·
 > [docs/ROADMAP.md](docs/ROADMAP.md) · [BACKLOG.md](BACKLOG.md).
-> Last reviewed: 2026-11-10.
+> Last reviewed: 2026-11-11.
 
 ## 1. What this is
 
@@ -42,9 +42,9 @@ multi-ticker comparison, anything resembling trading advice or signals.
 | Migration | Streamlit monolith → FastAPI + Next.js. Phases 0–3 ✅. **Phase 4 (metering / rate limiting) is next and not started** |
 | Backend | FastAPI, fully async, `/v1` REST + SSE, Docker → Google Cloud Run |
 | Frontend | Next.js 16 static export → Cloudflare Pages |
-| Quality gates | 310 offline pytest tests + 23 `live` tests (19 upstream data contracts, weekly; 4 LLM-vendor checks that skip without keys). ruff, eslint (blocking), tsc all clean. Heuristic quality flags on every explanation (`[quality]` log line) |
+| Quality gates | 315 offline pytest tests + 23 `live` tests (19 upstream data contracts, weekly; 4 LLM-vendor checks that skip without keys). ruff, eslint (blocking), tsc all clean. Heuristic quality flags on every explanation (`[quality]` log line) |
 | Models | Users pick the vendor per run with a model picker in the query bar: OpenAI (`OPENAI_MODEL`, default `gpt-6-luna`; the picker's default) or Claude (`ANTHROPIC_MODEL`, Haiku 5.5). Requests without `provider` use `LLM_PROVIDER` (default `anthropic`). Both run the same loop behind `llm/`; the eval harness compares models on recorded data (`evals/`, results in the README) |
-| Biggest gaps | The eval scores answers automatically but has **no labelled catalysts or judge yet**, so it can't measure whether the model found the true cause · yfinance's daily bar lags the close, so "today" can be the previous day's move after the close (`evals/README.md`) · no rate limiting and CORS `*` · `print`-based logging · token usage and `cost_usd` are returned per run (`result["usage"]`) but not logged · chart silently falls back to synthetic prices |
+| Biggest gaps | The eval scores answers automatically but has **no labelled catalysts or judge yet**, so it can't measure whether the model found the true cause · yfinance's daily bar lags the close, so "today" can be the previous day's move after the close (`evals/README.md`) · no rate limiting and CORS `*` · `print`-based logging · token usage and `cost_usd` are returned per run (`result["usage"]`) but not logged |
 
 ## 4. Architecture in one screen
 
@@ -141,6 +141,7 @@ tests/                            mirrors the backend; offline by default (`pyte
 ├── agent/                        test_orchestrator (scripted fake Anthropic client pins the loop) ·
 │                                 test_quality (real bad write-ups pinned verbatim)
 ├── api/test_api.py               routes, SSE order, client disconnect still finishes the run
+├── marketdata/test_snapshots.py  chart history: real closes, or no points when the source fails
 ├── query/test_parsing.py         guardrail + resolver, incl. "no network call" assertions
 ├── tools/                        one test file per tool + test_live_contracts.py (19 live tests)
 ├── clients/                      test_redis_cache · test_api_keys (keys never in URLs or errors)
@@ -156,8 +157,7 @@ evals/                            capture.py (daily fixture recorder) · cases.p
                                   each and growing. Don't read or search them unless working on evals
 scripts/                          quality_report.py (flag rates over VOLX_SAVE_RUNS) ·
                                   benchmark_api.py (sequential vs. concurrent latency)
-docs/                             ARCHITECTURE.md · ROADMAP.md · sql/ (hand-run Supabase changes) ·
-                                  theme-schemes.ts (archived alternate colour schemes)
+docs/                             ARCHITECTURE.md · ROADMAP.md · sql/ (hand-run Supabase changes)
 .github/workflows/                test · docker-publish · frontend-deploy · live-contracts · eval-capture
 root                              pyproject.toml (deps, ruff, pytest config) · Dockerfile ·
                                   docker-compose.yml · .env.example · BACKLOG.md · PRIVACY.md
@@ -324,8 +324,7 @@ Framed against the portfolio goal. Each is a live tradeoff, not a settled plan.
 5. **Contract safety.** Generate `lib/api.ts` from FastAPI's OpenAPI schema, or add a contract test?
 6. **A real MCP server.** Expose `tools/` to Claude Desktop and others? Good signal, but a second
    surface to maintain.
-7. **Data honesty.** Replace the synthetic chart fallback with an explicit "unavailable" state.
-8. **Deeper vol analytics.** A true 52-week IV rank needs stored IV history — where would it live,
+7. **Deeper vol analytics.** A true 52-week IV rank needs stored IV history — where would it live,
    and is it worth it?
 
 ## 8. Where to change things
@@ -347,7 +346,7 @@ Backend paths are relative to `backend/volatility_explainer/`.
 | Scope guardrail / ticker resolution | `query/parsing.py` + `tests/query/test_parsing.py` |
 | API shape / SSE events | `api/schemas.py` → `api/app.py`, `api/service.py` → `frontend/lib/api.ts` → `frontend/components/investigation-provider.tsx` |
 | Investigation UI | `frontend/app/page.tsx` and `frontend/components/` (state lives in `investigation-provider.tsx`) |
-| Colours / theme | `frontend/app/globals.css` only. Archived alternates: `docs/theme-schemes.ts` |
+| Colours / theme | `frontend/app/globals.css` only |
 | Cache TTLs | `clients/redis_cache.py` |
 | Upstream HTTP clients / API keys | `clients/finnhub.py`, `clients/fred.py` + `tests/clients/test_api_keys.py` (keys never in URLs or errors) + a live contract test |
 | Usage-log fields (Supabase) | `analytics/supabase_logger.py` + a SQL file in `docs/sql/` (run in Supabase **before** deploying) + `PRIVACY.md` + `tests/analytics/` |

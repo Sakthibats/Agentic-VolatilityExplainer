@@ -76,7 +76,17 @@ export function PriceChart({ ticker }: { ticker: string }) {
   useEffect(() => {
     let cancelled = false;
     fetchHistory(ticker, period)
-      .then((h) => !cancelled && setLoaded({ key, points: h.points, error: false }))
+      // Too few points to draw a line (the backend sends none when its source fails)
+      // reads as unavailable, not as an empty chart.
+      .then(
+        (h) =>
+          !cancelled &&
+          setLoaded(
+            h.points.length >= 2
+              ? { key, points: h.points, error: false }
+              : { key, points: null, error: true },
+          ),
+      )
       .catch(() => !cancelled && setLoaded({ key, points: null, error: true }));
     return () => {
       cancelled = true;
