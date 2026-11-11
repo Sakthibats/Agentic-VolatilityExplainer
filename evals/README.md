@@ -31,6 +31,12 @@ measure cost per run before a full run.
   `top_mover`, 25% `control`), deterministic for a seed. Queries alternate between naming only
   the stock (which reaches the loop as an empty question, as in production) and asking about the
   move ("why is TEAM down today?").
+- **Stale buckets are left out.** Capture picks `move` and `control` from the lagging daily
+  history (see "One correction" below), so `cases.bucket_holds` re-checks each against the
+  corrected 1-day move: a `move` that was calm today, or a `control` that moved, is not sampled.
+  On the first three weeks of fixtures that dropped 35 of 76 moves and 8 of 30 controls. Results
+  recorded before 2026-11-11 (`results/2026-11-09`, `2026-11-10`) used the unfiltered buckets, so
+  their "news on a notable move" row counts some calm days as notable.
 - **Replay** runs `orchestrator.run_explainer` unchanged: the same prefetch, tool schemas, turn
   limit, citation handling and quality checks as production. Every tool in `_TOOL_DISPATCH`
   reads the active fixture instead of the network, and the tool caches are off. The fixture
@@ -49,7 +55,8 @@ measure cost per run before a full run.
 | Metric | How | Why it matters |
 |---|---|---|
 | Completed | the run ended with `submit_analysis` | prose or a turn-limit exit ships no answer |
-| Schema-valid | ≤4 tiles, known tile agents, 2–3 hypotheses ranked 1..n, valid confidence | the UI renders exactly this shape |
+| Schema-valid (after repairs) | ≤4 tiles, known tile agents, 2–3 hypotheses ranked 1..n, valid confidence, on the answer the reader got | the UI renders exactly this shape |
+| Schema-valid as the model wrote it | no entry in the run's `answer_repairs`: what `orchestrator._normalize_answer` had to fix (dropped or extra entries, rewritten ranks) | the code hides schema breaks from the reader, so this is the model's own compliance (`n/a` for results recorded before 2026-11-11) |
 | No quality flag | `agent/quality.py`, the production heuristics | the known write-up failures |
 | Invented citation tags | a bracketed tag that isn't `[n]` | only `[n]` can become a real link |
 | Figures found in the data | every `%` and `$` figure in the write-up, tiles and hypotheses must match a number in the tool data at the precision written | a cheap lower bound on made-up numbers |

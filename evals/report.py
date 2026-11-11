@@ -41,6 +41,8 @@ def summarise(records: list[dict]) -> dict[str, dict]:
         latency = [s["llm_ms"] / 1000 for s in scores if s.get("llm_ms") is not None]
         claimed = sum(s["numbers_claimed"] for s in done)
         flags = Counter(f for s in done for f in s["quality_flags"])
+        reported = [s for s in done if s.get("answer_repairs") is not None]
+        repairs = Counter(r for s in reported for r in s["answer_repairs"])
 
         rank1s: dict[str, list[str]] = defaultdict(list)
         for r in runs:
@@ -54,6 +56,8 @@ def summarise(records: list[dict]) -> dict[str, dict]:
             "completed": _pct(len(done), len(scores)),
             "statuses": dict(Counter(s["status"] for s in scores)),
             "schema_valid": _pct(sum(not s["schema_problems"] for s in done), len(done)),
+            "model_schema_valid": _pct(sum(not s["answer_repairs"] for s in reported), len(reported)),
+            "top_repairs": repairs.most_common(2),
             "quality_clean": _pct(sum(not s["quality_flags"] for s in done), len(done)),
             "top_flags": flags.most_common(3),
             "bad_citation_tags": _pct(sum(s["bad_citation_tags"] > 0 for s in done), len(done)),
@@ -75,7 +79,9 @@ def summarise(records: list[dict]) -> dict[str, dict]:
 _ROWS = [
     ("Runs (cases)", lambda m: f"{m['runs']} ({m['cases']})"),
     ("Completed with a structured answer", lambda m: m["completed"]),
-    ("Schema-valid answers", lambda m: m["schema_valid"]),
+    ("Schema-valid answers (after the code's repairs)", lambda m: m["schema_valid"]),
+    ("Schema-valid as the model wrote them", lambda m: m["model_schema_valid"]
+     + (f" (repaired: {', '.join(f'{r} ({n})' for r, n in m['top_repairs'])})" if m["top_repairs"] else "")),
     ("Write-ups with no quality flag", lambda m: m["quality_clean"]),
     ("Most common quality flags", lambda m: ", ".join(f"{f} ({n})" for f, n in m["top_flags"]) or "n/a"),
     ("Invented citation tags (not [n])", lambda m: m["bad_citation_tags"]),

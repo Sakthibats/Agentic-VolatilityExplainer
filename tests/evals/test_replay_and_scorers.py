@@ -14,7 +14,8 @@ from volatility_explainer.agent import orchestrator
 from volatility_explainer.llm.base import AssistantTurn, ToolCall, Usage
 
 from evals import replay as replay_mod
-from evals.cases import build_cases
+from evals.cases import bucket_holds, build_cases
+from evals.report import markdown, summarise
 from evals.scorers import _claimed_numbers, rank1_agreement, schema_problems, score
 
 SUBMIT = {
@@ -142,6 +143,45 @@ def test_cases_are_deterministic_and_mix_every_bucket():
     assert [c.id for c in first] == [c.id for c in second]
     assert {c.bucket for c in first} == {"move", "top_mover", "control"}
     assert any(c.query == "" for c in first) and any(c.query for c in first)
+
+
+def test_a_move_that_was_yesterdays_is_left_out():
+    # Recorded history said -3.47% (the previous day); the quote says today was calm.
+    assert not bucket_holds(fixture(one_day=-3.47, quote=-0.4, bucket="move"))
+    assert bucket_holds(fixture(one_day=-3.47, quote=-16.15, bucket="move"))
+
+
+def test_a_control_that_actually_moved_today_is_left_out():
+    assert not bucket_holds(fixture(one_day=0.3, quote=-16.15, bucket="control"))
+    assert bucket_holds(fixture(one_day=0.3, quote=0.3, bucket="control"))
+
+
+def test_top_movers_and_manual_captures_are_always_kept():
+    for bucket in ("top_mover", "manual"):
+        assert bucket_holds(fixture(one_day=-3.47, quote=-0.4, bucket=bucket))
+
+
+def _record(model: str, repairs: list[str] | None) -> dict:
+    record = {"case_id": "2026-11-06/TEAM", "model": model, "status": "complete",
+              "summary": "Down.", "tiles": [], "hypotheses": SUBMIT["hypotheses"],
+              "usage": {}, "quality_flags": []}
+    if repairs is not None:
+        record["answer_repairs"] = repairs
+    return {**record, "scores": score(record, fixture())}
+
+
+def test_report_shows_what_the_model_got_wrong_before_the_repairs():
+    records = [_record("m", ["ranks_rewritten"]), _record("m", [])]
+
+    row = summarise(records)["m"]
+
+    assert row["schema_valid"] == "100%"  # the reader always got a valid answer
+    assert row["model_schema_valid"] == "50%"
+    assert "ranks_rewritten (1)" in markdown(summarise(records), "x.jsonl")
+
+
+def test_results_recorded_before_repairs_existed_report_n_a():
+    assert summarise([_record("m", None)])["m"]["model_schema_valid"] == "n/a"
 
 
 def test_numbers_are_grounded_at_the_precision_written():

@@ -163,7 +163,11 @@ the default in the model picker.
 
 **Caveats.** The prompts were written and tuned against Claude, so vendor-specific prompt tuning
 could move these numbers. The quality flags are regex heuristics with known false positives (for
-example, a negated "out-of-the-ordinary" still counts as overstating). None of this measures
+example, a negated "out-of-the-ordinary" still counts as overstating). The "notable move" row
+above counts some calm days as notable: capture picked its `move` group from the lagging daily
+history, and about half of those were calm on the day replayed (the screener's top movers were
+unaffected). Case sampling now leaves those out
+([details](evals/README.md#how-a-case-is-replayed)). None of this measures
 whether the model named the *true* catalyst; that needs hand-labelled cases and a judge model,
 the next step in [`evals/README.md`](evals/README.md#next-steps-not-built). The model choice
 above rests on cost, latency and structure; it should be revisited once accuracy is measured too.
