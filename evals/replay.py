@@ -50,7 +50,8 @@ def install() -> None:
 
 
 def normalize_price(price: dict) -> dict:
-    """Make the recorded "today" agree with the recorded quote.
+    """Make the recorded "today" agree with the recorded quote (fixtures recorded before
+    tools/price.py joined the quote as today's close, 2026-11; a no-op on newer ones).
 
     Fixtures are captured at 16:30 ET, before yfinance's daily history has that day's bar, so
     changes_pct["1d"] (and the significance verdict built on it) is the PREVIOUS day's move,

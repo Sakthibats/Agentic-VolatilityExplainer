@@ -285,7 +285,8 @@ def test_finnhub_earnings_calendar_is_empty_for_an_etf():
 
 
 def test_finnhub_quote_shape():
-    """price.py reads 'c' (current) and 'pc' (previous close)."""
+    """price.py reads 'c' (current), 'pc' (previous close) and 't' (last trade, Unix seconds:
+    it decides whether the quote is a newer session than yfinance's last bar)."""
     _require_finnhub()
     from volatility_explainer.clients.finnhub import FinnhubClient
 
@@ -294,6 +295,7 @@ def test_finnhub_quote_shape():
 
     assert quote.get("c")
     assert quote.get("pc")
+    assert isinstance(quote.get("t"), int) and quote["t"] > 1_600_000_000
 
 
 def test_finnhub_company_news_shape():

@@ -1,4 +1,14 @@
+from datetime import datetime
+from zoneinfo import ZoneInfo
+
 from volatility_explainer.config import get_settings
+
+_MARKET_TZ = ZoneInfo("America/New_York")
+
+# How far yfinance's last close may sit from the quote's previous close for the quote to be
+# taken as the very next session. Wider than rounding because yfinance closes are
+# dividend-adjusted; narrow enough that a history missing several days is not bridged.
+_PREV_CLOSE_TOLERANCE = 0.02
 
 # Trading-day lookbacks for each horizon (approx — markets are closed weekends/holidays)
 _HORIZON_TRADING_DAYS: dict[str, int] = {
@@ -38,6 +48,40 @@ def _compute_horizon_changes(hist) -> dict:
         changes["ytd"] = None
 
     return changes
+
+
+def _with_todays_close(hist, quote: dict, ticker: str = ""):
+    """yfinance's daily history with the live quote added as today's close, if it is missing.
+
+    After the close, yfinance's history can still end at the PREVIOUS session while the quote
+    already shows today's: every horizon change (and the significance verdict built on them)
+    would then describe yesterday's move under today's headline number. On the first 168
+    eval fixtures, recorded at 16:30 ET, 136 disagreed by more than half a point.
+
+    The quote is added only when it is from a later trading day than the last bar (by the
+    quote's own timestamp in New York time, so weekends, holidays and pre-market quotes,
+    which still carry the last session's trade, add nothing) and its previous close matches
+    that last bar. Otherwise the history is returned unchanged.
+    """
+    traded_at, price, prev_close = quote.get("t"), quote.get("price"), quote.get("prev_close")
+    if hist is None or hist.empty or not traded_at or not price or not prev_close:
+        return hist
+    closes = hist["Close"].dropna()
+    if closes.empty:
+        return hist
+    last_bar = closes.index[-1]
+    quote_day = datetime.fromtimestamp(traded_at, tz=_MARKET_TZ).date()
+    if quote_day <= last_bar.date():
+        return hist
+    if abs(float(closes.iloc[-1]) - prev_close) / prev_close > _PREV_CLOSE_TOLERANCE:
+        print(f"[price:{ticker}]  history ends {last_bar.date()}, quote is {quote_day}, "
+              f"but closes disagree ({float(closes.iloc[-1]):.2f} vs {prev_close:.2f}); not joined")
+        return hist
+    import pandas as pd
+
+    today = pd.DataFrame({"Close": [float(price)]},
+                         index=pd.DatetimeIndex([pd.Timestamp(quote_day, tz=last_bar.tz)]))
+    return pd.concat([hist, today])
 
 
 def _compute_realized_vol(hist) -> float | None:
@@ -271,7 +315,7 @@ def fetch_price_data(ticker: str) -> dict:
             data = client.get_quote(ticker)
             price = data.get("c")
             if price:
-                quote = {"price": price, "prev_close": data.get("pc")}
+                quote = {"price": price, "prev_close": data.get("pc"), "t": data.get("t")}
     except Exception as exc:
         print(f"[price:{ticker}]  finnhub   FAILED — {exc}")
 
@@ -283,8 +327,14 @@ def fetch_price_data(ticker: str) -> dict:
     except Exception as exc:
         print(f"[price:{ticker}]  yfinance history FAILED — {exc}")
 
-    changes = _compute_horizon_changes(hist) if hist is not None and not hist.empty else {}
+    # Vol is measured before the quote is joined, so a big day after the close isn't judged
+    # against a "usual move" that its own size has already inflated (the eval's correction,
+    # evals/replay.normalize_price, does the same). During market hours yfinance's own
+    # partial bar for today is already in `hist`, so there it is included either way.
     rv = _compute_realized_vol(hist) if hist is not None and not hist.empty else None
+    if quote is not None:
+        hist = _with_todays_close(hist, quote, ticker)
+    changes = _compute_horizon_changes(hist) if hist is not None and not hist.empty else {}
     move_assessment = _assess_moves(changes, rv)
 
     if quote is not None:
