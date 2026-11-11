@@ -61,8 +61,8 @@ def today_level(fixture: dict) -> str | None:
 def bucket_holds(fixture: dict) -> bool:
     """Does the capture bucket still describe the day once "today" is corrected?
 
-    Capture picks `move` and `control` from yfinance's daily history, which lags the close by
-    a day (evals/README.md), so some `move` fixtures are calm on the day they're replayed for
+    Before the 2026-11 price fix, capture picked `move` and `control` from yfinance's daily
+    history, which lags the close by a day (evals/README.md), so some `move` fixtures are calm on the day they're replayed for
     and some controls actually moved. Those are left out rather than relabelled: a stale move
     is neither a catalyst case nor a clean control. `top_mover` comes from the live screener,
     so it is never stale; nor is a hand-picked `manual` capture. A fixture with no verdict is

@@ -43,12 +43,12 @@ measure cost per run before a full run.
   sits in a context variable, so concurrent replays never see each other's data. A provider
   error is recorded as `status: "error"`, not raised.
 - **One correction to the data.** Fixtures are captured at 16:30 ET, before yfinance's daily
-  history includes that day's bar, so the recorded "1-day" change and the significance verdict
+  history includes that day's bar. Until `tools/price.py` was fixed (2026-11) that meant the recorded "1-day" change and the significance verdict
   built on it describe the previous day, while `change_pct` comes from the live quote (they
   disagreed by more than half a point on 136 of the first 168 fixtures). `replay.normalize_price`
   takes "today" from the quote and recomputes the verdict, so no model is scored on
-  contradictory inputs. The same lag affects production after the close; see the note in the
-  top-level README's evaluation section.
+  contradictory inputs. Since the fix, `get_price_data` joins the live quote as today's close,
+  so newer fixtures already agree and `normalize_price` leaves them unchanged.
 
 ## What the scorers measure
 
@@ -86,8 +86,8 @@ of a move: a fluent, well-grounded answer can still name the wrong catalyst.
 and commits what it records. For each trading day it keeps:
 
 - `move`: universe names whose **1-day** move the code rates elevated or unusual (catalyst
-  candidates; at most 6). Because of the history lag above, this selection currently uses the
-  previous day's move.
+  candidates; at most 6). Before the 2026-11 price fix this used the previous day's move;
+  `cases.bucket_holds` leaves those stale picks out.
 - `control`: 2 universe names calm on every horizon (for testing abstention)
 - `top_mover`: the 3 largest large-cap gainers and 3 losers from the Yahoo screener
 

@@ -42,9 +42,9 @@ multi-ticker comparison, anything resembling trading advice or signals.
 | Migration | Streamlit monolith → FastAPI + Next.js. Phases 0–3 ✅. **Phase 4 (metering / rate limiting) is next and not started** |
 | Backend | FastAPI, fully async, `/v1` REST + SSE, Docker → Google Cloud Run |
 | Frontend | Next.js 16 static export → Cloudflare Pages |
-| Quality gates | 322 offline pytest tests + 23 `live` tests (19 upstream data contracts, weekly; 4 LLM-vendor checks that skip without keys). ruff, eslint (blocking), tsc all clean. Heuristic quality flags on every explanation (`[quality]` log line) |
+| Quality gates | 328 offline pytest tests + 23 `live` tests (19 upstream data contracts, weekly; 4 LLM-vendor checks that skip without keys). ruff, eslint (blocking), tsc all clean. Heuristic quality flags on every explanation (`[quality]` log line) |
 | Models | Users pick the vendor per run with a model picker in the query bar: OpenAI (`OPENAI_MODEL`, default `gpt-6-luna`; the picker's default) or Claude (`ANTHROPIC_MODEL`, Haiku 5.5). Requests without `provider` use `LLM_PROVIDER` (default `anthropic`). Both run the same loop behind `llm/`; the eval harness compares models on recorded data (`evals/`, results in the README) |
-| Biggest gaps | The eval scores answers automatically but has **no labelled catalysts or judge yet**, so it can't measure whether the model found the true cause · yfinance's daily bar lags the close, so "today" can be the previous day's move after the close (`evals/README.md`) · no rate limiting and CORS `*` · `print`-based logging · token usage and `cost_usd` are returned per run (`result["usage"]`) but not logged |
+| Biggest gaps | The eval scores answers automatically but has **no labelled catalysts or judge yet**, so it can't measure whether the model found the true cause · no rate limiting and CORS `*` · `print`-based logging · token usage and `cost_usd` are returned per run (`result["usage"]`) but not logged |
 
 ## 4. Architecture in one screen
 

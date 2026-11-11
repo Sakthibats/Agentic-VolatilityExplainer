@@ -8,6 +8,7 @@ from volatility_explainer.tools.price import (
     _compute_realized_vol,
     _flag_text,
     _level_from_ratio,
+    _with_todays_close,
     describe_move,
     fetch_price_data,
 )
@@ -296,6 +297,86 @@ def test_finnhub_exception_falls_back_to_yfinance():
 
     assert result["price"] == 105.0
     assert result["change_pct"] == 5.0
+
+
+# ---------------------------------------------------------------------------
+# After the close: yfinance's history can still end at the previous session
+# ---------------------------------------------------------------------------
+
+
+def _sessions(closes: list[float], last_day: str = "2026-11-05") -> pd.DataFrame:
+    """Daily bars the way yfinance returns them: business days, New York time."""
+    index = pd.bdate_range(end=last_day, periods=len(closes), tz="America/New_York")
+    return pd.DataFrame({"Close": closes}, index=index)
+
+
+def _et(when: str) -> int:
+    return int(pd.Timestamp(when, tz="America/New_York").timestamp())
+
+
+def _fetch_with_quote(hist: pd.DataFrame, quote: dict) -> dict:
+    finnhub_client = MagicMock()
+    finnhub_client.get_quote.return_value = quote
+    with patch("volatility_explainer.tools.price.get_settings", return_value=_fake_settings("KEY")), \
+         patch("volatility_explainer.clients.finnhub.FinnhubClient", return_value=finnhub_client), \
+         patch("yfinance.Ticker", return_value=MagicMock(history=MagicMock(return_value=hist))):
+        return fetch_price_data("TEAM")
+
+
+_CALM = [100.0 + (i % 3) * 0.5 for i in range(29)] + [100.0]  # last close 100.0 on Thu 11-05
+
+
+def test_after_the_close_today_comes_from_the_quote_not_yesterdays_bar():
+    # Fri 11-06, 16:30 ET: the quote has today's -16%, the history still ends Thursday.
+    result = _fetch_with_quote(_sessions(_CALM), {"c": 84.0, "pc": 100.0, "t": _et("2026-11-06 16:00")})
+
+    assert result["change_pct"] == -16.0
+    assert result["changes_pct"]["1d"] == -16.0  # was Thursday's move before the fix
+    assert result["move_assessment"]["overall"] == "unusual"
+    assert "down 16.0% today" in describe_move(result)
+    # The usual-move yardstick comes from the sessions before today, not from today's drop.
+    assert result["realized_vol_annualized_pct"] == _compute_realized_vol(_sessions(_CALM))
+
+
+def test_every_horizon_ends_today_not_only_the_one_day_change():
+    closes = [90.0] + [100.0] * 29  # one week back (5 sessions before today) is 100.0
+    result = _fetch_with_quote(_sessions(closes), {"c": 110.0, "pc": 100.0, "t": _et("2026-11-06 16:00")})
+
+    assert result["changes_pct"]["1w"] == 10.0
+
+
+def test_a_quote_from_the_last_bars_session_adds_nothing():
+    # The history already has Friday's bar. During market hours the last trade is intraday
+    # Friday; at the weekend or before Monday's open it is still Friday's close.
+    hist = _sessions([*_CALM, 84.0], last_day="2026-11-06")
+    for traded_at in ("2026-11-06 11:00", "2026-11-06 16:00"):
+        result = _fetch_with_quote(hist, {"c": 84.0, "pc": 100.0, "t": _et(traded_at)})
+        assert result["changes_pct"]["1d"] == -16.0
+        assert len(_with_todays_close(hist, {"price": 84.0, "prev_close": 100.0,
+                                             "t": _et(traded_at)})) == len(hist)
+
+
+def test_the_trading_day_is_read_in_new_york_time():
+    # 00:30 UTC on 11-06 is still 19:30 on 11-05 in New York: the same session as the last bar.
+    quote = {"price": 84.0, "prev_close": 100.0,
+             "t": int(pd.Timestamp("2026-11-06 00:30", tz="UTC").timestamp())}
+    hist = _sessions(_CALM)
+
+    assert _with_todays_close(hist, quote) is hist
+
+
+def test_a_history_several_sessions_stale_is_not_bridged():
+    # The quote's previous close (120) isn't the last bar (100): sessions are missing between.
+    hist = _sessions(_CALM)
+    quote = {"price": 125.0, "prev_close": 120.0, "t": _et("2026-11-10 16:00")}
+
+    assert _with_todays_close(hist, quote) is hist
+
+
+def test_a_quote_without_a_timestamp_leaves_history_alone():
+    hist = _sessions(_CALM)
+
+    assert _with_todays_close(hist, {"price": 84.0, "prev_close": 100.0}) is hist
 
 
 def test_yfinance_history_failure_with_no_finnhub_returns_error_not_exception():

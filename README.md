@@ -150,8 +150,9 @@ Full table, including tool counts and run-to-run stability: [`evals/results/2026
 - **The eval also found two bugs.** First, the ticker fallback never worked on Haiku 4.5: the
   model wraps its JSON reply in a code fence and the parse error was swallowed. That's fixed.
   Second, after the close, yfinance's daily history lags the live quote, so "today" can be the
-  previous day's move. The eval corrects for this in its own data
-  ([details](evals/README.md#how-a-case-is-replayed)); the production fix is open.
+  previous day's move. That is now fixed in production: `tools/price.py` joins the live quote
+  as today's close when the history doesn't have it yet. The eval keeps its own correction for
+  fixtures recorded before the fix ([details](evals/README.md#how-a-case-is-replayed)).
 
 **What changed.** Both Haiku 5.5 failures were fixed before switching: a clearer scope rule in
 the prompt, and code that re-applies the answer contract (`_normalize_answer`: malformed entries
