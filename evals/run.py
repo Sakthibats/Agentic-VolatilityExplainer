@@ -59,6 +59,7 @@ def to_record(case: Case, label: str, repeat: int, result: dict) -> dict:
         "overview": result.get("overview"), "summary": result.get("summary"),
         "tiles": result.get("tiles"), "hypotheses": result.get("hypotheses"),
         "citations": result.get("citations"), "quality_flags": result.get("quality_flags"),
+        "answer_repairs": result.get("answer_repairs"),
         "usage": result.get("usage"), "wall_ms": result.get("wall_ms"),
     }
     record["scores"] = score(record, case.fixture())

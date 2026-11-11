@@ -281,21 +281,37 @@ _MAX_TILES = 4
 _MAX_HYPOTHESES = 3
 
 
-def _normalize_answer(final_input: dict) -> tuple[list[dict], list[dict]]:
+def _normalize_answer(final_input: dict) -> tuple[list[dict], list[dict], list[str]]:
     """submit_analysis's tiles and hypotheses, held to the contract in plain code.
 
     Malformed entries are dropped first, so they never take a slot. Then tiles and
     hypotheses are capped in the order the model wrote them, and hypotheses are ranked by
     that order: the model writes them most likely first, but Haiku 5.5 often numbers only the
     first ([1, None, None] on 38% of eval runs). Position is the rank; the field is overwritten.
+
+    Also returns what had to be repaired, so the model's own schema compliance stays
+    measurable (logged per run, scored by the eval) now that the reader never sees a break.
     """
     raw_tiles = final_input.get("tiles")
     raw_hyps = final_input.get("hypotheses")
-    tiles = [t for t in (raw_tiles if isinstance(raw_tiles, list) else [])
-             if isinstance(t, dict) and t.get("summary")][:_MAX_TILES]
-    hyps = [h for h in (raw_hyps if isinstance(raw_hyps, list) else [])
-            if isinstance(h, dict) and h.get("hypothesis")][:_MAX_HYPOTHESES]
-    return tiles, [{**h, "rank": i} for i, h in enumerate(hyps, start=1)]
+    raw_tiles = raw_tiles if isinstance(raw_tiles, list) else []
+    raw_hyps = raw_hyps if isinstance(raw_hyps, list) else []
+    valid_tiles = [t for t in raw_tiles if isinstance(t, dict) and t.get("summary")]
+    valid_hyps = [h for h in raw_hyps if isinstance(h, dict) and h.get("hypothesis")]
+    tiles, hyps = valid_tiles[:_MAX_TILES], valid_hyps[:_MAX_HYPOTHESES]
+
+    repairs = []
+    if len(valid_tiles) < len(raw_tiles):
+        repairs.append("malformed_tile_dropped")
+    if len(tiles) < len(valid_tiles):
+        repairs.append("too_many_tiles")
+    if len(valid_hyps) < len(raw_hyps):
+        repairs.append("malformed_hypothesis_dropped")
+    if len(hyps) < len(valid_hyps):
+        repairs.append("too_many_hypotheses")
+    if [h.get("rank") for h in hyps] != list(range(1, len(hyps) + 1)):
+        repairs.append("ranks_rewritten")
+    return tiles, [{**h, "rank": i} for i, h in enumerate(hyps, start=1)], repairs
 
 
 def _attach_news_citations(tiles: list[dict], tool_data: dict) -> list[dict]:
@@ -622,8 +638,10 @@ async def run_explainer(
     if not isinstance(explanation, str):
         explanation = ""
     summary, citations, removed = _resolve_citations(explanation, tool_data)
-    tiles, hypotheses = _normalize_answer(final_input)
+    tiles, hypotheses, answer_repairs = _normalize_answer(final_input)
     tiles = _attach_news_citations(tiles, tool_data)
+    if answer_repairs and final_kind == "analysis":
+        print(f"[answer]  {ticker:<6} repaired: {', '.join(answer_repairs)}")
 
     # Measured, never enforced: the flags describe the write-up, they don't change it.
     quality_flags: list[str] = []
@@ -648,6 +666,9 @@ async def run_explainer(
         "status": "complete" if final_kind == "analysis" else "incomplete",
         "cache_hits": cache_hits,
         "quality_flags": quality_flags,
+        # Schema breaks the code fixed before the reader saw them. Measured like the quality
+        # flags; deliberately not part of the API response or the Supabase row.
+        "answer_repairs": answer_repairs if final_kind == "analysis" else [],
         "usage": run_usage,
     }
     if _SAVE_RUNS_PATH:

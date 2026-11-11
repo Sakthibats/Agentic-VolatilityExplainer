@@ -120,7 +120,11 @@ def score(record: dict, fixture: dict) -> dict:
     claims = _claimed_numbers(text)
     words = len((record.get("summary") or "").split())
     scores.update({
+        # schema_problems checks the answer the reader got, which the orchestrator has already
+        # repaired; answer_repairs is what the model itself got wrong (None in results files
+        # recorded before the orchestrator reported it).
         "schema_problems": schema_problems(record),
+        "answer_repairs": record.get("answer_repairs"),
         "quality_flags": record.get("quality_flags") or [],
         "bad_citation_tags": len(_BAD_TAG.findall(record.get("summary") or "")),
         "numbers_claimed": len(claims),

@@ -12,7 +12,10 @@ import random
 from dataclasses import dataclass
 from pathlib import Path
 
+from volatility_explainer.tools.price import _horizon_levels
+
 from evals.capture import FIXTURE_DIR
+from evals.replay import normalize_price
 
 # Share of cases per bucket. Controls are fewer per day in the fixtures, and a third of the
 # set is enough to measure whether a model invents causes for a quiet stock.
@@ -46,12 +49,42 @@ def _query(ticker: str, bucket: str, change_pct: float | None, i: int) -> str:
     return f"why is {ticker} {'down' if change_pct < 0 else 'up'} today?"
 
 
+def today_level(fixture: dict) -> str | None:
+    """The 1-day significance level after replay's correction ("typical" | "elevated" |
+    "unusual"), or None when the price data can't support a verdict."""
+    price = normalize_price(fixture["tools"]["get_price_data"])
+    one_day = _horizon_levels(price.get("changes_pct") or {},
+                              price.get("realized_vol_annualized_pct")).get("1d")
+    return one_day[0] if one_day else None
+
+
+def bucket_holds(fixture: dict) -> bool:
+    """Does the capture bucket still describe the day once "today" is corrected?
+
+    Capture picks `move` and `control` from yfinance's daily history, which lags the close by
+    a day (evals/README.md), so some `move` fixtures are calm on the day they're replayed for
+    and some controls actually moved. Those are left out rather than relabelled: a stale move
+    is neither a catalyst case nor a clean control. `top_mover` comes from the live screener,
+    so it is never stale; nor is a hand-picked `manual` capture. A fixture with no verdict is
+    kept. On the first 3 weeks of fixtures this drops 35 of 76 moves and 8 of 30 controls.
+    """
+    bucket = fixture["selected_as"]
+    if bucket not in ("move", "control"):
+        return True
+    level = today_level(fixture)
+    if level is None:
+        return True
+    return level != "typical" if bucket == "move" else level == "typical"
+
+
 def load_fixtures(root: Path = FIXTURE_DIR) -> list[dict]:
     fixtures = []
     for path in sorted(root.glob("*/*.json")):
         data = json.loads(path.read_text(encoding="utf-8"))
         if "error" in (data.get("tools", {}).get("get_price_data") or {"error": "missing"}):
             continue  # no price, no investigation worth scoring
+        if not bucket_holds(data):
+            continue
         data["_path"] = str(path)
         fixtures.append(data)
     return fixtures

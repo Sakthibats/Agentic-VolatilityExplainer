@@ -283,6 +283,37 @@ async def test_citation_markers_with_no_news_fetched_are_all_removed(env):
     assert result["citations"] == []
 
 
+async def test_a_clean_answer_reports_no_repairs(env):
+    env.responses.append(fake_response([tool_use("submit_analysis", SUBMIT_INPUT)]))
+
+    result = await orchestrator.run_explainer("AAPL")
+
+    assert result["answer_repairs"] == []
+
+
+async def test_schema_repairs_are_applied_and_reported(env):
+    # What Haiku 5.5 produced in the eval: a fifth tile, ranks only on the first hypothesis,
+    # plus an entry with no text.
+    tile = SUBMIT_INPUT["tiles"][0]
+    broken = {
+        **SUBMIT_INPUT,
+        "tiles": [tile] * 5,
+        "hypotheses": [
+            {**SUBMIT_INPUT["hypotheses"][0], "rank": 1},
+            {**SUBMIT_INPUT["hypotheses"][1], "rank": None},
+            {"rank": 3, "confidence": "low"},
+        ],
+    }
+    env.responses.append(fake_response([tool_use("submit_analysis", broken)]))
+
+    result = await orchestrator.run_explainer("AAPL")
+
+    assert len(result["tiles"]) == 4
+    assert [h["rank"] for h in result["hypotheses"]] == [1, 2]
+    assert result["answer_repairs"] == [
+        "too_many_tiles", "malformed_hypothesis_dropped", "ranks_rewritten"]
+
+
 async def test_quality_flags_measure_the_explanation_without_rewriting_it(env):
     long = " ".join(["word"] * 100) + "."
     env.responses.append(
