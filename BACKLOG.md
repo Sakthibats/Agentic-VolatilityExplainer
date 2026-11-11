@@ -33,11 +33,6 @@ beyond a personal demo.
 
 ## Code quality
 
-### 🟡 MEDIUM — chart falls back to synthetic random prices
-`_synthetic_price_history()` in `marketdata/snapshots.py` returns a seeded random walk when
-yfinance fails, and the API serves it as a normal `PriceHistory` — the frontend can't tell it from
-real data. Prefer surfacing the failure (empty points + an "unavailable" state).
-
 ### 🟡 MEDIUM — silent `except Exception: pass` blocks
 No trail when a fallback path fails ("why did FRED never return data?"):
 - `tools/macro.py` — `fetch_macro`, FRED branch

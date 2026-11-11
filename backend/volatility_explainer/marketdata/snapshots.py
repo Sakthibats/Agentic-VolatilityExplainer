@@ -7,7 +7,6 @@ with graceful fallbacks — these feed GET /v1/tickers/{ticker}/... endpoints.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import date, timedelta
 
 import pandas as pd
 
@@ -33,7 +32,11 @@ _YF_PERIOD_MAP: dict[str, str] = {
 
 
 def fetch_price_history(ticker: str, period: str = "6M") -> pd.DataFrame:
-    """Return close prices for the given period, via yfinance."""
+    """Return close prices for the given period, via yfinance.
+
+    On failure, returns an empty frame and the UI shows "Chart unavailable". Never stand-in
+    prices: a made-up chart looks exactly like a real one.
+    """
     ticker = ticker.upper()
 
     try:
@@ -51,18 +54,8 @@ def fetch_price_history(ticker: str, period: str = "6M") -> pd.DataFrame:
         return df[["date", "close"]].dropna()
     except Exception as exc:
         print(f"[chart:{ticker}]  yfinance  FAILED — {exc}")
-        return _synthetic_price_history()
-
-
-def _synthetic_price_history() -> pd.DataFrame:
-    import numpy as np
-
-    end = date.today()
-    start = end - timedelta(days=182)
-    dates = pd.date_range(start=start, end=end, freq="B")
-    rng = np.random.default_rng(42)
-    prices = 180 + np.cumsum(rng.normal(0.1, 1.5, len(dates)))
-    return pd.DataFrame({"date": dates, "close": prices.round(2)})
+        return pd.DataFrame({"date": pd.Series(dtype="datetime64[ns]"),
+                             "close": pd.Series(dtype=float)})
 
 
 # ---------------------------------------------------------------------------

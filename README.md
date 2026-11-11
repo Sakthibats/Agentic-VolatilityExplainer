@@ -1,8 +1,8 @@
 # Agentic Market Explainer
 
 **Ask "why did TSLA move?" and get an investigation, not a chatbot guess.** Plain code computes
-whether the move is statistically unusual. Then a bounded Claude tool-use loop collects the
-evidence and must finish with a structured, cited answer.
+whether the move is statistically unusual. Then a bounded tool-use loop (Claude or OpenAI, the
+visitor's choice) collects the evidence and must finish with a structured, cited answer.
 
 **[▶ Try it live: market-explainer.com](https://market-explainer.com/)** ·
 [How it works (About page)](https://market-explainer.com/about) ·
@@ -16,10 +16,10 @@ evidence and must finish with a structured, cited answer.
 | | |
 |---|---|
 | **Built by** | [Sakthivel Baskaran](https://github.com/Sakthibats), solo: product, agent design, backend, frontend, infra, CI/CD and operations |
-| **Status** | Public and live since ‹MONTH 2026›. Free, no sign-up |
-| **Usage** | ‹N› investigations from ‹M› anonymous sessions across ‹K› tickers (Supabase usage log, as of ‹DATE›) |
-| **Runs on** | Claude Haiku 4.5 in production; the same agent loop also runs on OpenAI (GPT-6 Luna), switched by one setting · FastAPI on Cloud Run (scales to zero) · Next.js static export on Cloudflare Pages |
-| **Quality gates** | 300 offline tests (the agent loop is driven by scripted fake Claude and OpenAI streams) · 19 weekly live data-contract tests · quality checks on every write-up · [an eval harness](#model-evaluation-claude-vs-openai) that replays recorded market data through any model |
+| **Status** | Public and live since July 2026. Free, no sign-up |
+| **Usage** | 800+ investigations in its first two months, peaking at 30 daily users (Supabase usage log) |
+| **Runs on** | One agent loop, two vendors: visitors pick GPT-6 Luna (the default) or Claude Haiku 5.5 per run, chosen on [eval results](#model-evaluation-claude-vs-openai) · FastAPI on Cloud Run (scales to zero) · Next.js static export on Cloudflare Pages |
+| **Quality gates** | Offline pytest suite (the agent loop is driven by scripted fake Claude and OpenAI streams) · weekly live data-contract tests · quality checks on every write-up · [an eval harness](#model-evaluation-claude-vs-openai) that replays recorded market data through any model |
 
 <img width="1222" height="763" alt="Market Explainer answering why a stock moved: price chart, evidence tiles, ranked hypotheses and a cited explanation" src="https://github.com/user-attachments/assets/8d5fbb86-2ba6-4419-ad0b-90cb79a46b13" />
 
@@ -53,7 +53,7 @@ flowchart LR
         SVC --> O[agent/orchestrator.py]
         O -- "first: prefetch in parallel, no LLM" --> P[price + realized vol<br/>events calendar]
         P -- "significance verdict<br/>+ 'what happened' overview" --> O
-        O -- "then: ≤7 turns, a tool call forced every turn" --> C[(llm/ provider seam<br/>Claude Haiku 4.5 · or OpenAI)]
+        O -- "then: ≤7 turns, a tool call forced every turn" --> C[(llm/ provider seam<br/>GPT-6 Luna · or Claude Haiku 5.5)]
         C -- "picks tools" --> T[tools/: news · options · analyst<br/>sector · macro · earnings]
         C -- "must end with" --> S[submit_analysis<br/>or flag_out_of_scope]
         S --> Q[agent/quality.py<br/>flags, never rewrites]
@@ -81,8 +81,8 @@ not left to the prompt, and each control is pinned by tests:
 | Runaway loops and spend | At most 7 turns, a 15 s timeout per tool, Haiku, layered caching and prompt caching | [`agent/orchestrator.py`](backend/volatility_explainer/agent/orchestrator.py) |
 | Off-topic use or advice-seeking | A scope guardrail runs before any LLM call, and the model has its own out-of-scope exit. The product describes past price action only; it never gives signals or recommendations | [`query/parsing.py`](backend/volatility_explainer/query/parsing.py) |
 | A data source fails | Every tool falls back to yfinance. Redis, Supabase, Finnhub and FRED are all optional, and `service.analyze()` never raises | [`tools/`](backend/volatility_explainer/tools/) |
-| An upstream API silently changes shape | 19 live contract tests run weekly and on PRs that touch data code. A failed scheduled run opens an issue | [`tests/tools/test_live_contracts.py`](tests/tools/test_live_contracts.py) |
-| A weak or misleading write-up | Plain-code checks score every explanation for 7 known failure modes, including overstating the move, analyst consensus offered as a cause, uncited catalysts and invalid citations. The flags are logged per run and never alter the answer. Real bad write-ups are pinned as regression tests | [`agent/quality.py`](backend/volatility_explainer/agent/quality.py), [`tests/agent/test_quality.py`](tests/agent/test_quality.py) |
+| An upstream API silently changes shape | Live contract tests run weekly and on PRs that touch data code. A failed scheduled run opens an issue | [`tests/tools/test_live_contracts.py`](tests/tools/test_live_contracts.py) |
+| A weak or misleading write-up | Plain-code checks score every explanation for known failure modes, including overstating the move, analyst consensus offered as a cause, uncited catalysts and invalid citations. The flags are logged per run and never alter the answer. Real bad write-ups are pinned as regression tests | [`agent/quality.py`](backend/volatility_explainer/agent/quality.py), [`tests/agent/test_quality.py`](tests/agent/test_quality.py) |
 | A loop change breaks agent behaviour | Scripted fake Anthropic and OpenAI streams drive the whole loop in tests: tool choice, timeouts, turn limits, terminal tools, prose endings and citations. An API test checks that a client disconnect doesn't cancel the run | [`tests/agent/test_orchestrator.py`](tests/agent/test_orchestrator.py), [`tests/api/test_api.py`](tests/api/test_api.py) |
 
 **Not done yet** (tracked in [AGENTS.md §7](AGENTS.md#7-open-questions--good-places-to-ideate)):
@@ -96,8 +96,8 @@ The agent loop talks to models only through a thin provider seam
 ([`llm/`](backend/volatility_explainer/llm/)): one ~200-line adapter per vendor, and an
 orchestrator that never imports a vendor SDK. Each adapter keeps its vendor's specifics:
 Claude's explicit cache breakpoints and fine-grained tool streaming, and OpenAI's strict function
-schemas with reasoning items sent back each turn. The vendor is a setting (`LLM_PROVIDER`), so
-which model runs in production comes down to measurement.
+schemas with reasoning items sent back each turn. Visitors pick the vendor per run; the model
+behind each vendor is server config, so which model runs in production comes down to measurement.
 
 **Method.** [`evals/`](evals/) replays 40 recorded investigations through the unchanged
 production loop: every data tool serves a fixture captured after a real trading day, and nothing
@@ -105,7 +105,7 @@ else changes. The cases mix notable moves, the day's top movers and calm control
 case runs 3 times per model. All 480 runs cost **$1.82** in total. Every score is plain code, with
 no judge model: [`evals/README.md`](evals/README.md) lists what each one measures.
 
-| Metric (40 cases × 3 runs each) | Claude Haiku 4.5 *(production)* | Claude Haiku 5.5 | GPT-6 Luna, reasoning low | GPT-6 Luna, reasoning off |
+| Metric (40 cases × 3 runs each) | Claude Haiku 4.5 *(production at the time)* | Claude Haiku 5.5 | GPT-6 Luna, reasoning low | GPT-6 Luna, reasoning off |
 |---|---|---|---|---|
 | Ended with a structured answer | 100% | 92% | 100% | 100% |
 | Answer fits the schema (tile cap, ranked hypotheses) | 99% | 44% | 100% | 100% |
@@ -120,7 +120,7 @@ no judge model: [`evals/README.md`](evals/README.md) lists what each one measure
 Full table, including tool counts and run-to-run stability: [`evals/results/2026-11-09.md`](evals/results/2026-11-09.md).
 
 **What it found**
-- **Haiku 4.5, in production today, costs the most and writes the longest.** It runs 13× to 26×
+- **Haiku 4.5, then the production model, costs the most and writes the longest.** It runs 13× to 26×
   the price of the others, 88% of its explanations miss the requested length (almost all by
   running long), and 8% use citation tags like
   `[ref 3]` that the server can't turn into links.
@@ -137,12 +137,20 @@ Full table, including tool counts and run-to-run stability: [`evals/results/2026
   previous day's move. The eval corrects for this in its own data
   ([details](evals/README.md#how-a-case-is-replayed)); the production fix is open.
 
+**What changed.** Both Haiku 5.5 failures were fixed before switching: a clearer scope rule in
+the prompt, and code that re-applies the answer contract (`_normalize_answer`: malformed entries
+dropped, at most 4 tiles, hypotheses ranked by the order written). A re-run on the same 40 cases
+([`2026-11-10.md`](evals/results/2026-11-10.md), one run each, $0.08) had Haiku 5.5 completing
+100% of runs (up from 92%) and passing the schema check on 98% (up from 44%, mostly because the
+code now repairs the answer). Claude runs moved to Haiku 5.5 on 2026-11-10, and GPT-6 Luna became
+the default in the model picker.
+
 **Caveats.** The prompts were written and tuned against Claude, so vendor-specific prompt tuning
 could move these numbers. The quality flags are regex heuristics with known false positives (for
 example, a negated "out-of-the-ordinary" still counts as overstating). None of this measures
 whether the model named the *true* catalyst; that needs hand-labelled cases and a judge model,
-the next step in [`evals/README.md`](evals/README.md#next-steps-not-built). Production stays on
-Haiku 4.5 until accuracy is measured too.
+the next step in [`evals/README.md`](evals/README.md#next-steps-not-built). The model choice
+above rests on cost, latency and structure; it should be revisited once accuracy is measured too.
 
 ```bash
 python -m evals.run --models anthropic:claude-haiku-5-5,openai:gpt-6-luna@low \
@@ -162,8 +170,8 @@ python -m evals.report evals/results/<date>.jsonl --write
   abandoned run still finishes and fills the cache.
 - **Cheap to run.** Free data sources work with no paid keys, the backend scales to zero, and
   caching happens at four layers.
-- **Every tradeoff is written down.** [AGENTS.md](AGENTS.md) holds 16 decisions, each with why,
-  cost and when to revisit, plus the invariants the code must keep.
+- **Every tradeoff is written down.** [AGENTS.md](AGENTS.md) holds the decision log, each entry
+  with why, cost and when to revisit, plus the invariants the code must keep.
 
 ## Quickstart
 
@@ -217,7 +225,7 @@ scripts/                        write-up quality report, API benchmark
 
 | Layer | Choice |
 |---|---|
-| Agent | Claude Haiku 4.5 (production) or OpenAI via the `llm/` seam, tool-use loop (max 7 turns), streaming, prompt caching |
+| Agent | GPT-6 Luna or Claude Haiku 5.5 via the `llm/` seam, tool-use loop (max 7 turns), streaming, prompt caching |
 | API | FastAPI + `sse-starlette`, versioned `/v1`, fully async |
 | Frontend | Next.js 16 (App Router) + React 19 + Tailwind v4 + shadcn/ui, static export |
 | Data | Finnhub (quotes, news), FRED (macro), yfinance (history, options, analyst, sector, fallback) |
