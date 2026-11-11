@@ -75,7 +75,7 @@ Four files carry the design. Read them in this order:
 | # | File | What to look for |
 |---|---|---|
 | 1 | [`api/schemas.py`](backend/volatility_explainer/api/schemas.py) | The contract. `AnalysisResult` is the whole answer, and the SSE events (`Step`, `Overview`, `SummaryProgress`, `Guardrail`, `ApiError`) are everything the browser can receive |
-| 2 | [`agent/orchestrator.py`](backend/volatility_explainer/agent/orchestrator.py) | `run_explainer`, the loop: deterministic prefetch, at most 7 turns, tools on threads with timeouts, ending only through `submit_analysis` or `flag_out_of_scope`, then citations resolved by the server |
+| 2 | [`agent/orchestrator.py`](backend/volatility_explainer/agent/orchestrator.py) | `run_explainer`, the loop: deterministic prefetch, at most 7 turns, tools on threads with timeouts, ending only through `submit_analysis` or `flag_out_of_scope`. The answer then goes through [`agent/answer.py`](backend/volatility_explainer/agent/answer.py): `[n]` citations resolved to real links by the server, and the schema re-applied with each repair reported |
 | 3 | [`tools/price.py`](backend/volatility_explainer/tools/price.py) | Significance computed in code before any LLM call: `_RELATIVE_BANDS`, `_assess_moves` and `describe_move`, the "what happened" paragraph the model never writes |
 | 4 | [`tests/agent/test_orchestrator.py`](tests/agent/test_orchestrator.py) | How agent behaviour is pinned: a scripted fake model drives the real loop through turn limits, prose endings, hanging tools and invented citations |
 
@@ -92,7 +92,7 @@ not left to the prompt, and each control is pinned by tests:
 | Risk | Control | Where |
 |---|---|---|
 | The model calls a 1% move a "crash", or plays down an 18% drop | Significance is computed **in code** against the stock's own √time-scaled realized vol, plus an absolute floor. The model reads the verdict and can't override it. The user's wording is not treated as evidence | [`tools/price.py`](backend/volatility_explainer/tools/price.py), framing rule in [`agent/prompts.py`](backend/volatility_explainer/agent/prompts.py) |
-| Invented sources or links | Headlines are numbered by the server. The model may only cite `[n]`, and the server turns each number into a real URL or removes it. A link can't come from the model | `_resolve_citations` in [`agent/orchestrator.py`](backend/volatility_explainer/agent/orchestrator.py) |
+| Invented sources or links | Headlines are numbered by the server. The model may only cite `[n]`, and the server turns each number into a real URL or removes it. A link can't come from the model | [`agent/answer.py`](backend/volatility_explainer/agent/answer.py) |
 | Free-form or unparseable output | The only ways to end a run are the `submit_analysis` or `flag_out_of_scope` tool calls, so the answer always has a schema. If the model writes prose instead, the run returns `incomplete`; the prose is never parsed | [`agent/tool_schemas.py`](backend/volatility_explainer/agent/tool_schemas.py) |
 | Runaway loops and spend | At most 7 turns, a 15 s timeout per tool, Haiku, layered caching and prompt caching | [`agent/orchestrator.py`](backend/volatility_explainer/agent/orchestrator.py) |
 | Off-topic use or advice-seeking | A scope guardrail runs before any LLM call, and the model has its own out-of-scope exit. The product describes past price action only; it never gives signals or recommendations | [`query/parsing.py`](backend/volatility_explainer/query/parsing.py) |
@@ -155,7 +155,7 @@ Full table, including tool counts and run-to-run stability: [`evals/results/2026
   fixtures recorded before the fix ([details](evals/README.md#how-a-case-is-replayed)).
 
 **What changed.** Both Haiku 5.5 failures were fixed before switching: a clearer scope rule in
-the prompt, and code that re-applies the answer contract (`_normalize_answer`: malformed entries
+the prompt, and code that re-applies the answer contract (`answer.normalize_answer`: malformed entries
 dropped, at most 4 tiles, hypotheses ranked by the order written). A re-run on the same 40 cases
 ([`2026-11-10.md`](evals/results/2026-11-10.md), one run each, $0.08) had Haiku 5.5 completing
 100% of runs (up from 92%) and passing the schema check on 98% (up from 44%, mostly because the
