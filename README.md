@@ -68,6 +68,22 @@ Events stream to the browser in a fixed order: `step`* → `overview` (built by 
 (the model's "why") → exactly one `result` | `guardrail` | `error`. The full request lifecycle,
 API contract, caching layers and deployment are in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
+## Reading the code in 10 minutes
+
+Four files carry the design. Read them in this order:
+
+| # | File | What to look for |
+|---|---|---|
+| 1 | [`api/schemas.py`](backend/volatility_explainer/api/schemas.py) | The contract. `AnalysisResult` is the whole answer, and the SSE events (`Step`, `Overview`, `SummaryProgress`, `Guardrail`, `ApiError`) are everything the browser can receive |
+| 2 | [`agent/orchestrator.py`](backend/volatility_explainer/agent/orchestrator.py) | `run_explainer`, the loop: deterministic prefetch, at most 7 turns, tools on threads with timeouts, ending only through `submit_analysis` or `flag_out_of_scope`, then citations resolved by the server |
+| 3 | [`tools/price.py`](backend/volatility_explainer/tools/price.py) | Significance computed in code before any LLM call: `_RELATIVE_BANDS`, `_assess_moves` and `describe_move`, the "what happened" paragraph the model never writes |
+| 4 | [`tests/agent/test_orchestrator.py`](tests/agent/test_orchestrator.py) | How agent behaviour is pinned: a scripted fake model drives the real loop through turn limits, prose endings, hanging tools and invented citations |
+
+Then, depending on interest: [`llm/base.py`](backend/volatility_explainer/llm/base.py) for the
+vendor seam, [`agent/quality.py`](backend/volatility_explainer/agent/quality.py) for the write-up
+checks, and [`evals/`](evals/README.md) for the model comparison. Paths are relative to
+`backend/volatility_explainer/` except tests and evals.
+
 ## Evaluation and safety design
 
 An LLM explaining market moves can fail in a few predictable ways. Each one is handled in code,
@@ -176,7 +192,8 @@ python -m evals.report evals/results/<date>.jsonl --write
 ## Quickstart
 
 ```bash
-cp .env.example .env              # set ANTHROPIC_API_KEY; everything else is optional
+cp .env.example .env              # set OPENAI_API_KEY and/or ANTHROPIC_API_KEY; the rest is optional
+                                  # (the UI's model picker defaults to OpenAI)
 pip install -e ".[dev]"
 pytest -q
 uvicorn volatility_explainer.api.app:app --reload --port 8080
@@ -198,27 +215,17 @@ VOLX_SAVE_RUNS=runs.jsonl uvicorn volatility_explainer.api.app:app --port 8080
 python scripts/quality_report.py runs.jsonl            # add --show <flag> to read offenders
 ```
 
-## Repo layout
-
-```
-backend/volatility_explainer/   FastAPI app, agent orchestrator, data tools, clients
-frontend/                       Next.js 16 static export (Tailwind v4, shadcn/ui)
-evals/                          daily market-data fixtures, replay harness, scorers, results
-tests/                          pytest suite mirroring the backend layout
-docs/                           architecture, roadmap, hand-run Supabase SQL
-scripts/                        write-up quality report, API benchmark
-.github/workflows/              tests, backend deploy, frontend deploy, live contracts
-```
-
 ## Documentation
+
+Each kind of information lives in one place:
 
 | Doc | Read it for |
 |---|---|
-| [AGENTS.md](AGENTS.md) | The project brief: goals, invariants, decision log, open questions, where to change things. Start here, whether you're a person or an AI assistant |
+| [AGENTS.md](AGENTS.md) | The project brief: goals, invariants, decision log, open questions, a file-by-file repo map, and where to change things. Start here to work on the code, whether you're a person or an AI assistant |
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | Request lifecycle, the `/v1` API and SSE contract, caching, deployment, configuration |
-| [docs/ROADMAP.md](docs/ROADMAP.md) | Migration phases, what's next, what's out of scope |
-| [docs/sql/](docs/sql/) | Supabase schema changes to run by hand **before** deploying the code that needs them, plus reporting queries |
-| [BACKLOG.md](BACKLOG.md) | Known security and code-quality debt |
+| [docs/ROADMAP.md](docs/ROADMAP.md) | What's next, known security and code-quality debt, and what's out of scope |
+| [evals/README.md](evals/README.md) | How the model comparison works and what each score measures |
+| [docs/sql/](docs/sql/) | Supabase schema changes to run by hand **before** deploying the code that needs them |
 | [PRIVACY.md](PRIVACY.md) | What gets logged |
 
 ## Stack

@@ -3,7 +3,7 @@
 > **Starter context for any AI assistant** (Claude Code, Codex, Cursor, or a chat model you paste
 > this into). It is written to be enough on its own to reason about goals, tradeoffs, and where to
 > change things. Deeper references: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) ·
-> [docs/ROADMAP.md](docs/ROADMAP.md) · [BACKLOG.md](BACKLOG.md).
+> [docs/ROADMAP.md](docs/ROADMAP.md) (next steps and known debt).
 > Last reviewed: 2026-11-11.
 
 ## 1. What this is
@@ -157,10 +157,10 @@ evals/                            capture.py (daily fixture recorder) · cases.p
                                   each and growing. Don't read or search them unless working on evals
 scripts/                          quality_report.py (flag rates over VOLX_SAVE_RUNS) ·
                                   benchmark_api.py (sequential vs. concurrent latency)
-docs/                             ARCHITECTURE.md · ROADMAP.md · sql/ (hand-run Supabase changes)
+docs/                             ARCHITECTURE.md · ROADMAP.md (next, known debt) · sql/ (hand-run Supabase changes)
 .github/workflows/                test · docker-publish · frontend-deploy · live-contracts · eval-capture
 root                              pyproject.toml (deps, ruff, pytest config) · Dockerfile ·
-                                  docker-compose.yml · .env.example · BACKLOG.md · PRIVACY.md
+                                  docker-compose.yml · .env.example · PRIVACY.md
 ```
 
 ## 5. Invariants — don't break these without an explicit decision
