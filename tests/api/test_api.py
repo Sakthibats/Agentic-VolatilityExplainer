@@ -223,7 +223,9 @@ def test_analyze_orchestrator_failure_becomes_error_event():
         r = client.post("/v1/analyze", json={"query": "why did AAPL drop?"})
     events = _parse_sse(r.text)
     assert events[-1][0] == "error"
-    assert "anthropic down" in events[-1][1]["message"]
+    # The reader gets a plain retry message; the exception text stays in the server log.
+    assert "anthropic down" not in events[-1][1]["message"]
+    assert "try again" in events[-1][1]["message"]
 
 
 def test_analyze_empty_query_rejected():
@@ -360,3 +362,25 @@ def test_models_marks_a_vendor_without_a_key_unavailable():
         options = client.get("/v1/models").json()["options"]
 
     assert {o["provider"]: o["available"] for o in options} == {"openai": True, "anthropic": False}
+
+
+@pytest.mark.parametrize("path", [
+    "/v1/tickers/AAPL/history?period=5Y",       # not a chart period
+    "/v1/tickers/not%20a%20ticker/history",     # free text never reaches yfinance
+    "/v1/tickers/ABCDEFGHIJKLMNOP/stats",       # too long
+])
+def test_ticker_routes_reject_invalid_input(path):
+    with patch("yfinance.Ticker", side_effect=AssertionError("must not reach yfinance")):
+        assert client.get(path).status_code == 422
+
+
+def test_ticker_routes_accept_index_and_class_share_symbols():
+    df = pd.DataFrame({"date": pd.Series(dtype="datetime64[ns]"), "close": pd.Series(dtype=float)})
+    with patch("volatility_explainer.api.app.fetch_price_history", return_value=df):
+        for symbol in ("^VIX", "BRK-B", "brk.b"):
+            assert client.get(f"/v1/tickers/{symbol}/history?period=1M").status_code == 200
+
+
+def test_an_oversized_session_id_is_rejected():
+    r = client.post("/v1/analyze", json={"query": "AAPL"}, headers={"x-session-id": "x" * 65})
+    assert r.status_code == 422

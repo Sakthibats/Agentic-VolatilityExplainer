@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from pathlib import Path
+
 from volatility_explainer.analytics import supabase_logger
 
 
@@ -41,3 +43,11 @@ def test_the_model_that_answered_is_logged(monkeypatch):
     )
 
     assert (queued[0]["llm_provider"], queued[0]["llm_model"]) == ("openai", "gpt-6-luna")
+
+
+def test_fallback_log_is_not_written_inside_the_installed_package():
+    # Installed in the Docker image the package sits in site-packages, which the non-root
+    # user can't write to; the fallback lives under the working directory (/app/data there).
+    package_dir = Path(supabase_logger.__file__).resolve().parents[1]
+    assert package_dir not in supabase_logger._FALLBACK_LOG_PATH.resolve().parents
+    assert supabase_logger._FALLBACK_LOG_PATH.parent.name == "data"

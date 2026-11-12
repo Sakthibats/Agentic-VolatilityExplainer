@@ -1,7 +1,9 @@
-"""Ticker snapshot data for the UI sidebar: price history, quick stats, analyst targets.
+"""Ticker snapshot data for the UI: chart price history, quick stats, analyst targets.
 
-Rescued from the retired Streamlit app (apps/ui/placeholders.py). All yfinance-backed
-with graceful fallbacks — these feed GET /v1/tickers/{ticker}/... endpoints.
+All yfinance-backed with graceful fallbacks; these feed GET /v1/tickers/{ticker}/...
+Every investigation loads both endpoints, so each upstream result is kept in the in-process
+memo for _SNAPSHOT_TTL_SECONDS. Yahoo throttles by IP, and these calls share that budget with
+the agent's yfinance fallbacks. Failures are never cached, so the next request retries.
 """
 
 from __future__ import annotations
@@ -10,7 +12,15 @@ from dataclasses import dataclass
 
 import pandas as pd
 
+from volatility_explainer.clients.redis_cache import (
+    get_memoized_tool_data,
+    set_memoized_tool_data,
+)
 from volatility_explainer.tools.price import extended_hours
+
+# Short enough that the sidebar's last price stays close to the overview's (get_price_data
+# is cached for 15 minutes), long enough that repeat page loads don't each hit Yahoo.
+_SNAPSHOT_TTL_SECONDS = 300
 
 
 @dataclass(frozen=True)
@@ -40,6 +50,10 @@ def fetch_price_history(ticker: str, period: str = "6M") -> pd.DataFrame:
     prices: a made-up chart looks exactly like a real one.
     """
     ticker = ticker.upper()
+    memo_key = f"snapshot_history_{period}"
+    cached = get_memoized_tool_data(ticker, memo_key)
+    if cached is not None:
+        return cached.copy()
 
     try:
         import yfinance as yf
@@ -53,7 +67,9 @@ def fetch_price_history(ticker: str, period: str = "6M") -> pd.DataFrame:
         date_col = "Datetime" if "Datetime" in hist.columns else "Date"
         df = hist[[date_col, "Close"]].rename(columns={date_col: "date", "Close": "close"})
         df["date"] = pd.to_datetime(df["date"]).dt.tz_localize(None)
-        return df[["date", "close"]].dropna()
+        df = df[["date", "close"]].dropna()
+        set_memoized_tool_data(ticker, memo_key, df, ttl_seconds=_SNAPSHOT_TTL_SECONDS)
+        return df.copy()
     except Exception as exc:
         print(f"[chart:{ticker}]  yfinance  FAILED — {exc}")
         return pd.DataFrame({"date": pd.Series(dtype="datetime64[ns]"),
@@ -65,12 +81,25 @@ def fetch_price_history(ticker: str, period: str = "6M") -> pd.DataFrame:
 # ---------------------------------------------------------------------------
 
 
+def _info(ticker: str) -> dict:
+    """yfinance's Ticker.info, one scrape shared by both stat panels. Raises on failure."""
+    ticker = ticker.upper()
+    cached = get_memoized_tool_data(ticker, "snapshot_info")
+    if cached is not None:
+        return cached
+    import yfinance as yf
+
+    info = yf.Ticker(ticker).info
+    if not info:
+        raise ValueError("empty info")
+    set_memoized_tool_data(ticker, "snapshot_info", info, ttl_seconds=_SNAPSHOT_TTL_SECONDS)
+    return info
+
+
 def fetch_quick_stats(ticker: str) -> list[QuickStat]:
     """Return headline fundamentals from yfinance."""
     try:
-        import yfinance as yf
-
-        info = yf.Ticker(ticker.upper()).info
+        info = _info(ticker)
         stats: list[QuickStat] = []
 
         price = info.get("currentPrice") or info.get("regularMarketPrice")
@@ -134,9 +163,7 @@ def _fallback_stats() -> list[QuickStat]:
 def fetch_analyst_stats(ticker: str) -> list[QuickStat]:
     """Return analyst 1-year price targets from yfinance."""
     try:
-        import yfinance as yf
-
-        info = yf.Ticker(ticker.upper()).info
+        info = _info(ticker)
 
         target_low = info.get("targetLowPrice")
         target_high = info.get("targetHighPrice")

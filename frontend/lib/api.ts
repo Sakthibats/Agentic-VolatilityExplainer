@@ -64,9 +64,12 @@ export interface PricePoint {
   close: number;
 }
 
+/** The chart's periods; the backend rejects anything else with a 422. */
+export type ChartPeriod = "1W" | "1M" | "6M" | "YTD" | "1Y";
+
 export interface PriceHistory {
   ticker: string;
-  period: string;
+  period: ChartPeriod;
   points: PricePoint[];
 }
 
@@ -171,7 +174,7 @@ export async function analyzeStream(
 
 export async function fetchHistory(
   ticker: string,
-  period: string,
+  period: ChartPeriod,
 ): Promise<PriceHistory> {
   const res = await fetch(
     `${API_BASE}/v1/tickers/${encodeURIComponent(ticker)}/history?period=${period}`,

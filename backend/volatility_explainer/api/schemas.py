@@ -21,6 +21,8 @@ from typing import Literal
 from pydantic import BaseModel, Field
 
 LLMProviderName = Literal["anthropic", "openai"]
+# The chart's periods; mirrored as ChartPeriod in frontend/lib/api.ts.
+ChartPeriod = Literal["1W", "1M", "6M", "YTD", "1Y"]
 
 
 class AnalyzeRequest(BaseModel):
@@ -141,7 +143,7 @@ class PricePoint(BaseModel):
 
 class PriceHistory(BaseModel):
     ticker: str
-    period: str
+    period: ChartPeriod
     points: list[PricePoint]
 
 

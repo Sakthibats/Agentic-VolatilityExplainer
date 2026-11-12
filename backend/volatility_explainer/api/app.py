@@ -8,8 +8,9 @@ from __future__ import annotations
 
 import asyncio
 import uuid
+from typing import Annotated
 
-from fastapi import FastAPI, Header
+from fastapi import FastAPI, Header, Path
 from fastapi.middleware.cors import CORSMiddleware
 from sse_starlette.sse import EventSourceResponse
 
@@ -18,6 +19,7 @@ from volatility_explainer.api import service
 from volatility_explainer.api.schemas import (
     AnalyzeRequest,
     ApiError,
+    ChartPeriod,
     Guardrail,
     Health,
     InvestigationStarted,
@@ -37,6 +39,12 @@ from volatility_explainer.marketdata import (
 )
 
 _QUEUE_DONE = object()
+
+# Path and header bounds. Resolved tickers are 1-5 letters; the wider set admits index and
+# class-share symbols (^VIX, BRK-B) without letting arbitrary text reach yfinance. Session IDs
+# are browser UUIDs (36 chars) and land in the usage log.
+Ticker = Annotated[str, Path(pattern=r"^[A-Za-z0-9.^=\-]{1,12}$")]
+_SESSION_ID_MAX = 64
 
 app = FastAPI(title="Agentic Market Explainer API", version=__version__)
 
@@ -84,7 +92,8 @@ async def _analyze_event_stream(raw_query: str, session_id: str, provider: str |
             else:
                 events.put_nowait(("result", result))
         except Exception as exc:  # service.analyze shouldn't raise, but never hang the stream
-            events.put_nowait(("error", ApiError(message=str(exc))))
+            print(f"[api] analyze stream FAILED — {type(exc).__name__}: {exc}")
+            events.put_nowait(("error", ApiError(message="Something went wrong. Please try again.")))
         finally:
             events.put_nowait(_QUEUE_DONE)
 
@@ -103,7 +112,7 @@ async def _analyze_event_stream(raw_query: str, session_id: str, provider: str |
 async def analyze(
     body: AnalyzeRequest,
     stream: bool = True,
-    x_session_id: str | None = Header(default=None),
+    x_session_id: str | None = Header(default=None, max_length=_SESSION_ID_MAX),
 ):
     session_id = _session_id(x_session_id)
     if stream:
@@ -117,7 +126,7 @@ def models() -> ModelCatalog:
 
 
 @app.get("/v1/tickers/{ticker}/history", response_model=PriceHistory)
-def price_history(ticker: str, period: str = "6M") -> PriceHistory:
+def price_history(ticker: Ticker, period: ChartPeriod = "6M") -> PriceHistory:
     df = fetch_price_history(ticker, period)
     points = [
         PricePoint(date=row.date.isoformat(), close=float(row.close))
@@ -127,7 +136,7 @@ def price_history(ticker: str, period: str = "6M") -> PriceHistory:
 
 
 @app.get("/v1/tickers/{ticker}/stats", response_model=TickerStats)
-def ticker_stats(ticker: str) -> TickerStats:
+def ticker_stats(ticker: Ticker) -> TickerStats:
     quick = [Stat(label=s.label, value=s.value, delta=s.delta) for s in fetch_quick_stats(ticker)]
     analyst = [Stat(label=s.label, value=s.value, delta=s.delta) for s in fetch_analyst_stats(ticker)]
     return TickerStats(ticker=ticker.upper(), quick=quick, analyst=analyst)

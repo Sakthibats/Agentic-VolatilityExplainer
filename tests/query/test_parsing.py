@@ -301,3 +301,39 @@ def test_llm_fallback_reads_bare_json_and_null(monkeypatch):
     _fake_llm_reply(monkeypatch, '{"ticker": null}')
 
     assert p._resolve_ticker_llm("bake a cake") is None
+
+
+def test_a_failed_search_is_not_cached():
+    # A Yahoo blip must not make "tesla" unresolvable until the process restarts.
+    with patch("yfinance.Search", side_effect=RuntimeError("429 Too Many Requests")):
+        assert p._resolve_ticker("tesla", require_name_match=True) is None
+    with patch("yfinance.Search", return_value=_mock_search([{"symbol": "TSLA", "shortname": "Tesla, Inc."}])):
+        assert p._resolve_ticker("tesla", require_name_match=True) == "TSLA"
+
+
+def test_a_search_with_no_match_is_cached():
+    with patch("yfinance.Search", return_value=_mock_search([])) as search:
+        p._resolve_ticker("zzzz")
+        p._resolve_ticker("zzzz")
+    search.assert_called_once()
+
+
+def test_a_failed_llm_fallback_is_not_cached(monkeypatch):
+    from volatility_explainer import llm
+
+    def timeout(prompt, max_tokens):
+        raise TimeoutError("read timed out")
+
+    monkeypatch.setattr(llm, "get_provider", lambda settings: SimpleNamespace(complete=timeout))
+    assert p._resolve_ticker_llm("sandisk") is None
+    assert "sandisk" not in p._llm_ticker_cache
+
+    _fake_llm_reply(monkeypatch, '{"ticker": "SNDK"}')
+    assert p._resolve_ticker_llm("sandisk") == "SNDK"
+
+
+def test_resolution_caches_are_bounded(monkeypatch):
+    monkeypatch.setattr(p, "_MAX_CACHE_ENTRIES", 3)
+    for word in ("a", "b", "c", "d"):
+        p._remember(p._llm_ticker_cache, word, None)
+    assert list(p._llm_ticker_cache) == ["b", "c", "d"]  # the oldest went first

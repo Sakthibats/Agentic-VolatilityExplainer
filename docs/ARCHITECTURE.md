@@ -144,6 +144,14 @@ no-op without `REDIS_URL`.
 3. **Anthropic prompt caching** — the system prompt and tool list carry `cache_control`, so only the
    growing tool-result tail is processed fresh each turn.
 4. A 30-second in-process cache inside `options.py` for the expensive chain fetch.
+5. **Snapshot memo** ([`marketdata/snapshots.py`](../backend/volatility_explainer/marketdata/snapshots.py)):
+   chart history and yfinance's `Ticker.info` (one scrape shared by both sidebar panels) sit in the
+   in-process memo for 5 minutes. Every investigation loads both endpoints, and Yahoo throttles by
+   IP, so uncached page loads would eat into the agent's own yfinance fallback budget.
+
+Failures are never cached at any layer, and neither is a failed ticker lookup in
+`query/parsing.py`, so one upstream blip is retried on the next request instead of sticking for the
+life of the process. Redis calls time out after 2 s, so a hung Redis degrades to a cache miss.
 
 ---
 
@@ -237,7 +245,8 @@ The reader-facing version of this list is [PRIVACY.md](../PRIVACY.md).
 - **The table's original schema isn't in the repo.** Changes made since are, as SQL in
   [`docs/sql/`](sql/), run by hand in the Supabase SQL editor.
 - **Schema first, then code.** Supabase rejects a row carrying a column it doesn't have. The logger
-  retries, then appends the row to `data/failed_query_log.jsonl` — which doesn't survive a Cloud Run
+  retries, then appends the row to `data/failed_query_log.jsonl` under the working directory
+  (`/app/data` in the image, the volume docker-compose mounts) — which doesn't survive a Cloud Run
   instance restart. So run a new column's SQL *before* deploying code that sends it, and to remove
   one, revert the code first.
 - **Cached answers log their flags again.** A final-answer cache hit carries the original run's

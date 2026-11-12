@@ -1,8 +1,7 @@
 """Analysis service — scope gate, cache, orchestrator call, result shaping.
 
-Port of the retired Streamlit pipeline (apps/ui/placeholders.run_analysis), with
-presentation stripped out: this returns structured AnalysisResult data; rendering
-(markdown, confidence icons, stub tiles) is the frontend's job now.
+Returns structured AnalysisResult data; rendering (markdown, confidence icons) is the
+frontend's job.
 """
 
 from __future__ import annotations
@@ -31,6 +30,9 @@ from volatility_explainer.llm import get_provider, is_configured
 from volatility_explainer.query import evaluate_query
 
 _PROVIDER_LABELS = {"anthropic": "Claude", "openai": "OpenAI"}
+_FAILED_MESSAGE = (
+    "The investigation couldn't finish (a data source or the model failed). Please try again."
+)
 
 
 def model_catalog() -> ModelCatalog:
@@ -191,7 +193,7 @@ async def analyze(
 
     except Exception as exc:
         elapsed_ms = (time.perf_counter() - t0) * 1000
-        print(f"[run:{ticker}] total {elapsed_ms:.0f}ms FAILED — {exc}")
+        print(f"[run:{ticker}] total {elapsed_ms:.0f}ms FAILED — {type(exc).__name__}: {exc}")
         log_query_background(
             anonymous_id=session_id, ticker=ticker, query=raw_query.strip(),
             result={"status": "error", "data": {}, "tiles": [], "hypotheses": []},
@@ -200,5 +202,7 @@ async def analyze(
         )
         return AnalysisResult(
             ticker=ticker, query=raw_query.strip(), status="error",
-            error_message=f"Live data unavailable ({exc})",
+            # The exception stays in the server log: SDK and HTTP errors carry internals
+            # (request IDs, upstream URLs) that mean nothing to a reader.
+            error_message=_FAILED_MESSAGE,
         )

@@ -56,7 +56,6 @@ From a grep-based scan plus targeted reading, not a full audit. Paths are relati
 
 | Severity | Issue | Fix |
 |---|---|---|
-| 🟡 Medium | Silent `except Exception: pass` at three fallback boundaries (`tools/macro.py` FRED branch; `query/parsing.py` `_resolve_ticker_llm` and `_resolve_ticker`): no trail when a fallback fails | A one-line log each; they should still not raise |
 | 🟡 Medium | Mixed `print` and `logging`. The operational lines (orchestrator timings, the `[quality]` line, service) use `print`; clients, analyst, events and analytics use `logging` | Candidate 2. Add a logging config first: none exists, so `logger.info` output is dropped today |
 | 🟡 Low | The `query_log` table isn't defined in the repo, only later changes (`docs/sql/`). A fresh Supabase project can't be rebuilt, and nothing checks the logger's payload against the table | A full `create table` in `docs/sql/`; Supabase CLI migrations later |
 | 🟢 Low | Dependencies use unbounded `>=` except `yfinance` and `ruff`, so a fresh install can pull an untested major version | Upper bounds or a lockfile |

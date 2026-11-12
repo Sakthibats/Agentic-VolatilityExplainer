@@ -1,12 +1,12 @@
 """Query parsing, ticker resolution, and the financial-scope guardrail.
 
-Rescued from the retired Streamlit app (apps/ui/placeholders.py) — this is
-backend business logic: the API resolves tickers and enforces scope so no
-frontend ever re-implements it.
+Backend business logic: the API resolves tickers and enforces scope so no frontend ever
+re-implements it.
 """
 
 from __future__ import annotations
 
+import json
 import re
 from dataclasses import dataclass
 
@@ -116,14 +116,22 @@ OUT_OF_SCOPE_MESSAGE = (
     "or a market/asset (*what happened to gold?*, *why is the market down?*)."
 )
 
+# Per-process resolution caches. Keys come from user text, so each is bounded
+# (_MAX_CACHE_ENTRIES, oldest entry evicted first). Only real answers are cached, "no
+# ticker" included; a failed lookup (Yahoo throttling, an LLM timeout) is not, or one
+# upstream blip would leave that name unresolvable until the process restarts.
+_MAX_CACHE_ENTRIES = 2048
 _ticker_cache: dict[str, str | None] = {}
-# Lower-cased company name of each symbol _resolve_ticker accepted, so the scope gate can tell
-# "coca cola" (both words are the name) from "my mom scold me" ("mom" matched Momentus).
-_company_names: dict[str, str] = {}
 _llm_ticker_cache: dict[str, str | None] = {}
 # Lower-cased company name of each symbol _resolve_ticker accepted, so the scope gate can tell
 # "coca cola" (both words are the name) from "my mom scold me" ("mom" matched Momentus).
 _company_names: dict[str, str] = {}
+
+
+def _remember(cache: dict, key: str, value) -> None:
+    if key not in cache and len(cache) >= _MAX_CACHE_ENTRIES:
+        cache.pop(next(iter(cache)))  # dicts keep insertion order: this is the oldest
+    cache[key] = value
 
 
 _CODE_FENCE = re.compile(r"^\s*```(?:json)?|```\s*$", re.IGNORECASE)
@@ -138,10 +146,7 @@ def _resolve_ticker_llm(query: str) -> str | None:
     key = query.strip().lower()
     if key in _llm_ticker_cache:
         return _llm_ticker_cache[key]
-    result = None
     try:
-        import json as _json
-
         from volatility_explainer.config import get_settings
         from volatility_explainer.llm import get_provider
 
@@ -159,15 +164,21 @@ def _resolve_ticker_llm(query: str) -> str | None:
                 '"bake a cake"→null, "how do I learn python"→null, "weather today"→null'
             ),
         )
+    except Exception as exc:  # no answer: not cached, so the next ask retries
+        print(f"[resolve] LLM ticker fallback FAILED — {type(exc).__name__}: {exc}")
+        return None
+
+    result = None
+    try:
         # Models often wrap a JSON-only reply in a ```json fence; json.loads rejects that,
         # and the except below used to turn every such reply into "no ticker" silently.
-        data = _json.loads(_CODE_FENCE.sub("", text).strip())
+        data = json.loads(_CODE_FENCE.sub("", text).strip())
         t = str(data.get("ticker") or "").strip().upper()
         if re.match(r"^[A-Z]{1,5}$", t):
             result = t
-    except Exception:
-        pass
-    _llm_ticker_cache[key] = result
+    except (ValueError, AttributeError):
+        pass  # an unreadable reply is the model's answer: no ticker
+    _remember(_llm_ticker_cache, key, result)
     return result
 
 
@@ -188,11 +199,17 @@ def _resolve_ticker(term: str, search_query: str | None = None, *, require_name_
     cache_key = f"{(search_query or term).upper()}|{require_name_match}"
     if cache_key in _ticker_cache:
         return _ticker_cache[cache_key]
-    result = None
+    query = search_query or term
     try:
         import yfinance as yf
-        query = search_query or term
+
         hits = yf.Search(query, max_results=10).quotes
+    except Exception as exc:  # no answer: not cached, so the next ask retries
+        print(f"[resolve] yfinance search {query!r} FAILED — {type(exc).__name__}: {exc}")
+        return None
+
+    result = None
+    try:
         for h in hits:
             sym = h.get("symbol", "")
             # Accept only clean 1-5 letter tickers (no dots, hyphens — those are usually foreign or preferred)
@@ -203,12 +220,12 @@ def _resolve_ticker(term: str, search_query: str | None = None, *, require_name_
             if require_name_match and not _words(name).startswith(_words(query)):
                 continue
             if name:
-                _company_names[sym] = name
+                _remember(_company_names, sym, name)
             result = sym
             break
-    except Exception:
-        pass
-    _ticker_cache[cache_key] = result
+    except (AttributeError, TypeError):
+        pass  # a malformed result list is an answer: nothing usable
+    _remember(_ticker_cache, cache_key, result)
     return result
 
 

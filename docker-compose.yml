@@ -9,8 +9,12 @@ services:
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
       - OPENAI_API_KEY=${OPENAI_API_KEY:-}
       - LLM_PROVIDER=${LLM_PROVIDER:-anthropic}
+      - ANTHROPIC_MODEL=${ANTHROPIC_MODEL:-claude-haiku-5-5}
+      - OPENAI_MODEL=${OPENAI_MODEL:-gpt-6-luna}
+      - OPENAI_REASONING_EFFORT=${OPENAI_REASONING_EFFORT:-low}
       - SUPABASE_URL=${SUPABASE_URL:-}
       - SUPABASE_KEY=${SUPABASE_KEY:-}
       - REDIS_URL=${REDIS_URL:-}
     volumes:
+      # Rows that fail to reach Supabase are kept here (analytics/supabase_logger.py).
       - ./data:/app/data
