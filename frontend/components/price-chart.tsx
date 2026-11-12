@@ -2,11 +2,11 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
-import { fetchHistory, type PricePoint } from "@/lib/api";
+import { fetchHistory, type ChartPeriod, type PricePoint } from "@/lib/api";
 import { cn } from "@/lib/utils";
 
-const PERIODS = ["1W", "1M", "6M", "YTD", "1Y"] as const;
-type Period = (typeof PERIODS)[number];
+const PERIODS: readonly ChartPeriod[] = ["1W", "1M", "6M", "YTD", "1Y"];
+type Period = ChartPeriod;
 
 const H = 200;
 const PAD = { top: 12, right: 44, bottom: 22, left: 6 };

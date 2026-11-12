@@ -305,3 +305,19 @@ def test_memo_needs_no_redis():
         redis_cache.set_memoized_tool_data("AAPL", "get_events", {"a": 1})
 
         assert redis_cache.get_memoized_tool_data("AAPL", "get_events") == {"a": 1}
+
+
+def test_get_client_sets_socket_timeouts():
+    # A hung Redis must fail fast: the final-answer lookup runs outside the tool timeout.
+    with patch("volatility_explainer.clients.redis_cache.get_settings", return_value=_fake_settings("redis://x")), \
+         patch("redis.Redis.from_url", return_value=MagicMock()) as from_url:
+        redis_cache._get_client()
+    kwargs = from_url.call_args.kwargs
+    assert kwargs["socket_timeout"] == redis_cache._SOCKET_TIMEOUT_SECONDS
+    assert kwargs["socket_connect_timeout"] == redis_cache._SOCKET_TIMEOUT_SECONDS
+
+
+def test_memo_ttl_override_applies_to_that_entry_only():
+    redis_cache.set_memoized_tool_data("AAPL", "snapshot_info", {"a": 1}, ttl_seconds=60)
+    with patch("volatility_explainer.clients.redis_cache.time.monotonic", return_value=10**9):
+        assert redis_cache.get_memoized_tool_data("AAPL", "snapshot_info") is None

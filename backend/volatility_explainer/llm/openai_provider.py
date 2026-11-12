@@ -35,6 +35,13 @@ from volatility_explainer.llm.base import (
 _PROMPT_CACHE_KEY = "volx-agent-v1"
 _REASONING_HEADROOM_TOKENS = 4000
 
+# SDK defaults allow a request up to 10 minutes. A streamed turn here takes 2-15s; the
+# timeout bounds each network wait (connect, or the gap between streamed chunks), so a
+# turn that stalls fails the run instead of holding the stream open. The plain completion
+# is the scope gate's ticker fallback, which a user waits on before anything is shown.
+_TURN_TIMEOUT_SECONDS = 60.0
+_COMPLETE_TIMEOUT_SECONDS = 10.0
+
 
 def _strict_schema(schema: dict) -> dict:
     """A copy of `schema` with additionalProperties: false on every object."""
@@ -132,6 +139,16 @@ class OpenAIProvider:
         self.model = model
         self.reasoning_effort = reasoning_effort
         self._api_key = api_key
+        self._async_client: openai.AsyncOpenAI | None = None
+
+    def _client(self) -> openai.AsyncOpenAI:
+        """One client per provider, so a run's turns share its connection pool. A provider
+        lives for one investigation (or one eval run), always inside a single event loop."""
+        if self._async_client is None:
+            self._async_client = openai.AsyncOpenAI(
+                api_key=self._api_key, timeout=_TURN_TIMEOUT_SECONDS
+            )
+        return self._async_client
 
     def _reasoning_args(self, effort: str, max_tokens: int) -> dict:
         headroom = 0 if effort == "none" else _REASONING_HEADROOM_TOKENS
@@ -147,7 +164,7 @@ class OpenAIProvider:
         stream_tool: str | None = None,
         on_tool_input: OnToolInput | None = None,
     ) -> AssistantTurn:
-        client = openai.AsyncOpenAI(api_key=self._api_key)
+        client = self._client()
         names_by_index: dict[int, str] = {}
         arguments_by_index: dict[int, str] = {}
         response = None
@@ -193,7 +210,9 @@ class OpenAIProvider:
         )
 
     def complete(self, prompt: str, *, max_tokens: int) -> str:
-        client = openai.OpenAI(api_key=self._api_key)
+        client = openai.OpenAI(
+            api_key=self._api_key, timeout=_COMPLETE_TIMEOUT_SECONDS, max_retries=1
+        )
         response = client.responses.create(
             model=self.model,
             input=prompt,

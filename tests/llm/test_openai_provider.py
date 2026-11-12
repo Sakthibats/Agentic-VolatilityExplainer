@@ -94,7 +94,7 @@ def env(monkeypatch):
         return events_for(scripted.pop(0))
 
     client = SimpleNamespace(responses=SimpleNamespace(create=create))
-    monkeypatch.setattr(openai_provider.openai, "AsyncOpenAI", lambda api_key=None: client)
+    monkeypatch.setattr(openai_provider.openai, "AsyncOpenAI", lambda **_kwargs: client)
 
     monkeypatch.setattr(orchestrator, "get_cached_tool_data", lambda ticker, names: {})
     monkeypatch.setattr(orchestrator, "set_cached_tool_data", lambda ticker, data: None)
@@ -242,7 +242,7 @@ def test_complete_does_not_spend_its_budget_reasoning(monkeypatch):
         return SimpleNamespace(output_text='{"ticker": "AAPL"}')
 
     client = SimpleNamespace(responses=SimpleNamespace(create=create))
-    monkeypatch.setattr(openai_provider.openai, "OpenAI", lambda api_key=None: client)
+    monkeypatch.setattr(openai_provider.openai, "OpenAI", lambda **_kwargs: client)
 
     text = OpenAIProvider(api_key="k", model="gpt-6-luna").complete("which ticker?", max_tokens=30)
 

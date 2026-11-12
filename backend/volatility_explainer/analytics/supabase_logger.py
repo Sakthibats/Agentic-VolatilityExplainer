@@ -30,7 +30,10 @@ _RETRY_DELAY_SECONDS = 1.5
 _CLIENT_RETRY_COOLDOWN_SECONDS = 60
 _QUEUE_MAXSIZE = 500
 _ATEXIT_FLUSH_SECONDS = 2.0
-_FALLBACK_LOG_PATH = Path(__file__).parents[3] / "data" / "failed_query_log.jsonl"
+# Relative to the working directory, not this file: installed in the Docker image, the
+# package sits in site-packages, which the non-root user can't write to. The image's WORKDIR
+# is /app (owned by that user, and the volume docker-compose mounts); locally it's the repo root.
+_FALLBACK_LOG_PATH = Path.cwd() / "data" / "failed_query_log.jsonl"
 
 _logger = logging.getLogger(__name__)
 

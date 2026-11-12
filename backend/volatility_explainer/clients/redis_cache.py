@@ -14,9 +14,10 @@ Two independent caches:
   get_memoized_tool_data) sits in front of this tier under the same TTLs, so a
   deployment without Redis still avoids re-fetching every tool on every request.
 - final_answer: the fully synthesized response (summary/tiles/hypotheses), keyed by
-  ticker and LLM vendor, so a user who switches models gets that model's answer. Only safe to use for the no-query "explain the recent price action"
-  default — that path is already generic by construction, so a cache hit there can
-  skip the LLM call entirely without silently ignoring a user's actual question.
+  ticker and LLM vendor, so a user who switches models gets that model's answer. Only safe
+  to use for the no-query "explain the recent price action" default — that path is already
+  generic by construction, so a cache hit there can skip the LLM call entirely without
+  silently ignoring a user's actual question.
 """
 
 from __future__ import annotations
@@ -37,6 +38,8 @@ _logger = logging.getLogger(__name__)
 _client_lock = threading.Lock()
 _client: Any = None
 _client_checked = False
+
+_SOCKET_TIMEOUT_SECONDS = 2.0
 
 _FINAL_ANSWER_PREFIX = "final_answer"
 _FINAL_ANSWER_TTL_SECONDS = 900  # matches get_price_data — the freshest input it embeds
@@ -105,7 +108,15 @@ def _get_client() -> Any:
         if url:
             import redis
 
-            _client = redis.Redis.from_url(url, decode_responses=True)
+            # Without timeouts redis-py waits forever on a hung server, and the final-answer
+            # lookup in api/service.py runs outside the tool timeout, so one stalled Redis
+            # would hold every request open. A miss costs at most a fresh fetch.
+            _client = redis.Redis.from_url(
+                url,
+                decode_responses=True,
+                socket_timeout=_SOCKET_TIMEOUT_SECONDS,
+                socket_connect_timeout=_SOCKET_TIMEOUT_SECONDS,
+            )
         return _client
 
 
@@ -159,7 +170,7 @@ def set_cached_tool_data(ticker: str, tool_data: dict) -> None:
         _logger.exception("[redis_cache] batch write failed for %s", ticker)
 
 
-def get_memoized_tool_data(ticker: str, tool_name: str) -> dict | None:
+def get_memoized_tool_data(ticker: str, tool_name: str) -> Any:
     """In-process tier in front of Redis, under the same per-tool TTLs.
 
     Redis is optional by design (the app must run end-to-end with only ANTHROPIC_API_KEY),
@@ -181,7 +192,11 @@ def get_memoized_tool_data(ticker: str, tool_name: str) -> dict | None:
         return value
 
 
-def set_memoized_tool_data(ticker: str, tool_name: str, result: dict) -> None:
+def set_memoized_tool_data(
+    ticker: str, tool_name: str, result: Any, *, ttl_seconds: int | None = None
+) -> None:
+    """Memoize one result. ttl_seconds overrides the tool's TTL, for data that isn't an agent
+    tool (the chart and sidebar snapshots in marketdata/snapshots.py)."""
     with _memo_lock:
         if len(_memo) >= _MEMO_MAX_ENTRIES:
             now = time.monotonic()
@@ -190,7 +205,7 @@ def set_memoized_tool_data(ticker: str, tool_name: str, result: dict) -> None:
             while len(_memo) >= _MEMO_MAX_ENTRIES:
                 _memo.pop(min(_memo, key=lambda k: _memo[k][0]), None)  # soonest to expire
         _memo[_tool_key(ticker, tool_name)] = (
-            time.monotonic() + effective_ttl(tool_name),
+            time.monotonic() + (ttl_seconds or effective_ttl(tool_name)),
             result,
         )
 

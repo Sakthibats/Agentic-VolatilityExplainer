@@ -26,6 +26,13 @@ from volatility_explainer.llm.base import (
 
 _CACHE = {"type": "ephemeral"}
 
+# SDK defaults allow a request up to 10 minutes. A streamed turn here takes 2-15s; the
+# timeout bounds each network wait (connect, or the gap between streamed chunks), so a
+# turn that stalls fails the run instead of holding the stream open. The plain completion
+# is the scope gate's ticker fallback, which a user waits on before anything is shown.
+_TURN_TIMEOUT_SECONDS = 60.0
+_COMPLETE_TIMEOUT_SECONDS = 10.0
+
 
 def _tools_payload(tools: list[dict], stream_tool: str | None) -> list[dict]:
     payload = []
@@ -66,6 +73,16 @@ class AnthropicProvider:
     def __init__(self, *, api_key: str | None, model: str):
         self.model = model
         self._api_key = api_key
+        self._async_client: anthropic.AsyncAnthropic | None = None
+
+    def _client(self) -> anthropic.AsyncAnthropic:
+        """One client per provider, so a run's turns share its connection pool. A provider
+        lives for one investigation (or one eval run), always inside a single event loop."""
+        if self._async_client is None:
+            self._async_client = anthropic.AsyncAnthropic(
+                api_key=self._api_key, timeout=_TURN_TIMEOUT_SECONDS
+            )
+        return self._async_client
 
     async def run_turn(
         self,
@@ -77,7 +94,7 @@ class AnthropicProvider:
         stream_tool: str | None = None,
         on_tool_input: OnToolInput | None = None,
     ) -> AssistantTurn:
-        client = anthropic.AsyncAnthropic(api_key=self._api_key)
+        client = self._client()
         streaming_tool: str | None = None
         input_json = ""
 
@@ -123,7 +140,9 @@ class AnthropicProvider:
         )
 
     def complete(self, prompt: str, *, max_tokens: int) -> str:
-        client = anthropic.Anthropic(api_key=self._api_key)
+        client = anthropic.Anthropic(
+            api_key=self._api_key, timeout=_COMPLETE_TIMEOUT_SECONDS, max_retries=1
+        )
         msg = client.messages.create(
             model=self.model,
             max_tokens=max_tokens,

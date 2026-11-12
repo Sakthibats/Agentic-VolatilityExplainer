@@ -14,8 +14,8 @@ def fetch_macro() -> dict:
         if settings.fred_api_key.get_secret_value():
             vix = FredClient(settings).get_series_observations(VIX_SERIES_ID, limit=5)
             return {"vix": vix, "series_id": VIX_SERIES_ID, "source": "fred"}
-    except Exception:
-        pass
+    except Exception as exc:  # clients/fred.py strips the key from its errors
+        print(f"[macro]         fred      FAILED — {exc}")
 
     # Fallback: yfinance VIX
     try:

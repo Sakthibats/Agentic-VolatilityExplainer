@@ -145,7 +145,7 @@ def env(monkeypatch):
 
     # messages.stream() is NOT awaited — it returns an async context manager directly.
     client.messages.stream = MagicMock(side_effect=lambda **kwargs: FakeStream(responses.pop(0)))
-    monkeypatch.setattr(anthropic_provider.anthropic, "AsyncAnthropic", lambda api_key=None: client)
+    monkeypatch.setattr(anthropic_provider.anthropic, "AsyncAnthropic", lambda **_kwargs: client)
 
     monkeypatch.setattr(
         orchestrator, "get_settings",

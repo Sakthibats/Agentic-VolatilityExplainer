@@ -42,7 +42,7 @@ multi-ticker comparison, anything resembling trading advice or signals.
 | Migration | Streamlit monolith → FastAPI + Next.js. Phases 0–3 ✅. **Phase 4 (metering / rate limiting) is next and not started** |
 | Backend | FastAPI, fully async, `/v1` REST + SSE, Docker → Google Cloud Run |
 | Frontend | Next.js 16 static export → Cloudflare Pages |
-| Quality gates | 346 offline pytest tests + 25 `live` tests (19 upstream data contracts, weekly; 6 LLM-vendor checks that skip without keys). ruff, eslint (blocking), tsc all clean. Heuristic quality flags on every explanation (`[quality]` log line) |
+| Quality gates | 366 offline pytest tests + 25 `live` tests (19 upstream data contracts, weekly; 6 LLM-vendor checks that skip without keys). ruff, eslint (blocking), tsc all clean. Heuristic quality flags on every explanation (`[quality]` log line) |
 | Models | Users pick the vendor per run with a model picker in the query bar: OpenAI (`OPENAI_MODEL`, default `gpt-6-luna`; the picker's default) or Claude (`ANTHROPIC_MODEL`, Haiku 5.5). Requests without `provider` use `LLM_PROVIDER` (default `anthropic`). Both run the same loop behind `llm/`; the eval harness compares models on recorded data (`evals/`, results in the README) |
 | Biggest gaps | The eval scores answers automatically but has **no labelled catalysts or judge yet**, so it can't measure whether the model found the true cause · no rate limiting and CORS `*` · `print`-based logging · token usage and `cost_usd` are returned per run (`result["usage"]`) but not logged |
 
@@ -119,7 +119,7 @@ backend/volatility_explainer/     Python package (hatchling; pytest pythonpath =
 │   └── _retry.py                 with_retry: backoff helper for flaky yfinance calls
 ├── clients/                      finnhub.py (key sent as a header) · fred.py (key stripped from
 │                                 errors) · redis_cache.py (in-process memo + Redis, per-tool TTLs)
-├── marketdata/snapshots.py       chart history + sidebar stats behind /v1/tickers/{t}/*
+├── marketdata/snapshots.py       chart history + sidebar stats behind /v1/tickers/{t}/* (5-min memo)
 └── analytics/supabase_logger.py  optional usage log: bounded queue, background worker
 
 frontend/                         Next.js 16 App Router, static export (output: "export")
@@ -144,13 +144,16 @@ tests/                            mirrors the backend; offline by default (`pyte
 ├── agent/                        test_orchestrator (scripted fake Anthropic client pins the loop) ·
 │                                 test_quality (real bad write-ups pinned verbatim)
 ├── api/test_api.py               routes, SSE order, client disconnect still finishes the run
-├── marketdata/test_snapshots.py  chart history: real closes, or no points when the source fails
+├── conftest.py                   empties every per-process cache before each test
+├── marketdata/test_snapshots.py  chart history: real closes, or no points; snapshot memo
 ├── query/test_parsing.py         guardrail + resolver, incl. "no network call" assertions
 ├── tools/                        one test file per tool + test_live_contracts.py (19 live tests)
+│                                 + test_live_contract_guards (its outage-skip rule, offline)
 ├── clients/                      test_redis_cache · test_api_keys (keys never in URLs or errors)
 ├── analytics/                    test_supabase_logger (queued payload, quality_flags semantics)
 ├── llm/                          pricing + selection · test_openai_provider (scripted fake Responses
-│                                 stream through the real loop) · test_live_providers (pytest -m live)
+│                                 stream through the real loop) · test_provider_clients (timeouts,
+│                                 one client per provider) · test_live_providers (pytest -m live)
 └── evals/                        test_capture (selection) · test_replay_and_scorers (isolation, scorers)
 
 evals/                            capture.py (daily fixture recorder) · cases.py · replay.py (fixture
@@ -394,7 +397,8 @@ under `evals/fixtures/`).
 - `frontend/` uses `output: "export"`: no request-time server rendering, no API routes, no middleware.
 - Tests patch seams at module level (`orchestrator.get_settings`, `orchestrator._TOOL_DISPATCH`, …).
   If you move an import, move the patch target with it.
-- The in-process tool memo is module-global; tests call `clear_memoized_tool_data()`.
+- The per-process caches (tool/snapshot memo, ticker resolution, options chains) are module
+  globals. `tests/conftest.py` empties them all before each test; a new one belongs there too.
 - Tool results pass through `_with_run_context` (fresh and cached alike): analyst upside is
   re-anchored to the run's price, and news headlines get their citation `ref` numbers.
 - The streamed explanation can briefly show a `[n]` the server later removes; the final result's
