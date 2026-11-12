@@ -1,4 +1,5 @@
 import statistics
+from datetime import datetime
 from unittest.mock import MagicMock, patch
 
 import pandas as pd
@@ -8,8 +9,10 @@ from volatility_explainer.tools.price import (
     _compute_realized_vol,
     _flag_text,
     _level_from_ratio,
+    _regular_hours,
     _with_todays_close,
     describe_move,
+    extended_hours,
     fetch_price_data,
 )
 
@@ -333,7 +336,8 @@ def test_after_the_close_today_comes_from_the_quote_not_yesterdays_bar():
     assert result["change_pct"] == -16.0
     assert result["changes_pct"]["1d"] == -16.0  # was Thursday's move before the fix
     assert result["move_assessment"]["overall"] == "unusual"
-    assert "down 16.0% today" in describe_move(result)
+    # Read later than that Friday, so the session is named rather than called "today".
+    assert "on Friday, down 16.0% on the day" in describe_move(result)
     # The usual-move yardstick comes from the sessions before today, not from today's drop.
     assert result["realized_vol_annualized_pct"] == _compute_realized_vol(_sessions(_CALM))
 
@@ -386,3 +390,113 @@ def test_yfinance_history_failure_with_no_finnhub_returns_error_not_exception():
 
     assert result["ticker"] == "TEST"
     assert "error" in result
+
+
+# ---------------------------------------------------------------------------
+# Outside regular hours: the last session, and pre-/post-market trades
+# ---------------------------------------------------------------------------
+
+
+def _info(**overrides) -> dict:
+    """yfinance's info at 01:35 ET Thu 11-12: Wednesday's close plus its after-hours trade."""
+    return {"regularMarketPrice": 390.84, "regularMarketTime": _et("2026-11-11 16:00"),
+            "postMarketPrice": 387.15, "postMarketTime": _et("2026-11-11 19:59"),
+            "preMarketPrice": None, "preMarketTime": None, **overrides}
+
+
+def test_an_after_hours_trade_is_measured_from_the_close():
+    assert extended_hours(_info(), 390.84) == {
+        "session": "post", "price": 387.15, "change_pct": -0.94, "as_of": "2026-11-11 19:59 ET",
+    }
+
+
+def test_the_latest_extended_trade_wins_once_pre_market_opens():
+    info = _info(preMarketPrice=395.0, preMarketTime=_et("2026-11-12 08:15"))
+
+    assert extended_hours(info, 390.84)["session"] == "pre"
+    assert extended_hours(info, 390.84)["price"] == 395.0
+
+
+def test_yesterdays_after_hours_trade_is_ignored_once_the_session_trades():
+    # During Thursday's session the regular trade is newer than Wednesday's after-hours one.
+    info = _info(regularMarketPrice=392.0, regularMarketTime=_et("2026-11-12 11:00"))
+
+    assert extended_hours(info, 392.0) is None
+
+
+def test_no_extended_trade_when_info_is_unusable_or_from_another_session():
+    assert extended_hours(None, 390.84) is None
+    assert extended_hours(MagicMock(), 390.84) is None  # yfinance mocked without info
+    assert extended_hours(_info(), None) is None
+    # The run reports a different close (e.g. a lagging source): nothing to measure from.
+    assert extended_hours(_info(), 360.0) is None
+
+
+def test_regular_hours_are_weekdays_from_the_open_to_the_close_in_new_york():
+    def ny(when: str) -> datetime:
+        return pd.Timestamp(when, tz="America/New_York").to_pydatetime()
+
+    assert _regular_hours(ny("2026-11-12 09:30"))
+    assert _regular_hours(ny("2026-11-12 15:59"))
+    assert not _regular_hours(ny("2026-11-12 09:29"))
+    assert not _regular_hours(ny("2026-11-12 16:00"))
+    assert not _regular_hours(ny("2026-11-14 12:00"))  # Saturday
+
+
+def _fetch_off_hours(info, regular_hours: bool = False) -> tuple[dict, MagicMock]:
+    yf_ticker = MagicMock(history=MagicMock(return_value=_sessions(_CALM, last_day="2026-11-11")))
+    yf_ticker.info = info
+    finnhub_client = MagicMock()
+    finnhub_client.get_quote.return_value = {"c": 100.0, "pc": 100.5, "t": _et("2026-11-11 16:00")}
+    with patch("volatility_explainer.tools.price.get_settings", return_value=_fake_settings("KEY")), \
+         patch("volatility_explainer.clients.finnhub.FinnhubClient", return_value=finnhub_client), \
+         patch("volatility_explainer.tools.price._regular_hours", return_value=regular_hours), \
+         patch("yfinance.Ticker", return_value=yf_ticker):
+        return fetch_price_data("TSLA"), yf_ticker
+
+
+def test_after_hours_trade_sits_beside_the_close_and_changes_no_verdict():
+    info = _info(regularMarketPrice=100.0, postMarketPrice=90.0)
+    with_extended, _ = _fetch_off_hours(info)
+    without, _ = _fetch_off_hours({})
+
+    assert with_extended["extended_hours"]["change_pct"] == -10.0
+    assert with_extended["price"] == 100.0
+    assert with_extended["session_date"] == "2026-11-11"
+    for key in ("change_pct", "changes_pct", "move_assessment", "realized_vol_annualized_pct"):
+        assert with_extended[key] == without[key]
+    assert "extended_hours" not in without
+
+
+def test_info_is_not_fetched_during_regular_hours():
+    result, yf_ticker = _fetch_off_hours(_info(regularMarketPrice=100.0), regular_hours=True)
+
+    assert "extended_hours" not in result
+    assert "info" not in {name for name, *_ in yf_ticker.mock_calls}
+
+
+def _calm_price_data(**extra) -> dict:
+    return {"ticker": "TSLA", "price": 390.84, "change_pct": 0.3,
+            "changes_pct": {"1d": 0.3, "1w": 0.5, "1mo": 1.0},
+            "realized_vol_annualized_pct": 40.0, **extra}
+
+
+def test_describe_move_names_the_last_session_when_it_is_not_today():
+    text = describe_move(_calm_price_data(session_date="2026-11-11", session_is_today=False))
+
+    assert text.startswith("TSLA closed at $390.84 on Wednesday, up 0.3% on the day.")
+    assert "Wednesday's move is normal for TSLA" in text
+    assert "today" not in text
+
+
+def test_describe_move_ends_with_the_after_hours_trade():
+    extended = {"session": "post", "price": 387.15, "change_pct": -0.94, "as_of": "2026-11-11 19:59 ET"}
+    text = describe_move(_calm_price_data(session_date="2026-11-11", session_is_today=True,
+                                          extended_hours=extended))
+
+    assert text.startswith("TSLA closed at $390.84, up 0.3% today.")
+    assert text.endswith("After hours it is at $387.15, down 0.9% from that close.")
+
+
+def test_describe_move_on_an_older_result_reads_as_before():
+    assert describe_move(_calm_price_data()).startswith("TSLA is at $390.84, up 0.3% today.")

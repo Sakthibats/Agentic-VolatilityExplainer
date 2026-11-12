@@ -42,6 +42,13 @@ the whole flow.
    horizon (1d/1w/2w/1mo/ytd/1y). The reader-facing overview states the stock's usual daily range
    ("usually moves up to about 3.7% a day") and names the absolute floor only as a comparison
    with other stocks ("normal for DDOG, but large by most stocks' standards").
+   All of this is built on regular-session closes. Outside 9:30–16:00 ET, `get_price_data` also
+   reads yfinance's `info` for the latest pre- or post-market trade and reports it beside the
+   close as `extended_hours` (price and % change from the close). It never feeds the horizon
+   changes, realized vol or verdicts, because extended-hours trading is thin. `session_date` /
+   `session_is_today` say which session the numbers end on, so before the open, overnight and at
+   weekends the overview names that session's weekday instead of calling it "today". The
+   sidebar's stats show the same extended-hours trade.
 6. **Tool-use loop.** Model from `settings.anthropic_model` (default `claude-haiku-5-5`),
    `tool_choice: {"type": "any"}`, max **7 turns**. Turn 1 is the real tool-selection layer: the
    model picks whichever tools help and calls them together; they fan out with `asyncio.gather`,

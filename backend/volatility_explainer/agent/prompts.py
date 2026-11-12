@@ -37,6 +37,15 @@ default to change_pct (today), but still mention a flagged longer horizon even i
 looks calm. Horizons can disagree (e.g. flat today, down 8% this month) — state both
 plainly, on their own terms, rather than picking one and denying the other.
 
+price, change_pct, changes_pct and the flags all end on session_date, the last regular
+session. When session_is_today is false (before the open, overnight, weekends), "today" in
+those numbers and flags means that session: name its day, never call it today.
+extended_hours, when present, is the latest pre- or post-market trade after that close, with
+its change_pct measured from the close. It is the most recent price action but thinly
+traded, and no verdict covers it. When the question is about it, or it is the larger move
+(e.g. earnings released after the close), explain that move and say it happened in
+extended trading. The overview already states its price and change: don't repeat them.
+
 FRAMING GUARDRAIL: the user's own wording is not evidence of how big a move is. If they call
 a move a "crash", "plunge", "tank", "collapse", or similar for a horizon that has NO flag (or
 whose flag's overall level is "elevated" rather than "unusual"), do not adopt their framing
