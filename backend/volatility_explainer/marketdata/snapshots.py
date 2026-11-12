@@ -10,6 +10,8 @@ from dataclasses import dataclass
 
 import pandas as pd
 
+from volatility_explainer.tools.price import extended_hours
+
 
 @dataclass(frozen=True)
 class QuickStat:
@@ -80,6 +82,13 @@ def fetch_quick_stats(ticker: str) -> list[QuickStat]:
                 sign = "+" if chg >= 0 else ""
                 delta = f"{sign}{chg:.1f}%"
             stats.append(QuickStat("Last Price", f"${price:,.2f}", delta))
+
+            extended = extended_hours(info, price)
+            if extended:
+                label = "After Hours" if extended["session"] == "post" else "Pre-Market"
+                chg = extended["change_pct"]
+                stats.append(QuickStat(label, f"${extended['price']:,.2f}",
+                                       f"{'+' if chg >= 0 else ''}{chg:.1f}%"))
 
         pe = info.get("trailingPE")
         stats.append(QuickStat("P/E Ratio", f"{pe:.1f}×" if pe else "N/A"))  # noqa: RUF001

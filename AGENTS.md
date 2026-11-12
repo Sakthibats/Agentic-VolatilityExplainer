@@ -42,7 +42,7 @@ multi-ticker comparison, anything resembling trading advice or signals.
 | Migration | Streamlit monolith → FastAPI + Next.js. Phases 0–3 ✅. **Phase 4 (metering / rate limiting) is next and not started** |
 | Backend | FastAPI, fully async, `/v1` REST + SSE, Docker → Google Cloud Run |
 | Frontend | Next.js 16 static export → Cloudflare Pages |
-| Quality gates | 335 offline pytest tests + 25 `live` tests (19 upstream data contracts, weekly; 6 LLM-vendor checks that skip without keys). ruff, eslint (blocking), tsc all clean. Heuristic quality flags on every explanation (`[quality]` log line) |
+| Quality gates | 346 offline pytest tests + 25 `live` tests (19 upstream data contracts, weekly; 6 LLM-vendor checks that skip without keys). ruff, eslint (blocking), tsc all clean. Heuristic quality flags on every explanation (`[quality]` log line) |
 | Models | Users pick the vendor per run with a model picker in the query bar: OpenAI (`OPENAI_MODEL`, default `gpt-6-luna`; the picker's default) or Claude (`ANTHROPIC_MODEL`, Haiku 5.5). Requests without `provider` use `LLM_PROVIDER` (default `anthropic`). Both run the same loop behind `llm/`; the eval harness compares models on recorded data (`evals/`, results in the README) |
 | Biggest gaps | The eval scores answers automatically but has **no labelled catalysts or judge yet**, so it can't measure whether the model found the true cause · no rate limiting and CORS `*` · `print`-based logging · token usage and `cost_usd` are returned per run (`result["usage"]`) but not logged |
 
@@ -107,7 +107,8 @@ backend/volatility_explainer/     Python package (hatchling; pytest pythonpath =
 │   ├── prompts.py                system prompt: reading data, output, framing and data rules
 │   └── quality.py                heuristic write-up flags (measure, never rewrite)
 ├── tools/                        8 sync data tools, MCP-shaped but in-process; each falls back to yfinance
-│   ├── price.py                  get_price_data: quote, history, realized vol, move_assessment, describe_move
+│   ├── price.py                  get_price_data: quote, history, realized vol, move_assessment, describe_move,
+│   │                             pre-/post-market trade beside the close (extended_hours)
 │   ├── news.py                   get_news: Finnhub company news → yfinance
 │   ├── options.py                get_options_data (IV, put/call, skew) + get_options_positioning
 │   │                             (max pain, OI walls, term structure)

@@ -7,7 +7,7 @@ from unittest.mock import MagicMock, patch
 import pandas as pd
 from fastapi.testclient import TestClient
 from volatility_explainer.api.app import app
-from volatility_explainer.marketdata.snapshots import fetch_price_history
+from volatility_explainer.marketdata.snapshots import fetch_price_history, fetch_quick_stats
 
 
 def _yf_ticker(history: pd.DataFrame | Exception) -> MagicMock:
@@ -41,3 +41,15 @@ def test_history_route_serves_an_empty_list_when_the_source_fails():
         res = TestClient(app).get("/v1/tickers/AAPL/history?period=6M")
     assert res.status_code == 200
     assert res.json() == {"ticker": "AAPL", "period": "6M", "points": []}
+
+
+def test_stats_show_the_after_hours_price_beside_the_close():
+    info = {"currentPrice": 390.84, "previousClose": 379.78,
+            "regularMarketPrice": 390.84, "regularMarketTime": 1_794_430_801,
+            "postMarketPrice": 387.15, "postMarketTime": 1_794_445_188}
+    with patch("yfinance.Ticker", return_value=MagicMock(info=info)):
+        stats = fetch_quick_stats("TSLA")
+    assert [(s.label, s.value, s.delta) for s in stats[:2]] == [
+        ("Last Price", "$390.84", "+2.9%"),
+        ("After Hours", "$387.15", "-0.9%"),
+    ]

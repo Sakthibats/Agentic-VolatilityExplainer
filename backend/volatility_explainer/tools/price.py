@@ -1,9 +1,14 @@
-from datetime import datetime
+from datetime import date, datetime, time
 from zoneinfo import ZoneInfo
 
 from volatility_explainer.config import get_settings
 
 _MARKET_TZ = ZoneInfo("America/New_York")
+_REGULAR_OPEN, _REGULAR_CLOSE = time(9, 30), time(16, 0)
+
+# How far yfinance's regular close may sit from the price this run reports for an extended-
+# hours trade to be measured from it. A larger gap means the two describe different sessions.
+_SAME_CLOSE_TOLERANCE = 0.01
 
 # How far yfinance's last close may sit from the quote's previous close for the quote to be
 # taken as the very next session. Wider than rounding because yfinance closes are
@@ -82,6 +87,60 @@ def _with_todays_close(hist, quote: dict, ticker: str = ""):
     today = pd.DataFrame({"Close": [float(price)]},
                          index=pd.DatetimeIndex([pd.Timestamp(quote_day, tz=last_bar.tz)]))
     return pd.concat([hist, today])
+
+
+def _regular_hours(now: datetime | None = None) -> bool:
+    """True on a weekday between 9:30 and 16:00 New York time. Holidays count as open; that
+    only costs an extended-hours lookup that finds nothing."""
+    now = (now or datetime.now(_MARKET_TZ)).astimezone(_MARKET_TZ)
+    return now.weekday() < 5 and _REGULAR_OPEN <= now.time() < _REGULAR_CLOSE
+
+
+def extended_hours(info, close: float | None) -> dict | None:
+    """The latest pre- or post-market trade after the last regular session, from yfinance's
+    `info`, with its % change from that session's close. None when there is none.
+
+    Only a trade timestamped after the regular session's last trade counts, so during
+    market hours yesterday's after-hours print is ignored, and from 20:00 until the next
+    pre-market (and over a weekend) the last after-hours print is kept. It is reported
+    beside the regular close, never in place of it: extended-hours trading is thin, and the
+    horizon changes, realized vol and significance verdicts are all built on regular closes.
+    """
+    if not isinstance(info, dict) or not close:
+        return None
+    regular_price, regular_time = info.get("regularMarketPrice"), info.get("regularMarketTime")
+    if not regular_price or not regular_time:
+        return None
+    if abs(regular_price - close) / close > _SAME_CLOSE_TOLERANCE:
+        return None  # yfinance's regular session isn't the one this run reports
+
+    latest = None
+    for session, price_key, time_key in (("post", "postMarketPrice", "postMarketTime"),
+                                         ("pre", "preMarketPrice", "preMarketTime")):
+        price, traded_at = info.get(price_key), info.get(time_key)
+        if price and traded_at and traded_at > regular_time and (
+            latest is None or traded_at > latest[2]
+        ):
+            latest = (session, price, traded_at)
+    if latest is None:
+        return None
+    session, price, traded_at = latest
+    return {
+        "session": session,
+        "price": round(float(price), 2),
+        "change_pct": round((price - close) / close * 100, 2),
+        "as_of": datetime.fromtimestamp(traded_at, tz=_MARKET_TZ).strftime("%Y-%m-%d %H:%M ET"),
+    }
+
+
+def _session_date(quote: dict | None, info, hist) -> date | None:
+    """The New York date of the regular session the reported price comes from."""
+    for traded_at in ((quote or {}).get("t"), info.get("regularMarketTime") if isinstance(info, dict) else None):
+        if traded_at:
+            return datetime.fromtimestamp(traded_at, tz=_MARKET_TZ).date()
+    if hist is not None and not hist.empty:
+        return hist.index[-1].date()
+    return None
 
 
 def _compute_realized_vol(hist) -> float | None:
@@ -246,6 +305,11 @@ def describe_move(price_data: dict) -> str:
     numbers and verdicts that code computed. The model's explanation of WHY is written later
     and shown beneath it. Works on a cached result dict just as well as a fresh one.
 
+    Before the open, overnight and at weekends the last session is named by its weekday
+    rather than called "today", and a pre- or post-market trade after it gets a closing
+    sentence of its own. Results without these fields (older cache entries and eval
+    fixtures) read as before.
+
     Returns "" when there is no usable price, so the caller simply shows nothing.
     """
     ticker = price_data.get("ticker") or ""
@@ -255,13 +319,20 @@ def describe_move(price_data: dict) -> str:
 
     changes = price_data.get("changes_pct") or {}
     today = price_data.get("change_pct")
-    lead = f"{ticker} is at ${price:,.2f}"
-    sentences = [f"{lead}, {_signed_move(today)} today." if today is not None else f"{lead}."]
+    extended = price_data.get("extended_hours")
+    session = price_data.get("session_date")
+    if session and price_data.get("session_is_today") is False:
+        weekday = f"{date.fromisoformat(session):%A}"  # e.g. "Friday", read on a Saturday
+        lead = f"{ticker} closed at ${price:,.2f} on {weekday}"
+        move = f", {_signed_move(today)} on the day." if today is not None else "."
+        day_move, latest = f"{weekday}'s move", f"{weekday}'s session"
+    else:
+        lead = f"{ticker} {'closed at' if extended else 'is at'} ${price:,.2f}"
+        move = f", {_signed_move(today)} today." if today is not None else "."
+        day_move, latest = "today's move", "today"
+    sentences = [lead + move]
 
     per_horizon = _horizon_levels(changes, price_data.get("realized_vol_annualized_pct"))
-    if not per_horizon:
-        return " ".join(sentences)  # too little history to judge significance — say only what's known
-
     day = per_horizon.get("1d")
     if day is not None and today is not None:
         _, relative_level, absolute_level, _, expected_move, _ = day
@@ -269,9 +340,20 @@ def describe_move(price_data: dict) -> str:
         # one ("1.08x its typical daily move"). The expected move is one standard deviation,
         # which about two days in three stay within.
         sentences.append(
-            f"It usually moves up to about {expected_move:.1f}% a day, so today's move is "
+            f"It usually moves up to about {expected_move:.1f}% a day, so {day_move} is "
             f"{_verdict(ticker, relative_level, absolute_level)}."
         )
+    if per_horizon:
+        sentences.extend(_longer_horizons(ticker, per_horizon, latest))
+    if extended:
+        when = "After hours" if extended["session"] == "post" else "In pre-market trading"
+        sentences.append(f"{when} it is at ${extended['price']:,.2f}, "
+                         f"{_signed_move(extended['change_pct'])} from that close.")
+    return " ".join(sentences)
+
+
+def _longer_horizons(ticker: str, per_horizon: dict[str, tuple], latest: str) -> list[str]:
+    """describe_move's sentence on the horizons beyond one day, if any earns a mention."""
 
     def span(label: str) -> str:  # "this week" reads alone; "the past month" needs "over"
         phrase = _HORIZON_PHRASE[label]
@@ -286,11 +368,10 @@ def describe_move(price_data: dict) -> str:
         if label != "1d" and (relative_level != "typical" or absolute_level == "unusual")
     ]
     if longer:
-        sentences.append(f"Zooming out, it is {' and '.join(longer[:2])}.")
-    elif all(v[0] == "typical" for v in per_horizon.values()):
-        sentences.append("Every timeframe from today to the past year is within its normal range.")
-
-    return " ".join(sentences)
+        return [f"Zooming out, it is {' and '.join(longer[:2])}."]
+    if all(v[0] == "typical" for v in per_horizon.values()):
+        return [f"Every timeframe from {latest} to the past year is within its normal range."]
+    return []
 
 
 def fetch_price_data(ticker: str) -> dict:
@@ -321,11 +402,21 @@ def fetch_price_data(ticker: str) -> dict:
 
     import yfinance as yf
 
+    yf_ticker = yf.Ticker(ticker)
     hist = None
     try:
-        hist = yf.Ticker(ticker).history(period="2y")
+        hist = yf_ticker.history(period="2y")
     except Exception as exc:
         print(f"[price:{ticker}]  yfinance history FAILED — {exc}")
+
+    # Neither Finnhub's quote nor the daily history sees pre- or post-market trades; yfinance's
+    # info does. Skipped during regular hours, when there is nothing to find.
+    info = None
+    if not _regular_hours():
+        try:
+            info = yf_ticker.info
+        except Exception as exc:
+            print(f"[price:{ticker}]  yfinance info FAILED — {exc}")
 
     # Vol is measured before the quote is joined, so a big day after the close isn't judged
     # against a "usual move" that its own size has already inflated (the eval's correction,
@@ -340,35 +431,30 @@ def fetch_price_data(ticker: str) -> dict:
     if quote is not None:
         price = quote["price"]
         prev_close = quote["prev_close"]
-        chg_pct = round((price - prev_close) / prev_close * 100, 2) if price and prev_close else None
-        return {
-            "ticker": ticker,
-            "price": round(price, 2),
-            "prev_close": round(prev_close, 2) if prev_close else None,
-            "change_pct": chg_pct if chg_pct is not None else changes.get("1d"),
-            "realized_vol_annualized_pct": rv,
-            "changes_pct": changes,
-            "move_assessment": move_assessment,
-        }
-
-    # Fallback: derive price/prev_close from the same yfinance history already fetched
-    try:
-        if hist is None or hist.empty:
-            raise ValueError("no price history available")
-
+    elif hist is not None and not hist.empty:
+        # Fallback: derive price/prev_close from the same yfinance history already fetched
         price = float(hist["Close"].iloc[-1])
-        prev = float(hist["Close"].iloc[-2]) if len(hist) >= 2 else None
-        chg_pct = round((price - prev) / prev * 100, 2) if price and prev else None
+        prev_close = float(hist["Close"].iloc[-2]) if len(hist) >= 2 else None
+    else:
+        print(f"[price:{ticker}]  yfinance  FAILED — no price history available")
+        return {"ticker": ticker, "error": "no price history available"}
 
-        return {
-            "ticker": ticker,
-            "price": round(price, 2) if price else None,
-            "prev_close": round(prev, 2) if prev else None,
-            "change_pct": chg_pct if chg_pct is not None else changes.get("1d"),
-            "realized_vol_annualized_pct": rv,
-            "changes_pct": changes,
-            "move_assessment": move_assessment,
-        }
-    except Exception as exc:
-        print(f"[price:{ticker}]  yfinance  FAILED — {exc}")
-        return {"ticker": ticker, "error": str(exc)}
+    chg_pct = round((price - prev_close) / prev_close * 100, 2) if price and prev_close else None
+    session = _session_date(quote, info, hist)
+    result = {
+        "ticker": ticker,
+        "price": round(price, 2) if price else None,
+        "prev_close": round(prev_close, 2) if prev_close else None,
+        "change_pct": chg_pct if chg_pct is not None else changes.get("1d"),
+        # The regular session that price, change_pct and every changes_pct horizon end on.
+        # Not today before the open, overnight, at weekends and on holidays.
+        "session_date": session.isoformat() if session else None,
+        "session_is_today": session == datetime.now(_MARKET_TZ).date() if session else None,
+        "realized_vol_annualized_pct": rv,
+        "changes_pct": changes,
+        "move_assessment": move_assessment,
+    }
+    extended = extended_hours(info, price)
+    if extended:
+        result["extended_hours"] = extended
+    return result

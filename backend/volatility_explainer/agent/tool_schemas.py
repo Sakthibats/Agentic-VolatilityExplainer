@@ -25,7 +25,8 @@ TOOL_DEFINITIONS: list[dict] = [
         "description": (
             "Fetch current price, daily % change, and 20-day realized volatility for a ticker, "
             "plus move_assessment — a deterministic significance verdict (overall level plus "
-            "one plain-English flag per non-typical horizon). "
+            "one plain-English flag per non-typical horizon), the session those numbers end "
+            "on, and the latest pre-/post-market trade when there is one. "
             "ALREADY CALLED FOR YOU — check the conversation above for its result before calling this."
         ),
         "input_schema": {
@@ -277,7 +278,8 @@ TOOL_DEFINITIONS: list[dict] = [
                         "tiles and ranked hypotheses above: it must agree with your rank-1 "
                         "hypothesis and its confidence. The reader has already read the factual "
                         "overview quoted in the first user message, so never repeat its numbers "
-                        "(price, today's %, the usual daily range, the horizons it mentions). "
+                        "(price, today's %, the usual daily range, the horizons it mentions, the "
+                        "after-hours or pre-market price and %). "
                         "Shape: (1) Answer the user's question with the most likely cause and how "
                         "sure the evidence lets you be, in plain words ('most likely', 'possibly', "
                         "'no clear cause found'). If the overview calls the move normal for this "
