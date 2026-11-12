@@ -6,6 +6,7 @@ visitor's choice) collects the evidence and must finish with a structured, cited
 
 **[▶ Try it live: market-explainer.com](https://market-explainer.com/)** ·
 [How it works (About page)](https://market-explainer.com/about) ·
+[Run it locally](#quickstart) ·
 [Architecture](docs/ARCHITECTURE.md) ·
 [Design brief and decision log](AGENTS.md)
 
@@ -196,22 +197,43 @@ python -m evals.report evals/results/<date>.jsonl --write
 
 ## Quickstart
 
-```bash
-cp .env.example .env              # set OPENAI_API_KEY and/or ANTHROPIC_API_KEY; the rest is optional
-                                  # (the UI's model picker defaults to OpenAI)
-pip install -e ".[dev]"
-pytest -q
-uvicorn volatility_explainer.api.app:app --reload --port 8080
+Run it locally in two terminals. Needs Python ≥ 3.11 and Node ≥ 20.9.
 
-cd frontend && npm install && npm run dev    # http://localhost:3000
+**1. Backend** (http://localhost:8080):
+
+```bash
+python3 -m venv .venv && source .venv/bin/activate
+pip install -e ".[dev]"
+cp .env.example .env              # set OPENAI_API_KEY and/or ANTHROPIC_API_KEY; the rest is optional
+pytest -q                         # offline, no keys needed
+uvicorn volatility_explainer.api.app:app --reload --port 8080
 ```
+
+**2. Frontend** (http://localhost:3000, calls the backend on `:8080` by default):
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Open http://localhost:3000 and ask about a ticker. The model picker in the query bar defaults
+to OpenAI, so switch it to Claude if you only set `ANTHROPIC_API_KEY`.
+
+Only an LLM key is required. Without `FINNHUB_API_KEY` and `FRED_API_KEY` every tool falls back
+to yfinance; without `REDIS_URL` nothing is cached across runs; without the Supabase settings no
+usage is logged. A `REDIS_URL` shared with a deployed instance shares its cache too, so a local
+code change may not show for a ticker until its cached data expires (15 minutes for prices).
+
+Without the frontend, stream an investigation straight from the API (`provider` is `openai` or
+`anthropic`; if omitted, `LLM_PROVIDER` decides, default `anthropic`):
 
 ```bash
 curl -N -X POST localhost:8080/v1/analyze -H 'content-type: application/json' \
-     -d '{"query": "why is TSLA down"}'
+     -d '{"query": "why is TSLA down", "provider": "openai"}'
 ```
 
-Or run the backend image: `docker compose up --build` (serves on `:8080`).
+Or run the backend image instead of step 1: `docker compose up --build` (serves on `:8080`).
 
 To check write-up quality, save runs while you use the app, then summarise their quality flags:
 
