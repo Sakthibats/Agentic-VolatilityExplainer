@@ -1,0 +1,313 @@
+{
+ "schema": 1,
+ "ticker": "NTES",
+ "trading_day": "2026-11-11",
+ "captured_at": "2026-11-12T02:26:34+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -4.61,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "today: -4.61% \u2014 elevated for this stock (about 2.13x its normal move for that span, expected ~2.16%)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "NTES",
+   "price": 122.13,
+   "prev_close": 128.03,
+   "change_pct": -4.61,
+   "realized_vol_annualized_pct": 34.3,
+   "changes_pct": {
+    "1d": -4.61,
+    "1w": 0.72,
+    "2w": 8.61,
+    "1mo": -2.11,
+    "1y": -10.85,
+    "ytd": -15.58
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "today: -4.61% \u2014 elevated for this stock (about 2.13x its normal move for that span, expected ~2.16%)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "NTES",
+   "headlines": [
+    {
+     "headline": "Here\u2019s How Much You Would Have Made Owning NetEase Stock In The Last 20 Years",
+     "summary": "NetEase (NASDAQ:NTES) has outperformed the market over the past 20 years by 11.57% on an annualized basis producing an average annual return of 20.33%. Currently, NetEase has a market capitalization...",
+     "datetime": 1794249043,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=eec987b326b08b931e3c9f1cbaea74d460425d9b8ce0a98f7fdd9a07148de9e9"
+    },
+    {
+     "headline": "Can NetEase (SEHK:9999) Trade At A Discount To Cash Flow?",
+     "summary": "NetEase has bounced sharply in recent weeks, yet the bigger story for anyone looking at the stock is whether the current price lines up with the cash it can generate over time. After a mixed run that...",
+     "datetime": 1794028827,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=8cc92d748d9eb3498d09cbf2f6949c40e900d4a8bd78b88317bae86736687e7d"
+    },
+    {
+     "headline": "Youdao to Report Third Quarter 2026 Financial Results on November 19",
+     "summary": "Youdao, Inc. (\"Youdao\" or the \"Company\") (NYSE: DAO), an AI solutions provider specializing in learning and advertising, today announced that it will report its third quarter 2026 financial results...",
+     "datetime": 1793867400,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=90908c70cc2c75eceec650aa4b5fea38455dbfdfe565ed2db53b59e37631cc4a"
+    },
+    {
+     "headline": "NetEase to Report Third Quarter 2026 Financial Results on November 19",
+     "summary": "NetEase, Inc. (NASDAQ: NTES and HKEX: 9999, \"NetEase\" or the \"Company\"), a leading internet and game services provider, today announced that it will report financial results for the 2026 third...",
+     "datetime": 1793867400,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=bb5a49f1b75538276181c02fba51256fbcf24e00f694695bace8aa06cf78b55b"
+    },
+    {
+     "headline": "Top 10 High Growth Dividend Stocks For November 2026",
+     "summary": "",
+     "datetime": 1793847147,
+     "source": "SeekingAlpha",
+     "url": "https://finnhub.io/api/news?id=6e6eaad4512954aeae56102edcca31f0abcb8ecbb9823103812700f53a086757"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "NTES",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 8,
+   "atm_iv_pct": 59.6,
+   "iv_chain_percentile": 3,
+   "skew_points": 3.3,
+   "put_call_ratio": 0.47,
+   "total_put_oi": 306,
+   "total_call_oi": 652
+  },
+  "get_options_positioning": {
+   "ticker": "NTES",
+   "spot": 122.13,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 8,
+   "max_pain_strike": 125.0,
+   "resistance_walls": [
+    {
+     "strike": 135.0,
+     "open_interest": 226
+    },
+    {
+     "strike": 130.0,
+     "open_interest": 173
+    },
+    {
+     "strike": 140.0,
+     "open_interest": 105
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 125.0,
+     "open_interest": 103
+    },
+    {
+     "strike": 115.0,
+     "open_interest": 72
+    },
+    {
+     "strike": 105.0,
+     "open_interest": 29
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 8,
+     "atm_iv_pct": 59.6
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 125.0,
+     "volume": 492,
+     "open_interest": 51,
+     "vol_oi_ratio": 9.6,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 125.0,
+     "volume": 489,
+     "open_interest": 103,
+     "vol_oi_ratio": 4.7,
+     "moneyness": "ITM"
+    }
+   ],
+   "otm_call_oi": 572,
+   "otm_put_oi": 201,
+   "positioning_lean_score": 0.48,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "NTES",
+   "as_of": "2026-11-12",
+   "analyst_coverage": "covered",
+   "recent_actions": [],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.82,
+    "verdict": "leaning bullish",
+    "analysts": 33,
+    "counts": {
+     "strongBuy": 7,
+     "buy": 25,
+     "hold": 1,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.84 to 1.82)"
+   },
+   "price_target": {
+    "mean": 163.09,
+    "median": 161.34,
+    "high": 200.35,
+    "low": 133.18,
+    "current_price": 122.13,
+    "dispersion_pct": 41.2,
+    "upside_vs_mean_pct": 33.5,
+    "upside_vs_median_pct": 32.1
+   },
+   "notes": [
+    "No analyst rating changes in the last 30 days \u2014 the consensus below is standing opinion, not a recent catalyst."
+   ]
+  },
+  "get_sector_comparison": {
+   "ticker": "NTES",
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "comparison": {
+    "ytd": {
+     "stock_change_pct": -11.5,
+     "sector_etf_change_pct": -6.98,
+     "relative_to_sector_pct": -4.52
+    },
+    "1d": {
+     "stock_change_pct": -1.25,
+     "sector_etf_change_pct": 0.37,
+     "relative_to_sector_pct": -1.62
+    },
+    "1y": {
+     "stock_change_pct": -5.66,
+     "sector_etf_change_pct": -2.69,
+     "relative_to_sector_pct": -2.97
+    },
+    "1mo": {
+     "stock_change_pct": 2.09,
+     "sector_etf_change_pct": -3.31,
+     "relative_to_sector_pct": 5.4
+    },
+    "1w": {
+     "stock_change_pct": 10.15,
+     "sector_etf_change_pct": 6.23,
+     "relative_to_sector_pct": 3.92
+    },
+    "2w": {
+     "stock_change_pct": 12.22,
+     "sector_etf_change_pct": 4.04,
+     "relative_to_sector_pct": 8.18
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-11",
+    "realtime_end": "2026-11-11",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9616,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-11",
+      "realtime_end": "2026-11-11",
+      "date": "2026-11-10",
+      "value": "19.46"
+     },
+     {
+      "realtime_start": "2026-11-11",
+      "realtime_end": "2026-11-11",
+      "date": "2026-11-09",
+      "value": "19.92"
+     },
+     {
+      "realtime_start": "2026-11-11",
+      "realtime_end": "2026-11-11",
+      "date": "2026-11-06",
+      "value": "25.64"
+     },
+     {
+      "realtime_start": "2026-11-11",
+      "realtime_end": "2026-11-11",
+      "date": "2026-11-05",
+      "value": "28.18"
+     },
+     {
+      "realtime_start": "2026-11-11",
+      "realtime_end": "2026-11-11",
+      "date": "2026-11-04",
+      "value": "16.61"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "NTES",
+   "as_of": "2026-11-12",
+   "events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-19",
+     "description": "NTES Q3 2026 earnings scheduled (before the open)",
+     "source": "finnhub",
+     "days_until": 7,
+     "eps_estimate": 16.4943,
+     "hour": "bmo"
+    },
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 27,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-09",
+     "description": "NTES Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 89,
+     "eps_estimate": 15.9645,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}

@@ -1,0 +1,353 @@
+{
+ "schema": 1,
+ "ticker": "RVMD",
+ "trading_day": "2026-11-11",
+ "captured_at": "2026-11-12T02:26:28+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -6.4,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: -6.4% \u2014 typical relative to this stock's own typical volatility (expected ~4.44%, 1.44x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "this week: -9.51% \u2014 typical relative to this stock's own typical volatility (expected ~9.93%, 0.96x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past year: 188.06% \u2014 unusual for this stock (about 2.67x its normal move for that span, expected ~70.50%)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "RVMD",
+   "price": 180.7,
+   "prev_close": 193.06,
+   "change_pct": -6.4,
+   "realized_vol_annualized_pct": 70.5,
+   "changes_pct": {
+    "1d": -6.4,
+    "1w": -9.51,
+    "2w": -4.25,
+    "1mo": -4.11,
+    "1y": 188.06,
+    "ytd": 128.68
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: -6.4% \u2014 typical relative to this stock's own typical volatility (expected ~4.44%, 1.44x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "this week: -9.51% \u2014 typical relative to this stock's own typical volatility (expected ~9.93%, 0.96x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past year: 188.06% \u2014 unusual for this stock (about 2.67x its normal move for that span, expected ~70.50%)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "RVMD",
+   "headlines": [
+    {
+     "headline": "Stanley Druckenmiller\u2019s Best Buy Is Already Up 29%. Is It Too Late to Follow Him?",
+     "summary": "Key TakeawaysFox is up 29% since June 30. That\u2019s the best result among the nine stocks Stanley Druckenmiller\u2019s Duquesne Family Office bought or added to in the second quarter.",
+     "datetime": 1794373433,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=3fd961c9ef24dbaf1a6643783c22df9a3e2166d4207e3aa24a5c265ed00efd85"
+    },
+    {
+     "headline": "Wall Street Analysts Think Revolution Medicines (RVMD) Could Surge 33.34%: Read This Before Placing a Bet",
+     "summary": "The consensus price target hints at a 33.3% upside potential for Revolution Medicines (RVMD). While empirical research shows that this sought-after metric is hardly effective, an upward trend in...",
+     "datetime": 1794318903,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=ec0e9a1e93297f914747598a18cc709c7bcb821a848ea8795f8c46838ad36038"
+    },
+    {
+     "headline": "Revolution Medicines, Inc. (RVMD) Presents at 3rd Annual Guggenheim Healthcare Innovation Conference Transcript",
+     "summary": "Revolution Medicines, Inc. (RVMD) 3rd Annual Guggenheim Healthcare Innovation Conference November 10, 2026 8:30 AM ESTCompany ParticipantsMark Goldsmith -...",
+     "datetime": 1794308482,
+     "source": "SeekingAlpha",
+     "url": "https://finnhub.io/api/news?id=9efcaf30c447a49392d79d6d44d0b1d9e64400485c0cca6e8cbf99154c36e8b1"
+    },
+    {
+     "headline": "Revolution Medicines, Inc. 2026 Q3 - Results - Earnings Call Presentation",
+     "summary": "2026-11-10. The following slide deck was published by Revolution Medicines, Inc.",
+     "datetime": 1794295151,
+     "source": "SeekingAlpha",
+     "url": "https://finnhub.io/api/news?id=f68a9a64c4306c4274a8481856f30ef0268ddb348c24164213ffc090b8b1f720"
+    },
+    {
+     "headline": "Revolution Medicines' Pancreatic Cancer Drug Nearly Doubled Survival. Is the High-Flying Stock Still a Buy?",
+     "summary": "Revolution Medicines isn't profitable, but it has a drug with blockbuster potential.",
+     "datetime": 1794155700,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=c456f8afbe4667caef5cdc22cd1cc9ce4ed5b0a1e8b73108372a7d4043e2a2a5"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "RVMD",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 8,
+   "atm_iv_pct": 57.9,
+   "iv_chain_percentile": 3,
+   "skew_points": -15.4,
+   "put_call_ratio": 0.9,
+   "total_put_oi": 3960,
+   "total_call_oi": 4423
+  },
+  "get_options_positioning": {
+   "ticker": "RVMD",
+   "spot": 180.7,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 8,
+   "max_pain_strike": 190.0,
+   "resistance_walls": [
+    {
+     "strike": 210.0,
+     "open_interest": 1327
+    },
+    {
+     "strike": 220.0,
+     "open_interest": 822
+    },
+    {
+     "strike": 200.0,
+     "open_interest": 797
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 170.0,
+     "open_interest": 1236
+    },
+    {
+     "strike": 150.0,
+     "open_interest": 870
+    },
+    {
+     "strike": 175.0,
+     "open_interest": 482
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 8,
+     "atm_iv_pct": 57.9
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [],
+   "otm_call_oi": 4294,
+   "otm_put_oi": 3508,
+   "positioning_lean_score": 0.1,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "RVMD",
+   "as_of": "2026-11-12",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-06",
+     "days_ago": 6,
+     "firm": "HC Wainwright & Co.",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 280.0,
+     "price_target_to": 350.0,
+     "is_rating_change": false,
+     "description": "HC Wainwright & Co. maintained its Buy rating on RVMD and raised its price target from $280.0 to $350.0"
+    },
+    {
+     "date": "2026-11-05",
+     "days_ago": 7,
+     "firm": "TD Cowen",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 250.0,
+     "price_target_to": 270.0,
+     "is_rating_change": false,
+     "description": "TD Cowen maintained its Buy rating on RVMD and raised its price target from $250.0 to $270.0"
+    },
+    {
+     "date": "2026-11-05",
+     "days_ago": 7,
+     "firm": "RBC Capital",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 260.0,
+     "price_target_to": 321.0,
+     "is_rating_change": false,
+     "description": "RBC Capital maintained its Outperform rating on RVMD and raised its price target from $260.0 to $321.0"
+    },
+    {
+     "date": "2026-11-05",
+     "days_ago": 7,
+     "firm": "Piper Sandler",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 210.0,
+     "price_target_to": 222.0,
+     "is_rating_change": false,
+     "description": "Piper Sandler maintained its Overweight rating on RVMD and raised its price target from $210.0 to $222.0"
+    },
+    {
+     "date": "2026-11-05",
+     "days_ago": 7,
+     "firm": "Truist Securities",
+     "action": "reiterated",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 241.0,
+     "price_target_to": 261.0,
+     "is_rating_change": false,
+     "description": "Truist Securities reiterated its Buy rating on RVMD and raised its price target from $241.0 to $261.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.84,
+    "verdict": "leaning bullish",
+    "analysts": 25,
+    "counts": {
+     "strongBuy": 5,
+     "buy": 19,
+     "hold": 1,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.86 to 1.84)"
+   },
+   "price_target": {
+    "mean": 274.84,
+    "median": 273.0,
+    "high": 350.0,
+    "low": 179.0,
+    "current_price": 180.7,
+    "dispersion_pct": 62.2,
+    "upside_vs_mean_pct": 52.1,
+    "upside_vs_median_pct": 51.1
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "RVMD",
+   "sector": "Healthcare",
+   "sector_etf": "XLV",
+   "comparison": {
+    "ytd": {
+     "stock_change_pct": 144.32,
+     "sector_etf_change_pct": 22.96,
+     "relative_to_sector_pct": 121.36
+    },
+    "1d": {
+     "stock_change_pct": -3.54,
+     "sector_etf_change_pct": 0.29,
+     "relative_to_sector_pct": -3.83
+    },
+    "1y": {
+     "stock_change_pct": 216.44,
+     "sector_etf_change_pct": 31.41,
+     "relative_to_sector_pct": 185.03
+    },
+    "1mo": {
+     "stock_change_pct": -0.46,
+     "sector_etf_change_pct": 9.82,
+     "relative_to_sector_pct": -10.28
+    },
+    "1w": {
+     "stock_change_pct": -0.6,
+     "sector_etf_change_pct": 2.64,
+     "relative_to_sector_pct": -3.24
+    },
+    "2w": {
+     "stock_change_pct": 3.67,
+     "sector_etf_change_pct": 5.41,
+     "relative_to_sector_pct": -1.74
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-11",
+    "realtime_end": "2026-11-11",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9616,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-11",
+      "realtime_end": "2026-11-11",
+      "date": "2026-11-10",
+      "value": "19.46"
+     },
+     {
+      "realtime_start": "2026-11-11",
+      "realtime_end": "2026-11-11",
+      "date": "2026-11-09",
+      "value": "19.92"
+     },
+     {
+      "realtime_start": "2026-11-11",
+      "realtime_end": "2026-11-11",
+      "date": "2026-11-06",
+      "value": "25.64"
+     },
+     {
+      "realtime_start": "2026-11-11",
+      "realtime_end": "2026-11-11",
+      "date": "2026-11-05",
+      "value": "28.18"
+     },
+     {
+      "realtime_start": "2026-11-11",
+      "realtime_end": "2026-11-11",
+      "date": "2026-11-04",
+      "value": "16.61"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "RVMD",
+   "as_of": "2026-11-12",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 27,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-04",
+     "description": "RVMD reported Q3 2026 earnings after the close \u2014 EPS -1.9 vs -2.459 expected (beat, +22.7%)",
+     "source": "finnhub",
+     "days_ago": 8,
+     "eps_actual": -1.9,
+     "eps_estimate": -2.459,
+     "surprise": "beat",
+     "surprise_pct": 22.7,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

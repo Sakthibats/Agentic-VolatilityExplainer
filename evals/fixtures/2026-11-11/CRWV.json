@@ -1,0 +1,406 @@
+{
+ "schema": 1,
+ "ticker": "CRWV",
+ "trading_day": "2026-11-11",
+ "captured_at": "2026-11-12T02:26:01+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 24.71,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 24.71% \u2014 unusual for this stock (about 3.29x its normal move for that span, expected ~7.51%)",
+   "this week: 25.51% \u2014 elevated relative to this stock's own typical volatility (expected ~16.79%, 1.52x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past month: -21.9% \u2014 typical relative to this stock's own typical volatility (expected ~34.41%, 0.64x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past year: -42.46% \u2014 typical relative to this stock's own typical volatility (expected ~119.20%, 0.36x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "CRWV",
+   "price": 60.77,
+   "prev_close": 48.73,
+   "change_pct": 24.71,
+   "realized_vol_annualized_pct": 119.2,
+   "changes_pct": {
+    "1d": 24.71,
+    "1w": 25.51,
+    "2w": -4.94,
+    "1mo": -21.9,
+    "1y": -42.46,
+    "ytd": -23.39
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 24.71% \u2014 unusual for this stock (about 3.29x its normal move for that span, expected ~7.51%)",
+     "this week: 25.51% \u2014 elevated relative to this stock's own typical volatility (expected ~16.79%, 1.52x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past month: -21.9% \u2014 typical relative to this stock's own typical volatility (expected ~34.41%, 0.64x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past year: -42.46% \u2014 typical relative to this stock's own typical volatility (expected ~119.20%, 0.36x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "CRWV",
+   "headlines": [
+    {
+     "headline": "BE Stock Clocked Best Single-Day Gain Since July As CoreWeave Flags AI\u2019s Power Crunch \u2013 But Retail Traders Warn Of A 'Fast Fix'",
+     "summary": "Bloom Energy\u2019s stock jumped nearly 13% at close on Wednesday after CoreWeave\u2019s results put the spotlight on growing power demand for AI companies.",
+     "datetime": 1794447482,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=cf1ce8f4b771f0b8541bffa94d589b29808352f24105a7e0055011f4d8c6bbd8"
+    },
+    {
+     "headline": "Wall St futures fall as Nvidia slides on report of possible CEO ouster",
+     "summary": "Investing.com-- U.S. stock futures fell on Wednesday evening as Nvidia shares tumbled in extended trading following a report that the chipmaker's board was preparing to remove Chief Executive Jensen...",
+     "datetime": 1794446140,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=329c271faa350d06fede8947e98aec8b87d6dacbc90e9d6d70067fddb69b6a92"
+    },
+    {
+     "headline": "Applied Digital (APLD) Could Be 71% Undervalued After CoreWeave Lifted AI Sentiment",
+     "summary": "Applied Digital (APLD) jumped after CoreWeave reported strong AI hardware demand, raised its revenue outlook and showed pricing power, which lifted sentiment toward data center and AI infrastructure...",
+     "datetime": 1794445916,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=79d052e776b622490b2a9e958ec1f2a440476a440a8ceb10f3cf0eceb4d1c038"
+    },
+    {
+     "headline": "Review & Preview: RenAIssance",
+     "summary": "AI stocks staged a comeback on Wednesday fueled by reignited tech enthusiasm.",
+     "datetime": 1794444900,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=89423a598d05842061ad3597f3ee85e1b70aa37d574a12db929267cc10e039d7"
+    },
+    {
+     "headline": "CoreWeave Reportedly Plans $4B Investment-Grade Loan After Strong Earnings Beat \u2014 But Shares Fall After-Hours On Nvidia CEO Drama",
+     "summary": "The AI cloud provider is preparing to raise the funds through an investment-grade loan, with Morgan Stanley and Mitsubishi UFJ Financial Group leading the potential offering, people familiar with the...",
+     "datetime": 1794443200,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=431179156ef133e7a3180778cae8eb5f5deeb163a14ddd5883d2fb65f01b5256"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "CRWV",
+   "expiry": "2026-11-27",
+   "days_to_expiry": 15,
+   "atm_iv_pct": 90.8,
+   "iv_chain_percentile": 2,
+   "skew_points": -0.3,
+   "put_call_ratio": 0.78,
+   "total_put_oi": 28868,
+   "total_call_oi": 36812
+  },
+  "get_options_positioning": {
+   "ticker": "CRWV",
+   "spot": 60.77,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-27",
+   "primary_days_to_expiry": 15,
+   "max_pain_strike": 59.0,
+   "resistance_walls": [
+    {
+     "strike": 75.0,
+     "open_interest": 2848
+    },
+    {
+     "strike": 65.0,
+     "open_interest": 2703
+    },
+    {
+     "strike": 70.0,
+     "open_interest": 2053
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 10.0,
+     "open_interest": 2579
+    },
+    {
+     "strike": 40.0,
+     "open_interest": 2375
+    },
+    {
+     "strike": 30.0,
+     "open_interest": 2021
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 15,
+     "atm_iv_pct": 90.8
+    },
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 22,
+     "atm_iv_pct": 89.1
+    },
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 29,
+     "atm_iv_pct": 88.0
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 57.0,
+     "volume": 930,
+     "open_interest": 191,
+     "vol_oi_ratio": 4.9,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 47.0,
+     "volume": 407,
+     "open_interest": 87,
+     "vol_oi_ratio": 4.7,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 46.0,
+     "volume": 146,
+     "open_interest": 34,
+     "vol_oi_ratio": 4.3,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 56.0,
+     "volume": 815,
+     "open_interest": 269,
+     "vol_oi_ratio": 3.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 52.0,
+     "volume": 328,
+     "open_interest": 173,
+     "vol_oi_ratio": 1.9,
+     "moneyness": "ITM"
+    }
+   ],
+   "otm_call_oi": 27266,
+   "otm_put_oi": 23097,
+   "positioning_lean_score": 0.08,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "CRWV",
+   "as_of": "2026-11-12",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-11",
+     "days_ago": 1,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 128.0,
+     "price_target_to": 149.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Buy rating on CRWV and raised its price target from $128.0 to $149.0"
+    },
+    {
+     "date": "2026-11-11",
+     "days_ago": 1,
+     "firm": "DA Davidson",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 100.0,
+     "price_target_to": 45.0,
+     "is_rating_change": false,
+     "description": "DA Davidson maintained its Neutral rating on CRWV and cut its price target from $100.0 to $45.0"
+    },
+    {
+     "date": "2026-11-11",
+     "days_ago": 1,
+     "firm": "Evercore ISI Group",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 150.0,
+     "price_target_to": 100.0,
+     "is_rating_change": false,
+     "description": "Evercore ISI Group maintained its Outperform rating on CRWV and cut its price target from $150.0 to $100.0"
+    },
+    {
+     "date": "2026-11-11",
+     "days_ago": 1,
+     "firm": "Truist Securities",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 165.0,
+     "price_target_to": 115.0,
+     "is_rating_change": false,
+     "description": "Truist Securities maintained its Buy rating on CRWV and cut its price target from $165.0 to $115.0"
+    },
+    {
+     "date": "2026-11-11",
+     "days_ago": 1,
+     "firm": "Needham",
+     "action": "reiterated",
+     "from_grade": "Hold",
+     "to_grade": "Hold",
+     "price_target_from": null,
+     "price_target_to": null,
+     "is_rating_change": false,
+     "description": "Needham reiterated its Hold rating on CRWV"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.17,
+    "verdict": "leaning bullish",
+    "analysts": 41,
+    "counts": {
+     "strongBuy": 7,
+     "buy": 24,
+     "hold": 7,
+     "sell": 2,
+     "strongSell": 1
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.26 to 2.17; bearish ratings 2 to 3)"
+   },
+   "price_target": {
+    "mean": 125.46,
+    "median": 125.0,
+    "high": 278.0,
+    "low": 39.0,
+    "current_price": 60.77,
+    "dispersion_pct": 190.5,
+    "upside_vs_mean_pct": 106.5,
+    "upside_vs_median_pct": 105.7
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "CRWV",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "ytd": {
+     "stock_change_pct": -38.57,
+     "sector_etf_change_pct": 17.48,
+     "relative_to_sector_pct": -56.05
+    },
+    "1d": {
+     "stock_change_pct": -0.51,
+     "sector_etf_change_pct": -1.15,
+     "relative_to_sector_pct": 0.64
+    },
+    "1y": {
+     "stock_change_pct": -53.15,
+     "sector_etf_change_pct": 17.83,
+     "relative_to_sector_pct": -70.98
+    },
+    "1mo": {
+     "stock_change_pct": -39.28,
+     "sector_etf_change_pct": -13.98,
+     "relative_to_sector_pct": -25.3
+    },
+    "1w": {
+     "stock_change_pct": -9.32,
+     "sector_etf_change_pct": -4.31,
+     "relative_to_sector_pct": -5.01
+    },
+    "2w": {
+     "stock_change_pct": -18.2,
+     "sector_etf_change_pct": -10.86,
+     "relative_to_sector_pct": -7.34
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-11",
+    "realtime_end": "2026-11-11",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9616,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-11",
+      "realtime_end": "2026-11-11",
+      "date": "2026-11-10",
+      "value": "19.46"
+     },
+     {
+      "realtime_start": "2026-11-11",
+      "realtime_end": "2026-11-11",
+      "date": "2026-11-09",
+      "value": "19.92"
+     },
+     {
+      "realtime_start": "2026-11-11",
+      "realtime_end": "2026-11-11",
+      "date": "2026-11-06",
+      "value": "25.64"
+     },
+     {
+      "realtime_start": "2026-11-11",
+      "realtime_end": "2026-11-11",
+      "date": "2026-11-05",
+      "value": "28.18"
+     },
+     {
+      "realtime_start": "2026-11-11",
+      "realtime_end": "2026-11-11",
+      "date": "2026-11-04",
+      "value": "16.61"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "CRWV",
+   "as_of": "2026-11-12",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 27,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-10",
+     "description": "CRWV reported Q3 2026 earnings after the close \u2014 EPS -1 vs -1.1816 expected (beat, +15.4%)",
+     "source": "finnhub",
+     "days_ago": 2,
+     "eps_actual": -1,
+     "eps_estimate": -1.1816,
+     "surprise": "beat",
+     "surprise_pct": 15.4,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

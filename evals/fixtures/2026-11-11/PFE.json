@@ -1,0 +1,404 @@
+{
+ "schema": 1,
+ "ticker": "PFE",
+ "trading_day": "2026-11-11",
+ "captured_at": "2026-11-12T02:25:16+00:00",
+ "selected_as": "control",
+ "change_pct": 0.31,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "PFE",
+   "price": 29.45,
+   "prev_close": 29.36,
+   "change_pct": 0.31,
+   "realized_vol_annualized_pct": 25.6,
+   "changes_pct": {
+    "1d": 0.31,
+    "1w": -2.96,
+    "2w": 1.46,
+    "1mo": 5.32,
+    "1y": 28.83,
+    "ytd": 24.79
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   }
+  },
+  "get_news": {
+   "ticker": "PFE",
+   "headlines": [
+    {
+     "headline": "Pfizer and Blackstone Life Sciences Announce Strategic Funding Agreement for Obesity Program",
+     "summary": "NEW YORK & CAMBRIDGE, Mass., November 11, 2026--Pfizer Inc. (NYSE: PFE) and Blackstone Life Sciences (\"Blackstone\") today announced a strategic co-funding agreement under which funds managed by...",
+     "datetime": 1794432600,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=271d853e4855831a7701e61d7f5060ac4233870291caf11ff2fd4873d3e49783"
+    },
+    {
+     "headline": "Can You Make Money Off Halozyme Stock Now?",
+     "summary": "For questions about this article or underlying research, email help@trefis.com.",
+     "datetime": 1794430546,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=37cc490fb6ba1e93ad44e5138cbc02e07f65cf1e32bfe667a1b281b488d8bba4"
+    },
+    {
+     "headline": "Americans Fill Prescriptions Every Month, and $90,000 Across These 3 Drugmakers Pays $3,650 a Year",
+     "summary": "Pharmacy counters stay busy in every kind of market. Blood thinners, cancer drugs, and vaccines get refilled on schedule, and the companies that make them return part of those sales to shareholders...",
+     "datetime": 1794426703,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=78bd909a3584e62b802ef9454589b752610a417d32a614ee8cb97378cc8f7f8d"
+    },
+    {
+     "headline": "AT&T or Pfizer: Only One Gets My Dividend Dollars for the Next 10 Years",
+     "summary": "Key TakeawaysPfizer yields 6. 0% and AT&T yields 5.",
+     "datetime": 1794426622,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=91962e087a124a6c84e81ad9f40ac0ecf8e5cacc7eef28afc61bb7e1e05d0113"
+    },
+    {
+     "headline": "PLX: Elfabrio Estimates Up, Again",
+     "summary": "By John Vandermosten, CFA NYSE: PLX READ THE FULL PLX RESEARCH REPORT Third Quarter 2026 Financial and Operational Review Protalix BioTherapeutics, Inc. (NYSE: PLX) produced another upside revenue...",
+     "datetime": 1794412860,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=3ea2eae1710fbc937b295538fdafcf5563cde6775c2c85e3cb062799eed07135"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "PFE",
+   "expiry": "2026-11-27",
+   "days_to_expiry": 15,
+   "atm_iv_pct": 25.1,
+   "iv_chain_percentile": 1,
+   "skew_points": 0.2,
+   "put_call_ratio": 0.39,
+   "total_put_oi": 3482,
+   "total_call_oi": 8904
+  },
+  "get_options_positioning": {
+   "ticker": "PFE",
+   "spot": 29.45,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-27",
+   "primary_days_to_expiry": 15,
+   "max_pain_strike": 30.0,
+   "resistance_walls": [
+    {
+     "strike": 32.0,
+     "open_interest": 4071
+    },
+    {
+     "strike": 30.0,
+     "open_interest": 2012
+    },
+    {
+     "strike": 31.0,
+     "open_interest": 1096
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 29.0,
+     "open_interest": 1211
+    },
+    {
+     "strike": 28.0,
+     "open_interest": 739
+    },
+    {
+     "strike": 30.0,
+     "open_interest": 536
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 15,
+     "atm_iv_pct": 25.1
+    },
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 22,
+     "atm_iv_pct": 26.1
+    },
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 29,
+     "atm_iv_pct": 25.5
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 33.0,
+     "volume": 172,
+     "open_interest": 660,
+     "vol_oi_ratio": 0.3,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 30.0,
+     "volume": 145,
+     "open_interest": 2012,
+     "vol_oi_ratio": 0.1,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 29.0,
+     "volume": 160,
+     "open_interest": 1211,
+     "vol_oi_ratio": 0.1,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 32.0,
+     "volume": 142,
+     "open_interest": 4071,
+     "vol_oi_ratio": 0.0,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 8096,
+   "otm_put_oi": 2455,
+   "positioning_lean_score": 0.53,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "PFE",
+   "as_of": "2026-11-12",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-07",
+     "days_ago": 5,
+     "firm": "Freedom Broker",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 33.0,
+     "price_target_to": 34.0,
+     "is_rating_change": false,
+     "description": "Freedom Broker maintained its Buy rating on PFE and raised its price target from $33.0 to $34.0"
+    },
+    {
+     "date": "2026-11-05",
+     "days_ago": 7,
+     "firm": "Guggenheim",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 31.0,
+     "price_target_to": 33.0,
+     "is_rating_change": false,
+     "description": "Guggenheim maintained its Buy rating on PFE and raised its price target from $31.0 to $33.0"
+    },
+    {
+     "date": "2026-11-04",
+     "days_ago": 8,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 27.0,
+     "price_target_to": 30.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Neutral rating on PFE and raised its price target from $27.0 to $30.0"
+    },
+    {
+     "date": "2026-11-04",
+     "days_ago": 8,
+     "firm": "Scotiabank",
+     "action": "maintained",
+     "from_grade": "Sector Outperform",
+     "to_grade": "Sector Outperform",
+     "price_target_from": 33.0,
+     "price_target_to": 35.0,
+     "is_rating_change": false,
+     "description": "Scotiabank maintained its Sector Outperform rating on PFE and raised its price target from $33.0 to $35.0"
+    },
+    {
+     "date": "2026-11-04",
+     "days_ago": 8,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 27.0,
+     "price_target_to": 30.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Neutral rating on PFE and raised its price target from $27.0 to $30.0"
+    }
+   ],
+   "consensus": {
+    "rating": "hold",
+    "score": 2.75,
+    "verdict": "neutral",
+    "analysts": 28,
+    "counts": {
+     "strongBuy": 1,
+     "buy": 8,
+     "hold": 17,
+     "sell": 1,
+     "strongSell": 1
+    },
+    "trend": "deteriorating",
+    "trend_detail": "consensus softened over 3 months (score 2.68 to 2.75; bearish ratings 2 to 2)"
+   },
+   "price_target": {
+    "mean": 30.22,
+    "median": 30.0,
+    "high": 37.0,
+    "low": 25.0,
+    "current_price": 29.45,
+    "dispersion_pct": 39.7,
+    "upside_vs_mean_pct": 2.6,
+    "upside_vs_median_pct": 1.9
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "PFE",
+   "sector": "Healthcare",
+   "sector_etf": "XLV",
+   "comparison": {
+    "ytd": {
+     "stock_change_pct": 24.41,
+     "sector_etf_change_pct": 22.96,
+     "relative_to_sector_pct": 1.45
+    },
+    "1d": {
+     "stock_change_pct": 0.44,
+     "sector_etf_change_pct": 0.29,
+     "relative_to_sector_pct": 0.15
+    },
+    "1y": {
+     "stock_change_pct": 28.23,
+     "sector_etf_change_pct": 31.41,
+     "relative_to_sector_pct": -3.18
+    },
+    "1mo": {
+     "stock_change_pct": 4.89,
+     "sector_etf_change_pct": 9.82,
+     "relative_to_sector_pct": -4.93
+    },
+    "1w": {
+     "stock_change_pct": -0.7,
+     "sector_etf_change_pct": 2.64,
+     "relative_to_sector_pct": -3.34
+    },
+    "2w": {
+     "stock_change_pct": -0.04,
+     "sector_etf_change_pct": 5.41,
+     "relative_to_sector_pct": -5.45
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-11",
+    "realtime_end": "2026-11-11",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9616,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-11",
+      "realtime_end": "2026-11-11",
+      "date": "2026-11-10",
+      "value": "19.46"
+     },
+     {
+      "realtime_start": "2026-11-11",
+      "realtime_end": "2026-11-11",
+      "date": "2026-11-09",
+      "value": "19.92"
+     },
+     {
+      "realtime_start": "2026-11-11",
+      "realtime_end": "2026-11-11",
+      "date": "2026-11-06",
+      "value": "25.64"
+     },
+     {
+      "realtime_start": "2026-11-11",
+      "realtime_end": "2026-11-11",
+      "date": "2026-11-05",
+      "value": "28.18"
+     },
+     {
+      "realtime_start": "2026-11-11",
+      "realtime_end": "2026-11-11",
+      "date": "2026-11-04",
+      "value": "16.61"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "PFE",
+   "as_of": "2026-11-12",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 27,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-01",
+     "description": "PFE Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 81,
+     "eps_estimate": 0.6988,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "ex_dividend",
+     "date": "2026-11-06",
+     "source": "yfinance",
+     "description": "PFE went ex-dividend \u2014 the price drops by roughly the dividend on this date mechanically, with no news behind it",
+     "days_ago": 6
+    },
+    {
+     "type": "earnings",
+     "date": "2026-11-03",
+     "description": "PFE reported Q3 2026 earnings before the open \u2014 EPS 0.87 vs 0.7399 expected (beat, +17.6%)",
+     "source": "finnhub",
+     "days_ago": 9,
+     "eps_actual": 0.87,
+     "eps_estimate": 0.7399,
+     "surprise": "beat",
+     "surprise_pct": 17.6,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

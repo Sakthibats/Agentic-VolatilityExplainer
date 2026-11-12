@@ -1,0 +1,413 @@
+{
+ "schema": 1,
+ "ticker": "AMD",
+ "trading_day": "2026-11-11",
+ "captured_at": "2026-11-12T02:25:23+00:00",
+ "selected_as": "move",
+ "change_pct": 7.32,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 7.32% \u2014 typical relative to this stock's own typical volatility (expected ~7.21%, 1.02x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "this week: 13.12% \u2014 typical relative to this stock's own typical volatility (expected ~16.11%, 0.81x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past year: 126.62% \u2014 typical relative to this stock's own typical volatility (expected ~114.40%, 1.11x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "AMD",
+   "price": 552.9,
+   "prev_close": 515.21,
+   "change_pct": 7.32,
+   "realized_vol_annualized_pct": 114.4,
+   "changes_pct": {
+    "1d": 7.32,
+    "1w": 13.12,
+    "2w": -4.42,
+    "1mo": -8.69,
+    "1y": 126.62,
+    "ytd": 147.42
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 7.32% \u2014 typical relative to this stock's own typical volatility (expected ~7.21%, 1.02x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "this week: 13.12% \u2014 typical relative to this stock's own typical volatility (expected ~16.11%, 0.81x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past year: 126.62% \u2014 typical relative to this stock's own typical volatility (expected ~114.40%, 1.11x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "AMD",
+   "headlines": [
+    {
+     "headline": "Meet Ian Buck: The NVIDIA Executive Insiders Believe Is the One Man Who Can Replace Jensen Huang",
+     "summary": "Nvidia's board is reportedly preparing to oust Jensen Huang, and the company has never named a successor. Ian Buck, a key architect of CUDA who runs Nvidia's hyperscale business, is the name that...",
+     "datetime": 1794445910,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=bd031e3b70eddb9f737d884278ac008efb8d13f032600f8ca2077610c4b0c97a"
+    },
+    {
+     "headline": "Nvidia Stock Sinks as Jensen Huang Ouster Report Sends Investors Toward AMD, Broadcom",
+     "summary": "Broadcom Inc. (NASDAQ:AVGO) and Advanced Micro Devices Inc. (NASDAQ:AMD) shares each rose more than 3% in extended trading Wednesday as fresh turmoil surrounding Nvidia Corp. (NASDAQ:NVDA) CEO Jensen...",
+     "datetime": 1794443104,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=407992f75d0a56c8bd01297bee7864730d3600f1425ea884dc0d36f12a2bf59c"
+    },
+    {
+     "headline": "More Bad News for NVIDIA. With Board Planning to Boot Jensen Huang, Sam Altman Reveals Master Plan to Stop Buying Their Chips",
+     "summary": "Nvidia fell 7.9% after hours to $160.03 as the Wall Street Journal reported its board is preparing to oust Jensen Huang. The same day, Sam Altman's remarks to Samsung executives laid out OpenAI's...",
+     "datetime": 1794442771,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=b7274ffe8d305767ac587314853c37608d530523537d24b60b5d80cb6b4ac4dc"
+    },
+    {
+     "headline": "Dow Jones Futures: Techs Tumble Late As Nvidia May Oust CEO Huang; AI Stocks Slide, But Not AMD",
+     "summary": "Techs fell as Nvidia dived on news that it may oust CEO Jensen Huang. AMD extended gains. Will that spoil Wednesday's rally?",
+     "datetime": 1794440935,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=999ed9adfd53008a0f30252393df8c949ff7c3ca3fdfad8c9128ced5564281b0"
+    },
+    {
+     "headline": "Stock Market Today, Nov. 11: Intel Climbs on Broader Chip Rally as AI Infrastructure Demand Lifts Semiconductor Stocks",
+     "summary": "Today, Nov. 11, 2026, Intel shares rallied as CoreWeave's stronger results reinforced AI chip demand across the semiconductor group.",
+     "datetime": 1794438274,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=5775ee9f1287376cba33fcb8173fb8e9a0f9145346349f7677d1a575333a6c60"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "AMD",
+   "expiry": "2026-11-27",
+   "days_to_expiry": 15,
+   "atm_iv_pct": 63.7,
+   "iv_chain_percentile": 3,
+   "skew_points": 1.0,
+   "put_call_ratio": 0.71,
+   "total_put_oi": 20922,
+   "total_call_oi": 29427
+  },
+  "get_options_positioning": {
+   "ticker": "AMD",
+   "spot": 552.9,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-27",
+   "primary_days_to_expiry": 15,
+   "max_pain_strike": 510.0,
+   "resistance_walls": [
+    {
+     "strike": 650.0,
+     "open_interest": 2543
+    },
+    {
+     "strike": 610.0,
+     "open_interest": 2285
+    },
+    {
+     "strike": 600.0,
+     "open_interest": 894
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 500.0,
+     "open_interest": 1352
+    },
+    {
+     "strike": 350.0,
+     "open_interest": 931
+    },
+    {
+     "strike": 535.0,
+     "open_interest": 856
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 15,
+     "atm_iv_pct": 63.7
+    },
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 22,
+     "atm_iv_pct": 62.9
+    },
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 29,
+     "atm_iv_pct": 62.1
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 600.0,
+     "volume": 5420,
+     "open_interest": 894,
+     "vol_oi_ratio": 6.1,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 620.0,
+     "volume": 1216,
+     "open_interest": 332,
+     "vol_oi_ratio": 3.7,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 545.0,
+     "volume": 425,
+     "open_interest": 197,
+     "vol_oi_ratio": 2.2,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 460.0,
+     "volume": 312,
+     "open_interest": 170,
+     "vol_oi_ratio": 1.8,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 530.0,
+     "volume": 738,
+     "open_interest": 504,
+     "vol_oi_ratio": 1.5,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 21295,
+   "otm_put_oi": 20053,
+   "positioning_lean_score": 0.03,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "AMD",
+   "as_of": "2026-11-12",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-09",
+     "days_ago": 3,
+     "firm": "Oppenheimer",
+     "action": "upgrade",
+     "from_grade": "Perform",
+     "to_grade": "Outperform",
+     "price_target_from": null,
+     "price_target_to": 600.0,
+     "is_rating_change": true,
+     "description": "Oppenheimer upgraded AMD from Perform to Outperform with a $600.0 price target"
+    },
+    {
+     "date": "2026-11-04",
+     "days_ago": 8,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 730.0,
+     "price_target_to": 700.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Buy rating on AMD and cut its price target from $730.0 to $700.0"
+    },
+    {
+     "date": "2026-11-04",
+     "days_ago": 8,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 550.0,
+     "price_target_to": 575.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Neutral rating on AMD and raised its price target from $550.0 to $575.0"
+    },
+    {
+     "date": "2026-11-04",
+     "days_ago": 8,
+     "firm": "Morgan Stanley",
+     "action": "maintained",
+     "from_grade": "Equal-Weight",
+     "to_grade": "Equal-Weight",
+     "price_target_from": 510.0,
+     "price_target_to": 550.0,
+     "is_rating_change": false,
+     "description": "Morgan Stanley maintained its Equal-Weight rating on AMD and raised its price target from $510.0 to $550.0"
+    },
+    {
+     "date": "2026-11-04",
+     "days_ago": 8,
+     "firm": "Piper Sandler",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 600.0,
+     "price_target_to": 650.0,
+     "is_rating_change": false,
+     "description": "Piper Sandler maintained its Overweight rating on AMD and raised its price target from $600.0 to $650.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.06,
+    "verdict": "leaning bullish",
+    "analysts": 53,
+    "counts": {
+     "strongBuy": 5,
+     "buy": 40,
+     "hold": 8,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.13 to 2.06; bearish ratings 0 to 0)"
+   },
+   "price_target": {
+    "mean": 657.49,
+    "median": 650.0,
+    "high": 1250.0,
+    "low": 525.0,
+    "current_price": 552.9,
+    "dispersion_pct": 110.3,
+    "upside_vs_mean_pct": 18.9,
+    "upside_vs_median_pct": 17.6
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "AMD",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "ytd": {
+     "stock_change_pct": 130.55,
+     "sector_etf_change_pct": 17.48,
+     "relative_to_sector_pct": 113.07
+    },
+    "1d": {
+     "stock_change_pct": 1.3,
+     "sector_etf_change_pct": -1.15,
+     "relative_to_sector_pct": 2.45
+    },
+    "1y": {
+     "stock_change_pct": 120.61,
+     "sector_etf_change_pct": 17.83,
+     "relative_to_sector_pct": 102.78
+    },
+    "1mo": {
+     "stock_change_pct": -13.3,
+     "sector_etf_change_pct": -13.98,
+     "relative_to_sector_pct": 0.68
+    },
+    "1w": {
+     "stock_change_pct": 6.47,
+     "sector_etf_change_pct": -4.31,
+     "relative_to_sector_pct": 10.78
+    },
+    "2w": {
+     "stock_change_pct": -8.04,
+     "sector_etf_change_pct": -10.86,
+     "relative_to_sector_pct": 2.82
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-11",
+    "realtime_end": "2026-11-11",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9616,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-11",
+      "realtime_end": "2026-11-11",
+      "date": "2026-11-10",
+      "value": "19.46"
+     },
+     {
+      "realtime_start": "2026-11-11",
+      "realtime_end": "2026-11-11",
+      "date": "2026-11-09",
+      "value": "19.92"
+     },
+     {
+      "realtime_start": "2026-11-11",
+      "realtime_end": "2026-11-11",
+      "date": "2026-11-06",
+      "value": "25.64"
+     },
+     {
+      "realtime_start": "2026-11-11",
+      "realtime_end": "2026-11-11",
+      "date": "2026-11-05",
+      "value": "28.18"
+     },
+     {
+      "realtime_start": "2026-11-11",
+      "realtime_end": "2026-11-11",
+      "date": "2026-11-04",
+      "value": "16.61"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "AMD",
+   "as_of": "2026-11-12",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 27,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-01",
+     "description": "AMD Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 81,
+     "eps_estimate": 2.9483,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-03",
+     "description": "AMD reported Q3 2026 earnings after the close \u2014 EPS 2.09 vs 1.9704 expected (beat, +6.1%)",
+     "source": "finnhub",
+     "days_ago": 9,
+     "eps_actual": 2.09,
+     "eps_estimate": 1.9704,
+     "surprise": "beat",
+     "surprise_pct": 6.1,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

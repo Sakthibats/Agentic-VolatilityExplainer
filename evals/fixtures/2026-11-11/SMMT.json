@@ -1,0 +1,301 @@
+{
+ "schema": 1,
+ "ticker": "SMMT",
+ "trading_day": "2026-11-11",
+ "captured_at": "2026-11-12T02:26:21+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -6.67,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "today: -6.67% \u2014 typical relative to this stock's own typical volatility (expected ~6.23%, 1.07x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "SMMT",
+   "price": 16.64,
+   "prev_close": 17.83,
+   "change_pct": -6.67,
+   "realized_vol_annualized_pct": 98.9,
+   "changes_pct": {
+    "1d": -6.67,
+    "1w": 2.91,
+    "2w": 5.52,
+    "1mo": 7.22,
+    "1y": -9.07,
+    "ytd": -5.02
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "today: -6.67% \u2014 typical relative to this stock's own typical volatility (expected ~6.23%, 1.07x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "SMMT",
+   "headlines": [
+    {
+     "headline": "Wall Street Analysts See a 62.33% Upside in Summit Therapeutics (SMMT): Can the Stock Really Move This High?",
+     "summary": "The average of price targets set by Wall Street analysts indicates a potential upside of 62.3% in Summit Therapeutics (SMMT). While the effectiveness of this highly sought-after metric is...",
+     "datetime": 1794318903,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=7911dacb7529d44cb1e5f46f08837e337d96dec5fb7435569a70d13428f7480c"
+    },
+    {
+     "headline": "Summit Therapeutics (SMMT) Stock Looks Richly Priced On Its 7x Run",
+     "summary": "Summit Therapeutics has been on a remarkable multi year run, yet with the stock recently closing at US$17.84 the real puzzle for investors is whether that price still lines up with its book value. A...",
+     "datetime": 1794270083,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=1f05b963dc077dc475d18417144abc51c9ce8b3727f127f408a378005622f0d6"
+    },
+    {
+     "headline": "Hims-Eli Lilly GLP-1 Deal Meets Summit\u2019s FDA Gamble: Which Biotech ETFs Stand to Gain?",
+     "summary": "Biotech ETFs face key FDA catalysts as Summit Therapeutics&#39; decision and the Hims-Lilly GLP-1 deal put XLV, IBB and XBI in focus.",
+     "datetime": 1794228706,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=b3df94d3aa5fe2cc3b56807ab9fae07783eb529469ed10ff651eea49dbb17a26"
+    },
+    {
+     "headline": "FDA Decision Watch: Summit\u2019s Lung Cancer Drug, Cytokinetics\u2019 Heart Therapy And Teva\u2019s Igalmi In Spotlight This Week",
+     "summary": "The FDA is set to announce its verdict on three closely watched therapies this week, ahead of a busy month which includes a decision on Capricor Therapeutics\u2019 Deramiocel.",
+     "datetime": 1794219784,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=89dc888c18ae70480a67f7948254d7afef7df00db0ecd9ed2a4d61e81ea88024"
+    },
+    {
+     "headline": "Biotech Beats SPY And QQQ In Market Rout \u2014 Now Hims Earnings And Summit\u2019s FDA Test Take Center Stage \u2018",
+     "summary": "Hims & Hers will report results on Monday after its Lilly agreement expanded access to Zepbound and Foundayo.",
+     "datetime": 1794186976,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=3b9368504ca199e7daf547ecf3f9bcfaacf4dd44153c3d1d33467141da8bee66"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "SMMT",
+   "expiry": "2026-11-27",
+   "days_to_expiry": 15,
+   "atm_iv_pct": 204.4,
+   "iv_chain_percentile": 20,
+   "skew_points": -39.6,
+   "put_call_ratio": 0.69,
+   "total_put_oi": 378,
+   "total_call_oi": 546
+  },
+  "get_options_positioning": {
+   "ticker": "SMMT",
+   "spot": 16.64,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-27",
+   "primary_days_to_expiry": 15,
+   "max_pain_strike": 15.0,
+   "resistance_walls": [
+    {
+     "strike": 20.0,
+     "open_interest": 107
+    },
+    {
+     "strike": 16.5,
+     "open_interest": 83
+    },
+    {
+     "strike": 18.0,
+     "open_interest": 78
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 13.0,
+     "open_interest": 208
+    },
+    {
+     "strike": 12.0,
+     "open_interest": 104
+    },
+    {
+     "strike": 17.0,
+     "open_interest": 27
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 15,
+     "atm_iv_pct": 204.4
+    },
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 22,
+     "atm_iv_pct": 167.3
+    },
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 29,
+     "atm_iv_pct": 166.3
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [],
+   "otm_call_oi": 337,
+   "otm_put_oi": 350,
+   "positioning_lean_score": -0.02,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "SMMT",
+   "as_of": "2026-11-12",
+   "analyst_coverage": "covered",
+   "recent_actions": [],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.29,
+    "verdict": "leaning bullish",
+    "analysts": 17,
+    "counts": {
+     "strongBuy": 1,
+     "buy": 10,
+     "hold": 6,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.35 to 2.29; bearish ratings 0 to 0)"
+   },
+   "price_target": {
+    "mean": 29.62,
+    "median": 32.76,
+    "high": 42.36,
+    "low": 11.77,
+    "current_price": 16.64,
+    "dispersion_pct": 103.3,
+    "upside_vs_mean_pct": 78.0,
+    "upside_vs_median_pct": 96.9
+   },
+   "notes": [
+    "No analyst rating changes in the last 30 days \u2014 the consensus below is standing opinion, not a recent catalyst."
+   ]
+  },
+  "get_sector_comparison": {
+   "ticker": "SMMT",
+   "sector": "Healthcare",
+   "sector_etf": "XLV",
+   "comparison": {
+    "ytd": {
+     "stock_change_pct": 1.77,
+     "sector_etf_change_pct": 22.96,
+     "relative_to_sector_pct": -21.19
+    },
+    "1d": {
+     "stock_change_pct": -0.06,
+     "sector_etf_change_pct": 0.29,
+     "relative_to_sector_pct": -0.35
+    },
+    "1y": {
+     "stock_change_pct": -1.93,
+     "sector_etf_change_pct": 31.41,
+     "relative_to_sector_pct": -33.34
+    },
+    "1mo": {
+     "stock_change_pct": 4.09,
+     "sector_etf_change_pct": 9.82,
+     "relative_to_sector_pct": -5.73
+    },
+    "1w": {
+     "stock_change_pct": 12.85,
+     "sector_etf_change_pct": 2.64,
+     "relative_to_sector_pct": 10.21
+    },
+    "2w": {
+     "stock_change_pct": 16.31,
+     "sector_etf_change_pct": 5.41,
+     "relative_to_sector_pct": 10.9
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-11",
+    "realtime_end": "2026-11-11",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9616,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-11",
+      "realtime_end": "2026-11-11",
+      "date": "2026-11-10",
+      "value": "19.46"
+     },
+     {
+      "realtime_start": "2026-11-11",
+      "realtime_end": "2026-11-11",
+      "date": "2026-11-09",
+      "value": "19.92"
+     },
+     {
+      "realtime_start": "2026-11-11",
+      "realtime_end": "2026-11-11",
+      "date": "2026-11-06",
+      "value": "25.64"
+     },
+     {
+      "realtime_start": "2026-11-11",
+      "realtime_end": "2026-11-11",
+      "date": "2026-11-05",
+      "value": "28.18"
+     },
+     {
+      "realtime_start": "2026-11-11",
+      "realtime_end": "2026-11-11",
+      "date": "2026-11-04",
+      "value": "16.61"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "SMMT",
+   "as_of": "2026-11-12",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 27,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-04",
+     "description": "SMMT reported Q3 2026 earnings after the close \u2014 EPS -0.26 vs -0.2863 expected (beat, +9.2%)",
+     "source": "finnhub",
+     "days_ago": 8,
+     "eps_actual": -0.26,
+     "eps_estimate": -0.2863,
+     "surprise": "beat",
+     "surprise_pct": 9.2,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}
