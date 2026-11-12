@@ -58,7 +58,6 @@ From a grep-based scan plus targeted reading, not a full audit. Paths are relati
 |---|---|---|
 | 🟡 Medium | Mixed `print` and `logging`. The operational lines (orchestrator timings, the `[quality]` line, service) use `print`; clients, analyst, events and analytics use `logging` | Candidate 2. Add a logging config first: none exists, so `logger.info` output is dropped today |
 | 🟡 Low | The `query_log` table isn't defined in the repo, only later changes (`docs/sql/`). A fresh Supabase project can't be rebuilt, and nothing checks the logger's payload against the table | A full `create table` in `docs/sql/`; Supabase CLI migrations later |
-| 🟢 Low | Dependencies use unbounded `>=` except `yfinance` and `ruff`, so a fresh install can pull an untested major version | Upper bounds or a lockfile |
 | 🟢 Low | `frontend/lib/api.ts` mirrors `api/schemas.py` by hand, with no drift check | Candidate 5 |
 
 ### Checked and clean

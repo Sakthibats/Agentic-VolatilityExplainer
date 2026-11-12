@@ -190,7 +190,7 @@ Pipelines are path-filtered, so a frontend commit never rebuilds the backend ima
 
 | Workflow | Trigger | What it does |
 |---|---|---|
-| [`test.yml`](../.github/workflows/test.yml) | pushes to non-main branches + all PRs | `pytest -q` + `ruff check backend tests` (Python 3.11) |
+| [`test.yml`](../.github/workflows/test.yml) | pushes to non-main branches + all PRs | `pytest -q` + `ruff check backend tests evals scripts` (Python 3.11) |
 | [`docker-publish.yml`](../.github/workflows/docker-publish.yml) | push to `main` touching `backend/`, `tests/`, `Dockerfile`, `pyproject.toml` | tests → build and push `sakthibas98/agentic-market-explainer:{latest,run#}` → wait until `mirror.gcr.io` serves the tag (Cloud Run pulls Docker Hub through it, and it can lag a push by minutes) → `gcloud run deploy` |
 | [`frontend-deploy.yml`](../.github/workflows/frontend-deploy.yml) | `frontend/` changes (PRs build + lint only) | `npm ci` → lint (blocking) → static export → Cloudflare Pages |
 | [`live-contracts.yml`](../.github/workflows/live-contracts.yml) | Mondays 06:00 UTC, manual, PRs touching tools/clients | `pytest -m live` with spaced retries; scheduled failures open a `live-contracts` issue |

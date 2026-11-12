@@ -40,7 +40,7 @@ jobs:
         run: pytest -q
 
       - name: Lint
-        run: ruff check backend tests
+        run: ruff check backend tests evals scripts
 
   build-and-push:
     needs: test

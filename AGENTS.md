@@ -368,7 +368,7 @@ Backend paths are relative to `backend/volatility_explainer/`.
 pip install -e ".[dev]"          # Python ≥3.11; re-run after moving modules
 pytest -q                        # offline suite (live tests excluded by default)
 pytest -m live                   # real upstream APIs — response-shape checks only
-ruff check backend tests
+ruff check backend tests evals scripts
 uvicorn volatility_explainer.api.app:app --reload --port 8080
 VOLX_SAVE_RUNS=runs.jsonl uvicorn volatility_explainer.api.app:app --port 8080   # also save each run
 python scripts/quality_report.py runs.jsonl   # quality-flag rates; --show <flag> prints offenders
