@@ -4,15 +4,17 @@ version = "0.1.0"
 description = "Agentic market explainer: investigates why a stock or ETF moved, with deterministic vol math and a Claude tool-use loop"
 readme = "README.md"
 requires-python = ">=3.11"
+# Every dependency is capped below its next major version (the next 1.0 for 0.x packages), so a
+# fresh install or Docker build can't pull an untested breaking release. Raise a cap alongside a
+# green test run (and `pytest -m live` for data sources and LLM SDKs).
 dependencies = [
-    "pydantic-settings>=2.0",
-    "httpx>=0.27",
-    "fastapi>=0.115",
-    "uvicorn[standard]>=0.30",
-    "sse-starlette>=2.1",
-    "pandas>=2.0",
-    "numpy>=1.26",
-    "anthropic>=0.40",
+    "pydantic-settings>=2.0,<3",
+    "httpx>=0.27,<1",
+    "fastapi>=0.115,<1",
+    "uvicorn[standard]>=0.30,<1",
+    "sse-starlette>=2.1,<4",
+    "pandas>=2.0,<4",
+    "anthropic>=0.40,<1",
     # The OpenAI adapter (llm/openai_provider.py) uses the Responses API's streaming events
     # and usage fields as of 3.46; widen alongside a green `pytest -m live tests/llm` run.
     "openai~=3.46",
@@ -24,16 +26,16 @@ dependencies = [
     # reported quarter's actual EPS. yfinance declares it optional and raises
     # "Import lxml failed" at call time without it, so pin it explicitly rather than
     # letting the beat/miss verdict vanish on a fresh install.
-    "lxml>=5.0",
-    "supabase>=2.0",
-    "redis>=5.0",
+    "lxml>=5.0,<7",
+    "supabase>=2.0,<3",
+    "redis>=5.0,<9",
 ]
 
 [project.optional-dependencies]
 dev = [
     "ruff~=0.16.0",
-    "pytest>=8.0",
-    "pytest-asyncio>=0.24",
+    "pytest>=8.0,<10",
+    "pytest-asyncio>=0.24,<2",
 ]
 
 [build-system]
