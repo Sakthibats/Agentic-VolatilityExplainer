@@ -14,7 +14,7 @@ from __future__ import annotations
 
 import re
 
-from volatility_explainer.tools.price import _SEVERITY, _horizon_levels
+from volatility_explainer.significance import SEVERITY, horizon_levels
 
 TOO_LONG = "too_long"
 REPEATS_OVERVIEW = "repeats_overview_numbers"
@@ -157,13 +157,13 @@ def _overstates_size(sentences: list[str], ticker: str, price_data: dict) -> boo
     the stock itself ("unusual relative to DDOG's typical volatility") is held to the most
     severe *relative* level across horizons; any other strong size word is held to the
     overall level. Negated and non-size uses are ignored."""
-    levels = _horizon_levels(
+    levels = horizon_levels(
         price_data.get("changes_pct") or {}, price_data.get("realized_vol_annualized_pct")
     )
     if not levels:
         return False  # no verdict to compare against
-    worst_relative = max((v[1] for v in levels.values()), key=_SEVERITY.get)
-    worst_overall = max((v[0] for v in levels.values()), key=_SEVERITY.get)
+    worst_relative = max((v[1] for v in levels.values()), key=SEVERITY.get)
+    worst_overall = max((v[0] for v in levels.values()), key=SEVERITY.get)
     relative_frame = _relative_frame(ticker)
 
     for sentence in sentences:

@@ -12,7 +12,7 @@ import random
 from dataclasses import dataclass
 from pathlib import Path
 
-from volatility_explainer.tools.price import _horizon_levels
+from volatility_explainer.significance import horizon_levels
 
 from evals.capture import FIXTURE_DIR
 from evals.replay import normalize_price
@@ -53,7 +53,7 @@ def today_level(fixture: dict) -> str | None:
     """The 1-day significance level after replay's correction ("typical" | "elevated" |
     "unusual"), or None when the price data can't support a verdict."""
     price = normalize_price(fixture["tools"]["get_price_data"])
-    one_day = _horizon_levels(price.get("changes_pct") or {},
+    one_day = horizon_levels(price.get("changes_pct") or {},
                               price.get("realized_vol_annualized_pct")).get("1d")
     return one_day[0] if one_day else None
 

@@ -303,7 +303,7 @@ TOOL_DEFINITIONS: list[dict] = [
         # the model has already committed to its tiles and ranked hypotheses. (It used to
         # come first, which rendered sooner but meant the model concluded before it had
         # reasoned.) The reader isn't left waiting meanwhile: the deterministic overview from
-        # tools/price.describe_move is on screen from the end of the pre-fetch. Named so no
+        # significance.describe_move is on screen from the end of the pre-fetch. Named so no
         # nested property shares it — the partial-JSON reader matches the first occurrence.
     },
 ]

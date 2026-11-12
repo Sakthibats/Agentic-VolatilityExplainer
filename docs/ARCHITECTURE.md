@@ -34,7 +34,8 @@ the whole flow.
 4. **Deterministic prefetch.** `get_price_data` and `get_events` run in parallel before any LLM
    turn, and are spliced into the history as a synthetic `tool_use`/`tool_result` pair, so the
    model reads them exactly like calls it made itself.
-5. **`move_assessment` is computed in code** ([`tools/price.py`](../backend/volatility_explainer/tools/price.py)),
+5. **`move_assessment` is computed in code** ([`significance.py`](../backend/volatility_explainer/significance.py), pure
+   functions that `tools/price.py` feeds with the fetched history),
    on two axes: relative (|change| vs. this stock's expected move — one standard deviation, scaled
    by √time from annualized realized vol — banded typical < 1.5x ≤ elevated < 2.5x ≤ unusual) and
    absolute (a stock-agnostic magnitude floor, so a chronically volatile name can't get an 18% drop
@@ -59,7 +60,7 @@ the whole flow.
    message, so a refusal costs a few output tokens and reads the same on both vendors. If the model
    writes prose, the loop stops and the run comes back `status: "incomplete"` rather than hanging.
 8. **Streaming the write-up, in two paragraphs.** Right after the pre-fetch,
-   `tools/price.describe_move` turns the price data into a factual "what happened" paragraph — no
+   `significance.describe_move` turns the price data into a factual "what happened" paragraph — no
    LLM — sent as a single `overview` event and quoted to the model so it doesn't repeat it. Every
    turn is streamed; while `submit_analysis` is generated, its `explanation` field (the "why") is
    extracted from the partial JSON and emitted as cumulative `summary` events. `explanation` is the

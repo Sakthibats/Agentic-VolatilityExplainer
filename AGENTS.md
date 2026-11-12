@@ -89,6 +89,8 @@ current: adding, moving or deleting a file updates this map in the same change.
 
 ```
 backend/volatility_explainer/     Python package (hatchling; pytest pythonpath = . and backend)
+├── significance.py               ★ the move/vol model, pure: horizon changes, realized vol, the two-axis
+│                                 verdict (assess_moves), the "what happened" paragraph (describe_move)
 ├── config.py                     pydantic-settings; keys are SecretStr, all optional; LLM_PROVIDER + models
 ├── api/
 │   ├── app.py                    routes, CORS, SSE plumbing (one asyncio.Task + queue per run)
@@ -107,8 +109,8 @@ backend/volatility_explainer/     Python package (hatchling; pytest pythonpath =
 │   ├── prompts.py                system prompt: reading data, output, framing and data rules
 │   └── quality.py                heuristic write-up flags (measure, never rewrite)
 ├── tools/                        8 sync data tools, MCP-shaped but in-process; each falls back to yfinance
-│   ├── price.py                  get_price_data: quote, history, realized vol, move_assessment, describe_move,
-│   │                             pre-/post-market trade beside the close (extended_hours)
+│   ├── price.py                  get_price_data: quote + history (Finnhub → yfinance), today's close joined,
+│   │                             pre-/post-market trade beside the close (extended_hours); verdicts from significance
 │   ├── news.py                   get_news: Finnhub company news → yfinance
 │   ├── options.py                get_options_data (IV, put/call, skew) + get_options_positioning
 │   │                             (max pain, OI walls, term structure)
@@ -118,7 +120,8 @@ backend/volatility_explainer/     Python package (hatchling; pytest pythonpath =
 │   ├── events.py                 get_events: EPS beat/miss, next earnings, ex-div, static FOMC list
 │   └── _retry.py                 with_retry: backoff helper for flaky yfinance calls
 ├── clients/                      finnhub.py (key sent as a header) · fred.py (key stripped from
-│                                 errors) · redis_cache.py (in-process memo + Redis, per-tool TTLs)
+│                                 errors) · _http.py (their shared pooled httpx client) ·
+│                                 redis_cache.py (in-process memo + Redis, per-tool TTLs)
 ├── marketdata/snapshots.py       chart history + sidebar stats behind /v1/tickers/{t}/* (5-min memo)
 └── analytics/supabase_logger.py  optional usage log: bounded queue, background worker
 
@@ -145,6 +148,7 @@ tests/                            mirrors the backend; offline by default (`pyte
 │                                 test_quality (real bad write-ups pinned verbatim)
 ├── api/test_api.py               routes, SSE order, client disconnect still finishes the run
 ├── conftest.py                   empties every per-process cache before each test
+├── test_significance.py          the move/vol model: bands, verdicts, the overview paragraph
 ├── marketdata/test_snapshots.py  chart history: real closes, or no points; snapshot memo
 ├── query/test_parsing.py         guardrail + resolver, incl. "no network call" assertions
 ├── tools/                        one test file per tool + test_live_contracts.py (19 live tests)
@@ -174,7 +178,7 @@ root                              pyproject.toml (deps, ruff, pytest config) · 
 - **API-first.** The frontend talks to the backend only through `/v1`. `api/schemas.py` is the source
   of truth; change `frontend/lib/api.ts` in the same commit.
 - **Deterministic first, agentic second.** Price/vol math and the `move_assessment` verdict are
-  computed in `tools/price.py` before any LLM call. The model interprets; it never computes
+  computed in `significance.py` (fed by `tools/price.py`) before any LLM call. The model interprets; it never computes
   significance.
 - **Structured endings only.** The loop ends via `submit_analysis` or `flag_out_of_scope`. If the
   model writes prose instead, the run returns `status: "incomplete"` — prose is never parsed.
@@ -200,7 +204,7 @@ root                              pyproject.toml (deps, ruff, pytest config) · 
   `tests/api/test_api.py::test_client_disconnect_lets_investigation_finish`.
 - **Write-up order.** `explanation` stays the LAST property of `submit_analysis`, after tiles and
   hypotheses, so the "why" is written from them (tested). The "what happened" overview comes from
-  code (`tools/price.describe_move`), never the model. `submit_analysis` stays last in
+  code (`significance.describe_move`), never the model. `submit_analysis` stays last in
   `TOOL_DEFINITIONS` (it carries the prompt-cache breakpoint).
 - **Theme.** Light = white + blue (`#1565C0` family), never coral/orange. Dark = trading terminal.
   Both come from tokens in `frontend/app/globals.css`; no hardcoded colours in components.
@@ -351,7 +355,7 @@ Backend paths are relative to `backend/volatility_explainer/`.
 | Write-up quality checks | `agent/quality.py` + `tests/agent/test_quality.py` (add each new bad write-up as a regression case). Report over saved runs: `scripts/quality_report.py` |
 | Citations | Numbering + resolution: `agent/answer.py` (`number_headlines`, `resolve_citations`, `attach_news_citations`) → `frontend/components/md.tsx` |
 | Agent loop behaviour | `agent/orchestrator.py` (the loop) or `agent/answer.py` (what happens to the answer) + extend `tests/agent/test_orchestrator.py` |
-| Significance thresholds | `tools/price.py` (`_RELATIVE_BANDS`, `_ABS_THRESHOLDS_PCT`) + `tests/tools/test_price.py` — also changes the overview wording and the size check in `agent/quality.py` |
+| Significance thresholds | `significance.py` (`_RELATIVE_BANDS`, `_ABS_THRESHOLDS_PCT`) + `tests/test_significance.py` — also changes the overview wording and the size check in `agent/quality.py` |
 | Scope guardrail / ticker resolution | `query/parsing.py` + `tests/query/test_parsing.py` |
 | API shape / SSE events | `api/schemas.py` → `api/app.py`, `api/service.py` → `frontend/lib/api.ts` → `frontend/components/investigation-provider.tsx` |
 | Investigation UI | `frontend/app/page.tsx` and `frontend/components/` (state lives in `investigation-provider.tsx`) |

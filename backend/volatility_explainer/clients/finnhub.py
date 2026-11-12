@@ -1,9 +1,9 @@
 import logging
 import time
-from functools import lru_cache
 
 import httpx
 
+from volatility_explainer.clients._http import shared_client
 from volatility_explainer.config import Settings
 
 FINNHUB_API_URL = "https://finnhub.io/api/v1"
@@ -20,14 +20,6 @@ _RETRY_ATTEMPTS = 3
 _RETRY_BASE_DELAY = 0.4
 
 
-@lru_cache(maxsize=4)
-def _shared_client(timeout: float) -> httpx.Client:
-    """One persistent client per timeout — connection pooling/keep-alive across calls
-    instead of a fresh TCP+TLS handshake per request. Never closed; lives for the process.
-    """
-    return httpx.Client(timeout=timeout)
-
-
 class FinnhubClient:
     """HTTP client for Finnhub news and market data."""
 
@@ -42,7 +34,7 @@ class FinnhubClient:
         once the attempts are spent, so callers keep their existing degrade-gracefully
         behaviour — this only widens the window in which a blip can self-correct.
         """
-        client = self._client or _shared_client(timeout)
+        client = self._client or shared_client(timeout)
         url = f"{FINNHUB_API_URL}/{path}"
         # The key goes in a header, never the query string: httpx puts the full URL in every
         # HTTPStatusError message, and callers print those messages to the logs.
