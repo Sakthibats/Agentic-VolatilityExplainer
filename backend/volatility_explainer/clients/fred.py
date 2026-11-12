@@ -2,7 +2,7 @@ import re
 
 import httpx
 
-from volatility_explainer.clients.finnhub import _shared_client
+from volatility_explainer.clients._http import shared_client
 from volatility_explainer.config import Settings
 
 FRED_API_URL = "https://api.stlouisfed.org/fred"
@@ -26,7 +26,7 @@ class FredClient:
             "sort_order": "desc",
             "limit": limit,
         }
-        client = self._client or _shared_client(30.0)
+        client = self._client or shared_client(30.0)
         response = client.get(url, params=params)
         try:
             response.raise_for_status()

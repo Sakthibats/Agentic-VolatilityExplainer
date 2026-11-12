@@ -6,7 +6,7 @@ from __future__ import annotations
 
 from concurrent.futures import ThreadPoolExecutor
 
-from volatility_explainer.tools.price import _compute_horizon_changes
+from volatility_explainer.significance import horizon_changes
 
 _SECTOR_ETF_MAP: dict[str, str] = {
     "Technology": "XLK",
@@ -52,8 +52,8 @@ def fetch_sector_comparison(ticker: str) -> dict:
             stock_hist = stock_fut.result()
             etf_hist = etf_fut.result()
 
-        stock_changes = _compute_horizon_changes(stock_hist) if not stock_hist.empty else {}
-        etf_changes = _compute_horizon_changes(etf_hist) if not etf_hist.empty else {}
+        stock_changes = horizon_changes(stock_hist) if not stock_hist.empty else {}
+        etf_changes = horizon_changes(etf_hist) if not etf_hist.empty else {}
 
         comparison: dict[str, dict] = {}
         for horizon in set(stock_changes) | set(etf_changes):

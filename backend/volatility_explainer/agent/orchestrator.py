@@ -12,6 +12,7 @@ import json
 import os
 import time
 from collections.abc import Callable
+from dataclasses import dataclass, field
 from typing import Any
 
 from volatility_explainer.agent.answer import (
@@ -42,12 +43,13 @@ from volatility_explainer.llm.base import (
 )
 from volatility_explainer.llm.pricing import cost_usd
 from volatility_explainer.query.parsing import OUT_OF_SCOPE_MESSAGE
+from volatility_explainer.significance import describe_move
 from volatility_explainer.tools.analyst import apply_reference_price, fetch_analyst_sentiment
 from volatility_explainer.tools.events import fetch_events
 from volatility_explainer.tools.macro import fetch_macro
 from volatility_explainer.tools.news import fetch_news
 from volatility_explainer.tools.options import fetch_options_data, fetch_options_positioning
-from volatility_explainer.tools.price import describe_move, fetch_price_data
+from volatility_explainer.tools.price import fetch_price_data
 from volatility_explainer.tools.sector import fetch_sector_comparison
 
 # Set VOLX_LOG_LLM_PAYLOAD=1 for per-turn LLM diagnostics: payload sizes, the content-block
@@ -268,58 +270,45 @@ def _save_run(record: dict) -> None:
         f.write(json.dumps(record, default=str) + "\n")
 
 
-async def run_explainer(
-    ticker: str,
-    query: str = "",
-    on_step: Callable[[str], None] | None = None,
-    on_summary: Callable[[str], None] | None = None,
-    on_overview: Callable[[str], None] | None = None,
-    provider: LLMProvider | None = None,
-) -> dict:
-    """Run the investigation: a deterministic parallel pre-fetch of _PREFETCH_TOOLS (price —
-    non-negotiable, it also feeds the sideline chart — plus events), then a Claude-driven
-    loop whose first turn is the real tool-selection layer. Informed by move_assessment, the
-    event calendar and the user's question, it picks whichever of
-    news/options/macro/analyst/sector genuinely help and calls them together in one turn. A
-    second round only happens if the first round's results specifically warrant deeper
-    digging; most investigations resolve in the first round.
+@dataclass
+class _RunStats:
+    """What a run measures about itself. Returned as result["usage"], not just printed: the
+    eval harness scores cost and tool choice from it."""
 
-    Async architecture: LLM turns (the long poles) are awaited natively; tool fetches stay
-    sync — every tool can fall back to yfinance, which is sync-only — and run quarantined
-    on worker threads, fanned out per turn with asyncio.gather. The event loop is never
-    blocked, so many investigations can run concurrently in one process.
+    tokens: Usage = field(default_factory=Usage)
+    turns: int = 0
+    # The model's own tool picks, one list per turn; the deterministic prefetch is excluded.
+    tool_rounds: list[list[str]] = field(default_factory=list)
+    # Tools whose data came from a cache this run rather than a live fetch.
+    cache_hits: set[str] = field(default_factory=set)
+    llm_seconds: float = 0.0
+    # Wall time: each parallel batch counts as its slowest call, not the sum.
+    tool_seconds: float = 0.0
 
-    Every tool fetch checks Redis right before calling it (see _fetch_with_cache) — there is
-    no upfront bulk cache lookup, so a tool the investigation never needs is never checked.
+    def add_turn(self, usage: Usage, elapsed: float) -> None:
+        self.turns += 1
+        self.llm_seconds += elapsed
+        for name in vars(self.tokens):
+            setattr(self.tokens, name, getattr(self.tokens, name) + getattr(usage, name))
 
-    The write-up reaches the reader in two paragraphs, in the order they can honestly be
-    known. on_overview fires once, right after the pre-fetch, with the deterministic "what
-    happened" paragraph (tools/price.describe_move) — no LLM involved. on_summary then
-    receives submit_analysis's `explanation` (the "why") as it is written, which the schema
-    places after tiles and hypotheses so it is generated from them rather than ahead of
-    them. on_summary is called with the cumulative text each time, not a delta, so a dropped
-    call cannot corrupt it.
+    def as_usage(self, provider: LLMProvider, total_seconds: float) -> dict:
+        return {
+            "turns": self.turns,
+            **vars(self.tokens),
+            "provider": provider.name,
+            "model": provider.model,
+            "cost_usd": cost_usd(provider.model, self.tokens),
+            "tool_rounds": self.tool_rounds,
+            "llm_ms": round(self.llm_seconds * 1000),
+            "tool_ms": round(self.tool_seconds * 1000),
+            "total_ms": round(total_seconds * 1000),
+        }
 
-    `provider` defaults to the configured one (LLM_PROVIDER); the eval harness passes its own
-    to compare models on identical data.
-    """
-    ticker = ticker.upper()
-    run_t0 = time.perf_counter()
 
-    if provider is None:
-        provider = get_provider(get_settings())
-
-    tool_data: dict[str, dict] = {}
-    cache_hit_names: set[str] = set()
-    llm_time = 0.0
-    tool_time = 0.0
-    # Returned with the result, not just printed: the eval harness scores cost and tool
-    # choice from it. tool_rounds holds the model's own picks per turn (pre-fetch excluded).
-    run_tokens = Usage()
-    turns_used = 0
-    tool_rounds: list[list[str]] = []
-
-    # ── Deterministic pre-fetch — skip the LLM round trip for tools we always need ──
+async def _prefetch(
+    ticker: str, on_step: Callable[[str], None] | None, stats: _RunStats
+) -> dict[str, dict]:
+    """Fetch _PREFETCH_TOOLS in parallel, before any LLM call. Returns the run's tool_data."""
     if on_step:
         for name in _PREFETCH_TOOLS:
             on_step(_STEP_LABELS[name])
@@ -329,19 +318,21 @@ async def run_explainer(
     prefetched = await asyncio.gather(
         *(_run_tool_guarded(name, {"ticker": ticker}, ticker) for name in _PREFETCH_TOOLS)
     )
-    tool_time += time.perf_counter() - batch_t0  # wall time of the batch, not the sum
+    stats.tool_seconds += time.perf_counter() - batch_t0
+
+    tool_data: dict[str, dict] = {}
     for name, result, hit, elapsed in prefetched:
         tool_data[name] = _with_run_context(name, result, tool_data)
         if hit:
-            cache_hit_names.add(name)
+            stats.cache_hits.add(name)
         print(f"[agent] {name:<25} {elapsed * 1000:6.0f}ms  {'(cached, redis)' if hit else '(deterministic)'}")
+    return tool_data
 
-    # The "what happened" paragraph, straight from code — on screen while the model is still
-    # choosing tools, so the why-paragraph can take the time to be written last.
-    overview = describe_move(tool_data.get("get_price_data") or {})
-    if overview and on_overview:
-        on_overview(overview)
 
+def _opening_history(
+    ticker: str, query: str, overview: str, tool_data: dict[str, dict]
+) -> list[HistoryItem]:
+    """The user turn, then the prefetched results spliced in as the model's own tool call."""
     if query:
         user_content = (
             f"Investigate {ticker}. The user's question, which your explanation must directly "
@@ -357,10 +348,9 @@ async def run_explainer(
         )
 
     history: list[HistoryItem] = [UserMessage(user_content)]
-
-    # Splice the deterministically pre-fetched results in as a real assistant tool call /
-    # tool result turn — this is the exact format the model already handles reliably for
-    # genuine tool calls, so it reads pre-fetched data the same way it reads its own.
+    # A real assistant tool call / tool result pair is the exact format the model already
+    # handles reliably for genuine tool calls, so it reads pre-fetched data the same way it
+    # reads its own.
     if tool_data:
         history.append(AssistantTurn(tool_calls=[
             ToolCall(id=f"toolu_prefetch_{name}", name=name, input={"ticker": ticker})
@@ -370,171 +360,156 @@ async def run_explainer(
             (f"toolu_prefetch_{name}", json.dumps(result, default=str))
             for name, result in tool_data.items()
         ]))
+    return history
 
-    final_kind: str | None = None  # "analysis" | "guardrail" | None (ran out of turns)
-    final_input: dict = {}
 
-    for turn in range(_MAX_TURNS):
-        if on_step:
-            # Turn 1 picks tools; every later turn is usually the write-up. When a later
-            # turn instead asks for more data, its tool labels simply supersede this one.
-            on_step(_STEP_DECIDING if turn == 0 else _STEP_SYNTHESIZING)
+async def _model_turn(
+    provider: LLMProvider,
+    history: list[HistoryItem],
+    on_summary: Callable[[str], None] | None,
+) -> tuple[AssistantTurn, float]:
+    """One streamed LLM turn. While submit_analysis is being written, its explanation is
+    passed to on_summary as it grows (cumulative text). Returns (turn, elapsed seconds)."""
+    streamed_text = ""
 
-        if _LOG_LLM_PAYLOAD:
-            history_json = json.dumps([vars(item) for item in history], default=str)
-            print(
-                f"[llm]   turn {turn + 1} payload          history={len(history)}  "
-                f"~{len(SYSTEM_PROMPT) + len(history_json):,} chars (system+history, excl. tool defs)"
-            )
-            print(f"[llm]   turn {turn + 1} system:\n{SYSTEM_PROMPT}")
-            print(f"[llm]   turn {turn + 1} history:\n{history_json}")
+    def on_tool_input(_name: str, input_json: str) -> None:
+        nonlocal streamed_text
+        partial = _partial_json_string(input_json, _STREAMED_FIELD)
+        if partial and partial != streamed_text:
+            streamed_text = partial
+            on_summary(partial)
 
-        llm_t0 = time.perf_counter()
-        # Streamed so the explanation can be surfaced as it is generated (see on_summary in
-        # the docstring). The provider hands over the streamed tool's input JSON so far.
-        streamed_text = ""
+    t0 = time.perf_counter()
+    response = await provider.run_turn(
+        system=SYSTEM_PROMPT,
+        history=history,
+        tools=TOOL_DEFINITIONS,
+        max_tokens=_MAX_OUTPUT_TOKENS,
+        stream_tool="submit_analysis",
+        on_tool_input=on_tool_input if on_summary is not None else None,
+    )
+    return response, time.perf_counter() - t0
 
-        def on_tool_input(_name: str, input_json: str) -> None:
-            nonlocal streamed_text
-            partial = _partial_json_string(input_json, _STREAMED_FIELD)
-            if partial and partial != streamed_text:
-                streamed_text = partial
-                on_summary(partial)
 
-        response = await provider.run_turn(
-            system=SYSTEM_PROMPT,
-            history=history,
-            tools=TOOL_DEFINITIONS,
-            max_tokens=_MAX_OUTPUT_TOKENS,
-            stream_tool="submit_analysis",
-            on_tool_input=on_tool_input if on_summary is not None else None,
-        )
+def _log_request(turn: int, history: list[HistoryItem]) -> None:
+    """With VOLX_LOG_LLM_PAYLOAD=1: the payload size and full content about to be sent."""
+    if not _LOG_LLM_PAYLOAD:
+        return
+    history_json = json.dumps([vars(item) for item in history], default=str)
+    print(
+        f"[llm]   turn {turn + 1} payload          history={len(history)}  "
+        f"~{len(SYSTEM_PROMPT) + len(history_json):,} chars (system+history, excl. tool defs)"
+    )
+    print(f"[llm]   turn {turn + 1} system:\n{SYSTEM_PROMPT}")
+    print(f"[llm]   turn {turn + 1} history:\n{history_json}")
 
-        llm_elapsed = time.perf_counter() - llm_t0
-        llm_time += llm_elapsed
 
-        usage = response.usage
-        print(
-            f"[llm]   turn {turn + 1} usage            in={usage.input_tokens} "
-            f"(cache_read={usage.cache_read_tokens}, cache_write={usage.cache_write_tokens})  "
-            f"out={usage.output_tokens} (reasoning={usage.reasoning_tokens})"
-        )
-        turns_used += 1
-        for field_name in vars(run_tokens):
-            setattr(run_tokens, field_name, getattr(run_tokens, field_name) + getattr(usage, field_name))
-        # Where output went — text is a preamble the model wrote before its tool call, pure
-        # overhead; a tool call's size approximates the JSON payload itself (tiles/hypotheses).
-        if _LOG_LLM_PAYLOAD:
-            if response.text:
-                print(f"[llm]   turn {turn + 1} content block     text       {len(response.text):5d} chars (preamble — unwanted)")
-            for call in response.tool_calls:
-                size = len(json.dumps(call.input, default=str))
-                print(f"[llm]   turn {turn + 1} content block     tool_use   {size:5d} chars  ({call.name})")
+def _log_response(turn: int, response: AssistantTurn, elapsed: float, final: bool) -> None:
+    """Token usage and timing, always; where the output went, with VOLX_LOG_LLM_PAYLOAD=1."""
+    usage = response.usage
+    print(
+        f"[llm]   turn {turn + 1} usage            in={usage.input_tokens} "
+        f"(cache_read={usage.cache_read_tokens}, cache_write={usage.cache_write_tokens})  "
+        f"out={usage.output_tokens} (reasoning={usage.reasoning_tokens})"
+    )
+    # Text is a preamble the model wrote before its tool call, pure overhead; a tool call's
+    # size approximates the JSON payload itself (tiles/hypotheses).
+    if _LOG_LLM_PAYLOAD:
+        if response.text:
+            print(f"[llm]   turn {turn + 1} content block     text       {len(response.text):5d} chars (preamble — unwanted)")
+        for call in response.tool_calls:
+            size = len(json.dumps(call.input, default=str))
+            print(f"[llm]   turn {turn + 1} content block     tool_use   {size:5d} chars  ({call.name})")
+    print(f"[llm]   turn {turn + 1} {'(final)' if final else '(tool selection)':<17} {elapsed * 1000:6.0f}ms")
 
-        tool_blocks = response.tool_calls
-        terminal_block = next((b for b in tool_blocks if b.name in TERMINAL_TOOLS), None)
-        print(f"[llm]   turn {turn + 1} {'(final)' if terminal_block else '(tool selection)':<17} {llm_elapsed * 1000:6.0f}ms")
 
-        history.append(response)
+async def _run_tool_round(
+    tool_calls: list[ToolCall], tool_data: dict[str, dict], ticker: str, stats: _RunStats
+) -> ToolResults:
+    """Run one turn's tool calls in parallel, add them to tool_data, and return the results
+    to send back to the model (one per call, in call order)."""
+    results_by_id: dict[str, dict] = {}
 
-        if terminal_block:
-            # No step emitted here on purpose — _STEP_SYNTHESIZING already went out before
-            # this turn's call, so it covered the generation the user actually waited on.
-            final_kind = "guardrail" if terminal_block.name == "flag_out_of_scope" else "analysis"
-            final_input = terminal_block.input
-            break
+    # The model occasionally re-requests a tool it already called this run (despite the
+    # system prompt instruction not to) — serve those from the in-memory result instead of
+    # paying for a redundant fetch or even a redundant Redis round trip.
+    fresh_calls = []
+    for call in tool_calls:
+        if call.name in tool_data:
+            print(f"[agent] {call.name:<25}   cached (duplicate call skipped)")
+            results_by_id[call.id] = tool_data[call.name]
+        else:
+            fresh_calls.append(call)
 
-        if not tool_blocks:
-            # Model replied with plain text instead of calling a tool (ignoring the
-            # instruction to always finish via submit_analysis/flag_out_of_scope). Nothing
-            # to send back — an empty tool_result user turn is rejected by the API — so
-            # stop here rather than loop again; falls through to the "incomplete" status.
-            break
+    batch_t0 = time.perf_counter()
+    # Each sync tool runs on its own worker thread; gather overlaps them so the turn costs
+    # max(tool times), not sum, and the event loop stays free.
+    batch_results = await asyncio.gather(
+        *(_run_tool_guarded(call.name, call.input, ticker) for call in fresh_calls)
+    )
+    slowest = 0.0
+    for call, (_, result, hit, elapsed) in zip(fresh_calls, batch_results, strict=True):
+        slowest = max(slowest, elapsed)
+        if hit:
+            stats.cache_hits.add(call.name)
+        print(f"[agent] {call.name:<25} {elapsed * 1000:6.0f}ms  {'(cached, redis)' if hit else ''}")
+        result = _with_run_context(call.name, result, tool_data)
+        tool_data[call.name] = result
+        results_by_id[call.id] = result
+    if _LOG_LLM_PAYLOAD and len(fresh_calls) > 1:
+        # Wall time of the whole batch vs. the slowest individual call — if these are close,
+        # the fetches genuinely overlapped rather than running one after another.
+        batch_elapsed = time.perf_counter() - batch_t0
+        print(f"[agent] {'+'.join(c.name for c in fresh_calls):<25} {batch_elapsed * 1000:6.0f}ms  (batch wall time, n={len(fresh_calls)})")
+    stats.tool_seconds += slowest
 
-        tool_rounds.append([b.name for b in tool_blocks])
-        if on_step:
-            for block in tool_blocks:
-                on_step(_STEP_LABELS.get(block.name, f"Running {block.name}..."))
+    return ToolResults([
+        (call.id, json.dumps(results_by_id[call.id], default=str)) for call in tool_calls
+    ])
 
-        results_by_id: dict[str, dict] = {}
-        turn_tool_max = 0.0
 
-        # The model occasionally re-requests a tool it already called this run (despite
-        # the system prompt instruction not to) — serve those from the in-memory result
-        # instead of paying for a redundant fetch or even a redundant Redis round trip.
-        fresh_blocks = []
-        for block in tool_blocks:
-            if block.name in tool_data:
-                print(f"[agent] {block.name:<25}   cached (duplicate call skipped)")
-                results_by_id[block.id] = tool_data[block.name]
-            else:
-                fresh_blocks.append(block)
+def _raw_explanation(final_input: dict) -> str:
+    explanation = final_input.get(_STREAMED_FIELD) or ""
+    return explanation if isinstance(explanation, str) else ""
 
-        batch_t0 = time.perf_counter()
-        # Each sync tool runs on its own worker thread; gather overlaps them so the
-        # turn costs max(tool times), not sum, and the event loop stays free.
-        batch_results = await asyncio.gather(
-            *(_run_tool_guarded(b.name, b.input, ticker) for b in fresh_blocks)
-        )
-        for block, (_, result, hit, elapsed) in zip(fresh_blocks, batch_results, strict=True):
-            turn_tool_max = max(turn_tool_max, elapsed)  # tools run in parallel within a turn
-            if hit:
-                cache_hit_names.add(block.name)
-            print(f"[agent] {block.name:<25} {elapsed * 1000:6.0f}ms  {'(cached, redis)' if hit else ''}")
-            result = _with_run_context(block.name, result, tool_data)
-            tool_data[block.name] = result
-            results_by_id[block.id] = result
-        if _LOG_LLM_PAYLOAD and len(fresh_blocks) > 1:
-            # Wall time of the whole batch vs. the slowest individual call — if these are
-            # close, the fetches genuinely overlapped rather than running one after another.
-            batch_elapsed = time.perf_counter() - batch_t0
-            print(f"[agent] {'+'.join(b.name for b in fresh_blocks):<25} {batch_elapsed * 1000:6.0f}ms  (batch wall time, n={len(fresh_blocks)})")
-        tool_time += turn_tool_max
 
-        history.append(ToolResults([
-            (block.id, json.dumps(results_by_id[block.id], default=str)) for block in tool_blocks
-        ]))
-
-    total_elapsed = time.perf_counter() - run_t0
-    print(f"[orchestrator] {ticker:<6} total {total_elapsed * 1000:6.0f}ms  (llm {llm_time * 1000:.0f}ms, tools {tool_time * 1000:.0f}ms)")
-
-    # Tools whose data came from Redis this run rather than a live fetch.
-    cache_hits = sorted(cache_hit_names)
-    run_usage = {
-        "turns": turns_used,
-        **vars(run_tokens),
-        "provider": provider.name,
-        "model": provider.model,
-        "cost_usd": cost_usd(provider.model, run_tokens),
-        "tool_rounds": tool_rounds,
-        "llm_ms": round(llm_time * 1000),
-        "tool_ms": round(tool_time * 1000),
-        "total_ms": round(total_elapsed * 1000),
+def _guardrail_result(ticker: str, tool_data: dict, cache_hits: list[str], usage: dict) -> dict:
+    return {
+        "ticker": ticker,
+        "data": tool_data,
+        "overview": "",
+        "summary": "",
+        "tiles": [],
+        "hypotheses": [],
+        "status": "guardrail",
+        # Always the standard text: flag_out_of_scope takes no input, and an older or
+        # off-schema call that still sends a message is ignored.
+        "error_message": OUT_OF_SCOPE_MESSAGE,
+        "cache_hits": cache_hits,
+        "usage": usage,
     }
 
-    if final_kind == "guardrail":
-        return {
-            "ticker": ticker,
-            "data": tool_data,
-            "overview": "",
-            "summary": "",
-            "tiles": [],
-            "hypotheses": [],
-            "status": "guardrail",
-            # Always the standard text: flag_out_of_scope takes no input, and an older or
-            # off-schema call that still sends a message is ignored.
-            "error_message": OUT_OF_SCOPE_MESSAGE,
-            "cache_hits": cache_hits,
-            "usage": run_usage,
-        }
 
-    explanation = final_input.get(_STREAMED_FIELD) or ""
-    if not isinstance(explanation, str):
-        explanation = ""
-    summary, citations, removed = resolve_citations(explanation, tool_data)
+def _analysis_result(
+    *,
+    ticker: str,
+    query: str,
+    overview: str,
+    completed: bool,
+    final_input: dict,
+    tool_data: dict,
+    cache_hits: list[str],
+    usage: dict,
+) -> dict:
+    """The run's answer, held to the contract in code (agent/answer.py) and quality-checked.
+
+    completed is False when the model never called submit_analysis (it wrote prose or ran out
+    of turns): the result is then "incomplete", built from whatever final_input holds.
+    """
+    summary, citations, removed = resolve_citations(_raw_explanation(final_input), tool_data)
     tiles, hypotheses, answer_repairs = normalize_answer(final_input)
     tiles = attach_news_citations(tiles, tool_data)
-    if answer_repairs and final_kind == "analysis":
+    if answer_repairs and completed:
         print(f"[answer]  {ticker:<6} repaired: {', '.join(answer_repairs)}")
 
     # Measured, never enforced: the flags describe the write-up, they don't change it.
@@ -549,7 +524,7 @@ async def run_explainer(
         except Exception as exc:  # a heuristic must never cost the reader their answer
             print(f"[quality] {ticker:<6} check FAILED — {exc}")
 
-    result = {
+    return {
         "ticker": ticker,
         "data": tool_data,
         "overview": overview,
@@ -557,19 +532,116 @@ async def run_explainer(
         "citations": citations,
         "tiles": tiles,
         "hypotheses": hypotheses,
-        "status": "complete" if final_kind == "analysis" else "incomplete",
+        "status": "complete" if completed else "incomplete",
         "cache_hits": cache_hits,
         "quality_flags": quality_flags,
         # Schema breaks the code fixed before the reader saw them. Measured like the quality
         # flags; deliberately not part of the API response or the Supabase row.
-        "answer_repairs": answer_repairs if final_kind == "analysis" else [],
-        "usage": run_usage,
+        "answer_repairs": answer_repairs if completed else [],
+        "usage": usage,
     }
+
+
+async def run_explainer(
+    ticker: str,
+    query: str = "",
+    on_step: Callable[[str], None] | None = None,
+    on_summary: Callable[[str], None] | None = None,
+    on_overview: Callable[[str], None] | None = None,
+    provider: LLMProvider | None = None,
+) -> dict:
+    """Run one investigation and return its result dict.
+
+    1. Prefetch _PREFETCH_TOOLS (price, events) in parallel: deterministic, no LLM.
+    2. Send the code-built "what happened" overview to on_overview, before any model output.
+    3. Loop at most _MAX_TURNS turns. Each turn the model must call tools: data tools run in
+       parallel on worker threads (_run_tool_round) and their results go back to it; the run
+       ends only when it calls submit_analysis or flag_out_of_scope. Most runs take two turns.
+    4. Hold the answer to the contract in code and quality-check it (_analysis_result).
+
+    Async architecture: LLM turns (the long poles) are awaited natively; tool fetches stay
+    sync — every tool can fall back to yfinance, which is sync-only — and run on worker
+    threads, so the event loop is never blocked. Every tool fetch checks the caches right
+    before calling it (_fetch_with_cache), so a tool the investigation never needs is never
+    looked up.
+
+    The write-up reaches the reader in two paragraphs, in the order they can honestly be
+    known: on_overview fires once with the deterministic paragraph (significance.describe_move);
+    on_summary then receives submit_analysis's `explanation` (the "why") as it is written,
+    which the schema places after tiles and hypotheses so it is generated from them. on_summary
+    gets the cumulative text each time, not a delta, so a dropped call cannot corrupt it.
+
+    `provider` defaults to the configured one (LLM_PROVIDER); the eval harness passes its own
+    to compare models on identical data.
+    """
+    ticker = ticker.upper()
+    run_t0 = time.perf_counter()
+    if provider is None:
+        provider = get_provider(get_settings())
+    stats = _RunStats()
+
+    tool_data = await _prefetch(ticker, on_step, stats)
+
+    # The "what happened" paragraph, straight from code — on screen while the model is still
+    # choosing tools, so the why-paragraph can take the time to be written last.
+    overview = describe_move(tool_data.get("get_price_data") or {})
+    if overview and on_overview:
+        on_overview(overview)
+
+    history = _opening_history(ticker, query, overview, tool_data)
+    final_kind: str | None = None  # "analysis" | "guardrail" | None (no terminal tool called)
+    final_input: dict = {}
+
+    for turn in range(_MAX_TURNS):
+        if on_step:
+            # Turn 1 picks tools; every later turn is usually the write-up. When a later
+            # turn instead asks for more data, its tool labels simply supersede this one.
+            on_step(_STEP_DECIDING if turn == 0 else _STEP_SYNTHESIZING)
+
+        _log_request(turn, history)
+        response, elapsed = await _model_turn(provider, history, on_summary)
+        stats.add_turn(response.usage, elapsed)
+        terminal = next((c for c in response.tool_calls if c.name in TERMINAL_TOOLS), None)
+        _log_response(turn, response, elapsed, final=terminal is not None)
+        history.append(response)
+
+        if terminal:
+            # No step emitted here on purpose — _STEP_SYNTHESIZING already went out before
+            # this turn's call, so it covered the generation the user actually waited on.
+            final_kind = "guardrail" if terminal.name == "flag_out_of_scope" else "analysis"
+            final_input = terminal.input
+            break
+
+        if not response.tool_calls:
+            # Model replied with plain text instead of calling a tool (ignoring the
+            # instruction to always finish via submit_analysis/flag_out_of_scope). Nothing
+            # to send back — an empty tool_result user turn is rejected by the API — so
+            # stop here rather than loop again; falls through to the "incomplete" status.
+            break
+
+        stats.tool_rounds.append([c.name for c in response.tool_calls])
+        if on_step:
+            for call in response.tool_calls:
+                on_step(_STEP_LABELS.get(call.name, f"Running {call.name}..."))
+        history.append(await _run_tool_round(response.tool_calls, tool_data, ticker, stats))
+
+    total_elapsed = time.perf_counter() - run_t0
+    print(f"[orchestrator] {ticker:<6} total {total_elapsed * 1000:6.0f}ms  (llm {stats.llm_seconds * 1000:.0f}ms, tools {stats.tool_seconds * 1000:.0f}ms)")
+    usage = stats.as_usage(provider, total_elapsed)
+    cache_hits = sorted(stats.cache_hits)
+
+    if final_kind == "guardrail":
+        return _guardrail_result(ticker, tool_data, cache_hits, usage)
+
+    result = _analysis_result(
+        ticker=ticker, query=query, overview=overview, completed=final_kind == "analysis",
+        final_input=final_input, tool_data=tool_data, cache_hits=cache_hits, usage=usage,
+    )
     if _SAVE_RUNS_PATH:
         record = {
             "saved_at": time.strftime("%Y-%m-%dT%H:%M:%S"),
             "query": query,
-            "raw_explanation": explanation,
+            "raw_explanation": _raw_explanation(final_input),
             **result,
         }
         await asyncio.to_thread(_save_run, record)

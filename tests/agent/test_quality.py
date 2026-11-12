@@ -8,7 +8,7 @@ VOLX_SAVE_RUNS file via scripts/quality_report.py --show — so every fix is pin
 from __future__ import annotations
 
 from volatility_explainer.agent import quality
-from volatility_explainer.tools.price import describe_move
+from volatility_explainer.significance import describe_move
 
 DDOG_PRICE = {
     "ticker": "DDOG", "price": 230.05, "change_pct": 4.0, "realized_vol_annualized_pct": 58.7,

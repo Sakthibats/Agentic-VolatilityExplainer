@@ -30,7 +30,7 @@ from zoneinfo import ZoneInfo
 import yfinance as yf
 from volatility_explainer.agent.orchestrator import _TOOL_DISPATCH
 from volatility_explainer.config import get_settings
-from volatility_explainer.tools.price import _horizon_levels
+from volatility_explainer.significance import horizon_levels
 
 FIXTURE_DIR = Path(__file__).parent / "fixtures"
 SCHEMA_VERSION = 1
@@ -89,7 +89,7 @@ def select(
 
 def _today_level(price: dict) -> str:
     """The 1-day verdict from the same code that writes move_assessment."""
-    levels = _horizon_levels(price.get("changes_pct") or {}, price.get("realized_vol_annualized_pct"))
+    levels = horizon_levels(price.get("changes_pct") or {}, price.get("realized_vol_annualized_pct"))
     return levels["1d"][0] if "1d" in levels else ""
 
 

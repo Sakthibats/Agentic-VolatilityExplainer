@@ -18,7 +18,7 @@ from typing import Any
 
 from volatility_explainer.agent import orchestrator
 from volatility_explainer.llm.base import LLMProvider
-from volatility_explainer.tools.price import _assess_moves
+from volatility_explainer.significance import assess_moves
 
 _current_tools: contextvars.ContextVar[dict | None] = contextvars.ContextVar("fixture_tools", default=None)
 _installed = False
@@ -66,7 +66,7 @@ def normalize_price(price: dict) -> dict:
         return price
     changes["1d"] = today
     fixed = {**price, "changes_pct": changes}
-    assessment = _assess_moves(changes, price.get("realized_vol_annualized_pct"))
+    assessment = assess_moves(changes, price.get("realized_vol_annualized_pct"))
     if assessment:
         fixed["move_assessment"] = assessment
     return fixed

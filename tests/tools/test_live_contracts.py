@@ -162,7 +162,7 @@ def test_yf_history_has_a_close_column(yf_ticker):
 
     assert not hist.empty
     assert "Close" in hist.columns
-    assert hist.index.year is not None  # DatetimeIndex — price.py's YTD slice needs it
+    assert hist.index.year is not None  # DatetimeIndex — significance.horizon_changes' YTD slice needs it
 
 
 @_yahoo_outage_skips
