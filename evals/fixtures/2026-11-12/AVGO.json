@@ -1,0 +1,382 @@
+{
+ "schema": 1,
+ "ticker": "AVGO",
+ "trading_day": "2026-11-12",
+ "captured_at": "2026-11-13T02:03:17+00:00",
+ "selected_as": "move",
+ "change_pct": 5.54,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 5.54% \u2014 typical relative to this stock's own typical volatility (expected ~4.23%, 1.31x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "this week: 24.98% \u2014 unusual for this stock (about 2.64x its normal move for that span, expected ~9.45%)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "AVGO",
+   "price": 364.36,
+   "prev_close": 345.22,
+   "change_pct": 5.54,
+   "session_date": "2026-11-12",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 67.1,
+   "changes_pct": {
+    "1d": 5.54,
+    "1w": 24.98,
+    "2w": 5.61,
+    "1mo": 5.23,
+    "1y": 4.29,
+    "ytd": 5.39
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 5.54% \u2014 typical relative to this stock's own typical volatility (expected ~4.23%, 1.31x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "this week: 24.98% \u2014 unusual for this stock (about 2.64x its normal move for that span, expected ~9.45%)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 366.11,
+    "change_pct": 0.48,
+    "as_of": "2026-11-12 19:59 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "AVGO",
+   "headlines": [
+    {
+     "headline": "5 Best Growth Stocks for the Next 5 Years",
+     "summary": "Technology stocks went from celebration to rout within two sessions this month. On Wednesday, November 4, equities rallied after Democrats swept Congress in the midterm elections. By Thursday, the...",
+     "datetime": 1794525079,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=a8170d393f8411b3994d19b0a3b40bb67ffb013d4c8ab2473b4b5a30d256b0d7"
+    },
+    {
+     "headline": "Can Huang's Exit Create Chip Competition",
+     "summary": "Jensen Huang's departure from Nvidia is raising questions about whether rivals can chip away at the company's dominance of the AI semiconductor market. Bloomberg Intelligence analysts Robert...",
+     "datetime": 1794524439,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=86c761c898c0936982bf6391253c9845d1d438f475c968d05759d78a72b635a1"
+    },
+    {
+     "headline": "Now Comes the Hard Part for the Stock Market",
+     "summary": "The S&P 500 has held up through Nvidia\u2019s steep decline. But Huang\u2019s departure raises new questions about the AI trade and the broader market outlook.",
+     "datetime": 1794523980,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=0e1d618381f3b22e16ac4a799c7d672956a74ffb518d09b50f4878e3aa34aeaf"
+    },
+    {
+     "headline": "Stock Market Today, Nov. 12: Nvidia CEO's Stunning Exit Sends Wall Street Lower as Rivals Surge",
+     "summary": "Markets retreated Thursday following Nvidia CEO Jensen Huang's resignation, raising new questions about the AI industry's leadership as investors shifted toward competing chipmakers.",
+     "datetime": 1794523502,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=c2b52f3c31e6af5600be62940cb6af9c78ac92f7715ae5e1db8fadad7117678d"
+    },
+    {
+     "headline": "5 Unrivaled Stocks to Buy for the Next Decade",
+     "summary": "Wall Street had its worst day since April 2025 last Thursday. The Nasdaq Composite fell 5.5%, the S&P 500 dropped 4.4%, and the Philadelphia Semiconductor Index plunged 12.2%. Two worries drove the...",
+     "datetime": 1794522801,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=cb77d3e0b5eb8217ac9779f53d7dc1aa7e42a080403b7014d557254896406ca1"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "AVGO",
+   "expiry": "2026-11-27",
+   "days_to_expiry": 14,
+   "atm_iv_pct": 51.7,
+   "iv_chain_percentile": 2,
+   "skew_points": 1.7,
+   "put_call_ratio": 1.2,
+   "total_put_oi": 22774,
+   "total_call_oi": 18919
+  },
+  "get_options_positioning": {
+   "ticker": "AVGO",
+   "spot": 364.36,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-27",
+   "primary_days_to_expiry": 14,
+   "max_pain_strike": 335.0,
+   "resistance_walls": [
+    {
+     "strike": 350.0,
+     "open_interest": 1973
+    },
+    {
+     "strike": 370.0,
+     "open_interest": 1845
+    },
+    {
+     "strike": 400.0,
+     "open_interest": 1288
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 235.0,
+     "open_interest": 1819
+    },
+    {
+     "strike": 310.0,
+     "open_interest": 1760
+    },
+    {
+     "strike": 305.0,
+     "open_interest": 1721
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 14,
+     "atm_iv_pct": 51.7
+    },
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 21,
+     "atm_iv_pct": 49.6
+    },
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 57.5
+    }
+   ],
+   "term_structure_trend": "Rising \u2014 market pricing in a later catalyst within the horizon",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 415.0,
+     "volume": 582,
+     "open_interest": 99,
+     "vol_oi_ratio": 5.9,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 500.0,
+     "volume": 446,
+     "open_interest": 94,
+     "vol_oi_ratio": 4.7,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 360.0,
+     "volume": 393,
+     "open_interest": 178,
+     "vol_oi_ratio": 2.2,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 370.0,
+     "volume": 136,
+     "open_interest": 80,
+     "vol_oi_ratio": 1.7,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 365.0,
+     "volume": 365,
+     "open_interest": 216,
+     "vol_oi_ratio": 1.7,
+     "moneyness": "ITM"
+    }
+   ],
+   "otm_call_oi": 10688,
+   "otm_put_oi": 22146,
+   "positioning_lean_score": -0.35,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "AVGO",
+   "as_of": "2026-11-13",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-27",
+     "days_ago": 17,
+     "firm": "Rosenblatt",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 600.0,
+     "price_target_to": 600.0,
+     "is_rating_change": false,
+     "description": "Rosenblatt maintained its Buy rating on AVGO with a $600.0 price target"
+    },
+    {
+     "date": "2026-10-27",
+     "days_ago": 17,
+     "firm": "DA Davidson",
+     "action": "upgrade",
+     "from_grade": "Neutral",
+     "to_grade": "Buy",
+     "price_target_from": 350.0,
+     "price_target_to": 400.0,
+     "is_rating_change": true,
+     "description": "DA Davidson upgraded AVGO from Neutral to Buy and raised its price target from $350.0 to $400.0"
+    },
+    {
+     "date": "2026-10-22",
+     "days_ago": 22,
+     "firm": "Tigress Financial",
+     "action": "initiated coverage",
+     "from_grade": null,
+     "to_grade": "Buy",
+     "price_target_from": null,
+     "price_target_to": 600.0,
+     "is_rating_change": false,
+     "description": "Tigress Financial initiated coverage of AVGO at Buy with a $600.0 price target"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.88,
+    "verdict": "leaning bullish",
+    "analysts": 51,
+    "counts": {
+     "strongBuy": 8,
+     "buy": 41,
+     "hold": 2,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.92 to 1.88)"
+   },
+   "price_target": {
+    "mean": 533.42,
+    "median": 535.0,
+    "high": 660.0,
+    "low": 400.0,
+    "current_price": 364.36,
+    "dispersion_pct": 48.7,
+    "upside_vs_mean_pct": 46.4,
+    "upside_vs_median_pct": 46.8
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "AVGO",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1w": {
+     "stock_change_pct": 6.06,
+     "sector_etf_change_pct": -1.21,
+     "relative_to_sector_pct": 7.27
+    },
+    "1y": {
+     "stock_change_pct": -2.96,
+     "sector_etf_change_pct": 18.6,
+     "relative_to_sector_pct": -21.56
+    },
+    "1mo": {
+     "stock_change_pct": -3.38,
+     "sector_etf_change_pct": -11.17,
+     "relative_to_sector_pct": 7.79
+    },
+    "ytd": {
+     "stock_change_pct": -0.14,
+     "sector_etf_change_pct": 21.27,
+     "relative_to_sector_pct": -21.41
+    },
+    "1d": {
+     "stock_change_pct": 3.99,
+     "sector_etf_change_pct": 3.23,
+     "relative_to_sector_pct": 0.76
+    },
+    "2w": {
+     "stock_change_pct": -1.87,
+     "sector_etf_change_pct": -8.71,
+     "relative_to_sector_pct": 6.84
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-12",
+    "realtime_end": "2026-11-12",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9617,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-12",
+      "realtime_end": "2026-11-12",
+      "date": "2026-11-11",
+      "value": "17.49"
+     },
+     {
+      "realtime_start": "2026-11-12",
+      "realtime_end": "2026-11-12",
+      "date": "2026-11-10",
+      "value": "19.46"
+     },
+     {
+      "realtime_start": "2026-11-12",
+      "realtime_end": "2026-11-12",
+      "date": "2026-11-09",
+      "value": "19.92"
+     },
+     {
+      "realtime_start": "2026-11-12",
+      "realtime_end": "2026-11-12",
+      "date": "2026-11-06",
+      "value": "25.64"
+     },
+     {
+      "realtime_start": "2026-11-12",
+      "realtime_end": "2026-11-12",
+      "date": "2026-11-05",
+      "value": "28.18"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "AVGO",
+   "as_of": "2026-11-13",
+   "events": [
+    {
+     "type": "earnings",
+     "date": "2026-12-09",
+     "description": "AVGO Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 26,
+     "eps_estimate": 3.8912,
+     "hour": "amc"
+    },
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 26,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}

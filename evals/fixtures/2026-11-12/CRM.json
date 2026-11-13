@@ -1,0 +1,340 @@
+{
+ "schema": 1,
+ "ticker": "CRM",
+ "trading_day": "2026-11-12",
+ "captured_at": "2026-11-13T02:02:57+00:00",
+ "selected_as": "control",
+ "change_pct": -0.2,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "CRM",
+   "price": 217.57,
+   "prev_close": 218.01,
+   "change_pct": -0.2,
+   "session_date": "2026-11-12",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 36.8,
+   "changes_pct": {
+    "1d": -0.2,
+    "1w": -2.18,
+    "2w": -5.77,
+    "1mo": -7.79,
+    "1y": -10.26,
+    "ytd": -13.63
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 217.57,
+    "change_pct": 0.0,
+    "as_of": "2026-11-12 19:48 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "CRM",
+   "headlines": [
+    {
+     "headline": "Should You Buy HubSpot Stock For Its Cash?",
+     "summary": "For questions about this article or underlying research, email help@trefis.com.",
+     "datetime": 1794515237,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=31167faa3b25e611f1a17c2fdce76ba761b0c031a10404c50b36b95344afed70"
+    },
+    {
+     "headline": "3 Top-Ranked AI Stocks Delivering Robust Results",
+     "summary": "While the market's attitude has gone sour, the reality remains that the underlying growth outlook is highly favorable for many companies directly benefiting from the AI revolution, with recent...",
+     "datetime": 1794509880,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=bed3b6abc9b916f3dd4d093f11212204d83f3669e6835db6f5df16ca19169f7b"
+    },
+    {
+     "headline": "Top Cybersecurity Stocks to Watch, According to Mizuho",
+     "summary": "Investing.com -- Mizuho has released its latest rankings of top-performing cybersecurity stocks, with analysts highlighting strong momentum across multiple companies based on quarterly channel checks...",
+     "datetime": 1794504565,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=32990ab805ab5d9c3763f86c4b30718ac5101c2147fe38f3aa2d440c3fd9f2e4"
+    },
+    {
+     "headline": "Jim Cramer Is Bullish on These 5 Stocks Amid Nvidia Controversy",
+     "summary": "After years of unconditionally backing Jensen Huang and Nvidia (NASDAQ), Jim Cramer\u2019s confidence in the chipmaker has been shaken by the controversy surrounding its chief executive. And the reasons...",
+     "datetime": 1794494746,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=525d63244b63c607cdcd4a9ef27fb2a5efc0712c121f588995644c9420638793"
+    },
+    {
+     "headline": "Is ZETA a Buy as Growth Surges While Its Valuation Stays Expensive?",
+     "summary": "Zeta Global's accelerating revenue growth, rising Athena AI adoption and strong cash flow bolster its growth case, but a premium valuation raises the stakes.",
+     "datetime": 1794494160,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=f02407da0f64a4bdaeb3432dfa90027171714c5a43c018294ac25cc26e3cc353"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "CRM",
+   "expiry": "2026-11-27",
+   "days_to_expiry": 14,
+   "atm_iv_pct": 42.0,
+   "iv_chain_percentile": 1,
+   "skew_points": 2.6,
+   "put_call_ratio": 1.01,
+   "total_put_oi": 3165,
+   "total_call_oi": 3130
+  },
+  "get_options_positioning": {
+   "ticker": "CRM",
+   "spot": 217.57,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-27",
+   "primary_days_to_expiry": 14,
+   "max_pain_strike": 225.0,
+   "resistance_walls": [
+    {
+     "strike": 245.0,
+     "open_interest": 422
+    },
+    {
+     "strike": 240.0,
+     "open_interest": 358
+    },
+    {
+     "strike": 270.0,
+     "open_interest": 355
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 220.0,
+     "open_interest": 643
+    },
+    {
+     "strike": 205.0,
+     "open_interest": 603
+    },
+    {
+     "strike": 210.0,
+     "open_interest": 360
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 14,
+     "atm_iv_pct": 42.0
+    },
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 21,
+     "atm_iv_pct": 57.4
+    },
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 54.7
+    }
+   ],
+   "term_structure_trend": "Rising \u2014 market pricing in a later catalyst within the horizon",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 230.0,
+     "volume": 260,
+     "open_interest": 265,
+     "vol_oi_ratio": 1.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 205.0,
+     "volume": 106,
+     "open_interest": 603,
+     "vol_oi_ratio": 0.2,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 2939,
+   "otm_put_oi": 1788,
+   "positioning_lean_score": 0.24,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "CRM",
+   "as_of": "2026-11-13",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-21",
+     "days_ago": 23,
+     "firm": "DA Davidson",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 225.0,
+     "price_target_to": 250.0,
+     "is_rating_change": false,
+     "description": "DA Davidson maintained its Neutral rating on CRM and raised its price target from $225.0 to $250.0"
+    },
+    {
+     "date": "2026-10-21",
+     "days_ago": 23,
+     "firm": "Cantor Fitzgerald",
+     "action": "reiterated",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 300.0,
+     "price_target_to": 300.0,
+     "is_rating_change": false,
+     "description": "Cantor Fitzgerald reiterated its Overweight rating on CRM with a $300.0 price target"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.18,
+    "verdict": "leaning bullish",
+    "analysts": 56,
+    "counts": {
+     "strongBuy": 7,
+     "buy": 34,
+     "hold": 14,
+     "sell": 0,
+     "strongSell": 1
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.25 to 2.18; bearish ratings 2 to 1)"
+   },
+   "price_target": {
+    "mean": 287.08,
+    "median": 285.0,
+    "high": 475.0,
+    "low": 165.0,
+    "current_price": 217.57,
+    "dispersion_pct": 108.0,
+    "upside_vs_mean_pct": 31.9,
+    "upside_vs_median_pct": 31.0
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "CRM",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1w": {
+     "stock_change_pct": -4.01,
+     "sector_etf_change_pct": -1.21,
+     "relative_to_sector_pct": -2.8
+    },
+    "1y": {
+     "stock_change_pct": -9.04,
+     "sector_etf_change_pct": 18.6,
+     "relative_to_sector_pct": -27.64
+    },
+    "1mo": {
+     "stock_change_pct": -8.4,
+     "sector_etf_change_pct": -11.17,
+     "relative_to_sector_pct": 2.77
+    },
+    "ytd": {
+     "stock_change_pct": -13.45,
+     "sector_etf_change_pct": 21.27,
+     "relative_to_sector_pct": -34.72
+    },
+    "1d": {
+     "stock_change_pct": 2.12,
+     "sector_etf_change_pct": 3.23,
+     "relative_to_sector_pct": -1.11
+    },
+    "2w": {
+     "stock_change_pct": -9.95,
+     "sector_etf_change_pct": -8.71,
+     "relative_to_sector_pct": -1.24
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-12",
+    "realtime_end": "2026-11-12",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9617,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-12",
+      "realtime_end": "2026-11-12",
+      "date": "2026-11-11",
+      "value": "17.49"
+     },
+     {
+      "realtime_start": "2026-11-12",
+      "realtime_end": "2026-11-12",
+      "date": "2026-11-10",
+      "value": "19.46"
+     },
+     {
+      "realtime_start": "2026-11-12",
+      "realtime_end": "2026-11-12",
+      "date": "2026-11-09",
+      "value": "19.92"
+     },
+     {
+      "realtime_start": "2026-11-12",
+      "realtime_end": "2026-11-12",
+      "date": "2026-11-06",
+      "value": "25.64"
+     },
+     {
+      "realtime_start": "2026-11-12",
+      "realtime_end": "2026-11-12",
+      "date": "2026-11-05",
+      "value": "28.18"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "CRM",
+   "as_of": "2026-11-13",
+   "events": [
+    {
+     "type": "earnings",
+     "date": "2026-12-02",
+     "description": "CRM Q3 2027 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 19,
+     "eps_estimate": 3.4724,
+     "hour": "amc"
+    },
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 26,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}

@@ -1,0 +1,395 @@
+{
+ "schema": 1,
+ "ticker": "HUBS",
+ "trading_day": "2026-11-12",
+ "captured_at": "2026-11-13T02:03:30+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 6.39,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "today: 6.39% \u2014 elevated for this stock (about 1.65x its normal move for that span, expected ~3.87%)",
+   "the past 2 weeks: -9.91% \u2014 typical relative to this stock's own typical volatility (expected ~12.23%, 0.81x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past year: -45.36% \u2014 typical relative to this stock's own typical volatility (expected ~61.40%, 0.74x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "HUBS",
+   "price": 215.84,
+   "prev_close": 202.88,
+   "change_pct": 6.39,
+   "session_date": "2026-11-12",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 61.4,
+   "changes_pct": {
+    "1d": 6.39,
+    "1w": 5.31,
+    "2w": -9.91,
+    "1mo": -4.59,
+    "1y": -45.36,
+    "ytd": -43.53
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "today: 6.39% \u2014 elevated for this stock (about 1.65x its normal move for that span, expected ~3.87%)",
+     "the past 2 weeks: -9.91% \u2014 typical relative to this stock's own typical volatility (expected ~12.23%, 0.81x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past year: -45.36% \u2014 typical relative to this stock's own typical volatility (expected ~61.40%, 0.74x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 215.96,
+    "change_pct": 0.06,
+    "as_of": "2026-11-12 17:18 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "HUBS",
+   "headlines": [
+    {
+     "headline": "$148: the price of dinner or a diamond.",
+     "summary": "Shaan Puri and Sam Parr explain how De Beers built the entire diamond price story out of marketing.No more small boy spreadsheets, build your business on the free HubSpot CRM:...",
+     "datetime": 1794522833,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=260d339449152339f254aacf4a1544e1cc3a7fff340c6e10599a5a4d1905e5dd"
+    },
+    {
+     "headline": "Should You Buy HubSpot Stock For Its Cash?",
+     "summary": "For questions about this article or underlying research, email help@trefis.com.",
+     "datetime": 1794515237,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=31167faa3b25e611f1a17c2fdce76ba761b0c031a10404c50b36b95344afed70"
+    },
+    {
+     "headline": "HubSpot founder\u2019s return could lift investor sentiment despite painful reset, Jefferies says",
+     "summary": "Jefferies believes HubSpot (NYSE:HUBS)\u2019s decision to bring back co-founder Brian Halligan as chief executive could restore investor confidence, although the transition is likely to involve difficult...",
+     "datetime": 1794512040,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=f6dc781f7d7341d3738bf0384a191bb6df819ec5dc6bf4601a2d3c7d2557b79b"
+    },
+    {
+     "headline": "HubSpot names new CEO, CFO in company \u2018re-founding\u2019",
+     "summary": "The SaaS company brought back its former CEO of 16 years and named an Adobe finance leader to its CFO chair as it navigates ongoing AI pressures.",
+     "datetime": 1794511699,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=989d09d55bbd83742a08f0ca326db30953e0782f5b147b03842375900fc7e15d"
+    },
+    {
+     "headline": "HubSpot stock rises 6% on sweeping CEO and CFO leadership overhaul",
+     "summary": "Investing.com -- HubSpot Inc (NYSE:HUBS) shares rose 6.1% in premarket trading Thursday after the software provider announced a sweeping leadership overhaul, bringing back co-founder Brian Halligan...",
+     "datetime": 1794495458,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=825b5e865384a2791260ec7488667d3213a7747c23b79f66ce71d37600156044"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "HUBS",
+   "expiry": "2026-11-20",
+   "days_to_expiry": 7,
+   "atm_iv_pct": 63.2,
+   "iv_chain_percentile": 20,
+   "skew_points": 1.1,
+   "put_call_ratio": 0.7,
+   "total_put_oi": 5427,
+   "total_call_oi": 7716
+  },
+  "get_options_positioning": {
+   "ticker": "HUBS",
+   "spot": 215.84,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-20",
+   "primary_days_to_expiry": 7,
+   "max_pain_strike": 220.0,
+   "resistance_walls": [
+    {
+     "strike": 240.0,
+     "open_interest": 1453
+    },
+    {
+     "strike": 230.0,
+     "open_interest": 981
+    },
+    {
+     "strike": 300.0,
+     "open_interest": 714
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 190.0,
+     "open_interest": 784
+    },
+    {
+     "strike": 220.0,
+     "open_interest": 638
+    },
+    {
+     "strike": 180.0,
+     "open_interest": 621
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-20",
+     "days_to_expiry": 7,
+     "atm_iv_pct": 63.2
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 200.0,
+     "volume": 699,
+     "open_interest": 322,
+     "vol_oi_ratio": 2.2,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 185.0,
+     "volume": 504,
+     "open_interest": 546,
+     "vol_oi_ratio": 0.9,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 240.0,
+     "volume": 264,
+     "open_interest": 1453,
+     "vol_oi_ratio": 0.2,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 7314,
+   "otm_put_oi": 3988,
+   "positioning_lean_score": 0.29,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "HUBS",
+   "as_of": "2026-11-13",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-06",
+     "days_ago": 7,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 287.0,
+     "price_target_to": 230.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Neutral rating on HUBS and cut its price target from $287.0 to $230.0"
+    },
+    {
+     "date": "2026-11-06",
+     "days_ago": 7,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 310.0,
+     "price_target_to": 240.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Neutral rating on HUBS and cut its price target from $310.0 to $240.0"
+    },
+    {
+     "date": "2026-11-05",
+     "days_ago": 8,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 240.0,
+     "price_target_to": 224.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Neutral rating on HUBS and cut its price target from $240.0 to $224.0"
+    },
+    {
+     "date": "2026-11-05",
+     "days_ago": 8,
+     "firm": "TD Cowen",
+     "action": "maintained",
+     "from_grade": "Hold",
+     "to_grade": "Hold",
+     "price_target_from": 260.0,
+     "price_target_to": 215.0,
+     "is_rating_change": false,
+     "description": "TD Cowen maintained its Hold rating on HUBS and cut its price target from $260.0 to $215.0"
+    },
+    {
+     "date": "2026-11-05",
+     "days_ago": 8,
+     "firm": "RBC Capital",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 300.0,
+     "price_target_to": 260.0,
+     "is_rating_change": false,
+     "description": "RBC Capital maintained its Outperform rating on HUBS and cut its price target from $300.0 to $260.0"
+    }
+   ],
+   "consensus": {
+    "rating": "hold",
+    "score": 2.8,
+    "verdict": "neutral",
+    "analysts": 35,
+    "counts": {
+     "strongBuy": 2,
+     "buy": 6,
+     "hold": 25,
+     "sell": 1,
+     "strongSell": 1
+    },
+    "trend": "deteriorating",
+    "trend_detail": "consensus softened over 3 months (score 2.44 to 2.8; bearish ratings 1 to 2)"
+   },
+   "price_target": {
+    "mean": 228.9,
+    "median": 225.0,
+    "high": 320.0,
+    "low": 170.0,
+    "current_price": 215.84,
+    "dispersion_pct": 65.5,
+    "upside_vs_mean_pct": 6.1,
+    "upside_vs_median_pct": 4.2
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "HUBS",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1w": {
+     "stock_change_pct": -6.35,
+     "sector_etf_change_pct": -1.21,
+     "relative_to_sector_pct": -5.14
+    },
+    "1y": {
+     "stock_change_pct": -47.49,
+     "sector_etf_change_pct": 18.6,
+     "relative_to_sector_pct": -66.09
+    },
+    "1mo": {
+     "stock_change_pct": -8.32,
+     "sector_etf_change_pct": -11.17,
+     "relative_to_sector_pct": 2.85
+    },
+    "ytd": {
+     "stock_change_pct": -46.92,
+     "sector_etf_change_pct": 21.27,
+     "relative_to_sector_pct": -68.19
+    },
+    "1d": {
+     "stock_change_pct": 2.99,
+     "sector_etf_change_pct": 3.23,
+     "relative_to_sector_pct": -0.24
+    },
+    "2w": {
+     "stock_change_pct": -18.51,
+     "sector_etf_change_pct": -8.71,
+     "relative_to_sector_pct": -9.8
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-12",
+    "realtime_end": "2026-11-12",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9617,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-12",
+      "realtime_end": "2026-11-12",
+      "date": "2026-11-11",
+      "value": "17.49"
+     },
+     {
+      "realtime_start": "2026-11-12",
+      "realtime_end": "2026-11-12",
+      "date": "2026-11-10",
+      "value": "19.46"
+     },
+     {
+      "realtime_start": "2026-11-12",
+      "realtime_end": "2026-11-12",
+      "date": "2026-11-09",
+      "value": "19.92"
+     },
+     {
+      "realtime_start": "2026-11-12",
+      "realtime_end": "2026-11-12",
+      "date": "2026-11-06",
+      "value": "25.64"
+     },
+     {
+      "realtime_start": "2026-11-12",
+      "realtime_end": "2026-11-12",
+      "date": "2026-11-05",
+      "value": "28.18"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "HUBS",
+   "as_of": "2026-11-13",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 26,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-09",
+     "description": "HUBS Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 88,
+     "eps_estimate": 4.0054,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-04",
+     "description": "HUBS reported Q3 2026 earnings after the close \u2014 EPS 3.81 vs 3.3351 expected (beat, +14.2%)",
+     "source": "finnhub",
+     "days_ago": 9,
+     "eps_actual": 3.81,
+     "eps_estimate": 3.3351,
+     "surprise": "beat",
+     "surprise_pct": 14.2,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

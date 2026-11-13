@@ -1,0 +1,391 @@
+{
+ "schema": 1,
+ "ticker": "ANET",
+ "trading_day": "2026-11-12",
+ "captured_at": "2026-11-13T02:03:37+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 5.06,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 5.06% \u2014 typical relative to this stock's own typical volatility (expected ~5.43%, 0.93x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "this week: 29.83% \u2014 elevated relative to this stock's own typical volatility (expected ~12.14%, 2.46x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past 2 weeks: 12.16% \u2014 typical relative to this stock's own typical volatility (expected ~17.17%, 0.71x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past year: 53.14% \u2014 typical relative to this stock's own typical volatility (expected ~86.20%, 0.62x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "ANET",
+   "price": 206.63,
+   "prev_close": 196.68,
+   "change_pct": 5.06,
+   "session_date": "2026-11-12",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 86.2,
+   "changes_pct": {
+    "1d": 5.06,
+    "1w": 29.83,
+    "2w": 12.16,
+    "1mo": 5.74,
+    "1y": 53.14,
+    "ytd": 54.66
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 5.06% \u2014 typical relative to this stock's own typical volatility (expected ~5.43%, 0.93x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "this week: 29.83% \u2014 elevated relative to this stock's own typical volatility (expected ~12.14%, 2.46x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past 2 weeks: 12.16% \u2014 typical relative to this stock's own typical volatility (expected ~17.17%, 0.71x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past year: 53.14% \u2014 typical relative to this stock's own typical volatility (expected ~86.20%, 0.62x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 207.34,
+    "change_pct": 0.34,
+    "as_of": "2026-11-12 19:45 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "ANET",
+   "headlines": [
+    {
+     "headline": "Dow Jones Futures Rise After Market Weathers Nvidia CEO Huang's Exit, Surging Yields; SpaceX-Tesla Merger Deal Close",
+     "summary": "The stock market held up well given Nvidia CEO Jensen Huang's exit, surging yields and more. Cisco led key earnings reports late.",
+     "datetime": 1794527272,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=29a78bd2ce9f098216b8703032bc86519f8cb074a568e6fa2a4b610c7d8d0c9f"
+    },
+    {
+     "headline": "Piper Sandler\u2019s James Fish Calls Arista Networks (ANET) a Top Pick. Here\u2019s What He Sees Ahead",
+     "summary": "We just published a list of the 10 Best Growth Stocks for the Next 5 Years and Arista Networks (NYSE:ANET) ranked 7th on this list. Technology stocks went from celebration to rout within two sessions...",
+     "datetime": 1794525115,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=189adea7803dde682e2883325d54e413a539f7f326d3f0376ddb3524e312b941"
+    },
+    {
+     "headline": "3 AI Infrastructure Stocks To Watch As Nvidia Chip Curbs Reshape Cloud Spending",
+     "summary": "Washington is turning the screws on advanced AI chips going to China, and that puts Nvidia and the wider AI infrastructure trade under a harsh new spotlight. Power is shifting from chip designers to...",
+     "datetime": 1794517989,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=a9e48e6fb51d6cc768704fa7ff180d0b57f38986fdb02a22cb6d6900cc2818e5"
+    },
+    {
+     "headline": "Arista Networks (ANET) Guides Higher, Is The Stock Overvalued Following Earnings?",
+     "summary": "What Arista Networks\u2019 latest earnings and guidance tell investors Arista Networks (ANET) just paired a third quarter earnings update with fresh fourth quarter 2026 guidance, giving investors new...",
+     "datetime": 1794514374,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=d4ebd12665ab86126ab04aca1e70075544a165322755cd46c864b936b1f18216"
+    },
+    {
+     "headline": "S&P 500 Top Movers for Nov. 12, 2026: AMD and AVGO Gain, GPN and NVDA Fall",
+     "summary": "S&P 500 top movers on Nov. 12, 2026 included AMD, AVGO, ANET, VLO and MPC among gainers, while GPN, SMCI, KDP, MRNA and NVDA led declines.",
+     "datetime": 1794513968,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=6df1ed164784a9c1004bf9ddc8ddd88b274e7ab7b23b279e74cc42528d0f86ff"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "ANET",
+   "expiry": "2026-11-27",
+   "days_to_expiry": 14,
+   "atm_iv_pct": 53.8,
+   "iv_chain_percentile": 2,
+   "skew_points": 2.6,
+   "put_call_ratio": 0.94,
+   "total_put_oi": 2253,
+   "total_call_oi": 2398
+  },
+  "get_options_positioning": {
+   "ticker": "ANET",
+   "spot": 206.63,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-27",
+   "primary_days_to_expiry": 14,
+   "max_pain_strike": 185.0,
+   "resistance_walls": [
+    {
+     "strike": 195.0,
+     "open_interest": 444
+    },
+    {
+     "strike": 200.0,
+     "open_interest": 338
+    },
+    {
+     "strike": 205.0,
+     "open_interest": 269
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 175.0,
+     "open_interest": 317
+    },
+    {
+     "strike": 165.0,
+     "open_interest": 291
+    },
+    {
+     "strike": 185.0,
+     "open_interest": 274
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 14,
+     "atm_iv_pct": 53.8
+    },
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 21,
+     "atm_iv_pct": 55.3
+    },
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 54.5
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 225.0,
+     "volume": 202,
+     "open_interest": 107,
+     "vol_oi_ratio": 1.9,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 702,
+   "otm_put_oi": 2237,
+   "positioning_lean_score": -0.52,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "ANET",
+   "as_of": "2026-11-13",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-04",
+     "days_ago": 9,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 259.0,
+     "price_target_to": 291.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Buy rating on ANET and raised its price target from $259.0 to $291.0"
+    },
+    {
+     "date": "2026-11-04",
+     "days_ago": 9,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 250.0,
+     "price_target_to": 270.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Overweight rating on ANET and raised its price target from $250.0 to $270.0"
+    },
+    {
+     "date": "2026-11-04",
+     "days_ago": 9,
+     "firm": "Piper Sandler",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 240.0,
+     "price_target_to": 261.0,
+     "is_rating_change": false,
+     "description": "Piper Sandler maintained its Overweight rating on ANET and raised its price target from $240.0 to $261.0"
+    },
+    {
+     "date": "2026-11-04",
+     "days_ago": 9,
+     "firm": "Barclays",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 289.0,
+     "price_target_to": 236.0,
+     "is_rating_change": false,
+     "description": "Barclays maintained its Overweight rating on ANET and cut its price target from $289.0 to $236.0"
+    },
+    {
+     "date": "2026-11-04",
+     "days_ago": 9,
+     "firm": "Wells Fargo",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 255.0,
+     "price_target_to": 245.0,
+     "is_rating_change": false,
+     "description": "Wells Fargo maintained its Overweight rating on ANET and cut its price target from $255.0 to $245.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.7,
+    "verdict": "leaning bullish",
+    "analysts": 30,
+    "counts": {
+     "strongBuy": 9,
+     "buy": 21,
+     "hold": 0,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.74 to 1.7)"
+   },
+   "price_target": {
+    "mean": 249.65,
+    "median": 245.0,
+    "high": 305.0,
+    "low": 201.73,
+    "current_price": 206.63,
+    "dispersion_pct": 41.4,
+    "upside_vs_mean_pct": 20.8,
+    "upside_vs_median_pct": 18.6
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "ANET",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1w": {
+     "stock_change_pct": 10.2,
+     "sector_etf_change_pct": -1.21,
+     "relative_to_sector_pct": 11.41
+    },
+    "1y": {
+     "stock_change_pct": 43.29,
+     "sector_etf_change_pct": 18.6,
+     "relative_to_sector_pct": 24.69
+    },
+    "1mo": {
+     "stock_change_pct": -3.83,
+     "sector_etf_change_pct": -11.17,
+     "relative_to_sector_pct": 7.34
+    },
+    "ytd": {
+     "stock_change_pct": 47.22,
+     "sector_etf_change_pct": 21.27,
+     "relative_to_sector_pct": 25.95
+    },
+    "1d": {
+     "stock_change_pct": 6.3,
+     "sector_etf_change_pct": 3.23,
+     "relative_to_sector_pct": 3.07
+    },
+    "2w": {
+     "stock_change_pct": 5.33,
+     "sector_etf_change_pct": -8.71,
+     "relative_to_sector_pct": 14.04
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-12",
+    "realtime_end": "2026-11-12",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9617,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-12",
+      "realtime_end": "2026-11-12",
+      "date": "2026-11-11",
+      "value": "17.49"
+     },
+     {
+      "realtime_start": "2026-11-12",
+      "realtime_end": "2026-11-12",
+      "date": "2026-11-10",
+      "value": "19.46"
+     },
+     {
+      "realtime_start": "2026-11-12",
+      "realtime_end": "2026-11-12",
+      "date": "2026-11-09",
+      "value": "19.92"
+     },
+     {
+      "realtime_start": "2026-11-12",
+      "realtime_end": "2026-11-12",
+      "date": "2026-11-06",
+      "value": "25.64"
+     },
+     {
+      "realtime_start": "2026-11-12",
+      "realtime_end": "2026-11-12",
+      "date": "2026-11-05",
+      "value": "28.18"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "ANET",
+   "as_of": "2026-11-13",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 26,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-10",
+     "description": "ANET Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 89,
+     "eps_estimate": 1.2966,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-03",
+     "description": "ANET reported Q3 2026 earnings after the close \u2014 EPS 1.2 vs 1.0979 expected (beat, +9.3%)",
+     "source": "finnhub",
+     "days_ago": 10,
+     "eps_actual": 1.2,
+     "eps_estimate": 1.0979,
+     "surprise": "beat",
+     "surprise_pct": 9.3,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}
