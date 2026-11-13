@@ -17,8 +17,10 @@ export interface ModelOption {
   model: string;
   /** OpenAI reasoning effort; null when the model has no separate reasoning step. */
   reasoning_effort: string | null;
-  /** False when the server has no API key for this vendor. */
+  /** False when a run on this vendor would be refused; see `unavailable_reason`. */
   available: boolean;
+  /** Why it's unavailable. Absent from backends that predate it: treat as "not_configured". */
+  unavailable_reason?: "not_configured" | "out_of_credits" | null;
 }
 
 export interface Citation {

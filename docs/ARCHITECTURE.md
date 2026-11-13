@@ -90,7 +90,7 @@ the whole flow.
 | Endpoint | Notes |
 |---|---|
 | `POST /v1/analyze` | SSE by default; `?stream=false` returns one `AnalysisResult` JSON document. Optional `x-session-id` header (a UUID is minted otherwise). Body: `{"query": "...", "provider": "openai"}`: query 1–500 chars; `provider` (`openai` \| `anthropic`) is optional and defaults to `LLM_PROVIDER`. It picks only the vendor; each vendor's model is server config. A vendor without an API key ends the run at once with an `error` event |
-| `GET /v1/models` | `{"options": [ModelOption]}`: each vendor the model picker offers, with the model ID this server runs for it, its reasoning setting, and `available` (an API key is set). OpenAI first |
+| `GET /v1/models` | `{"options": [ModelOption]}`: each vendor the model picker offers, with the model ID this server runs for it, its reasoning setting, and `available`, and when it's false, `unavailable_reason`: `not_configured` (no API key) or `out_of_credits` (the account ran dry; cleared after 5 minutes). OpenAI first |
 | `GET /v1/tickers/{ticker}/history?period=` | `1W` / `1M` / `6M` / `YTD` / `1Y` |
 | `GET /v1/tickers/{ticker}/stats` | quick stats + analyst targets for the sidebar |
 | `GET /v1/health` | `{"status": "ok", "version": ...}` |
@@ -289,6 +289,28 @@ jsonPayload.event="run" AND jsonPayload.cost_usd>0.005     -- unusually expensiv
 jsonPayload.run_id="<id>"                                  -- one run, every line
 severity>=WARNING                                          -- tool fallbacks and failures
 ```
+
+**When a vendor runs out of credits.** Credits are prepaid and topped up by hand, so an empty
+account is an outage for that vendor, not a bill. Each adapter turns its vendor's error (Anthropic:
+402 `billing_error`; OpenAI: 429 `insufficient_quota`) into `llm.base.OutOfCredits`. The service
+then:
+
+- tells the reader to switch model ("Claude is unavailable right now: this demo has run out of
+  Claude credits. Switch to OpenAI…");
+- refuses that vendor up front for 5 minutes (`_CREDITS_COOLDOWN_SECONDS`, per instance), so later
+  runs fail at once without fetching data, and `GET /v1/models` reports it `available: false` with
+  `unavailable_reason: "out_of_credits"`, which steers the picker to the other vendor;
+- logs one ERROR line with `jsonPayload.alert="llm_out_of_credits"` and the vendor.
+
+One-time setup, so that line reaches you by email: in the Cloud Console open **Logging → Logs
+Explorer**, run
+
+```
+resource.type="cloud_run_revision" AND jsonPayload.alert="llm_out_of_credits"
+```
+
+then **Actions → Create log alert**: name it "LLM out of credits", set the time between
+notifications (1 hour is plenty), and pick or create an email notification channel.
 
 The older text lines are kept as messages (`[agent]` per-tool timings and cache hits, `[llm]` per-turn
 usage and latency, `[redis]` final-answer lookups, `[quality] TICKER flags…`, `[answer] … repaired`),

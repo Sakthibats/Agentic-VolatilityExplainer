@@ -29,6 +29,7 @@ from volatility_explainer.clients.redis_cache import (
 )
 from volatility_explainer.config import get_settings
 from volatility_explainer.llm import get_provider, is_configured
+from volatility_explainer.llm.base import OutOfCredits
 from volatility_explainer.observability import bind_run_id
 from volatility_explainer.query import evaluate_query
 
@@ -39,6 +40,37 @@ _FAILED_MESSAGE = (
     "The investigation couldn't finish (a data source or the model failed). Please try again."
 )
 
+# After a vendor reports its account is out of credits, runs on it are refused up front for
+# this long, then tried again (credits are topped up by hand). Per process: each Cloud Run
+# instance learns from its own first failure. While it lasts, /v1/models reports the vendor
+# unavailable, so the picker steers new runs to the other one.
+_CREDITS_COOLDOWN_SECONDS = 300
+_out_of_credits_until: dict[str, float] = {}
+
+# The marker a Cloud Logging alert policy matches (docs/ARCHITECTURE.md § Observability).
+OUT_OF_CREDITS_ALERT = "llm_out_of_credits"
+
+
+def _is_out_of_credits(vendor: str) -> bool:
+    return _out_of_credits_until.get(vendor, 0.0) > time.monotonic()
+
+
+def _out_of_credits_message(vendor: str) -> str:
+    label = _PROVIDER_LABELS.get(vendor, vendor)
+    other = next((v for k, v in _PROVIDER_LABELS.items() if k != vendor), "the other model")
+    return (
+        f"{label} is unavailable right now: this demo has run out of {label} credits. "
+        f"Switch to {other} in the model picker and try again."
+    )
+
+
+def _availability(settings, vendor: str) -> dict:
+    if not is_configured(settings, vendor):
+        return {"available": False, "unavailable_reason": "not_configured"}
+    if _is_out_of_credits(vendor):
+        return {"available": False, "unavailable_reason": "out_of_credits"}
+    return {"available": True}
+
 
 def model_catalog() -> ModelCatalog:
     """The vendors a user can pick, with the model each runs here. OpenAI first: it is the
@@ -48,11 +80,11 @@ def model_catalog() -> ModelCatalog:
         ModelOption(
             provider="openai", vendor="OpenAI", model=settings.openai_model,
             reasoning_effort=settings.openai_reasoning_effort,
-            available=is_configured(settings, "openai"),
+            **_availability(settings, "openai"),
         ),
         ModelOption(
             provider="anthropic", vendor="Anthropic", model=settings.anthropic_model,
-            available=is_configured(settings, "anthropic"),
+            **_availability(settings, "anthropic"),
         ),
     ])
 
@@ -169,6 +201,13 @@ async def analyze(
             ticker=None, query=raw_query, status="error",
             error_message=f"{label} isn't set up on this server. Pick the other model and try again.",
         )
+    if _is_out_of_credits(provider_name):
+        # Known to be empty: fail before fetching any data, without re-alerting.
+        _log_run("error", (time.perf_counter() - run_t0) * 1000, **base, error="out_of_credits")
+        return AnalysisResult(
+            ticker=None, query=raw_query, status="error",
+            error_message=_out_of_credits_message(provider_name),
+        )
 
     decision = await asyncio.to_thread(evaluate_query, raw_query)
     if not decision.in_scope or not decision.ticker:
@@ -242,6 +281,31 @@ async def analyze(
             hypotheses=_shape_hypotheses(result.get("hypotheses", []), ticker),
             cache_hits=result.get("cache_hits", []),
             error_message=result.get("error_message", ""),
+        )
+
+    except OutOfCredits as exc:
+        elapsed_ms = (time.perf_counter() - t0) * 1000
+        _out_of_credits_until[exc.vendor] = time.monotonic() + _CREDITS_COOLDOWN_SECONDS
+        # The alert line: once per instance per cooldown, since later runs stop above.
+        _logger.error(
+            f"[credits] {exc.vendor} is out of credits — refusing {exc.vendor} runs for "
+            f"{_CREDITS_COOLDOWN_SECONDS // 60} min. Top up the account.",
+            extra={"fields": {"alert": OUT_OF_CREDITS_ALERT, "vendor": exc.vendor}},
+        )
+        _log_run(
+            "error", elapsed_ms, **base, ticker=ticker,
+            model=provider.model if provider else None, question=bool(question),
+            error="out_of_credits",
+        )
+        log_query_background(
+            anonymous_id=session_id, ticker=ticker, query=raw_query.strip(),
+            result={"status": "error", "data": {}, "tiles": [], "hypotheses": []},
+            elapsed_ms=elapsed_ms,
+            llm_provider=provider_name, llm_model=provider.model if provider else None,
+        )
+        return AnalysisResult(
+            ticker=ticker, query=raw_query.strip(), status="error",
+            error_message=_out_of_credits_message(exc.vendor),
         )
 
     except Exception as exc:

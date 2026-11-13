@@ -41,7 +41,10 @@ class ModelOption(BaseModel):
     # OpenAI reasoning effort ("low", ...). None: no separate reasoning step (Claude runs with
     # extended thinking off, which forced tool calls require).
     reasoning_effort: str | None = None
-    available: bool  # False: no API key on this server, so a run would be refused
+    available: bool  # False: a run on this vendor would be refused (see unavailable_reason)
+    # Why it's unavailable: no API key here, or the account ran out of credits (cleared a few
+    # minutes later, when the server tries the vendor again). None while available.
+    unavailable_reason: Literal["not_configured", "out_of_credits"] | None = None
 
 
 class ModelCatalog(BaseModel):

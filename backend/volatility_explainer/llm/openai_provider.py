@@ -27,6 +27,7 @@ from volatility_explainer.llm.base import (
     AssistantTurn,
     HistoryItem,
     OnToolInput,
+    OutOfCredits,
     ToolCall,
     ToolResults,
     Usage,
@@ -135,6 +136,12 @@ def _tool_calls(output: list[Any]) -> list[ToolCall]:
     return calls
 
 
+def _out_of_credits(exc: openai.APIStatusError) -> bool:
+    """OpenAI answers 429 with code insufficient_quota: a RateLimitError, which the SDK
+    retries twice before raising (checked against SDK 3.46)."""
+    return "insufficient_quota" in (getattr(exc, "code", None), getattr(exc, "type", None))
+
+
 class OpenAIProvider:
     name = "openai"
 
@@ -158,6 +165,34 @@ class OpenAIProvider:
         return {"reasoning": {"effort": effort}, "max_output_tokens": max_tokens + headroom}
 
     async def run_turn(
+        self,
+        *,
+        system: str,
+        history: list[HistoryItem],
+        tools: list[dict],
+        max_tokens: int,
+        stream_tool: str | None = None,
+        on_tool_input: OnToolInput | None = None,
+    ) -> AssistantTurn:
+        try:
+            return await self._run_turn(
+                system=system, history=history, tools=tools, max_tokens=max_tokens,
+                stream_tool=stream_tool, on_tool_input=on_tool_input,
+            )
+        except openai.APIStatusError as exc:
+            if _out_of_credits(exc):
+                raise OutOfCredits(self.name) from exc
+            raise
+
+    def complete(self, prompt: str, *, max_tokens: int) -> str:
+        try:
+            return self._complete(prompt, max_tokens=max_tokens)
+        except openai.APIStatusError as exc:
+            if _out_of_credits(exc):
+                raise OutOfCredits(self.name) from exc
+            raise
+
+    async def _run_turn(
         self,
         *,
         system: str,
@@ -212,7 +247,7 @@ class OpenAIProvider:
             raw=[item.model_dump(by_alias=True, exclude_none=True) for item in response.output],
         )
 
-    def complete(self, prompt: str, *, max_tokens: int) -> str:
+    def _complete(self, prompt: str, *, max_tokens: int) -> str:
         client = openai.OpenAI(
             api_key=self._api_key, timeout=_COMPLETE_TIMEOUT_SECONDS, max_retries=1
         )

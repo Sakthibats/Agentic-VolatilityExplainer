@@ -42,7 +42,7 @@ multi-ticker comparison, anything resembling trading advice or signals.
 | Migration | Streamlit monolith → FastAPI + Next.js. Phases 0–3 ✅. **Phase 4 (metering / rate limiting) is next and not started** |
 | Backend | FastAPI, fully async, `/v1` REST + SSE, Docker → Google Cloud Run |
 | Frontend | Next.js 16 static export → Cloudflare Pages |
-| Quality gates | 379 offline pytest tests + 25 `live` tests (19 upstream data contracts, weekly; 6 LLM-vendor checks that skip without keys). ruff, eslint (blocking), tsc all clean. Heuristic quality flags on every explanation (`[quality]` log line) |
+| Quality gates | 386 offline pytest tests + 25 `live` tests (19 upstream data contracts, weekly; 6 LLM-vendor checks that skip without keys). ruff, eslint (blocking), tsc all clean. Heuristic quality flags on every explanation (`[quality]` log line) |
 | Models | Users pick the vendor per run with a model picker in the query bar: OpenAI (`OPENAI_MODEL`, default `gpt-6-luna`; the picker's default) or Claude (`ANTHROPIC_MODEL`, Haiku 5.5). Requests without `provider` use `LLM_PROVIDER` (default `anthropic`). Both run the same loop behind `llm/`; the eval harness compares models on recorded data (`evals/`, results in the README) |
 | Biggest gaps | The eval scores answers automatically but has **no labelled catalysts or judge yet**, so it can't measure whether the model found the true cause · no rate limiting and CORS `*` (deferred: traffic is low; the run log now records each request's `origin` for when it's needed) |
 
@@ -159,7 +159,8 @@ tests/                            mirrors the backend; offline by default (`pyte
 ├── analytics/                    test_supabase_logger (queued payload, quality_flags semantics)
 ├── llm/                          pricing + selection · test_openai_provider (scripted fake Responses
 │                                 stream through the real loop) · test_provider_clients (timeouts,
-│                                 one client per provider) · test_live_providers (pytest -m live)
+│                                 one client per provider, each vendor's out-of-credits error) ·
+│                                 test_live_providers (pytest -m live)
 └── evals/                        test_capture (selection) · test_replay_and_scorers (isolation, scorers)
 
 evals/                            capture.py (daily fixture recorder) · cases.py · replay.py (fixture
@@ -192,7 +193,9 @@ root                              pyproject.toml (deps, ruff, pytest config) · 
 - **Quality checks measure, never rewrite.** `agent/quality.py` flags the explanation; it must not
   alter or block the answer, and a failing check must not fail the run.
 - **Degrade gracefully.** Every data source keeps a yfinance fallback. Redis, Supabase, Finnhub and
-  FRED are all optional. `service.analyze()` never raises.
+  FRED are all optional. `service.analyze()` never raises. A vendor out of credits (prepaid, topped
+  up by hand) fails its runs with a "switch model" message, is skipped for 5 minutes, and logs one
+  `llm_out_of_credits` alert line (adapters raise `llm.base.OutOfCredits`).
 - **Keys stay out of logs.** Tools log upstream errors, and httpx puts the full URL in every
   error message, so an API key must never sit in a URL or an exception string. Finnhub takes its key
   in the `X-Finnhub-Token` header; FRED only accepts a query param, so `clients/fred.py` strips

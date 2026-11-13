@@ -351,9 +351,9 @@ def test_models_lists_each_vendor_with_the_model_it_runs_here():
 
     assert body["options"] == [
         {"provider": "openai", "vendor": "OpenAI", "model": "gpt-6-luna",
-         "reasoning_effort": "low", "available": True},
+         "reasoning_effort": "low", "available": True, "unavailable_reason": None},
         {"provider": "anthropic", "vendor": "Anthropic", "model": "claude-haiku-4-5-20251001",
-         "reasoning_effort": None, "available": True},
+         "reasoning_effort": None, "available": True, "unavailable_reason": None},
     ]
 
 
@@ -362,6 +362,9 @@ def test_models_marks_a_vendor_without_a_key_unavailable():
         options = client.get("/v1/models").json()["options"]
 
     assert {o["provider"]: o["available"] for o in options} == {"openai": True, "anthropic": False}
+    assert {o["provider"]: o["unavailable_reason"] for o in options} == {
+        "openai": None, "anthropic": "not_configured",
+    }
 
 
 @pytest.mark.parametrize("path", [
@@ -448,3 +451,60 @@ def test_guardrail_and_failed_runs_are_logged_too(caplog):
     assert guardrail["status"] == "guardrail" and "ticker" not in guardrail
     assert failed["status"] == "error" and failed["error"] == "RuntimeError"
     assert failed["ticker"] == "AAPL"
+
+
+# ---------------------------------------------------------------------------
+# A vendor account out of credits (llm.base.OutOfCredits)
+# ---------------------------------------------------------------------------
+
+
+def _out_of_credits(vendor="anthropic"):
+    from volatility_explainer.llm.base import OutOfCredits
+
+    def orch(ticker, query, **callbacks):
+        raise OutOfCredits(vendor)
+
+    return orch
+
+
+def test_out_of_credits_tells_the_reader_to_switch_and_raises_one_alert(caplog):
+    p1, p2, p3, p4 = _patched(orch=_out_of_credits())
+    with p1, p2, p3, p4, caplog.at_level("INFO"):
+        first = client.post("/v1/analyze?stream=false", json={"query": "why did AAPL drop?"}).json()
+        second = client.post("/v1/analyze?stream=false", json={"query": "why did AAPL drop?"}).json()
+
+    for body in (first, second):
+        assert body["status"] == "error"
+        assert "run out of Claude credits" in body["error_message"]
+        assert "Switch to OpenAI" in body["error_message"]
+    alerts = [r for r in caplog.records
+              if getattr(r, "fields", {}).get("alert") == service.OUT_OF_CREDITS_ALERT]
+    assert len(alerts) == 1 and alerts[0].levelname == "ERROR"
+    assert alerts[0].fields["vendor"] == "anthropic"
+    assert [e["error"] for e in _run_events(caplog)] == ["out_of_credits", "out_of_credits"]
+
+
+def test_runs_on_an_empty_vendor_stop_before_any_work_until_the_cooldown_ends(monkeypatch):
+    p1, p2, p3, p4 = _patched(orch=_out_of_credits())
+    with p1, p2, p3, p4:
+        client.post("/v1/analyze?stream=false", json={"query": "why did AAPL drop?"})
+
+    with patch.object(service, "evaluate_query") as gate, \
+         patch.object(service, "run_explainer") as orch:
+        body = client.post("/v1/analyze?stream=false", json={"query": "AAPL"}).json()
+    assert body["status"] == "error"
+    gate.assert_not_called()   # no ticker lookup, no data fetch, no LLM call
+    orch.assert_not_called()
+
+    # The other vendor is unaffected, and the picker shows why Claude is off.
+    options = {o["provider"]: o for o in client.get("/v1/models").json()["options"]}
+    assert options["openai"]["available"] is True
+    assert options["anthropic"]["available"] is False
+    assert options["anthropic"]["unavailable_reason"] == "out_of_credits"
+
+    # Topped up: after the cooldown the vendor is tried again.
+    later = service.time.monotonic() + service._CREDITS_COOLDOWN_SECONDS + 1
+    monkeypatch.setattr(service.time, "monotonic", lambda: later)
+    assert {o["provider"]: o["available"] for o in client.get("/v1/models").json()["options"]} == {
+        "openai": True, "anthropic": True,
+    }
