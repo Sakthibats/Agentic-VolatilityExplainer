@@ -22,7 +22,11 @@ const VENDORS: { provider: LlmProvider; vendor: string; Icon: typeof OpenAIIcon 
 ];
 
 function reasoningLine(option: ModelOption): string {
-  if (!option.available) return "Not set up on this server";
+  if (!option.available) {
+    return option.unavailable_reason === "out_of_credits"
+      ? "Out of credits right now"
+      : "Not set up on this server";
+  }
   return option.reasoning_effort
     ? `Reasoning effort · ${option.reasoning_effort}`
     : "Extended thinking · off";

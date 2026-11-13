@@ -18,6 +18,7 @@ from volatility_explainer.llm.base import (
     AssistantTurn,
     HistoryItem,
     OnToolInput,
+    OutOfCredits,
     ToolCall,
     ToolResults,
     Usage,
@@ -67,6 +68,15 @@ def _messages_payload(history: list[HistoryItem]) -> list[dict]:
     return messages
 
 
+def _out_of_credits(exc: anthropic.APIStatusError) -> bool:
+    """Anthropic answers 402 with error type billing_error; the SDK has no subclass for it,
+    so it arrives as the base APIStatusError (checked against SDK 0.111). Older responses
+    used a 400 whose message names the credit balance, so that counts too."""
+    if exc.status_code == 402 or getattr(exc, "type", None) == "billing_error":
+        return True
+    return exc.status_code == 400 and "credit balance" in str(exc).lower()
+
+
 class AnthropicProvider:
     name = "anthropic"
 
@@ -85,6 +95,34 @@ class AnthropicProvider:
         return self._async_client
 
     async def run_turn(
+        self,
+        *,
+        system: str,
+        history: list[HistoryItem],
+        tools: list[dict],
+        max_tokens: int,
+        stream_tool: str | None = None,
+        on_tool_input: OnToolInput | None = None,
+    ) -> AssistantTurn:
+        try:
+            return await self._run_turn(
+                system=system, history=history, tools=tools, max_tokens=max_tokens,
+                stream_tool=stream_tool, on_tool_input=on_tool_input,
+            )
+        except anthropic.APIStatusError as exc:
+            if _out_of_credits(exc):
+                raise OutOfCredits(self.name) from exc
+            raise
+
+    def complete(self, prompt: str, *, max_tokens: int) -> str:
+        try:
+            return self._complete(prompt, max_tokens=max_tokens)
+        except anthropic.APIStatusError as exc:
+            if _out_of_credits(exc):
+                raise OutOfCredits(self.name) from exc
+            raise
+
+    async def _run_turn(
         self,
         *,
         system: str,
@@ -139,7 +177,7 @@ class AnthropicProvider:
             raw=response.content,
         )
 
-    def complete(self, prompt: str, *, max_tokens: int) -> str:
+    def _complete(self, prompt: str, *, max_tokens: int) -> str:
         client = anthropic.Anthropic(
             api_key=self._api_key, timeout=_COMPLETE_TIMEOUT_SECONDS, max_retries=1
         )

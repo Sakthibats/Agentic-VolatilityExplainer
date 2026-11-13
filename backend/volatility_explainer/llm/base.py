@@ -70,6 +70,18 @@ class ToolResults:
 
 HistoryItem = UserMessage | AssistantTurn | ToolResults
 
+
+class OutOfCredits(RuntimeError):
+    """The vendor refused the request because the account has no credits left.
+
+    Each adapter raises this in place of its SDK's own error (shapes differ by vendor), so
+    the service can tell the reader to switch model and alert the operator to top up.
+    """
+
+    def __init__(self, vendor: str):
+        super().__init__(f"the {vendor} account is out of credits")
+        self.vendor = vendor
+
 # Called with (tool name, the tool's input JSON received so far) as it streams in.
 OnToolInput = Callable[[str, str], None]
 
@@ -92,9 +104,11 @@ class LLMProvider(Protocol):
 
         Input for `stream_tool` is streamed to `on_tool_input` as it is generated (the
         cumulative JSON text so far, not a delta); every other tool's input arrives whole.
+        Raises OutOfCredits when the vendor account has no credits left.
         """
         ...
 
     def complete(self, prompt: str, *, max_tokens: int) -> str:
-        """A plain, non-streamed, synchronous text completion with no tools."""
+        """A plain, non-streamed, synchronous text completion with no tools. Raises
+        OutOfCredits when the vendor account has no credits left."""
         ...
