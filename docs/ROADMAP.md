@@ -30,8 +30,9 @@ Ordered roughly by value to the portfolio goal. None are committed.
 
 1. **Eval labels and a judge** — the replay harness and automatic scorers exist (`evals/`); add
    hand-labelled catalysts and a judge model to score catalyst recall, abstention and calibration.
-2. **Structured observability** — per-run traces (turns, tools, tokens, cache hits, cost) in place of
-   `print` logging.
+2. **Structured observability** — structured logs and a per-run `run` event are in place
+   (`observability.py`); next are log-based dashboards (cost per day, incomplete rate, flag rates)
+   and per-turn traces.
 3. **Real MCP server** — expose `tools/` over MCP for external clients.
 4. **Historical IV rank** — replace the intra-chain IV percentile with a proper 52-week rank
    (needs stored IV history).
@@ -56,7 +57,6 @@ From a grep-based scan plus targeted reading, not a full audit. Paths are relati
 
 | Severity | Issue | Fix |
 |---|---|---|
-| 🟡 Medium | Mixed `print` and `logging`. The operational lines (orchestrator timings, the `[quality]` line, service) use `print`; clients, analyst, events and analytics use `logging` | Candidate 2. Add a logging config first: none exists, so `logger.info` output is dropped today |
 | 🟡 Low | The `query_log` table isn't defined in the repo, only later changes (`docs/sql/`). A fresh Supabase project can't be rebuilt, and nothing checks the logger's payload against the table | A full `create table` in `docs/sql/`; Supabase CLI migrations later |
 | 🟢 Low | `frontend/lib/api.ts` mirrors `api/schemas.py` by hand, with no drift check | Candidate 5 |
 

@@ -31,8 +31,7 @@ Remaining steps, in order:
 2. The user labels about 40 cases.
 3. Judge scorer (catalyst rank-1 / top-3, abstention on controls, calibration; each vendor
    judges the other's answers, agreement reported), a full eval run, a new README table.
-4. A logging config plus one structured per-run line with tokens and cost.
-5. Eval fixtures moved off `main` to an orphan branch (no new credentials).
+4. Eval fixtures moved off `main` to an orphan branch (no new credentials).
 
 ## Working rules
 
@@ -49,9 +48,11 @@ Remaining steps, in order:
   `orchestrator._partial_json_string`, `_TOOL_DISPATCH`, …). If code that reads one of these
   moves to another module, the patch silently stops applying while tests stay green. Check
   `git grep -n "orchestrator\.\w*" tests evals` before moving anything.
-- **Logging:** the backend has no logging config, so `logger.info(...)` output is dropped and
-  only `print` reaches Cloud Run. Add a config before converting any `print` (the `[quality]`
-  and `[answer]` lines are the only production quality signal).
+- **Logging:** use `_logger = logging.getLogger(__name__)`, never `print`, in backend code.
+  `observability.configure_logging()` (called by `api/app.py` and the eval CLIs) emits JSON on Cloud
+  Run and text locally. Per-run facts belong in the `run` event (`service._log_run`), not new lines.
+  Never log the user's query text, session ID or IP (PRIVACY.md). Keep the `[quality]` and
+  `[answer]` message text stable: they are searched for in Cloud Logging.
 - **Frontend:** `frontend/CLAUDE.md` pulls in the Next.js 16 warning: read the bundled docs in
   `frontend/node_modules/next/dist/docs/` before writing Next code.
 - **Anthropic SDK / model changes:** the model ID defaults in `config.py` (`anthropic_model`).

@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import copy
 import json
+import logging
 from typing import Any
 
 import openai
@@ -31,6 +32,8 @@ from volatility_explainer.llm.base import (
     Usage,
     UserMessage,
 )
+
+_logger = logging.getLogger(__name__)
 
 _PROMPT_CACHE_KEY = "volx-agent-v1"
 _REASONING_HEADROOM_TOKENS = 4000
@@ -126,7 +129,7 @@ def _tool_calls(output: list[Any]) -> list[ToolCall]:
         except ValueError:
             # Cut off mid-call (output budget exhausted). A half-written call can't be run or
             # trusted; dropping it lets the loop end the run as incomplete.
-            print(f"[llm]   dropped {item.name}: arguments were not valid JSON")
+            _logger.warning(f"[llm]   dropped {item.name}: arguments were not valid JSON")
             continue
         calls.append(ToolCall(id=item.call_id, name=item.name, input=arguments))
     return calls

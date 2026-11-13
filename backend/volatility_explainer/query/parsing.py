@@ -7,8 +7,11 @@ re-implements it.
 from __future__ import annotations
 
 import json
+import logging
 import re
 from dataclasses import dataclass
+
+_logger = logging.getLogger(__name__)
 
 
 @dataclass(frozen=True)
@@ -165,7 +168,7 @@ def _resolve_ticker_llm(query: str) -> str | None:
             ),
         )
     except Exception as exc:  # no answer: not cached, so the next ask retries
-        print(f"[resolve] LLM ticker fallback FAILED — {type(exc).__name__}: {exc}")
+        _logger.warning(f"[resolve] LLM ticker fallback FAILED — {type(exc).__name__}: {exc}")
         return None
 
     result = None
@@ -205,7 +208,7 @@ def _resolve_ticker(term: str, search_query: str | None = None, *, require_name_
 
         hits = yf.Search(query, max_results=10).quotes
     except Exception as exc:  # no answer: not cached, so the next ask retries
-        print(f"[resolve] yfinance search {query!r} FAILED — {type(exc).__name__}: {exc}")
+        _logger.warning(f"[resolve] yfinance search {query!r} FAILED — {type(exc).__name__}: {exc}")
         return None
 
     result = None

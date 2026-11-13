@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+import logging
 import os
 import time
 from collections.abc import Callable
@@ -51,6 +52,8 @@ from volatility_explainer.tools.news import fetch_news
 from volatility_explainer.tools.options import fetch_options_data, fetch_options_positioning
 from volatility_explainer.tools.price import fetch_price_data
 from volatility_explainer.tools.sector import fetch_sector_comparison
+
+_logger = logging.getLogger(__name__)
 
 # Set VOLX_LOG_LLM_PAYLOAD=1 for per-turn LLM diagnostics: payload sizes, the content-block
 # breakdown, and a full dump of the system/tools/messages sent to the model. Off by default;
@@ -166,7 +169,7 @@ async def _run_tool_guarded(name: str, inputs: dict, ticker: str) -> tuple[str, 
         )
     except TimeoutError:
         elapsed = time.perf_counter() - t0
-        print(f"[agent] {name:<25} TIMED OUT after {_TOOL_TIMEOUT_SECONDS:.0f}s — continuing without it")
+        _logger.warning(f"[agent] {name:<25} TIMED OUT after {_TOOL_TIMEOUT_SECONDS:.0f}s — continuing without it")
         return (
             name,
             {"error": f"{name} timed out after {_TOOL_TIMEOUT_SECONDS:.0f}s"},
@@ -325,7 +328,7 @@ async def _prefetch(
         tool_data[name] = _with_run_context(name, result, tool_data)
         if hit:
             stats.cache_hits.add(name)
-        print(f"[agent] {name:<25} {elapsed * 1000:6.0f}ms  {'(cached, redis)' if hit else '(deterministic)'}")
+        _logger.info(f"[agent] {name:<25} {elapsed * 1000:6.0f}ms  {'(cached, redis)' if hit else '(deterministic)'}")
     return tool_data
 
 
@@ -396,18 +399,18 @@ def _log_request(turn: int, history: list[HistoryItem]) -> None:
     if not _LOG_LLM_PAYLOAD:
         return
     history_json = json.dumps([vars(item) for item in history], default=str)
-    print(
+    _logger.info(
         f"[llm]   turn {turn + 1} payload          history={len(history)}  "
         f"~{len(SYSTEM_PROMPT) + len(history_json):,} chars (system+history, excl. tool defs)"
     )
-    print(f"[llm]   turn {turn + 1} system:\n{SYSTEM_PROMPT}")
-    print(f"[llm]   turn {turn + 1} history:\n{history_json}")
+    _logger.info(f"[llm]   turn {turn + 1} system:\n{SYSTEM_PROMPT}")
+    _logger.info(f"[llm]   turn {turn + 1} history:\n{history_json}")
 
 
 def _log_response(turn: int, response: AssistantTurn, elapsed: float, final: bool) -> None:
     """Token usage and timing, always; where the output went, with VOLX_LOG_LLM_PAYLOAD=1."""
     usage = response.usage
-    print(
+    _logger.info(
         f"[llm]   turn {turn + 1} usage            in={usage.input_tokens} "
         f"(cache_read={usage.cache_read_tokens}, cache_write={usage.cache_write_tokens})  "
         f"out={usage.output_tokens} (reasoning={usage.reasoning_tokens})"
@@ -416,11 +419,11 @@ def _log_response(turn: int, response: AssistantTurn, elapsed: float, final: boo
     # size approximates the JSON payload itself (tiles/hypotheses).
     if _LOG_LLM_PAYLOAD:
         if response.text:
-            print(f"[llm]   turn {turn + 1} content block     text       {len(response.text):5d} chars (preamble — unwanted)")
+            _logger.info(f"[llm]   turn {turn + 1} content block     text       {len(response.text):5d} chars (preamble — unwanted)")
         for call in response.tool_calls:
             size = len(json.dumps(call.input, default=str))
-            print(f"[llm]   turn {turn + 1} content block     tool_use   {size:5d} chars  ({call.name})")
-    print(f"[llm]   turn {turn + 1} {'(final)' if final else '(tool selection)':<17} {elapsed * 1000:6.0f}ms")
+            _logger.info(f"[llm]   turn {turn + 1} content block     tool_use   {size:5d} chars  ({call.name})")
+    _logger.info(f"[llm]   turn {turn + 1} {'(final)' if final else '(tool selection)':<17} {elapsed * 1000:6.0f}ms")
 
 
 async def _run_tool_round(
@@ -436,7 +439,7 @@ async def _run_tool_round(
     fresh_calls = []
     for call in tool_calls:
         if call.name in tool_data:
-            print(f"[agent] {call.name:<25}   cached (duplicate call skipped)")
+            _logger.info(f"[agent] {call.name:<25}   cached (duplicate call skipped)")
             results_by_id[call.id] = tool_data[call.name]
         else:
             fresh_calls.append(call)
@@ -452,7 +455,7 @@ async def _run_tool_round(
         slowest = max(slowest, elapsed)
         if hit:
             stats.cache_hits.add(call.name)
-        print(f"[agent] {call.name:<25} {elapsed * 1000:6.0f}ms  {'(cached, redis)' if hit else ''}")
+        _logger.info(f"[agent] {call.name:<25} {elapsed * 1000:6.0f}ms  {'(cached, redis)' if hit else ''}")
         result = _with_run_context(call.name, result, tool_data)
         tool_data[call.name] = result
         results_by_id[call.id] = result
@@ -460,7 +463,7 @@ async def _run_tool_round(
         # Wall time of the whole batch vs. the slowest individual call — if these are close,
         # the fetches genuinely overlapped rather than running one after another.
         batch_elapsed = time.perf_counter() - batch_t0
-        print(f"[agent] {'+'.join(c.name for c in fresh_calls):<25} {batch_elapsed * 1000:6.0f}ms  (batch wall time, n={len(fresh_calls)})")
+        _logger.info(f"[agent] {'+'.join(c.name for c in fresh_calls):<25} {batch_elapsed * 1000:6.0f}ms  (batch wall time, n={len(fresh_calls)})")
     stats.tool_seconds += slowest
 
     return ToolResults([
@@ -510,7 +513,7 @@ def _analysis_result(
     tiles, hypotheses, answer_repairs = normalize_answer(final_input)
     tiles = attach_news_citations(tiles, tool_data)
     if answer_repairs and completed:
-        print(f"[answer]  {ticker:<6} repaired: {', '.join(answer_repairs)}")
+        _logger.info(f"[answer]  {ticker:<6} repaired: {', '.join(answer_repairs)}")
 
     # Measured, never enforced: the flags describe the write-up, they don't change it.
     quality_flags: list[str] = []
@@ -520,9 +523,9 @@ def _analysis_result(
                 summary, ticker=ticker, query=query, overview=overview,
                 tool_data=tool_data, tiles=tiles, removed_citations=removed,
             )
-            print(f"[quality] {ticker:<6} {', '.join(quality_flags) or 'clean'}")
+            _logger.info(f"[quality] {ticker:<6} {', '.join(quality_flags) or 'clean'}")
         except Exception as exc:  # a heuristic must never cost the reader their answer
-            print(f"[quality] {ticker:<6} check FAILED — {exc}")
+            _logger.warning(f"[quality] {ticker:<6} check FAILED — {exc}")
 
     return {
         "ticker": ticker,
@@ -626,7 +629,7 @@ async def run_explainer(
         history.append(await _run_tool_round(response.tool_calls, tool_data, ticker, stats))
 
     total_elapsed = time.perf_counter() - run_t0
-    print(f"[orchestrator] {ticker:<6} total {total_elapsed * 1000:6.0f}ms  (llm {stats.llm_seconds * 1000:.0f}ms, tools {stats.tool_seconds * 1000:.0f}ms)")
+    _logger.info(f"[orchestrator] {ticker:<6} total {total_elapsed * 1000:6.0f}ms  (llm {stats.llm_seconds * 1000:.0f}ms, tools {stats.tool_seconds * 1000:.0f}ms)")
     usage = stats.as_usage(provider, total_elapsed)
     cache_hits = sorted(stats.cache_hits)
 

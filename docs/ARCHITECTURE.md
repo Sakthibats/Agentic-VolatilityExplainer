@@ -227,6 +227,8 @@ Settings load through pydantic-settings from `.env` at the repo root, regardless
 | `FRED_API_KEY` | no | Macro falls back to yfinance `^VIX` / `^GSPC` |
 | `REDIS_URL` | no | Redis tool cache and final-answer cache become no-ops (process memo remains) |
 | `SUPABASE_URL` / `SUPABASE_KEY` | no | Usage logging becomes a no-op. Service-role key: server-side only |
+| `LOG_FORMAT` | no | `json` or `text`. Defaults to JSON on Cloud Run (detected by `K_SERVICE`) and text elsewhere |
+| `LOG_LEVEL` | no | Defaults to `INFO`. httpx/httpcore/urllib3 stay at `WARNING` regardless, so request URLs (FRED's carries its key) are never logged |
 | `VOLX_LOG_LLM_PAYLOAD=1` | no | Enables per-turn payload sizes, content-block breakdown and full message dumps |
 | `VOLX_SAVE_RUNS=runs.jsonl` | no | Appends every finished run (raw and resolved explanation, tool data, quality flags) to that file, for `scripts/quality_report.py`. Local use |
 | `NEXT_PUBLIC_API_URL` (frontend) | build time | Defaults to `http://localhost:8080` |
@@ -257,14 +259,42 @@ The reader-facing version of this list is [PRIVACY.md](../PRIVACY.md).
 
 ## Observability
 
-Currently stdout `print` lines, prefixed by source: `[agent]` per-tool timings and cache hits,
-`[llm]` per-turn token usage (including cache read/write) and latency, `[redis]` final-answer
-lookups, `[orchestrator]` / `[run:TICKER]` totals, and `[quality] TICKER flag, flag…` (or `clean`)
-for every explanation — searchable in Cloud Run's log explorer. The same flags are stored per run in
-the Supabase usage log's `quality_flags` column; the migration and reporting queries are in
-[`docs/sql/query_log_quality_flags.sql`](sql/query_log_quality_flags.sql). Some modules (clients, analyst, events, analytics)
-use `logging` instead. Moving to structured logs or traces is an open item — see
-[AGENTS.md § Open questions](../AGENTS.md#7-open-questions--good-places-to-ideate).
+[`observability.py`](../backend/volatility_explainer/observability.py) configures logging once,
+from `api/app.py` (and from the eval CLIs). On Cloud Run each line is one JSON object, which Cloud
+Logging turns into a structured entry: `severity` sets the level and every other key is a
+searchable `jsonPayload` field. Locally the same lines print as text. `LOG_FORMAT` and `LOG_LEVEL`
+override both. Every line logged during an investigation carries its `run_id`, including lines from
+tool worker threads, so one run's lines can be pulled out of interleaved traffic.
+
+**The `run` event.** `service._log_run` writes exactly one line per investigation, whatever the
+outcome (complete, incomplete, guardrail, error):
+
+| Field | Meaning |
+|---|---|
+| `status`, `elapsed_ms`, `error` | outcome; `error` is the exception type on failure (the message and traceback are in the line before it) |
+| `ticker`, `provider`, `model`, `question` | what ran; `question` is whether a specific question was asked, never its text |
+| `final_answer_cached` | served from the final-answer cache; such runs carry no token or cost fields, since that spend was counted when the answer was made |
+| `turns`, `input_tokens`, `cache_read_tokens`, `cache_write_tokens`, `output_tokens`, `reasoning_tokens`, `cost_usd`, `llm_ms`, `tool_ms`, `tool_rounds` | from `result["usage"]` (live runs only) |
+| `tools`, `tools_cached`, `quality_flags`, `answer_repairs` | what the agent fetched, what came from cache, and the measured write-up quality |
+| `origin` | the browser's `Origin` header: which sites call the API, the input for narrowing CORS later |
+
+Never logged: the query text, the session ID, or an IP address (see [PRIVACY.md](../PRIVACY.md)).
+
+Useful Cloud Logging filters:
+
+```
+jsonPayload.event="run"                                    -- every investigation
+jsonPayload.event="run" AND jsonPayload.status!="complete" -- anything that didn't finish
+jsonPayload.event="run" AND jsonPayload.cost_usd>0.005     -- unusually expensive runs
+jsonPayload.run_id="<id>"                                  -- one run, every line
+severity>=WARNING                                          -- tool fallbacks and failures
+```
+
+The older text lines are kept as messages (`[agent]` per-tool timings and cache hits, `[llm]` per-turn
+usage and latency, `[redis]` final-answer lookups, `[quality] TICKER flags…`, `[answer] … repaired`),
+so existing searches still match. Quality flags are also stored per run in the Supabase usage log's
+`quality_flags` column; the migration and reporting queries are in
+[`docs/sql/query_log_quality_flags.sql`](sql/query_log_quality_flags.sql).
 
 ---
 

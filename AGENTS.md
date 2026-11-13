@@ -42,9 +42,9 @@ multi-ticker comparison, anything resembling trading advice or signals.
 | Migration | Streamlit monolith → FastAPI + Next.js. Phases 0–3 ✅. **Phase 4 (metering / rate limiting) is next and not started** |
 | Backend | FastAPI, fully async, `/v1` REST + SSE, Docker → Google Cloud Run |
 | Frontend | Next.js 16 static export → Cloudflare Pages |
-| Quality gates | 366 offline pytest tests + 25 `live` tests (19 upstream data contracts, weekly; 6 LLM-vendor checks that skip without keys). ruff, eslint (blocking), tsc all clean. Heuristic quality flags on every explanation (`[quality]` log line) |
+| Quality gates | 379 offline pytest tests + 25 `live` tests (19 upstream data contracts, weekly; 6 LLM-vendor checks that skip without keys). ruff, eslint (blocking), tsc all clean. Heuristic quality flags on every explanation (`[quality]` log line) |
 | Models | Users pick the vendor per run with a model picker in the query bar: OpenAI (`OPENAI_MODEL`, default `gpt-6-luna`; the picker's default) or Claude (`ANTHROPIC_MODEL`, Haiku 5.5). Requests without `provider` use `LLM_PROVIDER` (default `anthropic`). Both run the same loop behind `llm/`; the eval harness compares models on recorded data (`evals/`, results in the README) |
-| Biggest gaps | The eval scores answers automatically but has **no labelled catalysts or judge yet**, so it can't measure whether the model found the true cause · no rate limiting and CORS `*` · `print`-based logging · token usage and `cost_usd` are returned per run (`result["usage"]`) but not logged |
+| Biggest gaps | The eval scores answers automatically but has **no labelled catalysts or judge yet**, so it can't measure whether the model found the true cause · no rate limiting and CORS `*` (deferred: traffic is low; the run log now records each request's `origin` for when it's needed) |
 
 ## 4. Architecture in one screen
 
@@ -91,6 +91,7 @@ current: adding, moving or deleting a file updates this map in the same change.
 backend/volatility_explainer/     Python package (hatchling; pytest pythonpath = . and backend)
 ├── significance.py               ★ the move/vol model, pure: horizon changes, realized vol, the two-axis
 │                                 verdict (assess_moves), the "what happened" paragraph (describe_move)
+├── observability.py              logging setup: JSON lines on Cloud Run, text locally; run_id on every line
 ├── config.py                     pydantic-settings; keys are SecretStr, all optional; LLM_PROVIDER + models
 ├── api/
 │   ├── app.py                    routes, CORS, SSE plumbing (one asyncio.Task + queue per run)
@@ -149,6 +150,7 @@ tests/                            mirrors the backend; offline by default (`pyte
 ├── api/test_api.py               routes, SSE order, client disconnect still finishes the run
 ├── conftest.py                   empties every per-process cache before each test
 ├── test_significance.py          the move/vol model: bands, verdicts, the overview paragraph
+├── test_observability.py         log format, config, and no API key in the logs even at DEBUG
 ├── marketdata/test_snapshots.py  chart history: real closes, or no points; snapshot memo
 ├── query/test_parsing.py         guardrail + resolver, incl. "no network call" assertions
 ├── tools/                        one test file per tool + test_live_contracts.py (19 live tests)
@@ -191,10 +193,12 @@ root                              pyproject.toml (deps, ruff, pytest config) · 
   alter or block the answer, and a failing check must not fail the run.
 - **Degrade gracefully.** Every data source keeps a yfinance fallback. Redis, Supabase, Finnhub and
   FRED are all optional. `service.analyze()` never raises.
-- **Keys stay out of logs.** Tools print upstream errors, and httpx puts the full URL in every
+- **Keys stay out of logs.** Tools log upstream errors, and httpx puts the full URL in every
   error message, so an API key must never sit in a URL or an exception string. Finnhub takes its key
   in the `X-Finnhub-Token` header; FRED only accepts a query param, so `clients/fred.py` strips
-  `api_key` from errors before re-raising. Pinned by `tests/clients/test_api_keys.py`.
+  `api_key` from errors before re-raising. httpx also logs every request URL at INFO, so
+  `observability.configure_logging` holds it (and httpcore, urllib3) at WARNING. Pinned by
+  `tests/clients/test_api_keys.py` and `tests/test_observability.py`.
 - **Vendor-neutral loop.** `agent/orchestrator.py` never imports a vendor SDK; everything vendor-specific
   (message shapes, cache markers, streaming events, usage) lives in `llm/<vendor>_provider.py`. A new
   vendor is a new adapter plus its fake-stream tests, not a change to the loop.
@@ -325,8 +329,9 @@ Framed against the portfolio goal. Each is a live tradeoff, not a settled plan.
    schema validity, figures against the data, invented citations, tool choice, cost and stability
    (`evals/README.md`). Still missing: labelled catalysts and a judge model for catalyst recall,
    abstention and calibration, which is what "is the answer right?" needs.
-2. **Observability and cost.** Structured per-run traces (turns, tools chosen, tokens, cache hits, $)
-   instead of `print`. Show cost per investigation on the About page?
+2. **Observability and cost.** Done in part (2026-11): JSON logs on Cloud Run and one `run` event per
+   investigation with tokens, cost, tools and quality flags (`observability.py`). Open: log-based
+   dashboards and alerts, traces per turn, showing cost per investigation on the About page.
 3. **Abuse and spend control (Phase 4).** Redis token bucket per session/IP, a daily global LLM
    budget, CORS locked to the frontend origin. Log-only first, or enforce straight away?
 4. **Model strategy.** The eval compares Haiku 4.5, Haiku 5.5 and GPT-6 Luna on cost, latency and

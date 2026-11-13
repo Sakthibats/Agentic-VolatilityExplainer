@@ -24,6 +24,7 @@ from pathlib import Path
 
 from volatility_explainer.config import get_settings
 from volatility_explainer.llm import PROVIDERS, build_provider
+from volatility_explainer.observability import configure_logging
 
 from evals.cases import Case, build_cases
 from evals.replay import replay
@@ -109,6 +110,9 @@ async def main_async(args) -> int:
 
     log_path = out.with_suffix(".log")
     with log_path.open("a", encoding="utf-8") as log, contextlib.redirect_stdout(log):
+        # The loop logs through `logging` (observability.py), whose handler holds the stream
+        # it was given, so redirect_stdout alone would no longer reach the file.
+        configure_logging(stream=log, json_format=False)
         await asyncio.gather(*(run_one(*job) for job in jobs))
 
     if state["stopped"]:

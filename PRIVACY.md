@@ -23,11 +23,25 @@ each investigation you run is logged for usage analytics:
 If Supabase isn't configured, none of the above is collected — logging is a no-op by
 design, not a fallback that silently degrades.
 
+### Server logs
+
+Separately, the backend writes operational logs to Google Cloud Logging, where it runs. For each
+investigation they record the ticker, which AI model answered, timings, token counts and cost,
+which data sources were used, the automatic quality labels, whether you asked a specific question
+(**not the question itself**), and the website the request came from (the browser's `Origin`, e.g.
+`https://market-explainer.com`). They do not include your question text, your anonymous ID, or your
+IP address.
+
+The hosting platform (Google Cloud Run) also keeps its own standard request logs, which include
+each request's IP address and browser user agent. Those are kept by Google Cloud for its default
+retention period (30 days) and used only for operating and debugging the service.
+
 ## What's NOT collected
 
 - No account, email, or login is required to use the app.
-- No IP address, device fingerprint, or browser tracking beyond the session-scoped
-  anonymous ID above.
+- No IP address, device fingerprint, or browser tracking in the app's own logs beyond the
+  session-scoped anonymous ID above (the hosting platform's request logs are described under
+  Server logs).
 - No third-party ad or analytics trackers.
 
 ## One caveat

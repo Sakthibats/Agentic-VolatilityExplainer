@@ -1,6 +1,9 @@
+import logging
 from datetime import date, timedelta
 
 from volatility_explainer.config import get_settings
+
+_logger = logging.getLogger(__name__)
 
 # Only the first 3 headlines with a url ever surface as citations (see
 # attach_news_citations in agent/answer.py), and the synthesis step only needs enough
@@ -44,7 +47,7 @@ def fetch_news(ticker: str, *, lookback_days: int = 7) -> dict:
             ]
             return {"ticker": ticker, "headlines": headlines}
     except Exception as exc:
-        print(f"[news:{ticker}]   finnhub   FAILED — {exc}")
+        _logger.warning(f"[news:{ticker}]   finnhub   FAILED — {exc}")
 
     # Fallback: yfinance news
     try:
@@ -66,5 +69,5 @@ def fetch_news(ticker: str, *, lookback_days: int = 7) -> dict:
         ]
         return {"ticker": ticker, "headlines": headlines}
     except Exception as exc:
-        print(f"[news:{ticker}]   yfinance  FAILED — {exc}")
+        _logger.warning(f"[news:{ticker}]   yfinance  FAILED — {exc}")
         return {"ticker": ticker, "headlines": [], "error": str(exc)}
