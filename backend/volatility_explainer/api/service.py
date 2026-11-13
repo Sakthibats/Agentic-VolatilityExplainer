@@ -7,6 +7,8 @@ frontend's job.
 from __future__ import annotations
 
 import asyncio
+import contextvars
+import logging
 import threading
 import time
 from collections.abc import Callable
@@ -27,7 +29,10 @@ from volatility_explainer.clients.redis_cache import (
 )
 from volatility_explainer.config import get_settings
 from volatility_explainer.llm import get_provider, is_configured
+from volatility_explainer.observability import bind_run_id
 from volatility_explainer.query import evaluate_query
+
+_logger = logging.getLogger(__name__)
 
 _PROVIDER_LABELS = {"anthropic": "Claude", "openai": "OpenAI"}
 _FAILED_MESSAGE = (
@@ -61,7 +66,7 @@ def _shape_tiles(raw_tiles: list, ticker: str) -> list[Tile]:
     """
     good = [t for t in raw_tiles if isinstance(t, dict) and t.get("summary")]
     if len(good) < len(raw_tiles):
-        print(f"[run:{ticker}] skipped {len(raw_tiles) - len(good)} malformed tile(s) from model output")
+        _logger.warning(f"[run:{ticker}] skipped {len(raw_tiles) - len(good)} malformed tile(s) from model output")
     return [
         Tile(
             agent=t.get("agent", ""),
@@ -85,7 +90,7 @@ def _shape_citations(raw: list) -> list[Citation]:
 def _shape_hypotheses(raw: list, ticker: str) -> list[Hypothesis]:
     good = [h for h in raw if isinstance(h, dict) and h.get("hypothesis")]
     if len(good) < len(raw):
-        print(f"[run:{ticker}] skipped {len(raw) - len(good)} malformed hypothesis/hypotheses from model output")
+        _logger.warning(f"[run:{ticker}] skipped {len(raw) - len(good)} malformed hypothesis/hypotheses from model output")
     shaped = []
     for idx, h in enumerate(good):
         conf = h.get("confidence")
@@ -99,6 +104,37 @@ def _shape_hypotheses(raw: list, ticker: str) -> list[Hypothesis]:
     return shaped
 
 
+# Token counts copied from result["usage"] into the run event.
+_USAGE_FIELDS = (
+    "turns", "input_tokens", "cache_read_tokens", "cache_write_tokens", "output_tokens",
+    "reasoning_tokens", "cost_usd", "llm_ms", "tool_ms", "tool_rounds",
+)
+
+
+def _log_run(status: str, elapsed_ms: float, *, result: dict | None = None, **fields) -> None:
+    """The one structured line per investigation: what ran, what it cost, how it went.
+
+    Never the query text, session ID or IP (PRIVACY.md). In Cloud Logging, filter on
+    jsonPayload.event="run". Token counts and cost appear only for a live run: an answer
+    served from the final-answer cache carries the original run's usage, already counted.
+    """
+    result = result or {}
+    entry = {"event": "run", "status": status, "elapsed_ms": round(elapsed_ms), **fields}
+    if result:
+        entry["tools"] = sorted(result.get("data") or {})
+        entry["tools_cached"] = result.get("cache_hits") or []
+        entry["quality_flags"] = result.get("quality_flags")
+        entry["answer_repairs"] = result.get("answer_repairs") or []
+    if result and not fields.get("final_answer_cached"):
+        usage = result.get("usage") or {}
+        entry.update({k: usage[k] for k in _USAGE_FIELDS if k in usage})
+    ticker = fields.get("ticker") or "-"
+    cost = f"  ${entry['cost_usd']:.5f}" if entry.get("cost_usd") is not None else ""
+    _logger.info(
+        f"[run:{ticker}] {status} total {elapsed_ms:.0f}ms{cost}", extra={"fields": entry}
+    )
+
+
 async def analyze(
     raw_query: str,
     session_id: str,
@@ -107,6 +143,7 @@ async def analyze(
     on_summary: Callable[[str], None] | None = None,
     on_overview: Callable[[str], None] | None = None,
     provider_name: str | None = None,
+    origin: str | None = None,
 ) -> AnalysisResult:
     """Run one investigation end to end: scope gate → cache → orchestrator → shaping.
 
@@ -114,10 +151,17 @@ async def analyze(
     the server default, LLM_PROVIDER. Never raises: failures come back as status "error" so
     API callers always get a well-formed AnalysisResult. Sync/network-bound helpers (scope
     gate, Redis) run on worker threads; the orchestrator itself is awaited natively.
+
+    `origin` is the browser's Origin header, logged with the run so the set of sites that
+    really call this API is known before CORS is narrowed.
     """
+    bind_run_id()
+    run_t0 = time.perf_counter()
     settings = get_settings()
     provider_name = provider_name or settings.llm_provider
+    base = {"provider": provider_name, "origin": (origin or "")[:200] or None}
     if not is_configured(settings, provider_name):
+        _log_run("error", (time.perf_counter() - run_t0) * 1000, **base, error="vendor_not_configured")
         # Checked up front, before any data is fetched: without a key the run can only fail,
         # and the SDK's own error ("api_key must be set") wouldn't tell the user what to do.
         label = _PROVIDER_LABELS.get(provider_name, repr(provider_name))
@@ -128,6 +172,7 @@ async def analyze(
 
     decision = await asyncio.to_thread(evaluate_query, raw_query)
     if not decision.in_scope or not decision.ticker:
+        _log_run("guardrail", (time.perf_counter() - run_t0) * 1000, **base)
         return AnalysisResult(
             ticker=None, query=raw_query, status="guardrail",
             error_message=decision.message or "Out of scope.",
@@ -147,11 +192,13 @@ async def analyze(
         # A query-specific ask always runs fresh. Cached per vendor, so switching models
         # never serves the other model's answer.
         result = None
+        cached = False
         if not question:
             redis_t0 = time.perf_counter()
             result = await asyncio.to_thread(get_cached_final_answer, ticker, provider.name)
             redis_elapsed = (time.perf_counter() - redis_t0) * 1000
-            print(f"[redis]  final_answer lookup   {redis_elapsed:6.0f}ms  ({'hit' if result else 'miss'})")
+            _logger.info(f"[redis]  final_answer lookup   {redis_elapsed:6.0f}ms  ({'hit' if result else 'miss'})")
+            cached = result is not None
 
         if result is None:
             result = await run_explainer(
@@ -165,19 +212,25 @@ async def analyze(
                 def _write_back(ticker=ticker, result=result, vendor=provider.name) -> None:
                     wb_t0 = time.perf_counter()
                     set_cached_final_answer(ticker, vendor, result)
-                    print(f"[redis]  write-back (async)    {(time.perf_counter() - wb_t0) * 1000:6.0f}ms")
+                    _logger.info(f"[redis]  write-back (async)    {(time.perf_counter() - wb_t0) * 1000:6.0f}ms")
 
-                threading.Thread(target=_write_back, daemon=True).start()
+                # copy_context: the thread's log line keeps this run's run_id.
+                threading.Thread(
+                    target=contextvars.copy_context().run, args=(_write_back,), daemon=True
+                ).start()
 
         elapsed_ms = (time.perf_counter() - t0) * 1000
-        print(f"[run:{ticker}] total {elapsed_ms:.0f}ms")
+        status = result.get("status", "incomplete")
+        _log_run(
+            status, elapsed_ms, result=result, **base, ticker=ticker, model=provider.model,
+            question=bool(question), final_answer_cached=cached,
+        )
         log_query_background(
             anonymous_id=session_id, ticker=ticker, query=raw_query.strip(),
             result=result, elapsed_ms=elapsed_ms,
             llm_provider=provider.name, llm_model=provider.model,
         )
 
-        status = result.get("status", "incomplete")
         return AnalysisResult(
             ticker=ticker,
             query=raw_query.strip(),
@@ -193,7 +246,15 @@ async def analyze(
 
     except Exception as exc:
         elapsed_ms = (time.perf_counter() - t0) * 1000
-        print(f"[run:{ticker}] total {elapsed_ms:.0f}ms FAILED — {type(exc).__name__}: {exc}")
+        _logger.error(
+            f"[run:{ticker}] total {elapsed_ms:.0f}ms FAILED — {type(exc).__name__}: {exc}",
+            exc_info=exc,
+        )
+        _log_run(
+            "error", elapsed_ms, **base, ticker=ticker,
+            model=provider.model if provider else None, question=bool(question),
+            error=type(exc).__name__,
+        )
         log_query_background(
             anonymous_id=session_id, ticker=ticker, query=raw_query.strip(),
             result={"status": "error", "data": {}, "tiles": [], "hypotheses": []},

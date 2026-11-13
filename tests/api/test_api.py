@@ -384,3 +384,67 @@ def test_ticker_routes_accept_index_and_class_share_symbols():
 def test_an_oversized_session_id_is_rejected():
     r = client.post("/v1/analyze", json={"query": "AAPL"}, headers={"x-session-id": "x" * 65})
     assert r.status_code == 422
+
+
+# ---------------------------------------------------------------------------
+# The structured per-run log event (observability.py, service._log_run)
+# ---------------------------------------------------------------------------
+
+USAGE = {"turns": 2, "input_tokens": 900, "cache_read_tokens": 4000, "cache_write_tokens": 0,
+         "output_tokens": 700, "reasoning_tokens": 0, "cost_usd": 0.0014, "llm_ms": 5200,
+         "tool_ms": 600, "tool_rounds": [["get_news"]], "provider": "anthropic", "model": "m"}
+
+
+def _run_events(caplog) -> list[dict]:
+    return [r.fields for r in caplog.records if getattr(r, "fields", {}).get("event") == "run"]
+
+
+def test_a_live_run_logs_one_event_with_cost_origin_and_no_query_text(caplog):
+    result = {**ORCH_RESULT, "usage": USAGE, "quality_flags": [], "answer_repairs": ["ranks_rewritten"],
+              "data": {"get_price_data": {}, "get_news": {}}, "cache_hits": ["get_price_data"]}
+    p1, p2, p3, p4 = _patched(orch=lambda t, q, **cb: result)
+    with p1, p2, p3, p4, caplog.at_level("INFO"):
+        client.post("/v1/analyze?stream=false", json={"query": "why did AAPL drop?"},
+                    headers={"Origin": "https://market-explainer.com"})
+
+    [event] = _run_events(caplog)
+    assert event["status"] == "complete"
+    assert event["ticker"] == "AAPL" and event["provider"] == "anthropic"
+    assert event["origin"] == "https://market-explainer.com"
+    assert event["question"] is True and event["final_answer_cached"] is False
+    assert event["cost_usd"] == 0.0014 and event["turns"] == 2 and event["output_tokens"] == 700
+    assert event["tools"] == ["get_news", "get_price_data"]
+    assert event["tools_cached"] == ["get_price_data"]
+    assert event["answer_repairs"] == ["ranks_rewritten"]
+    assert "why did AAPL drop" not in json.dumps(event)  # never the user's text (PRIVACY.md)
+
+
+def test_an_answer_from_the_final_answer_cache_is_not_counted_as_spend(caplog):
+    bare = SimpleNamespace(**{**IN_SCOPE.__dict__, "question": ""})
+    p1, p2, p3, _ = _patched(decision=bare)
+    cached = {**ORCH_RESULT, "usage": USAGE}
+    with p1, p2, p3, patch.object(service, "get_cached_final_answer", lambda t, provider: cached), \
+         caplog.at_level("INFO"):
+        client.post("/v1/analyze?stream=false", json={"query": "AAPL"})
+
+    [event] = _run_events(caplog)
+    assert event["final_answer_cached"] is True
+    assert "cost_usd" not in event and "turns" not in event
+
+
+def test_guardrail_and_failed_runs_are_logged_too(caplog):
+    p1, p2, p3, p4 = _patched(decision=OUT_OF_SCOPE)
+    with p1, p2, p3, p4, caplog.at_level("INFO"):
+        client.post("/v1/analyze?stream=false", json={"query": "bake a cake"})
+
+    def boom(ticker, query, **callbacks):
+        raise RuntimeError("anthropic down")
+
+    p1, p2, p3, p4 = _patched(orch=boom)
+    with p1, p2, p3, p4, caplog.at_level("INFO"):
+        client.post("/v1/analyze?stream=false", json={"query": "why did AAPL drop?"})
+
+    guardrail, failed = _run_events(caplog)
+    assert guardrail["status"] == "guardrail" and "ticker" not in guardrail
+    assert failed["status"] == "error" and failed["error"] == "RuntimeError"
+    assert failed["ticker"] == "AAPL"

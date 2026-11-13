@@ -1,11 +1,14 @@
 """get_price_data: quote, daily history, extended-hours trade, and the significance verdicts
 built on them (computed in significance.py; this module only fetches and assembles)."""
 
+import logging
 from datetime import date, datetime, time
 from zoneinfo import ZoneInfo
 
 from volatility_explainer.config import get_settings
 from volatility_explainer.significance import assess_moves, horizon_changes, realized_vol
+
+_logger = logging.getLogger(__name__)
 
 _MARKET_TZ = ZoneInfo("America/New_York")
 _REGULAR_OPEN, _REGULAR_CLOSE = time(9, 30), time(16, 0)
@@ -44,7 +47,7 @@ def _with_todays_close(hist, quote: dict, ticker: str = ""):
     if quote_day <= last_bar.date():
         return hist
     if abs(float(closes.iloc[-1]) - prev_close) / prev_close > _PREV_CLOSE_TOLERANCE:
-        print(f"[price:{ticker}]  history ends {last_bar.date()}, quote is {quote_day}, "
+        _logger.warning(f"[price:{ticker}]  history ends {last_bar.date()}, quote is {quote_day}, "
               f"but closes disagree ({float(closes.iloc[-1]):.2f} vs {prev_close:.2f}); not joined")
         return hist
     import pandas as pd
@@ -132,7 +135,7 @@ def fetch_price_data(ticker: str) -> dict:
             if price:
                 quote = {"price": price, "prev_close": data.get("pc"), "t": data.get("t")}
     except Exception as exc:
-        print(f"[price:{ticker}]  finnhub   FAILED — {exc}")
+        _logger.warning(f"[price:{ticker}]  finnhub   FAILED — {exc}")
 
     import yfinance as yf
 
@@ -141,7 +144,7 @@ def fetch_price_data(ticker: str) -> dict:
     try:
         hist = yf_ticker.history(period="2y")
     except Exception as exc:
-        print(f"[price:{ticker}]  yfinance history FAILED — {exc}")
+        _logger.warning(f"[price:{ticker}]  yfinance history FAILED — {exc}")
 
     # Neither Finnhub's quote nor the daily history sees pre- or post-market trades; yfinance's
     # info does. Skipped during regular hours, when there is nothing to find.
@@ -150,7 +153,7 @@ def fetch_price_data(ticker: str) -> dict:
         try:
             info = yf_ticker.info
         except Exception as exc:
-            print(f"[price:{ticker}]  yfinance info FAILED — {exc}")
+            _logger.warning(f"[price:{ticker}]  yfinance info FAILED — {exc}")
 
     # Vol is measured before the quote is joined, so a big day after the close isn't judged
     # against a "usual move" that its own size has already inflated (the eval's correction,
@@ -170,7 +173,7 @@ def fetch_price_data(ticker: str) -> dict:
         price = float(hist["Close"].iloc[-1])
         prev_close = float(hist["Close"].iloc[-2]) if len(hist) >= 2 else None
     else:
-        print(f"[price:{ticker}]  yfinance  FAILED — no price history available")
+        _logger.warning(f"[price:{ticker}]  yfinance  FAILED — no price history available")
         return {"ticker": ticker, "error": "no price history available"}
 
     chg_pct = round((price - prev_close) / prev_close * 100, 2) if price and prev_close else None

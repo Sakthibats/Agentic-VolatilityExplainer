@@ -7,6 +7,7 @@ queue so a client disconnect never cancels the underlying run (finish-and-cache)
 from __future__ import annotations
 
 import asyncio
+import logging
 import uuid
 from typing import Annotated
 
@@ -37,6 +38,12 @@ from volatility_explainer.marketdata import (
     fetch_price_history,
     fetch_quick_stats,
 )
+from volatility_explainer.observability import configure_logging
+
+# The ASGI entry point, so configured here: uvicorn sets up its own loggers before importing
+# the app, and this adds the app's handler beside them.
+configure_logging()
+_logger = logging.getLogger(__name__)
 
 _QUEUE_DONE = object()
 
@@ -60,7 +67,9 @@ def _session_id(header_value: str | None) -> str:
     return header_value or str(uuid.uuid4())
 
 
-async def _analyze_event_stream(raw_query: str, session_id: str, provider: str | None = None):
+async def _analyze_event_stream(
+    raw_query: str, session_id: str, provider: str | None = None, origin: str | None = None
+):
     """Yield SSE events while the investigation runs as an independent task.
 
     The task is deliberately NOT tied to this generator's lifetime: if the client
@@ -75,6 +84,7 @@ async def _analyze_event_stream(raw_query: str, session_id: str, provider: str |
             result = await service.analyze(
                 raw_query, session_id,
                 provider_name=provider,
+                origin=origin,
                 on_step=lambda label: events.put_nowait(("step", Step(label=label))),
                 on_overview=lambda text: events.put_nowait(("overview", Overview(text=text))),
                 on_summary=lambda text: events.put_nowait(
@@ -92,7 +102,7 @@ async def _analyze_event_stream(raw_query: str, session_id: str, provider: str |
             else:
                 events.put_nowait(("result", result))
         except Exception as exc:  # service.analyze shouldn't raise, but never hang the stream
-            print(f"[api] analyze stream FAILED — {type(exc).__name__}: {exc}")
+            _logger.error(f"[api] analyze stream FAILED — {type(exc).__name__}: {exc}", exc_info=exc)
             events.put_nowait(("error", ApiError(message="Something went wrong. Please try again.")))
         finally:
             events.put_nowait(_QUEUE_DONE)
@@ -113,11 +123,14 @@ async def analyze(
     body: AnalyzeRequest,
     stream: bool = True,
     x_session_id: str | None = Header(default=None, max_length=_SESSION_ID_MAX),
+    origin: str | None = Header(default=None),
 ):
     session_id = _session_id(x_session_id)
     if stream:
-        return EventSourceResponse(_analyze_event_stream(body.query, session_id, body.provider))
-    return await service.analyze(body.query, session_id, provider_name=body.provider)
+        return EventSourceResponse(
+            _analyze_event_stream(body.query, session_id, body.provider, origin)
+        )
+    return await service.analyze(body.query, session_id, provider_name=body.provider, origin=origin)
 
 
 @app.get("/v1/models", response_model=ModelCatalog)

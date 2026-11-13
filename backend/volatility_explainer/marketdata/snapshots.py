@@ -8,6 +8,7 @@ the agent's yfinance fallbacks. Failures are never cached, so the next request r
 
 from __future__ import annotations
 
+import logging
 from dataclasses import dataclass
 
 import pandas as pd
@@ -17,6 +18,8 @@ from volatility_explainer.clients.redis_cache import (
     set_memoized_tool_data,
 )
 from volatility_explainer.tools.price import extended_hours
+
+_logger = logging.getLogger(__name__)
 
 # Short enough that the sidebar's last price stays close to the overview's (get_price_data
 # is cached for 15 minutes), long enough that repeat page loads don't each hit Yahoo.
@@ -71,7 +74,7 @@ def fetch_price_history(ticker: str, period: str = "6M") -> pd.DataFrame:
         set_memoized_tool_data(ticker, memo_key, df, ttl_seconds=_SNAPSHOT_TTL_SECONDS)
         return df.copy()
     except Exception as exc:
-        print(f"[chart:{ticker}]  yfinance  FAILED — {exc}")
+        _logger.warning(f"[chart:{ticker}]  yfinance  FAILED — {exc}")
         return pd.DataFrame({"date": pd.Series(dtype="datetime64[ns]"),
                              "close": pd.Series(dtype=float)})
 

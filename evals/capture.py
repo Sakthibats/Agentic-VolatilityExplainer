@@ -30,6 +30,7 @@ from zoneinfo import ZoneInfo
 import yfinance as yf
 from volatility_explainer.agent.orchestrator import _TOOL_DISPATCH
 from volatility_explainer.config import get_settings
+from volatility_explainer.observability import configure_logging
 from volatility_explainer.significance import horizon_levels
 
 FIXTURE_DIR = Path(__file__).parent / "fixtures"
@@ -152,6 +153,7 @@ def main() -> int:
     parser.add_argument("--tickers", help="comma-separated tickers; skips selection")
     parser.add_argument("--dry-run", action="store_true", help="print the selection only")
     args = parser.parse_args()
+    configure_logging(json_format=False)  # tool fallbacks log failures; show them in CI output
 
     day = last_trading_day()
     today = datetime.now(ZoneInfo("America/New_York")).date()

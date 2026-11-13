@@ -1,6 +1,9 @@
+import logging
 from concurrent.futures import ThreadPoolExecutor
 
 from volatility_explainer.config import get_settings
+
+_logger = logging.getLogger(__name__)
 
 VIX_SERIES_ID = "VIXCLS"
 
@@ -15,7 +18,7 @@ def fetch_macro() -> dict:
             vix = FredClient(settings).get_series_observations(VIX_SERIES_ID, limit=5)
             return {"vix": vix, "series_id": VIX_SERIES_ID, "source": "fred"}
     except Exception as exc:  # clients/fred.py strips the key from its errors
-        print(f"[macro]         fred      FAILED — {exc}")
+        _logger.warning(f"[macro]         fred      FAILED — {exc}")
 
     # Fallback: yfinance VIX
     try:
