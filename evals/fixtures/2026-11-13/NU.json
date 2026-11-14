@@ -1,0 +1,364 @@
+{
+ "schema": 1,
+ "ticker": "NU",
+ "trading_day": "2026-11-13",
+ "captured_at": "2026-11-14T01:36:41+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 11.75,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 11.75% \u2014 unusual for this stock (about 2.63x its normal move for that span, expected ~4.47%)",
+   "this week: 9.89% \u2014 typical relative to this stock's own typical volatility (expected ~10.00%, 0.99x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past 2 weeks: 13.87% \u2014 typical relative to this stock's own typical volatility (expected ~14.14%, 0.98x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "NU",
+   "price": 13.22,
+   "prev_close": 11.83,
+   "change_pct": 11.75,
+   "session_date": "2026-11-13",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 71.0,
+   "changes_pct": {
+    "1d": 11.75,
+    "1w": 9.89,
+    "2w": 13.87,
+    "1mo": -10.25,
+    "1y": -18.29,
+    "ytd": -22.33
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 11.75% \u2014 unusual for this stock (about 2.63x its normal move for that span, expected ~4.47%)",
+     "this week: 9.89% \u2014 typical relative to this stock's own typical volatility (expected ~10.00%, 0.99x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past 2 weeks: 13.87% \u2014 typical relative to this stock's own typical volatility (expected ~14.14%, 0.98x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 13.07,
+    "change_pct": -1.13,
+    "as_of": "2026-11-13 19:57 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "NU",
+   "headlines": [
+    {
+     "headline": "Nu Holdings Ltd. Reports Q3\u20192026 Managerial Net Income of 1,091.6 Million",
+     "summary": "",
+     "datetime": 1794583111,
+     "source": "Fintel",
+     "url": "https://finnhub.io/api/news?id=eca945c217cd55475a3048422113dc1672581518f2bc58f838b63939516570d3"
+    },
+    {
+     "headline": "Stock Market Today: Dow Jones, S&P 500, Nasdaq 100  Futures Rise as Nvidia CEO Exit Remains in Focus\u2014 CSCO, AMAT, NU in Focus(UPDATED)",
+     "summary": "U.S. stock futures were mixed on Friday, as the Dow Jones, S&amp;P 500, and Nasdaq 100 indices were mixed, after Thursday&#39;s close lower.",
+     "datetime": 1794562844,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=4b6f07fbe022981ec4fb6800419643860c83d59c3ce2a510e07ffd73a152adb0"
+    },
+    {
+     "headline": "Why Is Nu Holdings Stock Gaining Friday?",
+     "summary": "Nu Holdings (NU) beats Q3 revenue forecasts as lending jumps 33% and customers hit 143M. Get the key takeaways from Nu&#39;s latest earnings",
+     "datetime": 1794558122,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=4b07084ba730b5047a72230b31eb6cc5590e6b32512fda60f10812cbfaac5a1c"
+    },
+    {
+     "headline": "Needham Reiterates Buy on Nu Holdings, Maintains $19 Price Target",
+     "summary": "Needham  analyst Kyle Peterson   reiterates Nu Holdings (NYSE:NU) with a Buy and maintains $19 price target.",
+     "datetime": 1794555869,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=4a55915d2ef4ee7c55c8fa66bbdcd729075669488666ae87775bf603d42aa356"
+    },
+    {
+     "headline": "Nu Holdings (NU) Q3 2026 Earnings Call Transcript",
+     "summary": "Record credit growth and a U.S. launch shaped the quarter, but expenses are set to rise.",
+     "datetime": 1794550514,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=3638754b170d2500d3ae24fd736e3eab537558449fbab8b11d6b7a8716cdeb21"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "NU",
+   "expiry": "2026-12-04",
+   "days_to_expiry": 20,
+   "atm_iv_pct": 45.7,
+   "iv_chain_percentile": 1,
+   "skew_points": 6.4,
+   "put_call_ratio": 0.51,
+   "total_put_oi": 2321,
+   "total_call_oi": 4520
+  },
+  "get_options_positioning": {
+   "ticker": "NU",
+   "spot": 13.22,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-27",
+   "primary_days_to_expiry": 13,
+   "max_pain_strike": 12.5,
+   "resistance_walls": [
+    {
+     "strike": 13.0,
+     "open_interest": 1830
+    },
+    {
+     "strike": 15.0,
+     "open_interest": 1619
+    },
+    {
+     "strike": 12.5,
+     "open_interest": 1370
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 10.0,
+     "open_interest": 1389
+    },
+    {
+     "strike": 11.0,
+     "open_interest": 1273
+    },
+    {
+     "strike": 12.0,
+     "open_interest": 867
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 13,
+     "atm_iv_pct": 48.0
+    },
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 20,
+     "atm_iv_pct": 45.7
+    },
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 27,
+     "atm_iv_pct": 47.3
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 11.5,
+     "volume": 901,
+     "open_interest": 640,
+     "vol_oi_ratio": 1.4,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 12.0,
+     "volume": 815,
+     "open_interest": 687,
+     "vol_oi_ratio": 1.2,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 13.5,
+     "volume": 434,
+     "open_interest": 424,
+     "vol_oi_ratio": 1.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 14.0,
+     "volume": 507,
+     "open_interest": 524,
+     "vol_oi_ratio": 1.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 13.0,
+     "volume": 183,
+     "open_interest": 197,
+     "vol_oi_ratio": 0.9,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 3586,
+   "otm_put_oi": 5077,
+   "positioning_lean_score": -0.17,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "NU",
+   "as_of": "2026-11-14",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-20",
+     "days_ago": 25,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 18.2,
+     "price_target_to": 20.5,
+     "is_rating_change": false,
+     "description": "UBS maintained its Buy rating on NU and raised its price target from $18.2 to $20.5"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.04,
+    "verdict": "leaning bullish",
+    "analysts": 23,
+    "counts": {
+     "strongBuy": 5,
+     "buy": 14,
+     "hold": 3,
+     "sell": 0,
+     "strongSell": 1
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.05 to 2.04)"
+   },
+   "price_target": {
+    "mean": 17.95,
+    "median": 18.9,
+    "high": 23.0,
+    "low": 12.0,
+    "current_price": 13.22,
+    "dispersion_pct": 61.3,
+    "upside_vs_mean_pct": 35.8,
+    "upside_vs_median_pct": 43.0
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "NU",
+   "sector": "Financial Services",
+   "sector_etf": "XLF",
+   "comparison": {
+    "1mo": {
+     "stock_change_pct": -20.76,
+     "sector_etf_change_pct": 6.17,
+     "relative_to_sector_pct": -26.93
+    },
+    "1d": {
+     "stock_change_pct": -3.98,
+     "sector_etf_change_pct": 0.81,
+     "relative_to_sector_pct": -4.79
+    },
+    "2w": {
+     "stock_change_pct": -1.83,
+     "sector_etf_change_pct": 3.84,
+     "relative_to_sector_pct": -5.67
+    },
+    "1w": {
+     "stock_change_pct": 0.77,
+     "sector_etf_change_pct": 2.66,
+     "relative_to_sector_pct": -1.89
+    },
+    "1y": {
+     "stock_change_pct": -27.82,
+     "sector_etf_change_pct": 11.06,
+     "relative_to_sector_pct": -38.88
+    },
+    "ytd": {
+     "stock_change_pct": -30.49,
+     "sector_etf_change_pct": 8.13,
+     "relative_to_sector_pct": -38.62
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-13",
+    "realtime_end": "2026-11-13",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9618,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-13",
+      "realtime_end": "2026-11-13",
+      "date": "2026-11-12",
+      "value": "18.7"
+     },
+     {
+      "realtime_start": "2026-11-13",
+      "realtime_end": "2026-11-13",
+      "date": "2026-11-11",
+      "value": "17.49"
+     },
+     {
+      "realtime_start": "2026-11-13",
+      "realtime_end": "2026-11-13",
+      "date": "2026-11-10",
+      "value": "19.46"
+     },
+     {
+      "realtime_start": "2026-11-13",
+      "realtime_end": "2026-11-13",
+      "date": "2026-11-09",
+      "value": "19.92"
+     },
+     {
+      "realtime_start": "2026-11-13",
+      "realtime_end": "2026-11-13",
+      "date": "2026-11-06",
+      "value": "25.64"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "NU",
+   "as_of": "2026-11-14",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 25,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-12",
+     "description": "NU reported Q3 2026 earnings after the close \u2014 EPS 0.22 vs 0.2311 expected (miss, -4.8%)",
+     "source": "finnhub",
+     "days_ago": 2,
+     "eps_actual": 0.22,
+     "eps_estimate": 0.2311,
+     "surprise": "miss",
+     "surprise_pct": -4.8,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

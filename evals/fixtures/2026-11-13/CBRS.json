@@ -1,0 +1,400 @@
+{
+ "schema": 1,
+ "ticker": "CBRS",
+ "trading_day": "2026-11-13",
+ "captured_at": "2026-11-14T01:36:48+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 11.22,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 11.22% \u2014 elevated relative to this stock's own typical volatility (expected ~6.73%, 1.67x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "this week: 21.23% \u2014 typical relative to this stock's own typical volatility (expected ~15.04%, 1.41x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past month: -23.53% \u2014 typical relative to this stock's own typical volatility (expected ~30.83%, 0.76x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "CBRS",
+   "price": 108.72,
+   "prev_close": 97.75,
+   "change_pct": 11.22,
+   "session_date": "2026-11-13",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 106.8,
+   "changes_pct": {
+    "1d": 11.22,
+    "1w": 21.23,
+    "2w": -0.42,
+    "1mo": -23.53,
+    "1y": null,
+    "ytd": -65.05
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 11.22% \u2014 elevated relative to this stock's own typical volatility (expected ~6.73%, 1.67x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "this week: 21.23% \u2014 typical relative to this stock's own typical volatility (expected ~15.04%, 1.41x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past month: -23.53% \u2014 typical relative to this stock's own typical volatility (expected ~30.83%, 0.76x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 106.0,
+    "change_pct": -2.5,
+    "as_of": "2026-11-13 19:59 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "CBRS",
+   "headlines": [
+    {
+     "headline": "Stock Market Today: Dow Jones, S&P 500, Nasdaq 100  Futures Rise as Nvidia CEO Exit Remains in Focus\u2014 CSCO, AMAT, NU in Focus(UPDATED)",
+     "summary": "U.S. stock futures were mixed on Friday, as the Dow Jones, S&amp;P 500, and Nasdaq 100 indices were mixed, after Thursday&#39;s close lower.",
+     "datetime": 1794562844,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=4b6f07fbe022981ec4fb6800419643860c83d59c3ce2a510e07ffd73a152adb0"
+    },
+    {
+     "headline": "12 Information Technology Stocks Moving In Friday's Pre-Market Session",
+     "summary": "Gainers\n\nIntegrated Media Tech (NASDAQ:IMTE) stock increased by 25.1% to $0.47 during Friday&#39;s pre-market session. The market value of their outstanding shares is at $1.2 million. \nCerebras...",
+     "datetime": 1794557146,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=bcc13ab44a5a331e572b3d9dde3abd392471253aed3c7b5239e503854417200d"
+    },
+    {
+     "headline": "Needham Maintains Buy on Cerebras Systems, Lowers Price Target to $200",
+     "summary": "Needham  analyst N. Quinn Bolton   maintains Cerebras Systems (NASDAQ:CBRS) with a Buy and lowers the price target from $300 to $200.",
+     "datetime": 1794556877,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=15ed1a92b4769d720091718c525866c70afc6b0c3141a2cf659fc04510ab7fdb"
+    },
+    {
+     "headline": "Cathie Wood Says Nvidia \u2018Cannot Be Just The Jensen Show\u2019 After Huang\u2019s Exit, Warns NVDA\u2019s Five-Year CAGR Could Be Cut in Half",
+     "summary": "Cathie Wood says Nvidia\u2019s engineering bench can endure Huang\u2019s exit, but intensifying competition could cut ARK\u2019s projected returns to 25%.",
+     "datetime": 1794551330,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=8bd7c1a84c1080010ae341208dd162034063be29c6bf1d457642461eee029271"
+    },
+    {
+     "headline": "Cerebras (CBRS) Stock Is Trending Pre-Market: Here's Why",
+     "summary": "Cerebras shares surged 19.39% premarket as raised revenue guidance and a Microsoft cloud deal boosted investor optimism.",
+     "datetime": 1794546883,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=f6b8581d2bc2110374dba6373034e1e7b3b52720b243d4977a5fa345cb2e9e96"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "CBRS",
+   "expiry": "2026-12-04",
+   "days_to_expiry": 20,
+   "atm_iv_pct": 94.2,
+   "iv_chain_percentile": 18,
+   "skew_points": -1.3,
+   "put_call_ratio": 0.92,
+   "total_put_oi": 1848,
+   "total_call_oi": 2019
+  },
+  "get_options_positioning": {
+   "ticker": "CBRS",
+   "spot": 108.72,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-27",
+   "primary_days_to_expiry": 13,
+   "max_pain_strike": 125.0,
+   "resistance_walls": [
+    {
+     "strike": 100.0,
+     "open_interest": 428
+    },
+    {
+     "strike": 180.0,
+     "open_interest": 408
+    },
+    {
+     "strike": 130.0,
+     "open_interest": 338
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 90.0,
+     "open_interest": 533
+    },
+    {
+     "strike": 75.0,
+     "open_interest": 326
+    },
+    {
+     "strike": 130.0,
+     "open_interest": 233
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 13,
+     "atm_iv_pct": 93.9
+    },
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 20,
+     "atm_iv_pct": 94.2
+    },
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 27,
+     "atm_iv_pct": 94.1
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 115.0,
+     "volume": 1085,
+     "open_interest": 91,
+     "vol_oi_ratio": 11.9,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 100.0,
+     "volume": 466,
+     "open_interest": 115,
+     "vol_oi_ratio": 4.1,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 120.0,
+     "volume": 591,
+     "open_interest": 153,
+     "vol_oi_ratio": 3.9,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 105.0,
+     "volume": 194,
+     "open_interest": 58,
+     "vol_oi_ratio": 3.3,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 110.0,
+     "volume": 173,
+     "open_interest": 121,
+     "vol_oi_ratio": 1.4,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 3105,
+   "otm_put_oi": 1549,
+   "positioning_lean_score": 0.33,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "CBRS",
+   "as_of": "2026-11-14",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-09",
+     "days_ago": 5,
+     "firm": "Morgan Stanley",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 279.0,
+     "price_target_to": 178.0,
+     "is_rating_change": false,
+     "description": "Morgan Stanley maintained its Overweight rating on CBRS and cut its price target from $279.0 to $178.0"
+    },
+    {
+     "date": "2026-11-09",
+     "days_ago": 5,
+     "firm": "Wedbush",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 290.0,
+     "price_target_to": 190.0,
+     "is_rating_change": false,
+     "description": "Wedbush maintained its Outperform rating on CBRS and cut its price target from $290.0 to $190.0"
+    },
+    {
+     "date": "2026-11-02",
+     "days_ago": 12,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 330.0,
+     "price_target_to": 250.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Buy rating on CBRS and cut its price target from $330.0 to $250.0"
+    },
+    {
+     "date": "2026-10-19",
+     "days_ago": 26,
+     "firm": "TD Cowen",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 275.0,
+     "price_target_to": 175.0,
+     "is_rating_change": false,
+     "description": "TD Cowen maintained its Buy rating on CBRS and cut its price target from $275.0 to $175.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.73,
+    "verdict": "leaning bullish",
+    "analysts": 11,
+    "counts": {
+     "strongBuy": 3,
+     "buy": 8,
+     "hold": 0,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 1.82 to 1.73; bearish ratings 0 to 0)"
+   },
+   "price_target": {
+    "mean": 225.64,
+    "median": 209.0,
+    "high": 320.0,
+    "low": 155.0,
+    "current_price": 108.72,
+    "dispersion_pct": 73.1,
+    "upside_vs_mean_pct": 107.5,
+    "upside_vs_median_pct": 92.2
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "CBRS",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1mo": {
+     "stock_change_pct": -30.91,
+     "sector_etf_change_pct": -10.0,
+     "relative_to_sector_pct": -20.91
+    },
+    "1d": {
+     "stock_change_pct": -3.29,
+     "sector_etf_change_pct": -2.01,
+     "relative_to_sector_pct": -1.28
+    },
+    "2w": {
+     "stock_change_pct": -15.12,
+     "sector_etf_change_pct": -5.14,
+     "relative_to_sector_pct": -9.98
+    },
+    "1w": {
+     "stock_change_pct": 19.63,
+     "sector_etf_change_pct": 3.36,
+     "relative_to_sector_pct": 16.27
+    },
+    "1y": {
+     "stock_change_pct": null,
+     "sector_etf_change_pct": 16.46,
+     "relative_to_sector_pct": null
+    },
+    "ytd": {
+     "stock_change_pct": -68.58,
+     "sector_etf_change_pct": 18.43,
+     "relative_to_sector_pct": -87.01
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-13",
+    "realtime_end": "2026-11-13",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9618,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-13",
+      "realtime_end": "2026-11-13",
+      "date": "2026-11-12",
+      "value": "18.7"
+     },
+     {
+      "realtime_start": "2026-11-13",
+      "realtime_end": "2026-11-13",
+      "date": "2026-11-11",
+      "value": "17.49"
+     },
+     {
+      "realtime_start": "2026-11-13",
+      "realtime_end": "2026-11-13",
+      "date": "2026-11-10",
+      "value": "19.46"
+     },
+     {
+      "realtime_start": "2026-11-13",
+      "realtime_end": "2026-11-13",
+      "date": "2026-11-09",
+      "value": "19.92"
+     },
+     {
+      "realtime_start": "2026-11-13",
+      "realtime_end": "2026-11-13",
+      "date": "2026-11-06",
+      "value": "25.64"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "CBRS",
+   "as_of": "2026-11-14",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 25,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-12",
+     "description": "CBRS reported Q3 2026 earnings after the close \u2014 EPS 0.13 vs -0.1446 expected (beat, +189.9%)",
+     "source": "finnhub",
+     "days_ago": 2,
+     "eps_actual": 0.13,
+     "eps_estimate": -0.1446,
+     "surprise": "beat",
+     "surprise_pct": 189.9,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

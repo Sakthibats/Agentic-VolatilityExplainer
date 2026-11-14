@@ -1,0 +1,387 @@
+{
+ "schema": 1,
+ "ticker": "ALNY",
+ "trading_day": "2026-11-13",
+ "captured_at": "2026-11-14T01:36:54+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 5.36,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 5.36% \u2014 typical relative to this stock's own typical volatility (expected ~6.22%, 0.86x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past month: -29.48% \u2014 typical relative to this stock's own typical volatility (expected ~28.49%, 1.03x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past year: -63.55% \u2014 typical relative to this stock's own typical volatility (expected ~98.70%, 0.64x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "ALNY",
+   "price": 165.04,
+   "prev_close": 156.65,
+   "change_pct": 5.36,
+   "session_date": "2026-11-13",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 98.7,
+   "changes_pct": {
+    "1d": 5.36,
+    "1w": 5.84,
+    "2w": 0.02,
+    "1mo": -29.48,
+    "1y": -63.55,
+    "ytd": -58.76
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 5.36% \u2014 typical relative to this stock's own typical volatility (expected ~6.22%, 0.86x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past month: -29.48% \u2014 typical relative to this stock's own typical volatility (expected ~28.49%, 1.03x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past year: -63.55% \u2014 typical relative to this stock's own typical volatility (expected ~98.70%, 0.64x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 165.91,
+    "change_pct": 0.53,
+    "as_of": "2026-11-13 19:59 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "ALNY",
+   "headlines": [
+    {
+     "headline": "The Single Most Important Metric For Moderna Stock",
+     "summary": "For questions about this article or underlying research, email help@trefis.com.",
+     "datetime": 1794600750,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=c918d32be32996f911a60becdb33e1e4af7e6a4dfbf5685a9433d316df2764bf"
+    },
+    {
+     "headline": "What Moved Alnylam Stock?",
+     "summary": "For questions about this article or underlying research, email help@trefis.com.",
+     "datetime": 1794496380,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=c8db5724381194d873e9725ccbcf259badaa8aad54bfc5d72f6b3f216535b0ef"
+    },
+    {
+     "headline": "RNA Interference (RNAi) - Global Strategic Business Report: Capture the US$8 Billion 2032 Market as Alnylam Pharmaceuticals, Ionis Pharmaceuticals, Qiagen, Benitec BioPharma, and Silence Therapeutics",
+     "summary": "RNAi adoption accelerates through precision targeting, improved delivery, personalized medicine, agricultural innovation, regulatory approvals and robust funding.Dublin, Nov. 12, 2026 (GLOBE...",
+     "datetime": 1794492360,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=b9e8b7011296923c3c271245ed9143b29267f6b29c0fe395105deca485d4713c"
+    },
+    {
+     "headline": "Alnylam Pharmaceuticals (NASDAQ:ALNY) Emerges as a Decent Value Stock",
+     "summary": "Alnylam (ALNY) screens as decent value with a low P/E, strong margins, and robust growth, though biotech and dilution risks remain for value investors.",
+     "datetime": 1794484861,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=0f05703f36fa1c08a3cd7baeaa857bdc805de03bd8dc430d29615069e7922c96"
+    },
+    {
+     "headline": "Here's Why Ionis Pharmaceuticals' Stock is Down 28.5% Post Q3 Earnings",
+     "summary": "IONS plunges as slower Tryngolza sales, reduced guidance and disappointing Wainua royalties rattle investors.",
+     "datetime": 1794412920,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=8ea3c841456554d7d730074f221ee9d81535263dadc84dd277f35797816153c3"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "ALNY",
+   "expiry": "2026-12-18",
+   "days_to_expiry": 34,
+   "atm_iv_pct": 53.2,
+   "iv_chain_percentile": 28,
+   "skew_points": 9.8,
+   "put_call_ratio": 1.24,
+   "total_put_oi": 5287,
+   "total_call_oi": 4248
+  },
+  "get_options_positioning": {
+   "ticker": "ALNY",
+   "spot": 165.04,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-18",
+   "primary_days_to_expiry": 34,
+   "max_pain_strike": 200.0,
+   "resistance_walls": [
+    {
+     "strike": 220.0,
+     "open_interest": 505
+    },
+    {
+     "strike": 300.0,
+     "open_interest": 437
+    },
+    {
+     "strike": 320.0,
+     "open_interest": 317
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 145.0,
+     "open_interest": 1671
+    },
+    {
+     "strike": 200.0,
+     "open_interest": 722
+    },
+    {
+     "strike": 210.0,
+     "open_interest": 540
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 34,
+     "atm_iv_pct": 53.2
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 170.0,
+     "volume": 1055,
+     "open_interest": 109,
+     "vol_oi_ratio": 9.7,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 180.0,
+     "volume": 226,
+     "open_interest": 124,
+     "vol_oi_ratio": 1.8,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 3895,
+   "otm_put_oi": 2682,
+   "positioning_lean_score": 0.18,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "ALNY",
+   "as_of": "2026-11-14",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-02",
+     "days_ago": 12,
+     "firm": "Barclays",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 450.0,
+     "price_target_to": 380.0,
+     "is_rating_change": false,
+     "description": "Barclays maintained its Overweight rating on ALNY and cut its price target from $450.0 to $380.0"
+    },
+    {
+     "date": "2026-11-02",
+     "days_ago": 12,
+     "firm": "Truist Securities",
+     "action": "downgrade",
+     "from_grade": "Buy",
+     "to_grade": "Hold",
+     "price_target_from": 315.0,
+     "price_target_to": 225.0,
+     "is_rating_change": true,
+     "description": "Truist Securities downgraded ALNY from Buy to Hold and cut its price target from $315.0 to $225.0"
+    },
+    {
+     "date": "2026-11-02",
+     "days_ago": 12,
+     "firm": "Canaccord Genuity",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 429.0,
+     "price_target_to": 323.0,
+     "is_rating_change": false,
+     "description": "Canaccord Genuity maintained its Buy rating on ALNY and cut its price target from $429.0 to $323.0"
+    },
+    {
+     "date": "2026-10-31",
+     "days_ago": 14,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 354.0,
+     "price_target_to": 329.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Buy rating on ALNY and cut its price target from $354.0 to $329.0"
+    },
+    {
+     "date": "2026-10-30",
+     "days_ago": 15,
+     "firm": "TD Cowen",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 482.0,
+     "price_target_to": 354.0,
+     "is_rating_change": false,
+     "description": "TD Cowen maintained its Buy rating on ALNY and cut its price target from $482.0 to $354.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.07,
+    "verdict": "leaning bullish",
+    "analysts": 30,
+    "counts": {
+     "strongBuy": 7,
+     "buy": 14,
+     "hold": 9,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "deteriorating",
+    "trend_detail": "consensus softened over 3 months (score 1.97 to 2.07; bearish ratings 0 to 0)"
+   },
+   "price_target": {
+    "mean": 299.96,
+    "median": 299.0,
+    "high": 455.0,
+    "low": 180.0,
+    "current_price": 165.04,
+    "dispersion_pct": 91.7,
+    "upside_vs_mean_pct": 81.7,
+    "upside_vs_median_pct": 81.2
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "ALNY",
+   "sector": "Healthcare",
+   "sector_etf": "XLV",
+   "comparison": {
+    "1mo": {
+     "stock_change_pct": -29.48,
+     "sector_etf_change_pct": 6.58,
+     "relative_to_sector_pct": -36.06
+    },
+    "1d": {
+     "stock_change_pct": 5.36,
+     "sector_etf_change_pct": 0.54,
+     "relative_to_sector_pct": 4.82
+    },
+    "2w": {
+     "stock_change_pct": 0.02,
+     "sector_etf_change_pct": 2.15,
+     "relative_to_sector_pct": -2.13
+    },
+    "1w": {
+     "stock_change_pct": 5.84,
+     "sector_etf_change_pct": 2.19,
+     "relative_to_sector_pct": 3.65
+    },
+    "1y": {
+     "stock_change_pct": -63.55,
+     "sector_etf_change_pct": 25.64,
+     "relative_to_sector_pct": -89.19
+    },
+    "ytd": {
+     "stock_change_pct": -58.76,
+     "sector_etf_change_pct": 22.94,
+     "relative_to_sector_pct": -81.7
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-13",
+    "realtime_end": "2026-11-13",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9618,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-13",
+      "realtime_end": "2026-11-13",
+      "date": "2026-11-12",
+      "value": "18.7"
+     },
+     {
+      "realtime_start": "2026-11-13",
+      "realtime_end": "2026-11-13",
+      "date": "2026-11-11",
+      "value": "17.49"
+     },
+     {
+      "realtime_start": "2026-11-13",
+      "realtime_end": "2026-11-13",
+      "date": "2026-11-10",
+      "value": "19.46"
+     },
+     {
+      "realtime_start": "2026-11-13",
+      "realtime_end": "2026-11-13",
+      "date": "2026-11-09",
+      "value": "19.92"
+     },
+     {
+      "realtime_start": "2026-11-13",
+      "realtime_end": "2026-11-13",
+      "date": "2026-11-06",
+      "value": "25.64"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "ALNY",
+   "as_of": "2026-11-14",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 25,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-10",
+     "description": "ALNY Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 88,
+     "eps_estimate": 1.7604,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-29",
+     "description": "ALNY reported Q3 2026 earnings before the open \u2014 EPS 15.72 vs 1.5915 expected (beat, +887.7%)",
+     "source": "finnhub",
+     "days_ago": 16,
+     "eps_actual": 15.72,
+     "eps_estimate": 1.5915,
+     "surprise": "beat",
+     "surprise_pct": 887.7,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

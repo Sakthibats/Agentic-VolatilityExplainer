@@ -1,0 +1,367 @@
+{
+ "schema": 1,
+ "ticker": "FN",
+ "trading_day": "2026-11-13",
+ "captured_at": "2026-11-14T01:37:14+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -7.31,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: -7.31% \u2014 typical relative to this stock's own typical volatility (expected ~7.85%, 0.93x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past month: -14.85% \u2014 typical relative to this stock's own typical volatility (expected ~35.97%, 0.41x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "FN",
+   "price": 327.98,
+   "prev_close": 353.83,
+   "change_pct": -7.31,
+   "session_date": "2026-11-13",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 124.6,
+   "changes_pct": {
+    "1d": -7.31,
+    "1w": 0.26,
+    "2w": 0.21,
+    "1mo": -14.85,
+    "1y": -26.71,
+    "ytd": -31.59
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: -7.31% \u2014 typical relative to this stock's own typical volatility (expected ~7.85%, 0.93x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past month: -14.85% \u2014 typical relative to this stock's own typical volatility (expected ~35.97%, 0.41x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 324.0,
+    "change_pct": -1.21,
+    "as_of": "2026-11-13 19:53 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "FN",
+   "headlines": [
+    {
+     "headline": "Coherent's Margin Expansion Steals the Spotlight in Q1 FY27",
+     "summary": "COHR's Q1 FY27 margin expansion, tighter cost controls and 80% earnings growth highlight improving profitability. Can this momentum continue?",
+     "datetime": 1794592440,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=9dcf738f6ff52905204067c2829d6b52f7ddb3a0038fe2bb9d2588ef936a370a"
+    },
+    {
+     "headline": "Microsoft Is Fighting a Ban on Chinese Parts Inside AI Data Centers",
+     "summary": "Microsoft took its fight against a proposed FCC transceiver ban straight to the White House, yet the stock barely flinched while optical suppliers surged. The real story hinges on a speed threshold...",
+     "datetime": 1794501494,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=665a967c84c47f8bd56a93fcd5d3d94d3b9c1e0ba22877f60943dee9a81b817a"
+    },
+    {
+     "headline": "What Does Flex's Record Sales Growth Really Show?",
+     "summary": "For questions about this article or underlying research, email help@trefis.com.",
+     "datetime": 1794433165,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=06a2af43aea1c35ce8e6d606625c3be4e3fd9f1ecad284c9598ed176e7d5635d"
+    },
+    {
+     "headline": "COHR Stock Gains 10% After Strong Q1 Earnings: Is it Still a Buy?",
+     "summary": "Coherent shares rally 10% after strong fiscal Q1 earnings, fueled by AI data center demand, rising margins and ambitious revenue targets. Is there more upside ahead?",
+     "datetime": 1794417480,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=52d7204dc630e0ca2ec5aac77e610d3b0a45af65c4ccf3d9226a64dbf217b72b"
+    },
+    {
+     "headline": "Applied Optoelectronics Stock Jumps After CoreWeave's Strong Q3 Results",
+     "summary": "Applied Optoelectronics is rising Wednesday as fiber-optic connectivity stocks gain after CoreWeave&#39;s earnings and comments on strong demand.",
+     "datetime": 1794413130,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=8c0ce97f5a1a32f1334fc6cff8273076efcbe7bfdcb1cb0707cd995b1cd44765"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "FN",
+   "expiry": "2026-12-18",
+   "days_to_expiry": 34,
+   "atm_iv_pct": 77.0,
+   "iv_chain_percentile": 12,
+   "skew_points": 1.2,
+   "put_call_ratio": 1.32,
+   "total_put_oi": 3557,
+   "total_call_oi": 2685
+  },
+  "get_options_positioning": {
+   "ticker": "FN",
+   "spot": 327.98,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-18",
+   "primary_days_to_expiry": 34,
+   "max_pain_strike": 450.0,
+   "resistance_walls": [
+    {
+     "strike": 380.0,
+     "open_interest": 300
+    },
+    {
+     "strike": 400.0,
+     "open_interest": 221
+    },
+    {
+     "strike": 460.0,
+     "open_interest": 169
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 720.0,
+     "open_interest": 496
+    },
+    {
+     "strike": 740.0,
+     "open_interest": 451
+    },
+    {
+     "strike": 310.0,
+     "open_interest": 275
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 34,
+     "atm_iv_pct": 77.0
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [],
+   "otm_call_oi": 2504,
+   "otm_put_oi": 1489,
+   "positioning_lean_score": 0.25,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "FN",
+   "as_of": "2026-11-14",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-04",
+     "days_ago": 10,
+     "firm": "Barclays",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 739.0,
+     "price_target_to": 496.0,
+     "is_rating_change": false,
+     "description": "Barclays maintained its Overweight rating on FN and cut its price target from $739.0 to $496.0"
+    },
+    {
+     "date": "2026-11-03",
+     "days_ago": 11,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 465.0,
+     "price_target_to": 470.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Neutral rating on FN and raised its price target from $465.0 to $470.0"
+    },
+    {
+     "date": "2026-11-03",
+     "days_ago": 11,
+     "firm": "B. Riley Securities",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 385.0,
+     "price_target_to": 364.0,
+     "is_rating_change": false,
+     "description": "B. Riley Securities maintained its Neutral rating on FN and cut its price target from $385.0 to $364.0"
+    },
+    {
+     "date": "2026-11-03",
+     "days_ago": 11,
+     "firm": "Rosenblatt",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 750.0,
+     "price_target_to": 600.0,
+     "is_rating_change": false,
+     "description": "Rosenblatt maintained its Buy rating on FN and cut its price target from $750.0 to $600.0"
+    },
+    {
+     "date": "2026-11-03",
+     "days_ago": 11,
+     "firm": "Needham",
+     "action": "reiterated",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 500.0,
+     "price_target_to": 500.0,
+     "is_rating_change": false,
+     "description": "Needham reiterated its Buy rating on FN with a $500.0 price target"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.89,
+    "verdict": "leaning bullish",
+    "analysts": 9,
+    "counts": {
+     "strongBuy": 3,
+     "buy": 4,
+     "hold": 2,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.89 to 1.89)"
+   },
+   "price_target": {
+    "mean": 564.44,
+    "median": 500.0,
+    "high": 800.0,
+    "low": 364.0,
+    "current_price": 327.98,
+    "dispersion_pct": 77.2,
+    "upside_vs_mean_pct": 72.1,
+    "upside_vs_median_pct": 52.4
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "FN",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1mo": {
+     "stock_change_pct": -14.85,
+     "sector_etf_change_pct": -10.0,
+     "relative_to_sector_pct": -4.85
+    },
+    "1d": {
+     "stock_change_pct": -7.31,
+     "sector_etf_change_pct": -2.01,
+     "relative_to_sector_pct": -5.3
+    },
+    "2w": {
+     "stock_change_pct": 0.21,
+     "sector_etf_change_pct": -5.14,
+     "relative_to_sector_pct": 5.35
+    },
+    "1w": {
+     "stock_change_pct": 0.26,
+     "sector_etf_change_pct": 3.36,
+     "relative_to_sector_pct": -3.1
+    },
+    "1y": {
+     "stock_change_pct": -26.71,
+     "sector_etf_change_pct": 16.46,
+     "relative_to_sector_pct": -43.17
+    },
+    "ytd": {
+     "stock_change_pct": -31.59,
+     "sector_etf_change_pct": 18.43,
+     "relative_to_sector_pct": -50.02
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-13",
+    "realtime_end": "2026-11-13",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9618,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-13",
+      "realtime_end": "2026-11-13",
+      "date": "2026-11-12",
+      "value": "18.7"
+     },
+     {
+      "realtime_start": "2026-11-13",
+      "realtime_end": "2026-11-13",
+      "date": "2026-11-11",
+      "value": "17.49"
+     },
+     {
+      "realtime_start": "2026-11-13",
+      "realtime_end": "2026-11-13",
+      "date": "2026-11-10",
+      "value": "19.46"
+     },
+     {
+      "realtime_start": "2026-11-13",
+      "realtime_end": "2026-11-13",
+      "date": "2026-11-09",
+      "value": "19.92"
+     },
+     {
+      "realtime_start": "2026-11-13",
+      "realtime_end": "2026-11-13",
+      "date": "2026-11-06",
+      "value": "25.64"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "FN",
+   "as_of": "2026-11-14",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 25,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-01",
+     "description": "FN Q2 2027 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 79,
+     "eps_estimate": 4.9711
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-02",
+     "description": "FN reported Q1 2027 earnings after the close \u2014 EPS 4.34 vs 4.3207 expected (in line, +0.4%)",
+     "source": "finnhub",
+     "days_ago": 12,
+     "eps_actual": 4.34,
+     "eps_estimate": 4.3207,
+     "surprise": "in line",
+     "surprise_pct": 0.4,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

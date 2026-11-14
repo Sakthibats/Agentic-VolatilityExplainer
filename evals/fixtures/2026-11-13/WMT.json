@@ -1,0 +1,407 @@
+{
+ "schema": 1,
+ "ticker": "WMT",
+ "trading_day": "2026-11-13",
+ "captured_at": "2026-11-14T01:36:22+00:00",
+ "selected_as": "control",
+ "change_pct": 1.51,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "WMT",
+   "price": 128.09,
+   "prev_close": 126.19,
+   "change_pct": 1.51,
+   "session_date": "2026-11-13",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 25.8,
+   "changes_pct": {
+    "1d": 1.51,
+    "1w": 2.05,
+    "2w": 3.71,
+    "1mo": 8.67,
+    "1y": 24.87,
+    "ytd": 14.32
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 127.93,
+    "change_pct": -0.13,
+    "as_of": "2026-11-13 19:39 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "WMT",
+   "headlines": [
+    {
+     "headline": "How Digital Expansion At Walmart (WMT) Has Changed Its Investment Story",
+     "summary": "Walmart recently agreed to a record US$7.8 million settlement with Pennsylvania authorities over Child Labor Act violations and is rolling out new energy, AI shopping, and drone delivery initiatives...",
+     "datetime": 1794611991,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=b379336dbd7c6ee1d11551c27551f994cf868aea49077174bcd3d9bd3fc0911e"
+    },
+    {
+     "headline": "Walmart (WMT) Gains As Market Dips: What You Should Know",
+     "summary": "Walmart (WMT) concluded the recent trading session at $128.09, signifying a +1.51% move from its prior day's close.",
+     "datetime": 1794606302,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=9e1838e7cde73d917a34b9df07070b5c446addd0b59b94f3fb014be4f172d770"
+    },
+    {
+     "headline": "Dow Jones Futures: Market Rally Shaky As Nvidia Earnings, Anthropic IPO Loom; SpaceX Starship Flight 15 Soon.",
+     "summary": "The new market rally is isn't giving clear directions. A SpaceX Starship launch is imminent. Nvidia earnings and Anthropic IPO loom.",
+     "datetime": 1794605988,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=0bf55f5f7a941e3d2c84102ba84faf300f162813deede65cbbeea85f61ef630c"
+    },
+    {
+     "headline": "Earnings Calendar and Analysis for This Week (June 8-12)",
+     "summary": "Check out our earnings calendar for this week, as well as our previews and recaps of the more noteworthy reports.",
+     "datetime": 1794591529,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=216d128b83f71d76e6bce40b8b46e11723d78dea2fbe2da4a9c9e36d4bf5b412"
+    },
+    {
+     "headline": "Walmart US Adds SGS to 3PL Apparel Testing List",
+     "summary": "The listing increases the SGS\u2019 ability to support Walmart suppliers across several fashion apparel categories",
+     "datetime": 1794590308,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=d9856ce5b59ce1ce28f44c5d40d7ded08323897baee74a72329834efa312a892"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "WMT",
+   "expiry": "2026-12-04",
+   "days_to_expiry": 20,
+   "atm_iv_pct": 41.0,
+   "iv_chain_percentile": 4,
+   "skew_points": -0.4,
+   "put_call_ratio": 0.49,
+   "total_put_oi": 2584,
+   "total_call_oi": 5284
+  },
+  "get_options_positioning": {
+   "ticker": "WMT",
+   "spot": 128.09,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-11-27",
+   "primary_days_to_expiry": 13,
+   "max_pain_strike": 120.0,
+   "resistance_walls": [
+    {
+     "strike": 135.0,
+     "open_interest": 1677
+    },
+    {
+     "strike": 140.0,
+     "open_interest": 1380
+    },
+    {
+     "strike": 132.0,
+     "open_interest": 1330
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 130.0,
+     "open_interest": 640
+    },
+    {
+     "strike": 117.0,
+     "open_interest": 502
+    },
+    {
+     "strike": 110.0,
+     "open_interest": 427
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-11-27",
+     "days_to_expiry": 13,
+     "atm_iv_pct": 44.7
+    },
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 20,
+     "atm_iv_pct": 41.0
+    },
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 27,
+     "atm_iv_pct": 38.7
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 127.0,
+     "volume": 179,
+     "open_interest": 152,
+     "vol_oi_ratio": 1.2,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 138.0,
+     "volume": 272,
+     "open_interest": 276,
+     "vol_oi_ratio": 1.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 130.0,
+     "volume": 841,
+     "open_interest": 896,
+     "vol_oi_ratio": 0.9,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 145.0,
+     "volume": 134,
+     "open_interest": 256,
+     "vol_oi_ratio": 0.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 118.0,
+     "volume": 114,
+     "open_interest": 299,
+     "vol_oi_ratio": 0.4,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 7201,
+   "otm_put_oi": 5799,
+   "positioning_lean_score": 0.11,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "WMT",
+   "as_of": "2026-11-14",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-12",
+     "days_ago": 2,
+     "firm": "BTIG",
+     "action": "reiterated",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 140.0,
+     "price_target_to": 140.0,
+     "is_rating_change": false,
+     "description": "BTIG reiterated its Buy rating on WMT with a $140.0 price target"
+    },
+    {
+     "date": "2026-11-10",
+     "days_ago": 4,
+     "firm": "Mizuho",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 125.0,
+     "price_target_to": 135.0,
+     "is_rating_change": false,
+     "description": "Mizuho maintained its Outperform rating on WMT and raised its price target from $125.0 to $135.0"
+    },
+    {
+     "date": "2026-11-09",
+     "days_ago": 5,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 130.0,
+     "price_target_to": 149.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Buy rating on WMT and raised its price target from $130.0 to $149.0"
+    },
+    {
+     "date": "2026-11-09",
+     "days_ago": 5,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 125.0,
+     "price_target_to": 145.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Overweight rating on WMT and raised its price target from $125.0 to $145.0"
+    },
+    {
+     "date": "2026-10-20",
+     "days_ago": 25,
+     "firm": "Evercore ISI Group",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 125.0,
+     "price_target_to": 130.0,
+     "is_rating_change": false,
+     "description": "Evercore ISI Group maintained its Outperform rating on WMT and raised its price target from $125.0 to $130.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.91,
+    "verdict": "leaning bullish",
+    "analysts": 43,
+    "counts": {
+     "strongBuy": 10,
+     "buy": 28,
+     "hold": 4,
+     "sell": 1,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.95 to 1.91)"
+   },
+   "price_target": {
+    "mean": 130.4,
+    "median": 132.0,
+    "high": 155.0,
+    "low": 81.0,
+    "current_price": 128.09,
+    "dispersion_pct": 56.7,
+    "upside_vs_mean_pct": 1.8,
+    "upside_vs_median_pct": 3.1
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "WMT",
+   "sector": "Consumer Defensive",
+   "sector_etf": "XLP",
+   "comparison": {
+    "1mo": {
+     "stock_change_pct": 8.67,
+     "sector_etf_change_pct": 6.54,
+     "relative_to_sector_pct": 2.13
+    },
+    "1d": {
+     "stock_change_pct": 1.51,
+     "sector_etf_change_pct": 1.42,
+     "relative_to_sector_pct": 0.09
+    },
+    "2w": {
+     "stock_change_pct": 3.71,
+     "sector_etf_change_pct": 3.28,
+     "relative_to_sector_pct": 0.43
+    },
+    "1w": {
+     "stock_change_pct": 2.05,
+     "sector_etf_change_pct": 2.52,
+     "relative_to_sector_pct": -0.47
+    },
+    "1y": {
+     "stock_change_pct": 24.87,
+     "sector_etf_change_pct": 22.72,
+     "relative_to_sector_pct": 2.15
+    },
+    "ytd": {
+     "stock_change_pct": 14.32,
+     "sector_etf_change_pct": 21.16,
+     "relative_to_sector_pct": -6.84
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-13",
+    "realtime_end": "2026-11-13",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9618,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-13",
+      "realtime_end": "2026-11-13",
+      "date": "2026-11-12",
+      "value": "18.7"
+     },
+     {
+      "realtime_start": "2026-11-13",
+      "realtime_end": "2026-11-13",
+      "date": "2026-11-11",
+      "value": "17.49"
+     },
+     {
+      "realtime_start": "2026-11-13",
+      "realtime_end": "2026-11-13",
+      "date": "2026-11-10",
+      "value": "19.46"
+     },
+     {
+      "realtime_start": "2026-11-13",
+      "realtime_end": "2026-11-13",
+      "date": "2026-11-09",
+      "value": "19.92"
+     },
+     {
+      "realtime_start": "2026-11-13",
+      "realtime_end": "2026-11-13",
+      "date": "2026-11-06",
+      "value": "25.64"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "WMT",
+   "as_of": "2026-11-14",
+   "events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-19",
+     "description": "WMT Q3 2027 earnings scheduled (before the open)",
+     "source": "finnhub",
+     "days_until": 5,
+     "eps_estimate": 0.6421,
+     "hour": "bmo"
+    },
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 25,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "ex_dividend",
+     "date": "2026-12-11",
+     "source": "yfinance",
+     "description": "WMT goes ex-dividend \u2014 expect a mechanical price drop of roughly the dividend",
+     "days_until": 27
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}
