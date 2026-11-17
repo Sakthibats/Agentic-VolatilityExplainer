@@ -1,0 +1,318 @@
+{
+ "schema": 1,
+ "ticker": "CRM",
+ "trading_day": "2026-11-16",
+ "captured_at": "2026-11-17T04:06:37+00:00",
+ "selected_as": "control",
+ "change_pct": -1.38,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "CRM",
+   "price": 214.83,
+   "prev_close": 217.84,
+   "change_pct": -1.38,
+   "session_date": "2026-11-16",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 31.0,
+   "changes_pct": {
+    "1d": -1.38,
+    "1w": -0.05,
+    "2w": -5.02,
+    "1mo": -10.75,
+    "1y": -9.89,
+    "ytd": -14.71
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 213.75,
+    "change_pct": -0.5,
+    "as_of": "2026-11-16 19:59 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "CRM",
+   "headlines": [
+    {
+     "headline": "ServiceNow Stock\u2019s (NOW) Historic Sell-Off May Have Gone Too Far",
+     "summary": "ServiceNow (NOW) stock\u2019s historic sell-off looks excessive to me. The enterprise workflow software provider disappointed investors with its Q3 earnings and outlook. I understand the frustration. Yet...",
+     "datetime": 1794865080,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=dc235adc1b3d4da11003739d3be80fe7f0351ca22024054cc5e706c7d27c4633"
+    },
+    {
+     "headline": "Stock Of The Day Navan Breaks Out, Defies Software Industry Slump",
+     "summary": "Navan, up 55% this year, is nearing a breakout.",
+     "datetime": 1794853454,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=c051d34c2c7a3961ae3ccaf689072de071f8cc2bd4e81a4ef732ef9e06b3f88f"
+    },
+    {
+     "headline": "Model N Appoints Koti Reddy Nandyala as Chief Technology Officer to Accelerate Platform Innovation",
+     "summary": "Former Salesforce and Conga executive brings more than 25 years of experience transforming enterprise software and leading global engineering teams Koti Reddy Nandyala, Chief Technology Officer,...",
+     "datetime": 1794844800,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=114fd02ae2316ce5646f392513b78914d6077fb17477dca85c2c59dbd40c88d2"
+    },
+    {
+     "headline": "Salesforce Spent $32 Billion on Buybacks in 5 Years. Somehow, Its Share Count Still Rose",
+     "summary": "Key TakeawaysSalesforce spent about $32 billion on buybacks in the five fiscal years to January 2026, yet its diluted share count rose from 930 million to 956 million. Most of that money offset stock...",
+     "datetime": 1794843348,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=9e30b62016510485a972100142992de913bec15ca8250c62bf3ee0cd4ae1ac26"
+    },
+    {
+     "headline": "Trifecta Technologies Expands Product Data Capabilities with Salsify and Salesforce B2B Commerce Integration",
+     "summary": "Trifecta Technologies, a technology consulting and systems integration firm, today announced expanded capabilities leveraging Salsify's Product Experience Management (PXM) platform and Salesforce B2B...",
+     "datetime": 1794841200,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=a6da0434dc634ce64ab4ee33cee7cd5fa5f92f1fdfd1a02969bbf5d763727770"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "CRM",
+   "expiry": "2026-12-04",
+   "days_to_expiry": 17,
+   "atm_iv_pct": 64.8,
+   "iv_chain_percentile": 15,
+   "skew_points": -2.2,
+   "put_call_ratio": 0.69,
+   "total_put_oi": 2468,
+   "total_call_oi": 3577
+  },
+  "get_options_positioning": {
+   "ticker": "CRM",
+   "spot": 214.83,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-04",
+   "primary_days_to_expiry": 17,
+   "max_pain_strike": 215.0,
+   "resistance_walls": [
+    {
+     "strike": 215.0,
+     "open_interest": 629
+    },
+    {
+     "strike": 240.0,
+     "open_interest": 555
+    },
+    {
+     "strike": 220.0,
+     "open_interest": 403
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 205.0,
+     "open_interest": 475
+    },
+    {
+     "strike": 215.0,
+     "open_interest": 384
+    },
+    {
+     "strike": 210.0,
+     "open_interest": 311
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 17,
+     "atm_iv_pct": 64.8
+    },
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 24,
+     "atm_iv_pct": 60.5
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [],
+   "otm_call_oi": 3304,
+   "otm_put_oi": 1610,
+   "positioning_lean_score": 0.34,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "CRM",
+   "as_of": "2026-11-17",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-21",
+     "days_ago": 27,
+     "firm": "DA Davidson",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 225.0,
+     "price_target_to": 250.0,
+     "is_rating_change": false,
+     "description": "DA Davidson maintained its Neutral rating on CRM and raised its price target from $225.0 to $250.0"
+    },
+    {
+     "date": "2026-10-21",
+     "days_ago": 27,
+     "firm": "Cantor Fitzgerald",
+     "action": "reiterated",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 300.0,
+     "price_target_to": 300.0,
+     "is_rating_change": false,
+     "description": "Cantor Fitzgerald reiterated its Overweight rating on CRM with a $300.0 price target"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.18,
+    "verdict": "leaning bullish",
+    "analysts": 56,
+    "counts": {
+     "strongBuy": 7,
+     "buy": 34,
+     "hold": 14,
+     "sell": 0,
+     "strongSell": 1
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.25 to 2.18; bearish ratings 2 to 1)"
+   },
+   "price_target": {
+    "mean": 287.08,
+    "median": 285.0,
+    "high": 475.0,
+    "low": 165.0,
+    "current_price": 214.83,
+    "dispersion_pct": 108.0,
+    "upside_vs_mean_pct": 33.6,
+    "upside_vs_median_pct": 32.7
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "CRM",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "2w": {
+     "stock_change_pct": -5.02,
+     "sector_etf_change_pct": -5.43,
+     "relative_to_sector_pct": 0.41
+    },
+    "1mo": {
+     "stock_change_pct": -10.75,
+     "sector_etf_change_pct": -10.2,
+     "relative_to_sector_pct": -0.55
+    },
+    "ytd": {
+     "stock_change_pct": -14.71,
+     "sector_etf_change_pct": 14.59,
+     "relative_to_sector_pct": -29.3
+    },
+    "1d": {
+     "stock_change_pct": -1.38,
+     "sector_etf_change_pct": -3.24,
+     "relative_to_sector_pct": 1.86
+    },
+    "1y": {
+     "stock_change_pct": -9.89,
+     "sector_etf_change_pct": 15.57,
+     "relative_to_sector_pct": -25.46
+    },
+    "1w": {
+     "stock_change_pct": -0.05,
+     "sector_etf_change_pct": -3.58,
+     "relative_to_sector_pct": 3.53
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-16",
+    "realtime_end": "2026-11-16",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9619,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-16",
+      "realtime_end": "2026-11-16",
+      "date": "2026-11-13",
+      "value": "19.3"
+     },
+     {
+      "realtime_start": "2026-11-16",
+      "realtime_end": "2026-11-16",
+      "date": "2026-11-12",
+      "value": "18.7"
+     },
+     {
+      "realtime_start": "2026-11-16",
+      "realtime_end": "2026-11-16",
+      "date": "2026-11-11",
+      "value": "17.49"
+     },
+     {
+      "realtime_start": "2026-11-16",
+      "realtime_end": "2026-11-16",
+      "date": "2026-11-10",
+      "value": "19.46"
+     },
+     {
+      "realtime_start": "2026-11-16",
+      "realtime_end": "2026-11-16",
+      "date": "2026-11-09",
+      "value": "19.92"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "CRM",
+   "as_of": "2026-11-17",
+   "events": [
+    {
+     "type": "earnings",
+     "date": "2026-12-02",
+     "description": "CRM Q3 2027 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 15,
+     "eps_estimate": 3.4724,
+     "hour": "amc"
+    },
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 22,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}

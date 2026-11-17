@@ -1,0 +1,367 @@
+{
+ "schema": 1,
+ "ticker": "GS",
+ "trading_day": "2026-11-16",
+ "captured_at": "2026-11-17T04:06:29+00:00",
+ "selected_as": "control",
+ "change_pct": -2.73,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "GS",
+   "price": 891.54,
+   "prev_close": 916.56,
+   "change_pct": -2.73,
+   "session_date": "2026-11-16",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 40.4,
+   "changes_pct": {
+    "1d": -2.73,
+    "1w": -1.62,
+    "2w": -0.8,
+    "1mo": 1.17,
+    "1y": 12.86,
+    "ytd": -1.07
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 892.01,
+    "change_pct": 0.05,
+    "as_of": "2026-11-16 19:39 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "GS",
+   "headlines": [
+    {
+     "headline": "Capstone Energy+ Q2 Earnings Call Highlights",
+     "summary": "Capstone Energy+ (NASDAQ:CEPL) said its fiscal second-quarter results fell short of expectations as lower rental fleet utilization, weaker product revenue and elevated service costs weighed on...",
+     "datetime": 1794874489,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=0bc95e9eb29a6b75a701705c72a5f84625567c2c696f2a926a726f7e5406cc67"
+    },
+    {
+     "headline": "Fifth Third Bancorp to Participate in the Goldman Sachs U.S. Financial Services Conference",
+     "summary": "CINCINNATI, November 16, 2026--Fifth Third Bancorp (NYSE: FITB) will participate in the Goldman Sachs U.S. Financial Services Conference on December 9, 2026, at approximately 8:00 AM ET. Tim Spence,...",
+     "datetime": 1794864600,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=c04b06306032df6d32c15dd62dbbcaf80b45a98db828a162ca93309ce76a06b5"
+    },
+    {
+     "headline": "Dow Jones Decliners in Today's U.S. Session: CAT, NVDA, GOOGL, BA, GS, JPM",
+     "summary": "Dow Jones components Caterpillar, NVIDIA, Alphabet, Boeing, Goldman Sachs, and JPMorgan posted notable declines in today's U.S. session, among the index's largest losers.",
+     "datetime": 1794859850,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=4df57dc2ec1ecaed4efe14d84c0e4ec661bb3618d40b87c41eecb631fb20b139"
+    },
+    {
+     "headline": "Dow Jones Top Losers: Caterpillar, NVIDIA and Amazon Decline in Nov. 16, 2026 Session",
+     "summary": "Dow Jones components Caterpillar, NVIDIA, Amazon, Alphabet, Boeing and Goldman Sachs moved lower on Nov. 16, 2026. See the session's top decliners and price changes.",
+     "datetime": 1794850865,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=f295e7fc05327889f13fb8e29ac77083ed626ffb7962f507e4d9673e2dd3e7b0"
+    },
+    {
+     "headline": "\u201cThe Biggest Competition For Capital I Have Seen in 50 years in Finance,\u201d Larry Fink Sounds The Alarm As Public Worldwide Debt Hits $110 Trillion, While $13 Trillion Of Corporate Debt Must Be Refinanced In The Next 5 Years",
+     "summary": "Governments are borrowing at record pace just as tech giants race to fund AI, and the collision is already pushing mortgage rates higher. Some deals are being shelved and one developer simply walked...",
+     "datetime": 1794844627,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=fe8e1497d33d098b2ad3906f107257eb28e21b1f760b6c914217c4aba04f9d67"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "GS",
+   "expiry": "2026-12-04",
+   "days_to_expiry": 17,
+   "atm_iv_pct": 40.4,
+   "iv_chain_percentile": 6,
+   "skew_points": 5.2,
+   "put_call_ratio": 1.21,
+   "total_put_oi": 3056,
+   "total_call_oi": 2534
+  },
+  "get_options_positioning": {
+   "ticker": "GS",
+   "spot": 891.54,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-04",
+   "primary_days_to_expiry": 17,
+   "max_pain_strike": 910.0,
+   "resistance_walls": [
+    {
+     "strike": 1330.0,
+     "open_interest": 562
+    },
+    {
+     "strike": 965.0,
+     "open_interest": 150
+    },
+    {
+     "strike": 915.0,
+     "open_interest": 145
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 830.0,
+     "open_interest": 233
+    },
+    {
+     "strike": 750.0,
+     "open_interest": 187
+    },
+    {
+     "strike": 790.0,
+     "open_interest": 187
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 17,
+     "atm_iv_pct": 40.4
+    },
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 24,
+     "atm_iv_pct": 40.4
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 560.0,
+     "volume": 102,
+     "open_interest": 108,
+     "vol_oi_ratio": 0.9,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 1330.0,
+     "volume": 247,
+     "open_interest": 562,
+     "vol_oi_ratio": 0.4,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 2212,
+   "otm_put_oi": 2432,
+   "positioning_lean_score": -0.05,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "GS",
+   "as_of": "2026-11-17",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-02",
+     "days_ago": 15,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 1010.0,
+     "price_target_to": 1000.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Neutral rating on GS and cut its price target from $1010.0 to $1000.0"
+    },
+    {
+     "date": "2026-10-23",
+     "days_ago": 25,
+     "firm": "Freedom Broker",
+     "action": "upgrade",
+     "from_grade": "Hold",
+     "to_grade": "Buy",
+     "price_target_from": 1200.0,
+     "price_target_to": 1100.0,
+     "is_rating_change": true,
+     "description": "Freedom Broker upgraded GS from Hold to Buy and cut its price target from $1200.0 to $1100.0"
+    },
+    {
+     "date": "2026-10-19",
+     "days_ago": 29,
+     "firm": "BMO Capital",
+     "action": "maintained",
+     "from_grade": "Market Perform",
+     "to_grade": "Market Perform",
+     "price_target_from": 970.0,
+     "price_target_to": 950.0,
+     "is_rating_change": false,
+     "description": "BMO Capital maintained its Market Perform rating on GS and cut its price target from $970.0 to $950.0"
+    }
+   ],
+   "consensus": {
+    "rating": "hold",
+    "score": 2.73,
+    "verdict": "neutral",
+    "analysts": 26,
+    "counts": {
+     "strongBuy": 1,
+     "buy": 8,
+     "hold": 15,
+     "sell": 1,
+     "strongSell": 1
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.8 to 2.73; bearish ratings 2 to 2)"
+   },
+   "price_target": {
+    "mean": 1030.67,
+    "median": 1000.0,
+    "high": 1250.0,
+    "low": 730.0,
+    "current_price": 891.54,
+    "dispersion_pct": 50.5,
+    "upside_vs_mean_pct": 15.6,
+    "upside_vs_median_pct": 12.2
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "GS",
+   "sector": "Financial Services",
+   "sector_etf": "XLF",
+   "comparison": {
+    "2w": {
+     "stock_change_pct": -0.8,
+     "sector_etf_change_pct": 1.08,
+     "relative_to_sector_pct": -1.88
+    },
+    "1mo": {
+     "stock_change_pct": 1.17,
+     "sector_etf_change_pct": 4.79,
+     "relative_to_sector_pct": -3.62
+    },
+    "ytd": {
+     "stock_change_pct": -1.07,
+     "sector_etf_change_pct": 7.21,
+     "relative_to_sector_pct": -8.28
+    },
+    "1d": {
+     "stock_change_pct": -2.73,
+     "sector_etf_change_pct": -0.85,
+     "relative_to_sector_pct": -1.88
+    },
+    "1y": {
+     "stock_change_pct": 12.86,
+     "sector_etf_change_pct": 11.55,
+     "relative_to_sector_pct": 1.31
+    },
+    "1w": {
+     "stock_change_pct": -1.62,
+     "sector_etf_change_pct": 0.33,
+     "relative_to_sector_pct": -1.95
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-16",
+    "realtime_end": "2026-11-16",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9619,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-16",
+      "realtime_end": "2026-11-16",
+      "date": "2026-11-13",
+      "value": "19.3"
+     },
+     {
+      "realtime_start": "2026-11-16",
+      "realtime_end": "2026-11-16",
+      "date": "2026-11-12",
+      "value": "18.7"
+     },
+     {
+      "realtime_start": "2026-11-16",
+      "realtime_end": "2026-11-16",
+      "date": "2026-11-11",
+      "value": "17.49"
+     },
+     {
+      "realtime_start": "2026-11-16",
+      "realtime_end": "2026-11-16",
+      "date": "2026-11-10",
+      "value": "19.46"
+     },
+     {
+      "realtime_start": "2026-11-16",
+      "realtime_end": "2026-11-16",
+      "date": "2026-11-09",
+      "value": "19.92"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "GS",
+   "as_of": "2026-11-17",
+   "events": [
+    {
+     "type": "ex_dividend",
+     "date": "2026-12-02",
+     "source": "yfinance",
+     "description": "GS goes ex-dividend \u2014 expect a mechanical price drop of roughly the dividend",
+     "days_until": 15
+    },
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 22,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-19",
+     "description": "GS quarterly earnings scheduled (before the open)",
+     "source": "yfinance",
+     "days_until": 63,
+     "eps_estimate": 15.78,
+     "hour": "bmo"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-13",
+     "description": "GS reported quarterly earnings before the open \u2014 EPS 17.01 vs 13.09 expected (beat, +29.9%)",
+     "source": "yfinance",
+     "days_ago": 35,
+     "eps_actual": 17.01,
+     "eps_estimate": 13.09,
+     "surprise": "beat",
+     "surprise_pct": 29.9,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "yfinance"
+  }
+ }
+}

@@ -1,0 +1,383 @@
+{
+ "schema": 1,
+ "ticker": "MOH",
+ "trading_day": "2026-11-16",
+ "captured_at": "2026-11-17T04:07:30+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 11.27,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 11.27% \u2014 unusual for this stock (about 2.82x its normal move for that span, expected ~4.00%)",
+   "this week: 14.63% \u2014 elevated relative to this stock's own typical volatility (expected ~8.94%, 1.64x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past 2 weeks: 11.82% \u2014 typical relative to this stock's own typical volatility (expected ~12.65%, 0.93x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past month: 12.41% \u2014 typical relative to this stock's own typical volatility (expected ~18.33%, 0.68x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past year: 68.32% \u2014 typical relative to this stock's own typical volatility (expected ~63.50%, 1.08x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "MOH",
+   "price": 233.09,
+   "prev_close": 209.49,
+   "change_pct": 11.27,
+   "session_date": "2026-11-16",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 63.5,
+   "changes_pct": {
+    "1d": 11.27,
+    "1w": 14.63,
+    "2w": 11.82,
+    "1mo": 12.41,
+    "1y": 68.32,
+    "ytd": 30.61
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 11.27% \u2014 unusual for this stock (about 2.82x its normal move for that span, expected ~4.00%)",
+     "this week: 14.63% \u2014 elevated relative to this stock's own typical volatility (expected ~8.94%, 1.64x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past 2 weeks: 11.82% \u2014 typical relative to this stock's own typical volatility (expected ~12.65%, 0.93x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past month: 12.41% \u2014 typical relative to this stock's own typical volatility (expected ~18.33%, 0.68x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past year: 68.32% \u2014 typical relative to this stock's own typical volatility (expected ~63.50%, 1.08x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 232.95,
+    "change_pct": -0.06,
+    "as_of": "2026-11-16 16:27 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "MOH",
+   "headlines": [
+    {
+     "headline": "Medicaid Work Requirement Delay Pushes Molina, Centene Stocks Higher",
+     "summary": "The Democrats\u2019 new majority in Congress could also help extend the delays even further.",
+     "datetime": 1794852060,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=bfd8e2de3872b2576cadbb54f56191f32b49754e71377630e2919803660e83f9"
+    },
+    {
+     "headline": "Can Medicaid Rate Improvements Drive Elevance's 2027 Margin Recovery?",
+     "summary": "ELV eyes a Medicaid margin recovery in 2027 as reimbursement rates improve, but elevated medical costs and uneven state adjustments remain key hurdles.",
+     "datetime": 1794838980,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=2c17c5caa7c30a2263669003fa0fa828e7b44fb003464eb946b3c2affede564e"
+    },
+    {
+     "headline": "Michael Burry\u2019s Portfolio: What the \u2018Big Short\u2019 Investor Owns Now",
+     "summary": "Michael Burry expanded bets on Lululemon, Adobe, Sprouts, PayPal, MercadoLibre and JD.com, favoring buybacks and beaten-down value stocks.",
+     "datetime": 1794426323,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=33dc235efa2140b0421c33e823f138ed217e700e27c7f19eaecb353aa8599ce8"
+    },
+    {
+     "headline": "Molina Healthcare Sees Path to $9.50 EPS in 2027, but Medicaid Risks Remain",
+     "summary": "Molina Healthcare (NYSE:MOH) is approaching 2027 with cautious optimism about a recovery in earnings, but uncertainty remains around Medicaid enrollment and whether payment rates will keep pace with...",
+     "datetime": 1794316346,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=0ba208b857bc041b40f99226670b982bdf1ac578fb726fb1105bc2bb54e57b10"
+    },
+    {
+     "headline": "'State Democratic wins make Medicaid expansion a possibility for more than a million people' - STAT News",
+     "summary": "https://www.statnews.com/2026/11/10/medicaid-expansion-holdout-states-midterm-election-power-shift/",
+     "datetime": 1794292715,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=8c353c0bfa7d105d6693ad9d1d2e606001957a4f8d891cd543fd5804cfa32b89"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "MOH",
+   "expiry": "2026-12-18",
+   "days_to_expiry": 31,
+   "atm_iv_pct": 49.2,
+   "iv_chain_percentile": 23,
+   "skew_points": -0.7,
+   "put_call_ratio": 1.36,
+   "total_put_oi": 1590,
+   "total_call_oi": 1169
+  },
+  "get_options_positioning": {
+   "ticker": "MOH",
+   "spot": 233.09,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-18",
+   "primary_days_to_expiry": 31,
+   "max_pain_strike": 210.0,
+   "resistance_walls": [
+    {
+     "strike": 220.0,
+     "open_interest": 271
+    },
+    {
+     "strike": 240.0,
+     "open_interest": 188
+    },
+    {
+     "strike": 250.0,
+     "open_interest": 173
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 200.0,
+     "open_interest": 356
+    },
+    {
+     "strike": 190.0,
+     "open_interest": 289
+    },
+    {
+     "strike": 180.0,
+     "open_interest": 196
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 31,
+     "atm_iv_pct": 49.2
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 115.0,
+     "volume": 122,
+     "open_interest": 0,
+     "vol_oi_ratio": 122.0,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 569,
+   "otm_put_oi": 1572,
+   "positioning_lean_score": -0.47,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "MOH",
+   "as_of": "2026-11-17",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-27",
+     "days_ago": 21,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 220.0,
+     "price_target_to": 225.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Neutral rating on MOH and raised its price target from $220.0 to $225.0"
+    },
+    {
+     "date": "2026-10-23",
+     "days_ago": 25,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 202.0,
+     "price_target_to": 225.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Neutral rating on MOH and raised its price target from $202.0 to $225.0"
+    },
+    {
+     "date": "2026-10-23",
+     "days_ago": 25,
+     "firm": "Morgan Stanley",
+     "action": "maintained",
+     "from_grade": "Equal-Weight",
+     "to_grade": "Equal-Weight",
+     "price_target_from": 167.0,
+     "price_target_to": 192.0,
+     "is_rating_change": false,
+     "description": "Morgan Stanley maintained its Equal-Weight rating on MOH and raised its price target from $167.0 to $192.0"
+    },
+    {
+     "date": "2026-10-23",
+     "days_ago": 25,
+     "firm": "RBC Capital",
+     "action": "maintained",
+     "from_grade": "Sector Perform",
+     "to_grade": "Sector Perform",
+     "price_target_from": 218.0,
+     "price_target_to": 222.0,
+     "is_rating_change": false,
+     "description": "RBC Capital maintained its Sector Perform rating on MOH and raised its price target from $218.0 to $222.0"
+    },
+    {
+     "date": "2026-10-23",
+     "days_ago": 25,
+     "firm": "Barclays",
+     "action": "maintained",
+     "from_grade": "Underweight",
+     "to_grade": "Underweight",
+     "price_target_from": 180.0,
+     "price_target_to": 178.0,
+     "is_rating_change": false,
+     "description": "Barclays maintained its Underweight rating on MOH and cut its price target from $180.0 to $178.0"
+    }
+   ],
+   "consensus": {
+    "rating": "hold",
+    "score": 2.95,
+    "verdict": "neutral",
+    "analysts": 19,
+    "counts": {
+     "strongBuy": 0,
+     "buy": 3,
+     "hold": 15,
+     "sell": 0,
+     "strongSell": 1
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.95 to 2.95)"
+   },
+   "price_target": {
+    "mean": 219.53,
+    "median": 222.0,
+    "high": 266.0,
+    "low": 163.0,
+    "current_price": 233.09,
+    "dispersion_pct": 46.9,
+    "upside_vs_mean_pct": -5.8,
+    "upside_vs_median_pct": -4.8
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "MOH",
+   "sector": "Healthcare",
+   "sector_etf": "XLV",
+   "comparison": {
+    "2w": {
+     "stock_change_pct": 11.82,
+     "sector_etf_change_pct": 1.78,
+     "relative_to_sector_pct": 10.04
+    },
+    "1mo": {
+     "stock_change_pct": 12.41,
+     "sector_etf_change_pct": 6.32,
+     "relative_to_sector_pct": 6.09
+    },
+    "ytd": {
+     "stock_change_pct": 30.61,
+     "sector_etf_change_pct": 22.31,
+     "relative_to_sector_pct": 8.3
+    },
+    "1d": {
+     "stock_change_pct": 11.27,
+     "sector_etf_change_pct": -0.51,
+     "relative_to_sector_pct": 11.78
+    },
+    "1y": {
+     "stock_change_pct": 68.32,
+     "sector_etf_change_pct": 25.06,
+     "relative_to_sector_pct": 43.26
+    },
+    "1w": {
+     "stock_change_pct": 14.63,
+     "sector_etf_change_pct": -0.24,
+     "relative_to_sector_pct": 14.87
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-16",
+    "realtime_end": "2026-11-16",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9619,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-16",
+      "realtime_end": "2026-11-16",
+      "date": "2026-11-13",
+      "value": "19.3"
+     },
+     {
+      "realtime_start": "2026-11-16",
+      "realtime_end": "2026-11-16",
+      "date": "2026-11-12",
+      "value": "18.7"
+     },
+     {
+      "realtime_start": "2026-11-16",
+      "realtime_end": "2026-11-16",
+      "date": "2026-11-11",
+      "value": "17.49"
+     },
+     {
+      "realtime_start": "2026-11-16",
+      "realtime_end": "2026-11-16",
+      "date": "2026-11-10",
+      "value": "19.46"
+     },
+     {
+      "realtime_start": "2026-11-16",
+      "realtime_end": "2026-11-16",
+      "date": "2026-11-09",
+      "value": "19.92"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "MOH",
+   "as_of": "2026-11-17",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 22,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-03",
+     "description": "MOH Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 78,
+     "eps_estimate": 0.535,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-21",
+     "description": "MOH reported Q3 2026 earnings after the close \u2014 EPS 0.89 vs 0.7501 expected (beat, +18.7%)",
+     "source": "finnhub",
+     "days_ago": 27,
+     "eps_actual": 0.89,
+     "eps_estimate": 0.7501,
+     "surprise": "beat",
+     "surprise_pct": 18.7,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

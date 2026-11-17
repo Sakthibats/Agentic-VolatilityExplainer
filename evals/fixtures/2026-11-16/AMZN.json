@@ -1,0 +1,412 @@
+{
+ "schema": 1,
+ "ticker": "AMZN",
+ "trading_day": "2026-11-16",
+ "captured_at": "2026-11-17T04:07:04+00:00",
+ "selected_as": "move",
+ "change_pct": -3.34,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "today: -3.34% \u2014 typical relative to this stock's own typical volatility (expected ~2.53%, 1.32x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "AMZN",
+   "price": 257.75,
+   "prev_close": 266.66,
+   "change_pct": -3.34,
+   "session_date": "2026-11-16",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 40.2,
+   "changes_pct": {
+    "1d": -3.34,
+    "1w": -3.44,
+    "2w": 4.93,
+    "1mo": 3.1,
+    "1y": 8.49,
+    "ytd": 13.8
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "today: -3.34% \u2014 typical relative to this stock's own typical volatility (expected ~2.53%, 1.32x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 258.3,
+    "change_pct": 0.21,
+    "as_of": "2026-11-16 19:59 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "AMZN",
+   "headlines": [
+    {
+     "headline": "Boeing (BA) ULA Rocket Failure Halts Deployment Of 40 Broadband Satellites",
+     "summary": "Boeing (NYSE:BA) part-owned United Launch Alliance reported a rocket failure while carrying 40 Amazon satellites on a recent mission. The malfunction interrupted deployment of Amazon's planned space...",
+     "datetime": 1794874799,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=511f78f5aef5c09b41b36834d23e9970cbd87e9d8826ebbc6c760a9169298966"
+    },
+    {
+     "headline": "Your $300,000 in XLY Holds $125,585 in Amazon and Tesla Alone",
+     "summary": "A fund named for everyday American spending looks diversified until you open its holdings filing. Two familiar companies quietly steer the whole ride, and you may already own them twice without...",
+     "datetime": 1794870199,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=215966c7c0cd7f3a8dedbcb8141d456a56198bfadf51acb77b97547bcd87e4c7"
+    },
+    {
+     "headline": "Stock Market Today, Nov. 16: Amazon Falls on New AI Chip Export Rule and Leo Satellite Launch Failure",
+     "summary": "Today, Nov. 16, 2026, Amazon shares slid as a new U.S. AI chip access rule and a $5 billion AWS data center deal kept AI spending in focus.",
+     "datetime": 1794867633,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=eb3077e8ba9ab973e6db6b5d7c779d96016702a07cf1ac63037620ec43af3b71"
+    },
+    {
+     "headline": "TEAMSTERS RALLY TO SUPPORT AMAZON E-BIKE DELIVERY DRIVERS ILLEGALLY FIRED BY COMPANY",
+     "summary": "Teamsters will rally to support 200 illegally terminated Amazon e-bike delivery drivers and demand passage of the New York City Delivery Protection Act on Tuesday, November 17, outside of the...",
+     "datetime": 1794867300,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=6bb1aaa955e067ce076345385015ff5054396c6b234d669247a472e5674adf28"
+    },
+    {
+     "headline": "Nvidia is not considering rehiring Jensen Huang, and Amazon's data center gets bought",
+     "summary": "Deirdre Bosa discusses Nvidia (NVDA), claiming they are not considering bringing back Jensen Huang, Amazon's (AMZN) data centers being bought by Blackstone (BX), and Apple (AAPL) launching a study on...",
+     "datetime": 1794867245,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=2c187bcc0c45d3792e728d697d5ab75445f40c510d0907866e90edf00973ed69"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "AMZN",
+   "expiry": "2026-12-04",
+   "days_to_expiry": 17,
+   "atm_iv_pct": 38.3,
+   "iv_chain_percentile": 3,
+   "skew_points": 4.4,
+   "put_call_ratio": 0.62,
+   "total_put_oi": 15881,
+   "total_call_oi": 25665
+  },
+  "get_options_positioning": {
+   "ticker": "AMZN",
+   "spot": 257.75,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-04",
+   "primary_days_to_expiry": 17,
+   "max_pain_strike": 250.0,
+   "resistance_walls": [
+    {
+     "strike": 270.0,
+     "open_interest": 5163
+    },
+    {
+     "strike": 280.0,
+     "open_interest": 3223
+    },
+    {
+     "strike": 275.0,
+     "open_interest": 1928
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 220.0,
+     "open_interest": 1737
+    },
+    {
+     "strike": 250.0,
+     "open_interest": 1671
+    },
+    {
+     "strike": 255.0,
+     "open_interest": 1626
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 17,
+     "atm_iv_pct": 38.3
+    },
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 24,
+     "atm_iv_pct": 38.4
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 260.0,
+     "volume": 1710,
+     "open_interest": 1142,
+     "vol_oi_ratio": 1.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 230.0,
+     "volume": 1517,
+     "open_interest": 1018,
+     "vol_oi_ratio": 1.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 335.0,
+     "volume": 152,
+     "open_interest": 194,
+     "vol_oi_ratio": 0.8,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 230.0,
+     "volume": 500,
+     "open_interest": 678,
+     "vol_oi_ratio": 0.7,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 240.0,
+     "volume": 796,
+     "open_interest": 1423,
+     "vol_oi_ratio": 0.6,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 20878,
+   "otm_put_oi": 13489,
+   "positioning_lean_score": 0.22,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "AMZN",
+   "as_of": "2026-11-17",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-03",
+     "days_ago": 14,
+     "firm": "Freedom Broker",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 255.0,
+     "price_target_to": 330.0,
+     "is_rating_change": false,
+     "description": "Freedom Broker maintained its Buy rating on AMZN and raised its price target from $255.0 to $330.0"
+    },
+    {
+     "date": "2026-10-31",
+     "days_ago": 17,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 348.0,
+     "price_target_to": 352.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Buy rating on AMZN and raised its price target from $348.0 to $352.0"
+    },
+    {
+     "date": "2026-10-30",
+     "days_ago": 18,
+     "firm": "Scotiabank",
+     "action": "maintained",
+     "from_grade": "Sector Outperform",
+     "to_grade": "Sector Outperform",
+     "price_target_from": 325.0,
+     "price_target_to": 300.0,
+     "is_rating_change": false,
+     "description": "Scotiabank maintained its Sector Outperform rating on AMZN and cut its price target from $325.0 to $300.0"
+    },
+    {
+     "date": "2026-10-30",
+     "days_ago": 18,
+     "firm": "Telsey Advisory Group",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 335.0,
+     "price_target_to": 335.0,
+     "is_rating_change": false,
+     "description": "Telsey Advisory Group maintained its Outperform rating on AMZN with a $335.0 price target"
+    },
+    {
+     "date": "2026-10-30",
+     "days_ago": 18,
+     "firm": "DA Davidson",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 250.0,
+     "price_target_to": 250.0,
+     "is_rating_change": false,
+     "description": "DA Davidson maintained its Neutral rating on AMZN with a $250.0 price target"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.82,
+    "verdict": "leaning bullish",
+    "analysts": 62,
+    "counts": {
+     "strongBuy": 14,
+     "buy": 45,
+     "hold": 3,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.78 to 1.82)"
+   },
+   "price_target": {
+    "mean": 326.29,
+    "median": 328.0,
+    "high": 405.0,
+    "low": 230.0,
+    "current_price": 257.75,
+    "dispersion_pct": 53.6,
+    "upside_vs_mean_pct": 26.6,
+    "upside_vs_median_pct": 27.3
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "AMZN",
+   "sector": "Consumer Cyclical",
+   "sector_etf": "XLY",
+   "comparison": {
+    "2w": {
+     "stock_change_pct": 4.93,
+     "sector_etf_change_pct": -0.01,
+     "relative_to_sector_pct": 4.94
+    },
+    "1mo": {
+     "stock_change_pct": 3.1,
+     "sector_etf_change_pct": 5.06,
+     "relative_to_sector_pct": -1.96
+    },
+    "ytd": {
+     "stock_change_pct": 13.8,
+     "sector_etf_change_pct": 0.45,
+     "relative_to_sector_pct": 13.35
+    },
+    "1d": {
+     "stock_change_pct": -3.34,
+     "sector_etf_change_pct": -1.53,
+     "relative_to_sector_pct": -1.81
+    },
+    "1y": {
+     "stock_change_pct": 8.49,
+     "sector_etf_change_pct": 2.69,
+     "relative_to_sector_pct": 5.8
+    },
+    "1w": {
+     "stock_change_pct": -3.44,
+     "sector_etf_change_pct": -2.36,
+     "relative_to_sector_pct": -1.08
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-16",
+    "realtime_end": "2026-11-16",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9619,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-16",
+      "realtime_end": "2026-11-16",
+      "date": "2026-11-13",
+      "value": "19.3"
+     },
+     {
+      "realtime_start": "2026-11-16",
+      "realtime_end": "2026-11-16",
+      "date": "2026-11-12",
+      "value": "18.7"
+     },
+     {
+      "realtime_start": "2026-11-16",
+      "realtime_end": "2026-11-16",
+      "date": "2026-11-11",
+      "value": "17.49"
+     },
+     {
+      "realtime_start": "2026-11-16",
+      "realtime_end": "2026-11-16",
+      "date": "2026-11-10",
+      "value": "19.46"
+     },
+     {
+      "realtime_start": "2026-11-16",
+      "realtime_end": "2026-11-16",
+      "date": "2026-11-09",
+      "value": "19.92"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "AMZN",
+   "as_of": "2026-11-17",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 22,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-03",
+     "description": "AMZN Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 78,
+     "eps_estimate": 2.4448,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-29",
+     "description": "AMZN reported Q3 2026 earnings after the close \u2014 EPS 1.89 vs 2.003 expected (miss, -5.6%)",
+     "source": "finnhub",
+     "days_ago": 19,
+     "eps_actual": 1.89,
+     "eps_estimate": 2.003,
+     "surprise": "miss",
+     "surprise_pct": -5.6,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

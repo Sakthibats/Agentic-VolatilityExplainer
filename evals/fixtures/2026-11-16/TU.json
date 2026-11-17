@@ -1,0 +1,346 @@
+{
+ "schema": 1,
+ "ticker": "TU",
+ "trading_day": "2026-11-16",
+ "captured_at": "2026-11-17T04:07:24+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 12.19,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 12.19% \u2014 unusual for this stock (about 3.49x its normal move for that span, expected ~3.50%)",
+   "this week: 7.29% \u2014 typical relative to this stock's own typical volatility (expected ~7.82%, 0.93x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past month: 13.39% \u2014 typical relative to this stock's own typical volatility (expected ~16.02%, 0.84x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past year: -30.74% \u2014 typical relative to this stock's own typical volatility (expected ~55.50%, 0.55x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "TU",
+   "price": 9.57,
+   "prev_close": 8.53,
+   "change_pct": 12.19,
+   "session_date": "2026-11-16",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 55.5,
+   "changes_pct": {
+    "1d": 12.19,
+    "1w": 7.29,
+    "2w": 5.75,
+    "1mo": 13.39,
+    "1y": -30.74,
+    "ytd": -22.34
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 12.19% \u2014 unusual for this stock (about 3.49x its normal move for that span, expected ~3.50%)",
+     "this week: 7.29% \u2014 typical relative to this stock's own typical volatility (expected ~7.82%, 0.93x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past month: 13.39% \u2014 typical relative to this stock's own typical volatility (expected ~16.02%, 0.84x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past year: -30.74% \u2014 typical relative to this stock's own typical volatility (expected ~55.50%, 0.55x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 9.53,
+    "change_pct": -0.42,
+    "as_of": "2026-11-16 19:48 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "TU",
+   "headlines": [
+    {
+     "headline": "Canada's Telecom Map Could Be Redrawn as a Takeover Approach Goes Public",
+     "summary": "Canada News Group News Commentary - Canada's telecom sector produced one of Monday's biggest corporate stories, as TELUS confirmed it has received an unsolicited proposal from Qu\u00e9becor. Shares of...",
+     "datetime": 1794873480,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=006f6d4b56388efdc91df437c296fc3f1bdd6a709cd517d299a77e44637b087c"
+    },
+    {
+     "headline": "News of the day: Real-time payments, Macklem steps down, Telus drops data centre plans, oilpatch consolidation, Quebecor offers to buy Telus and more",
+     "summary": "Catch up on the stories we\u2019re following today",
+     "datetime": 1794861254,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=fa3132fff0a4468857ddbf904caa5837203b396831cfb7db666415b61d8e1eef"
+    },
+    {
+     "headline": "Sector Update: Consumer Stocks Mixed Monday Afternoon",
+     "summary": "Consumer stocks were mixed Monday afternoon, with the State Street Consumer Staples Select Sector SP",
+     "datetime": 1794854178,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=4bc20b2e4ff77e99490d31ada39bea651f2bc6a9e119cc418b03d5308e1a9217"
+    },
+    {
+     "headline": "Telus drops its involvement in two planned AI data centres in Vancouver",
+     "summary": "The telecom company was set to co-develop the facilities with real estate developer Westbank and the federal government",
+     "datetime": 1794848955,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=6fa51fd834326edddbe4dca016991948fd9da912bfe42d941e052c78c220ee45"
+    },
+    {
+     "headline": "Telus shares surge as Quebecor makes US$21.7 billion takeover proposal",
+     "summary": "Shares in Telus Corp (NYSE: TU) were up over 11% at US$9.475 in New York by noon on Monday, gaining US$0.945, after Quebecor (TSX:QBR.B) proposed a cash-and-stock takeover of the Canadian...",
+     "datetime": 1794846960,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=22a9faa4d93e39412c505153ac85c1f2e9e394cf41a8466d4f723b764dfb8a10"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "TU",
+   "expiry": "2026-12-18",
+   "days_to_expiry": 31,
+   "atm_iv_pct": 48.6,
+   "iv_chain_percentile": 16,
+   "skew_points": 13.3,
+   "put_call_ratio": 0.36,
+   "total_put_oi": 2123,
+   "total_call_oi": 5817
+  },
+  "get_options_positioning": {
+   "ticker": "TU",
+   "spot": 9.57,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-18",
+   "primary_days_to_expiry": 31,
+   "max_pain_strike": 10.0,
+   "resistance_walls": [
+    {
+     "strike": 15.0,
+     "open_interest": 3734
+    },
+    {
+     "strike": 12.5,
+     "open_interest": 1324
+    },
+    {
+     "strike": 10.0,
+     "open_interest": 675
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 7.5,
+     "open_interest": 1709
+    },
+    {
+     "strike": 10.0,
+     "open_interest": 297
+    },
+    {
+     "strike": 12.5,
+     "open_interest": 105
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 31,
+     "atm_iv_pct": 48.6
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 10.0,
+     "volume": 433,
+     "open_interest": 675,
+     "vol_oi_ratio": 0.6,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 10.0,
+     "volume": 135,
+     "open_interest": 297,
+     "vol_oi_ratio": 0.5,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 12.5,
+     "volume": 226,
+     "open_interest": 1324,
+     "vol_oi_ratio": 0.2,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 5779,
+   "otm_put_oi": 1710,
+   "positioning_lean_score": 0.54,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "TU",
+   "as_of": "2026-11-17",
+   "analyst_coverage": "covered",
+   "recent_actions": [],
+   "consensus": {
+    "rating": "hold",
+    "score": 3.0,
+    "verdict": "neutral",
+    "analysts": 17,
+    "counts": {
+     "strongBuy": 1,
+     "buy": 2,
+     "hold": 11,
+     "sell": 2,
+     "strongSell": 1
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 3.17 to 3.0; bearish ratings 4 to 3)"
+   },
+   "price_target": {
+    "mean": 10.0,
+    "median": 10.0,
+    "high": 10.5,
+    "low": 9.5,
+    "current_price": 9.57,
+    "dispersion_pct": 10.0,
+    "upside_vs_mean_pct": 4.5,
+    "upside_vs_median_pct": 4.5
+   },
+   "notes": [
+    "No analyst rating changes in the last 30 days \u2014 the consensus below is standing opinion, not a recent catalyst."
+   ]
+  },
+  "get_sector_comparison": {
+   "ticker": "TU",
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "comparison": {
+    "2w": {
+     "stock_change_pct": 5.75,
+     "sector_etf_change_pct": 6.54,
+     "relative_to_sector_pct": -0.79
+    },
+    "1mo": {
+     "stock_change_pct": 13.39,
+     "sector_etf_change_pct": -3.17,
+     "relative_to_sector_pct": 16.56
+    },
+    "ytd": {
+     "stock_change_pct": -22.34,
+     "sector_etf_change_pct": -7.79,
+     "relative_to_sector_pct": -14.55
+    },
+    "1d": {
+     "stock_change_pct": 12.19,
+     "sector_etf_change_pct": -1.72,
+     "relative_to_sector_pct": 13.91
+    },
+    "1y": {
+     "stock_change_pct": -30.74,
+     "sector_etf_change_pct": -3.38,
+     "relative_to_sector_pct": -27.36
+    },
+    "1w": {
+     "stock_change_pct": 7.29,
+     "sector_etf_change_pct": -0.5,
+     "relative_to_sector_pct": 7.79
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-16",
+    "realtime_end": "2026-11-16",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9619,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-16",
+      "realtime_end": "2026-11-16",
+      "date": "2026-11-13",
+      "value": "19.3"
+     },
+     {
+      "realtime_start": "2026-11-16",
+      "realtime_end": "2026-11-16",
+      "date": "2026-11-12",
+      "value": "18.7"
+     },
+     {
+      "realtime_start": "2026-11-16",
+      "realtime_end": "2026-11-16",
+      "date": "2026-11-11",
+      "value": "17.49"
+     },
+     {
+      "realtime_start": "2026-11-16",
+      "realtime_end": "2026-11-16",
+      "date": "2026-11-10",
+      "value": "19.46"
+     },
+     {
+      "realtime_start": "2026-11-16",
+      "realtime_end": "2026-11-16",
+      "date": "2026-11-09",
+      "value": "19.92"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "TU",
+   "as_of": "2026-11-17",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 22,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "ex_dividend",
+     "date": "2026-12-11",
+     "source": "yfinance",
+     "description": "TU goes ex-dividend \u2014 expect a mechanical price drop of roughly the dividend",
+     "days_until": 24
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-11",
+     "description": "TU Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 86,
+     "eps_estimate": 0.1462,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-06",
+     "description": "TU reported Q3 2026 earnings before the open \u2014 EPS 0.16 vs 0.1766 expected (miss, -9.4%)",
+     "source": "finnhub",
+     "days_ago": 11,
+     "eps_actual": 0.16,
+     "eps_estimate": 0.1766,
+     "surprise": "miss",
+     "surprise_pct": -9.4,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}
