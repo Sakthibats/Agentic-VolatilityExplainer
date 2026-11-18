@@ -1,0 +1,357 @@
+{
+ "schema": 1,
+ "ticker": "ACM",
+ "trading_day": "2026-11-17",
+ "captured_at": "2026-11-18T03:05:09+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 11.08,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 11.08% \u2014 unusual for this stock (about 3.96x its normal move for that span, expected ~2.80%)",
+   "this week: 14.02% \u2014 elevated relative to this stock's own typical volatility (expected ~6.25%, 2.24x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past 2 weeks: 21.55% \u2014 elevated relative to this stock's own typical volatility (expected ~8.84%, 2.44x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past month: 38.8% \u2014 unusual for this stock (about 3.03x its normal move for that span, expected ~12.82%)",
+   "the past year: -38.69% \u2014 typical relative to this stock's own typical volatility (expected ~44.40%, 0.87x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "ACM",
+   "price": 80.53,
+   "prev_close": 72.5,
+   "change_pct": 11.08,
+   "session_date": "2026-11-17",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 44.4,
+   "changes_pct": {
+    "1d": 11.08,
+    "1w": 14.02,
+    "2w": 21.55,
+    "1mo": 38.8,
+    "1y": -38.69,
+    "ytd": -15.08
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 11.08% \u2014 unusual for this stock (about 3.96x its normal move for that span, expected ~2.80%)",
+     "this week: 14.02% \u2014 elevated relative to this stock's own typical volatility (expected ~6.25%, 2.24x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past 2 weeks: 21.55% \u2014 elevated relative to this stock's own typical volatility (expected ~8.84%, 2.44x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past month: 38.8% \u2014 unusual for this stock (about 3.03x its normal move for that span, expected ~12.82%)",
+     "the past year: -38.69% \u2014 typical relative to this stock's own typical volatility (expected ~44.40%, 0.87x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 81.5,
+    "change_pct": 1.2,
+    "as_of": "2026-11-17 19:59 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "ACM",
+   "headlines": [
+    {
+     "headline": "Is AECOM (ACM) Fully Valued As Strong Earnings And 2027 Guidance Lift Interest?",
+     "summary": "AECOM earnings jolt investor interest AECOM (ACM) has just delivered a busy earnings day, pairing fourth quarter results and fresh 2027 guidance with record operating margins, a higher backlog and a...",
+     "datetime": 1794961435,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=535c138cadd771ba45d14cd89b1ea3280fc0a90111049d5846c9951a0c4a791b"
+    },
+    {
+     "headline": "AECOM (ACM) Q4 2026 Earnings Call Transcript",
+     "summary": "Record backlog and record margins close fiscal 2026 amid legacy project drag.",
+     "datetime": 1794954807,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=7c661bee9a82d9812dccb25f6814be371b496f6b4d8adad4f34338608b7049a0"
+    },
+    {
+     "headline": "AECOM Stocks Jump 11.21% as Record Margins Lead to Upbeat 2027 Outlook",
+     "summary": "Fiscal fourth-quarter adjusted EPS rose 20% to $1.63, backlog hit a record $28 billion, and the dividend climbs 10%.",
+     "datetime": 1794938555,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=1d58018bd2a57c49f49ce825bca3b306ac18d2393661a301bd18f6f97d80b33b"
+    },
+    {
+     "headline": "AECOM shares jump more than 12% as 2027 earnings outlook beats estimates",
+     "summary": "Shares in AECOM Technology (NYSE:ACM) surged over 12% to $81.44 on Tuesday after the infrastructure consultancy reported improved fourth-quarter profitability and issued fiscal 2027 earnings guidance...",
+     "datetime": 1794935700,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=cad001166e60a2fb2add746f9bad8e4dd856d4f80fd25d3d9d76e23d91b2aa86"
+    },
+    {
+     "headline": "Why Aecom Stock Popped Today",
+     "summary": "Yes, Aecom beat earnings -- but its sales fell short, and the stock looks overvalued.",
+     "datetime": 1794933882,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=d1e048f17e273379ba8b43504e511da715dc5f98bb303d9cbc4d2e295ae220ba"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "ACM",
+   "expiry": "2026-12-18",
+   "days_to_expiry": 30,
+   "atm_iv_pct": 48.7,
+   "iv_chain_percentile": 19,
+   "skew_points": -2.1,
+   "put_call_ratio": 1.24,
+   "total_put_oi": 3546,
+   "total_call_oi": 2866
+  },
+  "get_options_positioning": {
+   "ticker": "ACM",
+   "spot": 80.53,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-18",
+   "primary_days_to_expiry": 30,
+   "max_pain_strike": 70.0,
+   "resistance_walls": [
+    {
+     "strike": 115.0,
+     "open_interest": 860
+    },
+    {
+     "strike": 75.0,
+     "open_interest": 238
+    },
+    {
+     "strike": 80.0,
+     "open_interest": 238
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 65.0,
+     "open_interest": 807
+    },
+    {
+     "strike": 62.5,
+     "open_interest": 758
+    },
+    {
+     "strike": 55.0,
+     "open_interest": 463
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 30,
+     "atm_iv_pct": 48.7
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 90.0,
+     "volume": 161,
+     "open_interest": 1,
+     "vol_oi_ratio": 161.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 70.0,
+     "volume": 328,
+     "open_interest": 94,
+     "vol_oi_ratio": 3.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 100.0,
+     "volume": 273,
+     "open_interest": 223,
+     "vol_oi_ratio": 1.2,
+     "moneyness": "ITM"
+    }
+   ],
+   "otm_call_oi": 1454,
+   "otm_put_oi": 3269,
+   "positioning_lean_score": -0.38,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "ACM",
+   "as_of": "2026-11-18",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-23",
+     "days_ago": 26,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 84.0,
+     "price_target_to": 79.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Buy rating on ACM and cut its price target from $84.0 to $79.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.0,
+    "verdict": "leaning bullish",
+    "analysts": 13,
+    "counts": {
+     "strongBuy": 2,
+     "buy": 9,
+     "hold": 2,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.0 to 2.0)"
+   },
+   "price_target": {
+    "mean": 87.79,
+    "median": 88.5,
+    "high": 104.0,
+    "low": 73.0,
+    "current_price": 80.53,
+    "dispersion_pct": 35.3,
+    "upside_vs_mean_pct": 9.0,
+    "upside_vs_median_pct": 9.9
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "ACM",
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "comparison": {
+    "1w": {
+     "stock_change_pct": 14.02,
+     "sector_etf_change_pct": -2.36,
+     "relative_to_sector_pct": 16.38
+    },
+    "2w": {
+     "stock_change_pct": 21.55,
+     "sector_etf_change_pct": -3.83,
+     "relative_to_sector_pct": 25.38
+    },
+    "1mo": {
+     "stock_change_pct": 38.8,
+     "sector_etf_change_pct": -1.16,
+     "relative_to_sector_pct": 39.96
+    },
+    "ytd": {
+     "stock_change_pct": -15.08,
+     "sector_etf_change_pct": 5.12,
+     "relative_to_sector_pct": -20.2
+    },
+    "1y": {
+     "stock_change_pct": -38.69,
+     "sector_etf_change_pct": 9.62,
+     "relative_to_sector_pct": -48.31
+    },
+    "1d": {
+     "stock_change_pct": 11.08,
+     "sector_etf_change_pct": -0.55,
+     "relative_to_sector_pct": 11.63
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-17",
+    "realtime_end": "2026-11-17",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9620,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-16",
+      "value": "22.91"
+     },
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-13",
+      "value": "19.3"
+     },
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-12",
+      "value": "18.7"
+     },
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-11",
+      "value": "17.49"
+     },
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-10",
+      "value": "19.46"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "ACM",
+   "as_of": "2026-11-18",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 21,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-08",
+     "description": "ACM Q1 2027 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 82,
+     "eps_estimate": 1.4146
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-16",
+     "description": "ACM reported Q4 2026 earnings after the close \u2014 EPS 1.63 vs 1.5938 expected (beat, +2.3%)",
+     "source": "finnhub",
+     "days_ago": 2,
+     "eps_actual": 1.63,
+     "eps_estimate": 1.5938,
+     "surprise": "beat",
+     "surprise_pct": 2.3,
+     "hour": "amc"
+    },
+    {
+     "type": "ex_dividend",
+     "date": "2026-10-14",
+     "source": "yfinance",
+     "description": "ACM went ex-dividend \u2014 the price drops by roughly the dividend on this date mechanically, with no news behind it",
+     "days_ago": 35
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

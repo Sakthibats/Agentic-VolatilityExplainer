@@ -1,0 +1,386 @@
+{
+ "schema": 1,
+ "ticker": "NXT",
+ "trading_day": "2026-11-17",
+ "captured_at": "2026-11-18T03:05:28+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -12.13,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: -12.13% \u2014 elevated relative to this stock's own typical volatility (expected ~6.44%, 1.88x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "this week: -21.38% \u2014 typical relative to this stock's own typical volatility (expected ~14.40%, 1.49x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past 2 weeks: -18.27% \u2014 typical relative to this stock's own typical volatility (expected ~20.36%, 0.9x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "NXT",
+   "price": 78.48,
+   "prev_close": 89.31,
+   "change_pct": -12.13,
+   "session_date": "2026-11-17",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 102.2,
+   "changes_pct": {
+    "1d": -12.13,
+    "1w": -21.38,
+    "2w": -18.27,
+    "1mo": -1.53,
+    "1y": -16.29,
+    "ytd": -15.41
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: -12.13% \u2014 elevated relative to this stock's own typical volatility (expected ~6.44%, 1.88x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "this week: -21.38% \u2014 typical relative to this stock's own typical volatility (expected ~14.40%, 1.49x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past 2 weeks: -18.27% \u2014 typical relative to this stock's own typical volatility (expected ~20.36%, 0.9x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 81.9,
+    "change_pct": 4.36,
+    "as_of": "2026-11-17 19:58 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "NXT",
+   "headlines": [
+    {
+     "headline": "Nextpower Plans To Ramp US Inverter Manufacturing Capacity To 10 GWs By Year-End 2027 With Shipments Under 1.1-GW Framework Agreement Expected To Begin From US Facility In Summer 2027",
+     "summary": "At Capital Markets Day, Nextpower also presented updates on its power generation and energy storage businesses, technology roadmaps, operations and execution, and long-term financial framework. The...",
+     "datetime": 1794903053,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=300fc5187da9466e720c51239ce9cb78f010ce27f4bf826b88cdf131948fd367"
+    },
+    {
+     "headline": "Nextpower Now Expects More Than $7.5B In Revenue, More Than $1.6B In Adj. EBITDA, And Adj. EPS Of More Than $8.00 By FY30",
+     "summary": "Company announced updated 2030 financial targets of revenue of more than $7.5 billion and adjusted EBITDA of $1.6 billion, reflecting accelerated growth across its expanded platformNextpower\u2122...",
+     "datetime": 1794902937,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=5760c13187e980fed96e9b8638470bb3677e42ee0f546425ff6b087e1377fbc3"
+    },
+    {
+     "headline": "QCLN: The Clean Energy Risks Are High, But So Is The Potential",
+     "summary": "I rate QCLN ETF a Hold because of long-term potential balanced against low EPS growth and poor performing holdings.",
+     "datetime": 1794881735,
+     "source": "SeekingAlpha",
+     "url": "https://finnhub.io/api/news?id=d8181801ec6e7eb132a25506f11aab26225bc8937c9b44704a3566257f410982"
+    },
+    {
+     "headline": "Nextpower Inc. (NXT) Analyst/Investor Day Transcript",
+     "summary": "Nextpower Inc. (NXT) Analyst/Investor Day November 16, 2026 6:00 PM ESTCompany ParticipantsSarah Lee - Head of Investor RelationsDaniel Shugar - Co-Founder,...",
+     "datetime": 1794869570,
+     "source": "SeekingAlpha",
+     "url": "https://finnhub.io/api/news?id=c24b3f004b48c6f8423dd716ac69dd2450557e875ee26aa732ace45c0056858f"
+    },
+    {
+     "headline": "Zeo Energy Signs Memorandum Of Understanding With Creekstone Energy",
+     "summary": "",
+     "datetime": 1794845639,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=728daee71c81deb6c38237776db2bd2e53c7990dd0ffbe00e3b9234ad63c131a"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "NXT",
+   "expiry": "2026-12-18",
+   "days_to_expiry": 30,
+   "atm_iv_pct": 73.9,
+   "iv_chain_percentile": 28,
+   "skew_points": -6.4,
+   "put_call_ratio": 0.17,
+   "total_put_oi": 524,
+   "total_call_oi": 3041
+  },
+  "get_options_positioning": {
+   "ticker": "NXT",
+   "spot": 78.48,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-18",
+   "primary_days_to_expiry": 30,
+   "max_pain_strike": 90.0,
+   "resistance_walls": [
+    {
+     "strike": 115.0,
+     "open_interest": 878
+    },
+    {
+     "strike": 100.0,
+     "open_interest": 531
+    },
+    {
+     "strike": 110.0,
+     "open_interest": 517
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 80.0,
+     "open_interest": 72
+    },
+    {
+     "strike": 70.0,
+     "open_interest": 58
+    },
+    {
+     "strike": 95.0,
+     "open_interest": 58
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 30,
+     "atm_iv_pct": 73.9
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 125.0,
+     "volume": 434,
+     "open_interest": 429,
+     "vol_oi_ratio": 1.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 100.0,
+     "volume": 220,
+     "open_interest": 531,
+     "vol_oi_ratio": 0.4,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 2959,
+   "otm_put_oi": 216,
+   "positioning_lean_score": 0.86,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "NXT",
+   "as_of": "2026-11-18",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-12",
+     "days_ago": 6,
+     "firm": "RBC Capital",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 116.0,
+     "price_target_to": 120.0,
+     "is_rating_change": false,
+     "description": "RBC Capital maintained its Outperform rating on NXT and raised its price target from $116.0 to $120.0"
+    },
+    {
+     "date": "2026-11-10",
+     "days_ago": 8,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 119.0,
+     "price_target_to": 126.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Buy rating on NXT and raised its price target from $119.0 to $126.0"
+    },
+    {
+     "date": "2026-11-09",
+     "days_ago": 9,
+     "firm": "Piper Sandler",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 110.0,
+     "price_target_to": 115.0,
+     "is_rating_change": false,
+     "description": "Piper Sandler maintained its Overweight rating on NXT and raised its price target from $110.0 to $115.0"
+    },
+    {
+     "date": "2026-11-05",
+     "days_ago": 13,
+     "firm": "Cantor Fitzgerald",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 55.0,
+     "price_target_to": 125.0,
+     "is_rating_change": false,
+     "description": "Cantor Fitzgerald maintained its Overweight rating on NXT and raised its price target from $55.0 to $125.0"
+    },
+    {
+     "date": "2026-11-03",
+     "days_ago": 15,
+     "firm": "GLJ Research",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 149.0,
+     "price_target_to": 158.0,
+     "is_rating_change": false,
+     "description": "GLJ Research maintained its Buy rating on NXT and raised its price target from $149.0 to $158.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.93,
+    "verdict": "leaning bullish",
+    "analysts": 30,
+    "counts": {
+     "strongBuy": 7,
+     "buy": 20,
+     "hold": 2,
+     "sell": 0,
+     "strongSell": 1
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.89 to 1.93)"
+   },
+   "price_target": {
+    "mean": 127.76,
+    "median": 125.0,
+    "high": 170.0,
+    "low": 70.0,
+    "current_price": 78.48,
+    "dispersion_pct": 78.3,
+    "upside_vs_mean_pct": 62.8,
+    "upside_vs_median_pct": 59.3
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "NXT",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1w": {
+     "stock_change_pct": -21.38,
+     "sector_etf_change_pct": -3.34,
+     "relative_to_sector_pct": -18.04
+    },
+    "2w": {
+     "stock_change_pct": -18.27,
+     "sector_etf_change_pct": -7.51,
+     "relative_to_sector_pct": -10.76
+    },
+    "1mo": {
+     "stock_change_pct": -1.53,
+     "sector_etf_change_pct": -12.21,
+     "relative_to_sector_pct": 10.68
+    },
+    "ytd": {
+     "stock_change_pct": -15.41,
+     "sector_etf_change_pct": 13.55,
+     "relative_to_sector_pct": -28.96
+    },
+    "1y": {
+     "stock_change_pct": -16.29,
+     "sector_etf_change_pct": 13.9,
+     "relative_to_sector_pct": -30.19
+    },
+    "1d": {
+     "stock_change_pct": -12.13,
+     "sector_etf_change_pct": -0.91,
+     "relative_to_sector_pct": -11.22
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-17",
+    "realtime_end": "2026-11-17",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9620,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-16",
+      "value": "22.91"
+     },
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-13",
+      "value": "19.3"
+     },
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-12",
+      "value": "18.7"
+     },
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-11",
+      "value": "17.49"
+     },
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-10",
+      "value": "19.46"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "NXT",
+   "as_of": "2026-11-18",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 21,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-25",
+     "description": "NXT Q3 2027 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 68,
+     "eps_estimate": 0.9797
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-28",
+     "description": "NXT reported Q2 2027 earnings after the close \u2014 EPS 1.31 vs 1.1096 expected (beat, +18.1%)",
+     "source": "finnhub",
+     "days_ago": 21,
+     "eps_actual": 1.31,
+     "eps_estimate": 1.1096,
+     "surprise": "beat",
+     "surprise_pct": 18.1,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

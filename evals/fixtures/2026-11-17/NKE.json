@@ -1,0 +1,408 @@
+{
+ "schema": 1,
+ "ticker": "NKE",
+ "trading_day": "2026-11-17",
+ "captured_at": "2026-11-18T03:04:56+00:00",
+ "selected_as": "move",
+ "change_pct": -6.3,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "today: -6.3% \u2014 elevated for this stock (about 2.37x its normal move for that span, expected ~2.66%)",
+   "this week: -7.29% \u2014 typical relative to this stock's own typical volatility (expected ~5.94%, 1.23x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past year: -42.29% \u2014 typical relative to this stock's own typical volatility (expected ~42.20%, 1.0x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "NKE",
+   "price": 35.85,
+   "prev_close": 38.26,
+   "change_pct": -6.3,
+   "session_date": "2026-11-17",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 42.2,
+   "changes_pct": {
+    "1d": -6.3,
+    "1w": -7.29,
+    "2w": -6.83,
+    "1mo": -3.65,
+    "1y": -42.29,
+    "ytd": -41.85
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "today: -6.3% \u2014 elevated for this stock (about 2.37x its normal move for that span, expected ~2.66%)",
+     "this week: -7.29% \u2014 typical relative to this stock's own typical volatility (expected ~5.94%, 1.23x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past year: -42.29% \u2014 typical relative to this stock's own typical volatility (expected ~42.20%, 1.0x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 35.22,
+    "change_pct": -1.76,
+    "as_of": "2026-11-17 19:59 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "NKE",
+   "headlines": [
+    {
+     "headline": "NKE Stock Heads For Worst Week Since June: Analysts Flag Risks In Nike\u2019s $5B Growth Plan\u2014 Retail Questions CEO Elliott Hill\u2019s Leadership",
+     "summary": "Nike stock fell 5.6% this week as analysts questioned its $5 billion growth plan.",
+     "datetime": 1794966896,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=0f51b924d61e7c1c40a558fb126503330741d1f07b081da96f8d3d34f1d21263"
+    },
+    {
+     "headline": "NIKE Sees Revenue Falling Through 2028, Targets $5 Billion Rebound by 2031",
+     "summary": "NIKE (NYSE:NKE) expects revenue to decline through fiscal 2028 before returning to market-level growth in fiscal 2029, as the company resets its sportswear business, reduces discounting and works to...",
+     "datetime": 1794960803,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=50a446b839a863327ee9b6632b23766d72978384c75e6adc0eb474ddf78f31c7"
+    },
+    {
+     "headline": "Nike Is Down 78% From Its High. Here's What That Does to the Yield.",
+     "summary": "Investors continue to feel dismayed by the lack of a revenue turnaround.",
+     "datetime": 1794955800,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=c7d4ad2dce958bc585c5eacbde44d778944b25f14806d97d2807d5d14069290d"
+    },
+    {
+     "headline": "Stock Market Today, Nov. 17: Nike Shares Fall 6.3% After Investor Day Turnaround Plan Draws Scrutiny",
+     "summary": "On Nov. 17, 2026, Nike shares slid as traders weighed an expected sales slowdown against its 2031 growth goals.",
+     "datetime": 1794953949,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=d3a1b8185501c54257274a1022e4514c88a3dc763b12507824e389629b766379"
+    },
+    {
+     "headline": "Nike CFO Says It Will Take Two Years for Jordan Brand to Return to Growth",
+     "summary": "As for Converse, the company expects the brand to return to growth beginning in fiscal 2028.",
+     "datetime": 1794952160,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=0aa37624148fc050502920bff2eb065056ef586e49915a8b13656bcf70351041"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "NKE",
+   "expiry": "2026-12-04",
+   "days_to_expiry": 16,
+   "atm_iv_pct": 52.4,
+   "iv_chain_percentile": 11,
+   "skew_points": 13.7,
+   "put_call_ratio": 1.43,
+   "total_put_oi": 9372,
+   "total_call_oi": 6547
+  },
+  "get_options_positioning": {
+   "ticker": "NKE",
+   "spot": 35.85,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-04",
+   "primary_days_to_expiry": 16,
+   "max_pain_strike": 40.0,
+   "resistance_walls": [
+    {
+     "strike": 39.0,
+     "open_interest": 1639
+    },
+    {
+     "strike": 45.0,
+     "open_interest": 1481
+    },
+    {
+     "strike": 40.0,
+     "open_interest": 715
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 34.0,
+     "open_interest": 2749
+    },
+    {
+     "strike": 39.0,
+     "open_interest": 1010
+    },
+    {
+     "strike": 40.0,
+     "open_interest": 960
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 16,
+     "atm_iv_pct": 52.4
+    },
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 23,
+     "atm_iv_pct": 43.5
+    },
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 30,
+     "atm_iv_pct": 46.0
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 30.0,
+     "volume": 101,
+     "open_interest": 13,
+     "vol_oi_ratio": 7.8,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 38.0,
+     "volume": 2467,
+     "open_interest": 426,
+     "vol_oi_ratio": 5.8,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 32.0,
+     "volume": 205,
+     "open_interest": 49,
+     "vol_oi_ratio": 4.2,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 35.0,
+     "volume": 130,
+     "open_interest": 43,
+     "vol_oi_ratio": 3.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 37.0,
+     "volume": 430,
+     "open_interest": 286,
+     "vol_oi_ratio": 1.5,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 6476,
+   "otm_put_oi": 3510,
+   "positioning_lean_score": 0.3,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "NKE",
+   "as_of": "2026-11-18",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-10",
+     "days_ago": 8,
+     "firm": "Cantor Fitzgerald",
+     "action": "initiated coverage",
+     "from_grade": null,
+     "to_grade": "Neutral",
+     "price_target_from": null,
+     "price_target_to": 38.0,
+     "is_rating_change": false,
+     "description": "Cantor Fitzgerald initiated coverage of NKE at Neutral with a $38.0 price target"
+    },
+    {
+     "date": "2026-11-06",
+     "days_ago": 12,
+     "firm": "RBC Capital",
+     "action": "maintained",
+     "from_grade": "Sector Perform",
+     "to_grade": "Sector Perform",
+     "price_target_from": 40.0,
+     "price_target_to": 39.0,
+     "is_rating_change": false,
+     "description": "RBC Capital maintained its Sector Perform rating on NKE and cut its price target from $40.0 to $39.0"
+    },
+    {
+     "date": "2026-11-05",
+     "days_ago": 13,
+     "firm": "Truist Securities",
+     "action": "downgrade",
+     "from_grade": "Hold",
+     "to_grade": "Sell",
+     "price_target_from": 29.0,
+     "price_target_to": 29.0,
+     "is_rating_change": true,
+     "description": "Truist Securities downgraded NKE from Hold to Sell with a $29.0 price target"
+    },
+    {
+     "date": "2026-10-22",
+     "days_ago": 27,
+     "firm": "Guggenheim",
+     "action": "reiterated",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 50.0,
+     "price_target_to": 50.0,
+     "is_rating_change": false,
+     "description": "Guggenheim reiterated its Buy rating on NKE with a $50.0 price target"
+    },
+    {
+     "date": "2026-10-22",
+     "days_ago": 27,
+     "firm": "Wolfe Research",
+     "action": "initiated coverage",
+     "from_grade": null,
+     "to_grade": "Underperform",
+     "price_target_from": null,
+     "price_target_to": 28.0,
+     "is_rating_change": false,
+     "description": "Wolfe Research initiated coverage of NKE at Underperform with a $28.0 price target"
+    }
+   ],
+   "consensus": {
+    "rating": "hold",
+    "score": 3.0,
+    "verdict": "neutral",
+    "analysts": 44,
+    "counts": {
+     "strongBuy": 2,
+     "buy": 8,
+     "hold": 25,
+     "sell": 6,
+     "strongSell": 3
+    },
+    "trend": "deteriorating",
+    "trend_detail": "consensus softened over 3 months (score 2.82 to 3.0; bearish ratings 3 to 9)"
+   },
+   "price_target": {
+    "mean": 36.46,
+    "median": 34.0,
+    "high": 60.0,
+    "low": 19.0,
+    "current_price": 35.85,
+    "dispersion_pct": 112.5,
+    "upside_vs_mean_pct": 1.7,
+    "upside_vs_median_pct": -5.2
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "NKE",
+   "sector": "Consumer Cyclical",
+   "sector_etf": "XLY",
+   "comparison": {
+    "1w": {
+     "stock_change_pct": -7.29,
+     "sector_etf_change_pct": -3.26,
+     "relative_to_sector_pct": -4.03
+    },
+    "2w": {
+     "stock_change_pct": -6.83,
+     "sector_etf_change_pct": -0.2,
+     "relative_to_sector_pct": -6.63
+    },
+    "1mo": {
+     "stock_change_pct": -3.65,
+     "sector_etf_change_pct": 2.31,
+     "relative_to_sector_pct": -5.96
+    },
+    "ytd": {
+     "stock_change_pct": -41.85,
+     "sector_etf_change_pct": -0.44,
+     "relative_to_sector_pct": -41.41
+    },
+    "1y": {
+     "stock_change_pct": -42.29,
+     "sector_etf_change_pct": 2.27,
+     "relative_to_sector_pct": -44.56
+    },
+    "1d": {
+     "stock_change_pct": -6.3,
+     "sector_etf_change_pct": -0.89,
+     "relative_to_sector_pct": -5.41
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-17",
+    "realtime_end": "2026-11-17",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9620,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-16",
+      "value": "22.91"
+     },
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-13",
+      "value": "19.3"
+     },
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-12",
+      "value": "18.7"
+     },
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-11",
+      "value": "17.49"
+     },
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-10",
+      "value": "19.46"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "NKE",
+   "as_of": "2026-11-18",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 21,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-12-16",
+     "description": "NKE Q2 2027 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 28,
+     "eps_estimate": 0.3793,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}

@@ -1,0 +1,382 @@
+{
+ "schema": 1,
+ "ticker": "WCN",
+ "trading_day": "2026-11-17",
+ "captured_at": "2026-11-18T03:05:35+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -8.01,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: -8.01% \u2014 unusual for this stock (about 2.53x its normal move for that span, expected ~3.16%)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "WCN",
+   "price": 181.5,
+   "prev_close": 197.3,
+   "change_pct": -8.01,
+   "session_date": "2026-11-17",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 50.2,
+   "changes_pct": {
+    "1d": -8.01,
+    "1w": -5.04,
+    "2w": -2.57,
+    "1mo": 9.76,
+    "1y": 8.55,
+    "ytd": 5.13
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: -8.01% \u2014 unusual for this stock (about 2.53x its normal move for that span, expected ~3.16%)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 181.22,
+    "change_pct": -0.15,
+    "as_of": "2026-11-17 17:21 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "WCN",
+   "headlines": [
+    {
+     "headline": "\u2018Noxious Odors\u2019 From L.A. County Landfill Explosion Taint This Waste Hauler\u2019s Stock",
+     "summary": "Rotting trash spewed into the air after a pocket of gas erupted during routine maintenance at the Chiquita Canyon landfill in Southern California.",
+     "datetime": 1794952560,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=b90f13b0cff8a2caece192d47372894c83a80f1cc6130ad2a4ff84980e0dd610"
+    },
+    {
+     "headline": "Sector Update: Energy Stocks Softer Late Afternoon",
+     "summary": "Energy stocks declined late Tuesday afternoon, with the NYSE Energy Sector Index down 0.7% and the S",
+     "datetime": 1794948417,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=0570fa55e680616bc62d5c4791757fe5dcda1082513a56ee8d85fa8fe0bf45cd"
+    },
+    {
+     "headline": "Top 3 Industrials Stocks That Are Ticking Portfolio Bombs",
+     "summary": "Republic Services, W.W. Grainger and Waste Connections show overbought RSI signals after strong gains, warning momentum-focused investors.",
+     "datetime": 1794909186,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=adb7591dd10ac948891cfc9d8d9abec729210d7f9462bf4b07edad81f63781b7"
+    },
+    {
+     "headline": "Green Dot Q3 Earnings Miss Estimates, Stock Declines 8.2%",
+     "summary": "GDOT's Q3 2026 revenues surge on strong BaaS demand, but an earnings miss, higher processing costs and delayed acquisition plans weigh on its outlook.",
+     "datetime": 1794839640,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=0068b99b9ac5e09d0938680bb32986eb1b725e4533e9f022612d088f0dcf2805"
+    },
+    {
+     "headline": "These 4 Waste and Services Stocks Collect Recurring Revenue",
+     "summary": "These four companies provide essential services that customers need repeatedly, creating durable revenue streams and opportunities for steady long-term growth.",
+     "datetime": 1794749100,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=f8e4e3d72ea223434f319bd2ec74e44e352a6e3b0ffa1ce7ca6cfa2a4e834f30"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "WCN",
+   "expiry": "2026-12-18",
+   "days_to_expiry": 30,
+   "atm_iv_pct": 36.8,
+   "iv_chain_percentile": 28,
+   "skew_points": 14.2,
+   "put_call_ratio": 1.14,
+   "total_put_oi": 1397,
+   "total_call_oi": 1224
+  },
+  "get_options_positioning": {
+   "ticker": "WCN",
+   "spot": 181.5,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-18",
+   "primary_days_to_expiry": 30,
+   "max_pain_strike": 185.0,
+   "resistance_walls": [
+    {
+     "strike": 195.0,
+     "open_interest": 323
+    },
+    {
+     "strike": 200.0,
+     "open_interest": 307
+    },
+    {
+     "strike": 185.0,
+     "open_interest": 217
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 185.0,
+     "open_interest": 445
+    },
+    {
+     "strike": 190.0,
+     "open_interest": 159
+    },
+    {
+     "strike": 195.0,
+     "open_interest": 139
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 30,
+     "atm_iv_pct": 36.8
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 105.0,
+     "volume": 103,
+     "open_interest": 109,
+     "vol_oi_ratio": 0.9,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 982,
+   "otm_put_oi": 601,
+   "positioning_lean_score": 0.24,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "WCN",
+   "as_of": "2026-11-18",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-27",
+     "days_ago": 22,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 200.0,
+     "price_target_to": 215.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Buy rating on WCN and raised its price target from $200.0 to $215.0"
+    },
+    {
+     "date": "2026-10-23",
+     "days_ago": 26,
+     "firm": "CIBC",
+     "action": "maintained",
+     "from_grade": "Outperformer",
+     "to_grade": "Outperformer",
+     "price_target_from": 184.0,
+     "price_target_to": 207.0,
+     "is_rating_change": false,
+     "description": "CIBC maintained its Outperformer rating on WCN and raised its price target from $184.0 to $207.0"
+    },
+    {
+     "date": "2026-10-23",
+     "days_ago": 26,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 175.0,
+     "price_target_to": 192.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Neutral rating on WCN and raised its price target from $175.0 to $192.0"
+    },
+    {
+     "date": "2026-10-23",
+     "days_ago": 26,
+     "firm": "Morgan Stanley",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 195.0,
+     "price_target_to": 200.0,
+     "is_rating_change": false,
+     "description": "Morgan Stanley maintained its Overweight rating on WCN and raised its price target from $195.0 to $200.0"
+    },
+    {
+     "date": "2026-10-23",
+     "days_ago": 26,
+     "firm": "Oppenheimer",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 193.0,
+     "price_target_to": 200.0,
+     "is_rating_change": false,
+     "description": "Oppenheimer maintained its Outperform rating on WCN and raised its price target from $193.0 to $200.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.96,
+    "verdict": "leaning bullish",
+    "analysts": 28,
+    "counts": {
+     "strongBuy": 6,
+     "buy": 19,
+     "hold": 2,
+     "sell": 0,
+     "strongSell": 1
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.93 to 1.96)"
+   },
+   "price_target": {
+    "mean": 206.56,
+    "median": 210.0,
+    "high": 225.0,
+    "low": 170.0,
+    "current_price": 181.5,
+    "dispersion_pct": 26.6,
+    "upside_vs_mean_pct": 13.8,
+    "upside_vs_median_pct": 15.7
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "WCN",
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "comparison": {
+    "1w": {
+     "stock_change_pct": -5.04,
+     "sector_etf_change_pct": -2.36,
+     "relative_to_sector_pct": -2.68
+    },
+    "2w": {
+     "stock_change_pct": -2.57,
+     "sector_etf_change_pct": -3.83,
+     "relative_to_sector_pct": 1.26
+    },
+    "1mo": {
+     "stock_change_pct": 9.76,
+     "sector_etf_change_pct": -1.16,
+     "relative_to_sector_pct": 10.92
+    },
+    "ytd": {
+     "stock_change_pct": 5.13,
+     "sector_etf_change_pct": 5.12,
+     "relative_to_sector_pct": 0.01
+    },
+    "1y": {
+     "stock_change_pct": 8.55,
+     "sector_etf_change_pct": 9.62,
+     "relative_to_sector_pct": -1.07
+    },
+    "1d": {
+     "stock_change_pct": -8.01,
+     "sector_etf_change_pct": -0.55,
+     "relative_to_sector_pct": -7.46
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-17",
+    "realtime_end": "2026-11-17",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9620,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-16",
+      "value": "22.91"
+     },
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-13",
+      "value": "19.3"
+     },
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-12",
+      "value": "18.7"
+     },
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-11",
+      "value": "17.49"
+     },
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-10",
+      "value": "19.46"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "WCN",
+   "as_of": "2026-11-18",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 21,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-09",
+     "description": "WCN Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 83,
+     "eps_estimate": 1.4107,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "ex_dividend",
+     "date": "2026-11-05",
+     "source": "yfinance",
+     "description": "WCN went ex-dividend \u2014 the price drops by roughly the dividend on this date mechanically, with no news behind it",
+     "days_ago": 13
+    },
+    {
+     "type": "earnings",
+     "date": "2026-10-21",
+     "description": "WCN reported Q3 2026 earnings after the close \u2014 EPS 1.58 vs 1.5333 expected (beat, +3.0%)",
+     "source": "finnhub",
+     "days_ago": 28,
+     "eps_actual": 1.58,
+     "eps_estimate": 1.5333,
+     "surprise": "beat",
+     "surprise_pct": 3.0,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

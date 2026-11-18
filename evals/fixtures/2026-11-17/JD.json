@@ -1,0 +1,320 @@
+{
+ "schema": 1,
+ "ticker": "JD",
+ "trading_day": "2026-11-17",
+ "captured_at": "2026-11-18T03:05:41+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -7.66,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: -7.66% \u2014 unusual for this stock (about 3.0x its normal move for that span, expected ~2.56%)",
+   "this week: -10.17% \u2014 elevated for this stock (about 1.78x its normal move for that span, expected ~5.72%)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "JD",
+   "price": 25.43,
+   "prev_close": 27.54,
+   "change_pct": -7.66,
+   "session_date": "2026-11-17",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 40.6,
+   "changes_pct": {
+    "1d": -7.66,
+    "1w": -10.17,
+    "2w": -5.5,
+    "1mo": -5.04,
+    "1y": -10.14,
+    "ytd": -10.81
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: -7.66% \u2014 unusual for this stock (about 3.0x its normal move for that span, expected ~2.56%)",
+     "this week: -10.17% \u2014 elevated for this stock (about 1.78x its normal move for that span, expected ~5.72%)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 25.62,
+    "change_pct": 0.75,
+    "as_of": "2026-11-17 19:57 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "JD",
+   "headlines": [
+    {
+     "headline": "JD.com earnings analysis: questions answered and next catalysts",
+     "summary": "Investing.com -- JD.com Inc Adr (JD) reported Q3 2026 on Nov 17, 2026. Revenue and adjusted EPS roughly matched consensus, but the shares fell anyway. The stock traded at $25.63 (-6.95%) as of Nov...",
+     "datetime": 1794948682,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=8a32d276763032472d9ff24d8211fa30d0d466986e5a7e4c89dedb071455d660"
+    },
+    {
+     "headline": "JD.com Inc (JD) (Q3 2026) Earnings Call Highlights: Revenue Returns to Growth as Retail Margin ...",
+     "summary": "JD.com Inc (JD) posted 3.5% revenue growth and a 43.7% jump in non-GAAP net income, while narrowing food delivery losses and expanding its retail gross margin to a record 20.1%.",
+     "datetime": 1794942046,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=68581f872a50584997de042c12bc61351ff4aff89f6cd559d388d79f56a37243"
+    },
+    {
+     "headline": "JD.com Stocks Fall 6.03% as Cautious Electronics Outlook Overshadows Profit Jump",
+     "summary": "Third-quarter revenue grew 3.5% and non-GAAP net income rose 44%, but management flagged softer electronics demand into 2027.",
+     "datetime": 1794941794,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=bbd64bd359c3db4ee4423594d6d9a0c493011dd45a5372a889db4f78e20f7b65"
+    },
+    {
+     "headline": "JD.com Q3 Revenue Rises 3.5% to $46.2 Billion but Misses Estimates",
+     "summary": "Adjusted earnings per American depositary share rose 57.6% to 5.88 yuan, or 88 cents.",
+     "datetime": 1794940625,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=59919633b873126a3db5785e47ff23fc57d7596b5649ca36f0ebc8a1962774a8"
+    },
+    {
+     "headline": "Alibaba Stocks Fall 3.53% as US Closes Offshore AI Chip Access Days Before Earnings",
+     "summary": "A new BIS rule requires licenses for data centers selling large blocks of AI computing to China-headquartered firms, ahead of Alibaba's November 19 results.",
+     "datetime": 1794939977,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=8c202b2c830b65da4cccc0ee09a92ca6e8f2863f79bd6622c893e43e71f95e60"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "JD",
+   "expiry": "2026-12-04",
+   "days_to_expiry": 16,
+   "atm_iv_pct": 54.2,
+   "iv_chain_percentile": 8,
+   "skew_points": 3.8,
+   "put_call_ratio": 0.2,
+   "total_put_oi": 423,
+   "total_call_oi": 2126
+  },
+  "get_options_positioning": {
+   "ticker": "JD",
+   "spot": 25.43,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-04",
+   "primary_days_to_expiry": 16,
+   "max_pain_strike": 26.0,
+   "resistance_walls": [
+    {
+     "strike": 35.0,
+     "open_interest": 1100
+    },
+    {
+     "strike": 30.0,
+     "open_interest": 281
+    },
+    {
+     "strike": 33.0,
+     "open_interest": 151
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 24.0,
+     "open_interest": 147
+    },
+    {
+     "strike": 26.0,
+     "open_interest": 58
+    },
+    {
+     "strike": 28.0,
+     "open_interest": 39
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 16,
+     "atm_iv_pct": 54.2
+    },
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 23,
+     "atm_iv_pct": 56.6
+    },
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 30,
+     "atm_iv_pct": 37.3
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 35.0,
+     "volume": 1100,
+     "open_interest": 1100,
+     "vol_oi_ratio": 1.0,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 2000,
+   "otm_put_oi": 216,
+   "positioning_lean_score": 0.81,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "JD",
+   "as_of": "2026-11-18",
+   "analyst_coverage": "covered",
+   "recent_actions": [],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.94,
+    "verdict": "leaning bullish",
+    "analysts": 35,
+    "counts": {
+     "strongBuy": 7,
+     "buy": 24,
+     "hold": 3,
+     "sell": 1,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.92 to 1.94)"
+   },
+   "price_target": {
+    "mean": 38.86,
+    "median": 38.15,
+    "high": 58.26,
+    "low": 23.03,
+    "current_price": 25.43,
+    "dispersion_pct": 90.7,
+    "upside_vs_mean_pct": 52.8,
+    "upside_vs_median_pct": 50.0
+   },
+   "notes": [
+    "No analyst rating changes in the last 30 days \u2014 the consensus below is standing opinion, not a recent catalyst."
+   ]
+  },
+  "get_sector_comparison": {
+   "ticker": "JD",
+   "sector": "Consumer Cyclical",
+   "sector_etf": "XLY",
+   "comparison": {
+    "1w": {
+     "stock_change_pct": -10.17,
+     "sector_etf_change_pct": -3.26,
+     "relative_to_sector_pct": -6.91
+    },
+    "2w": {
+     "stock_change_pct": -5.5,
+     "sector_etf_change_pct": -0.2,
+     "relative_to_sector_pct": -5.3
+    },
+    "1mo": {
+     "stock_change_pct": -5.04,
+     "sector_etf_change_pct": 2.31,
+     "relative_to_sector_pct": -7.35
+    },
+    "ytd": {
+     "stock_change_pct": -10.81,
+     "sector_etf_change_pct": -0.44,
+     "relative_to_sector_pct": -10.37
+    },
+    "1y": {
+     "stock_change_pct": -10.14,
+     "sector_etf_change_pct": 2.27,
+     "relative_to_sector_pct": -12.41
+    },
+    "1d": {
+     "stock_change_pct": -7.66,
+     "sector_etf_change_pct": -0.89,
+     "relative_to_sector_pct": -6.77
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-17",
+    "realtime_end": "2026-11-17",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9620,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-16",
+      "value": "22.91"
+     },
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-13",
+      "value": "19.3"
+     },
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-12",
+      "value": "18.7"
+     },
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-11",
+      "value": "17.49"
+     },
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-10",
+      "value": "19.46"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "JD",
+   "as_of": "2026-11-18",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 21,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-17",
+     "description": "JD reported Q3 2026 earnings before the open \u2014 EPS 5.86608 vs 4.5237 expected (beat, +29.7%)",
+     "source": "finnhub",
+     "days_ago": 1,
+     "eps_actual": 5.86608,
+     "eps_estimate": 4.5237,
+     "surprise": "beat",
+     "surprise_pct": 29.7,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

@@ -1,0 +1,338 @@
+{
+ "schema": 1,
+ "ticker": "DIS",
+ "trading_day": "2026-11-17",
+ "captured_at": "2026-11-18T03:04:37+00:00",
+ "selected_as": "control",
+ "change_pct": -1.48,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "DIS",
+   "price": 116.94,
+   "prev_close": 118.7,
+   "change_pct": -1.48,
+   "session_date": "2026-11-17",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 23.3,
+   "changes_pct": {
+    "1d": -1.48,
+    "1w": -1.9,
+    "2w": 2.42,
+    "1mo": 6.71,
+    "1y": 12.13,
+    "ytd": 5.35
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 117.64,
+    "change_pct": 0.6,
+    "as_of": "2026-11-17 19:59 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "DIS",
+   "headlines": [
+    {
+     "headline": "Disney (DIS) Stock Slips As Q4 Earnings Contrast Margin Compression",
+     "summary": "Disney stock slipped about 1.5% in regular trading after the Q4 2026 report, even though the latest quarter delivered a solid profit print. Basic earnings per share came in at about US$1.51 with net...",
+     "datetime": 1794961292,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=3adc47e4cf09cd57783e5180d58735ff891314c1a7f30a35d6b27e22865c8e45"
+    },
+    {
+     "headline": "Disney: 3 Key Takeaways for Long-Term Investors",
+     "summary": "Capital discipline now decides which new theme park projects get built, a test that will shape Disney's returns long after 2026.",
+     "datetime": 1794959920,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=50f53dce0a8300604109d35fcadac500c0aaed2023e05530d864bf7661741b95"
+    },
+    {
+     "headline": "Earnings Beat Might Change The Bull Case For Disney Stock (DIS)",
+     "summary": "Walt Disney reported past fiscal Q4 and full year 2026 results with US$25.95b in quarterly sales, US$2.61b in quarterly net income, full year revenue of US$102.34b and full year net income of...",
+     "datetime": 1794953288,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=1b8ec98a7c4f54f0331963d338dbe6015ac8099997381bfeee4d358674c0b00f"
+    },
+    {
+     "headline": "Disney earnings analysis: questions answered and next catalysts",
+     "summary": "Investing.com -- Walt Disney Company (DIS) reported FY2026 Q4 today, Nov 17, 2026. It beat on both lines: EPS of $1.77 vs $1.68 expected (+5.36%) and revenue of $25.95B vs $25.21B. The stock was...",
+     "datetime": 1794948698,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=490a2903e4acc6340fcfdc18fc254d1d5719b614ec7ac1025ac1a6188aec7d8d"
+    },
+    {
+     "headline": "Disney Stock Hits New Highs After Strong Q4 Earnings: Time to Buy DIS?",
+     "summary": "Disney stock surged to fresh 52-week highs following strong Q4 results and upbeat guidance, but is DIS still a buy after its recent rally?",
+     "datetime": 1794948180,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=5986decabed5a0f84fe84ccb55ac20fc9f49fd8a3b16395c7329e2850538191d"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "DIS",
+   "expiry": "2026-12-04",
+   "days_to_expiry": 16,
+   "atm_iv_pct": 29.0,
+   "iv_chain_percentile": 3,
+   "skew_points": 0.6,
+   "put_call_ratio": 0.43,
+   "total_put_oi": 939,
+   "total_call_oi": 2196
+  },
+  "get_options_positioning": {
+   "ticker": "DIS",
+   "spot": 116.94,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-04",
+   "primary_days_to_expiry": 16,
+   "max_pain_strike": 116.0,
+   "resistance_walls": [
+    {
+     "strike": 116.0,
+     "open_interest": 532
+    },
+    {
+     "strike": 135.0,
+     "open_interest": 372
+    },
+    {
+     "strike": 118.0,
+     "open_interest": 266
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 110.0,
+     "open_interest": 162
+    },
+    {
+     "strike": 119.0,
+     "open_interest": 90
+    },
+    {
+     "strike": 115.0,
+     "open_interest": 82
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 16,
+     "atm_iv_pct": 29.0
+    },
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 23,
+     "atm_iv_pct": 29.7
+    },
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 30,
+     "atm_iv_pct": 28.2
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 120.0,
+     "volume": 186,
+     "open_interest": 125,
+     "vol_oi_ratio": 1.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 119.0,
+     "volume": 121,
+     "open_interest": 85,
+     "vol_oi_ratio": 1.4,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 130.0,
+     "volume": 115,
+     "open_interest": 94,
+     "vol_oi_ratio": 1.2,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 1500,
+   "otm_put_oi": 648,
+   "positioning_lean_score": 0.4,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "DIS",
+   "as_of": "2026-11-18",
+   "analyst_coverage": "covered",
+   "recent_actions": [],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.03,
+    "verdict": "leaning bullish",
+    "analysts": 32,
+    "counts": {
+     "strongBuy": 5,
+     "buy": 22,
+     "hold": 4,
+     "sell": 1,
+     "strongSell": 0
+    },
+    "trend": "deteriorating",
+    "trend_detail": "consensus softened over 3 months (score 1.94 to 2.03; bearish ratings 1 to 1)"
+   },
+   "price_target": {
+    "mean": 127.54,
+    "median": 130.0,
+    "high": 144.0,
+    "low": 86.0,
+    "current_price": 116.94,
+    "dispersion_pct": 45.5,
+    "upside_vs_mean_pct": 9.1,
+    "upside_vs_median_pct": 11.2
+   },
+   "notes": [
+    "No analyst rating changes in the last 30 days \u2014 the consensus below is standing opinion, not a recent catalyst."
+   ]
+  },
+  "get_sector_comparison": {
+   "ticker": "DIS",
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "comparison": {
+    "1w": {
+     "stock_change_pct": -1.9,
+     "sector_etf_change_pct": -2.32,
+     "relative_to_sector_pct": 0.42
+    },
+    "2w": {
+     "stock_change_pct": 2.42,
+     "sector_etf_change_pct": 3.77,
+     "relative_to_sector_pct": -1.35
+    },
+    "1mo": {
+     "stock_change_pct": 6.71,
+     "sector_etf_change_pct": -4.39,
+     "relative_to_sector_pct": 11.1
+    },
+    "ytd": {
+     "stock_change_pct": 5.35,
+     "sector_etf_change_pct": -9.14,
+     "relative_to_sector_pct": 14.49
+    },
+    "1y": {
+     "stock_change_pct": 12.13,
+     "sector_etf_change_pct": -4.28,
+     "relative_to_sector_pct": 16.41
+    },
+    "1d": {
+     "stock_change_pct": -1.48,
+     "sector_etf_change_pct": -1.46,
+     "relative_to_sector_pct": -0.02
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-17",
+    "realtime_end": "2026-11-17",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9620,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-16",
+      "value": "22.91"
+     },
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-13",
+      "value": "19.3"
+     },
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-12",
+      "value": "18.7"
+     },
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-11",
+      "value": "17.49"
+     },
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-10",
+      "value": "19.46"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "DIS",
+   "as_of": "2026-11-18",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 21,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-01",
+     "description": "DIS Q1 2027 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 75,
+     "eps_estimate": 2.0012
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-17",
+     "description": "DIS reported Q4 2026 earnings before the open \u2014 EPS 1.77 vs 1.6909 expected (beat, +4.7%)",
+     "source": "finnhub",
+     "days_ago": 1,
+     "eps_actual": 1.77,
+     "eps_estimate": 1.6909,
+     "surprise": "beat",
+     "surprise_pct": 4.7,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

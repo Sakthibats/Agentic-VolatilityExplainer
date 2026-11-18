@@ -1,0 +1,317 @@
+{
+ "schema": 1,
+ "ticker": "ESLT",
+ "trading_day": "2026-11-17",
+ "captured_at": "2026-11-18T03:05:22+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 5.85,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "today: 5.85% \u2014 typical relative to this stock's own typical volatility (expected ~4.06%, 1.44x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past year: 53.13% \u2014 typical relative to this stock's own typical volatility (expected ~64.50%, 0.82x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "ESLT",
+   "price": 720.53,
+   "prev_close": 680.74,
+   "change_pct": 5.85,
+   "session_date": "2026-11-17",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 64.5,
+   "changes_pct": {
+    "1d": 5.85,
+    "1w": -2.65,
+    "2w": -4.77,
+    "1mo": -5.13,
+    "1y": 53.13,
+    "ytd": 22.2
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "today: 5.85% \u2014 typical relative to this stock's own typical volatility (expected ~4.06%, 1.44x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past year: 53.13% \u2014 typical relative to this stock's own typical volatility (expected ~64.50%, 0.82x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 720.0,
+    "change_pct": -0.07,
+    "as_of": "2026-11-17 16:36 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "ESLT",
+   "headlines": [
+    {
+     "headline": "Elbit (ESLT) Q3 2026 Earnings Call Transcript",
+     "summary": "Margin expansion and record contracts drive a high-teens 2027 growth outlook.",
+     "datetime": 1794955690,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=59e24bb6f039c98f3b49cf6f31ce73e730375665dbd485374450727ab1b68311"
+    },
+    {
+     "headline": "Why Did Elbit Systems (TASE:ESLT) Shares Jump Today?",
+     "summary": "Earnings, guidance and new contracts reshape the Elbit Systems investment story Elbit Systems (TASE:ESLT) just put a lot on the table in one shot. Fresh third quarter results, new 2027 guidance and a...",
+     "datetime": 1794953695,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=9a794bba4c5b3e2e42a151811491540653ccefc5b91f9b02d9b39b1eb99b5367"
+    },
+    {
+     "headline": "Elbit Systems Ltd. Q3 2026 Earnings Call Summary",
+     "summary": "Moby summary of Elbit Systems Ltd.'s Q3 2026 earnings call",
+     "datetime": 1794952436,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=efd1a1abb739e480f2926dfc5848cffab89e1bd770fe8c31328bab8c139d4f41"
+    },
+    {
+     "headline": "Elbit Systems Stocks Jump 7.8% as Backlog Hits Record $33 Billion",
+     "summary": "Third-quarter revenue rose 17% to $2.25 billion, and management expects high-teens growth with wider margins in 2027",
+     "datetime": 1794938623,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=c10c238dcb7a8abf5804aebf862abbda2546d5cf738702af10bbf370557fb44e"
+    },
+    {
+     "headline": "What Elbit Systems (ESLT) Said on Its Q3 Earnings Call",
+     "summary": "Elbit Systems (NASDAQ:ESLT) reported a 17.2% increase in third-quarter revenue and a record $33 billion backlog, as demand for ammunition, electronic warfare systems and other defense products...",
+     "datetime": 1794932176,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=cc665471afa18fcece290cbdf7d03463c6ef7d5c3644b8adbe73a60978634f24"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "ESLT",
+   "expiry": "2026-12-18",
+   "days_to_expiry": 30,
+   "atm_iv_pct": 46.8,
+   "iv_chain_percentile": 13,
+   "skew_points": -3.1,
+   "put_call_ratio": 0.51,
+   "total_put_oi": 659,
+   "total_call_oi": 1293
+  },
+  "get_options_positioning": {
+   "ticker": "ESLT",
+   "spot": 720.53,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-18",
+   "primary_days_to_expiry": 30,
+   "max_pain_strike": 780.0,
+   "resistance_walls": [
+    {
+     "strike": 850.0,
+     "open_interest": 208
+    },
+    {
+     "strike": 860.0,
+     "open_interest": 122
+    },
+    {
+     "strike": 1420.0,
+     "open_interest": 118
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 780.0,
+     "open_interest": 63
+    },
+    {
+     "strike": 1040.0,
+     "open_interest": 50
+    },
+    {
+     "strike": 770.0,
+     "open_interest": 46
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 30,
+     "atm_iv_pct": 46.8
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 700.0,
+     "volume": 112,
+     "open_interest": 15,
+     "vol_oi_ratio": 7.5,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 1189,
+   "otm_put_oi": 378,
+   "positioning_lean_score": 0.52,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "ESLT",
+   "as_of": "2026-11-18",
+   "analyst_coverage": "covered",
+   "recent_actions": [],
+   "consensus": {
+    "rating": "hold",
+    "score": 2.83,
+    "verdict": "neutral",
+    "analysts": 6,
+    "counts": {
+     "strongBuy": 0,
+     "buy": 1,
+     "hold": 5,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.83 to 2.83)"
+   },
+   "price_target": {
+    "mean": 838.92,
+    "median": 830.0,
+    "high": 960.0,
+    "low": 738.5,
+    "current_price": 720.53,
+    "dispersion_pct": 26.4,
+    "upside_vs_mean_pct": 16.4,
+    "upside_vs_median_pct": 15.2
+   },
+   "notes": [
+    "No analyst rating changes in the last 30 days \u2014 the consensus below is standing opinion, not a recent catalyst."
+   ]
+  },
+  "get_sector_comparison": {
+   "ticker": "ESLT",
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "comparison": {
+    "1w": {
+     "stock_change_pct": -2.65,
+     "sector_etf_change_pct": -2.36,
+     "relative_to_sector_pct": -0.29
+    },
+    "2w": {
+     "stock_change_pct": -4.77,
+     "sector_etf_change_pct": -3.83,
+     "relative_to_sector_pct": -0.94
+    },
+    "1mo": {
+     "stock_change_pct": -5.13,
+     "sector_etf_change_pct": -1.16,
+     "relative_to_sector_pct": -3.97
+    },
+    "ytd": {
+     "stock_change_pct": 22.2,
+     "sector_etf_change_pct": 5.12,
+     "relative_to_sector_pct": 17.08
+    },
+    "1y": {
+     "stock_change_pct": 53.13,
+     "sector_etf_change_pct": 9.62,
+     "relative_to_sector_pct": 43.51
+    },
+    "1d": {
+     "stock_change_pct": 5.85,
+     "sector_etf_change_pct": -0.55,
+     "relative_to_sector_pct": 6.4
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-17",
+    "realtime_end": "2026-11-17",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9620,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-16",
+      "value": "22.91"
+     },
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-13",
+      "value": "19.3"
+     },
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-12",
+      "value": "18.7"
+     },
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-11",
+      "value": "17.49"
+     },
+     {
+      "realtime_start": "2026-11-17",
+      "realtime_end": "2026-11-17",
+      "date": "2026-11-10",
+      "value": "19.46"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "ESLT",
+   "as_of": "2026-11-18",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 21,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-17",
+     "description": "ESLT reported Q3 2026 earnings before the open \u2014 EPS 4.36 vs 4.0103 expected (beat, +8.7%)",
+     "source": "finnhub",
+     "days_ago": 1,
+     "eps_actual": 4.36,
+     "eps_estimate": 4.0103,
+     "surprise": "beat",
+     "surprise_pct": 8.7,
+     "hour": "bmo"
+    },
+    {
+     "type": "ex_dividend",
+     "date": "2026-10-13",
+     "source": "yfinance",
+     "description": "ESLT went ex-dividend \u2014 the price drops by roughly the dividend on this date mechanically, with no news behind it",
+     "days_ago": 36
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}
