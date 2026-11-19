@@ -1,0 +1,387 @@
+{
+ "schema": 1,
+ "ticker": "GNRC",
+ "trading_day": "2026-11-18",
+ "captured_at": "2026-11-19T02:45:56+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 9.87,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 9.87% \u2014 elevated relative to this stock's own typical volatility (expected ~5.09%, 1.94x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past year: 46.22% \u2014 typical relative to this stock's own typical volatility (expected ~80.80%, 0.57x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "GNRC",
+   "price": 205.45,
+   "prev_close": 187,
+   "change_pct": 9.87,
+   "session_date": "2026-11-18",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 80.8,
+   "changes_pct": {
+    "1d": 9.87,
+    "1w": 5.9,
+    "2w": 8.52,
+    "1mo": 5.58,
+    "1y": 46.22,
+    "ytd": 45.61
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 9.87% \u2014 elevated relative to this stock's own typical volatility (expected ~5.09%, 1.94x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past year: 46.22% \u2014 typical relative to this stock's own typical volatility (expected ~80.80%, 0.57x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 207.0,
+    "change_pct": 0.75,
+    "as_of": "2026-11-18 19:33 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "GNRC",
+   "headlines": [
+    {
+     "headline": "Generac Jolted After Nvidia Earnings. Why It\u2019s a Top S&P 500 Stock Today.",
+     "summary": "The company\u2019s fastest-growing business is sales of equipment to AI data center operators.",
+     "datetime": 1795033380,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=c66e8f5a366dbd3c657f40652d808443650a46e555f1dbda93a0d95113c2805a"
+    },
+    {
+     "headline": "S&P 500 Top Movers: Today's US Session Gainers and Losers",
+     "summary": "S&P 500 top movers in today's US session, with OKTA, TJX and GNRC among the strongest gainers and HUM, UNH and ELV among the top losers.",
+     "datetime": 1795032390,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=2e6841d668bd7987172d96ddce82144520110dcd11ddea7545baf024178ca6af"
+    },
+    {
+     "headline": "S&P 500 Top Movers: Gainers and Losers in the Nov. 18, 2026 US Session",
+     "summary": "S&P 500 top movers for Nov. 18, 2026: TJX led gainers at 10.74%, while UNH led losers at -8.55%, based on US session data.",
+     "datetime": 1795023365,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=2762468e9a959e70569b7eb87ad5a5aa10a627cb914859538027f8766c74e2ec"
+    },
+    {
+     "headline": "Tracking John Rogers' Ariel Investments Portfolio - Q3 2026 Update",
+     "summary": "Ariel Investments\u00e2\u0080\u0099 13F portfolio fell to $9.61 billion in Q3 2026; Generac rose 40%, and Madison Square Garden Entertainment remained largest at 4.19%.",
+     "datetime": 1795003636,
+     "source": "SeekingAlpha",
+     "url": "https://finnhub.io/api/news?id=71930664e703f1c85ced54b84305b6c13623f276e9f97be1cdca23148bfbed48"
+    },
+    {
+     "headline": "Diamond Hill Mid Cap Strategy Q3 2026 Portfolio Review",
+     "summary": "The Strategy declined 3.83% net of fees, trailing the Russell Midcap Index's 3.00% decline; key contributors were Illumina, Revvity and Waystar.",
+     "datetime": 1794995700,
+     "source": "SeekingAlpha",
+     "url": "https://finnhub.io/api/news?id=c8af3328fdce7f58f1ab8e6ba40de8c7c571dead4a9c2e407e3e70b8b13320b8"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "GNRC",
+   "expiry": "2026-12-04",
+   "days_to_expiry": 15,
+   "atm_iv_pct": 61.1,
+   "iv_chain_percentile": 7,
+   "skew_points": -0.3,
+   "put_call_ratio": 4.49,
+   "total_put_oi": 646,
+   "total_call_oi": 144
+  },
+  "get_options_positioning": {
+   "ticker": "GNRC",
+   "spot": 205.45,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-04",
+   "primary_days_to_expiry": 15,
+   "max_pain_strike": 200.0,
+   "resistance_walls": [
+    {
+     "strike": 210.0,
+     "open_interest": 46
+    },
+    {
+     "strike": 185.0,
+     "open_interest": 14
+    },
+    {
+     "strike": 215.0,
+     "open_interest": 14
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 160.0,
+     "open_interest": 338
+    },
+    {
+     "strike": 155.0,
+     "open_interest": 88
+    },
+    {
+     "strike": 180.0,
+     "open_interest": 84
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 15,
+     "atm_iv_pct": 61.1
+    },
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 22,
+     "atm_iv_pct": 59.9
+    },
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 29,
+     "atm_iv_pct": 58.9
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 160.0,
+     "volume": 250,
+     "open_interest": 338,
+     "vol_oi_ratio": 0.7,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 94,
+   "otm_put_oi": 618,
+   "positioning_lean_score": -0.74,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "GNRC",
+   "as_of": "2026-11-19",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-09",
+     "days_ago": 10,
+     "firm": "Piper Sandler",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 279.0,
+     "price_target_to": 266.0,
+     "is_rating_change": false,
+     "description": "Piper Sandler maintained its Overweight rating on GNRC and cut its price target from $279.0 to $266.0"
+    },
+    {
+     "date": "2026-10-30",
+     "days_ago": 20,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 232.0,
+     "price_target_to": 235.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Neutral rating on GNRC and raised its price target from $232.0 to $235.0"
+    },
+    {
+     "date": "2026-10-29",
+     "days_ago": 21,
+     "firm": "Barclays",
+     "action": "maintained",
+     "from_grade": "Equal-Weight",
+     "to_grade": "Equal-Weight",
+     "price_target_from": 278.0,
+     "price_target_to": 281.0,
+     "is_rating_change": false,
+     "description": "Barclays maintained its Equal-Weight rating on GNRC and raised its price target from $278.0 to $281.0"
+    },
+    {
+     "date": "2026-10-29",
+     "days_ago": 21,
+     "firm": "Stifel",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 290.0,
+     "price_target_to": 325.0,
+     "is_rating_change": false,
+     "description": "Stifel maintained its Buy rating on GNRC and raised its price target from $290.0 to $325.0"
+    },
+    {
+     "date": "2026-10-29",
+     "days_ago": 21,
+     "firm": "Needham",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 283.0,
+     "price_target_to": 288.0,
+     "is_rating_change": false,
+     "description": "Needham maintained its Buy rating on GNRC and raised its price target from $283.0 to $288.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.05,
+    "verdict": "leaning bullish",
+    "analysts": 22,
+    "counts": {
+     "strongBuy": 4,
+     "buy": 13,
+     "hold": 5,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.24 to 2.05; bearish ratings 0 to 0)"
+   },
+   "price_target": {
+    "mean": 288.5,
+    "median": 283.0,
+    "high": 375.0,
+    "low": 227.0,
+    "current_price": 205.45,
+    "dispersion_pct": 51.3,
+    "upside_vs_mean_pct": 40.4,
+    "upside_vs_median_pct": 37.7
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "GNRC",
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "comparison": {
+    "1mo": {
+     "stock_change_pct": 5.58,
+     "sector_etf_change_pct": -1.28,
+     "relative_to_sector_pct": 6.86
+    },
+    "1w": {
+     "stock_change_pct": 5.9,
+     "sector_etf_change_pct": -3.69,
+     "relative_to_sector_pct": 9.59
+    },
+    "ytd": {
+     "stock_change_pct": 45.61,
+     "sector_etf_change_pct": 5.06,
+     "relative_to_sector_pct": 40.55
+    },
+    "1d": {
+     "stock_change_pct": 9.87,
+     "sector_etf_change_pct": -0.05,
+     "relative_to_sector_pct": 9.92
+    },
+    "2w": {
+     "stock_change_pct": 8.52,
+     "sector_etf_change_pct": -2.83,
+     "relative_to_sector_pct": 11.35
+    },
+    "1y": {
+     "stock_change_pct": 46.22,
+     "sector_etf_change_pct": 10.64,
+     "relative_to_sector_pct": 35.58
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-18",
+    "realtime_end": "2026-11-18",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9621,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-18",
+      "realtime_end": "2026-11-18",
+      "date": "2026-11-17",
+      "value": "25.46"
+     },
+     {
+      "realtime_start": "2026-11-18",
+      "realtime_end": "2026-11-18",
+      "date": "2026-11-16",
+      "value": "22.91"
+     },
+     {
+      "realtime_start": "2026-11-18",
+      "realtime_end": "2026-11-18",
+      "date": "2026-11-13",
+      "value": "19.3"
+     },
+     {
+      "realtime_start": "2026-11-18",
+      "realtime_end": "2026-11-18",
+      "date": "2026-11-12",
+      "value": "18.7"
+     },
+     {
+      "realtime_start": "2026-11-18",
+      "realtime_end": "2026-11-18",
+      "date": "2026-11-11",
+      "value": "17.49"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "GNRC",
+   "as_of": "2026-11-19",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 20,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-09",
+     "description": "GNRC Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 82,
+     "eps_estimate": 2.6366,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-28",
+     "description": "GNRC reported Q3 2026 earnings before the open \u2014 EPS 2.54 vs 2.4763 expected (beat, +2.6%)",
+     "source": "finnhub",
+     "days_ago": 22,
+     "eps_actual": 2.54,
+     "eps_estimate": 2.4763,
+     "surprise": "beat",
+     "surprise_pct": 2.6,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

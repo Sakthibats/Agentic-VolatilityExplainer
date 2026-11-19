@@ -1,0 +1,413 @@
+{
+ "schema": 1,
+ "ticker": "TSLA",
+ "trading_day": "2026-11-18",
+ "captured_at": "2026-11-19T02:44:46+00:00",
+ "selected_as": "control",
+ "change_pct": 0.95,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "TSLA",
+   "price": 383.72,
+   "prev_close": 380.11,
+   "change_pct": 0.95,
+   "session_date": "2026-11-18",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 58.3,
+   "changes_pct": {
+    "1d": 0.95,
+    "1w": -1.82,
+    "2w": -0.38,
+    "1mo": 2.68,
+    "1y": -6.16,
+    "ytd": -12.41
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 386.9,
+    "change_pct": 0.83,
+    "as_of": "2026-11-18 19:59 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "TSLA",
+   "headlines": [
+    {
+     "headline": "Elon Musk Says Nvidia Ousting Jensen Huang Is Like Kicking Michael Jordan Off A Winning Team",
+     "summary": "\u201cI don\u2019t think he\u2019s disloyal to the United States,\u201d Musk said about the former Nvidia CEO who was ousted after reports of romantic relations with a Chinese intelligence asset.",
+     "datetime": 1795047812,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=41c715e527fec87fc167f0c89c4bdf437d8a8b887baa6b2e709a8618d778747f"
+    },
+    {
+     "headline": "Tesla Wins Manitoba Court Order On EV Rebate Ban As Canadian PM Carney Notes Brand\u2019s Fading Cachet",
+     "summary": "Tesla once dominated Canada\u2019s EV market before U.S.-Canada trade tensions and other factors led to a dip in registrations.",
+     "datetime": 1795046759,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=383e599c9b0d854c1ed1704c48cffcf54e368a1a1c6be04aad49ed4a1a541546"
+    },
+    {
+     "headline": "Will Apollo's $40 billion for SpaceX to rent GPUs pay off?",
+     "summary": "Yahoo Finance's Deirdre Bosa and In the Loop host Ejaaz Ahamadeen\u00a0discuss Apollo (APO) is lining up $40 billion in financing so SpaceX (SPCX) can rent GPUs as a neo cloud, funding CEO Elon Musk's...",
+     "datetime": 1795038106,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=e5bbc005df9d945b8cb0b4511d2c9395ae3fd94c79708395d6badb134f945313"
+    },
+    {
+     "headline": "Skydance\u2019s Ellison Welcomes Musk Investment While Committing To Airing Documentary Critical Of Tesla CEO",
+     "summary": "Ellison acknowledged Musk\u2019s stake for the first time at DealBook Summit 2026, amid reports that the investment totaled roughly $1 billion after the deal closed.",
+     "datetime": 1795036970,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=f5436d9accb979777a8aec3e8924184fcffa85f1eeb8a171998db249e1b63f20"
+    },
+    {
+     "headline": "Skydance's David Ellison calls Elon Musk 'the greatest entrepreneur of our time'",
+     "summary": "David Ellison, CEO of Skydance, expressed gratitude for Elon Musk's investment in the company.",
+     "datetime": 1795035245,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=2a75c124e39a09ad39808d1506930b868dde62c11fd8f163ac33563649195fcc"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "TSLA",
+   "expiry": "2026-12-04",
+   "days_to_expiry": 15,
+   "atm_iv_pct": 51.2,
+   "iv_chain_percentile": 1,
+   "skew_points": 2.8,
+   "put_call_ratio": 0.78,
+   "total_put_oi": 31329,
+   "total_call_oi": 40073
+  },
+  "get_options_positioning": {
+   "ticker": "TSLA",
+   "spot": 383.72,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-04",
+   "primary_days_to_expiry": 15,
+   "max_pain_strike": 380.0,
+   "resistance_walls": [
+    {
+     "strike": 400.0,
+     "open_interest": 4839
+    },
+    {
+     "strike": 450.0,
+     "open_interest": 3349
+    },
+    {
+     "strike": 440.0,
+     "open_interest": 1862
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 380.0,
+     "open_interest": 2355
+    },
+    {
+     "strike": 350.0,
+     "open_interest": 2061
+    },
+    {
+     "strike": 300.0,
+     "open_interest": 1853
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 15,
+     "atm_iv_pct": 51.2
+    },
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 22,
+     "atm_iv_pct": 50.5
+    },
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 29,
+     "atm_iv_pct": 49.0
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 365.0,
+     "volume": 403,
+     "open_interest": 158,
+     "vol_oi_ratio": 2.6,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 360.0,
+     "volume": 1115,
+     "open_interest": 638,
+     "vol_oi_ratio": 1.7,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 150.0,
+     "volume": 210,
+     "open_interest": 153,
+     "vol_oi_ratio": 1.4,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 120.0,
+     "volume": 102,
+     "open_interest": 104,
+     "vol_oi_ratio": 1.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 385.0,
+     "volume": 656,
+     "open_interest": 1034,
+     "vol_oi_ratio": 0.6,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 34491,
+   "otm_put_oi": 26372,
+   "positioning_lean_score": 0.13,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "TSLA",
+   "as_of": "2026-11-19",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-05",
+     "days_ago": 14,
+     "firm": "GLJ Research",
+     "action": "reiterated",
+     "from_grade": "Sell",
+     "to_grade": "Sell",
+     "price_target_from": 24.86,
+     "price_target_to": 24.86,
+     "is_rating_change": false,
+     "description": "GLJ Research reiterated its Sell rating on TSLA with a $24.86 price target"
+    },
+    {
+     "date": "2026-10-26",
+     "days_ago": 24,
+     "firm": "Barclays",
+     "action": "upgrade",
+     "from_grade": "Equal-Weight",
+     "to_grade": "Overweight",
+     "price_target_from": 370.0,
+     "price_target_to": 450.0,
+     "is_rating_change": true,
+     "description": "Barclays upgraded TSLA from Equal-Weight to Overweight and raised its price target from $370.0 to $450.0"
+    },
+    {
+     "date": "2026-10-22",
+     "days_ago": 28,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 391.0,
+     "price_target_to": 425.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Neutral rating on TSLA and raised its price target from $391.0 to $425.0"
+    },
+    {
+     "date": "2026-10-22",
+     "days_ago": 28,
+     "firm": "CLSA",
+     "action": "upgrade",
+     "from_grade": "Underperform",
+     "to_grade": "Hold",
+     "price_target_from": 310.0,
+     "price_target_to": 400.0,
+     "is_rating_change": true,
+     "description": "CLSA upgraded TSLA from Underperform to Hold and raised its price target from $310.0 to $400.0"
+    },
+    {
+     "date": "2026-10-22",
+     "days_ago": 28,
+     "firm": "Canaccord Genuity",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 410.0,
+     "price_target_to": 442.0,
+     "is_rating_change": false,
+     "description": "Canaccord Genuity maintained its Buy rating on TSLA and raised its price target from $410.0 to $442.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.48,
+    "verdict": "leaning bullish",
+    "analysts": 44,
+    "counts": {
+     "strongBuy": 5,
+     "buy": 15,
+     "hold": 22,
+     "sell": 2,
+     "strongSell": 0
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.55 to 2.48; bearish ratings 5 to 2)"
+   },
+   "price_target": {
+    "mean": 412.48,
+    "median": 436.0,
+    "high": 600.0,
+    "low": 128.11,
+    "current_price": 383.72,
+    "dispersion_pct": 114.4,
+    "upside_vs_mean_pct": 7.5,
+    "upside_vs_median_pct": 13.6
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "TSLA",
+   "sector": "Consumer Cyclical",
+   "sector_etf": "XLY",
+   "comparison": {
+    "1mo": {
+     "stock_change_pct": 2.68,
+     "sector_etf_change_pct": 3.2,
+     "relative_to_sector_pct": -0.52
+    },
+    "1w": {
+     "stock_change_pct": -1.82,
+     "sector_etf_change_pct": -1.48,
+     "relative_to_sector_pct": -0.34
+    },
+    "ytd": {
+     "stock_change_pct": -12.41,
+     "sector_etf_change_pct": 1.34,
+     "relative_to_sector_pct": -13.75
+    },
+    "1d": {
+     "stock_change_pct": 0.95,
+     "sector_etf_change_pct": 1.79,
+     "relative_to_sector_pct": -0.84
+    },
+    "2w": {
+     "stock_change_pct": -0.38,
+     "sector_etf_change_pct": -2.56,
+     "relative_to_sector_pct": 2.18
+    },
+    "1y": {
+     "stock_change_pct": -6.16,
+     "sector_etf_change_pct": 5.09,
+     "relative_to_sector_pct": -11.25
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-18",
+    "realtime_end": "2026-11-18",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9621,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-18",
+      "realtime_end": "2026-11-18",
+      "date": "2026-11-17",
+      "value": "25.46"
+     },
+     {
+      "realtime_start": "2026-11-18",
+      "realtime_end": "2026-11-18",
+      "date": "2026-11-16",
+      "value": "22.91"
+     },
+     {
+      "realtime_start": "2026-11-18",
+      "realtime_end": "2026-11-18",
+      "date": "2026-11-13",
+      "value": "19.3"
+     },
+     {
+      "realtime_start": "2026-11-18",
+      "realtime_end": "2026-11-18",
+      "date": "2026-11-12",
+      "value": "18.7"
+     },
+     {
+      "realtime_start": "2026-11-18",
+      "realtime_end": "2026-11-18",
+      "date": "2026-11-11",
+      "value": "17.49"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "TSLA",
+   "as_of": "2026-11-19",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 20,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-26",
+     "description": "TSLA Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 68,
+     "eps_estimate": 0.4629,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-21",
+     "description": "TSLA reported Q3 2026 earnings after the close \u2014 EPS 0.48 vs 0.4358 expected (beat, +10.1%)",
+     "source": "finnhub",
+     "days_ago": 29,
+     "eps_actual": 0.48,
+     "eps_estimate": 0.4358,
+     "surprise": "beat",
+     "surprise_pct": 10.1,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

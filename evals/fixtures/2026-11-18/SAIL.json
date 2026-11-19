@@ -1,0 +1,343 @@
+{
+ "schema": 1,
+ "ticker": "SAIL",
+ "trading_day": "2026-11-18",
+ "captured_at": "2026-11-19T02:45:50+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 10.26,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 10.26% \u2014 elevated relative to this stock's own typical volatility (expected ~4.81%, 2.13x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "this week: 7.02% \u2014 typical relative to this stock's own typical volatility (expected ~10.76%, 0.65x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past 2 weeks: 12.83% \u2014 typical relative to this stock's own typical volatility (expected ~15.22%, 0.84x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past month: 15.7% \u2014 typical relative to this stock's own typical volatility (expected ~22.05%, 0.71x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "SAIL",
+   "price": 22.25,
+   "prev_close": 20.18,
+   "change_pct": 10.26,
+   "session_date": "2026-11-18",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 76.4,
+   "changes_pct": {
+    "1d": 10.26,
+    "1w": 7.02,
+    "2w": 12.83,
+    "1mo": 15.7,
+    "1y": 20.34,
+    "ytd": 17.41
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 10.26% \u2014 elevated relative to this stock's own typical volatility (expected ~4.81%, 2.13x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "this week: 7.02% \u2014 typical relative to this stock's own typical volatility (expected ~10.76%, 0.65x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past 2 weeks: 12.83% \u2014 typical relative to this stock's own typical volatility (expected ~15.22%, 0.84x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past month: 15.7% \u2014 typical relative to this stock's own typical volatility (expected ~22.05%, 0.71x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 22.75,
+    "change_pct": 2.25,
+    "as_of": "2026-11-18 19:22 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "SAIL",
+   "headlines": [
+    {
+     "headline": "Kulicke and Soffa (KLIC) Surpasses Q4 Earnings and Revenue Estimates",
+     "summary": "Kulicke and Soffa (KLIC) delivered earnings and revenue surprises of +5.56% and +9.41%, respectively, for the quarter ended September 2026. Do the numbers hold clues to what lies ahead for the stock?",
+     "datetime": 1795036501,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=eab6ab0e9372c0e2598038c0d57f6b599448f195a4eb906cc9cabf502a021ea6"
+    },
+    {
+     "headline": "Should Okta Stock Holders Look At Salesforce Instead?",
+     "summary": "Today's big story: Anthropic IPO: Priced For 2031, Or 2036.",
+     "datetime": 1795013417,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=682526f95b5f1168ad24626245331da874757dd3d3f8804528f5c912578e3d73"
+    },
+    {
+     "headline": "1Kosmos Partners with SailPoint to Secure Workforce Onboarding",
+     "summary": "Integration helps reduce hiring fraud, service desk attacks and password reset abuse by verifying identity before provisioning is approvedEDISON, N.J., Nov. 18, 2026 (GLOBE NEWSWIRE) -- 1Kosmos, a...",
+     "datetime": 1795010640,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=a5cb9d34d9ee9feaf85c4ee3688b18a80de319f31965954da40b54ffd6ccaf05"
+    },
+    {
+     "headline": "BILL or SAIL: Which Is the Better Value Stock Right Now?",
+     "summary": "BILL vs. SAIL: Which Stock Is the Better Value Option?",
+     "datetime": 1794930002,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=345290522ede4ede2e591c3b8c181112763507e33e6407a0a2e5279ae4f1094c"
+    },
+    {
+     "headline": "Commvault Systems shares are trading higher after the company reported better-than-expected Q4 financial results.",
+     "summary": "",
+     "datetime": 1794924655,
+     "source": "Benzinga",
+     "url": "https://finnhub.io/api/news?id=23455d227ff84651c884c62503b2e2b6b82b5466acd87bd20efed6e1c11af24a"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "SAIL",
+   "expiry": "2026-12-18",
+   "days_to_expiry": 29,
+   "atm_iv_pct": 97.5,
+   "iv_chain_percentile": 29,
+   "skew_points": -0.7,
+   "put_call_ratio": 1.3,
+   "total_put_oi": 6494,
+   "total_call_oi": 4990
+  },
+  "get_options_positioning": {
+   "ticker": "SAIL",
+   "spot": 22.25,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-18",
+   "primary_days_to_expiry": 29,
+   "max_pain_strike": 17.5,
+   "resistance_walls": [
+    {
+     "strike": 20.0,
+     "open_interest": 1334
+    },
+    {
+     "strike": 22.5,
+     "open_interest": 1023
+    },
+    {
+     "strike": 25.0,
+     "open_interest": 741
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 17.5,
+     "open_interest": 3649
+    },
+    {
+     "strike": 12.5,
+     "open_interest": 1237
+    },
+    {
+     "strike": 20.0,
+     "open_interest": 701
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 29,
+     "atm_iv_pct": 97.5
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 25.0,
+     "volume": 759,
+     "open_interest": 741,
+     "vol_oi_ratio": 1.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 35.0,
+     "volume": 127,
+     "open_interest": 222,
+     "vol_oi_ratio": 0.6,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 22.5,
+     "volume": 225,
+     "open_interest": 1023,
+     "vol_oi_ratio": 0.2,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 17.5,
+     "volume": 696,
+     "open_interest": 3649,
+     "vol_oi_ratio": 0.2,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 2449,
+   "otm_put_oi": 6401,
+   "positioning_lean_score": -0.45,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "SAIL",
+   "as_of": "2026-11-19",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-12",
+     "days_ago": 7,
+     "firm": "Mizuho",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 19.0,
+     "price_target_to": 20.0,
+     "is_rating_change": false,
+     "description": "Mizuho maintained its Neutral rating on SAIL and raised its price target from $19.0 to $20.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.07,
+    "verdict": "leaning bullish",
+    "analysts": 27,
+    "counts": {
+     "strongBuy": 6,
+     "buy": 14,
+     "hold": 6,
+     "sell": 1,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.04 to 2.07)"
+   },
+   "price_target": {
+    "mean": 22.0,
+    "median": 22.0,
+    "high": 30.0,
+    "low": 10.0,
+    "current_price": 22.25,
+    "dispersion_pct": 90.9,
+    "upside_vs_mean_pct": -1.1,
+    "upside_vs_median_pct": -1.1
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "SAIL",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1mo": {
+     "stock_change_pct": 15.7,
+     "sector_etf_change_pct": -11.66,
+     "relative_to_sector_pct": 27.36
+    },
+    "1w": {
+     "stock_change_pct": 7.02,
+     "sector_etf_change_pct": -6.05,
+     "relative_to_sector_pct": 13.07
+    },
+    "ytd": {
+     "stock_change_pct": 17.41,
+     "sector_etf_change_pct": 13.93,
+     "relative_to_sector_pct": 3.48
+    },
+    "1d": {
+     "stock_change_pct": 10.26,
+     "sector_etf_change_pct": 0.34,
+     "relative_to_sector_pct": 9.92
+    },
+    "2w": {
+     "stock_change_pct": 12.83,
+     "sector_etf_change_pct": -7.19,
+     "relative_to_sector_pct": 20.02
+    },
+    "1y": {
+     "stock_change_pct": 20.34,
+     "sector_etf_change_pct": 16.1,
+     "relative_to_sector_pct": 4.24
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-18",
+    "realtime_end": "2026-11-18",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9621,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-18",
+      "realtime_end": "2026-11-18",
+      "date": "2026-11-17",
+      "value": "25.46"
+     },
+     {
+      "realtime_start": "2026-11-18",
+      "realtime_end": "2026-11-18",
+      "date": "2026-11-16",
+      "value": "22.91"
+     },
+     {
+      "realtime_start": "2026-11-18",
+      "realtime_end": "2026-11-18",
+      "date": "2026-11-13",
+      "value": "19.3"
+     },
+     {
+      "realtime_start": "2026-11-18",
+      "realtime_end": "2026-11-18",
+      "date": "2026-11-12",
+      "value": "18.7"
+     },
+     {
+      "realtime_start": "2026-11-18",
+      "realtime_end": "2026-11-18",
+      "date": "2026-11-11",
+      "value": "17.49"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "SAIL",
+   "as_of": "2026-11-19",
+   "events": [
+    {
+     "type": "earnings",
+     "date": "2026-12-08",
+     "description": "SAIL Q3 2027 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 19,
+     "eps_estimate": 0.0827
+    },
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 20,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}

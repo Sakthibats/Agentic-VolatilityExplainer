@@ -1,0 +1,372 @@
+{
+ "schema": 1,
+ "ticker": "CBRS",
+ "trading_day": "2026-11-18",
+ "captured_at": "2026-11-19T02:46:09+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -9.63,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: -9.63% \u2014 typical relative to this stock's own typical volatility (expected ~7.38%, 1.3x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "this week: -6.86% \u2014 typical relative to this stock's own typical volatility (expected ~16.51%, 0.42x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past month: -20.37% \u2014 typical relative to this stock's own typical volatility (expected ~33.83%, 0.6x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "CBRS",
+   "price": 94.15,
+   "prev_close": 104.18,
+   "change_pct": -9.63,
+   "session_date": "2026-11-18",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 117.2,
+   "changes_pct": {
+    "1d": -9.63,
+    "1w": -6.86,
+    "2w": 2.5,
+    "1mo": -20.37,
+    "1y": null,
+    "ytd": -69.73
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: -9.63% \u2014 typical relative to this stock's own typical volatility (expected ~7.38%, 1.3x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "this week: -6.86% \u2014 typical relative to this stock's own typical volatility (expected ~16.51%, 0.42x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past month: -20.37% \u2014 typical relative to this stock's own typical volatility (expected ~33.83%, 0.6x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 95.95,
+    "change_pct": 1.91,
+    "as_of": "2026-11-18 19:59 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "CBRS",
+   "headlines": [
+    {
+     "headline": "The 5 Best Stocks in Brad Gerstner\u2019s Portfolio",
+     "summary": "Key TakeawaysBrad Gerstner\u2019s Altimeter Capital filed its third-quarter 13F on Nov. 16, and the five holdings where Wall Street sees the most upside are CoreWeave, a memory chipmaker, Cerebras, NVIDIA...",
+     "datetime": 1795042487,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=81c0cb3a5a21f4360511c1039a734b5198f7bdfdaa7c1d655c27af72133ad9ce"
+    },
+    {
+     "headline": "Cerebras Systems vs. IonQ: Which Technology Stock Is a Better Buy for 2027?",
+     "summary": "Cerebras trades at 81.4x forward earnings while IonQ commands 302.3x, a gap that reframes how much risk each stock really carries.",
+     "datetime": 1795025102,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=27ea996ee2de8f1a7f361c1e43321c806df25a3cb079418a350767ae92891863"
+    },
+    {
+     "headline": "Oracle Warns Memory Shortages Could Constrain AI Infrastructure for Years",
+     "summary": "Oracle (NYSE:ORCL) expects memory capacity to remain a critical constraint on the expansion of artificial intelligence infrastructure for the next several years, CEO Clay Magouyrk told shareholders...",
+     "datetime": 1795022244,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=d1a48ece013d68f05471f109584e335bde36a2848377f46d1bc5f233a221c4bd"
+    },
+    {
+     "headline": "What Anthropic's IPO Reveals About The AI Buildout",
+     "summary": "Anthropic\u00e2\u0080\u0099s IPO comes as voters push to limit data center development and Nvidia raises its outlook under interim CEO Colette Kress.",
+     "datetime": 1795012500,
+     "source": "SeekingAlpha",
+     "url": "https://finnhub.io/api/news?id=9ed51aa50d26bd3c6baa1aa06b2bf103c1a5a8274a3e6038552ba2dadee02166"
+    },
+    {
+     "headline": "Why the Anthropic IPO could be a trap for investors",
+     "summary": "Anthropic's IPO has the crowds of a Black Friday sale, but history says first-day buyers usually overpay.",
+     "datetime": 1795010104,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=46c8de2fc2f2d25d4a8f3f3664580d5d1789d1ea9af27579800ec9aa11e6de31"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "CBRS",
+   "expiry": "2026-12-04",
+   "days_to_expiry": 15,
+   "atm_iv_pct": 99.5,
+   "iv_chain_percentile": 29,
+   "skew_points": 5.6,
+   "put_call_ratio": 0.81,
+   "total_put_oi": 2018,
+   "total_call_oi": 2497
+  },
+  "get_options_positioning": {
+   "ticker": "CBRS",
+   "spot": 94.15,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-04",
+   "primary_days_to_expiry": 15,
+   "max_pain_strike": 100.0,
+   "resistance_walls": [
+    {
+     "strike": 100.0,
+     "open_interest": 272
+    },
+    {
+     "strike": 135.0,
+     "open_interest": 271
+    },
+    {
+     "strike": 150.0,
+     "open_interest": 225
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 95.0,
+     "open_interest": 535
+    },
+    {
+     "strike": 90.0,
+     "open_interest": 277
+    },
+    {
+     "strike": 105.0,
+     "open_interest": 185
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 15,
+     "atm_iv_pct": 99.5
+    },
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 22,
+     "atm_iv_pct": 101.0
+    },
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 29,
+     "atm_iv_pct": 98.5
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 60.0,
+     "volume": 135,
+     "open_interest": 25,
+     "vol_oi_ratio": 5.4,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 115.0,
+     "volume": 117,
+     "open_interest": 138,
+     "vol_oi_ratio": 0.8,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 90.0,
+     "volume": 115,
+     "open_interest": 277,
+     "vol_oi_ratio": 0.4,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 2391,
+   "otm_put_oi": 885,
+   "positioning_lean_score": 0.46,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "CBRS",
+   "as_of": "2026-11-19",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-09",
+     "days_ago": 10,
+     "firm": "Morgan Stanley",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 279.0,
+     "price_target_to": 178.0,
+     "is_rating_change": false,
+     "description": "Morgan Stanley maintained its Overweight rating on CBRS and cut its price target from $279.0 to $178.0"
+    },
+    {
+     "date": "2026-11-09",
+     "days_ago": 10,
+     "firm": "Wedbush",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 290.0,
+     "price_target_to": 190.0,
+     "is_rating_change": false,
+     "description": "Wedbush maintained its Outperform rating on CBRS and cut its price target from $290.0 to $190.0"
+    },
+    {
+     "date": "2026-11-02",
+     "days_ago": 17,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 330.0,
+     "price_target_to": 250.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Buy rating on CBRS and cut its price target from $330.0 to $250.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.73,
+    "verdict": "leaning bullish",
+    "analysts": 11,
+    "counts": {
+     "strongBuy": 3,
+     "buy": 8,
+     "hold": 0,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 1.82 to 1.73; bearish ratings 0 to 0)"
+   },
+   "price_target": {
+    "mean": 210.18,
+    "median": 205.0,
+    "high": 280.0,
+    "low": 155.0,
+    "current_price": 94.15,
+    "dispersion_pct": 59.5,
+    "upside_vs_mean_pct": 123.2,
+    "upside_vs_median_pct": 117.7
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "CBRS",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1mo": {
+     "stock_change_pct": -20.37,
+     "sector_etf_change_pct": -11.66,
+     "relative_to_sector_pct": -8.71
+    },
+    "1w": {
+     "stock_change_pct": -6.86,
+     "sector_etf_change_pct": -6.05,
+     "relative_to_sector_pct": -0.81
+    },
+    "ytd": {
+     "stock_change_pct": -69.73,
+     "sector_etf_change_pct": 13.93,
+     "relative_to_sector_pct": -83.66
+    },
+    "1d": {
+     "stock_change_pct": -9.63,
+     "sector_etf_change_pct": 0.34,
+     "relative_to_sector_pct": -9.97
+    },
+    "2w": {
+     "stock_change_pct": 2.5,
+     "sector_etf_change_pct": -7.19,
+     "relative_to_sector_pct": 9.69
+    },
+    "1y": {
+     "stock_change_pct": null,
+     "sector_etf_change_pct": 16.1,
+     "relative_to_sector_pct": null
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-18",
+    "realtime_end": "2026-11-18",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9621,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-18",
+      "realtime_end": "2026-11-18",
+      "date": "2026-11-17",
+      "value": "25.46"
+     },
+     {
+      "realtime_start": "2026-11-18",
+      "realtime_end": "2026-11-18",
+      "date": "2026-11-16",
+      "value": "22.91"
+     },
+     {
+      "realtime_start": "2026-11-18",
+      "realtime_end": "2026-11-18",
+      "date": "2026-11-13",
+      "value": "19.3"
+     },
+     {
+      "realtime_start": "2026-11-18",
+      "realtime_end": "2026-11-18",
+      "date": "2026-11-12",
+      "value": "18.7"
+     },
+     {
+      "realtime_start": "2026-11-18",
+      "realtime_end": "2026-11-18",
+      "date": "2026-11-11",
+      "value": "17.49"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "CBRS",
+   "as_of": "2026-11-19",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 20,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-12",
+     "description": "CBRS reported Q3 2026 earnings after the close \u2014 EPS 0.12 vs -0.1446 expected (beat, +183.0%)",
+     "source": "finnhub",
+     "days_ago": 7,
+     "eps_actual": 0.12,
+     "eps_estimate": -0.1446,
+     "surprise": "beat",
+     "surprise_pct": 183.0,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}
