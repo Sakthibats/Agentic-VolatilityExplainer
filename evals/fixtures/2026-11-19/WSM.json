@@ -1,0 +1,363 @@
+{
+ "schema": 1,
+ "ticker": "WSM",
+ "trading_day": "2026-11-19",
+ "captured_at": "2026-11-20T02:32:15+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -15.16,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: -15.16% \u2014 unusual for this stock (about 3.4x its normal move for that span, expected ~4.45%)",
+   "this week: -11.87% \u2014 typical relative to this stock's own typical volatility (expected ~9.96%, 1.19x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past 2 weeks: -14.67% \u2014 typical relative to this stock's own typical volatility (expected ~14.08%, 1.04x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past month: -12.89% \u2014 typical relative to this stock's own typical volatility (expected ~20.41%, 0.63x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "WSM",
+   "price": 220.66,
+   "prev_close": 260.09,
+   "change_pct": -15.16,
+   "session_date": "2026-11-19",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 70.7,
+   "changes_pct": {
+    "1d": -15.16,
+    "1w": -11.87,
+    "2w": -14.67,
+    "1mo": -12.89,
+    "1y": 23.74,
+    "ytd": 19.06
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: -15.16% \u2014 unusual for this stock (about 3.4x its normal move for that span, expected ~4.45%)",
+     "this week: -11.87% \u2014 typical relative to this stock's own typical volatility (expected ~9.96%, 1.19x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past 2 weeks: -14.67% \u2014 typical relative to this stock's own typical volatility (expected ~14.08%, 1.04x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past month: -12.89% \u2014 typical relative to this stock's own typical volatility (expected ~20.41%, 0.63x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 220.0,
+    "change_pct": -0.3,
+    "as_of": "2026-11-19 18:48 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "WSM",
+   "headlines": [
+    {
+     "headline": "Williams-Sonoma Inc (WSM) Q3 2026 Earnings Call Highlights: Broad-Based Comps, Margin Expansion ...",
+     "summary": "Williams-Sonoma Inc (WSM) posted 5.8% revenue growth with every brand and channel positive, as operating margin rose 40 basis points and EPS climbed 12% despite diesel and supply chain headwinds.",
+     "datetime": 1795129255,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=bd0f03ec80c8694fd058454bb4c9deced395818617a4835a38fab905a103c6d3"
+    },
+    {
+     "headline": "How to Earn $500 a Month From Williams-Sonoma Stock Ahead of Q3 Earnings",
+     "summary": "Williams-Sonoma Inc. will release its third-quarter earnings report before the opening bell on Thursday, Nov. 19. Analysts expect the company to report quarterly earnings of $2.18 per share, up from...",
+     "datetime": 1795127405,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=9d7354e16d18f0a89b9caed6743ad8d0c76d5c695a927ac80e5594833c7410ca"
+    },
+    {
+     "headline": "Ross Stores Earnings Beat But Tepid Holiday Outlook Sinks Stock",
+     "summary": "Ross Stores earnings and sales jumped above views, but Q4 guidance underwhelmed.",
+     "datetime": 1795125000,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=06ff885dfa93b0d2a08e25730843a6151bafb5984e97debe5972517d1c9f04c0"
+    },
+    {
+     "headline": "Williams-Sonoma (WSM) Q3 2026 Earnings Call Transcript",
+     "summary": "Margins expanded as e-commerce accelerated, despite rising diesel costs.",
+     "datetime": 1795124606,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=a983440d1859b067920fe056136091e570d732207823a0a27258a4396e29d45d"
+    },
+    {
+     "headline": "Sector Update: Consumer Stocks Fall Late Afternoon",
+     "summary": "Consumer stocks declined late Thursday afternoon with the State Street Consumer Staples Select Secto",
+     "datetime": 1795121075,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=3601b9d599aa40d9b9fcc8e7ccf3a8b65be515ad98ec371df076b19c8edc9dc9"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "WSM",
+   "expiry": "2026-12-18",
+   "days_to_expiry": 28,
+   "atm_iv_pct": 42.8,
+   "iv_chain_percentile": 26,
+   "skew_points": 0.1,
+   "put_call_ratio": 0.41,
+   "total_put_oi": 1251,
+   "total_call_oi": 3043
+  },
+  "get_options_positioning": {
+   "ticker": "WSM",
+   "spot": 220.66,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-18",
+   "primary_days_to_expiry": 28,
+   "max_pain_strike": 240.0,
+   "resistance_walls": [
+    {
+     "strike": 250.0,
+     "open_interest": 841
+    },
+    {
+     "strike": 280.0,
+     "open_interest": 476
+    },
+    {
+     "strike": 310.0,
+     "open_interest": 446
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 220.0,
+     "open_interest": 451
+    },
+    {
+     "strike": 250.0,
+     "open_interest": 192
+    },
+    {
+     "strike": 260.0,
+     "open_interest": 108
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 42.8
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 220.0,
+     "volume": 401,
+     "open_interest": 22,
+     "vol_oi_ratio": 18.2,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 220.0,
+     "volume": 102,
+     "open_interest": 451,
+     "vol_oi_ratio": 0.2,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 2853,
+   "otm_put_oi": 831,
+   "positioning_lean_score": 0.55,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "WSM",
+   "as_of": "2026-11-20",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-12",
+     "days_ago": 8,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 247.0,
+     "price_target_to": 265.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Neutral rating on WSM and raised its price target from $247.0 to $265.0"
+    },
+    {
+     "date": "2026-11-06",
+     "days_ago": 14,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 252.0,
+     "price_target_to": 275.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Neutral rating on WSM and raised its price target from $252.0 to $275.0"
+    },
+    {
+     "date": "2026-10-29",
+     "days_ago": 22,
+     "firm": "RBC Capital",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 260.0,
+     "price_target_to": 259.0,
+     "is_rating_change": false,
+     "description": "RBC Capital maintained its Outperform rating on WSM and cut its price target from $260.0 to $259.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.46,
+    "verdict": "leaning bullish",
+    "analysts": 24,
+    "counts": {
+     "strongBuy": 2,
+     "buy": 10,
+     "hold": 11,
+     "sell": 1,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.48 to 2.46)"
+   },
+   "price_target": {
+    "mean": 259.24,
+    "median": 265.0,
+    "high": 300.0,
+    "low": 151.0,
+    "current_price": 220.66,
+    "dispersion_pct": 57.5,
+    "upside_vs_mean_pct": 17.5,
+    "upside_vs_median_pct": 20.1
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "WSM",
+   "sector": "Consumer Cyclical",
+   "sector_etf": "XLY",
+   "comparison": {
+    "1y": {
+     "stock_change_pct": 23.74,
+     "sector_etf_change_pct": 4.08,
+     "relative_to_sector_pct": 19.66
+    },
+    "ytd": {
+     "stock_change_pct": 19.06,
+     "sector_etf_change_pct": -1.48,
+     "relative_to_sector_pct": 20.54
+    },
+    "1mo": {
+     "stock_change_pct": -12.89,
+     "sector_etf_change_pct": 0.3,
+     "relative_to_sector_pct": -13.19
+    },
+    "1d": {
+     "stock_change_pct": -15.16,
+     "sector_etf_change_pct": -2.79,
+     "relative_to_sector_pct": -12.37
+    },
+    "1w": {
+     "stock_change_pct": -11.87,
+     "sector_etf_change_pct": -3.8,
+     "relative_to_sector_pct": -8.07
+    },
+    "2w": {
+     "stock_change_pct": -14.67,
+     "sector_etf_change_pct": -1.5,
+     "relative_to_sector_pct": -13.17
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-19",
+    "realtime_end": "2026-11-19",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9622,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-19",
+      "realtime_end": "2026-11-19",
+      "date": "2026-11-18",
+      "value": "24.56"
+     },
+     {
+      "realtime_start": "2026-11-19",
+      "realtime_end": "2026-11-19",
+      "date": "2026-11-17",
+      "value": "25.46"
+     },
+     {
+      "realtime_start": "2026-11-19",
+      "realtime_end": "2026-11-19",
+      "date": "2026-11-16",
+      "value": "22.91"
+     },
+     {
+      "realtime_start": "2026-11-19",
+      "realtime_end": "2026-11-19",
+      "date": "2026-11-13",
+      "value": "19.3"
+     },
+     {
+      "realtime_start": "2026-11-19",
+      "realtime_end": "2026-11-19",
+      "date": "2026-11-12",
+      "value": "18.7"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "WSM",
+   "as_of": "2026-11-20",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 19,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-19",
+     "description": "WSM reported quarterly earnings before the open \u2014 EPS 2.38 vs 2.21 expected (beat, +7.7%)",
+     "source": "yfinance",
+     "days_ago": 1,
+     "eps_actual": 2.38,
+     "eps_estimate": 2.21,
+     "surprise": "beat",
+     "surprise_pct": 7.7,
+     "hour": "bmo"
+    },
+    {
+     "type": "ex_dividend",
+     "date": "2026-10-16",
+     "source": "yfinance",
+     "description": "WSM went ex-dividend \u2014 the price drops by roughly the dividend on this date mechanically, with no news behind it",
+     "days_ago": 35
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "yfinance"
+  }
+ }
+}

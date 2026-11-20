@@ -1,0 +1,232 @@
+{
+ "schema": 1,
+ "ticker": "ANT",
+ "trading_day": "2026-11-19",
+ "captured_at": "2026-11-20T02:32:01+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 17.07,
+ "move_assessment": {},
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "ANT",
+   "price": 97.17,
+   "prev_close": 83,
+   "change_pct": 17.07,
+   "session_date": "2026-11-19",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": null,
+   "changes_pct": {
+    "1d": null,
+    "1w": null,
+    "2w": null,
+    "1mo": null,
+    "1y": null,
+    "ytd": null
+   },
+   "move_assessment": {},
+   "extended_hours": {
+    "session": "post",
+    "price": 92.6,
+    "change_pct": -4.7,
+    "as_of": "2026-11-19 19:59 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "ANT",
+   "headlines": [
+    {
+     "headline": "Anthropic: A Strange Time To Be Sensible",
+     "summary": "Analyst sees Anthropic, PBC as a long-term opportunity but favors waiting: its $81B run rate is far below the roughly $600B revenue needed for 3x sales.",
+     "datetime": 1795117359,
+     "source": "SeekingAlpha",
+     "url": "https://finnhub.io/api/news?id=18c5deef7c17d602561286c5e661ed21f63ff94e5530dd0726d37d1d03b91065"
+    },
+    {
+     "headline": "Anthropic Hits The Market, But Wall Street Hits The Brakes",
+     "summary": "Anthropic IPO crushes it. November market bruised again. The VIX Index signals caution.",
+     "datetime": 1795114800,
+     "source": "SeekingAlpha",
+     "url": "https://finnhub.io/api/news?id=c39116210429ce75f4960335f81d89a562d2798082359d862e5f21fd953c4f8b"
+    },
+    {
+     "headline": "Micron: A 40% Drop With A $150B Backlog (Rating Upgrade)",
+     "summary": "Analyst rates Micron Technology, Inc. a Strong Buy, seeing the pullback as an entry at 4.1x forward earnings; the $1,500 target is unchanged.",
+     "datetime": 1795112360,
+     "source": "SeekingAlpha",
+     "url": "https://finnhub.io/api/news?id=29f42de74d1fa95e02ebd228be71062ea86ea8ced340e867dddfd2bff526b911"
+    },
+    {
+     "headline": "Comfort Systems: Cheaper With Greater EPS Growth (Upgrade)",
+     "summary": "Analyst rates Comfort Systems USA, Inc. a Buy on mid-20% 2027 revenue guidance. AI data center delays or cancellations threaten growth/margins, but I am bullish.",
+     "datetime": 1795111342,
+     "source": "SeekingAlpha",
+     "url": "https://finnhub.io/api/news?id=074e6df1055c4ec2db5eb15dd9e5496f978f92fba7924f43916e1990f5b185b0"
+    },
+    {
+     "headline": "Beyond The Anthropic IPO: Top AI Stocks For The Next Phase Of The Secular Bull",
+     "summary": "The record Anthropic IPO highlights both AI market momentum and volatility, creating long-term buying opportunities in top AI stocks with strong growth potential.",
+     "datetime": 1795110704,
+     "source": "SeekingAlpha",
+     "url": "https://finnhub.io/api/news?id=29f4434c58add3d23c83aa97ede49011cc5261f2a12a227e92df70f466aba9cb"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "ANT",
+   "expiry": null,
+   "days_to_expiry": null,
+   "atm_iv_pct": null,
+   "iv_chain_percentile": null,
+   "skew_points": null,
+   "put_call_ratio": null,
+   "total_put_oi": null,
+   "total_call_oi": null,
+   "error": "No options data available."
+  },
+  "get_options_positioning": {
+   "ticker": "ANT",
+   "error": "No options data available."
+  },
+  "get_analyst_sentiment": {
+   "ticker": "ANT",
+   "as_of": "2026-11-20",
+   "analyst_coverage": "covered",
+   "recent_actions": [],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.0,
+    "verdict": "leaning bullish",
+    "analysts": 1,
+    "counts": {
+     "strongBuy": 0,
+     "buy": 1,
+     "hold": 0,
+     "sell": 0,
+     "strongSell": 0
+    }
+   },
+   "price_target": {
+    "mean": 103.28,
+    "median": 103.28,
+    "high": 111.0,
+    "low": 95.56,
+    "current_price": 97.17,
+    "dispersion_pct": 14.9,
+    "upside_vs_mean_pct": 6.3,
+    "upside_vs_median_pct": 6.3
+   },
+   "notes": [
+    "No analyst rating changes in the last 30 days \u2014 the consensus below is standing opinion, not a recent catalyst."
+   ]
+  },
+  "get_sector_comparison": {
+   "ticker": "ANT",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1y": {
+     "stock_change_pct": null,
+     "sector_etf_change_pct": 15.77,
+     "relative_to_sector_pct": null
+    },
+    "ytd": {
+     "stock_change_pct": null,
+     "sector_etf_change_pct": 11.76,
+     "relative_to_sector_pct": null
+    },
+    "1mo": {
+     "stock_change_pct": null,
+     "sector_etf_change_pct": -14.77,
+     "relative_to_sector_pct": null
+    },
+    "1d": {
+     "stock_change_pct": null,
+     "sector_etf_change_pct": -1.9,
+     "relative_to_sector_pct": null
+    },
+    "1w": {
+     "stock_change_pct": null,
+     "sector_etf_change_pct": -7.53,
+     "relative_to_sector_pct": null
+    },
+    "2w": {
+     "stock_change_pct": null,
+     "sector_etf_change_pct": -1.04,
+     "relative_to_sector_pct": null
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-19",
+    "realtime_end": "2026-11-19",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9622,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-19",
+      "realtime_end": "2026-11-19",
+      "date": "2026-11-18",
+      "value": "24.56"
+     },
+     {
+      "realtime_start": "2026-11-19",
+      "realtime_end": "2026-11-19",
+      "date": "2026-11-17",
+      "value": "25.46"
+     },
+     {
+      "realtime_start": "2026-11-19",
+      "realtime_end": "2026-11-19",
+      "date": "2026-11-16",
+      "value": "22.91"
+     },
+     {
+      "realtime_start": "2026-11-19",
+      "realtime_end": "2026-11-19",
+      "date": "2026-11-13",
+      "value": "19.3"
+     },
+     {
+      "realtime_start": "2026-11-19",
+      "realtime_end": "2026-11-19",
+      "date": "2026-11-12",
+      "value": "18.7"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "ANT",
+   "as_of": "2026-11-20",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 19,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "none",
+   "notes": [
+    "No earnings calendar for ANT \u2014 expected for an ETF or fund, not a data failure."
+   ]
+  }
+ }
+}

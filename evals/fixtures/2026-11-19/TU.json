@@ -1,0 +1,346 @@
+{
+ "schema": 1,
+ "ticker": "TU",
+ "trading_day": "2026-11-19",
+ "captured_at": "2026-11-20T02:32:08+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 13.35,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 13.35% \u2014 unusual for this stock (about 2.98x its normal move for that span, expected ~4.47%)",
+   "this week: 26.53% \u2014 unusual for this stock (about 2.65x its normal move for that span, expected ~10.00%)",
+   "the past 2 weeks: 14.44% \u2014 typical relative to this stock's own typical volatility (expected ~14.14%, 1.02x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past month: 28.64% \u2014 typical relative to this stock's own typical volatility (expected ~20.50%, 1.4x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "TU",
+   "price": 10.78,
+   "prev_close": 9.51,
+   "change_pct": 13.35,
+   "session_date": "2026-11-19",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 71.0,
+   "changes_pct": {
+    "1d": 13.35,
+    "1w": 26.53,
+    "2w": 14.44,
+    "1mo": 28.64,
+    "1y": -15.54,
+    "ytd": -12.52
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 13.35% \u2014 unusual for this stock (about 2.98x its normal move for that span, expected ~4.47%)",
+     "this week: 26.53% \u2014 unusual for this stock (about 2.65x its normal move for that span, expected ~10.00%)",
+     "the past 2 weeks: 14.44% \u2014 typical relative to this stock's own typical volatility (expected ~14.14%, 1.02x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past month: 28.64% \u2014 typical relative to this stock's own typical volatility (expected ~20.50%, 1.4x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 10.65,
+    "change_pct": -1.21,
+    "as_of": "2026-11-19 19:42 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "TU",
+   "headlines": [
+    {
+     "headline": "Quebecor Says Combining Bell And Telus Will Not Be A Good Outcome For Customers",
+     "summary": "Quebecor (QBR-B.TO, QBR-A.TO) on Thursday said a combination between Bell (BCE.TO) and Telus (T.TO)",
+     "datetime": 1795110361,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=a6bc0054a1711c9e55cf8f9524f7c78946ed1656c16d8da3b29278504848a0e1"
+    },
+    {
+     "headline": "S&P/TSX Composite Index Falls to More Than Five-Month Low",
+     "summary": "The S&P/TSX Composite Index extended the prior day's weakness mid-morning Thursday, falling to the l",
+     "datetime": 1795102217,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=db031425dc7e53bcf1ba9353c42d219a4b40c4e88ff5095c6bafc61834ae4a3b"
+    },
+    {
+     "headline": "Update: Market Chatter: BCE Holds Preliminary Talks With Telus Following Quebecor Bid, Globe and Mail Reports",
+     "summary": "(Updates third paragraph with BCE declining to comment.) BCE (BCE.TO) has held preliminary discus",
+     "datetime": 1795099272,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=3919aa054bb55aa9b18ab7fd64a61ce4c3dd03ad5c81e784d7590346a1c922ea"
+    },
+    {
+     "headline": "Statement from Quebecor Regarding Its Proposed Strategic Combination with TELUS",
+     "summary": "Following the publication of a The Globe and Mail article on November 18 reporting that BCE, the parent company of Bell Canada, had initiated discussions with TELUS to evaluate its options in light...",
+     "datetime": 1795098060,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=18890096787b28dd95e0b8d1fd63593fcece8fd2939811f4521179acc9e87303"
+    },
+    {
+     "headline": "Dividend 15 Split Corp. II Monthly Dividend Declaration for Class A & Preferred Share",
+     "summary": "TORONTO, Nov. 18, 2026 (GLOBE NEWSWIRE) -- Dividend 15 Split Corp. II (\"Dividend 15 II\") declares its monthly distribution of $0.10000 for each Class A share and $0.05833 for each Preferred share....",
+     "datetime": 1795010400,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=b04a2814026cdf23d2df2487086cf3b3aaecab576fa172f5af30208dae30551e"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "TU",
+   "expiry": "2026-12-18",
+   "days_to_expiry": 28,
+   "atm_iv_pct": 48.5,
+   "iv_chain_percentile": 1,
+   "skew_points": 5.7,
+   "put_call_ratio": 0.33,
+   "total_put_oi": 2142,
+   "total_call_oi": 6564
+  },
+  "get_options_positioning": {
+   "ticker": "TU",
+   "spot": 10.78,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-18",
+   "primary_days_to_expiry": 28,
+   "max_pain_strike": 10.0,
+   "resistance_walls": [
+    {
+     "strike": 15.0,
+     "open_interest": 3734
+    },
+    {
+     "strike": 12.5,
+     "open_interest": 1786
+    },
+    {
+     "strike": 10.0,
+     "open_interest": 937
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 7.5,
+     "open_interest": 1709
+    },
+    {
+     "strike": 10.0,
+     "open_interest": 314
+    },
+    {
+     "strike": 12.5,
+     "open_interest": 107
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 48.5
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 10.0,
+     "volume": 735,
+     "open_interest": 937,
+     "vol_oi_ratio": 0.8,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 10.0,
+     "volume": 205,
+     "open_interest": 314,
+     "vol_oi_ratio": 0.7,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 12.5,
+     "volume": 290,
+     "open_interest": 1786,
+     "vol_oi_ratio": 0.2,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 5566,
+   "otm_put_oi": 2024,
+   "positioning_lean_score": 0.47,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "TU",
+   "as_of": "2026-11-20",
+   "analyst_coverage": "covered",
+   "recent_actions": [],
+   "consensus": {
+    "rating": "hold",
+    "score": 3.12,
+    "verdict": "neutral",
+    "analysts": 17,
+    "counts": {
+     "strongBuy": 0,
+     "buy": 2,
+     "hold": 12,
+     "sell": 2,
+     "strongSell": 1
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 3.17 to 3.12)"
+   },
+   "price_target": {
+    "mean": 10.0,
+    "median": 10.0,
+    "high": 10.5,
+    "low": 9.5,
+    "current_price": 10.78,
+    "dispersion_pct": 10.0,
+    "upside_vs_mean_pct": -7.2,
+    "upside_vs_median_pct": -7.2
+   },
+   "notes": [
+    "No analyst rating changes in the last 30 days \u2014 the consensus below is standing opinion, not a recent catalyst."
+   ]
+  },
+  "get_sector_comparison": {
+   "ticker": "TU",
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "comparison": {
+    "1y": {
+     "stock_change_pct": -15.54,
+     "sector_etf_change_pct": -3.86,
+     "relative_to_sector_pct": -11.68
+    },
+    "ytd": {
+     "stock_change_pct": -12.52,
+     "sector_etf_change_pct": -8.86,
+     "relative_to_sector_pct": -3.66
+    },
+    "1mo": {
+     "stock_change_pct": 28.64,
+     "sector_etf_change_pct": -4.18,
+     "relative_to_sector_pct": 32.82
+    },
+    "1d": {
+     "stock_change_pct": 13.35,
+     "sector_etf_change_pct": 0.3,
+     "relative_to_sector_pct": 13.05
+    },
+    "1w": {
+     "stock_change_pct": 26.53,
+     "sector_etf_change_pct": -2.78,
+     "relative_to_sector_pct": 29.31
+    },
+    "2w": {
+     "stock_change_pct": 14.44,
+     "sector_etf_change_pct": 0.59,
+     "relative_to_sector_pct": 13.85
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-19",
+    "realtime_end": "2026-11-19",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9622,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-19",
+      "realtime_end": "2026-11-19",
+      "date": "2026-11-18",
+      "value": "24.56"
+     },
+     {
+      "realtime_start": "2026-11-19",
+      "realtime_end": "2026-11-19",
+      "date": "2026-11-17",
+      "value": "25.46"
+     },
+     {
+      "realtime_start": "2026-11-19",
+      "realtime_end": "2026-11-19",
+      "date": "2026-11-16",
+      "value": "22.91"
+     },
+     {
+      "realtime_start": "2026-11-19",
+      "realtime_end": "2026-11-19",
+      "date": "2026-11-13",
+      "value": "19.3"
+     },
+     {
+      "realtime_start": "2026-11-19",
+      "realtime_end": "2026-11-19",
+      "date": "2026-11-12",
+      "value": "18.7"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "TU",
+   "as_of": "2026-11-20",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 19,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "ex_dividend",
+     "date": "2026-12-11",
+     "source": "yfinance",
+     "description": "TU goes ex-dividend \u2014 expect a mechanical price drop of roughly the dividend",
+     "days_until": 21
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-11",
+     "description": "TU Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 83,
+     "eps_estimate": 0.1462,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-06",
+     "description": "TU reported Q3 2026 earnings before the open \u2014 EPS 0.16 vs 0.1766 expected (miss, -9.4%)",
+     "source": "finnhub",
+     "days_ago": 14,
+     "eps_actual": 0.16,
+     "eps_estimate": 0.1766,
+     "surprise": "miss",
+     "surprise_pct": -9.4,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

@@ -1,0 +1,353 @@
+{
+ "schema": 1,
+ "ticker": "INSM",
+ "trading_day": "2026-11-19",
+ "captured_at": "2026-11-20T02:31:54+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 20.58,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 20.58% \u2014 unusual for this stock (about 3.46x its normal move for that span, expected ~5.95%)",
+   "this week: 22.35% \u2014 elevated relative to this stock's own typical volatility (expected ~13.31%, 1.68x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past 2 weeks: 32.82% \u2014 elevated relative to this stock's own typical volatility (expected ~18.82%, 1.74x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past month: 53.62% \u2014 elevated relative to this stock's own typical volatility (expected ~27.28%, 1.97x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "INSM",
+   "price": 144.46,
+   "prev_close": 119.8,
+   "change_pct": 20.58,
+   "session_date": "2026-11-19",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 94.5,
+   "changes_pct": {
+    "1d": 20.58,
+    "1w": 22.35,
+    "2w": 32.82,
+    "1mo": 53.62,
+    "1y": -28.35,
+    "ytd": -18.44
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 20.58% \u2014 unusual for this stock (about 3.46x its normal move for that span, expected ~5.95%)",
+     "this week: 22.35% \u2014 elevated relative to this stock's own typical volatility (expected ~13.31%, 1.68x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past 2 weeks: 32.82% \u2014 elevated relative to this stock's own typical volatility (expected ~18.82%, 1.74x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past month: 53.62% \u2014 elevated relative to this stock's own typical volatility (expected ~27.28%, 1.97x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 144.98,
+    "change_pct": 0.36,
+    "as_of": "2026-11-19 19:23 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "INSM",
+   "headlines": [
+    {
+     "headline": "Stock Market Today, Nov. 19: Dow Plunges 1,100 Points as the S&P 500 Suffers Its 6th Straight Day of Losses",
+     "summary": "Selling pressure is spreading well beyond technology stocks, raising concerns that Wall Street's recent pullback could develop into a more pronounced market correction.",
+     "datetime": 1795126202,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=9b0acf9ba1629abe07ebb299ff3a9b81dd5ca53898d5b57e48e11051769e401c"
+    },
+    {
+     "headline": "Sanofi Reportedly Gears Up For The Biggest Biotech Deal In Years",
+     "summary": "Insmed stock surged Thursday on a rumored bid from French pharma giant Sanofi. The deal would be one of the largest in recent history.",
+     "datetime": 1795122423,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=257fa9ad9ed4b20e18e8ba5ab03a12106ffb9adebceae98d774470e7639775fe"
+    },
+    {
+     "headline": "Sector Update: Healthcare Stocks Retreat Late Afternoon",
+     "summary": "Healthcare stocks declined late Thursday afternoon, with the NYSE Healthcare Index falling 2.1% and",
+     "datetime": 1795121519,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=a15e2431317a87fd245912d737db8aa9aabc19ec5b4091597e60ee64b379ac60"
+    },
+    {
+     "headline": "Insmed Stock Is a Winner With or Without a Sanofi Buyout, Analysts Say",
+     "summary": "Insmed stock jumps following a report saying Sanofi is eyeing a takeover of the biopharma company.",
+     "datetime": 1795119120,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=5501d84b7d32c96242bce8886251a1afde01266fc7372b2232ba95df7bb14e6e"
+    },
+    {
+     "headline": "Sector Update: Healthcare Stocks Softer in Afternoon Trading",
+     "summary": "Healthcare stocks declined Thursday afternoon, with the NYSE Healthcare Index falling 2.1% and the S",
+     "datetime": 1795113131,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=9b3285df69666ca3b7acf443ee1b4322e9e8d7c4c1e4119793c0ca5ee1b52fa1"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "INSM",
+   "expiry": "2026-12-18",
+   "days_to_expiry": 28,
+   "atm_iv_pct": 63.6,
+   "iv_chain_percentile": 5,
+   "skew_points": 13.4,
+   "put_call_ratio": 0.22,
+   "total_put_oi": 924,
+   "total_call_oi": 4296
+  },
+  "get_options_positioning": {
+   "ticker": "INSM",
+   "spot": 144.46,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-18",
+   "primary_days_to_expiry": 28,
+   "max_pain_strike": 105.0,
+   "resistance_walls": [
+    {
+     "strike": 140.0,
+     "open_interest": 2095
+    },
+    {
+     "strike": 135.0,
+     "open_interest": 1415
+    },
+    {
+     "strike": 125.0,
+     "open_interest": 169
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 97.5,
+     "open_interest": 427
+    },
+    {
+     "strike": 105.0,
+     "open_interest": 102
+    },
+    {
+     "strike": 87.5,
+     "open_interest": 63
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 63.6
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 135.0,
+     "volume": 310,
+     "open_interest": 1415,
+     "vol_oi_ratio": 0.2,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 140.0,
+     "volume": 231,
+     "open_interest": 2095,
+     "vol_oi_ratio": 0.1,
+     "moneyness": "ITM"
+    }
+   ],
+   "otm_call_oi": 0,
+   "otm_put_oi": 924,
+   "positioning_lean_score": -1.0,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "INSM",
+   "as_of": "2026-11-20",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-02",
+     "days_ago": 18,
+     "firm": "Guggenheim",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 205.0,
+     "price_target_to": 201.0,
+     "is_rating_change": false,
+     "description": "Guggenheim maintained its Buy rating on INSM and cut its price target from $205.0 to $201.0"
+    },
+    {
+     "date": "2026-10-21",
+     "days_ago": 30,
+     "firm": "Morgan Stanley",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 218.0,
+     "price_target_to": 213.0,
+     "is_rating_change": false,
+     "description": "Morgan Stanley maintained its Overweight rating on INSM and cut its price target from $218.0 to $213.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.83,
+    "verdict": "leaning bullish",
+    "analysts": 24,
+    "counts": {
+     "strongBuy": 5,
+     "buy": 18,
+     "hold": 1,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.78 to 1.83)"
+   },
+   "price_target": {
+    "mean": 194.18,
+    "median": 195.0,
+    "high": 243.0,
+    "low": 158.0,
+    "current_price": 144.46,
+    "dispersion_pct": 43.8,
+    "upside_vs_mean_pct": 34.4,
+    "upside_vs_median_pct": 35.0
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "INSM",
+   "sector": "Healthcare",
+   "sector_etf": "XLV",
+   "comparison": {
+    "1y": {
+     "stock_change_pct": -28.35,
+     "sector_etf_change_pct": 18.24,
+     "relative_to_sector_pct": -46.59
+    },
+    "ytd": {
+     "stock_change_pct": -18.44,
+     "sector_etf_change_pct": 15.53,
+     "relative_to_sector_pct": -33.97
+    },
+    "1mo": {
+     "stock_change_pct": 53.62,
+     "sector_etf_change_pct": -0.83,
+     "relative_to_sector_pct": 54.45
+    },
+    "1d": {
+     "stock_change_pct": 20.58,
+     "sector_etf_change_pct": -2.05,
+     "relative_to_sector_pct": 22.63
+    },
+    "1w": {
+     "stock_change_pct": 22.35,
+     "sector_etf_change_pct": -5.52,
+     "relative_to_sector_pct": 27.87
+    },
+    "2w": {
+     "stock_change_pct": 32.82,
+     "sector_etf_change_pct": -4.03,
+     "relative_to_sector_pct": 36.85
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-19",
+    "realtime_end": "2026-11-19",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9622,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-19",
+      "realtime_end": "2026-11-19",
+      "date": "2026-11-18",
+      "value": "24.56"
+     },
+     {
+      "realtime_start": "2026-11-19",
+      "realtime_end": "2026-11-19",
+      "date": "2026-11-17",
+      "value": "25.46"
+     },
+     {
+      "realtime_start": "2026-11-19",
+      "realtime_end": "2026-11-19",
+      "date": "2026-11-16",
+      "value": "22.91"
+     },
+     {
+      "realtime_start": "2026-11-19",
+      "realtime_end": "2026-11-19",
+      "date": "2026-11-13",
+      "value": "19.3"
+     },
+     {
+      "realtime_start": "2026-11-19",
+      "realtime_end": "2026-11-19",
+      "date": "2026-11-12",
+      "value": "18.7"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "INSM",
+   "as_of": "2026-11-20",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 19,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-17",
+     "description": "INSM Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 89,
+     "eps_estimate": -0.2999,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-29",
+     "description": "INSM reported Q3 2026 earnings before the open \u2014 EPS -0.46 vs -0.3863 expected (miss, -19.1%)",
+     "source": "finnhub",
+     "days_ago": 22,
+     "eps_actual": -0.46,
+     "eps_estimate": -0.3863,
+     "surprise": "miss",
+     "surprise_pct": -19.1,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

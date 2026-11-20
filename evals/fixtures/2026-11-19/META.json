@@ -1,0 +1,419 @@
+{
+ "schema": 1,
+ "ticker": "META",
+ "trading_day": "2026-11-19",
+ "captured_at": "2026-11-20T02:31:40+00:00",
+ "selected_as": "move",
+ "change_pct": -3.27,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "today: -3.27% \u2014 typical relative to this stock's own typical volatility (expected ~2.61%, 1.25x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past month: -14.52% \u2014 typical relative to this stock's own typical volatility (expected ~11.95%, 1.21x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "META",
+   "price": 596.22,
+   "prev_close": 616.38,
+   "change_pct": -3.27,
+   "session_date": "2026-11-19",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 41.4,
+   "changes_pct": {
+    "1d": -3.27,
+    "1w": -4.39,
+    "2w": -1.46,
+    "1mo": -14.52,
+    "1y": 0.09,
+    "ytd": -8.1
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "today: -3.27% \u2014 typical relative to this stock's own typical volatility (expected ~2.61%, 1.25x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past month: -14.52% \u2014 typical relative to this stock's own typical volatility (expected ~11.95%, 1.21x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 587.65,
+    "change_pct": -1.44,
+    "as_of": "2026-11-19 19:59 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "META",
+   "headlines": [
+    {
+     "headline": "Is Your VOO Fund Secretly An AI Bet?",
+     "summary": "Most people treat an S&P 500 index fund as the safe default. The AI sell-off reads like a tech-stock story that index owners can watch from the side. The fund's own holdings say otherwise. About one...",
+     "datetime": 1795136300,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=a84cb0af38b4db0b1a93b068ca3f457cf4b052302ff50dd4a9e7bb392c639711"
+    },
+    {
+     "headline": "Meta Platforms 'Reevaluating' 2030 Net Zero Goal as AI Buildout Strains Clean Energy Supply",
+     "summary": "Meta Platforms Inc (META) said on Thursday it is reevaluating the 2030 timeframe for its net zero em",
+     "datetime": 1795135394,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=832d041d280ca00ab0d85cbe1186224da1e9f967ad3f38b774c3b6642cc81998"
+    },
+    {
+     "headline": "Apple May Try to Challenge Meta for Personal Agent Supremacy",
+     "summary": "Apple has been posting job openings that reveal its interest in agents, but a new one this week was pretty explicit about what Apple is working toward.",
+     "datetime": 1795132260,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=d3bd1f54c91f49844eb556ea25a0a0ba7bcc6a79f066b3ae3d022a1ba916c309"
+    },
+    {
+     "headline": "S&P 500, Nasdaq, Dow End Lower As Anthropic Trading Debut Fails To Provide Adequate Confidence \u2014  ANT, META, AAPL, GME In Focus",
+     "summary": "Anthropic closed its debut trading session 17% higher from its listing price of $83 a share.",
+     "datetime": 1795129265,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=f651be9663f5e6db171be082b341381743ec55ca6369c463dcf5dc2c4cb4a997"
+    },
+    {
+     "headline": "A $6.6 Billion Fund Dumps These 2 Stocks",
+     "summary": "Key TakeawaysDorsal Capital Management, which manages $6. 64 billion, sold all of its Home Depot and Nexstar Media shares in the third quarter, according to its latest 13F.",
+     "datetime": 1795127874,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=1222232da405e9898767bdde5f9f7c391a7d09ecdc0436800204807d8a6ae1e6"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "META",
+   "expiry": "2026-12-04",
+   "days_to_expiry": 14,
+   "atm_iv_pct": 45.9,
+   "iv_chain_percentile": 1,
+   "skew_points": 2.5,
+   "put_call_ratio": 0.74,
+   "total_put_oi": 10211,
+   "total_call_oi": 13776
+  },
+  "get_options_positioning": {
+   "ticker": "META",
+   "spot": 596.22,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-04",
+   "primary_days_to_expiry": 14,
+   "max_pain_strike": 620.0,
+   "resistance_walls": [
+    {
+     "strike": 750.0,
+     "open_interest": 1139
+    },
+    {
+     "strike": 680.0,
+     "open_interest": 770
+    },
+    {
+     "strike": 660.0,
+     "open_interest": 721
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 600.0,
+     "open_interest": 688
+    },
+    {
+     "strike": 580.0,
+     "open_interest": 636
+    },
+    {
+     "strike": 550.0,
+     "open_interest": 409
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 14,
+     "atm_iv_pct": 45.9
+    },
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 21,
+     "atm_iv_pct": 45.7
+    },
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 44.8
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 480.0,
+     "volume": 3294,
+     "open_interest": 57,
+     "vol_oi_ratio": 57.8,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 520.0,
+     "volume": 144,
+     "open_interest": 97,
+     "vol_oi_ratio": 1.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 650.0,
+     "volume": 645,
+     "open_interest": 515,
+     "vol_oi_ratio": 1.3,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 510.0,
+     "volume": 106,
+     "open_interest": 118,
+     "vol_oi_ratio": 0.9,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 620.0,
+     "volume": 186,
+     "open_interest": 237,
+     "vol_oi_ratio": 0.8,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 12673,
+   "otm_put_oi": 6486,
+   "positioning_lean_score": 0.32,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "META",
+   "as_of": "2026-11-20",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-22",
+     "days_ago": 29,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 884.0,
+     "price_target_to": 892.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Buy rating on META and raised its price target from $884.0 to $892.0"
+    },
+    {
+     "date": "2026-10-22",
+     "days_ago": 29,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 895.0,
+     "price_target_to": 905.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Buy rating on META and raised its price target from $895.0 to $905.0"
+    },
+    {
+     "date": "2026-10-22",
+     "days_ago": 29,
+     "firm": "DA Davidson",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 700.0,
+     "price_target_to": 800.0,
+     "is_rating_change": false,
+     "description": "DA Davidson maintained its Buy rating on META and raised its price target from $700.0 to $800.0"
+    },
+    {
+     "date": "2026-10-22",
+     "days_ago": 29,
+     "firm": "BMO Capital",
+     "action": "maintained",
+     "from_grade": "Market Perform",
+     "to_grade": "Market Perform",
+     "price_target_from": 580.0,
+     "price_target_to": 685.0,
+     "is_rating_change": false,
+     "description": "BMO Capital maintained its Market Perform rating on META and raised its price target from $580.0 to $685.0"
+    },
+    {
+     "date": "2026-10-22",
+     "days_ago": 29,
+     "firm": "Evercore ISI Group",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 860.0,
+     "price_target_to": 870.0,
+     "is_rating_change": false,
+     "description": "Evercore ISI Group maintained its Outperform rating on META and raised its price target from $860.0 to $870.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.97,
+    "verdict": "leaning bullish",
+    "analysts": 62,
+    "counts": {
+     "strongBuy": 10,
+     "buy": 45,
+     "hold": 6,
+     "sell": 1,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.98 to 1.97)"
+   },
+   "price_target": {
+    "mean": 848.23,
+    "median": 850.0,
+    "high": 1050.0,
+    "low": 650.0,
+    "current_price": 596.22,
+    "dispersion_pct": 47.2,
+    "upside_vs_mean_pct": 42.3,
+    "upside_vs_median_pct": 42.6
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "META",
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "comparison": {
+    "1y": {
+     "stock_change_pct": 2.73,
+     "sector_etf_change_pct": -3.86,
+     "relative_to_sector_pct": 6.59
+    },
+    "ytd": {
+     "stock_change_pct": -4.99,
+     "sector_etf_change_pct": -8.86,
+     "relative_to_sector_pct": 3.87
+    },
+    "1mo": {
+     "stock_change_pct": -11.22,
+     "sector_etf_change_pct": -4.18,
+     "relative_to_sector_pct": -7.04
+    },
+    "1d": {
+     "stock_change_pct": -0.4,
+     "sector_etf_change_pct": 0.3,
+     "relative_to_sector_pct": -0.7
+    },
+    "1w": {
+     "stock_change_pct": -1.97,
+     "sector_etf_change_pct": -2.78,
+     "relative_to_sector_pct": 0.81
+    },
+    "2w": {
+     "stock_change_pct": -2.16,
+     "sector_etf_change_pct": 0.59,
+     "relative_to_sector_pct": -2.75
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-19",
+    "realtime_end": "2026-11-19",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9622,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-19",
+      "realtime_end": "2026-11-19",
+      "date": "2026-11-18",
+      "value": "24.56"
+     },
+     {
+      "realtime_start": "2026-11-19",
+      "realtime_end": "2026-11-19",
+      "date": "2026-11-17",
+      "value": "25.46"
+     },
+     {
+      "realtime_start": "2026-11-19",
+      "realtime_end": "2026-11-19",
+      "date": "2026-11-16",
+      "value": "22.91"
+     },
+     {
+      "realtime_start": "2026-11-19",
+      "realtime_end": "2026-11-19",
+      "date": "2026-11-13",
+      "value": "19.3"
+     },
+     {
+      "realtime_start": "2026-11-19",
+      "realtime_end": "2026-11-19",
+      "date": "2026-11-12",
+      "value": "18.7"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "META",
+   "as_of": "2026-11-20",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 19,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-26",
+     "description": "META Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 67,
+     "eps_estimate": 8.5681,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-21",
+     "description": "META reported Q3 2026 earnings after the close \u2014 EPS 7.4 vs 6.8723 expected (beat, +7.7%)",
+     "source": "finnhub",
+     "days_ago": 30,
+     "eps_actual": 7.4,
+     "eps_estimate": 6.8723,
+     "surprise": "beat",
+     "surprise_pct": 7.7,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}
