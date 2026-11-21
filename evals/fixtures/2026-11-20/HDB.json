@@ -1,0 +1,322 @@
+{
+ "schema": 1,
+ "ticker": "HDB",
+ "trading_day": "2026-11-20",
+ "captured_at": "2026-11-21T02:43:41+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 4.5,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 4.5% \u2014 elevated for this stock (about 2.46x its normal move for that span, expected ~1.83%)",
+   "this week: 6.16% \u2014 elevated for this stock (about 1.51x its normal move for that span, expected ~4.08%)",
+   "the past 2 weeks: 9.07% \u2014 elevated for this stock (about 1.57x its normal move for that span, expected ~5.78%)",
+   "the past month: 22.19% \u2014 unusual for this stock (about 2.65x its normal move for that span, expected ~8.37%)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "HDB",
+   "price": 27.42,
+   "prev_close": 26.24,
+   "change_pct": 4.5,
+   "session_date": "2026-11-20",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 29.0,
+   "changes_pct": {
+    "1d": 4.5,
+    "1w": 6.16,
+    "2w": 9.07,
+    "1mo": 22.19,
+    "1y": -24.79,
+    "ytd": -24.84
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 4.5% \u2014 elevated for this stock (about 2.46x its normal move for that span, expected ~1.83%)",
+     "this week: 6.16% \u2014 elevated for this stock (about 1.51x its normal move for that span, expected ~4.08%)",
+     "the past 2 weeks: 9.07% \u2014 elevated for this stock (about 1.57x its normal move for that span, expected ~5.78%)",
+     "the past month: 22.19% \u2014 unusual for this stock (about 2.65x its normal move for that span, expected ~8.37%)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 27.25,
+    "change_pct": -0.62,
+    "as_of": "2026-11-20 18:19 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "HDB",
+   "headlines": [
+    {
+     "headline": "Asian Equities Traded in the US as American Depositary Receipts Decline in Friday Trading; Tumble 7% for Week",
+     "summary": "Asian equities traded in the US as American depositary receipts were heading sharply lower Friday mo",
+     "datetime": 1795189256,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=685848c39346cf0b49b8faae8c0f31a3f75e958ac5d096d24e0e7405c3660c76"
+    },
+    {
+     "headline": "Asian Equities Traded in the US as American Depositary Receipts Rise in Thursday Trading",
+     "summary": "Asian equities traded in the US as American depositary receipts were tracking higher Thursday mornin",
+     "datetime": 1795103141,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=80c7bccdaf1e105d3499f704b96e205b0bb93c783e8de1bb91b3dfc4536592db"
+    },
+    {
+     "headline": "HDFC Bank Limited Grants 1,86,031 Equity Stock Options and 41,377 Restricted Stock Units",
+     "summary": "",
+     "datetime": 1795002051,
+     "source": "Fintel",
+     "url": "https://finnhub.io/api/news?id=546a4ba7a8689fa8a09d79e9555da47a3ae4b28b4926c7a9a7965d070b401a16"
+    },
+    {
+     "headline": "Asian Equities Traded in the US as American Depositary Receipts Start Week Sharply Lower in Monday Trading",
+     "summary": "Asian equities traded in the US as American depositary receipts opened the week sharply lower Monday",
+     "datetime": 1794844127,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=295bde8dd4b133f083343b9460682cb38c8257b495cf36f3fb4295f93b7d28b6"
+    },
+    {
+     "headline": "HDFC Bank Limited Receives RBI Approval for Re-appointment of Mr. V. Srinivasa Rangan",
+     "summary": "",
+     "datetime": 1794834053,
+     "source": "Fintel",
+     "url": "https://finnhub.io/api/news?id=e6b364030c3ef57bf5ed74193dc28dc5a771a25cfff38d8a5d06d36b7c7a89c8"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "HDB",
+   "expiry": "2026-12-18",
+   "days_to_expiry": 27,
+   "atm_iv_pct": 34.6,
+   "iv_chain_percentile": 2,
+   "skew_points": 4.5,
+   "put_call_ratio": 0.27,
+   "total_put_oi": 506,
+   "total_call_oi": 1901
+  },
+  "get_options_positioning": {
+   "ticker": "HDB",
+   "spot": 27.42,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-18",
+   "primary_days_to_expiry": 27,
+   "max_pain_strike": 25.0,
+   "resistance_walls": [
+    {
+     "strike": 27.5,
+     "open_interest": 1155
+    },
+    {
+     "strike": 25.0,
+     "open_interest": 635
+    },
+    {
+     "strike": 30.0,
+     "open_interest": 44
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 22.5,
+     "open_interest": 312
+    },
+    {
+     "strike": 25.0,
+     "open_interest": 181
+    },
+    {
+     "strike": 20.0,
+     "open_interest": 12
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 27,
+     "atm_iv_pct": 34.6
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 27.5,
+     "volume": 853,
+     "open_interest": 1,
+     "vol_oi_ratio": 853.0,
+     "moneyness": "ITM"
+    }
+   ],
+   "otm_call_oi": 1219,
+   "otm_put_oi": 505,
+   "positioning_lean_score": 0.41,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "HDB",
+   "as_of": "2026-11-21",
+   "analyst_coverage": "covered",
+   "recent_actions": [],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.0,
+    "verdict": "leaning bullish",
+    "analysts": 4,
+    "counts": {
+     "strongBuy": 1,
+     "buy": 2,
+     "hold": 1,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.0 to 2.0)"
+   },
+   "price_target": {
+    "mean": 30.3,
+    "median": 31.0,
+    "high": 33.0,
+    "low": 26.2,
+    "current_price": 27.42,
+    "dispersion_pct": 22.4,
+    "upside_vs_mean_pct": 10.5,
+    "upside_vs_median_pct": 13.1
+   },
+   "notes": [
+    "No analyst rating changes in the last 30 days \u2014 the consensus below is standing opinion, not a recent catalyst."
+   ]
+  },
+  "get_sector_comparison": {
+   "ticker": "HDB",
+   "sector": "Financial Services",
+   "sector_etf": "XLF",
+   "comparison": {
+    "1w": {
+     "stock_change_pct": 6.16,
+     "sector_etf_change_pct": -7.0,
+     "relative_to_sector_pct": 13.16
+    },
+    "2w": {
+     "stock_change_pct": 9.07,
+     "sector_etf_change_pct": -4.53,
+     "relative_to_sector_pct": 13.6
+    },
+    "1mo": {
+     "stock_change_pct": 22.19,
+     "sector_etf_change_pct": -3.67,
+     "relative_to_sector_pct": 25.86
+    },
+    "1d": {
+     "stock_change_pct": 4.5,
+     "sector_etf_change_pct": -1.82,
+     "relative_to_sector_pct": 6.32
+    },
+    "1y": {
+     "stock_change_pct": -24.79,
+     "sector_etf_change_pct": 7.51,
+     "relative_to_sector_pct": -32.3
+    },
+    "ytd": {
+     "stock_change_pct": -24.84,
+     "sector_etf_change_pct": 0.56,
+     "relative_to_sector_pct": -25.4
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-20",
+    "realtime_end": "2026-11-20",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9623,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-19",
+      "value": "28.44"
+     },
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-18",
+      "value": "24.56"
+     },
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-17",
+      "value": "25.46"
+     },
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-16",
+      "value": "22.91"
+     },
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-13",
+      "value": "19.3"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "HDB",
+   "as_of": "2026-11-21",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 18,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-15",
+     "description": "HDB Q3 2027 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 55,
+     "eps_estimate": 13.4003
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-17",
+     "description": "HDB reported quarterly earnings before the open \u2014 EPS 0.4 vs 0.39 expected (beat, +2.6%)",
+     "source": "yfinance",
+     "days_ago": 35,
+     "eps_actual": 0.4,
+     "eps_estimate": 0.39,
+     "surprise": "beat",
+     "surprise_pct": 2.6,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub+yfinance"
+  }
+ }
+}

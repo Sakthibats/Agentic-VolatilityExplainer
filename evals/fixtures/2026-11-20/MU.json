@@ -1,0 +1,384 @@
+{
+ "schema": 1,
+ "ticker": "MU",
+ "trading_day": "2026-11-20",
+ "captured_at": "2026-11-21T02:43:14+00:00",
+ "selected_as": "move",
+ "change_pct": -13.89,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: -13.89% \u2014 elevated relative to this stock's own typical volatility (expected ~6.94%, 2.0x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "this week: -23.62% \u2014 elevated relative to this stock's own typical volatility (expected ~15.51%, 1.52x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past 2 weeks: -13.84% \u2014 typical relative to this stock's own typical volatility (expected ~21.93%, 0.63x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past month: -30.59% \u2014 typical relative to this stock's own typical volatility (expected ~31.78%, 0.96x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past year: 163.45% \u2014 typical relative to this stock's own typical volatility (expected ~110.10%, 1.48x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "MU",
+   "price": 594.51,
+   "prev_close": 690.44,
+   "change_pct": -13.89,
+   "session_date": "2026-11-20",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 110.1,
+   "changes_pct": {
+    "1d": -13.89,
+    "1w": -23.62,
+    "2w": -13.84,
+    "1mo": -30.59,
+    "1y": 163.45,
+    "ytd": 88.62
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: -13.89% \u2014 elevated relative to this stock's own typical volatility (expected ~6.94%, 2.0x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "this week: -23.62% \u2014 elevated relative to this stock's own typical volatility (expected ~15.51%, 1.52x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past 2 weeks: -13.84% \u2014 typical relative to this stock's own typical volatility (expected ~21.93%, 0.63x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past month: -30.59% \u2014 typical relative to this stock's own typical volatility (expected ~31.78%, 0.96x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past year: 163.45% \u2014 typical relative to this stock's own typical volatility (expected ~110.10%, 1.48x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 610.6,
+    "change_pct": 2.71,
+    "as_of": "2026-11-20 19:59 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "MU",
+   "headlines": [
+    {
+     "headline": "She Moves $250,000 of Her 401(k) Into a Nasdaq-100 Fund at 60 to Own Anthropic From Its Debut Thursday. Nasdaq\u2019s Fast-Entry Rule Keeps Her Fund From Buying Until Dec. 21, After Any First-Month Pop",
+     "summary": "She put $250,000 of her 401(k) into a Nasdaq-100 fund to own Anthropic from day one, but her fund sits out the debut. The calendar, the math, and a Medicare lookback could turn this AI bet into...",
+     "datetime": 1795215733,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=c60368a7d1333fa98351092e14bd67efe97e08e04cba63c5a96dce6ffc1cfd2c"
+    },
+    {
+     "headline": "Anthropic Stocks Jump 17.07% in Record Debut as $26 Billion Chipmaker Placement Lands",
+     "summary": "First trade hit $111.50 before the pop cooled, leaving Amazon and Google holding roughly $360 billion of Anthropic at the close.",
+     "datetime": 1795210910,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=67cac9b230251c9f1804dae0e806f43249c08b44a76b9841b361b534f2d87b6e"
+    },
+    {
+     "headline": "Micron Shares Crash Despite Strong AI Memory Demand: Is MU Undervalued?",
+     "summary": "Chipmakers and AI-related stocks came under selling pressure Friday despite earlier indications of tightening memory supply.",
+     "datetime": 1795210725,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=9814e56e0f28e3c7b555d4f06aaada19806b729a6d8aacaf177ff19bbf632251"
+    },
+    {
+     "headline": "Nasdaq Dives 1,261 Points as Anthropic, AI Stocks Sink: Stock Market Today",
+     "summary": "It was a rough end to a rough week, with the S&P 500 and Dow joining the Nasdaq in correction territory.",
+     "datetime": 1795209135,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=32dd21db0653d334385683569940ef63b6f3e0a555cfb0e72eb37bc7e5f948ba"
+    },
+    {
+     "headline": "Micron Is Down 32% in a Month. Can MU Stock Get Back to $1,000?",
+     "summary": "A 12% single-day plunge has wiped out billions in Micron's value just as UBS questions whether AI spending can ever pay for itself. The memory giant's bulls have committed shipments on their side,...",
+     "datetime": 1795200900,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=f1827dbbf2dc5ba42727afce781b54c4f10f2f8e42226c297aac839338e08a94"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "MU",
+   "expiry": "2026-12-11",
+   "days_to_expiry": 20,
+   "atm_iv_pct": 99.1,
+   "iv_chain_percentile": 18,
+   "skew_points": 10.0,
+   "put_call_ratio": 0.81,
+   "total_put_oi": 17325,
+   "total_call_oi": 21306
+  },
+  "get_options_positioning": {
+   "ticker": "MU",
+   "spot": 594.51,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-04",
+   "primary_days_to_expiry": 13,
+   "max_pain_strike": 790.0,
+   "resistance_walls": [
+    {
+     "strike": 950.0,
+     "open_interest": 1274
+    },
+    {
+     "strike": 850.0,
+     "open_interest": 1149
+    },
+    {
+     "strike": 900.0,
+     "open_interest": 986
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 700.0,
+     "open_interest": 721
+    },
+    {
+     "strike": 600.0,
+     "open_interest": 712
+    },
+    {
+     "strike": 800.0,
+     "open_interest": 704
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 13,
+     "atm_iv_pct": 102.6
+    },
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 20,
+     "atm_iv_pct": 99.1
+    },
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 27,
+     "atm_iv_pct": 97.5
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 607.5,
+     "volume": 1362,
+     "open_interest": 0,
+     "vol_oi_ratio": 1362.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 627.5,
+     "volume": 930,
+     "open_interest": 0,
+     "vol_oi_ratio": 930.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 605.0,
+     "volume": 709,
+     "open_interest": 0,
+     "vol_oi_ratio": 709.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 597.5,
+     "volume": 664,
+     "open_interest": 0,
+     "vol_oi_ratio": 664.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 702.5,
+     "volume": 499,
+     "open_interest": 0,
+     "vol_oi_ratio": 499.0,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 25771,
+   "otm_put_oi": 6693,
+   "positioning_lean_score": 0.59,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "MU",
+   "as_of": "2026-11-21",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-22",
+     "days_ago": 30,
+     "firm": "Rosenblatt",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 1900.0,
+     "price_target_to": 1900.0,
+     "is_rating_change": false,
+     "description": "Rosenblatt maintained its Buy rating on MU with a $1900.0 price target"
+    },
+    {
+     "date": "2026-10-22",
+     "days_ago": 30,
+     "firm": "Needham",
+     "action": "reiterated",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 1650.0,
+     "price_target_to": 1650.0,
+     "is_rating_change": false,
+     "description": "Needham reiterated its Buy rating on MU with a $1650.0 price target"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.9,
+    "verdict": "leaning bullish",
+    "analysts": 49,
+    "counts": {
+     "strongBuy": 9,
+     "buy": 36,
+     "hold": 4,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.9 to 1.9)"
+   },
+   "price_target": {
+    "mean": 1561.91,
+    "median": 1550.0,
+    "high": 3000.0,
+    "low": 361.0,
+    "current_price": 594.51,
+    "dispersion_pct": 169.0,
+    "upside_vs_mean_pct": 162.7,
+    "upside_vs_median_pct": 160.7
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "MU",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1w": {
+     "stock_change_pct": -23.62,
+     "sector_etf_change_pct": -12.49,
+     "relative_to_sector_pct": -11.13
+    },
+    "2w": {
+     "stock_change_pct": -13.84,
+     "sector_etf_change_pct": -9.55,
+     "relative_to_sector_pct": -4.29
+    },
+    "1mo": {
+     "stock_change_pct": -30.59,
+     "sector_etf_change_pct": -18.28,
+     "relative_to_sector_pct": -12.31
+    },
+    "1d": {
+     "stock_change_pct": -13.89,
+     "sector_etf_change_pct": -7.27,
+     "relative_to_sector_pct": -6.62
+    },
+    "1y": {
+     "stock_change_pct": 163.45,
+     "sector_etf_change_pct": 6.61,
+     "relative_to_sector_pct": 156.84
+    },
+    "ytd": {
+     "stock_change_pct": 88.62,
+     "sector_etf_change_pct": 3.64,
+     "relative_to_sector_pct": 84.98
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-20",
+    "realtime_end": "2026-11-20",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9623,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-19",
+      "value": "28.44"
+     },
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-18",
+      "value": "24.56"
+     },
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-17",
+      "value": "25.46"
+     },
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-16",
+      "value": "22.91"
+     },
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-13",
+      "value": "19.3"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "MU",
+   "as_of": "2026-11-21",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 18,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-12-17",
+     "description": "MU Q1 2027 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 26,
+     "eps_estimate": 39.3702,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "ex_dividend",
+     "date": "2026-10-14",
+     "source": "yfinance",
+     "description": "MU went ex-dividend \u2014 the price drops by roughly the dividend on this date mechanically, with no news behind it",
+     "days_ago": 38
+    }
+   ],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}

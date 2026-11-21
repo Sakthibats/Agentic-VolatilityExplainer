@@ -1,0 +1,370 @@
+{
+ "schema": 1,
+ "ticker": "COST",
+ "trading_day": "2026-11-20",
+ "captured_at": "2026-11-21T02:42:40+00:00",
+ "selected_as": "control",
+ "change_pct": 0.76,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "COST",
+   "price": 1102.15,
+   "prev_close": 1093.83,
+   "change_pct": 0.76,
+   "session_date": "2026-11-20",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 22.0,
+   "changes_pct": {
+    "1d": 0.76,
+    "1w": -0.37,
+    "2w": 4.61,
+    "1mo": 8.4,
+    "1y": 24.48,
+    "ytd": 29.74
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 1103.37,
+    "change_pct": 0.11,
+    "as_of": "2026-11-20 19:52 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "COST",
+   "headlines": [
+    {
+     "headline": "Nasdaq Dives 1,261 Points as Anthropic, AI Stocks Sink: Stock Market Today",
+     "summary": "It was a rough end to a rough week, with the S&P 500 and Dow joining the Nasdaq in correction territory.",
+     "datetime": 1795209135,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=32dd21db0653d334385683569940ef63b6f3e0a555cfb0e72eb37bc7e5f948ba"
+    },
+    {
+     "headline": "What the stock sell-off and bond-buying mean for mortgage rates",
+     "summary": "Robert McLister: The rate forecast looks a little sunnier as bond yields fall, oil prices drop and inflation expectations cool",
+     "datetime": 1795205526,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=4e10ef088ab19f38fa9a7075c627aa2d48b87b89c2437230dee6d110a78d3590"
+    },
+    {
+     "headline": "From tech glitches to bulk buying: How outages are spurring a wave of Costco sales",
+     "summary": "Following the shock of last week's various tech outages, Siebert Financial CIO Mark Malek and his panel of experts weigh in on what panic-induced buying at outlets like Costco (COST) could mean for...",
+     "datetime": 1795199816,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=0b16aafe024057536be90802c5ab7b99b34e2162924e2c5a35bfd15780d38dba"
+    },
+    {
+     "headline": "Costco\u2019s Upcoming $30 Special Dividend Is Twice the Size of Its Last Special Payout. Is This the Most Unstoppable Consumer Staples Stock to Buy Now?",
+     "summary": "The warehouse retailer is a proven winner in the consumer staples space, which is why expectations are so high.",
+     "datetime": 1795199702,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=e4182210e356fc36640ad6e20daea7e8b2c8a22fb90a6248272214984b42197d"
+    },
+    {
+     "headline": "Own Walmart? Its Cash Lags Its Price",
+     "summary": "Today's big story: Will 2027 Be A 2022 Repeat For Stocks.",
+     "datetime": 1795199051,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=b1e000e850db3d4354f69459cd607eb29f9c3d1cadbe043c149128b94184890c"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "COST",
+   "expiry": "2026-12-11",
+   "days_to_expiry": 20,
+   "atm_iv_pct": 35.3,
+   "iv_chain_percentile": 5,
+   "skew_points": 2.4,
+   "put_call_ratio": 4.58,
+   "total_put_oi": 8727,
+   "total_call_oi": 1907
+  },
+  "get_options_positioning": {
+   "ticker": "COST",
+   "spot": 1102.15,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-04",
+   "primary_days_to_expiry": 13,
+   "max_pain_strike": 1050.0,
+   "resistance_walls": [
+    {
+     "strike": 1120.0,
+     "open_interest": 227
+    },
+    {
+     "strike": 995.0,
+     "open_interest": 215
+    },
+    {
+     "strike": 1050.0,
+     "open_interest": 195
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 1000.0,
+     "open_interest": 1353
+    },
+    {
+     "strike": 680.0,
+     "open_interest": 564
+    },
+    {
+     "strike": 650.0,
+     "open_interest": 476
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 13,
+     "atm_iv_pct": 29.3
+    },
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 20,
+     "atm_iv_pct": 35.3
+    },
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 27,
+     "atm_iv_pct": 32.8
+    }
+   ],
+   "term_structure_trend": "Rising \u2014 market pricing in a later catalyst within the horizon",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 1185.0,
+     "volume": 120,
+     "open_interest": 0,
+     "vol_oi_ratio": 120.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 720.0,
+     "volume": 317,
+     "open_interest": 53,
+     "vol_oi_ratio": 6.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 1065.0,
+     "volume": 155,
+     "open_interest": 30,
+     "vol_oi_ratio": 5.2,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 790.0,
+     "volume": 204,
+     "open_interest": 44,
+     "vol_oi_ratio": 4.6,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 1120.0,
+     "volume": 221,
+     "open_interest": 227,
+     "vol_oi_ratio": 1.0,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 1596,
+   "otm_put_oi": 10083,
+   "positioning_lean_score": -0.73,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "COST",
+   "as_of": "2026-11-21",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-11",
+     "days_ago": 10,
+     "firm": "Bernstein",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 1143.0,
+     "price_target_to": 1155.0,
+     "is_rating_change": false,
+     "description": "Bernstein maintained its Outperform rating on COST and raised its price target from $1143.0 to $1155.0"
+    },
+    {
+     "date": "2026-11-05",
+     "days_ago": 16,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 1015.0,
+     "price_target_to": 1150.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Overweight rating on COST and raised its price target from $1015.0 to $1150.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.36,
+    "verdict": "leaning bullish",
+    "analysts": 42,
+    "counts": {
+     "strongBuy": 5,
+     "buy": 20,
+     "hold": 15,
+     "sell": 1,
+     "strongSell": 1
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.38 to 2.36)"
+   },
+   "price_target": {
+    "mean": 1085.35,
+    "median": 1100.0,
+    "high": 1315.0,
+    "low": 770.0,
+    "current_price": 1102.15,
+    "dispersion_pct": 50.2,
+    "upside_vs_mean_pct": -1.5,
+    "upside_vs_median_pct": -0.2
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "COST",
+   "sector": "Consumer Defensive",
+   "sector_etf": "XLP",
+   "comparison": {
+    "1w": {
+     "stock_change_pct": -0.37,
+     "sector_etf_change_pct": -2.05,
+     "relative_to_sector_pct": 1.68
+    },
+    "2w": {
+     "stock_change_pct": 4.61,
+     "sector_etf_change_pct": 0.42,
+     "relative_to_sector_pct": 4.19
+    },
+    "1mo": {
+     "stock_change_pct": 8.4,
+     "sector_etf_change_pct": 0.52,
+     "relative_to_sector_pct": 7.88
+    },
+    "1d": {
+     "stock_change_pct": 0.76,
+     "sector_etf_change_pct": 0.67,
+     "relative_to_sector_pct": 0.09
+    },
+    "1y": {
+     "stock_change_pct": 24.48,
+     "sector_etf_change_pct": 21.48,
+     "relative_to_sector_pct": 3.0
+    },
+    "ytd": {
+     "stock_change_pct": 29.74,
+     "sector_etf_change_pct": 18.68,
+     "relative_to_sector_pct": 11.06
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-20",
+    "realtime_end": "2026-11-20",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9623,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-19",
+      "value": "28.44"
+     },
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-18",
+      "value": "24.56"
+     },
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-17",
+      "value": "25.46"
+     },
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-16",
+      "value": "22.91"
+     },
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-13",
+      "value": "19.3"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "COST",
+   "as_of": "2026-11-21",
+   "events": [
+    {
+     "type": "ex_dividend",
+     "date": "2026-11-24",
+     "source": "yfinance",
+     "description": "COST goes ex-dividend \u2014 expect a mechanical price drop of roughly the dividend",
+     "days_until": 3
+    },
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 18,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-12-10",
+     "description": "COST Q1 2027 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 19,
+     "eps_estimate": 5.0164
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}

@@ -1,0 +1,374 @@
+{
+ "schema": 1,
+ "ticker": "NBIS",
+ "trading_day": "2026-11-20",
+ "captured_at": "2026-11-21T02:43:54+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -16.11,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: -16.11% \u2014 elevated relative to this stock's own typical volatility (expected ~9.60%, 1.68x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "this week: -29.83% \u2014 typical relative to this stock's own typical volatility (expected ~21.47%, 1.39x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past 2 weeks: -37.21% \u2014 typical relative to this stock's own typical volatility (expected ~30.36%, 1.23x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past month: -48.92% \u2014 typical relative to this stock's own typical volatility (expected ~43.99%, 1.11x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "NBIS",
+   "price": 81.31,
+   "prev_close": 96.92,
+   "change_pct": -16.11,
+   "session_date": "2026-11-20",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 152.4,
+   "changes_pct": {
+    "1d": -16.11,
+    "1w": -29.83,
+    "2w": -37.21,
+    "1mo": -48.92,
+    "1y": -14.47,
+    "ytd": -9.61
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: -16.11% \u2014 elevated relative to this stock's own typical volatility (expected ~9.60%, 1.68x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "this week: -29.83% \u2014 typical relative to this stock's own typical volatility (expected ~21.47%, 1.39x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past 2 weeks: -37.21% \u2014 typical relative to this stock's own typical volatility (expected ~30.36%, 1.23x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past month: -48.92% \u2014 typical relative to this stock's own typical volatility (expected ~43.99%, 1.11x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 84.53,
+    "change_pct": 3.96,
+    "as_of": "2026-11-20 19:59 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "NBIS",
+   "headlines": [
+    {
+     "headline": "Michael Burry Says He Tried to Warn You About Nebius. The Stock Just Crashed 16% and Is 72% Below Its Record",
+     "summary": "Nebius fell 16% on Friday to $81.31, 72% below its June record and below where it ended 2025. Michael Burry posted that he tried to warn investors about Nebius, CoreWeave and Nvidia.",
+     "datetime": 1795225448,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=329aa6e1fc1822dad29246337dd0063b591b6ccae2d44123c949494139afd44a"
+    },
+    {
+     "headline": "SpaceX\u2019s New \u2018Game Plan\u2019 Could Pay Off, Says Top Analyst",
+     "summary": "SpaceX (SPCX) has a \u201cgame plan\u201d for its huge AI data center expansion, and Bernstein analyst Douglas Harned believes it could pay off. The company wants to build computing capacity quickly while...",
+     "datetime": 1795205464,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=bbf257194baf07cbb79197c18cc12cb51b90b30e15ded13483dab99e9650f8c5"
+    },
+    {
+     "headline": "CoreWeave Stocks Fall 6.10% After Co-Founder's $30 Million Bond Bet Fails to Hold Rally",
+     "summary": "Shares spiked about 10% early on insider bond buying, then reversed as profit-taking hit AI cloud names after Anthropic's debut.",
+     "datetime": 1795197107,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=b1a0b72946be402af9274b92f6545c8824f310df1ab93caeaa40d80c33154f66"
+    },
+    {
+     "headline": "Nebius vs. SoundHound AI: Which AI Tech Stock Is a Better Buy for 2027?",
+     "summary": "Nebius's revenue leapt past $2.2 billion in a year, while SoundHound's sales growth is slower but its balance sheet carries almost no debt.",
+     "datetime": 1795197002,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=316cb5eb04ec93c786b04625dcc3e8dad95e1b78e2aad2e3b585b877823e25f8"
+    },
+    {
+     "headline": "Nebius: I Was Wrong, Growth Financing In Danger (Rating Downgrade)",
+     "summary": "Nebius performed poorly after my previous rating, and the weakness went into overdrive this week with the ouster of Nvidia CEO Jensen Huang. I downgrade NBIS stock to Hold.",
+     "datetime": 1795194214,
+     "source": "SeekingAlpha",
+     "url": "https://finnhub.io/api/news?id=975fd130b75d9865a1667fd392326dc61aac260cdece2fcbeafe1c221c4318de"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "NBIS",
+   "expiry": "2026-12-11",
+   "days_to_expiry": 20,
+   "atm_iv_pct": 148.5,
+   "iv_chain_percentile": 22,
+   "skew_points": 12.0,
+   "put_call_ratio": 1.22,
+   "total_put_oi": 9022,
+   "total_call_oi": 7380
+  },
+  "get_options_positioning": {
+   "ticker": "NBIS",
+   "spot": 81.31,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-04",
+   "primary_days_to_expiry": 13,
+   "max_pain_strike": 115.0,
+   "resistance_walls": [
+    {
+     "strike": 125.0,
+     "open_interest": 3184
+    },
+    {
+     "strike": 130.0,
+     "open_interest": 2574
+    },
+    {
+     "strike": 150.0,
+     "open_interest": 1574
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 70.0,
+     "open_interest": 1048
+    },
+    {
+     "strike": 80.0,
+     "open_interest": 969
+    },
+    {
+     "strike": 100.0,
+     "open_interest": 873
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 13,
+     "atm_iv_pct": 150.9
+    },
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 20,
+     "atm_iv_pct": 148.5
+    },
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 27,
+     "atm_iv_pct": 143.9
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 83.0,
+     "volume": 611,
+     "open_interest": 0,
+     "vol_oi_ratio": 611.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 82.0,
+     "volume": 594,
+     "open_interest": 0,
+     "vol_oi_ratio": 594.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 88.0,
+     "volume": 474,
+     "open_interest": 0,
+     "vol_oi_ratio": 474.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 84.0,
+     "volume": 456,
+     "open_interest": 0,
+     "vol_oi_ratio": 456.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 88.0,
+     "volume": 361,
+     "open_interest": 0,
+     "vol_oi_ratio": 361.0,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 18867,
+   "otm_put_oi": 2782,
+   "positioning_lean_score": 0.74,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "NBIS",
+   "as_of": "2026-11-21",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-04",
+     "days_ago": 17,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 324.0,
+     "price_target_to": 265.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Buy rating on NBIS and cut its price target from $324.0 to $265.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.18,
+    "verdict": "leaning bullish",
+    "analysts": 22,
+    "counts": {
+     "strongBuy": 3,
+     "buy": 13,
+     "hold": 5,
+     "sell": 1,
+     "strongSell": 0
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.44 to 2.18; bearish ratings 1 to 1)"
+   },
+   "price_target": {
+    "mean": 231.6,
+    "median": 234.0,
+    "high": 380.0,
+    "low": 84.0,
+    "current_price": 81.31,
+    "dispersion_pct": 127.8,
+    "upside_vs_mean_pct": 184.8,
+    "upside_vs_median_pct": 187.8
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "NBIS",
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "comparison": {
+    "1w": {
+     "stock_change_pct": -29.83,
+     "sector_etf_change_pct": -7.97,
+     "relative_to_sector_pct": -21.86
+    },
+    "2w": {
+     "stock_change_pct": -37.21,
+     "sector_etf_change_pct": -4.54,
+     "relative_to_sector_pct": -32.67
+    },
+    "1mo": {
+     "stock_change_pct": -48.92,
+     "sector_etf_change_pct": -6.88,
+     "relative_to_sector_pct": -42.04
+    },
+    "1d": {
+     "stock_change_pct": -16.11,
+     "sector_etf_change_pct": -2.66,
+     "relative_to_sector_pct": -13.45
+    },
+    "1y": {
+     "stock_change_pct": -14.47,
+     "sector_etf_change_pct": -8.92,
+     "relative_to_sector_pct": -5.55
+    },
+    "ytd": {
+     "stock_change_pct": -9.61,
+     "sector_etf_change_pct": -13.65,
+     "relative_to_sector_pct": 4.04
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-20",
+    "realtime_end": "2026-11-20",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9623,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-19",
+      "value": "28.44"
+     },
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-18",
+      "value": "24.56"
+     },
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-17",
+      "value": "25.46"
+     },
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-16",
+      "value": "22.91"
+     },
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-13",
+      "value": "19.3"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "NBIS",
+   "as_of": "2026-11-21",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 18,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-10",
+     "description": "NBIS Q4 2026 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 81,
+     "eps_estimate": -1.054
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-12",
+     "description": "NBIS reported Q3 2026 earnings before the open \u2014 EPS 0.305 vs -0.7021 expected (beat, +143.4%)",
+     "source": "finnhub",
+     "days_ago": 9,
+     "eps_actual": 0.305,
+     "eps_estimate": -0.7021,
+     "surprise": "beat",
+     "surprise_pct": 143.4,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

@@ -1,0 +1,432 @@
+{
+ "schema": 1,
+ "ticker": "INTC",
+ "trading_day": "2026-11-20",
+ "captured_at": "2026-11-21T02:43:08+00:00",
+ "selected_as": "move",
+ "change_pct": -7.97,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: -7.97% \u2014 typical relative to this stock's own typical volatility (expected ~8.08%, 0.99x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "this week: -14.05% \u2014 typical relative to this stock's own typical volatility (expected ~18.06%, 0.78x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past month: -40.02% \u2014 typical relative to this stock's own typical volatility (expected ~37.01%, 1.08x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past year: 46.06% \u2014 typical relative to this stock's own typical volatility (expected ~128.20%, 0.36x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "INTC",
+   "price": 51.28,
+   "prev_close": 55.72,
+   "change_pct": -7.97,
+   "session_date": "2026-11-20",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 128.2,
+   "changes_pct": {
+    "1d": -7.97,
+    "1w": -14.05,
+    "2w": -8.88,
+    "1mo": -40.02,
+    "1y": 46.06,
+    "ytd": 30.22
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: -7.97% \u2014 typical relative to this stock's own typical volatility (expected ~8.08%, 0.99x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "this week: -14.05% \u2014 typical relative to this stock's own typical volatility (expected ~18.06%, 0.78x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past month: -40.02% \u2014 typical relative to this stock's own typical volatility (expected ~37.01%, 1.08x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past year: 46.06% \u2014 typical relative to this stock's own typical volatility (expected ~128.20%, 0.36x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 53.03,
+    "change_pct": 3.42,
+    "as_of": "2026-11-20 19:59 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "INTC",
+   "headlines": [
+    {
+     "headline": "Top 5 Stocks to Buy According to Billionaire George Soros",
+     "summary": "George Soros made his name betting against currencies and central banks, and that record is still the reference point for macro investing decades later. Born in Budapest in 1930, he built his fortune...",
+     "datetime": 1795223061,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=4a077acbd47dd06441eee14ead442dee8323d5f1ccca353898d9a45162a20695"
+    },
+    {
+     "headline": "Mets Owner Steve Cohen\u2019s Fund Dumped Nearly All of Its AMD and Bet $1 Billion That Microsoft Is the Safer AI Stock. AMD Has Fallen 31% Since",
+     "summary": "Steve Cohen's Point72 sold 99% of its AMD shares in the third quarter and raised its Microsoft stake from 31,522 shares to 2,055,578, about $1 billion of buying, its Nov. 16 13F shows. AMD has fallen...",
+     "datetime": 1795218424,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=3ed3775304109e922a44a7c0c9b047047affab0885a662640efcd93b5eff7e1c"
+    },
+    {
+     "headline": "Meta's Server Chip Shake-Up Could Hand Nvidia a Win",
+     "summary": "The shift could change who wins the next orders.",
+     "datetime": 1795210928,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=0912a37346b503b2c1f773bca69026883c2a75a22ce0433b7338df1d149d9d33"
+    },
+    {
+     "headline": "Could Jensen Huang Land At Nvidia Rival Intel?",
+     "summary": "A Wall Street portfolio manager speculated that ex-Nvidia CEO Jensen Huang could end up at rival Intel.",
+     "datetime": 1795210115,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=17d322f78d56df54b25aee57070831527fe631cd351995d563a2c812e0098ca5"
+    },
+    {
+     "headline": "AMD Is Down 26% and Intel Is Down 42%. Which AI Stock Is Worth Buying on the Dip?",
+     "summary": "As Wall Street reassesses the economics of the AI boom, the differences between these two chipmakers are becoming increasingly important.",
+     "datetime": 1795207802,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=508b47838c9c6b854dc7a819b077dcb76b8aa8601a12831496b1330470110bb2"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "INTC",
+   "expiry": "2026-12-11",
+   "days_to_expiry": 20,
+   "atm_iv_pct": 97.0,
+   "iv_chain_percentile": 22,
+   "skew_points": 4.5,
+   "put_call_ratio": 0.3,
+   "total_put_oi": 13737,
+   "total_call_oi": 45653
+  },
+  "get_options_positioning": {
+   "ticker": "INTC",
+   "spot": 51.28,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-04",
+   "primary_days_to_expiry": 13,
+   "max_pain_strike": 58.0,
+   "resistance_walls": [
+    {
+     "strike": 70.0,
+     "open_interest": 5552
+    },
+    {
+     "strike": 80.0,
+     "open_interest": 4331
+    },
+    {
+     "strike": 65.0,
+     "open_interest": 4105
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 60.0,
+     "open_interest": 2582
+    },
+    {
+     "strike": 55.0,
+     "open_interest": 2146
+    },
+    {
+     "strike": 50.0,
+     "open_interest": 2123
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 13,
+     "atm_iv_pct": 101.8
+    },
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 20,
+     "atm_iv_pct": 97.0
+    },
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 27,
+     "atm_iv_pct": 91.9
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 61.0,
+     "volume": 7091,
+     "open_interest": 315,
+     "vol_oi_ratio": 22.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 58.0,
+     "volume": 7618,
+     "open_interest": 623,
+     "vol_oi_ratio": 12.2,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 53.0,
+     "volume": 722,
+     "open_interest": 148,
+     "vol_oi_ratio": 4.9,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 52.0,
+     "volume": 424,
+     "open_interest": 206,
+     "vol_oi_ratio": 2.1,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 54.0,
+     "volume": 909,
+     "open_interest": 558,
+     "vol_oi_ratio": 1.6,
+     "moneyness": "ITM"
+    }
+   ],
+   "otm_call_oi": 49028,
+   "otm_put_oi": 9430,
+   "positioning_lean_score": 0.68,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "INTC",
+   "as_of": "2026-11-21",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-12",
+     "days_ago": 9,
+     "firm": "B of A Securities",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 100.0,
+     "price_target_to": 80.0,
+     "is_rating_change": false,
+     "description": "B of A Securities maintained its Neutral rating on INTC and cut its price target from $100.0 to $80.0"
+    },
+    {
+     "date": "2026-10-31",
+     "days_ago": 21,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 100.0,
+     "price_target_to": 80.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Neutral rating on INTC and cut its price target from $100.0 to $80.0"
+    },
+    {
+     "date": "2026-10-31",
+     "days_ago": 21,
+     "firm": "Freedom Broker",
+     "action": "downgrade",
+     "from_grade": "Buy",
+     "to_grade": "Hold",
+     "price_target_from": 100.0,
+     "price_target_to": 90.0,
+     "is_rating_change": true,
+     "description": "Freedom Broker downgraded INTC from Buy to Hold and cut its price target from $100.0 to $90.0"
+    },
+    {
+     "date": "2026-10-30",
+     "days_ago": 22,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 85.0,
+     "price_target_to": 80.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Neutral rating on INTC and cut its price target from $85.0 to $80.0"
+    },
+    {
+     "date": "2026-10-30",
+     "days_ago": 22,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 130.0,
+     "price_target_to": 100.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Buy rating on INTC and cut its price target from $130.0 to $100.0"
+    }
+   ],
+   "consensus": {
+    "rating": "hold",
+    "score": 2.69,
+    "verdict": "neutral",
+    "analysts": 49,
+    "counts": {
+     "strongBuy": 2,
+     "buy": 12,
+     "hold": 34,
+     "sell": 1,
+     "strongSell": 0
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.75 to 2.69; bearish ratings 2 to 1)"
+   },
+   "price_target": {
+    "mean": 90.65,
+    "median": 86.0,
+    "high": 160.0,
+    "low": 63.0,
+    "current_price": 51.28,
+    "dispersion_pct": 107.0,
+    "upside_vs_mean_pct": 76.8,
+    "upside_vs_median_pct": 67.7
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "INTC",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1w": {
+     "stock_change_pct": -14.05,
+     "sector_etf_change_pct": -12.49,
+     "relative_to_sector_pct": -1.56
+    },
+    "2w": {
+     "stock_change_pct": -8.88,
+     "sector_etf_change_pct": -9.55,
+     "relative_to_sector_pct": 0.67
+    },
+    "1mo": {
+     "stock_change_pct": -40.02,
+     "sector_etf_change_pct": -18.28,
+     "relative_to_sector_pct": -21.74
+    },
+    "1d": {
+     "stock_change_pct": -7.97,
+     "sector_etf_change_pct": -7.27,
+     "relative_to_sector_pct": -0.7
+    },
+    "1y": {
+     "stock_change_pct": 46.06,
+     "sector_etf_change_pct": 6.61,
+     "relative_to_sector_pct": 39.45
+    },
+    "ytd": {
+     "stock_change_pct": 30.22,
+     "sector_etf_change_pct": 3.64,
+     "relative_to_sector_pct": 26.58
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-20",
+    "realtime_end": "2026-11-20",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9623,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-19",
+      "value": "28.44"
+     },
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-18",
+      "value": "24.56"
+     },
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-17",
+      "value": "25.46"
+     },
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-16",
+      "value": "22.91"
+     },
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-13",
+      "value": "19.3"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "INTC",
+   "as_of": "2026-11-21",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 18,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-20",
+     "description": "INTC Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 60,
+     "eps_estimate": 0.2541,
+     "hour": "amc"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-28",
+     "description": "INTC quarterly earnings scheduled (after the close)",
+     "source": "yfinance",
+     "days_until": 68,
+     "eps_estimate": 0.25,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-29",
+     "description": "INTC reported Q3 2026 earnings after the close \u2014 EPS 0.52 vs 0.4043 expected (beat, +28.6%)",
+     "source": "finnhub",
+     "days_ago": 23,
+     "eps_actual": 0.52,
+     "eps_estimate": 0.4043,
+     "surprise": "beat",
+     "surprise_pct": 28.6,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub+yfinance"
+  }
+ }
+}

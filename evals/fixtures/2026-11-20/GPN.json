@@ -1,0 +1,414 @@
+{
+ "schema": 1,
+ "ticker": "GPN",
+ "trading_day": "2026-11-20",
+ "captured_at": "2026-11-21T02:43:34+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 9.95,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 9.95% \u2014 elevated relative to this stock's own typical volatility (expected ~5.19%, 1.92x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "GPN",
+   "price": 91.83,
+   "prev_close": 83.52,
+   "change_pct": 9.95,
+   "session_date": "2026-11-20",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 82.4,
+   "changes_pct": {
+    "1d": 9.95,
+    "1w": -0.08,
+    "2w": -5.72,
+    "1mo": 6.93,
+    "1y": 29.16,
+    "ytd": 22.79
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 9.95% \u2014 elevated relative to this stock's own typical volatility (expected ~5.19%, 1.92x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 95.06,
+    "change_pct": 3.52,
+    "as_of": "2026-11-20 19:31 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "GPN",
+   "headlines": [
+    {
+     "headline": "Global Payments Soars 10% as GTCR Revives Buyout Talk With $50 Billion Takeover Bid",
+     "summary": "Key TakeawaysGlobal Payments jumped 10% today on a report that top shareholder GTCR is exploring a takeover worth about $50 billion including debt. The last buyout talks ended on Nov.",
+     "datetime": 1795211088,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=9d5032cd45b5316367f657c78638ee9a8db97097bf152e0d03296724223a1193"
+    },
+    {
+     "headline": "Global Payments shares jump on report of $50B GTCR deal",
+     "summary": "Investing.com -- Global Payments Inc.shares traded more than 10% higher on Friday after a report said GTCR is exploring a takeover of the payments company in what would rank among the largest...",
+     "datetime": 1795203194,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=90a62e22e470dedaab1dbe4b5c36c9f847d96ac54c2b5f89ae823c6bf26975be"
+    },
+    {
+     "headline": "Visa Targets Secure AI Agent Payments Through Expanded Industry Partnership",
+     "summary": "Visa Inc. announced on Tuesday that it expanded its Agentic Ready program to include merchants, payment service providers (PSPs), acquirers and commerce platforms, helping them prepare for...",
+     "datetime": 1795145405,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=c3add1a658f726dba4f9062b85ad264fc14dcba51048e35eb45b4c61cab01603"
+    },
+    {
+     "headline": "Can Visa Turn AI-Led Commerce Into a New Growth Driver?",
+     "summary": "Visa is expanding Agentic Ready to 140+ commerce partners, aiming to secure AI-agent purchases and keep its network central to the evolving checkout experience.",
+     "datetime": 1795094820,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=814b509e12d2acf4118b4b0bfa1ea5fb3bb7e9fae3d46baf4c2424c5f9cd1dcd"
+    },
+    {
+     "headline": "Is Mastercard Stock Riskier Than It Looks?",
+     "summary": "Today's big story: Could Anthropic Stock Fall 25.",
+     "datetime": 1795093343,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=d73c188b20ac803cae63651c798dfd3b94b39f9665c460789306e17a405ad68a"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "GPN",
+   "expiry": "2026-12-18",
+   "days_to_expiry": 27,
+   "atm_iv_pct": 53.5,
+   "iv_chain_percentile": 24,
+   "skew_points": 12.1,
+   "put_call_ratio": 0.83,
+   "total_put_oi": 8608,
+   "total_call_oi": 10380
+  },
+  "get_options_positioning": {
+   "ticker": "GPN",
+   "spot": 91.83,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-18",
+   "primary_days_to_expiry": 27,
+   "max_pain_strike": 92.5,
+   "resistance_walls": [
+    {
+     "strike": 95.0,
+     "open_interest": 4938
+    },
+    {
+     "strike": 100.0,
+     "open_interest": 1571
+    },
+    {
+     "strike": 105.0,
+     "open_interest": 1233
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 80.0,
+     "open_interest": 2426
+    },
+    {
+     "strike": 82.5,
+     "open_interest": 1396
+    },
+    {
+     "strike": 70.0,
+     "open_interest": 1362
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 27,
+     "atm_iv_pct": 53.5
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 125.0,
+     "volume": 875,
+     "open_interest": 344,
+     "vol_oi_ratio": 2.5,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 105.0,
+     "volume": 923,
+     "open_interest": 1233,
+     "vol_oi_ratio": 0.7,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 70.0,
+     "volume": 1012,
+     "open_interest": 1362,
+     "vol_oi_ratio": 0.7,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 85.0,
+     "volume": 153,
+     "open_interest": 241,
+     "vol_oi_ratio": 0.6,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 95.0,
+     "volume": 742,
+     "open_interest": 4938,
+     "vol_oi_ratio": 0.2,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 9649,
+   "otm_put_oi": 7159,
+   "positioning_lean_score": 0.15,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "GPN",
+   "as_of": "2026-11-21",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-11",
+     "days_ago": 10,
+     "firm": "Bernstein",
+     "action": "maintained",
+     "from_grade": "Market Perform",
+     "to_grade": "Market Perform",
+     "price_target_from": 86.0,
+     "price_target_to": 100.0,
+     "is_rating_change": false,
+     "description": "Bernstein maintained its Market Perform rating on GPN and raised its price target from $86.0 to $100.0"
+    },
+    {
+     "date": "2026-11-10",
+     "days_ago": 11,
+     "firm": "Mizuho",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 110.0,
+     "price_target_to": 115.0,
+     "is_rating_change": false,
+     "description": "Mizuho maintained its Outperform rating on GPN and raised its price target from $110.0 to $115.0"
+    },
+    {
+     "date": "2026-11-09",
+     "days_ago": 12,
+     "firm": "Barclays",
+     "action": "maintained",
+     "from_grade": "Equal-Weight",
+     "to_grade": "Equal-Weight",
+     "price_target_from": 89.0,
+     "price_target_to": 97.0,
+     "is_rating_change": false,
+     "description": "Barclays maintained its Equal-Weight rating on GPN and raised its price target from $89.0 to $97.0"
+    },
+    {
+     "date": "2026-11-09",
+     "days_ago": 12,
+     "firm": "Cantor Fitzgerald",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 91.0,
+     "price_target_to": 103.0,
+     "is_rating_change": false,
+     "description": "Cantor Fitzgerald maintained its Neutral rating on GPN and raised its price target from $91.0 to $103.0"
+    },
+    {
+     "date": "2026-11-07",
+     "days_ago": 14,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 95.0,
+     "price_target_to": 100.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Neutral rating on GPN and raised its price target from $95.0 to $100.0"
+    }
+   ],
+   "consensus": {
+    "rating": "hold",
+    "score": 2.56,
+    "verdict": "neutral",
+    "analysts": 36,
+    "counts": {
+     "strongBuy": 2,
+     "buy": 15,
+     "hold": 17,
+     "sell": 1,
+     "strongSell": 1
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.62 to 2.56; bearish ratings 2 to 2)"
+   },
+   "price_target": {
+    "mean": 109.3,
+    "median": 106.0,
+    "high": 194.0,
+    "low": 70.0,
+    "current_price": 91.83,
+    "dispersion_pct": 113.4,
+    "upside_vs_mean_pct": 19.0,
+    "upside_vs_median_pct": 15.4
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "GPN",
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "comparison": {
+    "1w": {
+     "stock_change_pct": -0.08,
+     "sector_etf_change_pct": -7.35,
+     "relative_to_sector_pct": 7.27
+    },
+    "2w": {
+     "stock_change_pct": -5.72,
+     "sector_etf_change_pct": -3.87,
+     "relative_to_sector_pct": -1.85
+    },
+    "1mo": {
+     "stock_change_pct": 6.93,
+     "sector_etf_change_pct": -6.21,
+     "relative_to_sector_pct": 13.14
+    },
+    "1d": {
+     "stock_change_pct": 9.95,
+     "sector_etf_change_pct": -3.09,
+     "relative_to_sector_pct": 13.04
+    },
+    "1y": {
+     "stock_change_pct": 29.16,
+     "sector_etf_change_pct": 5.19,
+     "relative_to_sector_pct": 23.97
+    },
+    "ytd": {
+     "stock_change_pct": 22.79,
+     "sector_etf_change_pct": -0.23,
+     "relative_to_sector_pct": 23.02
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-20",
+    "realtime_end": "2026-11-20",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9623,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-19",
+      "value": "28.44"
+     },
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-18",
+      "value": "24.56"
+     },
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-17",
+      "value": "25.46"
+     },
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-16",
+      "value": "22.91"
+     },
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-13",
+      "value": "19.3"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "GPN",
+   "as_of": "2026-11-21",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 18,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "ex_dividend",
+     "date": "2026-12-10",
+     "source": "yfinance",
+     "description": "GPN goes ex-dividend \u2014 expect a mechanical price drop of roughly the dividend",
+     "days_until": 19
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-16",
+     "description": "GPN Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 87,
+     "eps_estimate": 3.7082,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-05",
+     "description": "GPN reported Q3 2026 earnings before the open \u2014 EPS 3.58 vs 3.6109 expected (in line, -0.9%)",
+     "source": "finnhub",
+     "days_ago": 16,
+     "eps_actual": 3.58,
+     "eps_estimate": 3.6109,
+     "surprise": "in line",
+     "surprise_pct": -0.9,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

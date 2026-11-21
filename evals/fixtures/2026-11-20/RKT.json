@@ -1,0 +1,358 @@
+{
+ "schema": 1,
+ "ticker": "RKT",
+ "trading_day": "2026-11-20",
+ "captured_at": "2026-11-21T02:43:47+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 4.25,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "today: 4.25% \u2014 typical relative to this stock's own typical volatility (expected ~3.93%, 1.08x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past month: 17.12% \u2014 typical relative to this stock's own typical volatility (expected ~18.01%, 0.95x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "RKT",
+   "price": 13.75,
+   "prev_close": 13.19,
+   "change_pct": 4.25,
+   "session_date": "2026-11-20",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 62.4,
+   "changes_pct": {
+    "1d": 4.25,
+    "1w": 0.29,
+    "2w": -8.7,
+    "1mo": 17.12,
+    "1y": -18.06,
+    "ytd": -30.84
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "today: 4.25% \u2014 typical relative to this stock's own typical volatility (expected ~3.93%, 1.08x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past month: 17.12% \u2014 typical relative to this stock's own typical volatility (expected ~18.01%, 0.95x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 13.84,
+    "change_pct": 0.64,
+    "as_of": "2026-11-20 19:48 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "RKT",
+   "headlines": [
+    {
+     "headline": "What Could Send Rocket Lab Stock Higher?",
+     "summary": "Today's big story: Will 2027 Be A 2022 Repeat For Stocks.",
+     "datetime": 1795204013,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=a5bac2b6a6e3304f76ae3b87c81a965477b65a08436fcee04e4220bdfd6834fd"
+    },
+    {
+     "headline": "How Much Downside Is Left In Rocket Lab Stock?",
+     "summary": "Today's big story: Could Anthropic Stock Fall 25.",
+     "datetime": 1795097904,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=19348ee2578fdb12bd64912f2733dcb301dbda77939922d32bfbe10b5712b806"
+    },
+    {
+     "headline": "Monthly Housing Payments Fell to Lowest Level in Nearly 2 Months--But Rates Are Climbing Again",
+     "summary": "U.S. home-sale prices edged down for the fourth week in a row, according to a new report from Redfin, the real estate brokerage powered by Rocket.",
+     "datetime": 1795093200,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=d6e9fa951792bae487d120d9843d372298ead16e7c9cf79a8bc108eb33b60d12"
+    },
+    {
+     "headline": "A $5.9 Billion Fund Dumps These 3 Stocks",
+     "summary": "Key TakeawaysContour Asset Management, which manages $5. 92 billion, sold all of its AT&T, Rocket Companies and Formula One Group shares in the third quarter, according to its latest 13F.",
+     "datetime": 1795016472,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=2589a33fcbf3ce4662f2b60acbc35643e968806319be424431bd3f39a7e8896d"
+    },
+    {
+     "headline": "Diamond Hill Mid Cap Strategy Q3 2026 Portfolio Review",
+     "summary": "The Strategy declined 3.83% net of fees, trailing the Russell Midcap Index's 3.00% decline; key contributors were Illumina, Revvity and Waystar.",
+     "datetime": 1794995700,
+     "source": "SeekingAlpha",
+     "url": "https://finnhub.io/api/news?id=c8af3328fdce7f58f1ab8e6ba40de8c7c571dead4a9c2e407e3e70b8b13320b8"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "RKT",
+   "expiry": "2026-12-11",
+   "days_to_expiry": 20,
+   "atm_iv_pct": 59.6,
+   "iv_chain_percentile": 10,
+   "skew_points": 5.3,
+   "put_call_ratio": 0.11,
+   "total_put_oi": 747,
+   "total_call_oi": 6853
+  },
+  "get_options_positioning": {
+   "ticker": "RKT",
+   "spot": 13.75,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-04",
+   "primary_days_to_expiry": 13,
+   "max_pain_strike": 13.5,
+   "resistance_walls": [
+    {
+     "strike": 14.0,
+     "open_interest": 12331
+    },
+    {
+     "strike": 15.0,
+     "open_interest": 3433
+    },
+    {
+     "strike": 15.5,
+     "open_interest": 2282
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 13.0,
+     "open_interest": 793
+    },
+    {
+     "strike": 14.0,
+     "open_interest": 576
+    },
+    {
+     "strike": 12.0,
+     "open_interest": 395
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-04",
+     "days_to_expiry": 13,
+     "atm_iv_pct": 57.8
+    },
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 20,
+     "atm_iv_pct": 59.6
+    },
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 27,
+     "atm_iv_pct": 56.4
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 12.5,
+     "volume": 250,
+     "open_interest": 50,
+     "vol_oi_ratio": 5.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 15.0,
+     "volume": 3395,
+     "open_interest": 3433,
+     "vol_oi_ratio": 1.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 17.0,
+     "volume": 620,
+     "open_interest": 719,
+     "vol_oi_ratio": 0.9,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 20559,
+   "otm_put_oi": 1999,
+   "positioning_lean_score": 0.82,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "RKT",
+   "as_of": "2026-11-21",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-30",
+     "days_ago": 22,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 12.5,
+     "price_target_to": 13.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Neutral rating on RKT and raised its price target from $12.5 to $13.0"
+    },
+    {
+     "date": "2026-10-30",
+     "days_ago": 22,
+     "firm": "RBC Capital",
+     "action": "maintained",
+     "from_grade": "Sector Perform",
+     "to_grade": "Sector Perform",
+     "price_target_from": 16.0,
+     "price_target_to": 14.0,
+     "is_rating_change": false,
+     "description": "RBC Capital maintained its Sector Perform rating on RKT and cut its price target from $16.0 to $14.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.31,
+    "verdict": "leaning bullish",
+    "analysts": 16,
+    "counts": {
+     "strongBuy": 3,
+     "buy": 5,
+     "hold": 8,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.29 to 2.31)"
+   },
+   "price_target": {
+    "mean": 14.75,
+    "median": 15.0,
+    "high": 16.0,
+    "low": 13.0,
+    "current_price": 13.75,
+    "dispersion_pct": 20.3,
+    "upside_vs_mean_pct": 7.3,
+    "upside_vs_median_pct": 9.1
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "RKT",
+   "sector": "Financial Services",
+   "sector_etf": "XLF",
+   "comparison": {
+    "1w": {
+     "stock_change_pct": 0.29,
+     "sector_etf_change_pct": -7.0,
+     "relative_to_sector_pct": 7.29
+    },
+    "2w": {
+     "stock_change_pct": -8.7,
+     "sector_etf_change_pct": -4.53,
+     "relative_to_sector_pct": -4.17
+    },
+    "1mo": {
+     "stock_change_pct": 17.12,
+     "sector_etf_change_pct": -3.67,
+     "relative_to_sector_pct": 20.79
+    },
+    "1d": {
+     "stock_change_pct": 4.25,
+     "sector_etf_change_pct": -1.82,
+     "relative_to_sector_pct": 6.07
+    },
+    "1y": {
+     "stock_change_pct": -18.06,
+     "sector_etf_change_pct": 7.51,
+     "relative_to_sector_pct": -25.57
+    },
+    "ytd": {
+     "stock_change_pct": -30.84,
+     "sector_etf_change_pct": 0.56,
+     "relative_to_sector_pct": -31.4
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-20",
+    "realtime_end": "2026-11-20",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9623,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-19",
+      "value": "28.44"
+     },
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-18",
+      "value": "24.56"
+     },
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-17",
+      "value": "25.46"
+     },
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-16",
+      "value": "22.91"
+     },
+     {
+      "realtime_start": "2026-11-20",
+      "realtime_end": "2026-11-20",
+      "date": "2026-11-13",
+      "value": "19.3"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "RKT",
+   "as_of": "2026-11-21",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 18,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-29",
+     "description": "RKT reported Q3 2026 earnings after the close \u2014 EPS 0.15 vs 0.145 expected (beat, +3.4%)",
+     "source": "finnhub",
+     "days_ago": 23,
+     "eps_actual": 0.15,
+     "eps_estimate": 0.145,
+     "surprise": "beat",
+     "surprise_pct": 3.4,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}
