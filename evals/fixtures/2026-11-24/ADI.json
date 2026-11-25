@@ -1,0 +1,334 @@
+{
+ "schema": 1,
+ "ticker": "ADI",
+ "trading_day": "2026-11-24",
+ "captured_at": "2026-11-25T04:30:57+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -17.37,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: -17.37% \u2014 unusual for this stock (about 2.88x its normal move for that span, expected ~6.04%)",
+   "this week: -18.43% \u2014 typical relative to this stock's own typical volatility (expected ~13.51%, 1.36x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past 2 weeks: -20.43% \u2014 typical relative to this stock's own typical volatility (expected ~19.10%, 1.07x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past month: -23.28% \u2014 typical relative to this stock's own typical volatility (expected ~27.68%, 0.84x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past year: 36.39% \u2014 typical relative to this stock's own typical volatility (expected ~95.90%, 0.38x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "ADI",
+   "price": 312.95,
+   "prev_close": 378.75,
+   "change_pct": -17.37,
+   "session_date": "2026-11-24",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 95.9,
+   "changes_pct": {
+    "1d": -17.37,
+    "1w": -18.43,
+    "2w": -20.43,
+    "1mo": -23.28,
+    "1y": 36.39,
+    "ytd": 15.35
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: -17.37% \u2014 unusual for this stock (about 2.88x its normal move for that span, expected ~6.04%)",
+     "this week: -18.43% \u2014 typical relative to this stock's own typical volatility (expected ~13.51%, 1.36x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past 2 weeks: -20.43% \u2014 typical relative to this stock's own typical volatility (expected ~19.10%, 1.07x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past month: -23.28% \u2014 typical relative to this stock's own typical volatility (expected ~27.68%, 0.84x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past year: 36.39% \u2014 typical relative to this stock's own typical volatility (expected ~95.90%, 0.38x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 311.5,
+    "change_pct": -0.46,
+    "as_of": "2026-11-24 19:44 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "ADI",
+   "headlines": [
+    {
+     "headline": "3 AI Investment Stocks We\u2019re Buying Today And Why We\u2019re Selling On Micron",
+     "summary": "With AI infrastructure stocks pulling back 30% to 80% from their highs, many investors are making adjustments to their portfolio. Eric Bleeker, the co-host of The AI Investor Podcast, recently shared...",
+     "datetime": 1795562344,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=a4cd568928d6c4981a41a0b6aa7e78435e4ff325e0a5c076f8bfe13df7fda50d"
+    },
+    {
+     "headline": "Stock Market Today, Nov. 24: Tech Sell-Off Drags Nasdaq as Dow Gains on Value Rotation",
+     "summary": "Investors rotated into healthcare and value names as AI momentum cooled and retailers' earnings beats lifted sentiment, today, Nov. 24, 2026.",
+     "datetime": 1795558308,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=0cf1c9df332aab299c2b538b671fd237944ad25cff75984650fe934a3fa3728e"
+    },
+    {
+     "headline": "Morning Movers: Dick\u2019s Sporting and Dollar Tree gain following quarterly reports",
+     "summary": "Stock futures are lower as investors take profits following Monday\u2019s powerful technology-led rebound. The retreat follows a historic rally in which the S&P 500 gained 4.7%, the Nasdaq jumped 6.5% and...",
+     "datetime": 1795557646,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=1c8e7e79d0f3c6c1a65c3155e09689a87698b220be964ee9a232d42883e51098"
+    },
+    {
+     "headline": "Analog Devices, Inc. Q4 2026 Earnings Call Summary",
+     "summary": "Moby summary of Analog Devices, Inc.'s Q4 2026 earnings call",
+     "datetime": 1795556942,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=498c1c67b21b259f6984b39d95e45466608fb115d36c573b48901273a4874cb0"
+    },
+    {
+     "headline": "Why Analog Devices Stock Fell Nearly 20% Today",
+     "summary": "The chipmaker crushed fourth-quarter estimates, so why did Wall Street hit the panic button? Let's look under the hood at the guidance quirks and spending plans behind today's sell-off.",
+     "datetime": 1795556808,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=b99da5c10de0d7d2856e8f51208c6686ae0804c00ebc67e3a799ef812d3b234f"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "ADI",
+   "expiry": "2026-12-11",
+   "days_to_expiry": 16,
+   "atm_iv_pct": 65.5,
+   "iv_chain_percentile": 8,
+   "skew_points": 5.6,
+   "put_call_ratio": 0.54,
+   "total_put_oi": 383,
+   "total_call_oi": 705
+  },
+  "get_options_positioning": {
+   "ticker": "ADI",
+   "spot": 312.95,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-11",
+   "primary_days_to_expiry": 16,
+   "max_pain_strike": 380.0,
+   "resistance_walls": [
+    {
+     "strike": 400.0,
+     "open_interest": 123
+    },
+    {
+     "strike": 440.0,
+     "open_interest": 84
+    },
+    {
+     "strike": 455.0,
+     "open_interest": 81
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 380.0,
+     "open_interest": 98
+    },
+    {
+     "strike": 320.0,
+     "open_interest": 64
+    },
+    {
+     "strike": 335.0,
+     "open_interest": 60
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 16,
+     "atm_iv_pct": 65.5
+    },
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 23,
+     "atm_iv_pct": 60.7
+    },
+    {
+     "expiry": "2026-12-24",
+     "days_to_expiry": 29,
+     "atm_iv_pct": 58.2
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 400.0,
+     "volume": 101,
+     "open_interest": 123,
+     "vol_oi_ratio": 0.8,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 656,
+   "otm_put_oi": 7,
+   "positioning_lean_score": 0.98,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "ADI",
+   "as_of": "2026-11-25",
+   "analyst_coverage": "covered",
+   "recent_actions": [],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.89,
+    "verdict": "leaning bullish",
+    "analysts": 35,
+    "counts": {
+     "strongBuy": 7,
+     "buy": 25,
+     "hold": 3,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.88 to 1.89)"
+   },
+   "price_target": {
+    "mean": 458.56,
+    "median": 454.0,
+    "high": 675.0,
+    "low": 323.0,
+    "current_price": 312.95,
+    "dispersion_pct": 76.8,
+    "upside_vs_mean_pct": 46.5,
+    "upside_vs_median_pct": 45.1
+   },
+   "notes": [
+    "No analyst rating changes in the last 30 days \u2014 the consensus below is standing opinion, not a recent catalyst."
+   ]
+  },
+  "get_sector_comparison": {
+   "ticker": "ADI",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1y": {
+     "stock_change_pct": 36.39,
+     "sector_etf_change_pct": 15.59,
+     "relative_to_sector_pct": 20.8
+    },
+    "1d": {
+     "stock_change_pct": -17.37,
+     "sector_etf_change_pct": -3.26,
+     "relative_to_sector_pct": -14.11
+    },
+    "ytd": {
+     "stock_change_pct": 15.35,
+     "sector_etf_change_pct": 9.26,
+     "relative_to_sector_pct": 6.09
+    },
+    "2w": {
+     "stock_change_pct": -20.43,
+     "sector_etf_change_pct": -7.0,
+     "relative_to_sector_pct": -13.43
+    },
+    "1mo": {
+     "stock_change_pct": -23.28,
+     "sector_etf_change_pct": -15.69,
+     "relative_to_sector_pct": -7.59
+    },
+    "1w": {
+     "stock_change_pct": -18.43,
+     "sector_etf_change_pct": -3.78,
+     "relative_to_sector_pct": -14.65
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-24",
+    "realtime_end": "2026-11-24",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9625,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-24",
+      "realtime_end": "2026-11-24",
+      "date": "2026-11-23",
+      "value": "26.62"
+     },
+     {
+      "realtime_start": "2026-11-24",
+      "realtime_end": "2026-11-24",
+      "date": "2026-11-20",
+      "value": "35.89"
+     },
+     {
+      "realtime_start": "2026-11-24",
+      "realtime_end": "2026-11-24",
+      "date": "2026-11-19",
+      "value": "28.44"
+     },
+     {
+      "realtime_start": "2026-11-24",
+      "realtime_end": "2026-11-24",
+      "date": "2026-11-18",
+      "value": "24.56"
+     },
+     {
+      "realtime_start": "2026-11-24",
+      "realtime_end": "2026-11-24",
+      "date": "2026-11-17",
+      "value": "25.46"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "ADI",
+   "as_of": "2026-11-25",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 14,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-16",
+     "description": "ADI Q1 2027 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 83,
+     "eps_estimate": 3.8966
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-24",
+     "description": "ADI reported Q4 2026 earnings before the open \u2014 EPS 4.06 vs 3.9221 expected (beat, +3.5%)",
+     "source": "finnhub",
+     "days_ago": 1,
+     "eps_actual": 4.06,
+     "eps_estimate": 3.9221,
+     "surprise": "beat",
+     "surprise_pct": 3.5,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

@@ -1,0 +1,350 @@
+{
+ "schema": 1,
+ "ticker": "HPE",
+ "trading_day": "2026-11-24",
+ "captured_at": "2026-11-25T04:31:04+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -16.31,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: -16.31% \u2014 elevated relative to this stock's own typical volatility (expected ~7.19%, 2.27x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "this week: -12.8% \u2014 typical relative to this stock's own typical volatility (expected ~16.07%, 0.8x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past 2 weeks: -16.15% \u2014 typical relative to this stock's own typical volatility (expected ~22.73%, 0.71x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past month: -31.56% \u2014 typical relative to this stock's own typical volatility (expected ~32.94%, 0.96x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past year: 99.39% \u2014 typical relative to this stock's own typical volatility (expected ~114.10%, 0.87x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "HPE",
+   "price": 40.19,
+   "prev_close": 48.02,
+   "change_pct": -16.31,
+   "session_date": "2026-11-24",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 114.1,
+   "changes_pct": {
+    "1d": -16.31,
+    "1w": -12.8,
+    "2w": -16.15,
+    "1mo": -31.56,
+    "1y": 99.39,
+    "ytd": 68.27
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: -16.31% \u2014 elevated relative to this stock's own typical volatility (expected ~7.19%, 2.27x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "this week: -12.8% \u2014 typical relative to this stock's own typical volatility (expected ~16.07%, 0.8x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past 2 weeks: -16.15% \u2014 typical relative to this stock's own typical volatility (expected ~22.73%, 0.71x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past month: -31.56% \u2014 typical relative to this stock's own typical volatility (expected ~32.94%, 0.96x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past year: 99.39% \u2014 typical relative to this stock's own typical volatility (expected ~114.10%, 0.87x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 39.66,
+    "change_pct": -1.32,
+    "as_of": "2026-11-24 19:59 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "HPE",
+   "headlines": [
+    {
+     "headline": "HPE (HPE) Stock Price Sinks As Q4 Earnings Clash With Margin Fears",
+     "summary": "Hewlett Packard Enterprise just dropped its Q4 2026 scorecard and the stock reaction was brutal. Shares closed at US$40.19, down 16.31% on the day, even as the company reported US$14.55b in quarterly...",
+     "datetime": 1795562494,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=db54d13b7d863c9f3a1044fff8277862b2e43ec946ae9ef2cd121ba7b6d7c274"
+    },
+    {
+     "headline": "Dell Just Reported Earnings and Raised Its Forecast by $10 Billion. Is the Stock a Buy After Tuesday's Selloff?",
+     "summary": "Dell shares fell 12% on Tuesday after a rival warned about AI-server profits. Hours later, Dell reported higher margins.",
+     "datetime": 1795558483,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=d6f18a198fe9cd99741f621851fca62dbc295e64b4321775d7251ff9f3990615"
+    },
+    {
+     "headline": "Stock Market Today, Nov. 24: Tech Sell-Off Drags Nasdaq as Dow Gains on Value Rotation",
+     "summary": "Investors rotated into healthcare and value names as AI momentum cooled and retailers' earnings beats lifted sentiment, today, Nov. 24, 2026.",
+     "datetime": 1795558308,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=0cf1c9df332aab299c2b538b671fd237944ad25cff75984650fe934a3fa3728e"
+    },
+    {
+     "headline": "Morning Movers: Dick\u2019s Sporting and Dollar Tree gain following quarterly reports",
+     "summary": "Stock futures are lower as investors take profits following Monday\u2019s powerful technology-led rebound. The retreat follows a historic rally in which the S&P 500 gained 4.7%, the Nasdaq jumped 6.5% and...",
+     "datetime": 1795557646,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=1c8e7e79d0f3c6c1a65c3155e09689a87698b220be964ee9a232d42883e51098"
+    },
+    {
+     "headline": "Dell\u2019s Earnings Were Strong. Investors Remain Unsure About Tech.",
+     "summary": "AI server demand drove a jump in quarterly revenue.",
+     "datetime": 1795557240,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=c79fe65695a10a53ce4a9e92b35dfd64e3c24a5da0511c0d37744f235515d8a6"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "HPE",
+   "expiry": "2026-12-11",
+   "days_to_expiry": 16,
+   "atm_iv_pct": 83.0,
+   "iv_chain_percentile": 6,
+   "skew_points": 16.6,
+   "put_call_ratio": 0.93,
+   "total_put_oi": 5900,
+   "total_call_oi": 6374
+  },
+  "get_options_positioning": {
+   "ticker": "HPE",
+   "spot": 40.19,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-11",
+   "primary_days_to_expiry": 16,
+   "max_pain_strike": 49.0,
+   "resistance_walls": [
+    {
+     "strike": 50.0,
+     "open_interest": 1641
+    },
+    {
+     "strike": 46.0,
+     "open_interest": 1140
+    },
+    {
+     "strike": 53.0,
+     "open_interest": 1114
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 47.0,
+     "open_interest": 1888
+    },
+    {
+     "strike": 49.0,
+     "open_interest": 1419
+    },
+    {
+     "strike": 51.0,
+     "open_interest": 1041
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 16,
+     "atm_iv_pct": 83.0
+    },
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 23,
+     "atm_iv_pct": 78.7
+    },
+    {
+     "expiry": "2026-12-24",
+     "days_to_expiry": 29,
+     "atm_iv_pct": 74.8
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 40.0,
+     "volume": 541,
+     "open_interest": 0,
+     "vol_oi_ratio": 541.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 40.5,
+     "volume": 271,
+     "open_interest": 0,
+     "vol_oi_ratio": 271.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 45.5,
+     "volume": 137,
+     "open_interest": 0,
+     "vol_oi_ratio": 137.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 36.0,
+     "volume": 163,
+     "open_interest": 49,
+     "vol_oi_ratio": 3.3,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 6355,
+   "otm_put_oi": 703,
+   "positioning_lean_score": 0.8,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "HPE",
+   "as_of": "2026-11-25",
+   "analyst_coverage": "covered",
+   "recent_actions": [],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.17,
+    "verdict": "leaning bullish",
+    "analysts": 24,
+    "counts": {
+     "strongBuy": 5,
+     "buy": 10,
+     "hold": 9,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.13 to 2.17)"
+   },
+   "price_target": {
+    "mean": 67.2,
+    "median": 66.0,
+    "high": 88.0,
+    "low": 51.0,
+    "current_price": 40.19,
+    "dispersion_pct": 55.1,
+    "upside_vs_mean_pct": 67.2,
+    "upside_vs_median_pct": 64.2
+   },
+   "notes": [
+    "No analyst rating changes in the last 30 days \u2014 the consensus below is standing opinion, not a recent catalyst."
+   ]
+  },
+  "get_sector_comparison": {
+   "ticker": "HPE",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1y": {
+     "stock_change_pct": 99.39,
+     "sector_etf_change_pct": 15.59,
+     "relative_to_sector_pct": 83.8
+    },
+    "1d": {
+     "stock_change_pct": -16.31,
+     "sector_etf_change_pct": -3.26,
+     "relative_to_sector_pct": -13.05
+    },
+    "ytd": {
+     "stock_change_pct": 68.27,
+     "sector_etf_change_pct": 9.26,
+     "relative_to_sector_pct": 59.01
+    },
+    "2w": {
+     "stock_change_pct": -16.15,
+     "sector_etf_change_pct": -7.0,
+     "relative_to_sector_pct": -9.15
+    },
+    "1mo": {
+     "stock_change_pct": -31.56,
+     "sector_etf_change_pct": -15.69,
+     "relative_to_sector_pct": -15.87
+    },
+    "1w": {
+     "stock_change_pct": -12.8,
+     "sector_etf_change_pct": -3.78,
+     "relative_to_sector_pct": -9.02
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-24",
+    "realtime_end": "2026-11-24",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9625,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-24",
+      "realtime_end": "2026-11-24",
+      "date": "2026-11-23",
+      "value": "26.62"
+     },
+     {
+      "realtime_start": "2026-11-24",
+      "realtime_end": "2026-11-24",
+      "date": "2026-11-20",
+      "value": "35.89"
+     },
+     {
+      "realtime_start": "2026-11-24",
+      "realtime_end": "2026-11-24",
+      "date": "2026-11-19",
+      "value": "28.44"
+     },
+     {
+      "realtime_start": "2026-11-24",
+      "realtime_end": "2026-11-24",
+      "date": "2026-11-18",
+      "value": "24.56"
+     },
+     {
+      "realtime_start": "2026-11-24",
+      "realtime_end": "2026-11-24",
+      "date": "2026-11-17",
+      "value": "25.46"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "HPE",
+   "as_of": "2026-11-25",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 14,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-23",
+     "description": "HPE reported Q4 2026 earnings after the close \u2014 EPS 1.43 vs 1.2998 expected (beat, +10.0%)",
+     "source": "finnhub",
+     "days_ago": 2,
+     "eps_actual": 1.43,
+     "eps_estimate": 1.2998,
+     "surprise": "beat",
+     "surprise_pct": 10.0,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

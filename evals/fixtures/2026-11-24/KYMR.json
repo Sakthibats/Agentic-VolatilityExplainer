@@ -1,0 +1,406 @@
+{
+ "schema": 1,
+ "ticker": "KYMR",
+ "trading_day": "2026-11-24",
+ "captured_at": "2026-11-25T04:30:37+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 15.66,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 15.66% \u2014 elevated relative to this stock's own typical volatility (expected ~8.23%, 1.9x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "this week: 43.12% \u2014 elevated relative to this stock's own typical volatility (expected ~18.40%, 2.34x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past 2 weeks: 27.28% \u2014 typical relative to this stock's own typical volatility (expected ~26.02%, 1.05x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past month: 51.45% \u2014 typical relative to this stock's own typical volatility (expected ~37.70%, 1.36x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past year: 163.36% \u2014 typical relative to this stock's own typical volatility (expected ~130.60%, 1.25x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "KYMR",
+   "price": 173.92,
+   "prev_close": 150.37,
+   "change_pct": 15.66,
+   "session_date": "2026-11-24",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 130.6,
+   "changes_pct": {
+    "1d": 15.66,
+    "1w": 43.12,
+    "2w": 27.28,
+    "1mo": 51.45,
+    "1y": 163.36,
+    "ytd": 139.03
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 15.66% \u2014 elevated relative to this stock's own typical volatility (expected ~8.23%, 1.9x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "this week: 43.12% \u2014 elevated relative to this stock's own typical volatility (expected ~18.40%, 2.34x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past 2 weeks: 27.28% \u2014 typical relative to this stock's own typical volatility (expected ~26.02%, 1.05x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past month: 51.45% \u2014 typical relative to this stock's own typical volatility (expected ~37.70%, 1.36x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past year: 163.36% \u2014 typical relative to this stock's own typical volatility (expected ~130.60%, 1.25x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 174.97,
+    "change_pct": 0.61,
+    "as_of": "2026-11-24 19:50 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "KYMR",
+   "headlines": [
+    {
+     "headline": "Top Midday Gainers",
+     "summary": "Napo Pharmaceuticals, a Jaguar Health (JAGX) firm, completed production of process validation batche",
+     "datetime": 1795548035,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=b52c3a87305001c6724a2112854543ffbba4d8554367c9e2b652b09455be37aa"
+    },
+    {
+     "headline": "GILD, KYMR Stocks Hit Record Highs \u2013 Wall Street Backs Gilead's Resilience, Kymera's Eczema Data",
+     "summary": "William Blair initiated coverage of Gilead with an \u2018Outperform\u2019 rating, citing its leadership in HIV treatment, while Morgan Stanley and RBC Capital raised Kymera\u2019s price targets following...",
+     "datetime": 1795544587,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=b23225f4fa7a29c4df0f6a479e2a1cb7b286d9f49624bb14e14e7150e2e24a45"
+    },
+    {
+     "headline": "Kymera Therapeutics Posts 'Solid Win' in Phase 2b Results, But Upside Likely Priced In, RBC Says",
+     "summary": "Kymera Therapeutics' (KYMR) \"solid win\" in the results of its phase 2b trial of KT-621 in patients w",
+     "datetime": 1795538742,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=fdf9681418c0286b001d6592e1e8c3ffcf409759f57d0d27f416d8122d664906"
+    },
+    {
+     "headline": "Kymera Shares Soar 30% After Positive Atopic Dermatitis Drug Data",
+     "summary": "KYMR shares surge 30.4% as KT-621 delivers strong phase IIb results in atopic dermatitis, paving the way for phase III development.",
+     "datetime": 1795538400,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=c662da81ee76869e959ec197ec57fa7ab3aeeb62037b10753de19ccad1486085"
+    },
+    {
+     "headline": "Kymera stock soars as eczema pill takes aim at Dupixent",
+     "summary": "Kymera\u2019s experimental eczema pill could challenge Dupixent, but larger trials and safety questions remain.",
+     "datetime": 1795534620,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=c74ba220961d6e9b463d980f8418c740305cdad267ed6d84609877390cc5b8ca"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "KYMR",
+   "expiry": "2026-12-18",
+   "days_to_expiry": 23,
+   "atm_iv_pct": 54.8,
+   "iv_chain_percentile": 13,
+   "skew_points": -8.2,
+   "put_call_ratio": 1.27,
+   "total_put_oi": 8416,
+   "total_call_oi": 6643
+  },
+  "get_options_positioning": {
+   "ticker": "KYMR",
+   "spot": 173.92,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-18",
+   "primary_days_to_expiry": 23,
+   "max_pain_strike": 115.0,
+   "resistance_walls": [
+    {
+     "strike": 180.0,
+     "open_interest": 1250
+    },
+    {
+     "strike": 185.0,
+     "open_interest": 1050
+    },
+    {
+     "strike": 135.0,
+     "open_interest": 701
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 100.0,
+     "open_interest": 2012
+    },
+    {
+     "strike": 70.0,
+     "open_interest": 1503
+    },
+    {
+     "strike": 110.0,
+     "open_interest": 1325
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 23,
+     "atm_iv_pct": 54.8
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 150.0,
+     "volume": 364,
+     "open_interest": 39,
+     "vol_oi_ratio": 9.3,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 190.0,
+     "volume": 211,
+     "open_interest": 102,
+     "vol_oi_ratio": 2.1,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 185.0,
+     "volume": 1145,
+     "open_interest": 1050,
+     "vol_oi_ratio": 1.1,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 135.0,
+     "volume": 742,
+     "open_interest": 701,
+     "vol_oi_ratio": 1.1,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 60.0,
+     "volume": 210,
+     "open_interest": 768,
+     "vol_oi_ratio": 0.3,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 2561,
+   "otm_put_oi": 8407,
+   "positioning_lean_score": -0.53,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "KYMR",
+   "as_of": "2026-11-25",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-02",
+     "days_ago": 23,
+     "firm": "Barclays",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 139.0,
+     "price_target_to": 170.0,
+     "is_rating_change": false,
+     "description": "Barclays maintained its Overweight rating on KYMR and raised its price target from $139.0 to $170.0"
+    },
+    {
+     "date": "2026-10-30",
+     "days_ago": 26,
+     "firm": "Truist Securities",
+     "action": "reiterated",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 136.0,
+     "price_target_to": 150.0,
+     "is_rating_change": false,
+     "description": "Truist Securities reiterated its Buy rating on KYMR and raised its price target from $136.0 to $150.0"
+    },
+    {
+     "date": "2026-10-30",
+     "days_ago": 26,
+     "firm": "RBC Capital",
+     "action": "maintained",
+     "from_grade": "Sector Perform",
+     "to_grade": "Sector Perform",
+     "price_target_from": 112.0,
+     "price_target_to": 116.0,
+     "is_rating_change": false,
+     "description": "RBC Capital maintained its Sector Perform rating on KYMR and raised its price target from $112.0 to $116.0"
+    },
+    {
+     "date": "2026-10-29",
+     "days_ago": 27,
+     "firm": "BTIG",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 134.0,
+     "price_target_to": 139.0,
+     "is_rating_change": false,
+     "description": "BTIG maintained its Buy rating on KYMR and raised its price target from $134.0 to $139.0"
+    },
+    {
+     "date": "2026-10-27",
+     "days_ago": 29,
+     "firm": "Morgan Stanley",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 135.0,
+     "price_target_to": 146.0,
+     "is_rating_change": false,
+     "description": "Morgan Stanley maintained its Overweight rating on KYMR and raised its price target from $135.0 to $146.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.87,
+    "verdict": "leaning bullish",
+    "analysts": 23,
+    "counts": {
+     "strongBuy": 5,
+     "buy": 16,
+     "hold": 2,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 1.96 to 1.87; bearish ratings 0 to 0)"
+   },
+   "price_target": {
+    "mean": 182.35,
+    "median": 180.0,
+    "high": 251.0,
+    "low": 134.0,
+    "current_price": 173.92,
+    "dispersion_pct": 64.2,
+    "upside_vs_mean_pct": 4.8,
+    "upside_vs_median_pct": 3.5
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "KYMR",
+   "sector": "Healthcare",
+   "sector_etf": "XLV",
+   "comparison": {
+    "1y": {
+     "stock_change_pct": 163.36,
+     "sector_etf_change_pct": 21.47,
+     "relative_to_sector_pct": 141.89
+    },
+    "1d": {
+     "stock_change_pct": 15.66,
+     "sector_etf_change_pct": 2.95,
+     "relative_to_sector_pct": 12.71
+    },
+    "ytd": {
+     "stock_change_pct": 139.03,
+     "sector_etf_change_pct": 20.26,
+     "relative_to_sector_pct": 118.77
+    },
+    "2w": {
+     "stock_change_pct": 27.28,
+     "sector_etf_change_pct": -2.2,
+     "relative_to_sector_pct": 29.48
+    },
+    "1mo": {
+     "stock_change_pct": 51.45,
+     "sector_etf_change_pct": 3.03,
+     "relative_to_sector_pct": 48.42
+    },
+    "1w": {
+     "stock_change_pct": 43.12,
+     "sector_etf_change_pct": -0.28,
+     "relative_to_sector_pct": 43.4
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-24",
+    "realtime_end": "2026-11-24",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9625,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-24",
+      "realtime_end": "2026-11-24",
+      "date": "2026-11-23",
+      "value": "26.62"
+     },
+     {
+      "realtime_start": "2026-11-24",
+      "realtime_end": "2026-11-24",
+      "date": "2026-11-20",
+      "value": "35.89"
+     },
+     {
+      "realtime_start": "2026-11-24",
+      "realtime_end": "2026-11-24",
+      "date": "2026-11-19",
+      "value": "28.44"
+     },
+     {
+      "realtime_start": "2026-11-24",
+      "realtime_end": "2026-11-24",
+      "date": "2026-11-18",
+      "value": "24.56"
+     },
+     {
+      "realtime_start": "2026-11-24",
+      "realtime_end": "2026-11-24",
+      "date": "2026-11-17",
+      "value": "25.46"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "KYMR",
+   "as_of": "2026-11-25",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 14,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-29",
+     "description": "KYMR reported Q3 2026 earnings before the open \u2014 EPS -1.32 vs -1.2958 expected (miss, -1.9%)",
+     "source": "finnhub",
+     "days_ago": 27,
+     "eps_actual": -1.32,
+     "eps_estimate": -1.2958,
+     "surprise": "miss",
+     "surprise_pct": -1.9,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

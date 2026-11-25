@@ -1,0 +1,369 @@
+{
+ "schema": 1,
+ "ticker": "COST",
+ "trading_day": "2026-11-24",
+ "captured_at": "2026-11-25T04:30:23+00:00",
+ "selected_as": "move",
+ "change_pct": -0.56,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "today: 2.23% \u2014 elevated relative to this stock's own typical volatility (expected ~1.39%, 1.6x), but typical in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past month: 11.83% \u2014 elevated relative to this stock's own typical volatility (expected ~6.38%, 1.85x), but typical in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "COST",
+   "price": 1091.71,
+   "prev_close": 1097.91,
+   "change_pct": -0.56,
+   "session_date": "2026-11-24",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 22.1,
+   "changes_pct": {
+    "1d": 2.23,
+    "1w": 1.11,
+    "2w": 5.27,
+    "1mo": 11.83,
+    "1y": 25.58,
+    "ytd": 32.12
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "today: 2.23% \u2014 elevated relative to this stock's own typical volatility (expected ~1.39%, 1.6x), but typical in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past month: 11.83% \u2014 elevated relative to this stock's own typical volatility (expected ~6.38%, 1.85x), but typical in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 1090.0,
+    "change_pct": -0.16,
+    "as_of": "2026-11-24 19:59 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "COST",
+   "headlines": [
+    {
+     "headline": "Costco gives $30 gift for the holidays, but there's a catch",
+     "summary": "The $30 special dividend has a ticking clock attached.",
+     "datetime": 1795555980,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=eeaa642ca45f6ee6f21ad0b8070575d86046a06426745710259b0367ae08f0a8"
+    },
+    {
+     "headline": "Everyone Predicted a Retail Apocalypse. Instead, Store Vacancies Are Near Lows.",
+     "summary": "Some stores have gone dark. But other retail operators may have a new lease on life.",
+     "datetime": 1795542420,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=395566d38f0da7f0fd4cede44e83f3a9c702480151dc124c58d4b3ad23b250aa"
+    },
+    {
+     "headline": "Sanofi Bets $41 Billion on Insmed to Fuel Growth Beyond Dupixent",
+     "summary": "Sanofi (NASDAQ:SNY) said it will acquire Insmed for about $41 billion in cash, adding two commercial medicines and a late-stage respiratory drug candidate as it seeks to strengthen growth beyond...",
+     "datetime": 1795540566,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=53491c6b2335191593e7ae2b80b619ac3f4a998314f0e689990bfbb32be52f3d"
+    },
+    {
+     "headline": "Walmart Raised Its Outlook and the Stock Fell Anyway. Here\u2019s the New Price Target",
+     "summary": "Walmart beat estimates and lifted guidance for the second time this year, yet investors sold anyway. Advertising, marketplace and membership growth may explain why analysts still see room to run, but...",
+     "datetime": 1795526262,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=2c536417f437007c644b6a73ea8d9fc3259147e56803f8f86ee099fde4bdcada"
+    },
+    {
+     "headline": "Costco Wholesale Corporation (COST) Is a Trending Stock: Facts to Know Before Betting on It",
+     "summary": "Costco (COST) has received quite a bit of attention from Zacks.com users lately. Therefore, it is wise to be aware of the facts that can impact the stock's prospects.",
+     "datetime": 1795525205,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=dc1a6e6cd922c9b390e1d93b42544b0858a405792c1e3b4f2d27dfc0ec376d67"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "COST",
+   "expiry": "2026-12-11",
+   "days_to_expiry": 16,
+   "atm_iv_pct": 31.1,
+   "iv_chain_percentile": 21,
+   "skew_points": 2.9,
+   "put_call_ratio": 4.36,
+   "total_put_oi": 11935,
+   "total_call_oi": 2739
+  },
+  "get_options_positioning": {
+   "ticker": "COST",
+   "spot": 1091.71,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-11",
+   "primary_days_to_expiry": 16,
+   "max_pain_strike": 1115.0,
+   "resistance_walls": [
+    {
+     "strike": 1230.0,
+     "open_interest": 369
+    },
+    {
+     "strike": 1100.0,
+     "open_interest": 310
+    },
+    {
+     "strike": 1200.0,
+     "open_interest": 152
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 550.0,
+     "open_interest": 1653
+    },
+    {
+     "strike": 1100.0,
+     "open_interest": 1288
+    },
+    {
+     "strike": 1120.0,
+     "open_interest": 1083
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 16,
+     "atm_iv_pct": 31.1
+    },
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 23,
+     "atm_iv_pct": 29.4
+    },
+    {
+     "expiry": "2026-12-24",
+     "days_to_expiry": 29,
+     "atm_iv_pct": 29.2
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 695.0,
+     "volume": 171,
+     "open_interest": 0,
+     "vol_oi_ratio": 171.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 530.0,
+     "volume": 121,
+     "open_interest": 0,
+     "vol_oi_ratio": 121.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 705.0,
+     "volume": 120,
+     "open_interest": 0,
+     "vol_oi_ratio": 120.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 1200.0,
+     "volume": 133,
+     "open_interest": 152,
+     "vol_oi_ratio": 0.9,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 1919,
+   "otm_put_oi": 9263,
+   "positioning_lean_score": -0.66,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "COST",
+   "as_of": "2026-11-25",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-11",
+     "days_ago": 14,
+     "firm": "Bernstein",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 1143.0,
+     "price_target_to": 1155.0,
+     "is_rating_change": false,
+     "description": "Bernstein maintained its Outperform rating on COST and raised its price target from $1143.0 to $1155.0"
+    },
+    {
+     "date": "2026-11-05",
+     "days_ago": 20,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 1015.0,
+     "price_target_to": 1150.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Overweight rating on COST and raised its price target from $1015.0 to $1150.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.36,
+    "verdict": "leaning bullish",
+    "analysts": 42,
+    "counts": {
+     "strongBuy": 5,
+     "buy": 20,
+     "hold": 15,
+     "sell": 1,
+     "strongSell": 1
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.38 to 2.36)"
+   },
+   "price_target": {
+    "mean": 1085.35,
+    "median": 1100.0,
+    "high": 1315.0,
+    "low": 770.0,
+    "current_price": 1091.71,
+    "dispersion_pct": 50.2,
+    "upside_vs_mean_pct": -0.6,
+    "upside_vs_median_pct": 0.8
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "COST",
+   "sector": "Consumer Defensive",
+   "sector_etf": "XLP",
+   "comparison": {
+    "1y": {
+     "stock_change_pct": 25.58,
+     "sector_etf_change_pct": 21.18,
+     "relative_to_sector_pct": 4.4
+    },
+    "1d": {
+     "stock_change_pct": 2.23,
+     "sector_etf_change_pct": 1.66,
+     "relative_to_sector_pct": 0.57
+    },
+    "ytd": {
+     "stock_change_pct": 32.12,
+     "sector_etf_change_pct": 20.54,
+     "relative_to_sector_pct": 11.58
+    },
+    "2w": {
+     "stock_change_pct": 5.27,
+     "sector_etf_change_pct": 0.93,
+     "relative_to_sector_pct": 4.34
+    },
+    "1mo": {
+     "stock_change_pct": 11.83,
+     "sector_etf_change_pct": 4.46,
+     "relative_to_sector_pct": 7.37
+    },
+    "1w": {
+     "stock_change_pct": 1.11,
+     "sector_etf_change_pct": 0.46,
+     "relative_to_sector_pct": 0.65
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-24",
+    "realtime_end": "2026-11-24",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9625,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-24",
+      "realtime_end": "2026-11-24",
+      "date": "2026-11-23",
+      "value": "26.62"
+     },
+     {
+      "realtime_start": "2026-11-24",
+      "realtime_end": "2026-11-24",
+      "date": "2026-11-20",
+      "value": "35.89"
+     },
+     {
+      "realtime_start": "2026-11-24",
+      "realtime_end": "2026-11-24",
+      "date": "2026-11-19",
+      "value": "28.44"
+     },
+     {
+      "realtime_start": "2026-11-24",
+      "realtime_end": "2026-11-24",
+      "date": "2026-11-18",
+      "value": "24.56"
+     },
+     {
+      "realtime_start": "2026-11-24",
+      "realtime_end": "2026-11-24",
+      "date": "2026-11-17",
+      "value": "25.46"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "COST",
+   "as_of": "2026-11-25",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 14,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-12-10",
+     "description": "COST Q1 2027 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 15,
+     "eps_estimate": 5.0204
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "ex_dividend",
+     "date": "2026-11-24",
+     "source": "yfinance",
+     "description": "COST went ex-dividend \u2014 the price drops by roughly the dividend on this date mechanically, with no news behind it",
+     "days_ago": 1
+    }
+   ],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}

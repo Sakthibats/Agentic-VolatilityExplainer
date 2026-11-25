@@ -1,0 +1,351 @@
+{
+ "schema": 1,
+ "ticker": "CRM",
+ "trading_day": "2026-11-24",
+ "captured_at": "2026-11-25T04:30:30+00:00",
+ "selected_as": "move",
+ "change_pct": 4.21,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "today: 4.21% \u2014 typical relative to this stock's own typical volatility (expected ~3.00%, 1.4x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past 2 weeks: -9.47% \u2014 typical relative to this stock's own typical volatility (expected ~9.50%, 1.0x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past month: -21.95% \u2014 elevated for this stock (about 1.59x its normal move for that span, expected ~13.77%)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "CRM",
+   "price": 193.26,
+   "prev_close": 185.46,
+   "change_pct": 4.21,
+   "session_date": "2026-11-24",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 47.7,
+   "changes_pct": {
+    "1d": 4.21,
+    "1w": -0.65,
+    "2w": -9.47,
+    "1mo": -21.95,
+    "1y": -14.18,
+    "ytd": -23.28
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "today: 4.21% \u2014 typical relative to this stock's own typical volatility (expected ~3.00%, 1.4x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past 2 weeks: -9.47% \u2014 typical relative to this stock's own typical volatility (expected ~9.50%, 1.0x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past month: -21.95% \u2014 elevated for this stock (about 1.59x its normal move for that span, expected ~13.77%)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 192.5,
+    "change_pct": -0.39,
+    "as_of": "2026-11-24 19:33 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "CRM",
+   "headlines": [
+    {
+     "headline": "Anthropic falls below IPO price as Nvidia gives back gains",
+     "summary": "In this edition of Sozzi Unleashed: At The Close, Brian Sozzi sorts through \"reality trading\" as Nvidia slides nearly 7% after Monday's 31% surge and Anthropic falls below its $83 IPO price less than...",
+     "datetime": 1795556758,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=759bc355e994966eb62eb48ab98f3b7176c8854ca7156174c4dd065d2ae8930b"
+    },
+    {
+     "headline": "ZoomInfo (GTM) Stock Is Up 8.3% Today Without Company News",
+     "summary": "On Tuesday, Nov. 24, ZoomInfo shares rose 8.3% without company-specific news",
+     "datetime": 1795553134,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=ae226525e93b1014359205c19f0415ed1f70d69daaa1c6008e595cc70771a295"
+    },
+    {
+     "headline": "Dow Jones Top Gainers for Today's US Session",
+     "summary": "Dow Jones top gainers in today's US session include NKE, AMGN, MRK, CRM, UNH and JNJ, led by NKE's 5.75% rise.",
+     "datetime": 1795551053,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=26cdf09de8e3cbf6dfea01b9630aaa2ba560f9b97b0c23700f449aec8e2faa64"
+    },
+    {
+     "headline": "Salesforce (CRM) Stock Looks Cheap With Earnings In Focus",
+     "summary": "Salesforce has seen its share price retreat sharply in recent years, which puts fresh attention on a basic question for anyone looking at the stock today. Do the company\u2019s current earnings really...",
+     "datetime": 1795550969,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=6bb359b157b247a84db565da9c0c1f5388ac5545b645642fed019e1bab2baf5e"
+    },
+    {
+     "headline": "Vtex (VTEX) Stock Is Up 6.4% Today Without Company News",
+     "summary": "On Tuesday, Nov. 24, the stock rose 6.4% without company-specific news",
+     "datetime": 1795543230,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=5842fbece9e00a75e4b2fa7175c719ac5d66be0063463cb16b3dc9e567a332c4"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "CRM",
+   "expiry": "2026-12-11",
+   "days_to_expiry": 16,
+   "atm_iv_pct": 73.7,
+   "iv_chain_percentile": 20,
+   "skew_points": 2.0,
+   "put_call_ratio": 0.51,
+   "total_put_oi": 2164,
+   "total_call_oi": 4230
+  },
+  "get_options_positioning": {
+   "ticker": "CRM",
+   "spot": 193.26,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-11",
+   "primary_days_to_expiry": 16,
+   "max_pain_strike": 195.0,
+   "resistance_walls": [
+    {
+     "strike": 220.0,
+     "open_interest": 885
+    },
+    {
+     "strike": 230.0,
+     "open_interest": 442
+    },
+    {
+     "strike": 185.0,
+     "open_interest": 300
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 200.0,
+     "open_interest": 279
+    },
+    {
+     "strike": 175.0,
+     "open_interest": 229
+    },
+    {
+     "strike": 155.0,
+     "open_interest": 194
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 16,
+     "atm_iv_pct": 73.7
+    },
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 23,
+     "atm_iv_pct": 65.8
+    },
+    {
+     "expiry": "2026-12-24",
+     "days_to_expiry": 29,
+     "atm_iv_pct": 61.0
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 185.0,
+     "volume": 224,
+     "open_interest": 184,
+     "vol_oi_ratio": 1.2,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 190.0,
+     "volume": 113,
+     "open_interest": 150,
+     "vol_oi_ratio": 0.8,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 160.0,
+     "volume": 117,
+     "open_interest": 170,
+     "vol_oi_ratio": 0.7,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 220.0,
+     "volume": 102,
+     "open_interest": 885,
+     "vol_oi_ratio": 0.1,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 3452,
+   "otm_put_oi": 1356,
+   "positioning_lean_score": 0.44,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "CRM",
+   "as_of": "2026-11-25",
+   "analyst_coverage": "covered",
+   "recent_actions": [],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.18,
+    "verdict": "leaning bullish",
+    "analysts": 55,
+    "counts": {
+     "strongBuy": 7,
+     "buy": 33,
+     "hold": 14,
+     "sell": 0,
+     "strongSell": 1
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.25 to 2.18; bearish ratings 2 to 1)"
+   },
+   "price_target": {
+    "mean": 284.44,
+    "median": 280.0,
+    "high": 475.0,
+    "low": 165.0,
+    "current_price": 193.26,
+    "dispersion_pct": 109.0,
+    "upside_vs_mean_pct": 47.2,
+    "upside_vs_median_pct": 44.9
+   },
+   "notes": [
+    "No analyst rating changes in the last 30 days \u2014 the consensus below is standing opinion, not a recent catalyst."
+   ]
+  },
+  "get_sector_comparison": {
+   "ticker": "CRM",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1y": {
+     "stock_change_pct": -14.18,
+     "sector_etf_change_pct": 15.59,
+     "relative_to_sector_pct": -29.77
+    },
+    "1d": {
+     "stock_change_pct": 4.21,
+     "sector_etf_change_pct": -3.26,
+     "relative_to_sector_pct": 7.47
+    },
+    "ytd": {
+     "stock_change_pct": -23.28,
+     "sector_etf_change_pct": 9.26,
+     "relative_to_sector_pct": -32.54
+    },
+    "2w": {
+     "stock_change_pct": -9.47,
+     "sector_etf_change_pct": -7.0,
+     "relative_to_sector_pct": -2.47
+    },
+    "1mo": {
+     "stock_change_pct": -21.95,
+     "sector_etf_change_pct": -15.69,
+     "relative_to_sector_pct": -6.26
+    },
+    "1w": {
+     "stock_change_pct": -0.65,
+     "sector_etf_change_pct": -3.78,
+     "relative_to_sector_pct": 3.13
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-24",
+    "realtime_end": "2026-11-24",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9625,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-24",
+      "realtime_end": "2026-11-24",
+      "date": "2026-11-23",
+      "value": "26.62"
+     },
+     {
+      "realtime_start": "2026-11-24",
+      "realtime_end": "2026-11-24",
+      "date": "2026-11-20",
+      "value": "35.89"
+     },
+     {
+      "realtime_start": "2026-11-24",
+      "realtime_end": "2026-11-24",
+      "date": "2026-11-19",
+      "value": "28.44"
+     },
+     {
+      "realtime_start": "2026-11-24",
+      "realtime_end": "2026-11-24",
+      "date": "2026-11-18",
+      "value": "24.56"
+     },
+     {
+      "realtime_start": "2026-11-24",
+      "realtime_end": "2026-11-24",
+      "date": "2026-11-17",
+      "value": "25.46"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "CRM",
+   "as_of": "2026-11-25",
+   "events": [
+    {
+     "type": "earnings",
+     "date": "2026-12-02",
+     "description": "CRM Q3 2027 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 7,
+     "eps_estimate": 3.4717,
+     "hour": "amc"
+    },
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 14,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-23",
+     "description": "CRM Q4 2027 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 90,
+     "eps_estimate": 3.58,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}
