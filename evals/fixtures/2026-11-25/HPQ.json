@@ -1,0 +1,330 @@
+{
+ "schema": 1,
+ "ticker": "HPQ",
+ "trading_day": "2026-11-25",
+ "captured_at": "2026-11-26T03:43:54+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 11.49,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 11.49% \u2014 unusual for this stock (about 2.78x its normal move for that span, expected ~4.13%)",
+   "this week: 8.69% \u2014 typical relative to this stock's own typical volatility (expected ~9.24%, 0.94x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past year: 34.28% \u2014 typical relative to this stock's own typical volatility (expected ~65.60%, 0.52x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "HPQ",
+   "price": 31.15,
+   "prev_close": 27.94,
+   "change_pct": 11.49,
+   "session_date": "2026-11-25",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 65.6,
+   "changes_pct": {
+    "1d": 11.49,
+    "1w": 8.69,
+    "2w": 7.56,
+    "1mo": -7.24,
+    "1y": 34.28,
+    "ytd": 46.26
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 11.49% \u2014 unusual for this stock (about 2.78x its normal move for that span, expected ~4.13%)",
+     "this week: 8.69% \u2014 typical relative to this stock's own typical volatility (expected ~9.24%, 0.94x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past year: 34.28% \u2014 typical relative to this stock's own typical volatility (expected ~65.60%, 0.52x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 31.23,
+    "change_pct": 0.27,
+    "as_of": "2026-11-25 19:59 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "HPQ",
+   "headlines": [
+    {
+     "headline": "Stock Market Today, Nov. 25: Dow Erases 1,100-Point Loss as Wall Street Stages Dramatic Late-Day Comeback",
+     "summary": "Markets recovered from steep intraday losses as investors returned to select sectors, although persistent inflation and continued weakness in technology stocks left the broader market under pressure.",
+     "datetime": 1795645065,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=60bc1e51fdd824f1795f7680276c985746ef262f5f9280f0451e7db5338cac0c"
+    },
+    {
+     "headline": "Stocks Rally Off Lows Despite Inflation and AI Gloom: Stock Market Today",
+     "summary": "All three main stock indexes climbed from huge holes on Thanksgiving Eve, and eight sectors finished in positive territory. But tech is still a mess.",
+     "datetime": 1795640894,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=3517a3163299c39c1494a1fef73152d113ffe98b321de8bffead9418079fc451"
+    },
+    {
+     "headline": "HPQ earnings analysis: questions answered and next catalysts",
+     "summary": "Investing.com -- HP Inc (HPQ) reported FY2026 Q4 on Nov 24, 2026. The stock was trading at $30.90 (+10.58%) as of Nov 25, 3:08 PM EST. That reaction is the surprise. Coverage on the evening of the...",
+     "datetime": 1795639827,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=a1f50958f7c1233fbf4405ae3067955c92ab53d468c0519502e0a441e8f0502e"
+    },
+    {
+     "headline": "Chips and iPhones Are Safe From New Tariffs. Here\u2019s What Isn\u2019t.",
+     "summary": "Tariff exemptions cover servers, smartphones, PCs and chips, but items like headphones, lithium-ion batteries and printers are left off the list.",
+     "datetime": 1795639620,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=ddfc75ac7cf8075b01b4c58f6e7798991d74b5bf5d967fc0f5aaa52d8b3fa25c"
+    },
+    {
+     "headline": "What's Behind Dell Stock's Fall?",
+     "summary": "Today's big story: Anthropic Below Its IPO Price: Do Giants Come Back.",
+     "datetime": 1795637213,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=d98e14b0cb38508ca29fc2390cf6fbd92b7d32f474fbdfe444857a3aa4f08e47"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "HPQ",
+   "expiry": "2026-12-11",
+   "days_to_expiry": 15,
+   "atm_iv_pct": 53.7,
+   "iv_chain_percentile": 2,
+   "skew_points": 7.0,
+   "put_call_ratio": 0.21,
+   "total_put_oi": 1716,
+   "total_call_oi": 8171
+  },
+  "get_options_positioning": {
+   "ticker": "HPQ",
+   "spot": 31.15,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-11",
+   "primary_days_to_expiry": 15,
+   "max_pain_strike": 29.0,
+   "resistance_walls": [
+    {
+     "strike": 37.0,
+     "open_interest": 2969
+    },
+    {
+     "strike": 36.0,
+     "open_interest": 1985
+    },
+    {
+     "strike": 35.0,
+     "open_interest": 1256
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 26.0,
+     "open_interest": 516
+    },
+    {
+     "strike": 28.0,
+     "open_interest": 393
+    },
+    {
+     "strike": 30.0,
+     "open_interest": 274
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 15,
+     "atm_iv_pct": 53.7
+    },
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 22,
+     "atm_iv_pct": 53.1
+    },
+    {
+     "expiry": "2026-12-24",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 52.4
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 28.0,
+     "volume": 217,
+     "open_interest": 393,
+     "vol_oi_ratio": 0.6,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 7300,
+   "otm_put_oi": 1693,
+   "positioning_lean_score": 0.62,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "HPQ",
+   "as_of": "2026-11-26",
+   "analyst_coverage": "covered",
+   "recent_actions": [],
+   "consensus": {
+    "rating": "hold",
+    "score": 3.33,
+    "verdict": "neutral",
+    "analysts": 18,
+    "counts": {
+     "strongBuy": 0,
+     "buy": 2,
+     "hold": 10,
+     "sell": 4,
+     "strongSell": 2
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 3.29 to 3.33)"
+   },
+   "price_target": {
+    "mean": 27.55,
+    "median": 29.0,
+    "high": 33.4,
+    "low": 20.0,
+    "current_price": 31.15,
+    "dispersion_pct": 48.6,
+    "upside_vs_mean_pct": -11.6,
+    "upside_vs_median_pct": -6.9
+   },
+   "notes": [
+    "No analyst rating changes in the last 30 days \u2014 the consensus below is standing opinion, not a recent catalyst."
+   ]
+  },
+  "get_sector_comparison": {
+   "ticker": "HPQ",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "ytd": {
+     "stock_change_pct": 46.26,
+     "sector_etf_change_pct": 8.35,
+     "relative_to_sector_pct": 37.91
+    },
+    "1d": {
+     "stock_change_pct": 11.49,
+     "sector_etf_change_pct": -0.83,
+     "relative_to_sector_pct": 12.32
+    },
+    "2w": {
+     "stock_change_pct": 7.56,
+     "sector_etf_change_pct": -10.65,
+     "relative_to_sector_pct": 18.21
+    },
+    "1y": {
+     "stock_change_pct": 34.28,
+     "sector_etf_change_pct": 11.97,
+     "relative_to_sector_pct": 22.31
+    },
+    "1mo": {
+     "stock_change_pct": -7.24,
+     "sector_etf_change_pct": -17.78,
+     "relative_to_sector_pct": 10.54
+    },
+    "1w": {
+     "stock_change_pct": 8.69,
+     "sector_etf_change_pct": -4.9,
+     "relative_to_sector_pct": 13.59
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-25",
+    "realtime_end": "2026-11-25",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9626,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-24",
+      "value": "26.36"
+     },
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-23",
+      "value": "26.62"
+     },
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-20",
+      "value": "35.89"
+     },
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-19",
+      "value": "28.44"
+     },
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-18",
+      "value": "24.56"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "HPQ",
+   "as_of": "2026-11-26",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 13,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-22",
+     "description": "HPQ Q1 2027 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 88,
+     "eps_estimate": 0.7168
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-24",
+     "description": "HPQ reported Q4 2026 earnings after the close \u2014 EPS 0.83 vs 0.7559 expected (beat, +9.8%)",
+     "source": "finnhub",
+     "days_ago": 2,
+     "eps_actual": 0.83,
+     "eps_estimate": 0.7559,
+     "surprise": "beat",
+     "surprise_pct": 9.8,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

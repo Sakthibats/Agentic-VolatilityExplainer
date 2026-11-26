@@ -1,0 +1,311 @@
+{
+ "schema": 1,
+ "ticker": "LI",
+ "trading_day": "2026-11-25",
+ "captured_at": "2026-11-26T03:44:00+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 11.03,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 11.03% \u2014 unusual for this stock (about 2.91x its normal move for that span, expected ~3.79%)",
+   "the past year: -34.44% \u2014 typical relative to this stock's own typical volatility (expected ~60.10%, 0.57x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "LI",
+   "price": 11.88,
+   "prev_close": 10.7,
+   "change_pct": 11.03,
+   "session_date": "2026-11-25",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 60.1,
+   "changes_pct": {
+    "1d": 11.03,
+    "1w": 3.21,
+    "2w": -2.14,
+    "1mo": 5.51,
+    "1y": -34.44,
+    "ytd": -31.13
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 11.03% \u2014 unusual for this stock (about 2.91x its normal move for that span, expected ~3.79%)",
+     "the past year: -34.44% \u2014 typical relative to this stock's own typical volatility (expected ~60.10%, 0.57x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 11.84,
+    "change_pct": -0.34,
+    "as_of": "2026-11-25 19:56 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "LI",
+   "headlines": [
+    {
+     "headline": "Li Auto earnings analysis: questions answered and next catalysts",
+     "summary": "Investing.com -- Li Auto Inc (LI) reported Q3 on Nov 25, 2026, and the stock reacted. It was $11.61 (+8.46%) as of Nov 25, 3:07 PM EST, up from a 52-week low of $10.36. The stock is still down about...",
+     "datetime": 1795639472,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=deb43f7064a5969d1d8027a6a31566242cddabb3137feee3e8d514227cb1f556"
+    },
+    {
+     "headline": "Li (LI) Q3 2026 Earnings Call Transcript",
+     "summary": "Net loss narrowed and free cash flow turned positive as its lineup changed over.",
+     "datetime": 1795625885,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=6c1ff2b61528b9bdc5337ebb48a55fb780f50e46f5697398133a3767419e95ff"
+    },
+    {
+     "headline": "Stock Market Today: Huangover Is Causing Headache for Tech Stocks",
+     "summary": "NVIDIA just posted a record quarter, yet its stock is sliding and dragging the Nasdaq with it while the Dow climbs. Something other than earnings is spooking traders, and your index fund may be more...",
+     "datetime": 1795622202,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=5b52c86537b4c7257130348c192d8a25fa6d79f26fb7771f792034f7189b39da"
+    },
+    {
+     "headline": "Li Auto\u2019s Losses Narrow and a Weak Sales Outlook Isn\u2019t Spoiling the Stock\u2019s Rally",
+     "summary": "Li Auto returns to positive free cash flow, but expects growth in deliveries to slow through the end of its fiscal year.",
+     "datetime": 1795621500,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=cf69a650a4a6c7ab5ca34d58880757ebd481a6c9896c5b55ed379aa88cd43445"
+    },
+    {
+     "headline": "Li Auto Q3 Earnings Call Highlights",
+     "summary": "Li Auto (NASDAQ:LI) expects to return to profitability in the fourth quarter of 2026 after narrowing its third-quarter loss and improving margins, executives said on the company\u2019s earnings call. The...",
+     "datetime": 1795616029,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=8bb70aad0dc72a0c8c86fb4a297fb9b8bd08e9db65aaf23a26e0d8a08839d6bb"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "LI",
+   "expiry": "2026-12-11",
+   "days_to_expiry": 15,
+   "atm_iv_pct": 52.0,
+   "iv_chain_percentile": 0,
+   "skew_points": 2.3,
+   "put_call_ratio": 0.8,
+   "total_put_oi": 589,
+   "total_call_oi": 740
+  },
+  "get_options_positioning": {
+   "ticker": "LI",
+   "spot": 11.88,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-11",
+   "primary_days_to_expiry": 15,
+   "max_pain_strike": 11.0,
+   "resistance_walls": [
+    {
+     "strike": 14.0,
+     "open_interest": 234
+    },
+    {
+     "strike": 12.5,
+     "open_interest": 161
+    },
+    {
+     "strike": 13.0,
+     "open_interest": 118
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 11.0,
+     "open_interest": 220
+    },
+    {
+     "strike": 10.0,
+     "open_interest": 173
+    },
+    {
+     "strike": 10.5,
+     "open_interest": 168
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 15,
+     "atm_iv_pct": 52.0
+    },
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 22,
+     "atm_iv_pct": 51.8
+    },
+    {
+     "expiry": "2026-12-24",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 50.7
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [],
+   "otm_call_oi": 617,
+   "otm_put_oi": 581,
+   "positioning_lean_score": 0.03,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "LI",
+   "as_of": "2026-11-26",
+   "analyst_coverage": "covered",
+   "recent_actions": [],
+   "consensus": {
+    "rating": "hold",
+    "score": 2.58,
+    "verdict": "neutral",
+    "analysts": 24,
+    "counts": {
+     "strongBuy": 3,
+     "buy": 6,
+     "hold": 14,
+     "sell": 0,
+     "strongSell": 1
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.54 to 2.58)"
+   },
+   "price_target": {
+    "mean": 14.91,
+    "median": 14.13,
+    "high": 20.72,
+    "low": 9.01,
+    "current_price": 11.88,
+    "dispersion_pct": 78.5,
+    "upside_vs_mean_pct": 25.5,
+    "upside_vs_median_pct": 18.9
+   },
+   "notes": [
+    "No analyst rating changes in the last 30 days \u2014 the consensus below is standing opinion, not a recent catalyst."
+   ]
+  },
+  "get_sector_comparison": {
+   "ticker": "LI",
+   "sector": "Consumer Cyclical",
+   "sector_etf": "XLY",
+   "comparison": {
+    "ytd": {
+     "stock_change_pct": -31.13,
+     "sector_etf_change_pct": -0.11,
+     "relative_to_sector_pct": -31.02
+    },
+    "1d": {
+     "stock_change_pct": 11.03,
+     "sector_etf_change_pct": -0.2,
+     "relative_to_sector_pct": 11.23
+    },
+    "2w": {
+     "stock_change_pct": -2.14,
+     "sector_etf_change_pct": -2.89,
+     "relative_to_sector_pct": 0.75
+    },
+    "1y": {
+     "stock_change_pct": -34.44,
+     "sector_etf_change_pct": 3.68,
+     "relative_to_sector_pct": -38.12
+    },
+    "1mo": {
+     "stock_change_pct": 5.51,
+     "sector_etf_change_pct": 1.77,
+     "relative_to_sector_pct": 3.74
+    },
+    "1w": {
+     "stock_change_pct": 3.21,
+     "sector_etf_change_pct": -1.43,
+     "relative_to_sector_pct": 4.64
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-25",
+    "realtime_end": "2026-11-25",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9626,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-24",
+      "value": "26.36"
+     },
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-23",
+      "value": "26.62"
+     },
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-20",
+      "value": "35.89"
+     },
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-19",
+      "value": "28.44"
+     },
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-18",
+      "value": "24.56"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "LI",
+   "as_of": "2026-11-26",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 13,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-25",
+     "description": "LI reported Q3 2026 earnings before the open \u2014 EPS -0.33378 vs -0.9624 expected (beat, +65.3%)",
+     "source": "finnhub",
+     "days_ago": 1,
+     "eps_actual": -0.33378,
+     "eps_estimate": -0.9624,
+     "surprise": "beat",
+     "surprise_pct": 65.3,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

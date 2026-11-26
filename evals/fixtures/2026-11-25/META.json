@@ -1,0 +1,327 @@
+{
+ "schema": 1,
+ "ticker": "META",
+ "trading_day": "2026-11-25",
+ "captured_at": "2026-11-26T03:43:27+00:00",
+ "selected_as": "move",
+ "change_pct": 3.4,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "today: 3.4% \u2014 typical relative to this stock's own typical volatility (expected ~3.08%, 1.1x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "META",
+   "price": 609.89,
+   "prev_close": 589.82,
+   "change_pct": 3.4,
+   "session_date": "2026-11-25",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 48.9,
+   "changes_pct": {
+    "1d": 3.4,
+    "1w": -1.05,
+    "2w": -3.0,
+    "1mo": -1.66,
+    "1y": -0.18,
+    "ytd": -5.99
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "today: 3.4% \u2014 typical relative to this stock's own typical volatility (expected ~3.08%, 1.1x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 612.39,
+    "change_pct": 0.41,
+    "as_of": "2026-11-25 19:59 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "META",
+   "headlines": [
+    {
+     "headline": "Apple Stock Defies AI Selloff: Is It the Market's Safe Haven?",
+     "summary": "Apple stock is up 30.61% in 2026 while Nvidia falls 21.35%. See how low AI capex and a Gemini deal shaped the gap.",
+     "datetime": 1795654800,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=8b493a0aabf1e7a97892b2891e9cfeccb44d087bf39cb88af27632f46e461646"
+    },
+    {
+     "headline": "5 Best Strong Buy Growth Stocks to Buy for 2027",
+     "summary": "Markets have spent November punishing growth, but Wall Street analysts haven\u2019t lost their nerve. That gap between falling prices and steady conviction is where next year\u2019s leaders are often found. By...",
+     "datetime": 1795653970,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=f80a409f77ebfeca0eea15bfc9771d4508ae1544fa5233f50fe5ec2d616252c0"
+    },
+    {
+     "headline": "Bill Gurley: Investors Weren\u2019t \u201cScrambling to Actually Own Anthropic.\u201d That\u2019s a Problem for Amazon and Alphabet",
+     "summary": "Key TakeawaysAnthropic fell below its $83 IPO price on Tuesday, its fourth day of trading. Bill Gurley says few of the IPO\u2019s buyers planned to hold the stock.",
+     "datetime": 1795650186,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=ccb83e0bd6299a160bd26c2c7dab41080b62eb966bf96d125c76f3e43f010e28"
+    },
+    {
+     "headline": "Purpose Investments Announces Risk Rating Changes for Certain Investment Funds",
+     "summary": "TORONTO, Nov. 25, 2026 (GLOBE NEWSWIRE) -- Purpose Investments Inc. (\u201cPurpose\u201d) today announced changes to the risk rating of nine of its funds effective November 25, 2026, as described in the table...",
+     "datetime": 1795644000,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=f2ca543011ad9a8921129051113c721e7091beb6e87453116554a37e69d049e3"
+    },
+    {
+     "headline": "Anthropic Broke Its $83 IPO Price. Most Giants Recovered",
+     "summary": "Today's big story: Anthropic Below Its IPO Price: Do Giants Come Back.",
+     "datetime": 1795637795,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=ec22ad20f7080ace31b67693f84f8fa1912a6c9f8107347cfed163b9d9639fc5"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "META",
+   "expiry": "2026-12-11",
+   "days_to_expiry": 15,
+   "atm_iv_pct": 50.0,
+   "iv_chain_percentile": 2,
+   "skew_points": 3.1,
+   "put_call_ratio": 0.82,
+   "total_put_oi": 9160,
+   "total_call_oi": 11163
+  },
+  "get_options_positioning": {
+   "ticker": "META",
+   "spot": 609.89,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-09",
+   "primary_days_to_expiry": 13,
+   "max_pain_strike": 590.0,
+   "resistance_walls": [
+    {
+     "strike": 625.0,
+     "open_interest": 81
+    },
+    {
+     "strike": 590.0,
+     "open_interest": 19
+    },
+    {
+     "strike": 595.0,
+     "open_interest": 7
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 575.0,
+     "open_interest": 3
+    },
+    {
+     "strike": 570.0,
+     "open_interest": 2
+    },
+    {
+     "strike": 555.0,
+     "open_interest": 2
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-09",
+     "days_to_expiry": 13,
+     "atm_iv_pct": 51.8
+    },
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 15,
+     "atm_iv_pct": 50.0
+    },
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 22,
+     "atm_iv_pct": 48.4
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 650.0,
+     "volume": 620,
+     "open_interest": 2,
+     "vol_oi_ratio": 310.0,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 98,
+   "otm_put_oi": 10,
+   "positioning_lean_score": 0.81,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "META",
+   "as_of": "2026-11-26",
+   "analyst_coverage": "covered",
+   "recent_actions": [],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.97,
+    "verdict": "leaning bullish",
+    "analysts": 62,
+    "counts": {
+     "strongBuy": 10,
+     "buy": 45,
+     "hold": 6,
+     "sell": 1,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.98 to 1.97)"
+   },
+   "price_target": {
+    "mean": 842.54,
+    "median": 850.0,
+    "high": 1050.0,
+    "low": 650.0,
+    "current_price": 609.89,
+    "dispersion_pct": 47.5,
+    "upside_vs_mean_pct": 38.1,
+    "upside_vs_median_pct": 39.4
+   },
+   "notes": [
+    "No analyst rating changes in the last 30 days \u2014 the consensus below is standing opinion, not a recent catalyst."
+   ]
+  },
+  "get_sector_comparison": {
+   "ticker": "META",
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "comparison": {
+    "ytd": {
+     "stock_change_pct": -5.99,
+     "sector_etf_change_pct": -9.03,
+     "relative_to_sector_pct": 3.04
+    },
+    "1d": {
+     "stock_change_pct": 3.4,
+     "sector_etf_change_pct": 0.89,
+     "relative_to_sector_pct": 2.51
+    },
+    "2w": {
+     "stock_change_pct": -3.0,
+     "sector_etf_change_pct": -2.97,
+     "relative_to_sector_pct": -0.03
+    },
+    "1y": {
+     "stock_change_pct": -0.18,
+     "sector_etf_change_pct": -5.6,
+     "relative_to_sector_pct": 5.42
+    },
+    "1mo": {
+     "stock_change_pct": -1.66,
+     "sector_etf_change_pct": 1.74,
+     "relative_to_sector_pct": -3.4
+    },
+    "1w": {
+     "stock_change_pct": -1.05,
+     "sector_etf_change_pct": -0.19,
+     "relative_to_sector_pct": -0.86
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-25",
+    "realtime_end": "2026-11-25",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9626,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-24",
+      "value": "26.36"
+     },
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-23",
+      "value": "26.62"
+     },
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-20",
+      "value": "35.89"
+     },
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-19",
+      "value": "28.44"
+     },
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-18",
+      "value": "24.56"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "META",
+   "as_of": "2026-11-26",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 13,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-26",
+     "description": "META Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 61,
+     "eps_estimate": 8.5681,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-21",
+     "description": "META reported quarterly earnings after the close \u2014 EPS 3.83 vs 5.42 expected (miss, -29.3%)",
+     "source": "yfinance",
+     "days_ago": 36,
+     "eps_actual": 3.83,
+     "eps_estimate": 5.42,
+     "surprise": "miss",
+     "surprise_pct": -29.3,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub+yfinance"
+  }
+ }
+}

@@ -1,0 +1,349 @@
+{
+ "schema": 1,
+ "ticker": "TSLA",
+ "trading_day": "2026-11-25",
+ "captured_at": "2026-11-26T03:43:14+00:00",
+ "selected_as": "control",
+ "change_pct": -1.18,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "TSLA",
+   "price": 380.14,
+   "prev_close": 384.68,
+   "change_pct": -1.18,
+   "session_date": "2026-11-25",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 72.7,
+   "changes_pct": {
+    "1d": -1.18,
+    "1w": -0.93,
+    "2w": -2.74,
+    "1mo": -6.7,
+    "1y": -9.01,
+    "ytd": -13.22
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 383.23,
+    "change_pct": 0.81,
+    "as_of": "2026-11-25 19:59 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "TSLA",
+   "headlines": [
+    {
+     "headline": "Elon Musk tells Tesla investors there is 'only one way' to eliminate poverty",
+     "summary": "Musk says poverty won\u2019t end with government checks, and that Tesla is building the real answer.",
+     "datetime": 1795653420,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=1579fa9f77d05dff05f06632abd4653fe397f4e4df6f5e03425344a278fa0279"
+    },
+    {
+     "headline": "If SpaceX and Tesla Merge Next Year, Here's What a $5,000 Investment in the Combined Company Could Be Worth by the End of 2028",
+     "summary": "An investment in Tesla could double in the event of a Space Exploration Technologies merger.",
+     "datetime": 1795649042,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=8a2eabaa38ae683f5b381fa2bd037834f64aaa8817158e22d3902f54fba446c9"
+    },
+    {
+     "headline": "Apple (AAPL) Pushes Back As 24 7 Tokenized Shares Trading Opens",
+     "summary": "Apple (NasdaqGS:AAPL) is challenging the trading of tokenized versions of its shares on newly expanded blockchain-based markets. Crypto exchange OKX and the New York Stock Exchange parent have...",
+     "datetime": 1795641107,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=57423974c39a5788070df93a39570953d50651c621f2813f64d7461c476724f7"
+    },
+    {
+     "headline": "SpaceX stock price crashes on concerns over compute demand",
+     "summary": "SpaceX's stock price is facing mounting pressure amid speculation surrounding a potential Tesla merger, an upcoming share unlock and weakening GPU rental prices. But the most consequential risk may...",
+     "datetime": 1795638730,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=37dc7ebbc91e3296a2278578b5b0084d9b60856569f48c577f60b12b4bbcca24"
+    },
+    {
+     "headline": "Billionaire Brad Gerstner\u2019s Altimeter Opened a $680 Million Tesla Stake and Exited Qualcomm and Applied Materials",
+     "summary": "Altimeter dumped two chip-equipment names, bought a put on the semiconductor sector, and bet big on Elon Musk's robots and robotaxis. Gerstner stays silent on why, but Tesla's own numbers and a steep...",
+     "datetime": 1795638121,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=8dddda9e784ea509d9f37136165d64d0c78e37e7811e2b73b98aa8e65a9423a5"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "TSLA",
+   "expiry": "2026-12-11",
+   "days_to_expiry": 15,
+   "atm_iv_pct": 59.2,
+   "iv_chain_percentile": 2,
+   "skew_points": 5.2,
+   "put_call_ratio": 1.09,
+   "total_put_oi": 36051,
+   "total_call_oi": 32986
+  },
+  "get_options_positioning": {
+   "ticker": "TSLA",
+   "spot": 380.14,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-09",
+   "primary_days_to_expiry": 13,
+   "max_pain_strike": 380.0,
+   "resistance_walls": [
+    {
+     "strike": 410.0,
+     "open_interest": 51
+    },
+    {
+     "strike": 375.0,
+     "open_interest": 35
+    },
+    {
+     "strike": 390.0,
+     "open_interest": 30
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 380.0,
+     "open_interest": 54
+    },
+    {
+     "strike": 360.0,
+     "open_interest": 50
+    },
+    {
+     "strike": 365.0,
+     "open_interest": 37
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-09",
+     "days_to_expiry": 13,
+     "atm_iv_pct": 59.0
+    },
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 15,
+     "atm_iv_pct": 59.2
+    },
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 22,
+     "atm_iv_pct": 57.3
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 350.0,
+     "volume": 221,
+     "open_interest": 1,
+     "vol_oi_ratio": 221.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 400.0,
+     "volume": 260,
+     "open_interest": 24,
+     "vol_oi_ratio": 10.8,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 380.0,
+     "volume": 158,
+     "open_interest": 15,
+     "vol_oi_ratio": 10.5,
+     "moneyness": "ITM"
+    }
+   ],
+   "otm_call_oi": 144,
+   "otm_put_oi": 214,
+   "positioning_lean_score": -0.2,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "TSLA",
+   "as_of": "2026-11-26",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-05",
+     "days_ago": 21,
+     "firm": "GLJ Research",
+     "action": "reiterated",
+     "from_grade": "Sell",
+     "to_grade": "Sell",
+     "price_target_from": 24.86,
+     "price_target_to": 24.86,
+     "is_rating_change": false,
+     "description": "GLJ Research reiterated its Sell rating on TSLA with a $24.86 price target"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.4,
+    "verdict": "leaning bullish",
+    "analysts": 45,
+    "counts": {
+     "strongBuy": 6,
+     "buy": 16,
+     "hold": 22,
+     "sell": 1,
+     "strongSell": 0
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.55 to 2.4; bearish ratings 5 to 1)"
+   },
+   "price_target": {
+    "mean": 419.05,
+    "median": 442.0,
+    "high": 600.0,
+    "low": 128.11,
+    "current_price": 380.14,
+    "dispersion_pct": 112.6,
+    "upside_vs_mean_pct": 10.2,
+    "upside_vs_median_pct": 16.3
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "TSLA",
+   "sector": "Consumer Cyclical",
+   "sector_etf": "XLY",
+   "comparison": {
+    "ytd": {
+     "stock_change_pct": -13.22,
+     "sector_etf_change_pct": -0.11,
+     "relative_to_sector_pct": -13.11
+    },
+    "1d": {
+     "stock_change_pct": -1.18,
+     "sector_etf_change_pct": -0.2,
+     "relative_to_sector_pct": -0.98
+    },
+    "2w": {
+     "stock_change_pct": -2.74,
+     "sector_etf_change_pct": -2.89,
+     "relative_to_sector_pct": 0.15
+    },
+    "1y": {
+     "stock_change_pct": -9.01,
+     "sector_etf_change_pct": 3.68,
+     "relative_to_sector_pct": -12.69
+    },
+    "1mo": {
+     "stock_change_pct": -6.7,
+     "sector_etf_change_pct": 1.77,
+     "relative_to_sector_pct": -8.47
+    },
+    "1w": {
+     "stock_change_pct": -0.93,
+     "sector_etf_change_pct": -1.43,
+     "relative_to_sector_pct": 0.5
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-25",
+    "realtime_end": "2026-11-25",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9626,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-24",
+      "value": "26.36"
+     },
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-23",
+      "value": "26.62"
+     },
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-20",
+      "value": "35.89"
+     },
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-19",
+      "value": "28.44"
+     },
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-18",
+      "value": "24.56"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "TSLA",
+   "as_of": "2026-11-26",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 13,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-26",
+     "description": "TSLA Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 61,
+     "eps_estimate": 0.4629,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-21",
+     "description": "TSLA reported quarterly earnings after the close \u2014 EPS 0.48 vs 0.45 expected (beat, +6.7%)",
+     "source": "yfinance",
+     "days_ago": 36,
+     "eps_actual": 0.48,
+     "eps_estimate": 0.45,
+     "surprise": "beat",
+     "surprise_pct": 6.7,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub+yfinance"
+  }
+ }
+}

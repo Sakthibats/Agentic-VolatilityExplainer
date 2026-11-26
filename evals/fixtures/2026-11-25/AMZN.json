@@ -1,0 +1,387 @@
+{
+ "schema": 1,
+ "ticker": "AMZN",
+ "trading_day": "2026-11-25",
+ "captured_at": "2026-11-26T03:43:21+00:00",
+ "selected_as": "move",
+ "change_pct": -3.12,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "today: -3.12% \u2014 typical relative to this stock's own typical volatility (expected ~2.95%, 1.06x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "this week: -8.71% \u2014 typical relative to this stock's own typical volatility (expected ~6.61%, 1.32x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "AMZN",
+   "price": 244.43,
+   "prev_close": 252.29,
+   "change_pct": -3.12,
+   "session_date": "2026-11-25",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 46.9,
+   "changes_pct": {
+    "1d": -3.12,
+    "1w": -8.71,
+    "2w": -8.17,
+    "1mo": -3.43,
+    "1y": 8.02,
+    "ytd": 7.92
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "today: -3.12% \u2014 typical relative to this stock's own typical volatility (expected ~2.95%, 1.06x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "this week: -8.71% \u2014 typical relative to this stock's own typical volatility (expected ~6.61%, 1.32x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 246.77,
+    "change_pct": 0.96,
+    "as_of": "2026-11-25 19:59 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "AMZN",
+   "headlines": [
+    {
+     "headline": "Apple Stock Defies AI Selloff: Is It the Market's Safe Haven?",
+     "summary": "Apple stock is up 30.61% in 2026 while Nvidia falls 21.35%. See how low AI capex and a Gemini deal shaped the gap.",
+     "datetime": 1795654800,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=8b493a0aabf1e7a97892b2891e9cfeccb44d087bf39cb88af27632f46e461646"
+    },
+    {
+     "headline": "Bill Gurley: Investors Weren\u2019t \u201cScrambling to Actually Own Anthropic.\u201d That\u2019s a Problem for Amazon and Alphabet",
+     "summary": "Key TakeawaysAnthropic fell below its $83 IPO price on Tuesday, its fourth day of trading. Bill Gurley says few of the IPO\u2019s buyers planned to hold the stock.",
+     "datetime": 1795650186,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=ccb83e0bd6299a160bd26c2c7dab41080b62eb966bf96d125c76f3e43f010e28"
+    },
+    {
+     "headline": "Musk's Plan To Put 1 Million AI Satellites In Orbit Gets US Approval. Amazon Questions Whether It Can Be Done.",
+     "summary": "SpaceX believes solar-powered satellites could eventually reduce the enormous energy demands of terrestrial AI infrastructure.",
+     "datetime": 1795648590,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=1941f15a07a41c34a8084c1a2b761aff803fe78d8f61ebbbb01e846ba6c475a6"
+    },
+    {
+     "headline": "Pro Shop's Chad Mumm on Skins Game Return To Prime Video",
+     "summary": "\"The Farmers Insurance Skins Game\" returns to Prime video this Friday for a second year in a row. This year's event features PGA tour veterans and rookies vying for chance to win $4 million at the...",
+     "datetime": 1795647579,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=c2e1d407765923f7af770828d238ec20312c8fd8e872c3b29cc7709a44dd1be6"
+    },
+    {
+     "headline": "Trump Has A Message for Big Tech Firms Like Amazon, Google and Microsoft Building Data Centers Abroad: \u2018We\u2019re Going to Put A Tremendous Tax On Them\u2019",
+     "summary": "President Donald Trump is threatening steep tax penalties on U.S. technology companies that build data centers overseas, signaling a push to keep more AI infrastructure investment within American...",
+     "datetime": 1795645805,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=195e3e45f2885f755c5d6f09edc3485c0c9e2872ce5260249ee876020113cfa8"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "AMZN",
+   "expiry": "2026-12-11",
+   "days_to_expiry": 15,
+   "atm_iv_pct": 44.3,
+   "iv_chain_percentile": 6,
+   "skew_points": 5.5,
+   "put_call_ratio": 0.64,
+   "total_put_oi": 18711,
+   "total_call_oi": 29037
+  },
+  "get_options_positioning": {
+   "ticker": "AMZN",
+   "spot": 244.43,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-09",
+   "primary_days_to_expiry": 13,
+   "max_pain_strike": 255.0,
+   "resistance_walls": [
+    {
+     "strike": 270.0,
+     "open_interest": 63
+    },
+    {
+     "strike": 275.0,
+     "open_interest": 35
+    },
+    {
+     "strike": 265.0,
+     "open_interest": 31
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 235.0,
+     "open_interest": 26
+    },
+    {
+     "strike": 220.0,
+     "open_interest": 23
+    },
+    {
+     "strike": 255.0,
+     "open_interest": 22
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-09",
+     "days_to_expiry": 13,
+     "atm_iv_pct": 43.5
+    },
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 15,
+     "atm_iv_pct": 44.3
+    },
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 22,
+     "atm_iv_pct": 43.2
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 245.0,
+     "volume": 159,
+     "open_interest": 1,
+     "vol_oi_ratio": 159.0,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 153,
+   "otm_put_oi": 63,
+   "positioning_lean_score": 0.42,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "AMZN",
+   "as_of": "2026-11-26",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-03",
+     "days_ago": 23,
+     "firm": "Freedom Broker",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 255.0,
+     "price_target_to": 330.0,
+     "is_rating_change": false,
+     "description": "Freedom Broker maintained its Buy rating on AMZN and raised its price target from $255.0 to $330.0"
+    },
+    {
+     "date": "2026-10-31",
+     "days_ago": 26,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 348.0,
+     "price_target_to": 352.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Buy rating on AMZN and raised its price target from $348.0 to $352.0"
+    },
+    {
+     "date": "2026-10-30",
+     "days_ago": 27,
+     "firm": "Scotiabank",
+     "action": "maintained",
+     "from_grade": "Sector Outperform",
+     "to_grade": "Sector Outperform",
+     "price_target_from": 325.0,
+     "price_target_to": 300.0,
+     "is_rating_change": false,
+     "description": "Scotiabank maintained its Sector Outperform rating on AMZN and cut its price target from $325.0 to $300.0"
+    },
+    {
+     "date": "2026-10-30",
+     "days_ago": 27,
+     "firm": "Telsey Advisory Group",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 335.0,
+     "price_target_to": 335.0,
+     "is_rating_change": false,
+     "description": "Telsey Advisory Group maintained its Outperform rating on AMZN with a $335.0 price target"
+    },
+    {
+     "date": "2026-10-30",
+     "days_ago": 27,
+     "firm": "DA Davidson",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 250.0,
+     "price_target_to": 250.0,
+     "is_rating_change": false,
+     "description": "DA Davidson maintained its Neutral rating on AMZN with a $250.0 price target"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.82,
+    "verdict": "leaning bullish",
+    "analysts": 62,
+    "counts": {
+     "strongBuy": 14,
+     "buy": 45,
+     "hold": 3,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.78 to 1.82)"
+   },
+   "price_target": {
+    "mean": 326.34,
+    "median": 328.0,
+    "high": 405.0,
+    "low": 230.0,
+    "current_price": 244.43,
+    "dispersion_pct": 53.6,
+    "upside_vs_mean_pct": 33.5,
+    "upside_vs_median_pct": 34.2
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "AMZN",
+   "sector": "Consumer Cyclical",
+   "sector_etf": "XLY",
+   "comparison": {
+    "ytd": {
+     "stock_change_pct": 7.92,
+     "sector_etf_change_pct": -0.11,
+     "relative_to_sector_pct": 8.03
+    },
+    "1d": {
+     "stock_change_pct": -3.12,
+     "sector_etf_change_pct": -0.2,
+     "relative_to_sector_pct": -2.92
+    },
+    "2w": {
+     "stock_change_pct": -8.17,
+     "sector_etf_change_pct": -2.89,
+     "relative_to_sector_pct": -5.28
+    },
+    "1y": {
+     "stock_change_pct": 8.02,
+     "sector_etf_change_pct": 3.68,
+     "relative_to_sector_pct": 4.34
+    },
+    "1mo": {
+     "stock_change_pct": -3.43,
+     "sector_etf_change_pct": 1.77,
+     "relative_to_sector_pct": -5.2
+    },
+    "1w": {
+     "stock_change_pct": -8.71,
+     "sector_etf_change_pct": -1.43,
+     "relative_to_sector_pct": -7.28
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-25",
+    "realtime_end": "2026-11-25",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9626,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-24",
+      "value": "26.36"
+     },
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-23",
+      "value": "26.62"
+     },
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-20",
+      "value": "35.89"
+     },
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-19",
+      "value": "28.44"
+     },
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-18",
+      "value": "24.56"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "AMZN",
+   "as_of": "2026-11-26",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 13,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-03",
+     "description": "AMZN Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 69,
+     "eps_estimate": 2.4431,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-29",
+     "description": "AMZN reported Q3 2026 earnings after the close \u2014 EPS 1.89 vs 2.003 expected (miss, -5.6%)",
+     "source": "finnhub",
+     "days_ago": 28,
+     "eps_actual": 1.89,
+     "eps_estimate": 2.003,
+     "surprise": "miss",
+     "surprise_pct": -5.6,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

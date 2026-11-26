@@ -1,0 +1,349 @@
+{
+ "schema": 1,
+ "ticker": "LRCX",
+ "trading_day": "2026-11-25",
+ "captured_at": "2026-11-26T03:44:21+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -5.68,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: -5.68% \u2014 typical relative to this stock's own typical volatility (expected ~7.18%, 0.79x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "this week: -12.6% \u2014 typical relative to this stock's own typical volatility (expected ~16.04%, 0.79x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past 2 weeks: -21.57% \u2014 typical relative to this stock's own typical volatility (expected ~22.69%, 0.95x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past month: -23.18% \u2014 typical relative to this stock's own typical volatility (expected ~32.88%, 0.7x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "LRCX",
+   "price": 185.01,
+   "prev_close": 196.16,
+   "change_pct": -5.68,
+   "session_date": "2026-11-25",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 113.9,
+   "changes_pct": {
+    "1d": -5.68,
+    "1w": -12.6,
+    "2w": -21.57,
+    "1mo": -23.18,
+    "1y": 23.6,
+    "ytd": 0.27
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: -5.68% \u2014 typical relative to this stock's own typical volatility (expected ~7.18%, 0.79x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "this week: -12.6% \u2014 typical relative to this stock's own typical volatility (expected ~16.04%, 0.79x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past 2 weeks: -21.57% \u2014 typical relative to this stock's own typical volatility (expected ~22.69%, 0.95x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past month: -23.18% \u2014 typical relative to this stock's own typical volatility (expected ~32.88%, 0.7x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 189.0,
+    "change_pct": 2.16,
+    "as_of": "2026-11-25 19:59 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "LRCX",
+   "headlines": [
+    {
+     "headline": "Memory Makers Are Spending Again. Will Lam Research (LRCX) Cash In?",
+     "summary": "Lam Research Corporation (NASDAQ:LRCX) opens our list of the 10 Best Strong Buy Growth Stocks to Buy for 2027 at number 10. By November 19, the wider market had slipped about 8.5% from its 52-week...",
+     "datetime": 1795654093,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=f1d2461c4df5d4dd52ec712b7a115f14ed059eaab0ec6cd33f8981bbe8f666a8"
+    },
+    {
+     "headline": "Why My Analysis Points to Nearly 40% Semiconductor Equipment Growth in 2026",
+     "summary": "My bottom-up analysis of five leading semiconductor equipment manufacturers points to combined equipment revenue growth approaching 40% in 2026. The forecast incorporates actual revenue growth...",
+     "datetime": 1795650154,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=cbceb7bfd2044fb8f9b9467e94ec406ac3809ae5adea69e0704de2073eae16ea"
+    },
+    {
+     "headline": "Anthropic, Nvidia, Micron, HP Inc., Dell, Deere, and More Stocks That Explain Today\u2019s Market",
+     "summary": "Nvidia trades lower while Anthropic stock rebounds.",
+     "datetime": 1795642860,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=e90ca90663abae20139ce2648b22ce7adbf2bd644711c46aac6dfa4457875169"
+    },
+    {
+     "headline": "Update: US Equity Indexes Mixed, Treasury Yields Drop as Investors Rotate Out of Chipmakers While Assessing Trade Tariffs",
+     "summary": "(Updates with index/price moves, macroeconomic data, and company news from the first paragraph.)",
+     "datetime": 1795642342,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=1682756898b211e90215bf904a22b33f7629d6d54a0f89034e251fbcba267792"
+    },
+    {
+     "headline": "Lam Research: One Of The Best Black Friday Deals You'll See",
+     "summary": "I reiterate my Buy rating on Lam Research, as the nearly 50% selloff has left valuation detached from solid fundamentals.",
+     "datetime": 1795642065,
+     "source": "SeekingAlpha",
+     "url": "https://finnhub.io/api/news?id=3d3a2f0296e295db6eaa187f9095e6c157f0befe755d509b3b2ccbf44fbfcfbb"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "LRCX",
+   "expiry": "2026-12-11",
+   "days_to_expiry": 15,
+   "atm_iv_pct": 90.5,
+   "iv_chain_percentile": 16,
+   "skew_points": 7.0,
+   "put_call_ratio": 0.67,
+   "total_put_oi": 2330,
+   "total_call_oi": 3486
+  },
+  "get_options_positioning": {
+   "ticker": "LRCX",
+   "spot": 185.01,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-11",
+   "primary_days_to_expiry": 15,
+   "max_pain_strike": 230.0,
+   "resistance_walls": [
+    {
+     "strike": 265.0,
+     "open_interest": 527
+    },
+    {
+     "strike": 270.0,
+     "open_interest": 426
+    },
+    {
+     "strike": 240.0,
+     "open_interest": 320
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 185.0,
+     "open_interest": 245
+    },
+    {
+     "strike": 235.0,
+     "open_interest": 198
+    },
+    {
+     "strike": 250.0,
+     "open_interest": 148
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 15,
+     "atm_iv_pct": 90.5
+    },
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 22,
+     "atm_iv_pct": 87.3
+    },
+    {
+     "expiry": "2026-12-24",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 84.7
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 225.0,
+     "volume": 151,
+     "open_interest": 72,
+     "vol_oi_ratio": 2.1,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 3448,
+   "otm_put_oi": 794,
+   "positioning_lean_score": 0.63,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "LRCX",
+   "as_of": "2026-11-26",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-09",
+     "days_ago": 17,
+     "firm": "B. Riley Securities",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 338.0,
+     "price_target_to": 310.0,
+     "is_rating_change": false,
+     "description": "B. Riley Securities maintained its Buy rating on LRCX and cut its price target from $338.0 to $310.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.97,
+    "verdict": "leaning bullish",
+    "analysts": 34,
+    "counts": {
+     "strongBuy": 5,
+     "buy": 25,
+     "hold": 4,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.06 to 1.97; bearish ratings 0 to 0)"
+   },
+   "price_target": {
+    "mean": 360.43,
+    "median": 350.0,
+    "high": 500.0,
+    "low": 255.0,
+    "current_price": 185.01,
+    "dispersion_pct": 68.0,
+    "upside_vs_mean_pct": 94.8,
+    "upside_vs_median_pct": 89.2
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "LRCX",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "ytd": {
+     "stock_change_pct": 0.27,
+     "sector_etf_change_pct": 8.35,
+     "relative_to_sector_pct": -8.08
+    },
+    "1d": {
+     "stock_change_pct": -5.68,
+     "sector_etf_change_pct": -0.83,
+     "relative_to_sector_pct": -4.85
+    },
+    "2w": {
+     "stock_change_pct": -21.57,
+     "sector_etf_change_pct": -10.65,
+     "relative_to_sector_pct": -10.92
+    },
+    "1y": {
+     "stock_change_pct": 23.6,
+     "sector_etf_change_pct": 11.97,
+     "relative_to_sector_pct": 11.63
+    },
+    "1mo": {
+     "stock_change_pct": -23.18,
+     "sector_etf_change_pct": -17.78,
+     "relative_to_sector_pct": -5.4
+    },
+    "1w": {
+     "stock_change_pct": -12.6,
+     "sector_etf_change_pct": -4.9,
+     "relative_to_sector_pct": -7.7
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-25",
+    "realtime_end": "2026-11-25",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9626,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-24",
+      "value": "26.36"
+     },
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-23",
+      "value": "26.62"
+     },
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-20",
+      "value": "35.89"
+     },
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-19",
+      "value": "28.44"
+     },
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-18",
+      "value": "24.56"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "LRCX",
+   "as_of": "2026-11-26",
+   "events": [
+    {
+     "type": "ex_dividend",
+     "date": "2026-12-02",
+     "source": "yfinance",
+     "description": "LRCX goes ex-dividend \u2014 expect a mechanical price drop of roughly the dividend",
+     "days_until": 6
+    },
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 13,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-26",
+     "description": "LRCX Q2 2027 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 61,
+     "eps_estimate": 2.3877
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-21",
+     "description": "LRCX reported quarterly earnings after the close \u2014 EPS 2.2 vs 2.18 expected (in line, +0.9%)",
+     "source": "yfinance",
+     "days_ago": 36,
+     "eps_actual": 2.2,
+     "eps_estimate": 2.18,
+     "surprise": "in line",
+     "surprise_pct": 0.9,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub+yfinance"
+  }
+ }
+}

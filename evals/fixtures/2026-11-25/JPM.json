@@ -1,0 +1,357 @@
+{
+ "schema": 1,
+ "ticker": "JPM",
+ "trading_day": "2026-11-25",
+ "captured_at": "2026-11-26T03:43:07+00:00",
+ "selected_as": "control",
+ "change_pct": -0.11,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "JPM",
+   "price": 316.74,
+   "prev_close": 317.1,
+   "change_pct": -0.11,
+   "session_date": "2026-11-25",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 31.7,
+   "changes_pct": {
+    "1d": -0.11,
+    "1w": -2.27,
+    "2w": -7.76,
+    "1mo": -5.67,
+    "1y": 8.34,
+    "ytd": -0.81
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 318.44,
+    "change_pct": 0.54,
+    "as_of": "2026-11-25 19:58 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "JPM",
+   "headlines": [
+    {
+     "headline": "Market Chatter: JPMorgan Projects $450 Billion in AI High-Grade Debt Issuance for 2027",
+     "summary": "Companies will raise $450 billion in public investment-grade debt markets next year to fund artifici",
+     "datetime": 1795645227,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=3b8493e0cbcd827b236329a6550a6db8f9beced1becd62a0efe19db048189586"
+    },
+    {
+     "headline": "JPMorgan sees $450B in AI bond issuance in 2027",
+     "summary": "Investing.com -- JPMorgan Chase & Co. expects companies to raise $450 billion through investment-grade bond markets in 2027 to fund artificial intelligence capital expenditures, up from $368 billion...",
+     "datetime": 1795643904,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=aec5c60df6161d6b165f82a9ab38d5a8b2b3ab60b320aafaf94b87f91c1a91cb"
+    },
+    {
+     "headline": "JPMorgan Sees $450 Billion AI Debt Blitz in 2027 Before Plateau",
+     "summary": "Companies will tap public high-grade debt markets for $450 billion next year to finance their artificial intelligence-related capital expenditures, even as a growth plateau looms for the burgeoning...",
+     "datetime": 1795641441,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=ba5f5e61702518ed11052cd44397cdbfb6b29461968abb874cea8a4afea583fd"
+    },
+    {
+     "headline": "Jensen Huang\u2019s Return Is Off to a Rough Start. The Market Isn\u2019t the Only Thing Paying the Price.",
+     "summary": "Nvidia will never be the same. Neither will the rest of us.",
+     "datetime": 1795636500,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=9d8a8fc532f09a58194c7420e9c19b39c64dd83240f8644bc6b5905305ed4f49"
+    },
+    {
+     "headline": "12 Big Funds Bought JPMorgan Chase Last Quarter, While 12 Sold. Who\u2019s Right?",
+     "summary": "Key TakeawaysOf the 460 big funds that have filed 13Fs for the third quarter, 12 bought JPMorgan Chase and 12 sold. Axiom Investors added about $489 million of the stock, while MKP Capital sold a...",
+     "datetime": 1795630860,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=1b16c9ac834c07bf42004a4eeffcd8133eee9911a716d0f35ad2844af7723bd5"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "JPM",
+   "expiry": "2026-12-11",
+   "days_to_expiry": 15,
+   "atm_iv_pct": 30.3,
+   "iv_chain_percentile": 5,
+   "skew_points": 6.3,
+   "put_call_ratio": 0.97,
+   "total_put_oi": 3888,
+   "total_call_oi": 3996
+  },
+  "get_options_positioning": {
+   "ticker": "JPM",
+   "spot": 316.74,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-11",
+   "primary_days_to_expiry": 15,
+   "max_pain_strike": 330.0,
+   "resistance_walls": [
+    {
+     "strike": 360.0,
+     "open_interest": 661
+    },
+    {
+     "strike": 340.0,
+     "open_interest": 443
+    },
+    {
+     "strike": 365.0,
+     "open_interest": 372
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 305.0,
+     "open_interest": 877
+    },
+    {
+     "strike": 315.0,
+     "open_interest": 589
+    },
+    {
+     "strike": 300.0,
+     "open_interest": 332
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 15,
+     "atm_iv_pct": 30.3
+    },
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 22,
+     "atm_iv_pct": 27.8
+    },
+    {
+     "expiry": "2026-12-24",
+     "days_to_expiry": 28,
+     "atm_iv_pct": 29.8
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 312.5,
+     "volume": 106,
+     "open_interest": 24,
+     "vol_oi_ratio": 4.4,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 320.0,
+     "volume": 480,
+     "open_interest": 265,
+     "vol_oi_ratio": 1.8,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 325.0,
+     "volume": 207,
+     "open_interest": 194,
+     "vol_oi_ratio": 1.1,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 300.0,
+     "volume": 379,
+     "open_interest": 332,
+     "vol_oi_ratio": 1.1,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 3880,
+   "otm_put_oi": 2835,
+   "positioning_lean_score": 0.16,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "JPM",
+   "as_of": "2026-11-26",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-02",
+     "days_ago": 24,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 395.0,
+     "price_target_to": 400.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Buy rating on JPM and raised its price target from $395.0 to $400.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.23,
+    "verdict": "leaning bullish",
+    "analysts": 26,
+    "counts": {
+     "strongBuy": 5,
+     "buy": 10,
+     "hold": 11,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.38 to 2.23; bearish ratings 1 to 0)"
+   },
+   "price_target": {
+    "mean": 373.65,
+    "median": 372.0,
+    "high": 425.0,
+    "low": 312.0,
+    "current_price": 316.74,
+    "dispersion_pct": 30.2,
+    "upside_vs_mean_pct": 18.0,
+    "upside_vs_median_pct": 17.4
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "JPM",
+   "sector": "Financial Services",
+   "sector_etf": "XLF",
+   "comparison": {
+    "ytd": {
+     "stock_change_pct": -0.81,
+     "sector_etf_change_pct": 4.13,
+     "relative_to_sector_pct": -4.94
+    },
+    "1d": {
+     "stock_change_pct": -0.11,
+     "sector_etf_change_pct": 0.71,
+     "relative_to_sector_pct": -0.82
+    },
+    "2w": {
+     "stock_change_pct": -7.76,
+     "sector_etf_change_pct": -3.62,
+     "relative_to_sector_pct": -4.14
+    },
+    "1y": {
+     "stock_change_pct": 8.34,
+     "sector_etf_change_pct": 10.62,
+     "relative_to_sector_pct": -2.28
+    },
+    "1mo": {
+     "stock_change_pct": -5.67,
+     "sector_etf_change_pct": 1.13,
+     "relative_to_sector_pct": -6.8
+    },
+    "1w": {
+     "stock_change_pct": -2.27,
+     "sector_etf_change_pct": 0.16,
+     "relative_to_sector_pct": -2.43
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-25",
+    "realtime_end": "2026-11-25",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9626,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-24",
+      "value": "26.36"
+     },
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-23",
+      "value": "26.62"
+     },
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-20",
+      "value": "35.89"
+     },
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-19",
+      "value": "28.44"
+     },
+     {
+      "realtime_start": "2026-11-25",
+      "realtime_end": "2026-11-25",
+      "date": "2026-11-18",
+      "value": "24.56"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "JPM",
+   "as_of": "2026-11-26",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 13,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-14",
+     "description": "JPM Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 49,
+     "eps_estimate": 5.9036,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-13",
+     "description": "JPM reported quarterly earnings before the open \u2014 EPS 5.75 vs 5.94 expected (miss, -3.2%)",
+     "source": "yfinance",
+     "days_ago": 44,
+     "eps_actual": 5.75,
+     "eps_estimate": 5.94,
+     "surprise": "miss",
+     "surprise_pct": -3.2,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub+yfinance"
+  }
+ }
+}
