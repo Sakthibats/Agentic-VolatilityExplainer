@@ -1,0 +1,350 @@
+{
+ "schema": 1,
+ "ticker": "AVGO",
+ "trading_day": "2026-11-27",
+ "captured_at": "2026-11-28T03:28:28+00:00",
+ "selected_as": "move",
+ "change_pct": 3.82,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "today: 3.82% \u2014 typical relative to this stock's own typical volatility (expected ~5.34%, 0.72x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "this week: -9.9% \u2014 typical relative to this stock's own typical volatility (expected ~11.93%, 0.83x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past 2 weeks: -14.28% \u2014 typical relative to this stock's own typical volatility (expected ~16.87%, 0.85x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "AVGO",
+   "price": 312.34,
+   "prev_close": 300.86,
+   "change_pct": 3.82,
+   "session_date": "2026-11-27",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 84.7,
+   "changes_pct": {
+    "1d": 3.82,
+    "1w": -9.9,
+    "2w": -14.28,
+    "1mo": -11.22,
+    "1y": -18.28,
+    "ytd": -9.65
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "today: 3.82% \u2014 typical relative to this stock's own typical volatility (expected ~5.34%, 0.72x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "this week: -9.9% \u2014 typical relative to this stock's own typical volatility (expected ~11.93%, 0.83x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past 2 weeks: -14.28% \u2014 typical relative to this stock's own typical volatility (expected ~16.87%, 0.85x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 311.67,
+    "change_pct": -0.21,
+    "as_of": "2026-11-27 16:59 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "AVGO",
+   "headlines": [
+    {
+     "headline": "Plot Twist: Nvidia\u2019s Vera Rubin Gets 2-6.5x GB300\u2019s Tokens per Dollar. Amazon\u2019s Trainium Edge Was Against the Old Chip",
+     "summary": "Key TakeawaysSemiAnalysis found that Nvidia\u2019s Vera Rubin NVL72 rack delivers 2x to 6. 5x the tokens per dollar of total cost of its GB300 NVL72 rack.",
+     "datetime": 1795821835,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=e299fe88567a7a659bfd5f2a6daa4f621b9279aa134e42209b2c5a991d644c68"
+    },
+    {
+     "headline": "Jensen Huang Is Back. Nvidia\u2019s (NVDA) Bull Case Remains",
+     "summary": "Jensen Huang is back at the helm, and Nvidia\u2019s (NVDA) bull case remains in play. Nvidia shares surged 31.5% on November 23 after news of Jensen Huang\u2019s reinstatement, underscoring how closely...",
+     "datetime": 1795813560,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=a3adb5dfaf174dffb6f21e2a31c6eadd3eb5208d57c2c682d0a5fd92dc772fb4"
+    },
+    {
+     "headline": "What Broadcom Stock's Google Chip Order Cut Means For Shareholders",
+     "summary": "Reports in late November indicated that Alphabet plans to trim 2027 shipments of Broadcom designed TPU AI chips by about 20%, which came alongside wider concern about whether heavy AI data center...",
+     "datetime": 1795810247,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=c8f5f95fc63fc316f75b9d4695688e2a37b2434e4526f82c35927bf19445e53d"
+    },
+    {
+     "headline": "Broadcom Stocks Climb 2.19% as $1 Billion Anthropic Stake Turns Positive",
+     "summary": "Broadcom bought into Anthropic's $26 billion placement at $83 a share, and its exposure runs far deeper through a five-year chip lease.",
+     "datetime": 1795808802,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=76fbfc1539fe3992c078ece25fec3d76d551350d3d5ad86ba50e688609563f48"
+    },
+    {
+     "headline": "Skyworks (SWKS) Stock Is Up 6.5% Today Along With Chip Rally",
+     "summary": "On Friday, Nov. 27, Skyworks rose 6.5% as chip stocks rallied, without company-specific news",
+     "datetime": 1795797937,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=c8df959a07ed1f5343283db2befe0af7dea3ba07e9069186bc9f604c0c4e09fa"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "AVGO",
+   "expiry": "2026-12-18",
+   "days_to_expiry": 20,
+   "atm_iv_pct": 72.2,
+   "iv_chain_percentile": 3,
+   "skew_points": 7.8,
+   "put_call_ratio": 0.91,
+   "total_put_oi": 111685,
+   "total_call_oi": 122628
+  },
+  "get_options_positioning": {
+   "ticker": "AVGO",
+   "spot": 312.34,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-11",
+   "primary_days_to_expiry": 13,
+   "max_pain_strike": 330.0,
+   "resistance_walls": [
+    {
+     "strike": 350.0,
+     "open_interest": 1701
+    },
+    {
+     "strike": 380.0,
+     "open_interest": 1265
+    },
+    {
+     "strike": 365.0,
+     "open_interest": 931
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 210.0,
+     "open_interest": 3406
+    },
+    {
+     "strike": 355.0,
+     "open_interest": 1051
+    },
+    {
+     "strike": 340.0,
+     "open_interest": 930
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 13,
+     "atm_iv_pct": 81.0
+    },
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 20,
+     "atm_iv_pct": 72.2
+    },
+    {
+     "expiry": "2026-12-24",
+     "days_to_expiry": 26,
+     "atm_iv_pct": 68.6
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 322.5,
+     "volume": 357,
+     "open_interest": 0,
+     "vol_oi_ratio": 357.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 400.0,
+     "volume": 346,
+     "open_interest": 0,
+     "vol_oi_ratio": 346.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 360.0,
+     "volume": 337,
+     "open_interest": 0,
+     "vol_oi_ratio": 337.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 295.0,
+     "volume": 150,
+     "open_interest": 0,
+     "vol_oi_ratio": 150.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 315.0,
+     "volume": 392,
+     "open_interest": 363,
+     "vol_oi_ratio": 1.1,
+     "moneyness": "ITM"
+    }
+   ],
+   "otm_call_oi": 11579,
+   "otm_put_oi": 7706,
+   "positioning_lean_score": 0.2,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "AVGO",
+   "as_of": "2026-11-28",
+   "analyst_coverage": "covered",
+   "recent_actions": [],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.9,
+    "verdict": "leaning bullish",
+    "analysts": 50,
+    "counts": {
+     "strongBuy": 8,
+     "buy": 39,
+     "hold": 3,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.92 to 1.9)"
+   },
+   "price_target": {
+    "mean": 523.28,
+    "median": 525.0,
+    "high": 660.0,
+    "low": 398.47,
+    "current_price": 312.34,
+    "dispersion_pct": 50.0,
+    "upside_vs_mean_pct": 67.5,
+    "upside_vs_median_pct": 68.1
+   },
+   "notes": [
+    "No analyst rating changes in the last 30 days \u2014 the consensus below is standing opinion, not a recent catalyst."
+   ]
+  },
+  "get_sector_comparison": {
+   "ticker": "AVGO",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1y": {
+     "stock_change_pct": -18.28,
+     "sector_etf_change_pct": 14.79,
+     "relative_to_sector_pct": -33.07
+    },
+    "1d": {
+     "stock_change_pct": 3.82,
+     "sector_etf_change_pct": 2.8,
+     "relative_to_sector_pct": 1.02
+    },
+    "2w": {
+     "stock_change_pct": -14.28,
+     "sector_etf_change_pct": -7.84,
+     "relative_to_sector_pct": -6.44
+    },
+    "1w": {
+     "stock_change_pct": -9.9,
+     "sector_etf_change_pct": -0.34,
+     "relative_to_sector_pct": -9.56
+    },
+    "1mo": {
+     "stock_change_pct": -11.22,
+     "sector_etf_change_pct": -16.15,
+     "relative_to_sector_pct": 4.93
+    },
+    "ytd": {
+     "stock_change_pct": -9.65,
+     "sector_etf_change_pct": 11.38,
+     "relative_to_sector_pct": -21.03
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-27",
+    "realtime_end": "2026-11-27",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9628,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-26",
+      "value": "26.8"
+     },
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-25",
+      "value": "28.29"
+     },
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-24",
+      "value": "26.36"
+     },
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-23",
+      "value": "26.62"
+     },
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-20",
+      "value": "35.89"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "AVGO",
+   "as_of": "2026-11-28",
+   "events": [
+    {
+     "type": "earnings",
+     "date": "2026-12-09",
+     "description": "AVGO Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 11,
+     "eps_estimate": 3.8912,
+     "hour": "amc"
+    },
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 11,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    }
+   ],
+   "recent_events": [],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}

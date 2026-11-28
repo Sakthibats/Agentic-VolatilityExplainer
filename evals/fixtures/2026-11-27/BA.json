@@ -1,0 +1,349 @@
+{
+ "schema": 1,
+ "ticker": "BA",
+ "trading_day": "2026-11-27",
+ "captured_at": "2026-11-28T03:28:01+00:00",
+ "selected_as": "control",
+ "change_pct": 1.65,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "BA",
+   "price": 167.24,
+   "prev_close": 164.53,
+   "change_pct": 1.65,
+   "session_date": "2026-11-27",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 30.0,
+   "changes_pct": {
+    "1d": 1.65,
+    "1w": 4.19,
+    "2w": -2.51,
+    "1mo": 0.06,
+    "1y": -8.33,
+    "ytd": -26.58
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 167.41,
+    "change_pct": 0.1,
+    "as_of": "2026-11-27 16:58 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "BA",
+   "headlines": [
+    {
+     "headline": "Tracking David Tepper's Appaloosa Management Portfolio - Q3 2026 Update",
+     "summary": "Appaloosa\u00e2\u0080\u0099s Q3 13F portfolio fell to $7.56 billion; Micron became its largest holding at 17.61% after a 28% increase, while Apple was exited.",
+     "datetime": 1795816267,
+     "source": "SeekingAlpha",
+     "url": "https://finnhub.io/api/news?id=93e15087d8c657014617ad52b0e55f08fbd14d968fcdebdfe496c189ad3145fc"
+    },
+    {
+     "headline": "Archer Aviation Is Still Down 18% in a Month. Was $3 the Permanent Floor for ACHR Stock?",
+     "summary": "A hard month has left Archer Aviation (NYSE:ACHR) trying to prove that its latest bounce marks a real base. Archer stock is down 18% over the past month to $3.23 in afternoon trading. That price...",
+     "datetime": 1795802263,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=b3286cd1150fba9b9193d7c1116ff9dc1b8c45da6f530b5d484de1986583bb5d"
+    },
+    {
+     "headline": "Global Hypersonic Defense Market Report 2026: Trends and Forecast to 2030 | Capitalize on 17.9% CAGR as Lockheed Martin, RTX, Northrop Grumman, and Boeing Scale AI Defense",
+     "summary": "Lockheed Martin, RTX, Northrop Grumman, Boeing and General Atomics. Profiles cover competitors, market segments, regional shares, trends and opportunities.Dublin, Nov. 27, 2026 (GLOBE NEWSWIRE) --...",
+     "datetime": 1795790700,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=3a29ff2a91c9898cea1011160b8f4949858eaf85b093e8946b82fcf68e280bdb"
+    },
+    {
+     "headline": "Global Directed Energy Weapons Market Opportunities and Strategies to 2035 | Capitalize on $57.04 Billion Demand with Lockheed Martin, RTX, Northrop Grumman and Boeing",
+     "summary": "Dublin, Nov. 27, 2026 (GLOBE NEWSWIRE) -- \"Directed Energy Weapons Global Market Opportunities and Strategies to 2035\" has been added to ResearchAndMarkets.com's offering. The global directed energy...",
+     "datetime": 1795789800,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=69c8d1e3eac3fc2b3c10285c3b2be9d01600f60616480bbd26233d5085c83773"
+    },
+    {
+     "headline": "BAE Systems Secures Five-Nation Landmark Agreement Worth $6B for New CV90 Combat Vehicles",
+     "summary": "STOCKHOLM, Nov. 27, 2026 (GLOBE NEWSWIRE) -- BAE Systems has been awarded contracts worth a total of $6 billion (\u20ac5.5 billion) in a joint procurement with Finland, Lithuania, Netherlands, Norway and...",
+     "datetime": 1795786920,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=c0e0b49ce18e7cd1fb9f18c98c2571f95799855578ec42fbe868d9935c55b494"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "BA",
+   "expiry": "2026-12-18",
+   "days_to_expiry": 20,
+   "atm_iv_pct": 37.6,
+   "iv_chain_percentile": 6,
+   "skew_points": 3.4,
+   "put_call_ratio": 0.88,
+   "total_put_oi": 51439,
+   "total_call_oi": 58545
+  },
+  "get_options_positioning": {
+   "ticker": "BA",
+   "spot": 167.24,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-11",
+   "primary_days_to_expiry": 13,
+   "max_pain_strike": 165.0,
+   "resistance_walls": [
+    {
+     "strike": 180.0,
+     "open_interest": 1012
+    },
+    {
+     "strike": 175.0,
+     "open_interest": 561
+    },
+    {
+     "strike": 185.0,
+     "open_interest": 533
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 145.0,
+     "open_interest": 481
+    },
+    {
+     "strike": 165.0,
+     "open_interest": 436
+    },
+    {
+     "strike": 160.0,
+     "open_interest": 406
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 13,
+     "atm_iv_pct": 37.5
+    },
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 20,
+     "atm_iv_pct": 37.6
+    },
+    {
+     "expiry": "2026-12-24",
+     "days_to_expiry": 26,
+     "atm_iv_pct": 35.9
+    }
+   ],
+   "term_structure_trend": "Flat across the horizon",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 170.0,
+     "volume": 128,
+     "open_interest": 391,
+     "vol_oi_ratio": 0.3,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 175.0,
+     "volume": 125,
+     "open_interest": 561,
+     "vol_oi_ratio": 0.2,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 180.0,
+     "volume": 139,
+     "open_interest": 1012,
+     "vol_oi_ratio": 0.1,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 3523,
+   "otm_put_oi": 1990,
+   "positioning_lean_score": 0.28,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "BA",
+   "as_of": "2026-11-28",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-10-29",
+     "days_ago": 30,
+     "firm": "Bernstein",
+     "action": "maintained",
+     "from_grade": "Outperform",
+     "to_grade": "Outperform",
+     "price_target_from": 278.0,
+     "price_target_to": 223.0,
+     "is_rating_change": false,
+     "description": "Bernstein maintained its Outperform rating on BA and cut its price target from $278.0 to $223.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.93,
+    "verdict": "leaning bullish",
+    "analysts": 28,
+    "counts": {
+     "strongBuy": 5,
+     "buy": 20,
+     "hold": 3,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.0 to 1.93; bearish ratings 0 to 0)"
+   },
+   "price_target": {
+    "mean": 233.04,
+    "median": 235.0,
+    "high": 305.0,
+    "low": 157.0,
+    "current_price": 167.24,
+    "dispersion_pct": 63.5,
+    "upside_vs_mean_pct": 39.3,
+    "upside_vs_median_pct": 40.5
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "BA",
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "comparison": {
+    "1y": {
+     "stock_change_pct": -8.33,
+     "sector_etf_change_pct": 10.22,
+     "relative_to_sector_pct": -18.55
+    },
+    "1d": {
+     "stock_change_pct": 1.65,
+     "sector_etf_change_pct": 1.6,
+     "relative_to_sector_pct": 0.05
+    },
+    "2w": {
+     "stock_change_pct": -2.51,
+     "sector_etf_change_pct": -2.29,
+     "relative_to_sector_pct": -0.22
+    },
+    "1w": {
+     "stock_change_pct": 4.19,
+     "sector_etf_change_pct": 2.6,
+     "relative_to_sector_pct": 1.59
+    },
+    "1mo": {
+     "stock_change_pct": 0.06,
+     "sector_etf_change_pct": -1.74,
+     "relative_to_sector_pct": 1.8
+    },
+    "ytd": {
+     "stock_change_pct": -26.58,
+     "sector_etf_change_pct": 5.63,
+     "relative_to_sector_pct": -32.21
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-27",
+    "realtime_end": "2026-11-27",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9628,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-26",
+      "value": "26.8"
+     },
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-25",
+      "value": "28.29"
+     },
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-24",
+      "value": "26.36"
+     },
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-23",
+      "value": "26.62"
+     },
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-20",
+      "value": "35.89"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "BA",
+   "as_of": "2026-11-28",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 11,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-01-25",
+     "description": "BA Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 58,
+     "eps_estimate": -0.8543,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-10-27",
+     "description": "BA reported quarterly earnings before the open \u2014 EPS -0.34 vs -0.2 expected (miss, -70.0%)",
+     "source": "yfinance",
+     "days_ago": 32,
+     "eps_actual": -0.34,
+     "eps_estimate": -0.2,
+     "surprise": "miss",
+     "surprise_pct": -70.0,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub+yfinance"
+  }
+ }
+}

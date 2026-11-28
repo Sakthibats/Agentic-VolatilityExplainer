@@ -1,0 +1,410 @@
+{
+ "schema": 1,
+ "ticker": "COHR",
+ "trading_day": "2026-11-27",
+ "captured_at": "2026-11-28T03:28:55+00:00",
+ "selected_as": "top_mover",
+ "change_pct": 14.07,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 14.07% \u2014 typical relative to this stock's own typical volatility (expected ~9.52%, 1.48x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past year: 50.35% \u2014 typical relative to this stock's own typical volatility (expected ~151.10%, 0.33x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "COHR",
+   "price": 223.79,
+   "prev_close": 196.19,
+   "change_pct": 14.07,
+   "session_date": "2026-11-27",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 151.1,
+   "changes_pct": {
+    "1d": 14.07,
+    "1w": 4.12,
+    "2w": -3.57,
+    "1mo": -6.59,
+    "1y": 50.35,
+    "ytd": 15.16
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 14.07% \u2014 typical relative to this stock's own typical volatility (expected ~9.52%, 1.48x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past year: 50.35% \u2014 typical relative to this stock's own typical volatility (expected ~151.10%, 0.33x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 225.25,
+    "change_pct": 0.65,
+    "as_of": "2026-11-27 17:00 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "COHR",
+   "headlines": [
+    {
+     "headline": "Coherent Jumps 12% as Optical Stocks Rebound From Wednesday\u2019s AI Selloff; Applied Optoelectronics and Lumentum Rise 7%",
+     "summary": "A director bought $15 million of Coherent stock days before Wednesday's AI selloff buried it below his entry price. Now the shares have clawed back, but the real question is whether this optical...",
+     "datetime": 1795799198,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=9532cb77ebe7bc819d9ded3fc36555a3ae63dc33a6cb1f108a7ebeaa615bb9a1"
+    },
+    {
+     "headline": "Anthropic Stock Jumps to Reveal Its True Place in the AI Trade",
+     "summary": "By now, we\u2019re all familiar with how an artificial-intelligence rally works. Less so, when it comes to Anthropic's role in it all.",
+     "datetime": 1795793520,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=48f1860bf2ce95add277d431064487c3e8dd64fbefee27c68f2eea72cb800446"
+    },
+    {
+     "headline": "Chip stocks lead a Black Friday rally, but Nvidia misses out: AlphaCheck",
+     "summary": "Stocks rose on Friday as the AI trade rebounded amid a low-volume trading day.",
+     "datetime": 1795791447,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=00f041207782412a959d2841b9a6467797afedac8c7e0e93fcaf0c44c8659a0c"
+    },
+    {
+     "headline": "S&P 500 Premarket Gainers on Nov. 27 Led by Technology and Semiconductor Stocks",
+     "summary": "S&P 500 premarket gainers on Nov. 27 were led by technology and semiconductor stocks, including SNDK, COHR, LITE, STLD, BE, STX, WDC, LRCX, TER and MRVL.",
+     "datetime": 1795786568,
+     "source": "ChartMill",
+     "url": "https://finnhub.io/api/news?id=8c142413e577dbf403b2be407b869aae5dc7acca17e61db7254bd7d2825f35dd"
+    },
+    {
+     "headline": "What To Expect From November 2026's Job Report",
+     "summary": "Markets put December Fed hike odds at 98.1% after core PCE rose to 3.3%; a severe November jobs decline could avert the 25-basis-point move.",
+     "datetime": 1795770000,
+     "source": "SeekingAlpha",
+     "url": "https://finnhub.io/api/news?id=1477a1141141434681f03409dc8c281f2fa12b6af8e14d602be4a52ab29721c7"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "COHR",
+   "expiry": "2026-12-18",
+   "days_to_expiry": 20,
+   "atm_iv_pct": 102.9,
+   "iv_chain_percentile": 42,
+   "skew_points": 26.7,
+   "put_call_ratio": 0.87,
+   "total_put_oi": 17556,
+   "total_call_oi": 20201
+  },
+  "get_options_positioning": {
+   "ticker": "COHR",
+   "spot": 223.79,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-11",
+   "primary_days_to_expiry": 13,
+   "max_pain_strike": 215.0,
+   "resistance_walls": [
+    {
+     "strike": 260.0,
+     "open_interest": 175
+    },
+    {
+     "strike": 240.0,
+     "open_interest": 146
+    },
+    {
+     "strike": 285.0,
+     "open_interest": 126
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 195.0,
+     "open_interest": 358
+    },
+    {
+     "strike": 210.0,
+     "open_interest": 337
+    },
+    {
+     "strike": 150.0,
+     "open_interest": 199
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 13,
+     "atm_iv_pct": 104.7
+    },
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 20,
+     "atm_iv_pct": 102.9
+    },
+    {
+     "expiry": "2026-12-24",
+     "days_to_expiry": 26,
+     "atm_iv_pct": 92.5
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 200.0,
+     "volume": 256,
+     "open_interest": 0,
+     "vol_oi_ratio": 256.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "call",
+     "strike": 215.0,
+     "volume": 134,
+     "open_interest": 29,
+     "vol_oi_ratio": 4.6,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 155.0,
+     "volume": 114,
+     "open_interest": 117,
+     "vol_oi_ratio": 1.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 260.0,
+     "volume": 143,
+     "open_interest": 175,
+     "vol_oi_ratio": 0.8,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 926,
+   "otm_put_oi": 1613,
+   "positioning_lean_score": -0.27,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "COHR",
+   "as_of": "2026-11-28",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-06",
+     "days_ago": 22,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 420.0,
+     "price_target_to": 440.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Buy rating on COHR and raised its price target from $420.0 to $440.0"
+    },
+    {
+     "date": "2026-11-05",
+     "days_ago": 23,
+     "firm": "Rosenblatt",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 500.0,
+     "price_target_to": 400.0,
+     "is_rating_change": false,
+     "description": "Rosenblatt maintained its Buy rating on COHR and cut its price target from $500.0 to $400.0"
+    },
+    {
+     "date": "2026-11-05",
+     "days_ago": 23,
+     "firm": "Needham",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 380.0,
+     "price_target_to": 340.0,
+     "is_rating_change": false,
+     "description": "Needham maintained its Buy rating on COHR and cut its price target from $380.0 to $340.0"
+    },
+    {
+     "date": "2026-10-30",
+     "days_ago": 29,
+     "firm": "Morgan Stanley",
+     "action": "maintained",
+     "from_grade": "Equal-Weight",
+     "to_grade": "Equal-Weight",
+     "price_target_from": 375.0,
+     "price_target_to": 325.0,
+     "is_rating_change": false,
+     "description": "Morgan Stanley maintained its Equal-Weight rating on COHR and cut its price target from $375.0 to $325.0"
+    },
+    {
+     "date": "2026-10-30",
+     "days_ago": 29,
+     "firm": "B. Riley Securities",
+     "action": "maintained",
+     "from_grade": "Neutral",
+     "to_grade": "Neutral",
+     "price_target_from": 297.0,
+     "price_target_to": 262.0,
+     "is_rating_change": false,
+     "description": "B. Riley Securities maintained its Neutral rating on COHR and cut its price target from $297.0 to $262.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.04,
+    "verdict": "leaning bullish",
+    "analysts": 27,
+    "counts": {
+     "strongBuy": 4,
+     "buy": 18,
+     "hold": 5,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.04 to 2.04)"
+   },
+   "price_target": {
+    "mean": 367.12,
+    "median": 350.0,
+    "high": 524.96,
+    "low": 228.0,
+    "current_price": 223.79,
+    "dispersion_pct": 80.9,
+    "upside_vs_mean_pct": 64.0,
+    "upside_vs_median_pct": 56.4
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "COHR",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1y": {
+     "stock_change_pct": 50.35,
+     "sector_etf_change_pct": 14.79,
+     "relative_to_sector_pct": 35.56
+    },
+    "1d": {
+     "stock_change_pct": 14.07,
+     "sector_etf_change_pct": 2.8,
+     "relative_to_sector_pct": 11.27
+    },
+    "2w": {
+     "stock_change_pct": -3.57,
+     "sector_etf_change_pct": -7.84,
+     "relative_to_sector_pct": 4.27
+    },
+    "1w": {
+     "stock_change_pct": 4.12,
+     "sector_etf_change_pct": -0.34,
+     "relative_to_sector_pct": 4.46
+    },
+    "1mo": {
+     "stock_change_pct": -6.59,
+     "sector_etf_change_pct": -16.15,
+     "relative_to_sector_pct": 9.56
+    },
+    "ytd": {
+     "stock_change_pct": 15.16,
+     "sector_etf_change_pct": 11.38,
+     "relative_to_sector_pct": 3.78
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-27",
+    "realtime_end": "2026-11-27",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9628,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-26",
+      "value": "26.8"
+     },
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-25",
+      "value": "28.29"
+     },
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-24",
+      "value": "26.36"
+     },
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-23",
+      "value": "26.62"
+     },
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-20",
+      "value": "35.89"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "COHR",
+   "as_of": "2026-11-28",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 11,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-02",
+     "description": "COHR Q2 2027 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 66,
+     "eps_estimate": 2.4545
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-04",
+     "description": "COHR reported Q1 2027 earnings after the close \u2014 EPS 2.09 vs 2.0134 expected (beat, +3.8%)",
+     "source": "finnhub",
+     "days_ago": 24,
+     "eps_actual": 2.09,
+     "eps_estimate": 2.0134,
+     "surprise": "beat",
+     "surprise_pct": 3.8,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

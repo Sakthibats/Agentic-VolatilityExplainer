@@ -1,0 +1,396 @@
+{
+ "schema": 1,
+ "ticker": "LLY",
+ "trading_day": "2026-11-27",
+ "captured_at": "2026-11-28T03:27:54+00:00",
+ "selected_as": "control",
+ "change_pct": 0.01,
+ "move_assessment": {
+  "overall": "typical",
+  "flags": []
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "LLY",
+   "price": 1392.38,
+   "prev_close": 1392.22,
+   "change_pct": 0.01,
+   "session_date": "2026-11-27",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 31.2,
+   "changes_pct": {
+    "1d": 0.01,
+    "1w": 3.05,
+    "2w": -2.33,
+    "1mo": 8.21,
+    "1y": 26.21,
+    "ytd": 29.66
+   },
+   "move_assessment": {
+    "overall": "typical",
+    "flags": []
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 1398.51,
+    "change_pct": 0.44,
+    "as_of": "2026-11-27 16:59 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "LLY",
+   "headlines": [
+    {
+     "headline": "Stocktwits Biotech Dealmaker: Sanofi\u2019s $41B Insmed Buyout Anchors Holiday Week As Lilly Continues Buying Spree",
+     "summary": "This week witnessed the biggest biotech deal announcement by value year-to-date.",
+     "datetime": 1795824623,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=989e160efd9f9f3157ad1fc454cd1549788d89b1af5996a9d472c6a7558ab85b"
+    },
+    {
+     "headline": "What Is The Biggest Threat To Eli Lilly Stock?",
+     "summary": "Today's big story: Anthropic Broke Its $83 IPO Price. What Did Facebook Do Next.",
+     "datetime": 1795807563,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=7c6e935c04fe45e8c5885a8e711001a03b5a4c54f552865d1059e601984354cd"
+    },
+    {
+     "headline": "5 Stocks That Should Double in 3 Years",
+     "summary": "A stock can nearly double in three years without tapping into huge market hype. If investors are still willing to pay a similar price for each dollar of profit at the end, the business can deliver...",
+     "datetime": 1795807098,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=f1620a6557353ba4390300bbbfe8bbba66956fb3369bc5067c15549fb26e93f8"
+    },
+    {
+     "headline": "Mental Health Clinical Trials - Global Strategic Business Report 2026: Capitalize on the $5.2 Billion Market with IQVIA, ICON, Eli Lilly, and COMPASS Pathways",
+     "summary": "Dublin, Nov. 27, 2026 (GLOBE NEWSWIRE) -- \"Mental Health Clinical Trials - Global Strategic Business Report 2026\" has been added to ResearchAndMarkets.com's offering. The global mental health...",
+     "datetime": 1795790520,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=b9ee6dba4e0a6604c36d379115e3b9f53415922a447ef5ae0d65f7ad32333fa1"
+    },
+    {
+     "headline": "Prediction: Eli Lilly\u2019s $92 Billion Revenue Outlook Could Be Just the Beginning",
+     "summary": "Wall Street's price target barely budges from today's level, yet analysts keep lifting their 2027 earnings forecasts. Here is the gap between those two signals, and what Lilly must deliver to turn it...",
+     "datetime": 1795784622,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=01de780c7f5d57531e6c17622092814bbfabc311f0ced4f80b3d210d147a7823"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "LLY",
+   "expiry": "2026-12-18",
+   "days_to_expiry": 20,
+   "atm_iv_pct": 36.2,
+   "iv_chain_percentile": 13,
+   "skew_points": 2.0,
+   "put_call_ratio": 1.21,
+   "total_put_oi": 22656,
+   "total_call_oi": 18651
+  },
+  "get_options_positioning": {
+   "ticker": "LLY",
+   "spot": 1392.38,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-11",
+   "primary_days_to_expiry": 13,
+   "max_pain_strike": 1380.0,
+   "resistance_walls": [
+    {
+     "strike": 1485.0,
+     "open_interest": 155
+    },
+    {
+     "strike": 1470.0,
+     "open_interest": 148
+    },
+    {
+     "strike": 1500.0,
+     "open_interest": 135
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 770.0,
+     "open_interest": 112
+    },
+    {
+     "strike": 760.0,
+     "open_interest": 107
+    },
+    {
+     "strike": 1300.0,
+     "open_interest": 100
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 13,
+     "atm_iv_pct": 39.4
+    },
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 20,
+     "atm_iv_pct": 36.2
+    },
+    {
+     "expiry": "2026-12-24",
+     "days_to_expiry": 26,
+     "atm_iv_pct": 36.4
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 955.0,
+     "volume": 176,
+     "open_interest": 24,
+     "vol_oi_ratio": 7.3,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 750.0,
+     "volume": 105,
+     "open_interest": 45,
+     "vol_oi_ratio": 2.3,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 1070,
+   "otm_put_oi": 2340,
+   "positioning_lean_score": -0.37,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "LLY",
+   "as_of": "2026-11-28",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-09",
+     "days_ago": 19,
+     "firm": "Jefferies",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 1610.0,
+     "price_target_to": 1700.0,
+     "is_rating_change": false,
+     "description": "Jefferies maintained its Buy rating on LLY and raised its price target from $1610.0 to $1700.0"
+    },
+    {
+     "date": "2026-11-02",
+     "days_ago": 26,
+     "firm": "Cantor Fitzgerald",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 1440.0,
+     "price_target_to": 1600.0,
+     "is_rating_change": false,
+     "description": "Cantor Fitzgerald maintained its Overweight rating on LLY and raised its price target from $1440.0 to $1600.0"
+    },
+    {
+     "date": "2026-10-31",
+     "days_ago": 28,
+     "firm": "UBS",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 1425.0,
+     "price_target_to": 1625.0,
+     "is_rating_change": false,
+     "description": "UBS maintained its Buy rating on LLY and raised its price target from $1425.0 to $1625.0"
+    },
+    {
+     "date": "2026-10-30",
+     "days_ago": 29,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 1500.0,
+     "price_target_to": 1650.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Overweight rating on LLY and raised its price target from $1500.0 to $1650.0"
+    },
+    {
+     "date": "2026-10-30",
+     "days_ago": 29,
+     "firm": "Citigroup",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 1600.0,
+     "price_target_to": 1650.0,
+     "is_rating_change": false,
+     "description": "Citigroup maintained its Buy rating on LLY and raised its price target from $1600.0 to $1650.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.13,
+    "verdict": "leaning bullish",
+    "analysts": 31,
+    "counts": {
+     "strongBuy": 5,
+     "buy": 20,
+     "hold": 4,
+     "sell": 1,
+     "strongSell": 1
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.1 to 2.13)"
+   },
+   "price_target": {
+    "mean": 1479.37,
+    "median": 1573.0,
+    "high": 1700.0,
+    "low": 940.0,
+    "current_price": 1392.38,
+    "dispersion_pct": 51.4,
+    "upside_vs_mean_pct": 6.2,
+    "upside_vs_median_pct": 13.0
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "LLY",
+   "sector": "Healthcare",
+   "sector_etf": "XLV",
+   "comparison": {
+    "1y": {
+     "stock_change_pct": 26.21,
+     "sector_etf_change_pct": 17.96,
+     "relative_to_sector_pct": 8.25
+    },
+    "1d": {
+     "stock_change_pct": 0.01,
+     "sector_etf_change_pct": 0.28,
+     "relative_to_sector_pct": -0.27
+    },
+    "2w": {
+     "stock_change_pct": -2.33,
+     "sector_etf_change_pct": -1.93,
+     "relative_to_sector_pct": -0.4
+    },
+    "1w": {
+     "stock_change_pct": 3.05,
+     "sector_etf_change_pct": 3.8,
+     "relative_to_sector_pct": -0.75
+    },
+    "1mo": {
+     "stock_change_pct": 8.21,
+     "sector_etf_change_pct": 2.49,
+     "relative_to_sector_pct": 5.72
+    },
+    "ytd": {
+     "stock_change_pct": 29.66,
+     "sector_etf_change_pct": 19.92,
+     "relative_to_sector_pct": 9.74
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-27",
+    "realtime_end": "2026-11-27",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9628,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-26",
+      "value": "26.8"
+     },
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-25",
+      "value": "28.29"
+     },
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-24",
+      "value": "26.36"
+     },
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-23",
+      "value": "26.62"
+     },
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-20",
+      "value": "35.89"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "LLY",
+   "as_of": "2026-11-28",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 11,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-02",
+     "description": "LLY Q4 2026 earnings scheduled (before the open)",
+     "source": "finnhub",
+     "days_until": 66,
+     "eps_estimate": 11.3163,
+     "hour": "bmo"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "ex_dividend",
+     "date": "2026-11-13",
+     "source": "yfinance",
+     "description": "LLY went ex-dividend \u2014 the price drops by roughly the dividend on this date mechanically, with no news behind it",
+     "days_ago": 15
+    },
+    {
+     "type": "earnings",
+     "date": "2026-10-29",
+     "description": "LLY reported Q3 2026 earnings before the open \u2014 EPS 7.48 vs 6.3219 expected (beat, +18.3%)",
+     "source": "finnhub",
+     "days_ago": 30,
+     "eps_actual": 7.48,
+     "eps_estimate": 6.3219,
+     "surprise": "beat",
+     "surprise_pct": 18.3,
+     "hour": "bmo"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

@@ -1,0 +1,271 @@
+{
+ "schema": 1,
+ "ticker": "FRHC",
+ "trading_day": "2026-11-27",
+ "captured_at": "2026-11-28T03:29:15+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -3.74,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "today: -3.74% \u2014 typical relative to this stock's own typical volatility (expected ~3.60%, 1.04x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "this week: 9.52% \u2014 typical relative to this stock's own typical volatility (expected ~8.04%, 1.18x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "FRHC",
+   "price": 169.01,
+   "prev_close": 175.58,
+   "change_pct": -3.74,
+   "session_date": "2026-11-27",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 57.1,
+   "changes_pct": {
+    "1d": -3.74,
+    "1w": 9.52,
+    "2w": 6.96,
+    "1mo": -3.73,
+    "1y": 27.08,
+    "ytd": 36.05
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "today: -3.74% \u2014 typical relative to this stock's own typical volatility (expected ~3.60%, 1.04x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "this week: 9.52% \u2014 typical relative to this stock's own typical volatility (expected ~8.04%, 1.18x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   }
+  },
+  "get_news": {
+   "ticker": "FRHC",
+   "headlines": [
+    {
+     "headline": "Binance lists Freedom Holding token as Turlov's crypto partnership deepens",
+     "summary": "The listing raises no money for the Kazakh financial group, but it cements a commercial relationship that has become increasingly important to both sides Binance, the world's largest cryptocurrency...",
+     "datetime": 1795801886,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=57b97407660fd2a27d63191b2a651a7644f550b2028227d521f4b45a8cf4f699"
+    },
+    {
+     "headline": "Learn Why The Bull Case For Freedom Holding Stock Could Change Following Strong Earnings Report",
+     "summary": "Freedom Holding reported second quarter revenue of US$910.11 million and net income of US$46.53 million, with both basic and diluted earnings per share from continuing operations above the prior year...",
+     "datetime": 1795583520,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=c592c1f6b3d09adc3f9055575fda347be51860e9442da9088f697d9a4142a938"
+    },
+    {
+     "headline": "Freedom Holding: I'm Turning Neutral Ahead Of Possible Selling Pressure (Downgrade)",
+     "summary": "Analyst sees Freedom Holding as a wait: its 28% forward P/E premium to Kaspi and a sale near 10% of float make entry unattractive until after March 2027.",
+     "datetime": 1795334400,
+     "source": "SeekingAlpha",
+     "url": "https://finnhub.io/api/news?id=0e1b205a8a66d93f50a4a3c3f10245a5a6c50bef8e2f85af92eb9b28bf1a7505"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "FRHC",
+   "expiry": "2026-12-18",
+   "days_to_expiry": 20,
+   "atm_iv_pct": 54.7,
+   "iv_chain_percentile": 22,
+   "skew_points": 8.9,
+   "put_call_ratio": 4.04,
+   "total_put_oi": 2998,
+   "total_call_oi": 742
+  },
+  "get_options_positioning": {
+   "ticker": "FRHC",
+   "spot": 169.01,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-18",
+   "primary_days_to_expiry": 20,
+   "max_pain_strike": 175.0,
+   "resistance_walls": [
+    {
+     "strike": 180.0,
+     "open_interest": 188
+    },
+    {
+     "strike": 170.0,
+     "open_interest": 153
+    },
+    {
+     "strike": 190.0,
+     "open_interest": 147
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 140.0,
+     "open_interest": 1858
+    },
+    {
+     "strike": 180.0,
+     "open_interest": 234
+    },
+    {
+     "strike": 170.0,
+     "open_interest": 208
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 20,
+     "atm_iv_pct": 54.7
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 160.0,
+     "volume": 159,
+     "open_interest": 0,
+     "vol_oi_ratio": 159.0,
+     "moneyness": "ITM"
+    }
+   ],
+   "otm_call_oi": 598,
+   "otm_put_oi": 2414,
+   "positioning_lean_score": -0.6,
+   "positioning_lean": "Bearish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "FRHC",
+   "as_of": "2026-11-28",
+   "analyst_coverage": "none",
+   "notes": [
+    "No analyst coverage for FRHC \u2014 expected for an ETF or fund, not a data failure."
+   ]
+  },
+  "get_sector_comparison": {
+   "ticker": "FRHC",
+   "sector": "Financial Services",
+   "sector_etf": "XLF",
+   "comparison": {
+    "1y": {
+     "stock_change_pct": 27.08,
+     "sector_etf_change_pct": 10.51,
+     "relative_to_sector_pct": 16.57
+    },
+    "1d": {
+     "stock_change_pct": -3.74,
+     "sector_etf_change_pct": 1.15,
+     "relative_to_sector_pct": -4.89
+    },
+    "2w": {
+     "stock_change_pct": 6.96,
+     "sector_etf_change_pct": -1.8,
+     "relative_to_sector_pct": 8.76
+    },
+    "1w": {
+     "stock_change_pct": 9.52,
+     "sector_etf_change_pct": 2.84,
+     "relative_to_sector_pct": 6.68
+    },
+    "1mo": {
+     "stock_change_pct": -3.73,
+     "sector_etf_change_pct": 1.84,
+     "relative_to_sector_pct": -5.57
+    },
+    "ytd": {
+     "stock_change_pct": 36.05,
+     "sector_etf_change_pct": 5.33,
+     "relative_to_sector_pct": 30.72
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-27",
+    "realtime_end": "2026-11-27",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9628,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-26",
+      "value": "26.8"
+     },
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-25",
+      "value": "28.29"
+     },
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-24",
+      "value": "26.36"
+     },
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-23",
+      "value": "26.62"
+     },
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-20",
+      "value": "35.89"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "FRHC",
+   "as_of": "2026-11-28",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 11,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-08",
+     "description": "FRHC Q3 2027 earnings scheduled",
+     "source": "finnhub",
+     "days_until": 72,
+     "eps_estimate": null
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-16",
+     "description": "FRHC reported Q2 2027 earnings",
+     "source": "finnhub",
+     "days_ago": 12,
+     "eps_actual": null,
+     "eps_estimate": null,
+     "surprise": null,
+     "surprise_pct": null
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

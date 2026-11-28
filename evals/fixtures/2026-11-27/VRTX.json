@@ -1,0 +1,376 @@
+{
+ "schema": 1,
+ "ticker": "VRTX",
+ "trading_day": "2026-11-27",
+ "captured_at": "2026-11-28T03:29:08+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -5.24,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "today: -5.24% \u2014 elevated for this stock (about 2.03x its normal move for that span, expected ~2.58%)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "VRTX",
+   "price": 534.57,
+   "prev_close": 564.12,
+   "change_pct": -5.24,
+   "session_date": "2026-11-27",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 41.0,
+   "changes_pct": {
+    "1d": -5.24,
+    "1w": 2.67,
+    "2w": -1.48,
+    "1mo": 0.92,
+    "1y": 24.37,
+    "ytd": 18.23
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "today: -5.24% \u2014 elevated for this stock (about 2.03x its normal move for that span, expected ~2.58%)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 536.5,
+    "change_pct": 0.36,
+    "as_of": "2026-11-27 16:54 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "VRTX",
+   "headlines": [
+    {
+     "headline": "Review Delay May Give Vera Therapeutics Stock More Time To Build TRUTAKNA Share",
+     "summary": "The FDA recently extended the review of Vertex Pharmaceuticals' IgA nephropathy drug povetacicept by three months after classifying a filing as a major amendment, which delays a final decision until...",
+     "datetime": 1795806618,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=b2310576ccabf424195b57e6353e6d1a725c304d81097591fd3c5b2ecd45d089"
+    },
+    {
+     "headline": "Vertex Stocks Fall 7.06% as FDA Pushes Kidney Drug Decision to 2027",
+     "summary": "The agency extended its povetacicept review by up to three months after a late-cycle information request, moving the deadline to February 28.",
+     "datetime": 1795805116,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=84f4ec7cfa64b4ec9cc040ab889c1f54bddca41ef2d9ce963339c9af57c80e42"
+    },
+    {
+     "headline": "Here's Why Vera Therapeutics Stock Surged Today (Hint: It's Not Great News For Vertex Shareholders)",
+     "summary": "Some bad news from the developer of a rival drug lifted Vera's stock today.",
+     "datetime": 1795804033,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=2226bda13fc59b7a4db895e668bbd15a09823439f3423e114e2f4fa945030d0f"
+    },
+    {
+     "headline": "Vertex shares drop after FDA delays kidney drug decision",
+     "summary": "Investing.com -- Vertex Pharmaceuticals shares fell 7% Friday morning in New York after the U.S. Food and Drug Administration pushed back its decision on the company's chronic kidney disease...",
+     "datetime": 1795795490,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=86ff809a87d757c9fbdc6638f2f64f3fabf766e176216c675445622475eff7b0"
+    },
+    {
+     "headline": "Citi Says Vertex\u2019s Povetacicept Delay Is \u2018Not Thesis Changing,\u2019 Maintains Its \u2018Buy\u2019 Rating",
+     "summary": "Citi maintained its \u2018Buy\u2019 rating and $585 price target on Vertex Pharmaceuticals, according to The Fly.",
+     "datetime": 1795794776,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=8fa59d99ee7c844724ba26d80dfdcea7f75b9ffbf76ba7332751313b962eb276"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "VRTX",
+   "expiry": "2026-12-18",
+   "days_to_expiry": 20,
+   "atm_iv_pct": 36.8,
+   "iv_chain_percentile": 14,
+   "skew_points": 5.2,
+   "put_call_ratio": 1.36,
+   "total_put_oi": 4989,
+   "total_call_oi": 3670
+  },
+  "get_options_positioning": {
+   "ticker": "VRTX",
+   "spot": 534.57,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-11",
+   "primary_days_to_expiry": 13,
+   "max_pain_strike": 520.0,
+   "resistance_walls": [
+    {
+     "strike": 580.0,
+     "open_interest": 47
+    },
+    {
+     "strike": 630.0,
+     "open_interest": 31
+    },
+    {
+     "strike": 540.0,
+     "open_interest": 18
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 480.0,
+     "open_interest": 6
+    },
+    {
+     "strike": 510.0,
+     "open_interest": 4
+    },
+    {
+     "strike": 550.0,
+     "open_interest": 3
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 13,
+     "atm_iv_pct": 40.0
+    },
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 20,
+     "atm_iv_pct": 36.8
+    },
+    {
+     "expiry": "2026-12-24",
+     "days_to_expiry": 26,
+     "atm_iv_pct": 36.2
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [],
+   "otm_call_oi": 163,
+   "otm_put_oi": 12,
+   "positioning_lean_score": 0.86,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "VRTX",
+   "as_of": "2026-11-28",
+   "analyst_coverage": "covered",
+   "recent_actions": [
+    {
+     "date": "2026-11-04",
+     "days_ago": 24,
+     "firm": "Barclays",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 617.0,
+     "price_target_to": 626.0,
+     "is_rating_change": false,
+     "description": "Barclays maintained its Overweight rating on VRTX and raised its price target from $617.0 to $626.0"
+    },
+    {
+     "date": "2026-11-03",
+     "days_ago": 25,
+     "firm": "JP Morgan",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 560.0,
+     "price_target_to": 570.0,
+     "is_rating_change": false,
+     "description": "JP Morgan maintained its Overweight rating on VRTX and raised its price target from $560.0 to $570.0"
+    },
+    {
+     "date": "2026-11-03",
+     "days_ago": 25,
+     "firm": "Goldman Sachs",
+     "action": "maintained",
+     "from_grade": "Buy",
+     "to_grade": "Buy",
+     "price_target_from": 654.0,
+     "price_target_to": 725.0,
+     "is_rating_change": false,
+     "description": "Goldman Sachs maintained its Buy rating on VRTX and raised its price target from $654.0 to $725.0"
+    },
+    {
+     "date": "2026-11-03",
+     "days_ago": 25,
+     "firm": "Morgan Stanley",
+     "action": "maintained",
+     "from_grade": "Overweight",
+     "to_grade": "Overweight",
+     "price_target_from": 665.0,
+     "price_target_to": 660.0,
+     "is_rating_change": false,
+     "description": "Morgan Stanley maintained its Overweight rating on VRTX and cut its price target from $665.0 to $660.0"
+    },
+    {
+     "date": "2026-11-03",
+     "days_ago": 25,
+     "firm": "Scotiabank",
+     "action": "maintained",
+     "from_grade": "Sector Outperform",
+     "to_grade": "Sector Outperform",
+     "price_target_from": 558.0,
+     "price_target_to": 660.0,
+     "is_rating_change": false,
+     "description": "Scotiabank maintained its Sector Outperform rating on VRTX and raised its price target from $558.0 to $660.0"
+    }
+   ],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.03,
+    "verdict": "leaning bullish",
+    "analysts": 32,
+    "counts": {
+     "strongBuy": 6,
+     "buy": 20,
+     "hold": 5,
+     "sell": 1,
+     "strongSell": 0
+    },
+    "trend": "improving",
+    "trend_detail": "consensus firmed up over 3 months (score 2.17 to 2.03; bearish ratings 2 to 1)"
+   },
+   "price_target": {
+    "mean": 595.36,
+    "median": 609.5,
+    "high": 725.0,
+    "low": 350.0,
+    "current_price": 534.57,
+    "dispersion_pct": 63.0,
+    "upside_vs_mean_pct": 11.4,
+    "upside_vs_median_pct": 14.0
+   }
+  },
+  "get_sector_comparison": {
+   "ticker": "VRTX",
+   "sector": "Healthcare",
+   "sector_etf": "XLV",
+   "comparison": {
+    "1y": {
+     "stock_change_pct": 24.37,
+     "sector_etf_change_pct": 17.96,
+     "relative_to_sector_pct": 6.41
+    },
+    "1d": {
+     "stock_change_pct": -5.24,
+     "sector_etf_change_pct": 0.28,
+     "relative_to_sector_pct": -5.52
+    },
+    "2w": {
+     "stock_change_pct": -1.48,
+     "sector_etf_change_pct": -1.93,
+     "relative_to_sector_pct": 0.45
+    },
+    "1w": {
+     "stock_change_pct": 2.67,
+     "sector_etf_change_pct": 3.8,
+     "relative_to_sector_pct": -1.13
+    },
+    "1mo": {
+     "stock_change_pct": 0.92,
+     "sector_etf_change_pct": 2.49,
+     "relative_to_sector_pct": -1.57
+    },
+    "ytd": {
+     "stock_change_pct": 18.23,
+     "sector_etf_change_pct": 19.92,
+     "relative_to_sector_pct": -1.69
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-27",
+    "realtime_end": "2026-11-27",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9628,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-26",
+      "value": "26.8"
+     },
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-25",
+      "value": "28.29"
+     },
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-24",
+      "value": "26.36"
+     },
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-23",
+      "value": "26.62"
+     },
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-20",
+      "value": "35.89"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "VRTX",
+   "as_of": "2026-11-28",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 11,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-10",
+     "description": "VRTX Q4 2026 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 74,
+     "eps_estimate": 4.1856,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-02",
+     "description": "VRTX reported Q3 2026 earnings after the close \u2014 EPS 4.76 vs 4.8828 expected (miss, -2.5%)",
+     "source": "finnhub",
+     "days_ago": 26,
+     "eps_actual": 4.76,
+     "eps_estimate": 4.8828,
+     "surprise": "miss",
+     "surprise_pct": -2.5,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub"
+  }
+ }
+}

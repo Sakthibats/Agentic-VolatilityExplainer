@@ -1,0 +1,362 @@
+{
+ "schema": 1,
+ "ticker": "MU",
+ "trading_day": "2026-11-27",
+ "captured_at": "2026-11-28T03:28:08+00:00",
+ "selected_as": "move",
+ "change_pct": 7.6,
+ "move_assessment": {
+  "overall": "unusual",
+  "flags": [
+   "today: 7.6% \u2014 typical relative to this stock's own typical volatility (expected ~8.63%, 0.88x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "this week: -6.3% \u2014 typical relative to this stock's own typical volatility (expected ~19.30%, 0.33x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past 2 weeks: -18.97% \u2014 typical relative to this stock's own typical volatility (expected ~27.29%, 0.7x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past month: -34.2% \u2014 typical relative to this stock's own typical volatility (expected ~39.55%, 0.86x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+   "the past year: 188.46% \u2014 typical relative to this stock's own typical volatility (expected ~137.00%, 1.38x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "MU",
+   "price": 646.95,
+   "prev_close": 601.25,
+   "change_pct": 7.6,
+   "session_date": "2026-11-27",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 137.0,
+   "changes_pct": {
+    "1d": 7.6,
+    "1w": -6.3,
+    "2w": -18.97,
+    "1mo": -34.2,
+    "1y": 188.46,
+    "ytd": 105.26
+   },
+   "move_assessment": {
+    "overall": "unusual",
+    "flags": [
+     "today: 7.6% \u2014 typical relative to this stock's own typical volatility (expected ~8.63%, 0.88x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "this week: -6.3% \u2014 typical relative to this stock's own typical volatility (expected ~19.30%, 0.33x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past 2 weeks: -18.97% \u2014 typical relative to this stock's own typical volatility (expected ~27.29%, 0.7x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past month: -34.2% \u2014 typical relative to this stock's own typical volatility (expected ~39.55%, 0.86x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)",
+     "the past year: 188.46% \u2014 typical relative to this stock's own typical volatility (expected ~137.00%, 1.38x), but unusual in plain magnitude terms regardless of whose stock it is (overall: unusual)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 645.66,
+    "change_pct": -0.2,
+    "as_of": "2026-11-27 16:59 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "MU",
+   "headlines": [
+    {
+     "headline": "A 60-Year-Old Who Bought 1,000 Micron Shares at $192 Just Watched Jim Cramer\u2019s Investing Club Call It \u2018Comically Cheap.\u2019 Here\u2019s What\u2019s Left of His $1 Million Gain",
+     "summary": "A 60-year-old retiree's 1,000 Micron shares, bought at $192, were worth $1,213,560 in June and $646,950 at Friday's close. Jim Cramer's Investing Club calls the stock \"comically cheap.\" Here is the...",
+     "datetime": 1795826460,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=e8ed0fc146db752869efcd6e65ad9a94066caa2bbfcafcc545b25780435fe870"
+    },
+    {
+     "headline": "Micron Stocks Climb 4.29% as Chip Rebound Meets Tight 2027 Memory Supply",
+     "summary": "Shares bounce with the sector, backed by 26 take-or-pay deals carrying $32 billion in customer cash and commitments.",
+     "datetime": 1795807487,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=20e73f7fc5269787b22c8c103ae0cd47e5ef692512023efe37d4c3ebb43a401a"
+    },
+    {
+     "headline": "Jim Cramer Is Still Bullish On These 5 Tech Stocks Despite AI Bear Market",
+     "summary": "The Nasdaq-100 briefly fell 20% below its October 6 record closing high on November 25 before recovering much of the day\u2019s loss. The sell-off had picked up weeks earlier. On November 5, the Nasdaq...",
+     "datetime": 1795805361,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=aa66c798afc8263a9b4653b973996f8039704ac7c6ec480edbb30dbda5100594"
+    },
+    {
+     "headline": "Micron CEO Expects Memory Shortages to Worsen in 2028, but TrendForce Sees Prices Falling",
+     "summary": "Just nine days after Micron Technology Inc. (NASDAQ:MU) CEO Sanjay Mehrotra said memory chips would become even scarcer over the next two years, research firm TrendForce now expects prices to start...",
+     "datetime": 1795803306,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=9193ef89cf78c1f7b46a3afb2a92ba85fedc47aa4c0bacb97d39c5339f627f78"
+    },
+    {
+     "headline": "SanDisk Stocks Jump 12.85% After Kioxia and Nvidia Stretch GPU Memory With SSDs",
+     "summary": "A proof of concept used 144 Kioxia SSDs in an Nvidia GB200 rack to reach about 1.1 petabytes of extended memory.",
+     "datetime": 1795803196,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=5ca0463ab071f1bcec909b69f2637bff9edbcc17b1483657f8bc23200824a39a"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "MU",
+   "expiry": "2026-12-18",
+   "days_to_expiry": 20,
+   "atm_iv_pct": 94.0,
+   "iv_chain_percentile": 6,
+   "skew_points": -2.8,
+   "put_call_ratio": 1.04,
+   "total_put_oi": 211054,
+   "total_call_oi": 202372
+  },
+  "get_options_positioning": {
+   "ticker": "MU",
+   "spot": 646.95,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-11",
+   "primary_days_to_expiry": 13,
+   "max_pain_strike": 690.0,
+   "resistance_walls": [
+    {
+     "strike": 900.0,
+     "open_interest": 3819
+    },
+    {
+     "strike": 800.0,
+     "open_interest": 1744
+    },
+    {
+     "strike": 650.0,
+     "open_interest": 1226
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 500.0,
+     "open_interest": 2399
+    },
+    {
+     "strike": 450.0,
+     "open_interest": 836
+    },
+    {
+     "strike": 550.0,
+     "open_interest": 828
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-11",
+     "days_to_expiry": 13,
+     "atm_iv_pct": 92.5
+    },
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 20,
+     "atm_iv_pct": 94.0
+    },
+    {
+     "expiry": "2026-12-24",
+     "days_to_expiry": 26,
+     "atm_iv_pct": 85.5
+    }
+   ],
+   "term_structure_trend": "Falling \u2014 near-term risk dominates, expected to cool",
+   "unusual_activity": [
+    {
+     "side": "put",
+     "strike": 600.0,
+     "volume": 1479,
+     "open_interest": 0,
+     "vol_oi_ratio": 1479.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 700.0,
+     "volume": 1473,
+     "open_interest": 0,
+     "vol_oi_ratio": 1473.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 950.0,
+     "volume": 278,
+     "open_interest": 0,
+     "vol_oi_ratio": 278.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 980.0,
+     "volume": 213,
+     "open_interest": 0,
+     "vol_oi_ratio": 213.0,
+     "moneyness": "ITM"
+    },
+    {
+     "side": "put",
+     "strike": 400.0,
+     "volume": 186,
+     "open_interest": 0,
+     "vol_oi_ratio": 186.0,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 20100,
+   "otm_put_oi": 9125,
+   "positioning_lean_score": 0.38,
+   "positioning_lean": "Bullish lean"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "MU",
+   "as_of": "2026-11-28",
+   "analyst_coverage": "covered",
+   "recent_actions": [],
+   "consensus": {
+    "rating": "buy",
+    "score": 1.94,
+    "verdict": "leaning bullish",
+    "analysts": 49,
+    "counts": {
+     "strongBuy": 8,
+     "buy": 36,
+     "hold": 5,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 1.9 to 1.94)"
+   },
+   "price_target": {
+    "mean": 1529.69,
+    "median": 1540.0,
+    "high": 3000.0,
+    "low": 361.0,
+    "current_price": 646.95,
+    "dispersion_pct": 172.5,
+    "upside_vs_mean_pct": 136.4,
+    "upside_vs_median_pct": 138.0
+   },
+   "notes": [
+    "No analyst rating changes in the last 30 days \u2014 the consensus below is standing opinion, not a recent catalyst."
+   ]
+  },
+  "get_sector_comparison": {
+   "ticker": "MU",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1y": {
+     "stock_change_pct": 188.46,
+     "sector_etf_change_pct": 14.79,
+     "relative_to_sector_pct": 173.67
+    },
+    "1d": {
+     "stock_change_pct": 7.6,
+     "sector_etf_change_pct": 2.8,
+     "relative_to_sector_pct": 4.8
+    },
+    "2w": {
+     "stock_change_pct": -18.97,
+     "sector_etf_change_pct": -7.84,
+     "relative_to_sector_pct": -11.13
+    },
+    "1w": {
+     "stock_change_pct": -6.3,
+     "sector_etf_change_pct": -0.34,
+     "relative_to_sector_pct": -5.96
+    },
+    "1mo": {
+     "stock_change_pct": -34.2,
+     "sector_etf_change_pct": -16.15,
+     "relative_to_sector_pct": -18.05
+    },
+    "ytd": {
+     "stock_change_pct": 105.26,
+     "sector_etf_change_pct": 11.38,
+     "relative_to_sector_pct": 93.88
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-27",
+    "realtime_end": "2026-11-27",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9628,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-26",
+      "value": "26.8"
+     },
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-25",
+      "value": "28.29"
+     },
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-24",
+      "value": "26.36"
+     },
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-23",
+      "value": "26.62"
+     },
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-20",
+      "value": "35.89"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "MU",
+   "as_of": "2026-11-28",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 11,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2026-12-17",
+     "description": "MU Q1 2027 earnings scheduled (after the close)",
+     "source": "finnhub",
+     "days_until": 19,
+     "eps_estimate": 39.3702,
+     "hour": "amc"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "ex_dividend",
+     "date": "2026-10-14",
+     "source": "yfinance",
+     "description": "MU went ex-dividend \u2014 the price drops by roughly the dividend on this date mechanically, with no news behind it",
+     "days_ago": 45
+    }
+   ],
+   "earnings_status": "scheduled",
+   "earnings_source": "finnhub"
+  }
+ }
+}

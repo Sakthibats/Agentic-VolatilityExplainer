@@ -1,0 +1,351 @@
+{
+ "schema": 1,
+ "ticker": "BSP",
+ "trading_day": "2026-11-27",
+ "captured_at": "2026-11-28T03:29:22+00:00",
+ "selected_as": "top_mover",
+ "change_pct": -2.72,
+ "move_assessment": {
+  "overall": "elevated",
+  "flags": [
+   "this week: 7.99% \u2014 typical relative to this stock's own typical volatility (expected ~11.76%, 0.68x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+   "the past 2 weeks: 10.64% \u2014 typical relative to this stock's own typical volatility (expected ~16.63%, 0.64x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+  ]
+ },
+ "keys_configured": {
+  "finnhub": true,
+  "fred": true
+ },
+ "tools": {
+  "get_price_data": {
+   "ticker": "BSP",
+   "price": 45.03,
+   "prev_close": 46.29,
+   "change_pct": -2.72,
+   "session_date": "2026-11-27",
+   "session_is_today": true,
+   "realized_vol_annualized_pct": 83.5,
+   "changes_pct": {
+    "1d": -2.72,
+    "1w": 7.99,
+    "2w": 10.64,
+    "1mo": -4.23,
+    "1y": null,
+    "ytd": 11.19
+   },
+   "move_assessment": {
+    "overall": "elevated",
+    "flags": [
+     "this week: 7.99% \u2014 typical relative to this stock's own typical volatility (expected ~11.76%, 0.68x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)",
+     "the past 2 weeks: 10.64% \u2014 typical relative to this stock's own typical volatility (expected ~16.63%, 0.64x), but elevated in plain magnitude terms regardless of whose stock it is (overall: elevated)"
+    ]
+   },
+   "extended_hours": {
+    "session": "post",
+    "price": 44.85,
+    "change_pct": -0.4,
+    "as_of": "2026-11-27 16:22 ET"
+   }
+  },
+  "get_news": {
+   "ticker": "BSP",
+   "headlines": [
+    {
+     "headline": "Volume Screen Finds IBD Growth Stock Winners In Real Time",
+     "summary": "Stock market winners rising in heavy volume can be found every day in Stocks on the Move on the homepage of Investors.com.",
+     "datetime": 1795631926,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=59e2615fd6c8a79e1b3f88ecf5d6caa0593f68e2fcc689400ea3b81f7c1021f4"
+    },
+    {
+     "headline": "How 2 Quick Calls Sealed Berkshire Hathaway\u2019s $930M Bending Spoons Investment",
+     "summary": "Berkshire Hathaway owns a 4% stake in Bending Spoons, having purchased $930 million in equity across July and October.",
+     "datetime": 1795624380,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=f3c9f5166e66bd27e24e451d05edc9eb275dc1e9f38f6d5aefd630ef7b5fab0c"
+    },
+    {
+     "headline": "Warren Buffett's Successor, Greg Abel, Has Quietly Purchased 3 Stocks Since the Start of the Fourth Quarter, Including Shares of a Legal Monopoly",
+     "summary": "The Oracle of Omaha\u2019s prot\u00e9g\u00e9 is getting greedy when others are fearful.",
+     "datetime": 1795602362,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=6ef6d2a1c66c16798b3048698b4030c21bc0ddf574a8f489b6f635562f3b2e5a"
+    },
+    {
+     "headline": "Bending Spoons SpA (BSP) Q2 2026 Earnings Call Highlights: Revenue Jumps 126% as Adjusted ...",
+     "summary": "Bending Spoons SpA (BSP) posted $704 million in Q2 revenue and $381 million in adjusted operating income, while outlining its $1.29 billion Airtable deal and full-year guidance of up to $2.82 billion.",
+     "datetime": 1795551820,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=aad17d5122348e43f3c62ad755edbaaea319e287b8e767f22ab53b3332d03db1"
+    },
+    {
+     "headline": "Bending Spoons (BSP) Stock Is Down 12.2% Today Without Company News",
+     "summary": "On Tuesday, Nov. 24, the stock fell 12.2% without company-specific news, as tech stocks sold off",
+     "datetime": 1795537864,
+     "source": "Yahoo",
+     "url": "https://finnhub.io/api/news?id=2a010ae93e01b396ee4a4cc254ce27e557416e93cde3654d365a5bedf5a2db02"
+    }
+   ]
+  },
+  "get_options_data": {
+   "ticker": "BSP",
+   "expiry": "2026-12-18",
+   "days_to_expiry": 20,
+   "atm_iv_pct": 94.2,
+   "iv_chain_percentile": 37,
+   "skew_points": 8.3,
+   "put_call_ratio": 0.82,
+   "total_put_oi": 18159,
+   "total_call_oi": 22034
+  },
+  "get_options_positioning": {
+   "ticker": "BSP",
+   "spot": 45.03,
+   "horizon_days": "12-30",
+   "primary_expiry": "2026-12-18",
+   "primary_days_to_expiry": 20,
+   "max_pain_strike": 42.0,
+   "resistance_walls": [
+    {
+     "strike": 50.0,
+     "open_interest": 11239
+    },
+    {
+     "strike": 47.0,
+     "open_interest": 9609
+    },
+    {
+     "strike": 65.0,
+     "open_interest": 551
+    }
+   ],
+   "support_walls": [
+    {
+     "strike": 40.0,
+     "open_interest": 7319
+    },
+    {
+     "strike": 39.0,
+     "open_interest": 3516
+    },
+    {
+     "strike": 30.0,
+     "open_interest": 3015
+    }
+   ],
+   "term_structure": [
+    {
+     "expiry": "2026-12-18",
+     "days_to_expiry": 20,
+     "atm_iv_pct": 94.2
+    }
+   ],
+   "term_structure_trend": "Insufficient data",
+   "unusual_activity": [
+    {
+     "side": "call",
+     "strike": 55.0,
+     "volume": 200,
+     "open_interest": 0,
+     "vol_oi_ratio": 200.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 85.0,
+     "volume": 106,
+     "open_interest": 0,
+     "vol_oi_ratio": 106.0,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "call",
+     "strike": 65.0,
+     "volume": 204,
+     "open_interest": 551,
+     "vol_oi_ratio": 0.4,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 35.0,
+     "volume": 713,
+     "open_interest": 1713,
+     "vol_oi_ratio": 0.4,
+     "moneyness": "OTM"
+    },
+    {
+     "side": "put",
+     "strike": 38.0,
+     "volume": 325,
+     "open_interest": 1007,
+     "vol_oi_ratio": 0.3,
+     "moneyness": "OTM"
+    }
+   ],
+   "otm_call_oi": 21459,
+   "otm_put_oi": 18095,
+   "positioning_lean_score": 0.09,
+   "positioning_lean": "Balanced / hedged"
+  },
+  "get_analyst_sentiment": {
+   "ticker": "BSP",
+   "as_of": "2026-11-28",
+   "analyst_coverage": "covered",
+   "recent_actions": [],
+   "consensus": {
+    "rating": "buy",
+    "score": 2.42,
+    "verdict": "leaning bullish",
+    "analysts": 12,
+    "counts": {
+     "strongBuy": 1,
+     "buy": 7,
+     "hold": 3,
+     "sell": 0,
+     "strongSell": 1
+    },
+    "trend": "stable",
+    "trend_detail": "consensus essentially unchanged over 3 months (score 2.42 to 2.42)"
+   },
+   "price_target": {
+    "mean": 50.33,
+    "median": 50.0,
+    "high": 72.0,
+    "low": 38.0,
+    "current_price": 45.03,
+    "dispersion_pct": 67.6,
+    "upside_vs_mean_pct": 11.8,
+    "upside_vs_median_pct": 11.0
+   },
+   "notes": [
+    "No analyst rating changes in the last 30 days \u2014 the consensus below is standing opinion, not a recent catalyst."
+   ]
+  },
+  "get_sector_comparison": {
+   "ticker": "BSP",
+   "sector": "Technology",
+   "sector_etf": "XLK",
+   "comparison": {
+    "1y": {
+     "stock_change_pct": null,
+     "sector_etf_change_pct": 14.79,
+     "relative_to_sector_pct": null
+    },
+    "1d": {
+     "stock_change_pct": -2.72,
+     "sector_etf_change_pct": 2.8,
+     "relative_to_sector_pct": -5.52
+    },
+    "2w": {
+     "stock_change_pct": 10.64,
+     "sector_etf_change_pct": -7.84,
+     "relative_to_sector_pct": 18.48
+    },
+    "1w": {
+     "stock_change_pct": 7.99,
+     "sector_etf_change_pct": -0.34,
+     "relative_to_sector_pct": 8.33
+    },
+    "1mo": {
+     "stock_change_pct": -4.23,
+     "sector_etf_change_pct": -16.15,
+     "relative_to_sector_pct": 11.92
+    },
+    "ytd": {
+     "stock_change_pct": 11.19,
+     "sector_etf_change_pct": 11.38,
+     "relative_to_sector_pct": -0.19
+    }
+   }
+  },
+  "get_macro": {
+   "vix": {
+    "realtime_start": "2026-11-27",
+    "realtime_end": "2026-11-27",
+    "observation_start": "1600-01-01",
+    "observation_end": "9999-12-31",
+    "units": "lin",
+    "output_type": 1,
+    "file_type": "json",
+    "order_by": "observation_date",
+    "sort_order": "desc",
+    "count": 9628,
+    "offset": 0,
+    "limit": 5,
+    "observations": [
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-26",
+      "value": "26.8"
+     },
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-25",
+      "value": "28.29"
+     },
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-24",
+      "value": "26.36"
+     },
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-23",
+      "value": "26.62"
+     },
+     {
+      "realtime_start": "2026-11-27",
+      "realtime_end": "2026-11-27",
+      "date": "2026-11-20",
+      "value": "35.89"
+     }
+    ]
+   },
+   "series_id": "VIXCLS",
+   "source": "fred"
+  },
+  "get_events": {
+   "ticker": "BSP",
+   "as_of": "2026-11-28",
+   "events": [
+    {
+     "type": "fomc",
+     "date": "2026-12-09",
+     "days_until": 11,
+     "description": "FOMC interest rate decision",
+     "source": "static"
+    },
+    {
+     "type": "earnings",
+     "date": "2027-02-11",
+     "description": "BSP quarterly earnings scheduled (before the open)",
+     "source": "yfinance",
+     "days_until": 75,
+     "eps_estimate": 0.35,
+     "hour": "bmo"
+    }
+   ],
+   "recent_events": [
+    {
+     "type": "earnings",
+     "date": "2026-11-19",
+     "description": "BSP reported Q3 2026 earnings after the close \u2014 EPS 0.42 vs 0.3064 expected (beat, +37.1%)",
+     "source": "finnhub",
+     "days_ago": 9,
+     "eps_actual": 0.42,
+     "eps_estimate": 0.3064,
+     "surprise": "beat",
+     "surprise_pct": 37.1,
+     "hour": "amc"
+    }
+   ],
+   "earnings_status": "reported",
+   "earnings_source": "finnhub+yfinance"
+  }
+ }
+}
